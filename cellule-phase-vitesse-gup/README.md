@@ -41,6 +41,10 @@ v_GUP = 1/(m sqrt(beta)).
   masse-vitesse avec donnees publiques CODATA/NIST.
 - `scripts/simulate_industrial_phase_space_gases.py` : simulations et figures
   sur le critere `eta = n lambda_th^3`.
+- `scripts/compare_atom_phase_space_budget.py` : comparaison Rb/Sr/Yb/Cs/Li
+  avec contrainte `N_phase_cap = eta_max V_eff / lambda_th^3`.
+- `scripts/simulate_sensor_noise_budget.py` : budget technique laser,
+  vibration sismique, thermique et duty cycle pour un gravimetre atomique.
 
 ## Simulation industrielle
 
@@ -54,6 +58,10 @@ python3 scripts/simulate_cold_atom_sensor_phase_space.py
 python3 scripts/simulate_atom_interferometer_design.py
 python3 scripts/phase_space_sensor_cad.py
 python3 scripts/test_phase_space_sensor_cad.py
+python3 scripts/compare_atom_phase_space_budget.py
+python3 scripts/test_atom_phase_space_budget.py
+python3 scripts/simulate_sensor_noise_budget.py
+python3 scripts/test_sensor_noise_budget.py
 ```
 
 Sorties:
@@ -62,6 +70,10 @@ Sorties:
 - `reports/industrial_phase_space_summary.json`
 - `reports/phase_space_sensor_cad_report.md`
 - `reports/phase_space_sensor_cad_summary.json`
+- `reports/atom_phase_space_budget_report.md`
+- `reports/atom_phase_space_budget_summary.json`
+- `reports/sensor_noise_budget_report.md`
+- `reports/sensor_noise_budget_summary.json`
 - `reports/data/*.csv`
 - `reports/figures/*.png`
 
