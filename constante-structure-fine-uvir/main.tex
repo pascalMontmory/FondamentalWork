@@ -1,0 +1,384 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.35cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  urlcolor=blue!55!black,
+  citecolor=blue!55!black,
+  pdftitle={Conjecture UV/IR sur la constante de structure fine},
+  pdfauthor={Notes de travail}
+}
+
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.6em}
+\setlist[enumerate]{leftmargin=1.8em}
+
+\newcommand{\lP}{\ell_{\mathrm P}}
+\newcommand{\rhoP}{\rho_{\mathrm P}}
+\newcommand{\RL}{R_{\Lambda}}
+\newcommand{\SL}{S_{\Lambda}}
+\newcommand{\Seuil}{S_0^{U(1)}}
+\newcommand{\geff}{g_{\mathrm{eff}}^{U(1)}}
+\newcommand{\gedge}{g_{\mathrm{edge}}^{U(1)}}
+\newcommand{\apinv}{\alpha^{-1}}
+\newcommand{\Cren}{\mathcal C_{\mathrm{ren}}}
+
+\title{Conjecture UV/IR sur la constante de structure fine\\
+\large Audit mathematique, test numerique et statut physique}
+\author{Document de travail}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note formalise et verifie une relation candidate entre la constante de
+structure fine, l'echelle de Planck et le rayon de de Sitter associe a la
+constante cosmologique :
+\[
+\apinv=\ln\left(\frac{\RL}{10\pi\lP}\right).
+\]
+L'algebre interne de la relation est correcte et le test numerique avec
+CODATA 2022 et Planck 2018 donne une proximite forte avec la valeur observee de
+\(\alpha^{-1}\). Le statut scientifique reste cependant conditionnel : le
+facteur \(10\pi\), ou de maniere equivalente
+\(\geff=5/2\), doit etre derive independamment depuis la microphysique des
+modes de bord Maxwell. Le resultat doit donc etre lu comme une conjecture
+UV/IR precise, non comme une derivation etablie de \(\alpha\).
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Resultat candidat}
+
+On definit
+\begin{equation}
+\RL=\sqrt{\frac{3}{\Lambda}},
+\qquad
+\lP=\sqrt{\frac{\hbar G}{c^3}}.
+\end{equation}
+
+La relation candidate est
+\begin{equation}
+\boxed{\apinv=\ln\left(\frac{\RL}{10\pi\lP}\right).}
+\label{eq:main_alpha}
+\end{equation}
+
+Elle est equivalente a
+\begin{equation}
+\boxed{\Lambda=\frac{3}{100\pi^2\lP^2}\,e^{-2/\alpha}.}
+\label{eq:lambda_alpha}
+\end{equation}
+
+Cette formule convertit la petitesse de \(\Lambda\) en suppression
+exponentielle controlee par \(\alpha\). Mais cette equivalence ne suffit pas a
+constituer une preuve : le coefficient \(10\pi\) doit etre justifie sans
+utiliser la valeur observee de \(\alpha\).
+
+\section{Lien UV/IR de l'energie noire}
+
+La densite associee a \(\Lambda\) est
+\begin{equation}
+\rho_\Lambda=\frac{\Lambda c^4}{8\pi G}
+=\frac{3c^4}{8\pi G\RL^2}.
+\end{equation}
+
+Comme
+\begin{equation}
+\rhoP=\frac{c^7}{\hbar G^2},
+\qquad
+\rhoP\lP^2=\frac{c^4}{G},
+\end{equation}
+on obtient l'identite
+\begin{equation}
+\boxed{\rho_\Lambda=\frac{3}{8\pi}\rhoP
+\left(\frac{\lP}{\RL}\right)^2.}
+\label{eq:rho_lambda_uv_ir}
+\end{equation}
+
+Le meme rapport UV/IR apparait donc sous deux formes :
+\begin{equation}
+\frac{\rho_\Lambda}{\rhoP}\sim \left(\frac{\lP}{\RL}\right)^2,
+\qquad
+\apinv\sim \ln\left(\frac{\RL}{\lP}\right).
+\end{equation}
+
+\section{Forme entropique}
+
+L'entropie d'horizon de de Sitter vaut
+\begin{equation}
+\SL=\frac{k_B A_\Lambda}{4\lP^2}
+=\frac{k_B\pi\RL^2}{\lP^2}.
+\end{equation}
+
+La conjecture entropique est
+\begin{equation}
+\boxed{\apinv=\frac12\ln\left(\frac{\SL}{\Seuil}\right).}
+\label{eq:alpha_entropy}
+\end{equation}
+
+Si
+\begin{equation}
+\Seuil=100\pi^3 k_B,
+\label{eq:S0_value}
+\end{equation}
+alors
+\begin{align}
+\apinv
+&=\frac12\ln\left(
+\frac{k_B\pi\RL^2/\lP^2}{100\pi^3 k_B}
+\right)\\
+&=\frac12\ln\left(\frac{\RL^2}{100\pi^2\lP^2}\right)\\
+&=\ln\left(\frac{\RL}{10\pi\lP}\right).
+\end{align}
+
+L'algebre est donc exacte. Le point non demontre est le seuil
+\(\Seuil=100\pi^3k_B\).
+
+\section{Flot unite}
+
+On pose la capacite holographique
+\begin{equation}
+N(L)=\frac{S(L)}{k_B}=\frac{\pi L^2}{\lP^2}.
+\end{equation}
+
+Si
+\begin{equation}
+\alpha^{-1}(L)=\frac12\ln\left(\frac{N(L)}{N_0}\right),
+\end{equation}
+alors
+\begin{equation}
+\alpha^{-1}(L)
+=\frac12\ln\left(\frac{\pi L^2}{\lP^2N_0}\right),
+\end{equation}
+et donc
+\begin{equation}
+\boxed{\frac{d\alpha^{-1}}{d\ln L}=1.}
+\label{eq:flow_unit}
+\end{equation}
+
+Ce flot unite n'est pas ajuste. Il decoule de la loi d'aire
+\(S\propto L^2\) et du facteur \(1/2\) dans la definition entropique.
+
+\section{Reduction du facteur \texorpdfstring{\(10\pi\)}{10 pi}}
+
+On parametre le seuil par
+\begin{equation}
+\frac{\Seuil}{k_B}=4\pi\left(2\pi\geff\right)^2.
+\label{eq:S0_geff}
+\end{equation}
+
+En imposant \(\Seuil/k_B=100\pi^3\), on obtient
+\begin{align}
+4\pi(2\pi \geff)^2&=100\pi^3,\\
+16\pi^3(\geff)^2&=100\pi^3,\\
+(\geff)^2&=\frac{25}{4}.
+\end{align}
+
+Donc
+\begin{equation}
+\boxed{\geff=\frac52.}
+\label{eq:geff_52}
+\end{equation}
+
+Le facteur macroscopique devient
+\begin{equation}
+4\pi\geff=10\pi.
+\end{equation}
+
+Le probleme numerique du \(10\pi\) est donc reduit au probleme
+microphysique de deriver \(\geff=5/2\).
+
+\section{Interpretation \texorpdfstring{\(2+1/2\)}{2+1/2}}
+
+Le photon libre en quatre dimensions possede deux polarisations physiques :
+\begin{equation}
+N_{\mathrm{pol}}=2.
+\end{equation}
+
+Dans une region avec bord, la contrainte de Gauss empeche une factorisation
+naive de l'espace de Hilbert. Le flux electrique normal au bord devient une
+donnee physique de bord. De maniere schematique, la forme symplectique de bord
+contient un couple conjugue
+\begin{equation}
+\Omega_{\mathrm{edge}}
+=\int_{\partial\Omega}\delta E_\perp\wedge\delta\varphi.
+\end{equation}
+
+Une integration gaussienne reelle produit une demi-puissance de determinant :
+\begin{equation}
+\int d^n x\,\exp\left(-\frac12x^TKx\right)
+=(2\pi)^{n/2}(\det K)^{-1/2}.
+\end{equation}
+
+Cela motive le comptage effectif
+\begin{equation}
+\boxed{\geff=2+\frac12=\frac52.}
+\label{eq:2_plus_half}
+\end{equation}
+
+Cette ligne est plausible, mais elle n'est pas encore une demonstration. Les
+modes de bord Maxwell existent dans les calculs d'entropie, mais l'association
+entre une demi-puissance de determinant et une capacite positive \(+1/2\) est
+une regle supplementaire.
+
+\section{Capacite holographique renormalisee}
+
+Sur une surface \(\Sigma\), le facteur de bord peut prendre la forme
+\begin{equation}
+Z_{\mathrm{edge}}\propto
+\left[\det{}'(-\Delta_\Sigma)\right]^{q},
+\qquad q=\pm\frac12.
+\end{equation}
+
+La puissance demi-entiere est robuste, mais le signe, les modes zero, la mesure
+fonctionnelle et les contretermes dependent du schema. On propose donc une
+capacite renormalisee
+\begin{equation}
+\boxed{\Cren[(\det K)^q]=|q|.}
+\label{eq:Cren}
+\end{equation}
+
+Cette definition donne
+\begin{equation}
+\Cren[Z_{\mathrm{edge}}]=\frac12.
+\end{equation}
+
+Le verrou theorique est precis : il faut montrer que cette capacite
+renormalisee est la bonne quantite physique entrant dans la relation
+entropique de \(\alpha\).
+
+\section{Theoreme conditionnel}
+
+\textbf{Theoreme conditionnel.} Supposons que :
+\begin{enumerate}
+\item la capacite holographique d'un horizon de rayon \(L\) soit
+\[
+N(L)=\frac{\pi L^2}{\lP^2};
+\]
+\item l'inverse du couplage electromagnetique soit la distance logarithmique
+entropique
+\[
+\alpha^{-1}(L)=\frac12\ln\left(\frac{N(L)}{N_0^{U(1)}}\right);
+\]
+\item le seuil \(U(1)\) soit
+\[
+N_0^{U(1)}=4\pi\left(2\pi\geff\right)^2;
+\]
+\item la microphysique de bord donne \(\geff=5/2\).
+\end{enumerate}
+
+Alors
+\begin{equation}
+N_0^{U(1)}=100\pi^3,
+\end{equation}
+et
+\begin{equation}
+\boxed{\alpha^{-1}(L)=\ln\left(\frac{L}{10\pi\lP}\right).}
+\end{equation}
+
+En choisissant \(L=\RL\), on obtient \eqref{eq:main_alpha}.
+
+\section{Test numerique}
+
+Avec les constantes CODATA 2022 et les valeurs centrales Planck 2018
+\[
+H_0=67.4\,{\rm km\,s^{-1}\,Mpc^{-1}},
+\qquad
+\Omega_\Lambda=0.685,
+\]
+on prend
+\begin{equation}
+\Lambda_{\rm obs}=\frac{3\Omega_\Lambda H_0^2}{c^2},
+\qquad
+\RL=\sqrt{\frac{3}{\Lambda_{\rm obs}}}.
+\end{equation}
+
+Le script du dossier donne :
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Quantite & Valeur \\
+\midrule
+\(\Lambda_{\rm obs}\) & \(1.090910502838\times10^{-52}\,{\rm m^{-2}}\)\\
+\(\RL\) & \(1.658311322028\times10^{26}\,{\rm m}\)\\
+\(\alpha^{-1}_{\rm CODATA}\) & \(137.035999177\)\\
+\(\alpha^{-1}_{\rm pred}\) & \(137.036063742708\)\\
+\(\Delta\alpha^{-1}\) & \(6.456570762\times10^{-5}\)\\
+\(\Lambda(\alpha)/\Lambda_{\rm obs}\) & \(1.000129139753\)\\
+\(g_{\rm eff,fit}\) & \(2.500161419480\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La relation est donc numeriquement tres proche. Cependant, l'incertitude
+experimentale sur \(\alpha^{-1}\) est beaucoup plus petite que cet ecart. La
+proximite doit etre lue comme un indice de structure, pas comme une validation
+experimentale.
+
+\section{Conclusion}
+
+Les identites mathematiques de la note sont correctes :
+\begin{equation}
+\frac12\ln\left(\frac{\SL}{100\pi^3 k_B}\right)
+=\ln\left(\frac{\RL}{10\pi\lP}\right),
+\qquad
+\frac{d\alpha^{-1}}{d\ln L}=1.
+\end{equation}
+
+Le test public donne une coincidence forte :
+\begin{equation}
+\alpha^{-1}_{\rm pred}=137.036063742708,
+\qquad
+\alpha^{-1}_{\rm obs}=137.035999177.
+\end{equation}
+
+Le point decisif reste ouvert :
+\begin{equation}
+\boxed{\text{deriver independamment }\geff=2+\frac12.}
+\end{equation}
+
+Si ce calcul de bord Maxwell est etabli dans une capacite holographique
+renormalisee, la relation \(\alpha\)--\(\Lambda\) deviendra une prediction
+structurelle du cadre UV/IR. En l'etat, elle constitue une conjecture precise,
+testable et mathematiquement coherente, mais pas encore une publication
+definitive.
+
+\begin{thebibliography}{9}
+
+\bibitem{CODATA2022}
+NIST/CODATA, \emph{CODATA recommended values of the fundamental physical
+constants: 2022}.
+
+\bibitem{Planck2018}
+Planck Collaboration, \emph{Planck 2018 results. VI. Cosmological parameters},
+arXiv:1807.06209.
+
+\bibitem{DonnellyWall2015}
+W. Donnelly and A. C. Wall, \emph{Geometric entropy and edge modes of the
+electromagnetic field}, arXiv:1506.05792.
+
+\bibitem{DonnellyWallPRL2015}
+W. Donnelly and A. C. Wall, \emph{Entanglement entropy of electromagnetic edge
+modes}, Phys. Rev. Lett. 114, 111603 (2015).
+
+\end{thebibliography}
+
+\end{document}
