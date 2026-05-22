@@ -150,6 +150,7 @@ The extended CAD note adds an explicit atom-number cap:
 N_phase_cap = eta_max V_eff / lambda_th^3
 N_detected = min(N_technical survival, N_phase_cap)
 FOM = sqrt(N_detected) T_i^2
+FOM_Hz = sqrt(N_detected / T_cycle) T_i^2
 delta a ~= 1 / (k_eff FOM)
 ```
 
@@ -159,7 +160,10 @@ spread and a realistic cooling pathway at the same time.
 
 This FOM is deliberately incomplete. It is useful for first-order screening but
 does not include contrast loss, laser phase noise, vibration rejection, wavefront
-aberrations, detection noise, duty cycle or Allan deviation.
+aberrations, detection noise, duty cycle or Allan deviation. Once the total
+cycle time is known, the useful per-root-Hz proxy is
+`FOM_Hz = sqrt(N_detected / T_cycle) T_i^2`, so dead time and slow preparation
+directly reduce the apparent source advantage.
 
 ## 6. Product concept
 
@@ -261,3 +265,8 @@ interrogation time for cold-atom inertial sensors.
 This is scientifically standard but industrially meaningful. The novelty is in
 the clean integration with the existing GUP position--velocity framework and in
 the reproducible design pipeline.
+
+The natural deployment path is open source: transparent assumptions, benchmark
+scenarios, atom databases, cycle-time models, package constraints and vibration
+budgets that can be inspected, challenged and extended by the quantum-sensor
+community.
