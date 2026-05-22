@@ -13,7 +13,7 @@ delta a ~= 1 / (k_eff FOM)
 The GUP correction is also quantified through
 `epsilon_GUP = beta0 (m sigma_v / p_Pl)^2`.
 
-| atom | access | T [K] | Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM | delta a [m/s2] | beta p2 beta0=1 | beta p2 beta0=1e26 |
+| atom | access | best T [K] | best Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM max | delta a [m/s2] | beta p2 beta0=1 | beta p2 beta0=1e26 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Sr88 | good | 1.00e-08 | 1 | 2.29e-07 | 9.73e-04 | 1.00e+07 | 3.16e+03 | 1.73e-11 | 4.73e-58 | 4.73e-32 |
 | Yb174 | good | 1.00e-08 | 1 | 1.78e-07 | 6.91e-04 | 1.00e+07 | 3.16e+03 | 1.40e-11 | 9.37e-58 | 9.37e-32 |
@@ -24,6 +24,10 @@ The GUP correction is also quantified through
 
 Interpretation:
 
+- `FOM = sqrt(N_detected) T_i^2` is a first-order proxy. A real
+  instrument must also include contrast, laser phase noise, vibration
+  rejection, wavefront aberrations, detection noise, duty cycle and Allan
+  deviation;
 - heavier atoms have smaller velocity dispersion at fixed temperature;
 - Sr/Yb benefit from narrow-line cooling but require more complex optics;
 - Li has larger recoil and larger velocity spread, so it is less natural
@@ -34,3 +38,5 @@ Interpretation:
 Data: `reports/data/atom_phase_space_budget.csv`
 
 Figure: `reports/figures/atom_phase_space_budget.png`
+
+Focused figure: `reports/figures/atom_phase_space_budget_focus.png`
