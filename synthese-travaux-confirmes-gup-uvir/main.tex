@@ -1,0 +1,517 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.35cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={Synthese des travaux confirmes GUP UVIR},
+  pdfauthor={Notes de travail}
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\setlist[itemize]{topsep=0.25em,itemsep=0.2em}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.2em}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\lp}{\ell_{\rm P}}
+\newcommand{\tP}{t_{\rm P}}
+\newcommand{\EP}{E_{\rm P}}
+\newcommand{\EH}{E_{\rm H}}
+\newcommand{\rhoP}{\rho_{\rm P}}
+\newcommand{\rhoDE}{\rho_{\rm DE}}
+\newcommand{\rhoC}{\rho_{\rm c}}
+\newcommand{\rhoReg}{\rho_{\rm reg}}
+\newcommand{\rhoBH}{\rho_{\rm BH}}
+\newcommand{\EGUP}{E_{\rm GUP}}
+\newcommand{\LH}{L_{\rm H}}
+\newcommand{\rhograv}{\rho_{\rm grav}}
+
+\title{Synthese des travaux confirmes autour du cadre GUP--UV/IR\\
+\large Resultats mathematiques, contraintes observationnelles et statut physique}
+\author{Document de synthese}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Ce document rassemble les resultats verifies des notes precedentes sur une
+cellule de phase deformee de type GUP, sa reformulation position--vitesse, la
+regularisation UV de l'energie du vide, les relations Planck--Hubble, et les
+tests observationnels publics. Le mot \emph{confirme} est utilise dans un sens
+strict : confirme par derivation mathematique dans le modele, par identite
+dimensionnelle exacte, ou par contrainte numerique reproductible. Il ne signifie
+pas que le GUP soit etabli experimentalement. La conclusion robuste est un
+no-go conditionnel : la valeur $\beta_0\sim10^{60}$ qui ajuste directement
+l'energie noire ne peut pas etre un parametre universel. La lecture viable est
+donc une regularisation UV locale combinee a une projection IR ou
+holographique gravitationnelle.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Statut epistemique}
+
+Les resultats sont classes en quatre categories.
+
+\begin{enumerate}
+  \item \textbf{Confirme mathematiquement} : formule derivee et verifiee dans
+  le cadre de la mesure GUP choisie.
+  \item \textbf{Identite exacte} : relation decoulant seulement des definitions
+  de $c,\hbar,G,H_0,\Omega_\Lambda$.
+  \item \textbf{Contrainte observationnelle conditionnelle} : exclusion ou
+  borne obtenue en confrontant le modele a des donnees publiques.
+  \item \textbf{Hypothese ouverte} : ingredient necessaire mais non encore
+  derive dynamiquement.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!45!black,title=Point cle]
+La theorie complete n'est pas confirmee. Ce qui est confirme, ce sont des
+consequences conditionnelles : \emph{si} la mesure GUP adoptee est utilisee,
+\emph{alors} les formules et exclusions ci-dessous suivent.
+\end{tcolorbox}
+
+\section{Mesure GUP confirmee dans le modele}
+
+Le point de depart est la mesure deformee
+\begin{equation}
+\dd N
+=
+\frac{g\,\dd^3x\,\dd^3p}
+{h^3(1+\beta p^2)^\gamma}.
+\end{equation}
+Le cas central analyse est
+\begin{equation}
+\gamma=3,
+\qquad
+\dd N
+=
+\frac{g\,\dd^3x\,\dd^3p}
+{h^3(1+\beta p^2)^3}.
+\label{eq:gup_measure}
+\end{equation}
+
+L'integrale maitresse est
+\begin{equation}
+I_s(\gamma)=
+\int_0^\infty
+\frac{p^{s-1}\dd p}{(1+\beta p^2)^\gamma}
+=
+\frac12\beta^{-s/2}
+B\left(\frac{s}{2},\gamma-\frac{s}{2}\right),
+\end{equation}
+valable pour $\gamma>s/2$.
+
+Pour $\gamma=3$, les deux integrales verifiees sont
+\begin{align}
+\int_0^\infty\frac{p^2\dd p}{(1+\beta p^2)^3}
+&=
+\frac{\pi}{16\beta^{3/2}},\\
+\int_0^\infty\frac{p^3\dd p}{(1+\beta p^2)^3}
+&=
+\frac{1}{4\beta^2}.
+\end{align}
+
+\section{Densite maximale de modes}
+
+La densite totale de modes monoparticulaires est finie :
+\begin{equation}
+\frac{N_{\max}}{V}
+=
+\frac{4\pi g}{h^3}
+\int_0^\infty
+\frac{p^2\dd p}{(1+\beta p^2)^3}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+n_{\max}
+=
+\frac{g\pi^2}{4h^3\beta^{3/2}}
+=
+\frac{g}{32\pi\beta_0^{3/2}\lp^3}.
+}
+\label{eq:nmax}
+\end{equation}
+
+Statut : confirme mathematiquement dans le modele $\gamma=3$.
+
+\section{Energie du vide regularisee}
+
+Pour un champ massless de degenerescence $g$,
+\begin{equation}
+\rhoReg
+=
+\frac{4\pi g}{h^3}
+\int_0^\infty
+\frac{p^2\dd p}{(1+\beta p^2)^3}
+\frac12pc.
+\end{equation}
+Avec l'integrale precedente,
+\begin{equation}
+\boxed{
+\rhoReg
+=
+\frac{g\pi c}{2h^3\beta^2}
+=
+\frac{g\rhoP}{16\pi^2\beta_0^2}.
+}
+\label{eq:rho_reg}
+\end{equation}
+
+Statut : confirme mathematiquement comme regularisation UV. Cette formule ne
+resout pas seule la constante cosmologique.
+
+\section{Reformulation position--vitesse}
+
+En regime non relativiste, $p=mv$. La mesure devient
+\begin{equation}
+\dd N
+=
+\frac{g\,m^3\dd^3x\,\dd^3v}
+{h^3(1+\beta m^2v^2)^3}.
+\end{equation}
+La cellule effective dans l'espace $(x,v)$ est donc
+\begin{equation}
+\boxed{
+\Delta^3x\,\Delta^3v
+\sim
+\left(\frac{h}{m}\right)^3
+(1+\beta m^2v^2)^3.
+}
+\end{equation}
+
+Le seuil cinematique est
+\begin{equation}
+\boxed{
+v_{\rm GUP}
+=
+\frac{1}{m\sqrt{\beta}}
+=
+c\frac{m_{\rm P}}{m\sqrt{\beta_0}}.
+}
+\label{eq:v_gup}
+\end{equation}
+La longueur minimale reste
+\begin{equation}
+\boxed{
+\Delta x_{\min}=\hbar\sqrt{\beta}
+=
+\sqrt{\beta_0}\,\lp.
+}
+\end{equation}
+
+Statut : confirme comme changement de variables non relativiste. Le seuil
+physique exact doit etre formule en impulsion relativiste.
+
+\section{Relation Planck--Hubble--energie noire}
+
+Les definitions sont
+\begin{equation}
+\LH=\frac{c}{H_0},
+\qquad
+\rhoC=\frac{3c^2H_0^2}{8\pi G},
+\qquad
+\rhoDE=\Omega_\Lambda\rhoC.
+\end{equation}
+Comme
+\begin{equation}
+\rhoP\lp^2
+=
+\frac{c^7}{\hbar G^2}\frac{\hbar G}{c^3}
+=
+\frac{c^4}{G},
+\end{equation}
+on obtient l'identite exacte
+\begin{equation}
+\boxed{
+\rhoDE
+=
+\frac{3\Omega_\Lambda}{8\pi}
+\rhoP\left(\frac{\lp}{\LH}\right)^2.
+}
+\label{eq:rho_de_uvir}
+\end{equation}
+
+Statut : identite exacte. Elle montre que le facteur $10^{-122}$ est un
+rapport d'aires Planck--Hubble, mais elle n'est pas encore une dynamique.
+
+\section{Echelle meV et moyenne geometrique}
+
+L'echelle d'energie associee a l'energie noire est
+\begin{equation}
+E_{\rm DE}
+=
+\left[\rhoDE(\hbar c)^3\right]^{1/4}.
+\end{equation}
+Avec $\EH=\hbar H_0$, on trouve
+\begin{equation}
+\boxed{
+E_{\rm DE}
+=
+\left(\frac{3\Omega_\Lambda}{8\pi}\right)^{1/4}
+\sqrt{\EP\EH}.
+}
+\label{eq:Ede}
+\end{equation}
+
+Numeriquement, avec Planck 2018 et CODATA/NIST 2022 :
+\begin{equation}
+E_{\rm DE}=2.240365~{\rm meV}.
+\end{equation}
+
+\section{Identification directe au vide GUP}
+
+Si l'on impose directement
+\begin{equation}
+\rhoReg=\rhoDE,
+\end{equation}
+alors
+\begin{equation}
+\boxed{
+\beta_0^{(\Lambda)}
+=
+\left(\frac{g}{6\pi\Omega_\Lambda}\right)^{1/2}
+\frac{1}{H_0t_P}.
+}
+\label{eq:beta0_lambda}
+\end{equation}
+
+Pour $g=1$ :
+\begin{align}
+\beta_0^{(\Lambda)}
+&=
+2.363228\times10^{60},\\
+\ell_\Lambda
+=
+\sqrt{\beta_0^{(\Lambda)}}\,\lp
+&=
+2.484636\times10^{-5}\ {\rm m},\\
+\EGUP^{(\Lambda)}
+=
+\frac{\EP}{\sqrt{\beta_0^{(\Lambda)}}}
+&=
+7.941888\ {\rm meV}.
+\end{align}
+
+Le rapport avec $E_{\rm DE}$ est exactement
+\begin{equation}
+\boxed{
+\frac{\EGUP^{(\Lambda)}}{E_{\rm DE}}
+=
+\left(\frac{16\pi^2}{g}\right)^{1/4}
+=
+\frac{2\sqrt{\pi}}{g^{1/4}}.
+}
+\label{eq:ratio_egup_ede}
+\end{equation}
+
+Statut : confirme mathematiquement et numeriquement. Interpretation physique :
+problematique si $\beta_0$ est universel.
+
+\section{Projection UV/IR gravitationnelle}
+
+La borne de non-effondrement d'une region de rayon $L$ donne
+\begin{equation}
+\boxed{
+\rhoBH(L)
+=
+\frac{3c^4}{8\pi G L^2}
+=
+\frac{3}{8\pi}\rhoP
+\left(\frac{\lp}{L}\right)^2.
+}
+\label{eq:rho_bh}
+\end{equation}
+Pour $L=\LH$, $\rhoBH(\LH)=\rhoC$.
+
+Une equation candidate, confirmee algebriquement mais non derivee
+dynamiquement, est
+\begin{equation}
+\boxed{
+\rhograv(L)
+=
+\min\left[
+\frac{g\rhoP}{16\pi^2\beta_0^2},
+\frac{3c^4}{8\pi G L^2}
+\right].
+}
+\label{eq:min}
+\end{equation}
+
+Le croisement des deux branches est
+\begin{equation}
+\boxed{
+L_\times
+=
+\beta_0\sqrt{\frac{6\pi}{g}}\,\lp.
+}
+\label{eq:Lcross}
+\end{equation}
+Pour $\beta_0=1,g=1$ :
+\begin{equation}
+L_\times=4.341608\,\lp.
+\end{equation}
+
+\section{Tests publics : verdicts confirmes}
+
+Le parametre teste est $\beta_0^{(\Lambda)}=2.363228\times10^{60}$ pour
+$g=1$. Les tests utilisent des contraintes publiques issues de FIRAS,
+Planck+BAO+SNe, SPARC, BBN et etoiles a neutrons.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.25\linewidth} p{0.35\linewidth} p{0.28\linewidth}}
+\toprule
+Test & Resultat numerique & Verdict \\
+\midrule
+FIRAS/CMB &
+$\beta_0\lesssim3.72\times10^{58}$ &
+$\beta_0^{(\Lambda)}$ exclu comme photon universel \\
+BBN/radiation &
+$\beta_0\lesssim2.64\times10^{41}$ &
+exclu pour radiation primordiale \\
+Etoiles a neutrons &
+$\beta_0\lesssim1.66\times10^{38}$ &
+exclu pour fermions denses \\
+HDE $w$ &
+$w(c_{\rm hde}=1)=-0.885$ &
+modele testable, $c_{\rm hde}$ doit etre ajuste \\
+SPARC acceleration &
+$a_{\rm dS}/2\pi=8.63\times10^{-11}{\rm m\,s^{-2}}$ &
+accord d'ordre de grandeur seulement \\
+\bottomrule
+\end{tabular}
+\caption{Tests publics du parametre $\beta_0^{(\Lambda)}$.}
+\end{table}
+
+Conclusion observationnelle conditionnelle :
+\begin{equation}
+\boxed{
+\beta_0^{(\Lambda)}\sim10^{60}
+\text{ ne peut pas etre un parametre universel.}
+}
+\label{eq:no_go}
+\end{equation}
+
+\section{Ce qui est confirme comme no-go}
+
+Les donnees publiques imposent les conclusions suivantes.
+
+\begin{enumerate}
+  \item Le GUP $\gamma=3$ regularise bien les integrales UV du vide.
+  \item L'identification directe $\rhoReg=\rhoDE$ force un
+  $\beta_0\sim10^{60}$.
+  \item Cette valeur implique une echelle meV et une longueur effective
+  $\sim10^{-5}$ m.
+  \item Si cette deformation etait universelle, elle modifierait trop fortement
+  les photons du CMB, la radiation primordiale et les fermions denses.
+  \item Donc l'energie noire ne peut pas etre simplement la densite brute du
+  vide GUP avec un parametre universel.
+\end{enumerate}
+
+\section{Ce qui reste ouvert}
+
+Les points suivants ne sont pas confirmes et doivent etre traites comme le coeur
+du programme theorique.
+
+\begin{enumerate}
+  \item Deriver une mesure GUP covariante relativiste.
+  \item Comprendre les signes bosons--fermions et la soustraction du vide plat.
+  \item Deriver dynamiquement la projection IR/holographique.
+  \item Selectionner la bonne longueur cosmologique $L$.
+  \item Obtenir un tenseur effectif $T_{\mu\nu}\simeq-\rho g_{\mu\nu}$.
+  \item Produire une prediction precise pour $w(a)$.
+\end{enumerate}
+
+\section{Conclusion generale}
+
+La synthese confirmee peut etre condensee ainsi :
+\begin{equation}
+\boxed{
+\text{GUP}
+\Rightarrow
+\rhoReg<\infty
+\quad\text{mais}\quad
+\rhoReg\neq\rhoDE
+\text{ pour un }\beta_0\text{ universel.}
+}
+\end{equation}
+
+La direction viable est
+\begin{equation}
+\boxed{
+\text{regularisation UV locale}
+\quad+\quad
+\text{projection IR/holographique}
+\quad\Rightarrow\quad
+\rho_{\rm grav}\sim
+\rhoP\left(\frac{\lp}{L}\right)^2.
+}
+\end{equation}
+
+Le resultat le plus fort des travaux n'est donc pas une prediction positive
+finale, mais une clarification : le probleme de la constante cosmologique est
+un probleme UV/IR. Un cutoff GUP seul ne suffit pas ; une theorie viable doit
+expliquer pourquoi seule une partie holographiquement admissible du vide
+regularise gravite a grande echelle.
+
+\begin{thebibliography}{9}
+\bibitem{CODATA2022}
+E. Tiesinga, P. J. Mohr, D. B. Newell and B. N. Taylor,
+``CODATA recommended values of the fundamental physical constants: 2022'',
+\emph{Reviews of Modern Physics} \textbf{97}, 025002 (2025).
+
+\bibitem{Planck2018}
+N. Aghanim et al. (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters'',
+\emph{Astronomy \& Astrophysics} \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{FIRAS}
+COBE/FIRAS data products, NASA LAMBDA,
+\url{https://lambda.gsfc.nasa.gov/product/cobe/firas_products.html}.
+
+\bibitem{PantheonPlus}
+Pantheon+SH0ES Data Release,
+\url{https://github.com/PantheonPlusSH0ES/DataRelease}.
+
+\bibitem{SPARC}
+SPARC galaxy rotation-curve database,
+\url{https://zenodo.org/records/16284118}.
+
+\bibitem{CKN}
+A. Cohen, D. Kaplan and A. Nelson,
+``Effective Field Theory, Black Holes, and the Cosmological Constant'',
+\emph{Physical Review Letters} \textbf{82}, 4971 (1999).
+
+\bibitem{LiHDE}
+M. Li,
+``A Model of Holographic Dark Energy'',
+\emph{Physics Letters B} \textbf{603}, 1--5 (2004).
+
+\bibitem{Kempf}
+A. Kempf, G. Mangano and R. B. Mann,
+``Hilbert space representation of the minimal length uncertainty relation'',
+\emph{Physical Review D} \textbf{52}, 1108 (1995).
+\end{thebibliography}
+
+\end{document}
