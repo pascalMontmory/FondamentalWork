@@ -19,6 +19,11 @@ useful industrial application is a first-order computer-aided design framework
 for cold-atom quantum sensors: gravimeters, gyroscopes, accelerometers,
 gravity gradiometers and inertial navigation units.
 
+This phase-space CAD framework is primarily motivated, but not driven, by GUP
+considerations. The GUP deformation gives a useful theoretical language for
+phase-space counting, while the applied sensor budget uses the experimentally
+robust `beta -> 0` limit.
+
 The central claim is conservative: before detailed optical, electronic and
 vibration models are introduced, a candidate atom-sensor architecture must
 already pass a phase-space budget. Temperature, density, atomic mass,
@@ -109,6 +114,27 @@ This FOM is only a first-order proxy. An engineering-grade model must multiply
 the ideal atom-shot-noise term by contrast and duty-cycle factors, then add
 laser phase noise, vibration residuals, wavefront aberrations, detection noise
 and Allan-deviation behavior.
+
+## Example use case
+
+Consider a portable gravimeter targeting
+
+```text
+delta a_target = 1e-8 m/s2/sqrt(Hz).
+```
+
+The phase-space budget says this target is not atom-shot-noise limited at the
+source level. The best Rb87/Sr/Yb points in the table sit near
+`1e-11 m/s2` before contrast loss, vibration noise, laser phase noise, wavefront
+aberrations, dead time and detection noise are included. The practical
+conclusion is precise: the cold-atom source is good enough in first order; the
+hard work moves to vibration rejection, optical phase stability, contrast
+preservation and field packaging.
+
+For a compact gyroscope aimed at inertial navigation, the same table is only a
+source prefilter. A full gyroscope model must add the enclosed interferometer
+area, transverse velocity, rotation geometry, platform motion, duty cycle and
+long-term bias stability.
 
 ## GUP correction scale
 
