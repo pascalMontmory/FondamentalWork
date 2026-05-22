@@ -35,8 +35,23 @@ Interpretation:
 - even the deliberately loose `beta0=1e26` GUP column is far below
   direct relevance for cold-atom sensor design.
 
+Example use case:
+
+- A portable gravimeter targeting `1e-8 m/s2/sqrt(Hz)` is not limited
+  by atom shot noise in this first-order budget: the best Rb87/Sr/Yb
+  points are around `1e-11 m/s2` before contrast, vibration and laser
+  noise are included. The real engineering question is therefore not
+  whether the phase-space source can reach `1e-8`, but whether the
+  full instrument can preserve enough contrast and reject vibration
+  noise in a portable package;
+- A compact navigation gyroscope should use this same table as a source
+  prefilter only. The missing terms are rotation geometry, enclosed
+  area, dead time, platform motion and long-term bias stability.
+
 Data: `reports/data/atom_phase_space_budget.csv`
 
 Figure: `reports/figures/atom_phase_space_budget.png`
 
 Focused figure: `reports/figures/atom_phase_space_budget_focus.png`
+shows continuous FOM-vs-temperature curves for Rb87, Sr88 and Yb174
+at `T_i = 0.5 s`, with markers at the maximum of each curve.
