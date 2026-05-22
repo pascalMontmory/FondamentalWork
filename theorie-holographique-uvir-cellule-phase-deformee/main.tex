@@ -1,0 +1,637 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=2.4cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdftitle={Theorie holographique UV/IR a cellule de phase deformee},
+  pdfauthor={Document de travail}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=2pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=2pt}
+
+\newcommand{\lp}{\ell_{\rm P}}
+\newcommand{\rp}{\rho_{\rm P}}
+\newcommand{\rhoreg}{\rho_{\rm reg}}
+\newcommand{\rhograv}{\rho_{\rm grav}}
+\newcommand{\rholambda}{\rho_\Lambda}
+\newcommand{\rhc}{\rho_c}
+\newcommand{\mpl}{m_{\rm P}}
+\newcommand{\Ep}{E_{\rm P}}
+\newcommand{\Eh}{E_{\rm H}}
+\newcommand{\RL}{R_\Lambda}
+\newcommand{\LH}{L_H}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\kb}{k_{\rm B}}
+\newcommand{\dif}{\mathrm d}
+
+\title{\textbf{Theorie holographique UV/IR a cellule de phase deformee}\\
+\large Architecture, equations maitresses, no-go, projection holographique et lien possible avec $\alpha$}
+\author{Document de travail}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Ce document rassemble une formulation coherente d'un cadre theorique effectif :
+une cellule de phase deformee de type GUP regularise les integrales
+ultraviolettes, mais cette regularisation locale ne suffit pas a expliquer
+l'energie noire. Le resultat central est un no-go conditionnel : identifier
+directement l'energie du vide regularisee a l'energie noire force un
+\(\beta_0\sim10^{60}\), exclu comme parametre local universel. Une theorie
+viable doit donc combiner la regularisation UV avec une projection
+gravitationnelle IR de type holographique. Le meme rapport Planck--horizon
+peut ensuite motiver une conjecture reliant \(\alpha\) a \(R_\Lambda\), dont le
+verrou est le calcul du mode de bord Maxwell.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Statut epistemique}
+
+Le cadre n'est pas une theorie fondamentale confirmee. Il separe quatre
+niveaux :
+
+\begin{center}
+\begin{tabular}{@{}p{4cm}p{10cm}@{}}
+\toprule
+Niveau & Sens \\
+\midrule
+Resultat mathematique & consequence derivee dans la mesure GUP choisie. \\
+Identite exacte & relation decoulant des definitions de \(c,\hbar,G,H_0,\Omega_\Lambda\). \\
+No-go conditionnel & exclusion obtenue si l'on impose une interpretation directe. \\
+Conjecture & relation structuree mais non encore derivee dynamiquement. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La phrase directrice est :
+\begin{equation}
+\boxed{\text{le GUP regularise localement ; l'horizon projette globalement.}}
+\end{equation}
+
+\section{Definitions fondamentales}
+
+\begin{equation}
+\lp=\sqrt{\frac{\hbar G}{c^3}},
+\qquad
+\mpl=\sqrt{\frac{\hbar c}{G}},
+\qquad
+\Ep=\sqrt{\frac{\hbar c^5}{G}},
+\end{equation}
+\begin{equation}
+\rp=\frac{c^7}{\hbar G^2},
+\qquad
+\LH=\frac{c}{H_0},
+\qquad
+\rhc=\frac{3c^2H_0^2}{8\pi G}.
+\end{equation}
+
+La densite d'energie noire observee est
+\begin{equation}
+\rho_{\rm DE}=\Omega_\Lambda \rhc.
+\end{equation}
+
+Pour un univers asymptotiquement de Sitter,
+\begin{equation}
+\RL=\sqrt{\frac{3}{\Lambda}}.
+\end{equation}
+
+L'entropie d'un horizon de rayon \(L\) est
+\begin{equation}
+S(L)=\frac{\kb A}{4\lp^2}=\frac{\kb\pi L^2}{\lp^2},
+\qquad
+N_{\rm holo}(L)=\frac{S(L)}{\kb}=\frac{\pi L^2}{\lp^2}.
+\end{equation}
+
+\section{Postulat I : cellule locale UV deformee}
+
+On postule la mesure de phase
+\begin{equation}
+\boxed{
+\dif N_\beta=
+\frac{g\,\dif^3x\,\dif^3p}{h^3(1+\beta p^2)^\gamma}.
+}
+\end{equation}
+
+Le cas central est
+\begin{equation}
+\boxed{
+\gamma=3,
+\qquad
+\dif N_\beta=
+\frac{g\,\dif^3x\,\dif^3p}{h^3(1+\beta p^2)^3}.
+}
+\end{equation}
+
+Avec
+\begin{equation}
+\beta=\beta_0\frac{\lp^2}{\hbar^2}
+=\frac{\beta_0}{\mpl^2c^2}.
+\end{equation}
+
+L'integrale maitresse est
+\begin{equation}
+I_s(\gamma)=\int_0^\infty \frac{p^{s-1}\,\dif p}{(1+\beta p^2)^\gamma}
+=\frac12\beta^{-s/2}B\left(\frac{s}{2},\gamma-\frac{s}{2}\right),
+\qquad \gamma>\frac{s}{2}.
+\end{equation}
+
+Pour \(\gamma=3\),
+\begin{equation}
+\int_0^\infty \frac{p^2\,\dif p}{(1+\beta p^2)^3}
+=\frac{\pi}{16\beta^{3/2}},
+\qquad
+\int_0^\infty \frac{p^3\,\dif p}{(1+\beta p^2)^3}
+=\frac{1}{4\beta^2}.
+\end{equation}
+
+\subsection{Densite maximale de modes}
+
+\begin{equation}
+\frac{N_{\max}}{V}
+=\frac{4\pi g}{h^3}\int_0^\infty \frac{p^2\,\dif p}{(1+\beta p^2)^3}.
+\end{equation}
+
+Donc
+\begin{equation}
+\boxed{
+n_{\max}=\frac{g\pi^2}{4h^3\beta^{3/2}}
+=\frac{g}{32\pi\beta_0^{3/2}\lp^3}.
+}
+\end{equation}
+
+\section{Postulat II : regularisation UV de l'energie du vide}
+
+Pour un champ massless de degenerescence \(g\),
+\begin{equation}
+\rhoreg=\frac{4\pi g}{h^3}\int_0^\infty
+\frac{p^2\,\dif p}{(1+\beta p^2)^3}\frac12 pc.
+\end{equation}
+
+Donc
+\begin{equation}
+\rhoreg
+=\frac{g\pi c}{2h^3\beta^2}
+=\boxed{\frac{g\rp}{16\pi^2\beta_0^2}.}
+\end{equation}
+
+Ce resultat est une regularisation UV, pas une explication de l'energie noire.
+Si \(\beta_0\sim1\), la densite reste d'ordre Planck.
+
+\section{No-go : identification directe a l'energie noire}
+
+Si l'on impose \(\rhoreg=\rho_{\rm DE}\), alors
+\begin{equation}
+\boxed{
+\beta_0^{(\Lambda)}
+=
+\left(\frac{g}{6\pi\Omega_\Lambda}\right)^{1/2}\frac{1}{H_0t_P}.
+}
+\end{equation}
+
+Pour \(g=1\),
+\begin{equation}
+\beta_0^{(\Lambda)}=2.36\times10^{60},
+\qquad
+\sqrt{\beta_0^{(\Lambda)}}\lp\simeq2.5\times10^{-5}\ {\rm m}.
+\end{equation}
+
+Or cette valeur est exclue comme parametre universel par FIRAS/CMB, BBN,
+fermions denses et physique atomique. Conclusion :
+\begin{equation}
+\boxed{
+\beta_0\sim10^{60}\text{ ne peut pas etre un parametre local universel.}
+}
+\end{equation}
+
+\section{Postulat III : soustraction du vide plat}
+
+On introduit une separation entre densite brute et densite gravitationnellement
+active :
+\begin{equation}
+\rho_{\rm brute}\neq \rhograv.
+\end{equation}
+
+Le vide plat regularise est neutralise par une prescription de renormalisation :
+\begin{equation}
+\boxed{T_{\mu\nu}^{\rm flat}=0.}
+\end{equation}
+
+Ce qui gravite est une difference ou une projection :
+\begin{equation}
+\Delta T_{\mu\nu}=T_{\mu\nu}[g]-T_{\mu\nu}[\eta],
+\qquad
+\boxed{
+\rhograv=\mathcal P_{\rm holo}(\rhoreg).
+}
+\end{equation}
+
+Ce postulat est indispensable mais non derive ici.
+
+\section{Postulat IV : projection holographique IR}
+
+Une region de rayon \(L\) ne peut pas contenir une energie superieure a celle
+d'un trou noir de rayon \(L\) :
+\begin{equation}
+E(L)\leq E_{\rm BH}(L),
+\qquad
+E_{\rm BH}(L)=\frac{c^4L}{2G}.
+\end{equation}
+
+Avec \(V=4\pi L^3/3\), on obtient
+\begin{equation}
+\boxed{
+\rho_{\rm BH}(L)=\frac{3c^4}{8\pi GL^2}.
+}
+\end{equation}
+
+La prescription effective minimale est
+\begin{equation}
+\boxed{
+\rhograv(L)=
+\min\left[
+\frac{g\rp}{16\pi^2\beta_0^2},
+\frac{3c^4}{8\pi GL^2}
+\right].
+}
+\end{equation}
+
+Pour \(L=\LH=c/H_0\),
+\begin{equation}
+\rho_{\rm BH}(\LH)=\frac{3c^2H_0^2}{8\pi G}=\rhc.
+\end{equation}
+
+La densite d'energie noire observee s'ecrit donc
+\begin{equation}
+\rho_{\rm DE}=\Omega_\Lambda\rho_{\rm BH}(\LH).
+\end{equation}
+
+\subsection{Bits d'horizon}
+
+On peut retrouver l'echelle
+\begin{equation}
+\rho_{\rm holo}\sim\frac{c^4}{GL^2}
+\end{equation}
+en combinant \(N_{\rm holo}\sim L^2/\lp^2\) et une energie par bit
+\(\varepsilon_L\sim\hbar c/L\). Les facteurs numeriques exacts dependent de la
+normalisation de \(\varepsilon_L\), de la temperature d'horizon et du comptage
+des bits ; cette derivation est donc une intuition d'echelle, pas une preuve de
+coefficient.
+
+\section{Identite Planck--Hubble--energie noire}
+
+Comme
+\begin{equation}
+\rp\lp^2=\frac{c^4}{G},
+\end{equation}
+on a
+\begin{equation}
+\rho_{\rm DE}
+=\Omega_\Lambda\frac{3c^2H_0^2}{8\pi G}
+=\boxed{
+\frac{3\Omega_\Lambda}{8\pi}\rp\left(\frac{\lp}{\LH}\right)^2.
+}
+\end{equation}
+
+Cette relation est une identite exacte, pas encore une dynamique.
+
+\section{Postulat V : choix dynamique de la longueur cosmologique}
+
+La theorie doit selectionner une longueur IR
+\begin{equation}
+L=L[g_{\mu\nu}].
+\end{equation}
+
+Possibilites :
+\begin{equation}
+L=\frac{c}{H},
+\qquad
+L=\RL,
+\qquad
+L=R_{\rm eh}=a(t)\int_t^\infty\frac{c\,\dif t'}{a(t')},
+\qquad
+L=R_{\rm app}.
+\end{equation}
+
+Le choix \(L=c/H(t)\) est fortement contraint dans la conjecture
+\(\alpha\)--\(L\), car il induit une variation temporelle de \(\alpha\). Une
+echelle quasi constante, comme \(R_\Lambda\), est donc plus naturelle.
+
+\section{Postulat VI : tenseur energie-impulsion effectif}
+
+Une densite correcte ne suffit pas. Il faut obtenir
+\begin{equation}
+T_{\mu\nu}^{\rm eff}\simeq -\rho_{\rm DE}g_{\mu\nu}.
+\end{equation}
+
+On peut ecrire formellement
+\begin{equation}
+S_{\rm holo}=-\int \dif^4x\sqrt{-g}\,\rho_{\rm holo}(L[g]),
+\qquad
+\rho_{\rm holo}(L)=\eta\frac{3c^4}{8\pi GL^2}.
+\end{equation}
+
+Le tenseur est
+\begin{equation}
+T_{\mu\nu}^{\rm holo}
+=-\frac{2}{\sqrt{-g}}\frac{\delta S_{\rm holo}}{\delta g^{\mu\nu}}.
+\end{equation}
+
+Si \(L\) est constant,
+\begin{equation}
+T_{\mu\nu}^{\rm holo}=-\rho_{\rm holo}g_{\mu\nu},
+\qquad
+w=-1.
+\end{equation}
+
+Si \(L\) depend de la metrique, les variations de \(L[g]\) donnent des
+corrections a \(w\).
+
+\section{Prediction cosmologique : equation d'etat}
+
+On pose
+\begin{equation}
+\rho_{\rm DE}(a)=\eta(a)\frac{3c^4}{8\pi G L(a)^2}.
+\end{equation}
+
+La conservation
+\begin{equation}
+\frac{\dif\ln\rho}{\dif\ln a}=-3(1+w)
+\end{equation}
+donne
+\begin{equation}
+\boxed{
+w(a)= -1+\frac{2}{3}\frac{\dif\ln L}{\dif\ln a}
+       -\frac{1}{3}\frac{\dif\ln\eta}{\dif\ln a}.
+}
+\end{equation}
+
+Si \(\eta\) est constante,
+\begin{equation}
+\boxed{
+w(a)= -1+\frac{2}{3}\frac{\dif\ln L}{\dif\ln a}.
+}
+\end{equation}
+
+\section{Conjecture electromagnetique : alpha comme distance entropique}
+
+On introduit
+\begin{equation}
+\calL_\Lambda=\ln\left(\frac{\RL}{10\pi\lp}\right).
+\end{equation}
+
+La conjecture est
+\begin{equation}
+\boxed{\alpha^{-1}=\calL_\Lambda.}
+\end{equation}
+
+Equivalent :
+\begin{equation}
+\boxed{
+\Lambda=\frac{3}{100\pi^2\lp^2}e^{-2/\alpha}.
+}
+\end{equation}
+
+\subsection{Forme entropique}
+
+\begin{equation}
+S_\Lambda=\frac{\kb\pi\RL^2}{\lp^2},
+\qquad
+\boxed{
+\alpha^{-1}=\frac12\ln\left(\frac{S_\Lambda}{S_0^{U(1)}}\right).
+}
+\end{equation}
+
+Pour reproduire le facteur \(10\pi\), il faut
+\begin{equation}
+S_0^{U(1)}=100\pi^3\kb.
+\end{equation}
+
+Une parametrisation est
+\begin{equation}
+S_0^{U(1)}=4\pi\left[2\pi g_{\rm eff}^{U(1)}\right]^2\kb,
+\qquad
+g_{\rm eff}^{U(1)}=\frac52=2+\frac12.
+\end{equation}
+
+Le verrou est de prouver
+\begin{equation}
+\boxed{
+g_{\rm edge}^{U(1)}=\frac12
+}
+\end{equation}
+comme capacite holographique renormalisee du mode de bord Maxwell.
+
+\section{Relations induites par la conjecture alpha}
+
+Si \(\alpha=1/\calL_\Lambda\), alors
+\begin{align}
+e&=\frac{q_P}{\sqrt{\calL_\Lambda}},
+\qquad
+q_P=\sqrt{4\pi\varepsilon_0\hbar c},\\
+v_e&=\alpha c=\frac{c}{\calL_\Lambda},\\
+a_0&=\frac{\hbar}{m_ec\alpha}=\bar\lambda_e\calL_\Lambda,\\
+r_e&=\alpha\bar\lambda_e=\frac{\bar\lambda_e}{\calL_\Lambda},\\
+E_R&=\frac12m_ec^2\alpha^2=\frac{m_ec^2}{2\calL_\Lambda^2},\\
+\frac{F_e}{F_G}&=\frac{m_P^2}{m_e^2\calL_\Lambda}.
+\end{align}
+
+Ces relations sont des reecritures algebriques de formules connues. Leur
+interet depend entierement de la validite de la conjecture \(\alpha\)--\(R_\Lambda\).
+
+\section{Position--vitesse et electron atomique}
+
+En regime non relativiste,
+\begin{equation}
+\dif N=\frac{g m^3\dif^3x\,\dif^3v}{h^3(1+\beta m^2v^2)^3}.
+\end{equation}
+
+La cellule effective est
+\begin{equation}
+\boxed{
+\Delta^3x\,\Delta^3v\sim
+\left(\frac{h}{m}\right)^3(1+\beta m^2v^2)^3.
+}
+\end{equation}
+
+Le seuil cinematique est
+\begin{equation}
+v_{\rm GUP}=c\frac{m_P}{m\sqrt{\beta_0}},
+\qquad
+\Delta x_{\min}=\sqrt{\beta_0}\lp.
+\end{equation}
+
+Pour l'electron atomique,
+\begin{equation}
+\chi_e=\beta m_e^2v_e^2
+=\beta_0\left(\frac{m_e}{m_P}\right)^2\frac{1}{\calL_\Lambda^2}.
+\end{equation}
+
+Pour \(\beta_0\sim1\), cette correction est minuscule. Pour
+\(\beta_0\sim10^{60}\), elle serait catastrophique, ce qui renforce le no-go
+d'un \(\beta_0\) universel tres grand.
+
+\section{Extension aux autres interactions}
+
+Une generalisation speculative serait
+\begin{equation}
+\boxed{
+\alpha_i^{-1}=\ln\left(\frac{\RL}{4\pi g_{\rm eff}^{(i)}\lp}\right).
+}
+\end{equation}
+
+Mais les constantes de jauge courent avec l'echelle de renormalisation. Pour
+le modele standard, il faudrait traiter \(U(1)_Y\), \(SU(2)_L\), \(SU(3)_c\),
+le melange electroweak et le confinement QCD. Cette extension est donc un
+programme, pas un resultat.
+
+\section{Six blocs ouverts}
+
+\begin{longtable}{@{}p{3.5cm}p{11cm}@{}}
+\toprule
+Bloc & Objectif \\
+\midrule
+1. Covariance GUP & Construire une mesure covariante compatible avec FLRW. \\
+2. Vide plat & Deriver la neutralisation de \(T_{\mu\nu}^{\rm flat}\). \\
+3. Projection IR & Deriver dynamiquement la projection holographique. \\
+4. Longueur \(L\) & Choisir \(L[g_{\mu\nu}]\) par un principe causal. \\
+5. Tenseur effectif & Obtenir \(T_{\mu\nu}\simeq-\rho g_{\mu\nu}\). \\
+6. Prediction \(w(a)\) & Produire une fonction \(w(a)\) testable. \\
+\bottomrule
+\end{longtable}
+
+\section{Falsifiabilite}
+
+Le cadre serait affaibli si :
+\begin{itemize}
+\item la relation \(\alpha^{-1}=\ln(\RL/10\pi\lp)\) echoue avec des parametres cosmologiques affines ;
+\item le facteur \(10\pi\) ne peut pas etre relie a un seuil \(U(1)\) naturel ;
+\item la projection holographique ne peut pas produire un tenseur d'energie sombre ;
+\item la mesure GUP ne peut pas etre covariantisee.
+\end{itemize}
+
+\section{Architecture finale}
+
+\subsection{Chaine cosmologique}
+
+\begin{equation}
+\boxed{
+\text{cellule GUP}\Rightarrow \rhoreg<\infty
+\Rightarrow \text{projection holographique}
+\Rightarrow \rho_{\rm DE}.
+}
+\end{equation}
+
+\begin{equation}
+\frac{g\dif^3x\dif^3p}{h^3(1+\beta p^2)^3}
+\Rightarrow
+\frac{g\rp}{16\pi^2\beta_0^2}
+\Rightarrow
+\min\left[\rhoreg,\frac{3c^4}{8\pi GL^2}\right].
+\end{equation}
+
+\subsection{Chaine electromagnetique}
+
+\begin{equation}
+\boxed{
+\text{horizon de de Sitter}+\text{bord }U(1)
+\Rightarrow \alpha.
+}
+\end{equation}
+
+\begin{equation}
+S_\Lambda=\frac{\kb\pi\RL^2}{\lp^2},
+\qquad
+S_0^{U(1)}=4\pi\left[2\pi\left(2+\frac12\right)\right]^2\kb,
+\qquad
+\alpha^{-1}=\frac12\ln\left(\frac{S_\Lambda}{S_0^{U(1)}}\right).
+\end{equation}
+
+\section{Conclusion}
+
+La theorie holographique UV/IR a cellule de phase deformee repose sur une idee :
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{les constantes observables ne sont pas fixees par l'UV seul,}\\
+\text{mais par une tension entre l'UV quantique et l'IR cosmologique.}
+\end{gathered}
+}
+\end{equation}
+
+Le GUP fournit une densite locale finie d'etats. La gravite impose une
+projection holographique globale. Le secteur \(U(1)\) de bord pourrait fixer
+la constante de structure fine par une distance entropique entre l'horizon de
+de Sitter et un seuil electromagnetique minimal.
+
+Le cadre n'est pas confirme. Son interet est de reduire plusieurs problemes a
+des verrous precis :
+\begin{equation}
+\boxed{
+\text{covariance GUP, projection IR dynamique, choix de }L, T_{\mu\nu}, w(a),
+\text{ et bord }U(1).
+}
+\end{equation}
+
+\begin{thebibliography}{99}
+
+\bibitem{CODATA2022}
+P. J. Mohr, D. B. Newell, B. N. Taylor and E. Tiesinga,
+``CODATA recommended values of the fundamental physical constants: 2022'',
+\emph{Reviews of Modern Physics} \textbf{97}, 025002 (2025).
+
+\bibitem{Planck2018}
+N. Aghanim et al. (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters'',
+\emph{Astronomy \& Astrophysics} \textbf{641}, A6 (2020), arXiv:1807.06209.
+
+\bibitem{CKN}
+A. Cohen, D. Kaplan and A. Nelson,
+``Effective Field Theory, Black Holes, and the Cosmological Constant'',
+\emph{Physical Review Letters} \textbf{82}, 4971 (1999).
+
+\bibitem{LiHDE}
+M. Li,
+``A Model of Holographic Dark Energy'',
+\emph{Physics Letters B} \textbf{603}, 1--5 (2004).
+
+\bibitem{Kempf}
+A. Kempf, G. Mangano and R. B. Mann,
+``Hilbert space representation of the minimal length uncertainty relation'',
+\emph{Physical Review D} \textbf{52}, 1108 (1995).
+
+\bibitem{DonnellyWall}
+W. Donnelly and A. C. Wall,
+``Entanglement entropy of electromagnetic edge modes'',
+\emph{Physical Review Letters} \textbf{114}, 111603 (2015).
+
+\bibitem{BallLawWong}
+A. Ball, Y. T. A. Law and G. Wong,
+``Dynamical Edge Modes and Entanglement in Maxwell Theory'',
+arXiv:2403.14542.
+
+\end{thebibliography}
+
+\end{document}
