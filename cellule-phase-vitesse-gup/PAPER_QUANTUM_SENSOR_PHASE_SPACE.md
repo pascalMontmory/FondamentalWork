@@ -165,6 +165,19 @@ cycle time is known, the useful per-root-Hz proxy is
 `FOM_Hz = sqrt(N_detected / T_cycle) T_i^2`, so dead time and slow preparation
 directly reduce the apparent source advantage.
 
+The companion technical-noise script adds the next engineering layer:
+
+```text
+sigma_phi_laser^2 = integral |H_phi(f)|^2 S_phi(f) df
+sigma_phi_vib^2 = k_eff^2 integral |H_a(f)|^2 S_a(f) df
+sigma_phi_total^2 = 1/N + (phi_laser/C)^2 + (phi_vib/C)^2 + (phi_thermal/C)^2
+delta a_sqrtHz = sigma_phi_total sqrt(T_cycle)/(k_eff T_i^2)
+```
+
+This keeps the structure honest: the phase-space source may be adequate while
+laser phase noise, seismic vibration, thermal drift, contrast and cycle time
+still decide the field performance.
+
 ## 6. Product concept
 
 A realistic product is not a new physical device by itself. It is a design and
@@ -238,15 +251,17 @@ effect exploited by the CAD framework.
 The useful industrial layer is the non-GUP phase-space formulation. The GUP
 terms remain a speculative theoretical extension.
 
-The current simulations are also not complete instrument models. They omit:
+The current simulations are also not complete instrument models. The companion
+script now adds first-order laser, vibration and thermal envelopes, but they
+still omit:
 
-- laser phase noise;
-- vibration noise;
+- measured instrument PSDs;
 - wavefront aberrations;
 - atom-atom interactions;
 - magnetic systematics;
-- detection noise;
-- full geometry of the vacuum chamber and optics.
+- full detection noise;
+- full geometry of the vacuum chamber and optics;
+- Allan-deviation and navigation-filter behavior beyond the root-Hz proxy.
 
 They are meant as first-pass design filters.
 
