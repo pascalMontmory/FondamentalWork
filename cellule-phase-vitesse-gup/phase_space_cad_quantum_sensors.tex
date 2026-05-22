@@ -58,6 +58,11 @@ $n\lambda_{\rm th}^3$ and are deeply classical. The strong application is
 quantum metrology: inertial sensors, gravimeters, gyroscopes and gravity
 gradiometers based on cold atoms.
 
+This phase-space CAD framework is primarily motivated, but not driven, by GUP
+considerations. The deformation gives a useful theoretical language for
+phase-space counting; the applied sensor budget below uses the experimentally
+robust $\beta\to0$ limit.
+
 The key design question is simple: can a candidate atom source reach its target
 sensitivity within its allowed temperature, density, atom number, package size
 and interrogation time? If the answer is negative at the phase-space-budget
@@ -103,6 +108,25 @@ trade-off between cooling, cloud size, usable volume and atom number.
 The figure of merit is only a screening proxy: it omits contrast, laser phase
 noise, vibration residuals, wavefront aberrations, detection noise, duty cycle
 and Allan-deviation behavior.
+
+\subsection{Example use case}
+
+Consider a portable gravimeter targeting
+\begin{equation}
+\delta a_{\rm target}=10^{-8}\,{\rm m\,s^{-2}/\sqrt{Hz}}.
+\end{equation}
+The phase-space budget says this target is not atom-shot-noise limited at the
+source level. The best Rb87/Sr/Yb points in Table~1 sit near
+$10^{-11}\,{\rm m\,s^{-2}}$ before contrast loss, vibration noise, laser phase
+noise, wavefront aberrations, dead time and detection noise are included. The
+practical conclusion is therefore precise: the cold-atom source is good enough
+in first order; the hard work moves to vibration rejection, optical phase
+stability, contrast preservation and field packaging.
+
+For a compact gyroscope aimed at inertial navigation, the same table is only a
+source prefilter. A full gyroscope model must add the enclosed interferometer
+area, transverse velocity, rotation geometry, platform motion, duty cycle and
+long-term bias stability.
 
 \subsection{Atom choice}
 
