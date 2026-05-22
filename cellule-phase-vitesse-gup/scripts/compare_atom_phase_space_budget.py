@@ -189,7 +189,7 @@ def write_outputs(rows: list[dict[str, float | str]]) -> None:
         "The GUP correction is also quantified through",
         "`epsilon_GUP = beta0 (m sigma_v / p_Pl)^2`.",
         "",
-        "| atom | access | T [K] | Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM | delta a [m/s2] | beta p2 beta0=1 | beta p2 beta0=1e26 |",
+        "| atom | access | best T [K] | best Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM max | delta a [m/s2] | beta p2 beta0=1 | beta p2 beta0=1e26 |",
         "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in best_rows(rows):
@@ -205,6 +205,10 @@ def write_outputs(rows: list[dict[str, float | str]]) -> None:
             "",
             "Interpretation:",
             "",
+            "- `FOM = sqrt(N_detected) T_i^2` is a first-order proxy. A real",
+            "  instrument must also include contrast, laser phase noise, vibration",
+            "  rejection, wavefront aberrations, detection noise, duty cycle and Allan",
+            "  deviation;",
             "- heavier atoms have smaller velocity dispersion at fixed temperature;",
             "- Sr/Yb benefit from narrow-line cooling but require more complex optics;",
             "- Li has larger recoil and larger velocity spread, so it is less natural",
@@ -215,6 +219,8 @@ def write_outputs(rows: list[dict[str, float | str]]) -> None:
             "Data: `reports/data/atom_phase_space_budget.csv`",
             "",
             "Figure: `reports/figures/atom_phase_space_budget.png`",
+            "",
+            "Focused figure: `reports/figures/atom_phase_space_budget_focus.png`",
         ]
     )
     (REPORTS / "atom_phase_space_budget_report.md").write_text(
@@ -241,6 +247,27 @@ def plot(rows: list[dict[str, float | str]]) -> None:
     ax.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(FIGURES / "atom_phase_space_budget.png", dpi=180)
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(8.8, 5.4))
+    focus_atoms = ("Rb87", "Sr88", "Yb174")
+    for atom_name in focus_atoms:
+        subset = [
+            row
+            for row in rows
+            if row["species"] == atom_name and float(row["interrogation_time_s"]) == 0.5
+        ]
+        temps = [float(row["temperature_K"]) for row in subset]
+        fom = [float(row["sensitivity_fom_s2_sqrt_atoms"]) for row in subset]
+        ax.plot(temps, fom, linewidth=2.2, label=atom_name)
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel("atom temperature [K]")
+    ax.set_ylabel(r"$\sqrt{N_{\rm budget}}T_i^2$ at $T_i=0.5$ s")
+    ax.set_title("Focused comparison: mature and narrow-line atom choices")
+    ax.legend(fontsize=9)
+    fig.tight_layout()
+    fig.savefig(FIGURES / "atom_phase_space_budget_focus.png", dpi=180)
     plt.close(fig)
 
 
