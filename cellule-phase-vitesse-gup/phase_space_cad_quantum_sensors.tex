@@ -96,6 +96,15 @@ For a gravimeter-like instrument, a compact sensitivity figure of merit is
 \qquad
 \delta a\simeq\frac{1}{k_{\rm eff}{\cal F}}.
 \end{equation}
+If the total experimental cycle time $T_{\rm cycle}$ is known, the
+per-root-Hz proxy should instead use
+\begin{equation}
+{\cal F}_{\sqrt{\rm Hz}}=\sqrt{\frac{N_{\rm det}}{T_{\rm cycle}}}T_i^2.
+\end{equation}
+This makes duty cycle explicit: long cooling, preparation, detection or dead
+times reduce the usable sensitivity even if the single-shot atom budget looks
+excellent.
+
 The detected atom number cannot be specified independently of phase-space
 density. In the present budget we impose
 \begin{equation}
@@ -111,17 +120,29 @@ and Allan-deviation behavior.
 
 \subsection{Example use case}
 
-Consider a portable gravimeter targeting
+Consider a portable gravimeter targeting the aggressive transportable level
 \begin{equation}
-\delta a_{\rm target}=10^{-8}\,{\rm m\,s^{-2}/\sqrt{Hz}}.
+\delta a_{\rm target}=10\,\mu{\rm Gal}/\sqrt{\rm Hz}
+=10^{-7}\,{\rm m\,s^{-2}/\sqrt{Hz}},
 \end{equation}
+using $1\,\mu{\rm Gal}=10^{-8}\,{\rm m\,s^{-2}}$. A target of
+$10^{-8}\,{\rm m\,s^{-2}/\sqrt{Hz}}$ would instead be
+$1\,\mu{\rm Gal}/\sqrt{\rm Hz}$ and should be described as a stretch research
+target, not a typical current portable field specification.
+Public benchmarks put transportable or mobile atom gravimeters in this
+neighborhood: $20.5\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in the laboratory and
+$10.8\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in a seismic station for a recent NIM
+transportable instrument, $37\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in a mobile gravity
+survey, and about $50\,\mu{\rm Gal}/\sqrt{\rm Hz}$ for a commercial quiet-site
+datasheet \cite{nim-transportable, mobile-gravity-survey, muquans-aqg}.
+
 The phase-space budget says this target is not atom-shot-noise limited at the
 source level. The best Rb87/Sr/Yb points in Table~1 sit near
 $10^{-11}\,{\rm m\,s^{-2}}$ before contrast loss, vibration noise, laser phase
 noise, wavefront aberrations, dead time and detection noise are included. The
 practical conclusion is therefore precise: the cold-atom source is good enough
 in first order; the hard work moves to vibration rejection, optical phase
-stability, contrast preservation and field packaging.
+stability, contrast preservation, cycle time and field packaging.
 
 For a compact gyroscope aimed at inertial navigation, the same table is only a
 source prefilter. A full gyroscope model must add the enclosed interferometer
@@ -273,6 +294,11 @@ practical conclusion is:
 \end{equation}
 This is a concrete, testable and conservative use of the theory.
 
+The most useful next form is open-source and community-oriented: transparent
+equations, public benchmark scenarios, atom databases, package constraints,
+cycle-time models, vibration budgets and reproducible reports that can be
+extended without accepting the speculative GUP layer.
+
 \begin{thebibliography}{9}
 \bibitem{nist-sensing}
 NIST, ``Quantum Sensing Explained,'' 2026.
@@ -289,6 +315,24 @@ Sandia National Laboratories, ``Gravimetry -- Quantum.''
 \bibitem{darpa-roqs}
 DARPA, ``From fragile to field-ready: RoQS program launches first phase,'' 2025.
 \url{https://www.darpa.mil/news/2025/roqs-launches-first-phase}
+
+\bibitem{nim-transportable}
+Y. Wang et al.,
+``A Transportable Atomic Gravimeter with Constraint-Structured Active Vibration
+Isolation,''
+\emph{Sensors} \textbf{24}, 2395 (2024).
+\url{https://www.mdpi.com/1424-8220/24/8/2395}
+
+\bibitem{mobile-gravity-survey}
+Y. Wu et al.,
+``Gravity surveys using a mobile atom interferometer,''
+\emph{Science Advances} \textbf{5}, eaax0800 (2019).
+\url{https://pmc.ncbi.nlm.nih.gov/articles/PMC6731071/}
+
+\bibitem{muquans-aqg}
+Muquans,
+``Absolute Quantum Gravimeter'' product page.
+\url{https://www.muquans.com/product/absolute-quantum-gravimeter/}
 \end{thebibliography}
 
 \end{document}
