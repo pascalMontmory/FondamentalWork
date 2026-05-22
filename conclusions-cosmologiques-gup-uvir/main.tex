@@ -1,0 +1,409 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\geometry{margin=2.4cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdftitle={Conclusions cosmologiques d'un modele GUP UV/IR},
+  pdfauthor={Notes de travail}
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=2pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=2pt}
+
+\newcommand{\rhoP}{\rho_{\rm P}}
+\newcommand{\ellP}{\ell_{\rm P}}
+\newcommand{\rhoDE}{\rho_{\rm DE}}
+\newcommand{\rhoReg}{\rho_{\rm reg}}
+\newcommand{\rhoBH}{\rho_{\rm BH}}
+\newcommand{\LH}{L_H}
+\newcommand{\EP}{E_{\rm P}}
+\newcommand{\EH}{E_H}
+\newcommand{\EDE}{E_{\rm DE}}
+\newcommand{\mpl}{m_{\rm P}}
+
+\title{Conclusions cosmologiques d'un cadre GUP--UV/IR\\
+\large Energie noire, borne d'horizon et projection holographique}
+\author{Notes de travail}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+On examine les conclusions cosmologiques d'un modele ou une cellule de phase de
+type GUP regularise l'ultraviolet, tandis qu'une contrainte gravitationnelle
+globale impose une borne infrarouge de type horizon. Le resultat central est
+negatif et constructif : la regularisation GUP seule transforme la divergence
+de l'energie du vide en une valeur finie mais encore planckienne. L'echelle
+observee de l'energie noire apparait seulement lorsqu'une projection
+gravitationnelle ou holographique relie le cutoff UV a une longueur IR
+cosmologique. Le probleme cosmologique est donc essentiellement UV/IR.
+\end{abstract}
+
+\section{Constantes et echelles}
+
+Les echelles de Planck sont
+\begin{align}
+\ellP &= \sqrt{\frac{\hbar G}{c^3}},&
+\EP &= \sqrt{\frac{\hbar c^5}{G}},&
+\rhoP &= \frac{c^7}{\hbar G^2}.
+\end{align}
+L'echelle de Hubble est
+\begin{equation}
+\LH=\frac{c}{H_0}.
+\end{equation}
+La densite critique actuelle, exprimee comme densite d'energie, vaut
+\begin{equation}
+\rho_c=\frac{3c^2H_0^2}{8\pi G},
+\end{equation}
+et
+\begin{equation}
+\rhoDE=\Omega_\Lambda\rho_c.
+\end{equation}
+
+\section{Resultat negatif : le GUP seul ne suffit pas}
+
+La mesure de phase effective est
+\begin{equation}
+dN=\frac{d^3x\,d^3p}{h^3(1+\beta p^2)^3},
+\qquad
+\beta=\beta_0\frac{\ellP^2}{\hbar^2}.
+\end{equation}
+L'integrale de point zero massless donne
+\begin{equation}
+\boxed{
+\rhoReg=\frac{g\rhoP}{16\pi^2\beta_0^2}.
+}
+\label{eq:rho_reg}
+\end{equation}
+Si $\beta_0\sim1$ et $g\sim1$, alors $\rhoReg$ est finie mais d'ordre
+planckien, donc beaucoup trop grande devant l'energie noire observee :
+\begin{equation}
+\rhoDE\sim10^{-123}\rhoP.
+\end{equation}
+
+\begin{equation}
+\boxed{
+\text{GUP seul : }\infty\longrightarrow \text{valeur finie mais trop grande.}
+}
+\end{equation}
+
+\section{Projection horizon--Planck}
+
+La relation cosmologique exacte est
+\begin{equation}
+\boxed{
+\rhoDE
+=
+\Omega_\Lambda\rho_c
+=
+\frac{3\Omega_\Lambda}{8\pi}\rhoP
+\left(\frac{\ellP}{\LH}\right)^2.
+}
+\label{eq:rho_de_uvir}
+\end{equation}
+Le facteur minuscule vient donc du rapport d'aires
+\begin{equation}
+\left(\frac{\ellP}{\LH}\right)^2.
+\end{equation}
+L'energie noire ressemble a une densite planckienne projetee par une surface
+cosmologique d'horizon.
+
+\section{Borne trou noir}
+
+Une sphere de rayon $L$ contenant une densite d'energie $\rho$ a
+\begin{equation}
+E=\rho\frac{4\pi}{3}L^3.
+\end{equation}
+Un trou noir de rayon de Schwarzschild $L$ a
+\begin{equation}
+E_{\rm BH}=\frac{c^4L}{2G}.
+\end{equation}
+La condition $E\leq E_{\rm BH}$ donne
+\begin{equation}
+\boxed{
+\rho\leq\rhoBH(L)=\frac{3c^4}{8\pi GL^2}
+=
+\frac{3}{8\pi}\rhoP\left(\frac{\ellP}{L}\right)^2.
+}
+\label{eq:rho_bh}
+\end{equation}
+Pour $L=\LH$, on retrouve
+\begin{equation}
+\rhoBH(\LH)=\rho_c,
+\qquad
+\rhoDE=\Omega_\Lambda\rhoBH(\LH).
+\end{equation}
+
+\section{Densite effective UV/IR}
+
+La formule cosmologiquement pertinente n'est pas simplement $\rhoReg$. Une
+formulation minimale est
+\begin{equation}
+\boxed{
+\rho_{\rm eff}(L)
+=
+\min\left[
+\rhoReg,
+\rhoBH(L)
+\right].
+}
+\label{eq:rho_eff_min}
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+\rho_{\rm eff}(L)
+=
+\min\left[
+\frac{g\rhoP}{16\pi^2\beta_0^2},
+\frac{3c^4}{8\pi GL^2}
+\right].
+}
+\end{equation}
+Dans l'univers actuel, $\LH\gg\ellP$, donc la branche active est la branche
+gravitationnelle :
+\begin{equation}
+\rho_{\rm eff}(\LH)=\rhoBH(\LH)=\rho_c.
+\end{equation}
+L'energie noire observee correspond ensuite a une fraction
+\begin{equation}
+\rhoDE=\Omega_\Lambda\rho_c.
+\end{equation}
+
+\section{Facteur de projection}
+
+Sur la branche gravitationnelle,
+\begin{equation}
+\rho_{\rm grav}(L)=\mathcal{F}(L)\rhoReg.
+\end{equation}
+Ainsi
+\begin{equation}
+\mathcal{F}(L)=\frac{\rhoBH(L)}{\rhoReg}
+=
+\boxed{
+\frac{6\pi\beta_0^2}{g}
+\left(\frac{\ellP}{L}\right)^2
+}.
+\label{eq:projection_factor}
+\end{equation}
+Le facteur $10^{-122}$ n'est donc pas introduit arbitrairement : il vient de la
+comparaison entre l'echelle de Planck et l'echelle d'horizon.
+
+\section{Interpretation holographique}
+
+Un volume de taille $L$ contient naivement
+\begin{equation}
+N_{\rm vol}\sim\left(\frac{L}{\ellP}\right)^3
+\end{equation}
+cellules planckiennes. La borne de Bekenstein--Hawking donne plutot
+\begin{equation}
+\frac{S_{\rm BH}}{k_B}
+=
+\frac{A}{4\ellP^2}
+=
+\pi\left(\frac{L}{\ellP}\right)^2.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+\frac{S_{\rm BH}}{k_B}\sim N_{\rm vol}^{2/3}.
+}
+\end{equation}
+Le GUP donne une regularisation volumique ; la gravite projette en loi d'aire.
+
+\section{Echelle d'energie noire}
+
+Definissons
+\begin{equation}
+\EDE=\left[\rhoDE(\hbar c)^3\right]^{1/4}.
+\end{equation}
+Avec
+\begin{equation}
+\EP=\sqrt{\frac{\hbar c^5}{G}},
+\qquad
+\EH=\hbar H_0,
+\end{equation}
+on obtient
+\begin{equation}
+\boxed{
+\EDE=
+\left(\frac{3\Omega_\Lambda}{8\pi}\right)^{1/4}
+\sqrt{\EP\EH}.
+}
+\label{eq:e_de}
+\end{equation}
+L'echelle meV de l'energie noire est la moyenne geometrique entre l'echelle de
+Planck et l'echelle de Hubble.
+
+\section{Equation d'etat}
+
+Obtenir la bonne densite ne suffit pas. Une vraie energie noire doit avoir
+\begin{equation}
+w=\frac{p}{\rho}\simeq-1.
+\end{equation}
+Une somme naive de modes massless regularises peut ressembler a du rayonnement,
+$p=\rho/3$, tandis qu'une constante cosmologique correspond a
+\begin{equation}
+T_{\mu\nu}^{\rm vac}=-\rho_{\rm vac}g_{\mu\nu}.
+\end{equation}
+La formulation correcte doit donc etre covariante et definir la partie
+gravitationnellement active du vide, pas seulement l'integrale de modes.
+
+\section{Choix de la longueur IR}
+
+Une densite du type
+\begin{equation}
+\rho_X(L)=\eta\frac{3c^4}{8\pi GL^2}
+\end{equation}
+depend du choix de $L$. Si $L=c/H$, alors $\rho_X\propto H^2$ et le terme peut
+se comporter comme une renormalisation de $G$.
+
+Dans les modeles d'energie noire holographique, on prend souvent l'horizon des
+evenements futur
+\begin{equation}
+L=R_{\rm eh}=a(t)\int_t^\infty\frac{c\,dt'}{a(t')}.
+\end{equation}
+Dans le modele plat non interactif standard, l'equation d'etat devient
+\begin{equation}
+\boxed{
+w_{\rm HDE}
+=
+-\frac13-\frac{2}{3c_{\rm hde}}\sqrt{\Omega_{\rm DE}},
+}
+\label{eq:w_hde}
+\end{equation}
+ou $c_{\rm hde}$ est le parametre sans dimension du modele holographique. Cette
+relation montre que la dynamique de $L$ est le coeur physique du modele.
+
+\section{Transition primordiale}
+
+Dans l'univers primordial, la borne $\rhoBH(L)$ augmente lorsque $L$ diminue.
+La transition entre branche GUP et branche horizon est definie par
+\begin{equation}
+\rhoReg=\rhoBH(L_*).
+\end{equation}
+Donc
+\begin{equation}
+\frac{g\rhoP}{16\pi^2\beta_0^2}
+=
+\frac{3}{8\pi}\rhoP\left(\frac{\ellP}{L_*}\right)^2,
+\end{equation}
+et
+\begin{equation}
+\boxed{
+L_*=\beta_0\sqrt{\frac{6\pi}{g}}\,\ellP.
+}
+\label{eq:l_star}
+\end{equation}
+Pour $\beta_0\sim g\sim1$, cette transition est proche de l'echelle de
+Planck. Le GUP est alors surtout une physique du tres jeune univers, tandis que
+l'energie noire actuelle est controlee par l'horizon cosmologique.
+
+\section{Predictions et tests naturels}
+
+Un modele cosmologique issu de cette architecture devrait produire au moins une
+des signatures suivantes :
+\begin{enumerate}
+ \item une energie noire legerement dynamique, avec $w(a)$ proche de $-1$ ;
+ \item une relation entre $\rhoDE$ et une longueur d'horizon $L(t)$ ;
+ \item une transition UV/IR dans l'univers primordial ;
+ \item l'absence d'une longueur minimale effective macroscopique, car
+ $\beta_0$ n'a plus besoin d'etre ajuste a $10^{60}$ ;
+ \item une formulation covariante produisant $T_{\mu\nu}\simeq-\rho g_{\mu\nu}$.
+\end{enumerate}
+
+\section{Programme theorique}
+
+Pour passer d'une architecture plausible a une theorie cosmologique, il faut :
+\begin{enumerate}
+ \item deriver rigoureusement la mesure GUP depuis l'algebre deformee ;
+ \item calculer la densite de vide regularisee avec les bons signes
+ bosons--fermions ;
+ \item soustraire ou neutraliser le vide plat de facon covariante ;
+ \item montrer que la partie gravitationnellement active est bornee par
+ l'horizon ;
+ \item determiner dynamiquement le bon choix de $L$ ;
+ \item obtenir une equation d'etat proche de $-1$ ;
+ \item verifier la compatibilite avec les donnees cosmologiques.
+\end{enumerate}
+
+\section{Conclusion}
+
+La conclusion centrale est
+\begin{equation}
+\boxed{
+\text{l'energie noire n'est pas la densite brute du vide GUP.}
+}
+\end{equation}
+Elle serait plutot
+\begin{equation}
+\boxed{
+\text{le residu gravitationnel ou holographique d'un vide UV regularise.}
+}
+\end{equation}
+La chaine logique devient
+\begin{equation}
+\boxed{
+\text{GUP}\Rightarrow\rhoReg<\infty,
+\qquad
+\text{gravite+horizon}\Rightarrow
+\rho_{\rm grav}\sim\rhoP\left(\frac{\ellP}{\LH}\right)^2.
+}
+\end{equation}
+Autrement dit, la constante cosmologique est probablement un probleme UV/IR,
+pas seulement UV.
+
+\begin{thebibliography}{9}
+\bibitem{Planck2018}
+N. Aghanim et al. (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters'',
+\emph{Astronomy \& Astrophysics} \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{NISTCODATA}
+E. Tiesinga, P. J. Mohr, D. B. Newell and B. N. Taylor,
+``CODATA recommended values of the fundamental physical constants: 2022'',
+\emph{Reviews of Modern Physics} \textbf{97}, 025002 (2025).
+
+\bibitem{CKN}
+A. Cohen, D. Kaplan and A. Nelson,
+``Effective Field Theory, Black Holes, and the Cosmological Constant'',
+\emph{Physical Review Letters} \textbf{82}, 4971 (1999),
+arXiv:hep-th/9803132.
+
+\bibitem{LiHDE}
+M. Li,
+``A Model of Holographic Dark Energy'',
+\emph{Physics Letters B} \textbf{603}, 1--5 (2004),
+arXiv:hep-th/0403127.
+
+\bibitem{Kempf}
+A. Kempf, G. Mangano and R. B. Mann,
+``Hilbert space representation of the minimal length uncertainty relation'',
+\emph{Physical Review D} \textbf{52}, 1108 (1995),
+arXiv:hep-th/9412167.
+
+\bibitem{Hossenfelder}
+S. Hossenfelder,
+``Minimal Length Scale Scenarios for Quantum Gravity'',
+\emph{Living Reviews in Relativity} \textbf{16}, 2 (2013).
+\end{thebibliography}
+
+\end{document}
