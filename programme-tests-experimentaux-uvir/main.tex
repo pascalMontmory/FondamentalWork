@@ -1,0 +1,267 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.4cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  urlcolor=blue!55!black,
+  citecolor=blue!55!black
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\setlist[itemize]{leftmargin=1.4em}
+
+\newcommand{\lp}{\ell_{\rm P}}
+\newcommand{\rhoP}{\rho_{\rm P}}
+\newcommand{\rhoDE}{\rho_{\rm DE}}
+\newcommand{\rhoBH}{\rho_{\rm BH}}
+\newcommand{\RL}{R_\Lambda}
+
+\title{Programme de tests experimentaux du cadre GUP--UV/IR\\
+\large Beta0, holographie, choix de l'horizon, energie noire dynamique et relation alpha--Lambda}
+\author{Document de travail}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note transforme les consequences du cadre GUP--UV/IR en programme de
+tests. Les resultats deja obtenus donnent une conclusion nette : un parametre
+\(\beta_0\sim10^{60}\) ajuste directement a l'energie noire est exclu comme
+parametre local universel. La branche viable est une architecture en deux
+etapes : regularisation UV locale puis projection gravitationnelle ou
+holographique IR. Le choix de la longueur IR est fortement contraint par la
+non-variation observee de \(\alpha\), ce qui defavorise \(L=c/H(t)\) et rend
+plus naturelle une echelle quasi constante comme \(R_\Lambda\).
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Test 1 : exclure un \texorpdfstring{\(\beta_0\sim10^{60}\)}{beta0~10^60} universel}
+
+La regularisation GUP du vide massless donne
+\begin{equation}
+\rho_{\rm reg}=\frac{g\rhoP}{16\pi^2\beta_0^2}.
+\end{equation}
+
+Identifier directement \(\rho_{\rm reg}=\rhoDE\) donne, pour \(g=1\),
+\begin{equation}
+\beta_{0,\rm DE}\simeq2.36\times10^{60}.
+\end{equation}
+
+Cette valeur est exclue si elle est universelle. Les tests publics deja
+effectues donnent :
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Canal & Borne indicative sur \(\beta_0\) & Verdict \\
+\midrule
+FIRAS/CMB & \(3.7\times10^{58}\) & exclut \(\beta_{0,\rm DE}\) \\
+BBN/radiation & \(2.6\times10^{41}\) & exclut fortement \\
+Fermions denses & \(1.7\times10^{38}\) & exclut fortement \\
+Electron atomique & \(\chi_e/\beta_0=9.33\times10^{-50}\) & exclut \(\beta_{0,\rm DE}\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Pour l'electron atomique,
+\begin{equation}
+\chi_e=\beta_0\left(\frac{m_e}{m_P}\right)^2\alpha^2.
+\end{equation}
+Donc \(\beta_{0,\rm DE}\) donnerait \(\chi_e\sim2.2\times10^{11}\), ce qui est
+incompatible avec la physique atomique.
+
+\begin{tcolorbox}[colback=red!3!white,colframe=red!50!black,title=Conclusion]
+\(\beta_0\sim10^{60}\) ne peut pas etre un parametre GUP local universel. Il ne
+peut etre qu'un parametre effectif, sectoriel ou holographique.
+\end{tcolorbox}
+
+\section{Test 2 : branche holographique}
+
+La borne gravitationnelle d'une region de taille \(L\) donne
+\begin{equation}
+\boxed{
+\rhoBH(L)=\frac{3c^4}{8\pi G L^2}.
+}
+\end{equation}
+
+Pour \(L_H=c/H_0\),
+\begin{equation}
+\rhoBH(L_H)=\frac{3c^2H_0^2}{8\pi G}=\rho_c.
+\end{equation}
+
+Cette relation est robuste, mais elle est seulement une borne ou une identite
+dimensionnelle. Le probleme dynamique reste :
+\begin{equation}
+\rhoDE=\Omega_\Lambda\rho_c,
+\qquad
+w\simeq -1.
+\end{equation}
+
+Il faut donc expliquer pourquoi la partie gravitationnellement active sature
+une fraction \(\Omega_\Lambda\) de la borne et pourquoi le tenseur effectif a
+une pression negative.
+
+\section{Test 3 : choix de la longueur IR}
+
+La relation alpha--IR s'ecrit
+\begin{equation}
+\alpha^{-1}(L)=\ln\left(\frac{L}{10\pi\lp}\right).
+\end{equation}
+
+Si \(L\) varie, alors
+\begin{equation}
+\frac{\dot\alpha}{\alpha}
+=-\alpha\,\frac{\dot L}{L}.
+\end{equation}
+
+Pour le choix naif \(L=c/H(t)\), en cosmologie plate \(\Lambda\)CDM,
+\begin{equation}
+\frac{\dot L}{L}=-\frac{\dot H}{H}
+\simeq\frac32\Omega_m H_0.
+\end{equation}
+
+Avec les valeurs Planck 2018, cela donne
+\begin{equation}
+\left|\frac{\dot\alpha}{\alpha}\right|
+\simeq2.4\times10^{-13}\ {\rm an}^{-1}.
+\end{equation}
+
+Les horloges atomiques contraignent typiquement cette variation autour de
+\(10^{-18}\ {\rm an}^{-1}\). Donc \(L=c/H(t)\) est fortement defavorise.
+
+\begin{tcolorbox}[colback=yellow!4!white,colframe=yellow!50!black,title=Conclusion]
+La longueur IR pertinente pour la relation \(\alpha\)--\(\Lambda\) doit etre
+quasi constante : \(R_\Lambda\), horizon de de Sitter asymptotique, ou horizon
+futur avec variation tres faible.
+\end{tcolorbox}
+
+\section{Test 4 : energie noire dynamique}
+
+Un modele holographique standard donne souvent
+\begin{equation}
+w=-\frac13-\frac{2}{3c_{\rm hde}}\sqrt{\Omega_{\rm DE}}.
+\end{equation}
+
+Pour \(c_{\rm hde}=1\) et \(\Omega_{\rm DE}\simeq0.685\),
+\begin{equation}
+w\simeq -0.885.
+\end{equation}
+
+Cette valeur est proche de \(-1\), mais deja tendue face aux contraintes
+cosmologiques modernes. Le test naturel est donc :
+\begin{equation}
+w(a)\neq -1
+\quad\text{mais}\quad
+w(a)\approx -1.
+\end{equation}
+
+Les donnees BAO, supernovae, CMB et croissance des structures peuvent tester
+cette branche.
+
+\section{Test 5 : relation \texorpdfstring{\(\alpha\)--\(\Lambda\)}{alpha--Lambda}}
+
+La relation candidate est
+\begin{equation}
+\boxed{
+\Lambda=
+\frac{3}{100\pi^2\lp^2}e^{-2/\alpha}.
+}
+\end{equation}
+
+Avec CODATA 2022 et Planck 2018, on obtient
+\begin{equation}
+\alpha^{-1}_{\rm pred}=137.036063742708,
+\qquad
+\alpha^{-1}_{\rm obs}=137.035999177,
+\end{equation}
+et
+\begin{equation}
+\frac{\Lambda(\alpha)}{\Lambda_{\rm obs}}=1.000129139753.
+\end{equation}
+
+La coherence numerique est forte. Elle devient predictive seulement si le
+facteur \(10\pi\), ou \(g_{\rm eff}^{U(1)}=5/2\), est derive
+independamment.
+
+\section{Test 6 : mode de bord Maxwell}
+
+Le verrou theorique est
+\begin{equation}
+\boxed{
+g_{\rm edge}^{U(1)}=\frac12.
+}
+\end{equation}
+
+Ce n'est pas un test de donnees publiques. C'est un calcul de theorie quantique
+des champs avec bord. La structure attendue est
+\begin{equation}
+Z_{\rm edge}\propto
+\left[\det{}'(-\Delta_{S^2})\right]^{\pm1/2}.
+\end{equation}
+
+Il faut montrer que la capacite holographique renormalisee du canal de bord
+vaut bien \(1/2\), de maniere independante de la valeur observee de
+\(\alpha\).
+
+\section{Synthese}
+
+\begin{center}
+\begin{tabular}{p{0.3\linewidth} p{0.58\linewidth}}
+\toprule
+Question & Verdict \\
+\midrule
+\(\beta_0\sim10^{60}\) universel & Exclu par FIRAS, BBN, fermions denses et atomes \\
+\(\rhoBH(L)\propto L^{-2}\) & Correct comme borne, dynamique ouverte \\
+\(L=c/H(t)\) & Fortement defavorise par \(\dot\alpha/\alpha\) \\
+\(w(a)\approx -1\) & Testable avec BAO/SNe/CMB \\
+\(\alpha\)--\(\Lambda\) & Accord numerique fort, preuve manquante du \(10\pi\) \\
+Mode de bord Maxwell & Calcul theorique central a faire \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+
+Le programme experimental clarifie le statut du cadre. La piste directe
+\(\rho_{\rm reg}=\rhoDE\) avec un \(\beta_0\) universel est exclue. La piste
+viable est une architecture UV/IR : le GUP regularise l'UV, puis une projection
+gravitationnelle ou holographique selectionne la partie IR active.
+
+La contrainte nouvelle la plus forte est la variation de \(\alpha\). Elle
+indique que la longueur IR de la relation \(\alpha\)--\(\Lambda\) ne peut pas
+etre simplement \(c/H(t)\). Une echelle quasi constante comme \(R_\Lambda\) est
+beaucoup plus naturelle.
+
+\begin{thebibliography}{9}
+\bibitem{CODATA2022}
+NIST/CODATA, \emph{CODATA recommended values of the fundamental physical
+constants: 2022}.
+\bibitem{Planck2018}
+Planck Collaboration, \emph{Planck 2018 results. VI. Cosmological parameters},
+arXiv:1807.06209.
+\bibitem{CKN}
+A. Cohen, D. Kaplan, A. Nelson, \emph{Effective field theory, black holes, and
+the cosmological constant}, Phys. Rev. Lett. 82, 4971 (1999).
+\bibitem{LiHDE}
+M. Li, \emph{A model of holographic dark energy}, Phys. Lett. B 603, 1 (2004).
+\bibitem{DonnellyWall}
+W. Donnelly and A. C. Wall, \emph{Geometric entropy and edge modes of the
+electromagnetic field}, arXiv:1506.05792.
+\end{thebibliography}
+
+\end{document}
