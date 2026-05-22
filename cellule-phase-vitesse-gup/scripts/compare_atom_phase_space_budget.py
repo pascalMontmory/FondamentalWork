@@ -216,11 +216,26 @@ def write_outputs(rows: list[dict[str, float | str]]) -> None:
             "- even the deliberately loose `beta0=1e26` GUP column is far below",
             "  direct relevance for cold-atom sensor design.",
             "",
+            "Example use case:",
+            "",
+            "- A portable gravimeter targeting `1e-8 m/s2/sqrt(Hz)` is not limited",
+            "  by atom shot noise in this first-order budget: the best Rb87/Sr/Yb",
+            "  points are around `1e-11 m/s2` before contrast, vibration and laser",
+            "  noise are included. The real engineering question is therefore not",
+            "  whether the phase-space source can reach `1e-8`, but whether the",
+            "  full instrument can preserve enough contrast and reject vibration",
+            "  noise in a portable package;",
+            "- A compact navigation gyroscope should use this same table as a source",
+            "  prefilter only. The missing terms are rotation geometry, enclosed",
+            "  area, dead time, platform motion and long-term bias stability.",
+            "",
             "Data: `reports/data/atom_phase_space_budget.csv`",
             "",
             "Figure: `reports/figures/atom_phase_space_budget.png`",
             "",
             "Focused figure: `reports/figures/atom_phase_space_budget_focus.png`",
+            "shows continuous FOM-vs-temperature curves for Rb87, Sr88 and Yb174",
+            "at `T_i = 0.5 s`, with markers at the maximum of each curve.",
         ]
     )
     (REPORTS / "atom_phase_space_budget_report.md").write_text(
@@ -236,6 +251,7 @@ def plot(rows: list[dict[str, float | str]]) -> None:
             for row in rows
             if row["species"] == atom.species and float(row["interrogation_time_s"]) == 0.5
         ]
+        subset = sorted(subset, key=lambda row: float(row["temperature_K"]))
         temps = [float(row["temperature_K"]) for row in subset]
         fom = [float(row["sensitivity_fom_s2_sqrt_atoms"]) for row in subset]
         ax.plot(temps, fom, label=atom.species)
@@ -257,9 +273,19 @@ def plot(rows: list[dict[str, float | str]]) -> None:
             for row in rows
             if row["species"] == atom_name and float(row["interrogation_time_s"]) == 0.5
         ]
+        subset = sorted(subset, key=lambda row: float(row["temperature_K"]))
         temps = [float(row["temperature_K"]) for row in subset]
         fom = [float(row["sensitivity_fom_s2_sqrt_atoms"]) for row in subset]
         ax.plot(temps, fom, linewidth=2.2, label=atom_name)
+        best_index = int(np.argmax(fom))
+        ax.scatter(
+            [temps[best_index]],
+            [fom[best_index]],
+            s=42,
+            edgecolor="black",
+            linewidth=0.7,
+            zorder=3,
+        )
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlabel("atom temperature [K]")
