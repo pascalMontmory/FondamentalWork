@@ -7,6 +7,7 @@ phase-space atom-number cap:
 N_phase_cap = eta_max V_eff / lambda_th^3
 N_detected = min(N_technical survival, N_phase_cap)
 FOM = sqrt(N_detected) T_i^2
+FOM_Hz = sqrt(N_detected / T_cycle) T_i^2, if the total cycle time is known
 delta a ~= 1 / (k_eff FOM)
 ```
 
@@ -28,6 +29,10 @@ Interpretation:
   instrument must also include contrast, laser phase noise, vibration
   rejection, wavefront aberrations, detection noise, duty cycle and Allan
   deviation;
+- when a total cycle time `T_cycle` is specified, the per-root-Hz proxy
+  should be demoted to `FOM_Hz = sqrt(N_detected / T_cycle) T_i^2`; the
+  present table intentionally leaves `T_cycle` outside the atom-source
+  budget;
 - heavier atoms have smaller velocity dispersion at fixed temperature;
 - Sr/Yb benefit from narrow-line cooling but require more complex optics;
 - Li has larger recoil and larger velocity spread, so it is less natural
@@ -37,13 +42,30 @@ Interpretation:
 
 Example use case:
 
-- A portable gravimeter targeting `1e-8 m/s2/sqrt(Hz)` is not limited
-  by atom shot noise in this first-order budget: the best Rb87/Sr/Yb
-  points are around `1e-11 m/s2` before contrast, vibration and laser
-  noise are included. The real engineering question is therefore not
-  whether the phase-space source can reach `1e-8`, but whether the
-  full instrument can preserve enough contrast and reject vibration
-  noise in a portable package;
+- A portable gravimeter targeting `10 microGal/sqrt(Hz)` is aiming at
+  `1e-7 m/s2/sqrt(Hz)`, since `1 microGal = 1e-8 m/s2`. This is an
+  aggressive but contextually plausible transportable target. A target
+  of `1e-8 m/s2/sqrt(Hz)` would be `1 microGal/sqrt(Hz)`, which should
+  be described as a stretch research target rather than a current
+  portable field specification;
+- Public transportable systems are more often reported around
+  `10-65 microGal/sqrt(Hz)`, i.e. `1e-7` to
+  `6.5e-7 m/s2/sqrt(Hz)`;
+- Public context: recent NIM transportable results report
+  `20.5 microGal/sqrt(Hz)` in the laboratory and
+  `10.8 microGal/sqrt(Hz)` in a seismic station; a mobile gravity
+  survey reports `37 microGal/sqrt(Hz)`; a commercial quiet-site
+  datasheet reports `50 microGal/sqrt(Hz)`;
+- In this first-order phase-space budget, the source shot-noise proxy
+  can sit below those field targets. That does not prove a portable
+  instrument can reach them: contrast, vibration rejection, laser phase
+  noise, wavefronts, detection, cycle time and package constraints
+  dominate the real specification;
+- The present scan also does not impose vertical drop/fountain distance,
+  laser power, optical bench volume, vacuum package, thermal control or
+  dead time. A portable design should therefore cap `T_i`, aperture,
+  atom number and cycle rate from a concrete mechanical package before
+  treating the FOM as an engineering target;
 - A compact navigation gyroscope should use this same table as a source
   prefilter only. The missing terms are rotation geometry, enclosed
   area, dead time, platform motion and long-term bias stability.
@@ -55,3 +77,10 @@ Figure: `reports/figures/atom_phase_space_budget.png`
 Focused figure: `reports/figures/atom_phase_space_budget_focus.png`
 shows continuous FOM-vs-temperature curves for Rb87, Sr88 and Yb174
 at `T_i = 0.5 s`, with markers at the maximum of each curve.
+
+Open-source direction:
+
+- The useful product form is an open, reproducible community CAD layer:
+  atom databases, package constraints, cycle-time models, vibration
+  budgets and public benchmark scenarios can be added without changing
+  the core phase-space equations.
