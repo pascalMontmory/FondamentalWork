@@ -8,6 +8,11 @@ H = 6.626_070_15e-34
 KB = 1.380_649e-23
 AMU = 1.660_539_066_60e-27
 AVOGADRO = 6.022_140_76e23
+HBAR = H / (2.0 * math.pi)
+C = 299_792_458.0
+G = 6.674_30e-11
+L_PLANCK = math.sqrt(HBAR * G / C**3)
+P_PLANCK = HBAR / L_PLANCK
 
 
 @dataclass(frozen=True)
@@ -20,6 +25,8 @@ class Species:
 SPECIES = {
     "H2": Species("H2", 2.015_88 * AMU, "boson"),
     "He4": Species("He4", 4.002_602 * AMU, "boson"),
+    "Li6": Species("Li6", 6.015_122_887_4 * AMU, "fermion"),
+    "Li7": Species("Li7", 7.016_003_436_6 * AMU, "boson"),
     "CH4": Species("CH4", 16.042_46 * AMU, "boltzmann"),
     "O2": Species("O2", 31.998_8 * AMU, "boson"),
     "H2O": Species("H2O", 18.015_28 * AMU, "boltzmann"),
@@ -64,6 +71,12 @@ def phase_cell_ratio(n_m3: float, mass_kg: float, temperature_k: float) -> float
 def velocity_sigma_1d(mass_kg: float, temperature_k: float) -> float:
     """One-dimensional thermal velocity dispersion sqrt(kT/m)."""
     return math.sqrt(KB * temperature_k / mass_kg)
+
+
+def recoil_temperature(mass_kg: float, laser_wavelength_m: float) -> float:
+    """Single-photon recoil temperature (h/lambda)^2/(2 m kB)."""
+    recoil_momentum = H / laser_wavelength_m
+    return recoil_momentum**2 / (2.0 * mass_kg * KB)
 
 
 def cloud_radius_after_time(
@@ -111,6 +124,17 @@ def atom_interferometer_rotation_noise(
         * interrogation_s**2
         * math.sqrt(detected_atoms)
     )
+
+
+def gup_beta_p2_from_velocity(beta0: float, mass_kg: float, velocity_m_s: float) -> float:
+    """Dimensionless beta p^2 = beta0 (m v / p_Pl)^2."""
+    return beta0 * (mass_kg * velocity_m_s / P_PLANCK) ** 2
+
+
+def gup_measure_correction_factor(beta0: float, mass_kg: float, velocity_m_s: float) -> float:
+    """Phase-space measure factor (1 + beta p^2)^-3."""
+    epsilon = gup_beta_p2_from_velocity(beta0, mass_kg, velocity_m_s)
+    return (1.0 + epsilon) ** -3
 
 
 def quantum_virial_correction_magnitude(eta: float) -> float:
