@@ -1,0 +1,191 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\geometry{margin=2.4cm}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\title{Tests observationnels publics du cadre GUP--UV/IR}
+\author{Note de verification}
+\date{22 mai 2026}
+
+\newcommand{\rhoP}{\rho_{\rm P}}
+\newcommand{\rhoDE}{\rho_{\rm DE}}
+\newcommand{\ellP}{\ell_{\rm P}}
+\newcommand{\EGUP}{E_{\rm GUP}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note teste les consequences observationnelles simples du cadre GUP--UV/IR
+avec des donnees ou contraintes publiques : FIRAS pour le spectre du CMB,
+Planck+BAO+SNe pour l'equation d'etat de l'energie noire, SPARC pour l'echelle
+d'acceleration galactique, BBN/CMB pour la densite de radiation et etoiles a
+neutrons pour les fermions denses. Le resultat principal est un no-go : la
+valeur $\beta_0\sim10^{60}$ obtenue en identifiant directement le vide GUP a
+$\rhoDE$ est exclue comme deformation universelle. La piste viable est une
+regularisation UV par GUP combinee a une projection IR/holographique du secteur
+gravitationnel.
+\end{abstract}
+
+\section{Parametre teste}
+
+La regularisation GUP du vide donne
+\begin{equation}
+\rho_{\rm reg}=\frac{g\rhoP}{16\pi^2\beta_0^2}.
+\end{equation}
+L'identification directe $\rho_{\rm reg}=\rhoDE$ impose
+\begin{equation}
+\beta_0^{(\Lambda)}
+=
+\left(\frac{g}{6\pi\Omega_\Lambda}\right)^{1/2}
+\frac{1}{H_0t_P}.
+\end{equation}
+Pour $g=1$ et les parametres Planck 2018,
+\begin{equation}
+\beta_0^{(\Lambda)}=2.36\times10^{60},
+\qquad
+\EGUP=\frac{E_P}{\sqrt{\beta_0}}=7.94~{\rm meV}.
+\end{equation}
+
+\section{FIRAS : spectre du CMB}
+
+Si le meme $\beta_0$ s'applique aux photons, le spectre thermique devient
+\begin{equation}
+u(E,T)\propto
+\frac{E^3}{(e^{E/k_BT}-1)(1+\beta E^2/c^2)^3}.
+\end{equation}
+Le script compare cette forme au meilleur corps noir ajuste sur la bande FIRAS
+2--20 cm$^{-1}$. FIRAS limite les deviations de forme a environ $50$ ppm du pic
+du CMB.
+
+Le resultat numerique est
+\begin{equation}
+\frac{\mathrm{RMS}}{\mathrm{pic}}=2.81\times10^{-3},
+\qquad
+\beta_0^{\rm FIRAS}\lesssim3.72\times10^{58}.
+\end{equation}
+La valeur $\beta_0^{(\Lambda)}$ est donc trop grande par un facteur environ
+$64$. Donc
+\begin{equation}
+\boxed{
+\beta_0^{(\Lambda)}\text{ est exclu comme parametre photon universel.}
+}
+\end{equation}
+
+\section{Equation d'etat de l'energie noire holographique}
+
+Pour un modele holographique standard fonde sur l'horizon des evenements futur,
+\begin{equation}
+w_{\rm HDE}
+=
+-\frac13-\frac{2}{3c_{\rm hde}}\sqrt{\Omega_{\rm DE}}.
+\end{equation}
+Avec $\Omega_{\rm DE}=0.685$, on obtient
+\begin{equation}
+w(c_{\rm hde}=1)=-0.885.
+\end{equation}
+La contrainte publique Planck+BAO+SNe donne environ $w=-1.03\pm0.03$. Ainsi,
+$c_{\rm hde}=1$ est defavorise, tandis qu'une valeur proche de
+$c_{\rm hde}\simeq0.79$ reproduit mieux la contrainte constante-$w$.
+
+\section{SPARC et acceleration cosmologique}
+
+L'echelle de de Sitter est
+\begin{equation}
+a_{\rm dS}=c^2\sqrt{\frac{\Lambda}{3}},
+\end{equation}
+et
+\begin{equation}
+\frac{a_{\rm dS}}{2\pi}=8.63\times10^{-11}~{\rm m\,s^{-2}}.
+\end{equation}
+L'echelle empirique SPARC/MOND est de l'ordre
+\begin{equation}
+a_0\simeq1.2\times10^{-10}~{\rm m\,s^{-2}}.
+\end{equation}
+L'accord est d'ordre unite. C'est une coincidence UV/IR interessante, mais pas
+une preuve du GUP.
+
+\section{BBN et densite de radiation}
+
+La correction de rayonnement est
+\begin{equation}
+\frac{\Delta u}{u}
+\simeq
+-\frac{40\pi^2}{7}\beta_0\left(\frac{k_BT}{E_P}\right)^2.
+\end{equation}
+A $k_BT\simeq1$ MeV, imposer conservativement
+$|\Delta u/u|<0.1$ donne
+\begin{equation}
+\beta_0\lesssim 2.64\times10^{41}.
+\end{equation}
+Pour $\beta_0^{(\Lambda)}$, le script trouve
+$|\Delta u/u|\simeq8.94\times10^{17}$. Cette valeur est exclue dans le secteur
+radiation du jeune univers.
+
+\section{Etoiles a neutrons}
+
+Pour une impulsion de Fermi representative $p_Fc\simeq300$ MeV, la correction
+est
+\begin{equation}
+\chi=\beta_0\left(\frac{p_Fc}{E_P}\right)^2.
+\end{equation}
+Exiger $\chi<0.1$ donne une borne d'ordre
+\begin{equation}
+\beta_0\lesssim1.66\times10^{38}.
+\end{equation}
+La valeur $\beta_0^{(\Lambda)}$ donnerait $\chi\simeq1.43\times10^{21}$ ; elle
+est donc incompatible avec une deformation universelle des fermions denses.
+
+\section{Conclusion}
+
+Les tests publics donnent une conclusion claire :
+\begin{equation}
+\boxed{
+\beta_0^{(\Lambda)}\sim10^{60}
+\text{ ne peut pas etre un parametre universel.}
+}
+\end{equation}
+La bonne lecture des travaux est donc
+\begin{equation}
+\boxed{
+\text{GUP regularise l'UV, mais l'energie noire doit venir d'une projection IR/holographique.}
+}
+\end{equation}
+
+\begin{thebibliography}{9}
+\bibitem{FIRAS}
+COBE/FIRAS data products, NASA LAMBDA,
+\url{https://lambda.gsfc.nasa.gov/product/cobe/firas_products.html}.
+
+\bibitem{Planck2018}
+N. Aghanim et al. (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters'',
+\emph{Astronomy \& Astrophysics} \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{PantheonPlus}
+Pantheon+SH0ES Data Release,
+\url{https://github.com/PantheonPlusSH0ES/DataRelease}.
+
+\bibitem{SPARC}
+SPARC galaxy rotation-curve database,
+\url{https://zenodo.org/records/16284118}.
+
+\bibitem{CKN}
+A. Cohen, D. Kaplan and A. Nelson,
+``Effective Field Theory, Black Holes, and the Cosmological Constant'',
+\emph{Physical Review Letters} \textbf{82}, 4971 (1999).
+\end{thebibliography}
+
+\end{document}
