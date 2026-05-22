@@ -80,6 +80,7 @@ For a gravimeter-like sensor, a simple sensitivity figure of merit is
 
 ```text
 FOM = sqrt(N_detected) T_i^2
+FOM_Hz = sqrt(N_detected / T_cycle) T_i^2, if the total cycle time is known
 delta a ~= 1 / (k_eff FOM).
 ```
 
@@ -115,26 +116,50 @@ the ideal atom-shot-noise term by contrast and duty-cycle factors, then add
 laser phase noise, vibration residuals, wavefront aberrations, detection noise
 and Allan-deviation behavior.
 
-## Example use case
-
-Consider a portable gravimeter targeting
+When the total cycle time is known, the per-root-Hz proxy should be written as
 
 ```text
-delta a_target = 1e-8 m/s2/sqrt(Hz).
+FOM_Hz = sqrt(N_detected / T_cycle) T_i^2.
 ```
 
-The phase-space budget says this target is not atom-shot-noise limited at the
-source level. The best Rb87/Sr/Yb points in the table sit near
-`1e-11 m/s2` before contrast loss, vibration noise, laser phase noise, wavefront
-aberrations, dead time and detection noise are included. The practical
-conclusion is precise: the cold-atom source is good enough in first order; the
-hard work moves to vibration rejection, optical phase stability, contrast
-preservation and field packaging.
+This makes duty cycle explicit: long cooling, preparation, detection or dead
+times reduce the usable sensitivity even if the single-shot atom budget looks
+excellent.
+
+## Example use case
+
+Consider a portable gravimeter targeting an aggressive
+
+```text
+delta a_target = 10 microGal/sqrt(Hz) = 1e-7 m/s2/sqrt(Hz).
+```
+
+The conversion matters: `1 microGal = 1e-8 m/s2`, so a target of
+`1e-8 m/s2/sqrt(Hz)` would be `1 microGal/sqrt(Hz)`, a much more aggressive
+stretch target rather than a standard portable field specification. Public
+transportable atom gravimeters are commonly reported around
+`10-65 microGal/sqrt(Hz)`, depending on vibration environment and architecture.
+
+The phase-space budget says a `10 microGal/sqrt(Hz)` target is not necessarily
+atom-shot-noise limited at the source level. The best Rb87/Sr/Yb points in the
+table sit near `1e-11 m/s2` before contrast loss, vibration noise, laser phase
+noise, wavefront aberrations, dead time and detection noise are included. The
+practical conclusion is precise: the cold-atom source can be good enough in
+first order; the hard work moves to vibration rejection, optical phase
+stability, contrast preservation, cycle time and field packaging.
 
 For a compact gyroscope aimed at inertial navigation, the same table is only a
 source prefilter. A full gyroscope model must add the enclosed interferometer
 area, transverse velocity, rotation geometry, platform motion, duty cycle and
 long-term bias stability.
+
+Public context for the benchmark range:
+
+- NIM transportable atomic gravimeter: `20.5 microGal/sqrt(Hz)` in the
+  laboratory and `10.8 microGal/sqrt(Hz)` in a seismic station;
+- mobile atom-interferometer gravity survey: `37 microGal/sqrt(Hz)`;
+- commercial absolute quantum gravimeter datasheet: `50 microGal/sqrt(Hz)` in
+  a quiet place.
 
 ## GUP correction scale
 
@@ -291,3 +316,8 @@ This is useful because it connects a compact theoretical formula to a concrete
 engineering question: can a proposed quantum sensor architecture reach its
 target sensitivity within its volume, temperature, density and atom-number
 constraints?
+
+The best next form is an open-source community CAD tool: transparent equations,
+public benchmark scenarios, atom databases, package constraints, cycle-time
+models, vibration budgets and reproducible reports that labs or companies can
+extend without accepting the speculative GUP layer.
