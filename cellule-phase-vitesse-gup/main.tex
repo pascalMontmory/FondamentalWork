@@ -1,0 +1,190 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\geometry{margin=2.4cm}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\hb}{\hbar}
+\newcommand{\lp}{\ell_{\mathrm P}}
+\newcommand{\kb}{k_{\mathrm B}}
+\newcommand{\vGUP}{v_{\mathrm{GUP}}}
+\newcommand{\pGUP}{p_{\mathrm{GUP}}}
+
+\title{Reformulation position--vitesse d'une cellule de phase deformee par GUP}
+\author{Note theorique exploratoire verifiee}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note reformule la mesure de phase deformee
+\[
+\dd N=\frac{\dd^3x\,\dd^3p}{h^3(1+\beta p^2)^3}
+\]
+en variables position--vitesse pour une particule massive non relativiste. La cellule effective devient
+\[
+\Delta^3x\,\Delta^3v\sim
+\left(\frac{h}{m}\right)^3(1+\beta m^2v^2)^3.
+\]
+La longueur minimale reste $\Delta x_{\min}=\hbar\sqrt{\beta}$, tandis que le seuil cinematique s'ecrit $\vGUP=1/(m\sqrt{\beta})$. Cette ecriture ne cree pas une nouvelle loi fondamentale : elle rend visible la dependance en masse d'un seuil qui reste, physiquement, un seuil en impulsion.
+\end{abstract}
+
+\section{Mesure position--vitesse}
+
+Avec $p=mv$ et $\dd^3p=m^3\dd^3v$,
+\[
+\dd N=
+\frac{m^3\dd^3x\,\dd^3v}{h^3(1+\beta m^2v^2)^3}
+=
+\frac{\dd^3x\,\dd^3v}{(h/m)^3(1+\beta m^2v^2)^3}.
+\]
+La correction est controlee par
+\[
+\chi=\beta m^2v^2=\left(\frac{mv}{\pGUP}\right)^2,
+\qquad
+\pGUP=\frac{1}{\sqrt{\beta}}.
+\]
+
+\section{Longueur minimale et seuil vitesse}
+
+Pour $\langle p\rangle=0$, le commutateur $[x,p]=i\hbar(1+\beta p^2)$ donne
+\[
+\Delta x\,\Delta v
+\geq
+\frac{\hbar}{2m}\left[1+\beta m^2(\Delta v)^2\right].
+\]
+Le minimum est atteint pour
+\[
+\Delta v_\star=\frac{1}{m\sqrt{\beta}},
+\qquad
+\Delta x_{\min}=\hbar\sqrt{\beta}.
+\]
+Avec $\beta=\beta_0\lp^2/\hbar^2$,
+\[
+\Delta x_{\min}=\sqrt{\beta_0}\lp,
+\qquad
+\vGUP=c\frac{m_P}{m\sqrt{\beta_0}}.
+\]
+
+\section{Densite de modes en vitesse}
+
+La densite differentielle est
+\[
+\frac{\dd n}{\dd v}
+=
+\frac{4\pi g m^3}{h^3}
+\frac{v^2}{(1+\beta m^2v^2)^3}.
+\]
+Elle atteint son maximum pour
+\[
+v_{\mathrm{pic}}=\frac{1}{m\sqrt{2\beta}}=\frac{\vGUP}{\sqrt{2}}.
+\]
+Le nombre total maximal de modes est independant de la masse :
+\[
+n_{\max}=
+\frac{4\pi g m^3}{h^3}
+\int_0^\infty
+\frac{v^2\dd v}{(1+\beta m^2v^2)^3}
+=
+\frac{g\pi^2}{4h^3\beta^{3/2}}.
+\]
+
+\section{Version relativiste}
+
+Pour $v$ proche de $c$, il faut utiliser
+\[
+p=\gamma mv,
+\qquad
+\gamma=\frac{1}{\sqrt{1-v^2/c^2}}.
+\]
+Alors
+\[
+p^2\dd p=m^3\gamma^5v^2\dd v
+\]
+et
+\[
+\frac{\dd n}{\dd v}
+=
+\frac{4\pi g m^3}{h^3}
+\frac{\gamma^5v^2}{(1+\beta\gamma^2m^2v^2)^3}.
+\]
+En posant $t=p/(mc)$, $z=t^2$ et $A=\beta m^2c^2$, le maximum relativiste verifie
+\[
+A z^2-(5-4A)z-2=0.
+\]
+Donc
+\[
+z_{\mathrm{pic}}=
+\frac{(5-4A)+\sqrt{(5-4A)^2+8A}}{2A},
+\qquad
+v_{\mathrm{pic,rel}}=
+c\sqrt{\frac{z_{\mathrm{pic}}}{1+z_{\mathrm{pic}}}}.
+\]
+
+\section{Gaz classique non relativiste}
+
+La fonction de partition monoparticulaire est
+\[
+Z_1=
+\frac{V}{h^3}
+\int
+\frac{\dd^3p}{(1+\beta p^2)^3}
+\exp\left(-\frac{p^2}{2m\kb T}\right).
+\]
+Avec $\theta_T=\beta m\kb T\ll1$,
+\[
+Z_1=Z_{1,0}\left[1-9\theta_T+90\theta_T^2+\cdots\right].
+\]
+Il vient
+\[
+\frac{U}{N}
+\simeq
+\frac32\kb T
+-9\beta m\kb^2T^2
++99\beta^2m^2\kb^3T^3+\cdots,
+\]
+\[
+\frac{C_V}{N}
+\simeq
+\frac32\kb
+-18\beta m\kb^2T
++297\beta^2m^2\kb^3T^2+\cdots.
+\]
+La limite haute temperature du modele non relativiste est finie :
+\[
+\lim_{T\to\infty}\frac{U}{N}
+=
+\frac{3}{2m\beta}.
+\]
+Cette formule est mathematique dans le modele non relativiste ; elle ne doit pas etre extrapolee au-dela du domaine ou $E\ll mc^2$ reste valable.
+
+\section{Fermions degeneres}
+
+A faible correction, pour une densite fixee,
+\[
+p_F\simeq p_{F,0}
+\left[1+\frac35\beta p_{F,0}^2\right],
+\qquad
+E_F\simeq E_{F,0}
+\left[1+\frac65\beta p_{F,0}^2\right].
+\]
+Dans le regime ultrarelativiste $E=pc$,
+\[
+P_{\max}=\frac{g\pi c}{3h^3\beta^2},
+\qquad
+\rho_{\max}=\frac{g\pi c}{h^3\beta^2}.
+\]
+
+\section{Conclusion}
+
+La reformulation position--vitesse ne remplace pas la formulation en impulsion. Elle montre que la masse redistribue les modes en vitesse sans modifier le nombre total maximal de modes. Elle rend aussi manifeste le probleme des corps composes : si $m$ est pris comme masse totale macroscopique, les corrections deviennent artificiellement grandes. Une loi de composition du parametre GUP, ou une formulation en constituants, est donc indispensable.
+
+\end{document}
