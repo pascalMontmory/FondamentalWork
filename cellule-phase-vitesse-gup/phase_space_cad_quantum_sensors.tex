@@ -28,6 +28,7 @@
 
 \newcommand{\kb}{k_{\rm B}}
 \newcommand{\lth}{\lambda_{\rm th}}
+\newcommand{\dd}{\mathrm d}
 
 \title{\textbf{Phase-space CAD for cold-atom quantum sensors}\\
 \large A conservative design-budget framework from $D^3v^3\simeq h^3/m^3$}
@@ -81,6 +82,54 @@ R(t)=\sqrt{R_0^2+\sigma_v^2t^2}.
 \end{equation}
 These equations provide the source budget. A colder source has larger
 $\eta$, smaller $\sigma_v$, slower expansion and better aperture survival.
+
+\subsection{Atom-number cap}
+
+For a gravimeter-like instrument, a compact sensitivity figure of merit is
+\begin{equation}
+{\cal F}=\sqrt{N_{\rm det}}T_i^2,
+\qquad
+\delta a\simeq\frac{1}{k_{\rm eff}{\cal F}}.
+\end{equation}
+The detected atom number cannot be specified independently of phase-space
+density. In the present budget we impose
+\begin{equation}
+N_{\rm phase}=\eta_{\max}\frac{V_{\rm eff}}{\lambda_{\rm th}^3},
+\qquad
+N_{\rm det}=\min\left(N_{\rm tech}f_{\rm surv},N_{\rm phase}\right),
+\end{equation}
+where $f_{\rm surv}$ is the aperture survival proxy. This makes explicit the
+trade-off between cooling, cloud size, usable volume and atom number.
+The figure of merit is only a screening proxy: it omits contrast, laser phase
+noise, vibration residuals, wavefront aberrations, detection noise, duty cycle
+and Allan-deviation behavior.
+
+\subsection{Atom choice}
+
+The companion script \texttt{scripts/compare\_atom\_phase\_space\_budget.py}
+compares Rb87, Cs133, Sr88, Yb174, Li6 and Li7 using practical temperature
+floors, recoil temperatures and the phase-space atom-number cap. With
+$\eta_{\max}=0.3$, a $12\,{\rm mm}$ aperture and $N_{\rm tech}=10^7$, the
+best practical-floor points are:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llllrrr}
+\toprule
+Atom & access & best $T$ [K] & best $T_i$ [s] & $T_{\rm rec}$ [K] & $\sigma_v$ [m/s] & $\delta a$ [m/s$^2$]\\
+\midrule
+Sr88 & good & $1.0\times10^{-8}$ & 1 & $2.29\times10^{-7}$ & $9.73\times10^{-4}$ & $1.73\times10^{-11}$\\
+Yb174 & good & $1.0\times10^{-8}$ & 1 & $1.78\times10^{-7}$ & $6.91\times10^{-4}$ & $1.40\times10^{-11}$\\
+Cs133 & excellent & $1.0\times10^{-7}$ & 1 & $9.92\times10^{-8}$ & $2.50\times10^{-3}$ & $2.14\times10^{-11}$\\
+Rb87 & excellent & $1.0\times10^{-7}$ & 1 & $1.81\times10^{-7}$ & $3.09\times10^{-3}$ & $1.96\times10^{-11}$\\
+Li7 & specialized & $3.0\times10^{-7}$ & 1 & $3.03\times10^{-6}$ & $1.89\times10^{-2}$ & $5.16\times10^{-11}$\\
+Li6 & specialized & $3.0\times10^{-7}$ & 1 & $3.54\times10^{-6}$ & $2.04\times10^{-2}$ & $5.71\times10^{-11}$\\
+\bottomrule
+\end{tabular}
+\caption{Atom comparison under the phase-space atom-number cap. The table is a
+design-screening result, not a final sensor ranking.}
+\end{table}
 
 \section{Interferometer sensitivity}
 
@@ -155,6 +204,27 @@ The correct interpretation of a high score is therefore:
 \fbox{the phase-space budget does not already reject the design.}
 \end{center}
 It is not a claim that the final sensor will meet its mission specification.
+
+\subsection{GUP term in the applied regime}
+
+For the GUP-deformed phase-space measure
+\begin{equation}
+\dd N_{\rm GUP}=\frac{\dd N_0}{(1+\beta m^2v^2)^3},
+\end{equation}
+the expansion parameter is
+\begin{equation}
+\epsilon_{\rm GUP}=\beta p^2
+=\beta_0\left(\frac{mv}{p_{\rm Pl}}\right)^2.
+\end{equation}
+For Rb87 at $T=1\,\mu{\rm K}$, $\sigma_v=9.78\times10^{-3}\,{\rm m/s}$ and
+\begin{equation}
+\epsilon_{\rm GUP}(\beta_0=1)=4.68\times10^{-56},
+\qquad
+\epsilon_{\rm GUP}(\beta_0=10^{26})=4.68\times10^{-30}.
+\end{equation}
+Thus $(1+\epsilon_{\rm GUP})^{-3}\simeq1-3\epsilon_{\rm GUP}$ is completely
+negligible for cold-atom sensor engineering. The applied framework uses the
+$\beta\to0$ phase-space budget; it does not claim detection of GUP corrections.
 
 \section{Industrial direction}
 
