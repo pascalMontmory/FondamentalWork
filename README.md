@@ -11,3 +11,4 @@ Depot prive pour travaux scientifiques et notes mathematiques.
 - `conclusions-cosmologiques-gup-uvir/` : synthese cosmologique du cadre GUP--UV/IR, equation d'etat, choix de longueur IR et programme theorique.
 - `tests-donnees-publiques-gup-uvir/` : tests observationnels avec contraintes publiques FIRAS, Planck+BAO+SNe, SPARC, BBN et etoiles a neutrons.
 - `synthese-travaux-confirmes-gup-uvir/` : synthese des resultats confirmes mathematiquement, numeriquement et observationnellement dans le cadre GUP--UV/IR.
+- `univers-jumeau-masse-negative-temps-inverse/` : modele jumeau projectif avec pression de bord zero-mode, holonomie temporelle de Moebius, comparaison Janus, sensibilite gamma et prepublication.
