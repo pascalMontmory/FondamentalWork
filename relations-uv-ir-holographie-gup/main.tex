@@ -1,0 +1,524 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.4cm}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{topsep=0.25em,itemsep=0.2em}
+\setlist[enumerate]{topsep=0.25em,itemsep=0.2em}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\lp}{\ell_{\rm P}}
+\newcommand{\rhoP}{\rho_{\rm P}}
+\newcommand{\rhoDE}{\rho_{\rm DE}}
+\newcommand{\rhoC}{\rho_{\rm c}}
+\newcommand{\LH}{L_{\rm H}}
+\newcommand{\EP}{E_{\rm P}}
+\newcommand{\EH}{E_{\rm H}}
+\newcommand{\Mpl}{M_{\rm P}}
+\newcommand{\Order}{\mathcal{O}}
+\newcommand{\rhoreg}{\rho_{\rm reg}}
+\newcommand{\rhobh}{\rho_{\rm BH}}
+
+\title{Relations fondamentales UV/IR, cellule GUP et energie noire\\
+\large Verification mathematique et equations candidates}
+\author{Note de travail}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note rassemble des identites exactes et des equations candidates reliant
+la cellule de phase deformee de type GUP, l'echelle de Planck, l'echelle de
+Hubble et l'energie noire. Le resultat robuste est
+\[
+\rhoDE=\Omega_\Lambda\rhoC
+=\frac{3\Omega_\Lambda}{8\pi}\rhoP\left(\frac{\lp}{\LH}\right)^2.
+\]
+Cette relation montre que le facteur $10^{-122}$ est un rapport d'aires
+Planck--Hubble. Le regulateur GUP seul rend l'energie du vide finie, mais
+d'ordre planckien si $\beta_0\sim1$. La piste mathematiquement coherente est
+donc une double contrainte : regularisation UV par la cellule GUP et projection
+IR par une borne gravitationnelle ou holographique.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Statut des formules}
+
+On distingue trois niveaux.
+\begin{enumerate}
+  \item Les identites exactes, qui decoulent des definitions de $\rhoC$, $\LH$,
+  $\rhoP$ et $\lp$.
+  \item Les relations etablies dans des cadres connus : borne de trou noir,
+  entropie de Bekenstein--Hawking, thermodynamique de Gibbons--Hawking et
+  contrainte UV/IR de Cohen--Kaplan--Nelson.
+  \item Les equations candidates, qui combinent le regulateur GUP avec une
+  projection gravitationnelle globale.
+\end{enumerate}
+
+La note ne pretend donc pas prouver une theorie fondamentale. Elle isole les
+relations qui restent exactes et celles qui peuvent servir de programme de
+recherche.
+
+\section{Echelles fondamentales}
+
+Les grandeurs de Planck sont
+\begin{align}
+\lp &= \sqrt{\frac{\hbar G}{c^3}},&
+t_P &= \sqrt{\frac{\hbar G}{c^5}},&
+\EP &= \sqrt{\frac{\hbar c^5}{G}},\\
+\Mpl &= \sqrt{\frac{\hbar c}{G}},&
+\rhoP &= \frac{\EP}{\lp^3}=\frac{c^7}{\hbar G^2}.
+\end{align}
+
+L'echelle de Hubble et la densite critique d'energie sont
+\begin{equation}
+\LH=\frac{c}{H_0},
+\qquad
+\rhoC=\frac{3c^2H_0^2}{8\pi G}.
+\end{equation}
+
+La densite d'energie noire observee est
+\begin{equation}
+\rhoDE=\Omega_\Lambda\rhoC.
+\end{equation}
+
+\section{Identite Planck--Hubble--energie noire}
+
+Comme $H_0=c/\LH$,
+\begin{equation}
+\rhoC=\frac{3c^4}{8\pi G\LH^2}.
+\end{equation}
+Or
+\begin{equation}
+\rhoP\lp^2
+=\frac{c^7}{\hbar G^2}\frac{\hbar G}{c^3}
+=\frac{c^4}{G}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+\rhoDE
+=\Omega_\Lambda\rhoC
+=\frac{3\Omega_\Lambda}{8\pi}\rhoP
+\left(\frac{\lp}{\LH}\right)^2.
+}
+\label{eq:master_uv_ir}
+\end{equation}
+
+\begin{tcolorbox}[colback=blue!3!white,colframe=blue!45!black,title=Lecture]
+La petitesse de l'energie noire peut etre reecrite comme un rapport d'aires :
+aire de Planck sur aire de Hubble. Cette phrase est une reformulation exacte,
+pas encore une explication dynamique.
+\end{tcolorbox}
+
+\section{Borne de trou noir}
+
+Une sphere de rayon $L$ et de densite d'energie $\rho$ contient
+\begin{equation}
+E=\rho\frac{4\pi}{3}L^3.
+\end{equation}
+L'energie d'un trou noir de rayon de Schwarzschild $L$ vaut
+\begin{equation}
+E_{\rm BH}=\frac{c^4L}{2G}.
+\end{equation}
+La condition de non-effondrement $E\leq E_{\rm BH}$ donne
+\begin{equation}
+\boxed{
+\rho\leq\rhobh(L)=\frac{3c^4}{8\pi G L^2}.
+}
+\label{eq:rho_bh}
+\end{equation}
+
+Pour $L=\LH$, on retrouve exactement
+\begin{equation}
+\rhobh(\LH)=\rhoC,
+\qquad
+\rhoDE=\Omega_\Lambda\rhobh(\LH).
+\end{equation}
+
+\section{Echelle d'energie de l'energie noire}
+
+Definissons
+\begin{equation}
+E_{\rm DE}=\left[\rhoDE(\hbar c)^3\right]^{1/4}.
+\end{equation}
+En utilisant \eqref{eq:master_uv_ir},
+\begin{equation}
+\boxed{
+E_{\rm DE}
+=
+\left(\frac{3\Omega_\Lambda}{8\pi}\right)^{1/4}
+\sqrt{\EP\EH},
+\qquad
+\EH=\hbar H_0.
+}
+\label{eq:E_de}
+\end{equation}
+
+L'echelle meV de l'energie noire est donc la moyenne geometrique entre
+l'energie de Planck et l'energie de Hubble, a un facteur cosmologique pres.
+
+\section{Regulateur GUP}
+
+Dans le modele de cellule de phase deformee,
+\begin{equation}
+\dd N_{\rm GUP}
+=
+\frac{\dd^3x\,\dd^3p}{h^3(1+\beta p^2)^3}.
+\end{equation}
+Pour une energie de point zero massless,
+\begin{equation}
+\rhoreg
+=
+\frac{g}{h^3}4\pi\int_0^\infty
+\frac{\frac12 pc\,p^2\dd p}{(1+\beta p^2)^3}.
+\end{equation}
+Comme
+\begin{equation}
+\int_0^\infty\frac{p^3\dd p}{(1+\beta p^2)^3}
+=\frac{1}{4\beta^2},
+\end{equation}
+on obtient
+\begin{equation}
+\boxed{
+\rhoreg
+=
+\frac{g\rhoP}{16\pi^2\beta_0^2},
+\qquad
+\beta=\beta_0\frac{\lp^2}{\hbar^2}.
+}
+\label{eq:rho_reg}
+\end{equation}
+
+Le GUP regularise l'UV. Mais pour $\beta_0\sim1$, la densite reste d'ordre
+planckien.
+
+\section{Projection holographique candidate}
+
+La combinaison minimale des deux contraintes est
+\begin{equation}
+\boxed{
+\rho_{\rm grav}(L)
+=
+\min\left[
+\frac{g\rhoP}{16\pi^2\beta_0^2},
+\frac{3c^4}{8\pi G L^2}
+\right].
+}
+\label{eq:min_density}
+\end{equation}
+
+Cette equation est candidate : elle ne decoule pas du GUP seul. Elle formalise
+l'idee que les modes UV peuvent etre regularises localement, tandis que la
+gravite borne le nombre de degres de liberte independants dans une region de
+taille $L$.
+
+Le point de croisement des deux branches est obtenu par
+\begin{equation}
+\frac{g\rhoP}{16\pi^2\beta_0^2}
+=
+\frac{3c^4}{8\pi G L_\times^2}.
+\end{equation}
+En utilisant $\rhoP\lp^2=c^4/G$,
+\begin{equation}
+\boxed{
+L_\times
+=
+\beta_0\sqrt{\frac{6\pi}{g}}\,\lp.
+}
+\label{eq:L_cross}
+\end{equation}
+
+Pour $\beta_0=1$ et $g=1$, $L_\times\simeq4.34\,\lp$. A toute echelle
+macroscopique, la branche gravitationnelle domine donc largement.
+
+\section{Facteur de projection}
+
+Sur la branche gravitationnelle,
+\begin{equation}
+\rho_{\rm grav}(L)=\mathcal{F}(L)\rhoreg.
+\end{equation}
+Alors
+\begin{equation}
+\boxed{
+\mathcal{F}(L)
+=
+\frac{6\pi\beta_0^2}{g}
+\left(\frac{\lp}{L}\right)^2.
+}
+\label{eq:projection_factor}
+\end{equation}
+
+Le facteur minuscule vient donc du rapport d'aires $\lp^2/L^2$. Pour $L=\LH$,
+il est de l'ordre de $10^{-122}$ si $\beta_0$ est d'ordre unite.
+
+\section{\texorpdfstring{Lien avec la note sur $\beta_0^{(\Lambda)}$}{Lien avec la note sur beta0 Lambda}}
+
+La note precedente imposait directement $\rhoreg=\rhoDE$. Cela donnait
+\begin{equation}
+\beta_0^{(\Lambda)}
+=
+\left(\frac{g}{6\pi\Omega_\Lambda}\right)^{1/2}
+\frac{1}{H_0t_P}.
+\end{equation}
+L'energie GUP associee et l'echelle $E_{\rm DE}$ verifient alors
+\begin{equation}
+\boxed{
+\frac{E_{\rm GUP}^{(\Lambda)}}{E_{\rm DE}}
+=
+\left(\frac{16\pi^2}{g}\right)^{1/4}
+=
+\frac{2\sqrt{\pi}}{g^{1/4}}.
+}
+\label{eq:energy_ratio}
+\end{equation}
+
+Pour $g=1$, le rapport vaut $3.5449$. Cette equation explique pourquoi
+$E_{\rm GUP}^{(\Lambda)}\simeq7.94$ meV alors que
+$E_{\rm DE}\simeq2.24$ meV.
+
+\section{Thermodynamique d'horizon}
+
+Pour un horizon de rayon $L$, la temperature de Gibbons--Hawking est
+\begin{equation}
+T_H=\frac{\hbar c}{2\pi k_B L}.
+\end{equation}
+L'entropie de Bekenstein--Hawking est
+\begin{equation}
+S_H=\frac{k_B A}{4\lp^2}
+=\frac{k_B\pi L^2}{\lp^2}.
+\end{equation}
+Le produit $T_HS_H$ donne
+\begin{equation}
+T_HS_H
+=
+\frac{\hbar cL}{2\lp^2}
+=
+\frac{c^4L}{2G}.
+\end{equation}
+En divisant par $V=4\pi L^3/3$, on retrouve
+\begin{equation}
+\boxed{
+\rho_H(L)=\frac{3c^4}{8\pi G L^2}.
+}
+\end{equation}
+
+La meme densite apparait donc par deux voies : borne de trou noir et
+thermodynamique d'horizon. Les signes et facteurs de premier principe dependent
+du type d'horizon, mais l'echelle $L^{-2}$ est robuste.
+
+\section{Holographie : volume GUP contre aire}
+
+Le comptage volumique donne schematiquement
+\begin{equation}
+N_{\rm volume}(L)\sim\left(\frac{L}{\lp}\right)^3.
+\end{equation}
+La gravite impose plutot
+\begin{equation}
+\frac{S_{\rm BH}}{k_B}
+=
+\frac{A}{4\lp^2}
+=
+\frac{\pi L^2}{\lp^2}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+\frac{S_{\rm BH}}{k_B}
+\sim
+N_{\rm volume}^{2/3}.
+}
+\end{equation}
+
+Une formulation candidate est
+\begin{equation}
+\boxed{
+N_{\rm grav}(\Omega_L)
+=
+\min\left[
+N_{\rm GUP}(\Omega_L),
+\frac{A(\partial\Omega_L)}{4\lp^2}
+\right].
+}
+\end{equation}
+
+\section{Relation de Weinberg cosmologique}
+
+Une masse construite avec $\hbar,G,c,H_0$ est
+\begin{equation}
+\boxed{
+m_W=\left(\frac{\hbar^2H_0}{Gc}\right)^{1/3}.
+}
+\label{eq:weinberg_mass}
+\end{equation}
+Elle equivaut, a des facteurs d'ordre unite pres, a
+\begin{equation}
+\lambda_C^2\sim r_g\LH,
+\qquad
+\lambda_C=\frac{\hbar}{mc},
+\qquad
+r_g=\frac{Gm}{c^2}.
+\end{equation}
+Cette relation est une echelle numerologique robuste, pas une prediction
+dynamique du GUP. Elle signale un autre melange quantique--gravitation--Hubble.
+
+\section{Acceleration cosmologique}
+
+Avec
+\begin{equation}
+\Lambda=\frac{3\Omega_\Lambda H_0^2}{c^2},
+\end{equation}
+il faut distinguer
+\begin{equation}
+\boxed{
+a_\Lambda=c^2\sqrt{\Lambda}
+=cH_0\sqrt{3\Omega_\Lambda},
+}
+\end{equation}
+et l'echelle de Sitter usuelle
+\begin{equation}
+\boxed{
+a_{\rm dS}=c^2\sqrt{\frac{\Lambda}{3}}
+=cH_0\sqrt{\Omega_\Lambda}.
+}
+\end{equation}
+Pour les comparaisons de type MOND, la convention naturelle est souvent
+\begin{equation}
+\boxed{
+a_0\sim\frac{a_{\rm dS}}{2\pi}
+=
+\frac{c^2}{2\pi}\sqrt{\frac{\Lambda}{3}}.
+}
+\end{equation}
+
+\section{Equation cosmologique candidate}
+
+Une ecriture effective inspiree par l'holographie est
+\begin{equation}
+\boxed{
+H^2
+=
+\frac{8\pi G}{3c^2}\rho_m
++\eta(L)\frac{c^2}{L^2}.
+}
+\label{eq:friedmann_candidate}
+\end{equation}
+Elle correspond a une densite effective
+\begin{equation}
+\rho_{\rm eff}(L)
+=
+\eta(L)\frac{3c^4}{8\pi G L^2}.
+\end{equation}
+
+Si $L=c/H$, le terme est proportionnel a $H^2$ et peut se comporter comme une
+renormalisation de $G$. Pour obtenir une energie noire avec $w\simeq-1$, il
+faut une longueur IR dynamique ou non locale, par exemple l'horizon des
+evenements futur dans les modeles d'energie noire holographique.
+
+\section{Synthese}
+
+Les relations les plus solides sont
+\begin{align}
+\rhoDE
+&=
+\frac{3\Omega_\Lambda}{8\pi}\rhoP
+\left(\frac{\lp}{\LH}\right)^2,\\
+E_{\rm DE}
+&=
+\left(\frac{3\Omega_\Lambda}{8\pi}\right)^{1/4}
+\sqrt{\EP\EH},\\
+\rhobh(L)
+&=
+\frac{3c^4}{8\pi G L^2},\\
+\rho_{\rm grav}(L)
+&=
+\min\left[
+\frac{g\rhoP}{16\pi^2\beta_0^2},
+\frac{3c^4}{8\pi G L^2}
+\right],\\
+L_\times
+&=
+\beta_0\sqrt{\frac{6\pi}{g}}\,\lp,\\
+m_W
+&=
+\left(\frac{\hbar^2H_0}{Gc}\right)^{1/3},\\
+a_{\rm dS}
+&=
+c^2\sqrt{\frac{\Lambda}{3}}.
+\end{align}
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!40!black,title=Conclusion structurante]
+\[
+\text{GUP regularise l'UV}
+\quad+\quad
+\text{horizon projette l'IR}
+\quad\Longrightarrow\quad
+\text{residu holographique fini.}
+\]
+\end{tcolorbox}
+
+Le probleme residuel n'est pas seulement le facteur $10^{-122}$. Il devient le
+probleme plus precis de la dynamique d'horizon : pourquoi le bon $L$ est
+selectionne, pourquoi le coefficient vaut aujourd'hui $\Omega_\Lambda$, et
+pourquoi le tenseur effectif possede une equation d'etat proche de $w=-1$.
+
+\begin{thebibliography}{9}
+\bibitem{CODATA2022}
+E. Tiesinga, P. J. Mohr, D. B. Newell and B. N. Taylor,
+``CODATA recommended values of the fundamental physical constants: 2022'',
+\emph{Reviews of Modern Physics} \textbf{97}, 025002 (2025).
+
+\bibitem{Planck2018}
+N. Aghanim et al. (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters'',
+\emph{Astronomy \& Astrophysics} \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{CKN1999}
+A. G. Cohen, D. B. Kaplan and A. E. Nelson,
+``Effective Field Theory, Black Holes, and the Cosmological Constant'',
+\emph{Physical Review Letters} \textbf{82}, 4971 (1999),
+arXiv:hep-th/9803132.
+
+\bibitem{Li2004}
+M. Li,
+``A Model of Holographic Dark Energy'',
+\emph{Physics Letters B} \textbf{603}, 1--5 (2004),
+arXiv:hep-th/0403127.
+
+\bibitem{Bekenstein1973}
+J. D. Bekenstein,
+``Black Holes and Entropy'',
+\emph{Physical Review D} \textbf{7}, 2333 (1973).
+
+\bibitem{GibbonsHawking1977}
+G. W. Gibbons and S. W. Hawking,
+``Cosmological event horizons, thermodynamics, and particle creation'',
+\emph{Physical Review D} \textbf{15}, 2738 (1977).
+
+\bibitem{Kempf1995}
+A. Kempf, G. Mangano and R. B. Mann,
+``Hilbert space representation of the minimal length uncertainty relation'',
+\emph{Physical Review D} \textbf{52}, 1108 (1995),
+arXiv:hep-th/9412167.
+\end{thebibliography}
+
+\end{document}
