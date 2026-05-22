@@ -1,0 +1,508 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+\usepackage{array}
+
+\geometry{margin=2.4cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+  citecolor=blue!60!black,
+  pdftitle={Consequences electromagnetiques de la conjecture UV/IR sur alpha},
+  pdfauthor={Document de travail}
+}
+
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.4em}
+
+\newcommand{\ee}{\mathrm e}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\lp}{\ell_{\rm P}}
+\newcommand{\RL}{R_{\Lambda}}
+\newcommand{\me}{m_e}
+\newcommand{\mP}{m_{\rm P}}
+\newcommand{\lambdabar}{\bar\lambda_e}
+\newcommand{\epsz}{\varepsilon_0}
+
+\title{Consequences de la conjecture UV/IR sur $\alpha$\\
+\large Charge, atome d'hydrogene, constantes electriques et cellule position--vitesse}
+\author{Document de travail}
+\date{22 mai 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Ce document verifie les implications elementaires de la conjecture
+\[
+\alpha^{-1}=\ln\left(\frac{R_{\Lambda}}{10\pi\ell_{\rm P}}\right).
+\]
+En posant
+\[
+\mathcal L\equiv\ln\left(\frac{R_\Lambda}{10\pi\ell_{\rm P}}\right),
+\]
+la conjecture devient \(\alpha=1/\mathcal L\). Les grandeurs classiques de
+l'electromagnetisme quantique se reecrivent alors en fonction du meme
+logarithme UV/IR : charge elementaire, vitesse de Bohr, rayon de Bohr, energie
+de Rydberg, rayon classique de l'electron, section de Thomson, resistance de
+von Klitzing et rapport force electrique/force gravitationnelle. Le statut
+reste conditionnel : ces relations sont des identites algebriques une fois
+\(\alpha=1/\mathcal L\) pose, mais la preuve physique exige encore de deriver
+le facteur \(10\pi\) depuis les modes de bord \(U(1)\).
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Noyau conjectural}
+
+On definit
+\begin{equation}
+\boxed{
+\cL=\ln\left(\frac{\RL}{10\pi\lp}\right)
+}
+\end{equation}
+avec
+\begin{equation}
+\RL=\sqrt{\frac{3}{\Lambda}},
+\qquad
+\lp=\sqrt{\frac{\hbar G}{c^3}}.
+\end{equation}
+
+La conjecture centrale est
+\begin{equation}
+\boxed{\alpha=\frac{1}{\cL}},
+\qquad
+\boxed{\alpha^{-1}=\cL}.
+\end{equation}
+
+\begin{tcolorbox}[colback=blue!3!white,colframe=blue!50!black,title=Statut]
+Toutes les relations ci-dessous sont des consequences algebriques de la
+substitution \(\alpha=1/\cL\). Elles ne constituent pas des preuves
+independantes de la conjecture. Le verrou theorique demeure la derivation du
+facteur \(10\pi\), ou du seuil \(S_0^{U(1)}=100\pi^3 k_B\), depuis la
+microphysique de bord du secteur \(U(1)\).
+\end{tcolorbox}
+
+\section{Charge elementaire}
+
+La constante de structure fine est
+\begin{equation}
+\alpha=\frac{e^2}{4\pi\epsz\hbar c}.
+\end{equation}
+Donc
+\begin{equation}
+e^2=4\pi\epsz\hbar c\,\alpha.
+\end{equation}
+Avec \(\alpha=1/\cL\),
+\begin{equation}
+\boxed{
+e=\sqrt{\frac{4\pi\epsz\hbar c}{\cL}}.
+}
+\end{equation}
+
+La charge de Planck vaut
+\begin{equation}
+q_{\rm P}=\sqrt{4\pi\epsz\hbar c}.
+\end{equation}
+Ainsi
+\begin{equation}
+\boxed{
+e=\frac{q_{\rm P}}{\sqrt{\cL}}.
+}
+\end{equation}
+
+Dans cette lecture, la charge elementaire est une charge de Planck affaiblie
+par une racine logarithmique cosmologique.
+
+\section{Force de Coulomb}
+
+La force de Coulomb entre deux charges elementaires est
+\begin{equation}
+F_e=\frac{1}{4\pi\epsz}\frac{e^2}{r^2}.
+\end{equation}
+Comme \(e^2/(4\pi\epsz)=\alpha\hbar c\), on obtient
+\begin{equation}
+\boxed{
+F_e=\frac{\hbar c}{\cL\,r^2}.
+}
+\end{equation}
+
+\section{Vitesse de l'electron dans l'hydrogene}
+
+Dans le modele de Bohr, la vitesse caracteristique de l'electron dans l'etat
+fondamental de l'hydrogene est
+\begin{equation}
+v_e\simeq \alpha c.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+v_e=\frac{c}{\cL}.
+}
+\end{equation}
+
+Cette relation doit etre lue comme une echelle non relativiste. La
+spectroscopie de precision exige ensuite la masse reduite, l'equation de
+Dirac, la structure fine, le Lamb shift et les corrections QED.
+
+\section{Rayon de Bohr et longueur de Compton reduite}
+
+Le rayon de Bohr s'ecrit
+\begin{equation}
+a_0=\frac{\hbar}{m_e c\alpha}.
+\end{equation}
+Avec \(\alpha=1/\cL\),
+\begin{equation}
+\boxed{
+a_0=\frac{\hbar}{m_e c}\,\cL.
+}
+\end{equation}
+
+La longueur de Compton reduite de l'electron est
+\begin{equation}
+\lambdabar=\frac{\hbar}{m_e c}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+a_0=\lambdabar\,\cL.
+}
+\end{equation}
+
+\section{Principe position--vitesse}
+
+Dans l'atome d'hydrogene, au niveau d'echelle de Bohr,
+\begin{equation}
+a_0 v_e=
+\left(\frac{\hbar}{m_e c}\cL\right)
+\left(\frac{c}{\cL}\right).
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+a_0 v_e=\frac{\hbar}{m_e}.
+}
+\end{equation}
+
+Cela retrouve la forme position--vitesse du principe d'incertitude :
+\begin{equation}
+\Delta x\,\Delta v\sim\frac{\hbar}{m}.
+\end{equation}
+
+Dans le cadre GUP position--vitesse, la cellule effective s'ecrit
+\begin{equation}
+\boxed{
+\Delta^3x\,\Delta^3v
+\sim
+\left(\frac{h}{m}\right)^3(1+\beta m^2v^2)^3.
+}
+\end{equation}
+
+\section{Energie de Rydberg}
+
+Dans la limite proton infiniment massif, l'energie fondamentale de l'hydrogene
+est
+\begin{equation}
+E_1=-\frac12 m_e c^2\alpha^2.
+\end{equation}
+Avec \(\alpha=1/\cL\),
+\begin{equation}
+\boxed{
+E_1=-\frac{m_e c^2}{2\cL^2}.
+}
+\end{equation}
+L'energie de Rydberg correspondante est
+\begin{equation}
+\boxed{
+E_R=\frac{m_e c^2}{2\cL^2}.
+}
+\end{equation}
+
+Pour l'hydrogene reel, \(m_e\) doit etre remplacee par la masse reduite au
+premier ordre.
+
+\section{Rayon classique de l'electron}
+
+Le rayon classique de l'electron est
+\begin{equation}
+r_e=\frac{e^2}{4\pi\epsz m_e c^2}.
+\end{equation}
+Comme \(e^2/(4\pi\epsz)=\alpha\hbar c\),
+\begin{equation}
+r_e=\alpha\frac{\hbar}{m_e c}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+r_e=\frac{\lambdabar}{\cL}.
+}
+\end{equation}
+
+On obtient la hierarchie
+\begin{equation}
+\boxed{
+r_e=\frac{\lambdabar}{\cL},
+\qquad
+\lambdabar,
+\qquad
+a_0=\lambdabar\cL
+}
+\end{equation}
+et donc
+\begin{equation}
+\boxed{
+a_0 r_e=\lambdabar^2.
+}
+\end{equation}
+
+\section{Section efficace de Thomson}
+
+La section efficace de Thomson est
+\begin{equation}
+\sigma_T=\frac{8\pi}{3}r_e^2.
+\end{equation}
+En utilisant \(r_e=\lambdabar/\cL\),
+\begin{equation}
+\boxed{
+\sigma_T=\frac{8\pi}{3}\frac{\lambdabar^2}{\cL^2}.
+}
+\end{equation}
+
+\section{Champ critique de Schwinger}
+
+Le champ critique de Schwinger est
+\begin{equation}
+E_S=\frac{m_e^2c^3}{e\hbar}.
+\end{equation}
+Le champ de Coulomb typique au rayon de Bohr verifie
+\begin{equation}
+E_{\rm Bohr}=\alpha^3 E_S.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+\frac{E_{\rm Bohr}}{E_S}=\frac{1}{\cL^3}.
+}
+\end{equation}
+
+\section{Constantes electriques quantiques}
+
+Le quantum de resistance de von Klitzing est
+\begin{equation}
+R_K=\frac{h}{e^2}.
+\end{equation}
+L'impedance du vide est
+\begin{equation}
+Z_0=\frac{1}{\epsz c}.
+\end{equation}
+On a
+\begin{equation}
+R_K=\frac{Z_0}{2\alpha}.
+\end{equation}
+Avec \(\alpha=1/\cL\),
+\begin{equation}
+\boxed{
+R_K=\frac{Z_0}{2}\cL.
+}
+\end{equation}
+
+Le quantum de conductance est
+\begin{equation}
+G_0=\frac{2e^2}{h}.
+\end{equation}
+Donc
+\begin{equation}
+\boxed{
+G_0=\frac{4}{Z_0\cL}.
+}
+\end{equation}
+
+Le quantum de flux supraconducteur est
+\begin{equation}
+\Phi_0=\frac{h}{2e}.
+\end{equation}
+Avec \(e=q_P/\sqrt{\cL}\),
+\begin{equation}
+\boxed{
+\Phi_0=\frac{h}{2q_P}\sqrt{\cL}.
+}
+\end{equation}
+
+\section{Rapport force electrique / force gravitationnelle}
+
+Entre deux electrons,
+\begin{equation}
+F_G=\frac{Gm_e^2}{r^2}.
+\end{equation}
+Le rapport vaut
+\begin{equation}
+\frac{F_e}{F_G}
+=
+\frac{\alpha\hbar c}{Gm_e^2}.
+\end{equation}
+Avec \(\alpha=1/\cL\) et \(m_P=\sqrt{\hbar c/G}\),
+\begin{equation}
+\boxed{
+\frac{F_e}{F_G}
+=
+\frac{m_P^2}{m_e^2}\frac{1}{\cL}.
+}
+\end{equation}
+
+\section{Masse d'egalite electromagnetique--gravitationnelle}
+
+On cherche une masse \(m_\star\) telle que
+\begin{equation}
+\frac{Gm_\star^2}{\hbar c}=\alpha.
+\end{equation}
+Donc
+\begin{equation}
+m_\star=m_P\sqrt{\alpha}.
+\end{equation}
+Avec \(\alpha=1/\cL\),
+\begin{equation}
+\boxed{
+m_\star=\frac{m_P}{\sqrt{\cL}}.
+}
+\end{equation}
+
+\section{Correction GUP pour l'electron atomique}
+
+Dans la reformulation position--vitesse, le parametre de correction GUP est
+\begin{equation}
+\chi=\beta m^2v^2.
+\end{equation}
+Pour l'electron atomique,
+\begin{equation}
+v_e=\alpha c=\frac{c}{\cL}.
+\end{equation}
+En posant
+\begin{equation}
+\beta=\frac{\beta_0}{m_P^2c^2},
+\end{equation}
+on obtient
+\begin{equation}
+\boxed{
+\chi_e=\beta_0\left(\frac{m_e}{m_P}\right)^2\frac{1}{\cL^2}.
+}
+\end{equation}
+
+Numeriquement,
+\begin{equation}
+\frac{\chi_e}{\beta_0}\simeq 9.33\times10^{-50}.
+\end{equation}
+Pour \(\beta_0\sim1\), cette correction est invisible. En revanche, une valeur
+gigantesque de \(\beta_0\), comme celle obtenue par identification directe
+\(\rho_{\rm reg}=\rho_{\rm DE}\), serait exclue si elle etait universelle.
+
+\section{Tableau synthetique}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}p{5.2cm} >{\raggedright\arraybackslash}p{8cm}}
+\toprule
+Grandeur & Reecriture avec \(\cL=\alpha^{-1}\) \\
+\midrule
+Charge elementaire & \(e=q_P/\sqrt{\cL}\) \\
+Vitesse atomique de l'electron & \(v_e=c/\cL\) \\
+Rayon de Bohr & \(a_0=\bar\lambda_e\cL\) \\
+Rayon classique de l'electron & \(r_e=\bar\lambda_e/\cL\) \\
+Produit fondamental & \(a_0r_e=\bar\lambda_e^2\) \\
+Rydberg & \(E_R=m_ec^2/(2\cL^2)\) \\
+Thomson & \(\sigma_T=(8\pi/3)\bar\lambda_e^2/\cL^2\) \\
+Resistance de von Klitzing & \(R_K=(Z_0/2)\cL\) \\
+Quantum de conductance & \(G_0=4/(Z_0\cL)\) \\
+Rapport \(F_e/F_G\) entre electrons & \(F_e/F_G=m_P^2/(m_e^2\cL)\) \\
+Masse d'egalite couplage gravitationnel/EM & \(m_\star=m_P/\sqrt{\cL}\) \\
+Correction GUP atomique & \(\chi_e=\beta_0(m_e/m_P)^2/\cL^2\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Interpretation}
+
+Le coeur de toutes ces relations est
+\begin{equation}
+\boxed{
+\cL=\ln\left(\frac{R_\Lambda}{10\pi\ell_P}\right)=\alpha^{-1}.
+}
+\end{equation}
+Si cette conjecture est correcte, l'electromagnetisme atomique basse energie
+devient une projection logarithmique du rapport Planck--de Sitter.
+
+Mais il faut separer deux niveaux :
+\begin{itemize}
+\item le niveau algebrique, qui est verifie ;
+\item le niveau physique, qui exige encore une derivation du seuil
+\(S_0^{U(1)}=100\pi^3k_B\).
+\end{itemize}
+
+\section{Verrou theorique}
+
+Dans la formulation entropique, le facteur \(10\pi\) correspond a
+\begin{equation}
+S_0^{U(1)}=100\pi^3k_B.
+\end{equation}
+Une piste est
+\begin{equation}
+S_0^{U(1)}=4\pi\left[2\pi\left(2+\frac12\right)\right]^2 k_B,
+\end{equation}
+ou
+\begin{equation}
+2=\text{deux polarisations du photon},
+\qquad
+\frac12=\text{mode de bord }U(1)\text{ renormalise}.
+\end{equation}
+
+Le programme de preuve consiste donc a deriver rigoureusement
+\begin{equation}
+\boxed{
+g_{\rm edge}^{U(1)}=\frac12
+}
+\end{equation}
+comme capacite holographique renormalisee du mode de bord Maxwell.
+
+\section{Conclusion}
+
+Les formules de cette note sont coherentes et utiles comme cartographie des
+consequences de la conjecture \(\alpha^{-1}=\ln(R_\Lambda/(10\pi\ell_P))\).
+Elles montrent que charge, echelle atomique, diffusion Thomson, resistance
+quantique et hierarchie electromagnetisme-gravitation peuvent etre reecrites a
+partir du meme logarithme UV/IR.
+
+La conclusion scientifique stricte est cependant prudente : ces reecritures ne
+valident pas seules la conjecture. Elles indiquent ou chercher des tests et des
+contraintes, en particulier la non-variation temporelle de \(\alpha\), les
+limites atomiques sur \(\beta_0\), et le calcul de bord Maxwell.
+
+\begin{thebibliography}{9}
+
+\bibitem{CODATA2022}
+NIST/CODATA, \emph{CODATA recommended values of the fundamental physical
+constants: 2022}.
+
+\bibitem{Planck2018}
+Planck Collaboration, \emph{Planck 2018 results. VI. Cosmological parameters},
+arXiv:1807.06209.
+
+\bibitem{DonnellyWall2015}
+W. Donnelly and A. C. Wall, \emph{Geometric entropy and edge modes of the
+electromagnetic field}, arXiv:1506.05792.
+
+\end{thebibliography}
+
+\end{document}
