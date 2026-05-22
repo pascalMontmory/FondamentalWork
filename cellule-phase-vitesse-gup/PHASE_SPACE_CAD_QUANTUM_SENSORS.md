@@ -126,6 +126,34 @@ This makes duty cycle explicit: long cooling, preparation, detection or dead
 times reduce the usable sensitivity even if the single-shot atom budget looks
 excellent.
 
+## Technical noise budget extension
+
+The script `scripts/simulate_sensor_noise_budget.py` adds a first-order
+technical-noise envelope for a three-pulse gravimeter. It is deliberately kept
+separate from the atom-source budget because these terms are instrument and site
+dependent:
+
+```text
+sigma_phi_laser^2 = integral |H_phi(f)|^2 S_phi(f) df
+|H_phi(f)|^2 ~= 16 sin^4(pi f T_i)
+sigma_phi_vib^2 = k_eff^2 integral |H_a(f)|^2 S_a(f) df
+|H_a(f)|^2 ~= [4 sin^2(pi f T_i)/(2 pi f)^2]^2
+sigma_phi_total^2 = 1/N + (phi_laser/C)^2 + (phi_vib/C)^2 + (phi_thermal/C)^2
+delta a_sqrtHz = sigma_phi_total sqrt(T_cycle)/(k_eff T_i^2)
+```
+
+The vibration model uses approximate acceleration ASD envelopes for quiet,
+typical-lab and urban sites. The laser model uses a simple Raman relative
+phase-noise PSD envelope. The thermal model combines a BBR sensitivity proxy
+with an empirical mechanical thermal phase term. These are not universal
+constants; they are placeholders to be replaced by measured PSDs and calibrated
+instrument data.
+
+The first generated benchmark gives the expected qualitative result: vibration
+dominates in a non-isolated lab, while a `-40 dB` amplitude isolation factor can
+move the model into the `10-50 microGal/sqrt(Hz)` transportable range for
+moderate to long interrogation times.
+
 ## Example use case
 
 Consider a portable gravimeter targeting an aggressive
@@ -215,15 +243,16 @@ This is directly relevant to:
 
 ## What the model does not claim
 
-The current simulator is not a complete instrument model. It does not include:
+The current simulator is not a complete instrument model. The source-only CAD
+budget is now complemented by first-order laser, seismic and thermal envelopes,
+but it still does not include:
 
-- laser phase noise;
+- measured instrument PSDs;
 - wavefront aberrations;
-- vibration rejection;
 - magnetic systematics;
 - cold collisions;
-- dead time and Allan deviation;
 - full detection noise;
+- Allan deviation beyond the root-Hz proxy;
 - feedback and navigation filtering.
 
 Therefore a positive score means only:
@@ -251,9 +280,11 @@ reports/data/atom_phase_space_budget.csv
 reports/phase_space_sensor_cad_summary.json
 reports/phase_space_sensor_cad_report.md
 reports/atom_phase_space_budget_report.md
+reports/sensor_noise_budget_report.md
 reports/figures/phase_space_sensor_cad.png
 reports/figures/atom_phase_space_budget.png
 reports/figures/atom_phase_space_budget_focus.png
+reports/figures/sensor_noise_budget.png
 ```
 
 ## Scientific interpretation
