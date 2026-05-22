@@ -69,6 +69,75 @@ These equations are standard dimensional and interferometric estimates. The
 added value is to treat them as one coupled design budget instead of isolated
 figures of merit.
 
+## Explicit phase-space budget
+
+For a gravimeter-like sensor, a simple sensitivity figure of merit is
+
+```text
+FOM = sqrt(N_detected) T_i^2
+delta a ~= 1 / (k_eff FOM).
+```
+
+The detected atom number cannot be chosen independently of the source
+phase-space density. A conservative cap is
+
+```text
+N_phase_cap = eta_max V_eff / lambda_th^3
+N_detected = min(N_technical survival, N_phase_cap).
+```
+
+The script `scripts/compare_atom_phase_space_budget.py` implements this budget
+with `eta_max = 0.3`, a `12 mm` aperture radius and a technical atom cap of
+`1e7`. It scans Rb87, Cs133, Sr88, Yb174, Li6 and Li7.
+
+Best practical-floor points:
+
+| atom | access | best T [K] | best Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM max | delta a [m/s2] |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| Sr88 | good | 1.0e-8 | 1 | 2.29e-7 | 9.73e-4 | 1.0e7 | 3.16e3 | 1.73e-11 |
+| Yb174 | good | 1.0e-8 | 1 | 1.78e-7 | 6.91e-4 | 1.0e7 | 3.16e3 | 1.40e-11 |
+| Cs133 | excellent | 1.0e-7 | 1 | 9.92e-8 | 2.50e-3 | 1.0e7 | 3.16e3 | 2.14e-11 |
+| Rb87 | excellent | 1.0e-7 | 1 | 1.81e-7 | 3.09e-3 | 9.99e6 | 3.16e3 | 1.96e-11 |
+| Li7 | specialized | 3.0e-7 | 1 | 3.03e-6 | 1.89e-2 | 1.07e6 | 1.03e3 | 5.16e-11 |
+| Li6 | specialized | 3.0e-7 | 1 | 3.54e-6 | 2.04e-2 | 8.74e5 | 9.35e2 | 5.71e-11 |
+
+This makes the atom-choice trade-off explicit: Sr/Yb can reach lower practical
+temperatures through narrow-line cooling, Rb/Cs remain mature and accessible,
+while Li expands faster and has a larger recoil temperature.
+
+This FOM is only a first-order proxy. An engineering-grade model must multiply
+the ideal atom-shot-noise term by contrast and duty-cycle factors, then add
+laser phase noise, vibration residuals, wavefront aberrations, detection noise
+and Allan-deviation behavior.
+
+## GUP correction scale
+
+For the deformed measure
+
+```text
+dN_GUP = dN_0 / (1 + beta m^2 v^2)^3
+```
+
+the relevant small parameter is
+
+```text
+epsilon_GUP = beta p^2 = beta0 (m v / p_Pl)^2.
+```
+
+For Rb87 at `T = 1 microkelvin`,
+
+```text
+sigma_v = 9.78e-3 m/s
+epsilon_GUP(beta0=1)    = 4.68e-56
+epsilon_GUP(beta0=1e26) = 4.68e-30
+(1 + epsilon_GUP)^-3 ~= 1 - 3 epsilon_GUP.
+```
+
+So the GUP factor is not an observable industrial correction here. It is many
+orders of magnitude below cold-atom sensitivity even with a deliberately loose
+phenomenological `beta0 = 1e26`. The industrial framework is therefore the
+`beta -> 0` phase-space budget, not detection of the GUP deformation.
+
 ## Why this is useful
 
 Cold atoms improve inertial and gravity sensing because they provide stable,
@@ -127,9 +196,13 @@ For each scenario it scans atom temperature and interrogation time, then writes:
 
 ```text
 reports/data/phase_space_sensor_cad.csv
+reports/data/atom_phase_space_budget.csv
 reports/phase_space_sensor_cad_summary.json
 reports/phase_space_sensor_cad_report.md
+reports/atom_phase_space_budget_report.md
 reports/figures/phase_space_sensor_cad.png
+reports/figures/atom_phase_space_budget.png
+reports/figures/atom_phase_space_budget_focus.png
 ```
 
 ## Scientific interpretation
