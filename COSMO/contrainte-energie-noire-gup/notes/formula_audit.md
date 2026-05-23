@@ -4,13 +4,13 @@
 
 Constantes CODATA/NIST 2022 :
 
-```tex
+```math
 c,\quad h,\quad \hbar=h/(2\pi),\quad G.
 ```
 
 Parametres Planck 2018 utilises :
 
-```tex
+```math
 H_0 = 67.4\ \mathrm{km\,s^{-1}\,Mpc^{-1}},
 \qquad
 \Omega_m = 0.315,
@@ -22,7 +22,7 @@ H_0 = 67.4\ \mathrm{km\,s^{-1}\,Mpc^{-1}},
 
 La densite d'energie noire est
 
-```tex
+```math
 \rho_\Lambda
 =
 \Omega_\Lambda \frac{3H_0^2}{8\pi G}c^2.
@@ -30,7 +30,7 @@ La densite d'energie noire est
 
 La regularisation GUP du vide dans le modele `gamma=3` donne
 
-```tex
+```math
 \rho_{\mathrm{vac}}
 =
 \frac{g\rho_P}{16\pi^2\beta_0^2},
@@ -40,7 +40,7 @@ La regularisation GUP du vide dans le modele `gamma=3` donne
 
 En imposant `rho_vac = rho_Lambda`, on obtient
 
-```tex
+```math
 \beta_0^2
 =
 \frac{g\rho_P}{16\pi^2\rho_\Lambda}
@@ -50,13 +50,13 @@ En imposant `rho_vac = rho_Lambda`, on obtient
 
 Comme
 
-```tex
+```math
 t_P=\sqrt{\frac{\hbar G}{c^5}},
 ```
 
 alors
 
-```tex
+```math
 \boxed{
 \beta_0^{(\Lambda)}
 =
@@ -72,7 +72,7 @@ obtenue avec `rho_P/rho_Lambda`.
 
 La longueur minimale effective correspondant a cette identification est
 
-```tex
+```math
 \ell_\Lambda
 =
 \sqrt{\beta_0^{(\Lambda)}}\,\ell_P
@@ -84,7 +84,7 @@ La longueur minimale effective correspondant a cette identification est
 Donc l'identification directe de l'energie noire selectionne l'echelle
 geometrique
 
-```tex
+```math
 \sqrt{\ell_P R_H},
 \qquad
 R_H=\frac{c}{H_0}.
@@ -96,7 +96,7 @@ Pour `g=1`, `ell_Lambda = 2.48e-5 m`.
 
 L'impulsion/energie GUP associee est
 
-```tex
+```math
 E_{\mathrm{GUP}}
 =
 \frac{\hbar c}{\ell_\Lambda}
@@ -111,7 +111,7 @@ Pour `g=1`, `E_GUP = 7.94 meV`.
 
 La reformulation position-vitesse donne
 
-```tex
+```math
 v_{\mathrm{GUP}}
 =
 c\frac{m_P}{m\sqrt{\beta_0}}.
@@ -119,7 +119,7 @@ c\frac{m_P}{m\sqrt{\beta_0}}.
 
 Sous l'identification a l'energie noire :
 
-```tex
+```math
 \frac{v_{\mathrm{GUP}}}{c}
 =
 \frac{m_*}{m},
@@ -135,7 +135,7 @@ universellement.
 
 Le premier manuscrit donne, pour `gamma=3`,
 
-```tex
+```math
 n_{\max}
 =
 \frac{g}{32\pi\beta_0^{3/2}\ell_P^3}.
@@ -143,7 +143,7 @@ n_{\max}
 
 En inserant la valeur `beta0_Lambda`, on trouve une nouvelle forme fermee :
 
-```tex
+```math
 \boxed{
 n_{\max}^{(\Lambda)}
 =
@@ -157,7 +157,7 @@ R_H=\frac{c}{H_0}.
 La distance moyenne entre modes est donc de l'ordre de la meme echelle
 UV/IR mixte :
 
-```tex
+```math
 \boxed{
 \left(n_{\max}^{(\Lambda)}\right)^{-1/3}
 =

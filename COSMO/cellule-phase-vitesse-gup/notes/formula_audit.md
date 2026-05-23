@@ -4,7 +4,7 @@
 
 - La reecriture non relativiste `p = mv` donne bien :
 
-```tex
+```math
 \dd^3p = m^3 \dd^3v,
 \qquad
 \dd N =
@@ -13,19 +13,19 @@
 
 - Le seuil de correction est impulsionnel, mais s'ecrit en vitesse :
 
-```tex
+```math
 v_{\mathrm{GUP}} = \frac{1}{m\sqrt{\beta}}.
 ```
 
 - La longueur minimale ne depend pas de la masse :
 
-```tex
+```math
 \Delta x_{\min} = \hbar\sqrt{\beta}.
 ```
 
 - La densite differentielle non relativiste en vitesse est :
 
-```tex
+```math
 \frac{\dd n}{\dd v}
 =
 \frac{4\pi g m^3}{h^3}
@@ -34,19 +34,19 @@ v_{\mathrm{GUP}} = \frac{1}{m\sqrt{\beta}}.
 
 - Son maximum est situe en :
 
-```tex
+```math
 v_{\mathrm{pic}} = \frac{v_{\mathrm{GUP}}}{\sqrt{2}}.
 ```
 
 - Le nombre total maximal de modes est independant de la masse :
 
-```tex
+```math
 n_{\max} = \frac{g\pi^2}{4h^3\beta^{3/2}}.
 ```
 
 - Le jacobien relativiste pour le module de l'impulsion est correct :
 
-```tex
+```math
 p = \gamma mv,
 \qquad
 p^2\dd p = m^3\gamma^5v^2\dd v.
@@ -54,7 +54,7 @@ p^2\dd p = m^3\gamma^5v^2\dd v.
 
 - La fonction de partition classique basse temperature est correcte :
 
-```tex
+```math
 Z_1 = Z_{1,0}[1-9\theta_T+90\theta_T^2+\cdots],
 \qquad
 \theta_T = \beta m k_BT.
@@ -62,7 +62,7 @@ Z_1 = Z_{1,0}[1-9\theta_T+90\theta_T^2+\cdots],
 
 - Les corrections derivees sont coherentes :
 
-```tex
+```math
 \frac{U}{N}
 =
 \frac32 k_BT
@@ -70,7 +70,7 @@ Z_1 = Z_{1,0}[1-9\theta_T+90\theta_T^2+\cdots],
 +99\beta^2m^2k_B^3T^3+\cdots,
 ```
 
-```tex
+```math
 \frac{C_V}{N}
 =
 \frac32 k_B
@@ -89,7 +89,7 @@ Z_1 = Z_{1,0}[1-9\theta_T+90\theta_T^2+\cdots],
 
 Pour le gaz classique massif non relativiste, la limite haute temperature est finie :
 
-```tex
+```math
 \lim_{T\to\infty}\frac{U}{N} =
 \frac{3}{2m\beta}
 =

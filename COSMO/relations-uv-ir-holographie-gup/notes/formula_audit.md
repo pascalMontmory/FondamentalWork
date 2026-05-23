@@ -4,20 +4,20 @@
 
 La densite critique d'energie est
 
-```tex
+```math
 \rho_c=\frac{3c^2H_0^2}{8\pi G}.
 ```
 
 Avec `L_H=c/H0`, `rho_P=c^7/(\hbar G^2)` et
 `\ell_P^2=\hbar G/c^3`, on a exactement
 
-```tex
+```math
 \rho_P\ell_P^2=\frac{c^4}{G}.
 ```
 
 Donc
 
-```tex
+```math
 \boxed{
 \rho_{\rm DE}
 =
@@ -35,7 +35,7 @@ dimensionnelle exacte une fois `H0` et `Omega_Lambda` fixes.
 
 Pour une sphere de rayon `L`,
 
-```tex
+```math
 E=\rho\frac{4\pi}{3}L^3,
 \qquad
 E_{\rm BH}=\frac{c^4L}{2G}.
@@ -43,7 +43,7 @@ E_{\rm BH}=\frac{c^4L}{2G}.
 
 La condition `E <= E_BH` donne
 
-```tex
+```math
 \boxed{
 \rho\leq \rho_{\rm BH}(L)=\frac{3c^4}{8\pi G L^2}.
 }
@@ -56,13 +56,13 @@ definition choisie de `L_H`.
 
 La definition
 
-```tex
+```math
 E_{\rm DE}=[\rho_{\rm DE}(\hbar c)^3]^{1/4}
 ```
 
 donne
 
-```tex
+```math
 \boxed{
 E_{\rm DE}
 =
@@ -79,7 +79,7 @@ Le script numerique donne `E_DE = 2.241 meV`.
 
 Le regulateur GUP `gamma=3` donne
 
-```tex
+```math
 \rho_{\rm reg}
 =
 \frac{g\rho_P}{16\pi^2\beta_0^2}.
@@ -88,7 +88,7 @@ Le regulateur GUP `gamma=3` donne
 Le facteur numerique `16 pi^2` est important. Il explique pourquoi l'echelle
 d'energie GUP ajustee a `rho_DE` differe de `E_DE` :
 
-```tex
+```math
 \boxed{
 \frac{E_{\rm GUP}^{(\Lambda)}}{E_{\rm DE}}
 =
@@ -105,7 +105,7 @@ Pour `g=1`, ce rapport vaut `3.5449`, ce qui verifie
 
 La forme
 
-```tex
+```math
 \rho_{\rm grav}(L)=
 \min\left[
 \frac{g\rho_P}{16\pi^2\beta_0^2},
@@ -118,7 +118,7 @@ combine deux contraintes : regularisation UV et non-effondrement gravitationnel.
 
 Le croisement des deux branches est
 
-```tex
+```math
 \boxed{
 L_\times
 =
@@ -133,19 +133,19 @@ macroscopique, la branche gravitationnelle domine.
 
 Avec
 
-```tex
+```math
 \Lambda=\frac{3\Omega_\Lambda H_0^2}{c^2},
 ```
 
 il faut distinguer
 
-```tex
+```math
 a_\Lambda=c^2\sqrt{\Lambda}=cH_0\sqrt{3\Omega_\Lambda}
 ```
 
 et l'echelle de Sitter usuelle
 
-```tex
+```math
 \boxed{
 a_{\rm dS}=c^2\sqrt{\frac{\Lambda}{3}}=cH_0\sqrt{\Omega_\Lambda}.
 }
@@ -154,7 +154,7 @@ a_{\rm dS}=c^2\sqrt{\frac{\Lambda}{3}}=cH_0\sqrt{\Omega_\Lambda}.
 Si on compare a une acceleration de type MOND, la convention la plus frequente
 est plutot
 
-```tex
+```math
 a_{\rm dS}/(2\pi)
 ```
 
