@@ -43,8 +43,9 @@ v_GUP = 1/(m sqrt(beta)).
   sur le critere `eta = n lambda_th^3`.
 - `scripts/compare_atom_phase_space_budget.py` : comparaison Rb/Sr/Yb/Cs/Li
   avec contrainte `N_phase_cap = eta_max V_eff / lambda_th^3`.
-- `scripts/simulate_sensor_noise_budget.py` : budget technique laser,
-  vibration sismique, thermique et duty cycle pour un gravimetre atomique.
+- `scripts/simulate_sensor_noise_budget.py` : budget technique QPN, shot
+  photonique, laser, vibration sismique, Johnson-Nyquist, thermique et duty
+  cycle pour un gravimetre atomique.
 
 ## Simulation industrielle
 
