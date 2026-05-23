@@ -99,7 +99,54 @@ Le comportement observe est:
 
 Conclusion prudente: le verrou n'est pas seulement numerique. Il faut soit un filtre plus structurel, soit une justification probabiliste du seuil, soit abandonner ce filtre comme candidat principal.
 
-## 4. Recherche d'une provenance locale simple du nombre cible
+## 4. Derive des quantiles du score
+
+Pour comprendre l'echec du seuil fixe, on regarde directement les quantiles du score canonique:
+
+```math
+S_B(p)=\min(\kappa_B(p),\kappa_B(p+2)).
+```
+
+Le quantile pertinent pour selectionner `rho_M` est le quantile superieur `1-rho_M`, soit environ:
+
+```text
+0.9182140103199729
+```
+
+Resultats pour les paires de jumeaux `p,p+2`, `p>89`:
+
+```text
+X        count   mean        median      q_0.918214
+100000   1216    0.3157407   0.2759707   0.5500969
+300000   2986    0.2943940   0.2634951   0.4896406
+1000000  8161    0.2794694   0.2544229   0.4560177
+3000000  20924   0.2691633   0.2468427   0.4353767
+10000000 58972   0.2611616   0.2406937   0.4148808
+```
+
+Le seuil qui garde `8.1786%` des paires descend fortement avec `X`. Cette derive explique pourquoi un seuil calibre sur `10^5` ou `10^6` ne reste pas stable hors echantillon.
+
+## 5. Heuristique Collatz expliquant la derive
+
+Sous le modele aleatoire simplifie de Collatz accelere, une etape paire multiplie environ par `1/2`, et une etape impaire par `3/2`. En logarithme base 2, la derive moyenne descendante vaut:
+
+```math
+1-\frac{1}{2}\log_2 3 \approx 0.20751874963942196.
+```
+
+Si cette heuristique gouverne les grands temps d'arret, alors:
+
+```math
+\kappa_B(n)=\frac{\log_2 n}{\tau_B(n)}
+```
+
+devrait se rapprocher d'une echelle proche de `0.2075` quand `n` augmente, avec des fluctuations de grande deviation. Les quantiles observes vont dans cette direction: moyenne, mediane et quantile superieur baissent avec `X`.
+
+Consequence: un filtre `S_B(p)>=alpha` avec `alpha` fixe autour de `0.45` ou `0.55` selectionne probablement des trajectoires exceptionnellement rapides, dont la frequence diminue avec la taille. Cela rend peu plausible une densite relative positive stable a ce seuil.
+
+Cette conclusion reste numerique et heuristique, mais elle donne une raison structurelle de ne pas promouvoir ce filtre direct.
+
+## 6. Recherche d'une provenance locale simple du nombre cible
 
 On teste si la densite relative cible ressemble a un produit local elementaire.
 
@@ -142,7 +189,9 @@ En coefficient direct:
 C_Montmory  = 0.1079839749160000
 ```
 
-## 5. Ce que cette observation apporte
+Important: `P(y)` est une densite brute parmi les entiers avant conditionnement par primalite. Ce n'est pas directement une densite relative parmi les premiers jumeaux, qui incorporent deja les contraintes locales de tous les premiers. Cette proximite doit donc etre traitee comme une piste numerique, pas comme une explication mathematique.
+
+## 7. Ce que cette observation apporte
 
 Cette proximite ne prouve rien. Elle donne seulement une piste de provenance possible:
 
@@ -150,7 +199,7 @@ Cette proximite ne prouve rien. Elle donne seulement une piste de provenance pos
 - si c'est le cas, la constante devrait etre expliquee par un filtre modulaire fixe, pas par une propriete Collatz asymptotique vague;
 - cette piste est testable: il faut identifier des congruences precises qui donnent exactement ou naturellement une densite proche de `0.08178598968`.
 
-## 6. Risque d'overfitting
+## 8. Risque d'overfitting
 
 La proximite avec `P(17)` et `P(19)` peut etre accidentelle. Il est facile de fabriquer une constante proche en tronquant un produit eulerien ou en ajustant un petit module.
 
@@ -161,7 +210,7 @@ Pour que cette piste devienne scientifique, il faut:
 3. montrer pourquoi ce filtre est impose par la dynamique Montmory, et non choisi pour approcher la cible;
 4. verifier hors echantillon que le filtre predit une proportion stable parmi les jumeaux.
 
-## 7. Prochaine piste concrete
+## 9. Prochaine piste concrete
 
 Tester des filtres hybrides fixes:
 
@@ -181,12 +230,13 @@ W = 3*5*7*11*13*17
 
 Mais la regle de choix de `A` doit venir d'une definition Montmory explicite. Si `A` est choisi pour atteindre `rho_M`, la piste perd toute valeur predictive.
 
-## 8. Conclusion de travail
+## 10. Conclusion de travail
 
 A ce stade, les tests apportent une valeur negative mais utile:
 
 - le filtre Collatz direct a seuil unique ne tient pas encore;
 - la dynamique locale empirique initiale ne tient pas encore;
+- les quantiles du score Collatz derivent de facon compatible avec une heuristique de concentration vers une echelle plus basse;
 - le nombre cible ressemble davantage a une densite locale tronquee qu'a un coefficient deja explique par les tests Collatz.
 
 La prochaine avance devra donc etre une definition naturelle et fixe d'un filtre modulaire ou dynamique qui produit `rho_M` sans calibration apres coup.
