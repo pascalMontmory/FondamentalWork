@@ -184,7 +184,43 @@ Une mesure a `1 ppm` demanderait encore un ordre de grandeur de mieux. Cela
 montre pourquoi le protocole doit etre differentiel, module et geometriquement
 sur-contraint.
 
-## 6. Masse source et geometrie
+## 6. Peut-on faire mieux que l'existant ?
+
+La reponse courte est : potentiellement oui contre les mesures atomiques
+existantes, mais pas automatiquement contre tout l'etat de l'art mondial.
+
+Les ordres de grandeur publics sont les suivants :
+
+- les mesures de `G` par interferometrie atomique publiees ont atteint environ
+  `150 ppm` d'incertitude relative dans l'experience de Rosi et al. ;
+- les meilleures mesures modernes par balance ou pendule de torsion atteignent
+  plutot la zone `10-30 ppm`, avec une dispersion persistante entre experiences ;
+- la valeur recommandee CODATA 2022 garde une incertitude relative d'environ
+  `22 ppm`, ce qui reflete la difficulte et la dispersion des mesures.
+
+Notre protocole peut donc viser trois paliers :
+
+```text
+< 150 ppm  : battre clairement la reference atomique publiee
+< 50 ppm   : devenir competitif dans la famille des mesures modernes de G
+< 10 ppm   : attaquer l'etat de l'art global, tres difficile
+```
+
+Le capteur atomique seul peut probablement atteindre le premier palier si le
+signal source est assez grand et si la modulation A/B est propre. Le deuxieme
+palier demande deja une excellente metrologie des masses et des distances. Le
+troisieme palier ne depend presque plus du bruit atomique seul : il depend de la
+geometrie 3D, de la densite interne des masses, des positions des nuages, des
+systematiques thermiques, magnetiques, electrostatiques et de la repetition des
+inversions de signe.
+
+La strategie realiste n'est donc pas de promettre d'emblee la meilleure valeur
+de `G`. Elle est de construire une mesure atomique independante, reproductible,
+avec des systematiques differentes des balances de torsion. Meme si elle n'est
+pas immediatement plus precise que les meilleures mesures, elle peut etre tres
+utile parce qu'elle teste `G` avec une physique instrumentale differente.
+
+## 7. Masse source et geometrie
 
 La masse source ne doit pas etre modelisee comme un point. Il faut decrire les
 volumes reels : cylindres, anneaux, parallelepipedes, spheres ou assemblages
@@ -218,7 +254,7 @@ source mass density map
 Une publication serieuse sur `G` doit donc publier non seulement la sensibilite
 du capteur, mais aussi le modele CAO/metrologique des masses.
 
-## 7. Protocole experimental propose
+## 8. Protocole experimental propose
 
 ### Etape 1 - calibration sans masses modulees
 
@@ -280,7 +316,7 @@ Phi_measured,k = G K_geometry,k + b0 + b1 t + nuisance_terms + noise.
 `K_geometry,k` est calcule par le modele de masse source avec `G=1`. Le fit
 estime `G`, les offsets et les parametres nuisibles contraints.
 
-## 8. Budget d'incertitude
+## 9. Budget d'incertitude
 
 Un budget minimal doit inclure :
 
@@ -301,7 +337,7 @@ Un budget minimal doit inclure :
 La mesure devient credible seulement si chaque terme a une experience de
 renversement ou une contrainte independante.
 
-## 9. Role du cadre GUP, UV/IR et univers jumeau
+## 10. Role du cadre GUP, UV/IR et univers jumeau
 
 Le cadre GUP position-vitesse aide a organiser les grandeurs de source atomique :
 
@@ -330,7 +366,7 @@ G theory status: input constant in the present framework
 G metrology status: measurable parameter improved by atom interferometry CAD
 ```
 
-## 10. Extension logicielle proposee
+## 11. Extension logicielle proposee
 
 Le dossier peut etre etendu avec un script dedie :
 
@@ -371,7 +407,7 @@ test phase scaling with k_eff and T_i^2
 test uncertainty propagation for mass and distance
 ```
 
-## 11. Critere de succes
+## 12. Critere de succes
 
 Une premiere version ne doit pas promettre une meilleure valeur mondiale de `G`.
 Elle doit viser trois resultats controlables :
@@ -396,7 +432,7 @@ sigma_G/G < 10 ppm.
 Le niveau `1 ppm` demande une maitrise geometrique et systematique beaucoup plus
 severe que le seul bruit de phase atomique.
 
-## 12. Conclusion
+## 13. Conclusion
 
 Oui, le travail actuel peut aider a trouver une maniere plus fiable de mesurer
 `G`, mais par une voie precise : transformer le CAD de capteurs atomiques en CAD
@@ -421,5 +457,7 @@ atomiques peut devenir utile.
   of gravity, Science 315, 74-77, 2007.
 - G. Rosi et al., precision measurement of the Newtonian gravitational constant
   using cold atoms, Nature 510, 518-521, 2014.
+- Q. Li et al., measurements of the gravitational constant using two independent
+  methods, Nature 560, 582-588, 2018.
 - Reviews and comparisons of precision measurements of `G`, including the
   persistent dispersion between independent laboratory determinations.
