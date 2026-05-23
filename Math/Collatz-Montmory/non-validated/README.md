@@ -47,6 +47,7 @@ A file may leave this directory only if one of the following is true:
 - exact finite projectivity under bound projection;
 - conditional terminal Hardy-Littlewood law for twins;
 - open problem: existence of terminal limits for residue classes, positive-density families, primes, and twin-prime starts.
+- direct application note for resonance testing, terminal filters, and artifact rejection.
 
 ### Collatz-Montmory Draft Articles
 
@@ -57,6 +58,7 @@ A file may leave this directory only if one of the following is true:
 ## Current Files
 
 - `resonance-hypotheses-status.md`: current status of resonance claims and negative diagnostics around `B=89`.
+- `terminal-measures-applications.md`: application note for terminal measure diagnostics, projection tests, and conditional Montmory filters.
 - `terminal-laws-proof-program.md`: corrected non-validated proof program for terminal entrance laws; includes verified finite projectivity and explicitly conditional asymptotic statements.
 
 ## Current Hypothesis Status
