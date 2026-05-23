@@ -52,6 +52,10 @@ This framework does **not** prove:
 - `mathclass_terminal_signatures.tex`: full LaTeX report.
 - `scripts/check_mathclass_identities.py`: finite verification script for
   mixture and projection identities.
+- `terminal-signature-verification-protocol.md`: verification protocol for
+  exact identities and experimental convergence scans.
+- `reports/terminal-signature-tests-2026-05-23.md`: first diagnostic test
+  report.
 
 ## Reproduce
 
@@ -65,4 +69,11 @@ Run the finite checks:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/check_mathclass_identities.py
+```
+
+Run experimental scans:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/scan_terminal_signature_convergence.py --limits 10000,30000,100000 --bounds 27,89,127
+PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/scan_prime_pattern_terminal_signatures.py --limits 10000,30000,100000 --bounds 27,89,127 --terminal-set 14,23,61,89
 ```

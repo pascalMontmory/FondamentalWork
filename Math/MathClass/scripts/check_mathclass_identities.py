@@ -3,8 +3,11 @@
 
 The script verifies identities that are true at finite N:
 
-1. projection between bounds;
-2. convex decomposition for disjoint class unions.
+1. convex decomposition for disjoint class unions;
+2. pure terminal classes;
+3. total-variation pseudometric identities;
+4. projection between bounds;
+5. total-variation contraction under bound projection.
 
 It uses Collatz terminal entry as the observation map, but the identities are
 measure-theoretic.  Numerical errors should be zero up to floating point
@@ -15,6 +18,8 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from dataclasses import dataclass
+from itertools import combinations, permutations
+from math import gcd
 
 INF = "inf"
 
@@ -59,6 +64,7 @@ class Sample:
 
 def build_samples(limit: int) -> dict[str, Sample]:
     primes = prime_pattern(limit, (0,))
+    odd_primes = [p for p in primes if p % 2 == 1]
     twin = prime_pattern(limit, (0, 2))
     cousin = prime_pattern(limit, (0, 4))
     sexy = prime_pattern(limit, (0, 6))
@@ -67,11 +73,18 @@ def build_samples(limit: int) -> dict[str, Sample]:
     odd = list(range(1, limit + 1, 2))
     even = list(range(2, limit + 1, 2))
     all_values = list(range(1, limit + 1))
+    mod1_4 = [n for n in range(1, limit + 1) if n % 4 == 1]
+    mod3_4 = [n for n in range(1, limit + 1) if n % 4 == 3]
+    admissible_210 = [n for n in range(1, limit + 1) if gcd(n, 210) == 1]
     return {
         "all": Sample("all", all_values),
         "odd": Sample("odd", odd),
         "even": Sample("even", even),
+        "mod1_4": Sample("mod1_4", mod1_4),
+        "mod3_4": Sample("mod3_4", mod3_4),
+        "admissible_210": Sample("admissible_210", admissible_210),
         "prime": Sample("prime", primes),
+        "odd_prime": Sample("odd_prime", odd_primes),
         "twin": Sample("twin", twin),
         "cousin": Sample("cousin", cousin),
         "sexy": Sample("sexy", sexy),
@@ -119,6 +132,19 @@ def project_law(high_law: dict[str, float], low_bound: int, max_steps: int) -> d
     return dict(out)
 
 
+def pure_terminal_error(values: list[int], bound: int, max_steps: int) -> tuple[float, int]:
+    fibers: dict[str, list[int]] = {}
+    for n in values:
+        fibers.setdefault(terminal_entry(n, bound, max_steps), []).append(n)
+
+    worst = 0.0
+    for state, fiber_values in fibers.items():
+        fiber_law = law(fiber_values, bound, max_steps)
+        expected = {state: 1.0}
+        worst = max(worst, tv(fiber_law, expected))
+    return worst, len(fibers)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=20_000)
@@ -136,16 +162,9 @@ def main() -> None:
 
     print("check,scope,bound_or_pair,tv_error,verdict")
 
-    for name in sorted(samples):
-        for i, low in enumerate(bounds):
-            for high in bounds[i + 1 :]:
-                projected = project_law(laws[(name, high)], low, args.max_steps)
-                error = tv(laws[(name, low)], projected)
-                verdict = "ok" if error <= 1e-14 else "fail"
-                print(f"projection,{name},{high}->{low},{error:.17g},{verdict}")
-
     decompositions = [
         ("all", "odd", "even"),
+        ("odd", "mod1_4", "mod3_4"),
         ("prime", "twin", "prime_non_twin"),
     ]
     for whole, left, right in decompositions:
@@ -165,6 +184,42 @@ def main() -> None:
             error = tv(laws[(whole, bound)], mixed)
             verdict = "ok" if error <= 1e-14 else "fail"
             print(f"mixture,{whole}={left}+{right},{bound},{error:.17g},{verdict}")
+
+    for bound in bounds:
+        error, fiber_count = pure_terminal_error(samples["all"].values, bound, args.max_steps)
+        verdict = "ok" if error <= 1e-14 else "fail"
+        print(f"pure_terminal,all_fibers,{bound}:{fiber_count},{error:.17g},{verdict}")
+
+    metric_classes = ["odd", "odd_prime", "admissible_210"]
+    for bound in bounds:
+        for left, right in permutations(metric_classes, 2):
+            error = abs(tv(laws[(left, bound)], laws[(right, bound)]) - tv(laws[(right, bound)], laws[(left, bound)]))
+            verdict = "ok" if error <= 1e-14 else "fail"
+            print(f"pseudometric_symmetry,{left}<->{right},{bound},{error:.17g},{verdict}")
+        for first, second, third in permutations(metric_classes, 3):
+            lhs = tv(laws[(first, bound)], laws[(third, bound)])
+            rhs = tv(laws[(first, bound)], laws[(second, bound)]) + tv(laws[(second, bound)], laws[(third, bound)])
+            error = max(0.0, lhs - rhs)
+            verdict = "ok" if error <= 1e-14 else "fail"
+            print(f"pseudometric_triangle,{first}->{second}->{third},{bound},{error:.17g},{verdict}")
+
+    for name in sorted(samples):
+        for i, low in enumerate(bounds):
+            for high in bounds[i + 1 :]:
+                projected = project_law(laws[(name, high)], low, args.max_steps)
+                error = tv(laws[(name, low)], projected)
+                verdict = "ok" if error <= 1e-14 else "fail"
+                print(f"projection,{name},{high}->{low},{error:.17g},{verdict}")
+
+    contraction_pairs = list(combinations(["odd", "prime", "twin", "cousin", "sexy", "admissible_210"], 2))
+    for left, right in contraction_pairs:
+        for i, low in enumerate(bounds):
+            for high in bounds[i + 1 :]:
+                low_distance = tv(laws[(left, low)], laws[(right, low)])
+                high_distance = tv(laws[(left, high)], laws[(right, high)])
+                error = max(0.0, low_distance - high_distance)
+                verdict = "ok" if error <= 1e-14 else "fail"
+                print(f"tv_contraction,{left}|{right},{high}->{low},{error:.17g},{verdict}")
 
     for name in ["prime", "twin", "cousin", "sexy"]:
         print(f"sample_size,{name},N={args.limit},{len(samples[name].values)},diagnostic")
