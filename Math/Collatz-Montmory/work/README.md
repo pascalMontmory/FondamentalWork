@@ -16,6 +16,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `initial-filter-diagnostics.md`: first direct-filter diagnostic results.
 - `inverse-tree-entrance-measures.md`: formula-first study of inverse Collatz trees and entrance-measure cylinders, corrected to use moving depths.
 - `jumeau-v1-salvage.md`: corrected extraction from Jumeau V1.
+- `lambda-limit-program.md`: formal Lambda_B limit hypothesis, conditional consequences, and window-based diagnostics.
 - `local-dynamics-initial-diagnostic.md`: first diagnostic for empirical local dynamics.
 - `modular-filter-diagnostic.md`: diagnostic for modular filters, rational-density overfitting, and residue correlation of top Collatz scores.
 - `montmory-filter-lock.md`: filter-lock definitions and candidate families.
