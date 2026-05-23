@@ -88,6 +88,7 @@ The visible Collatz root should stay conservative. A reader should not find unpr
 Current intended workstreams:
 
 - `Math/Collatz-Montmory/`: Collatz, bounds, Lambda_B, filtered Hardy-Littlewood ideas.
+- `Math/Cosmology-Scales/`: Planck/Hubble/cosmological scale identities extracted from COSMO with explicit assumptions and checks.
 - `Math/VDF/`: verifiable-delay-function mathematics.
 - `Math/PRNG/`: pseudo-random-number-generator mathematics.
 

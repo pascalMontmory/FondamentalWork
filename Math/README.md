@@ -9,6 +9,7 @@ This namespace is reserved for reusable mathematical foundations that support se
 | `VDF/` | Mathematical notes for verifiable-delay-function work. |
 | `PRNG/` | Mathematical notes for pseudo-random-number-generator work. |
 | `Collatz-Montmory/` | Collatz-Montmory definitions, verified lemmas, computational checks, and conjectures. |
+| `Cosmology-Scales/` | Reusable Planck/Hubble/cosmological scale identities with explicit assumptions and checks. |
 
 ## Verification Standard
 
