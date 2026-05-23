@@ -32,6 +32,13 @@ docs/   Repository-level reading guides, structure rules, and status policy.
 2. `Math/Collatz-Montmory/non-validated/README.md`: hypotheses and analyzed but non-verified material.
 3. `Math/Collatz-Montmory/work/scripts/`: scripts used to reproduce diagnostics.
 
+### For MathClass
+
+1. `Math/MathClass/README.md`: entry point for the class-signature framework.
+2. `Math/MathClass/mathclass-terminal-signatures.md`: readable summary of the demonstrated finite identities.
+3. `Math/MathClass/mathclass_terminal_signatures.pdf`: compiled report.
+4. `Math/MathClass/scripts/check_mathclass_identities.py`: finite checks for projection and mixture identities.
+
 ## 3. Status Levels
 
 | Status | Meaning | Where it belongs |
@@ -88,6 +95,7 @@ The visible Collatz root should stay conservative. A reader should not find unpr
 Current intended workstreams:
 
 - `Math/Collatz-Montmory/`: Collatz, bounds, Lambda_B, filtered Hardy-Littlewood ideas.
+- `Math/MathClass/`: arithmetic classes, terminal signatures, class distances, and projection identities.
 - `Math/VDF/`: verifiable-delay-function mathematics.
 - `Math/PRNG/`: pseudo-random-number-generator mathematics.
 
