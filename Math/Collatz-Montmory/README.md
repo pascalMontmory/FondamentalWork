@@ -1,18 +1,36 @@
 # Collatz-Montmory
 
-Verified-only workspace for the Collatz-Montmory track.
+This directory is the verified-facing entry point for the Collatz-Montmory work.
 
-## Scope
+Only material that is definitional, proven, or explicitly presented as a conditional verified-formulas note should remain visible at this level. Drafts, conjectures, diagnostics, protocols, and scripts are kept under `work/` until they are promoted.
 
-This directory is for definitions, lemmas, computational checks, and conjectures related to Collatz-Montmory work. It deliberately separates proven material from speculative material.
+## Visible Files
 
-## Files To Maintain
+| File | Status |
+| --- | --- |
+| `definitions.md` | Definitions and required conventions. |
+| `verified-lemmas.md` | Proven elementary statements only. |
+| `publication-c-montmory-hl-validated.md` | Conditional Hardy-Littlewood normalization note restricted to formulas currently valid or conditionally valid. |
 
-- `definitions.md`: exact maps, domains, notation, and normal forms.
-- `verified-lemmas.md`: statements with proofs or bounded reproducible checks.
-- `computational-verification.md`: commands, ranges, hardware/software assumptions, and expected outputs.
-- `conjectures.md`: unverified claims, clearly separated from verified results.
+## Work Area
 
-## Rule
+Exploratory material is kept in `work/`:
 
-Nothing is published here as a theorem because it is plausible, elegant, or experimentally true on a range. It is verified only when the proof is written or the computational claim is explicitly bounded and reproducible.
+- conjectures;
+- computational protocols;
+- diagnostics;
+- candidate filters;
+- scripts;
+- salvage notes and research drafts.
+
+Material in `work/` is not advertised as verified.
+
+## Promotion Rule
+
+A statement can move from `work/` to the visible root only if it has one of the following:
+
+- a complete written proof with explicit hypotheses;
+- a bounded reproducible computational verification with command, range, code version, and expected output;
+- a clearly labelled conditional theorem whose assumptions are stated and whose proof is algebraic or already included.
+
+Nothing is promoted because it is plausible, elegant, numerically suggestive, or useful for a protocol.
