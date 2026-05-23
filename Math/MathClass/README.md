@@ -56,6 +56,8 @@ This framework does **not** prove:
   exact identities and experimental convergence scans.
 - `reports/terminal-signature-tests-2026-05-23.md`: first diagnostic test
   report.
+- `reports/large-scan-2026-05-23/`: large scan at `N=300000,1000000,3000000`
+  with CSV and SVG curves for prime-pattern distances and terminal filter mass.
 
 ## Reproduce
 
@@ -76,4 +78,10 @@ Run experimental scans:
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/scan_terminal_signature_convergence.py --limits 10000,30000,100000 --bounds 27,89,127
 PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/scan_prime_pattern_terminal_signatures.py --limits 10000,30000,100000 --bounds 27,89,127 --terminal-set 14,23,61,89
+```
+
+Generate the larger prime-pattern curves:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 Math/MathClass/scripts/generate_prime_pattern_curves.py --limits 300000,1000000,3000000 --bounds 27,89,127 --terminal-set 14,23,61,89
 ```
