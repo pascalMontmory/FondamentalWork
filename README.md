@@ -1,12 +1,20 @@
 # FondamentalWork
 
-Research repository for GUP phase-space models, UV/IR holographic relations,
-dark-energy constraints, public-data tests, speculative twin-sector extensions
-and cold-atom quantum-sensor applications.
+Research repository organized around two top-level intellectual namespaces:
+
+```text
+COSMO/  # GUP, UV/IR, holography, cosmology, dark-energy constraints, sensors
+Math/   # reusable mathematical foundations, including the VDF workstream
+```
+
+The current cosmology tracks still live mostly at the repository root for
+compatibility with existing LaTeX and script paths. `COSMO/` is now the target
+namespace and index for their staged migration. `Math/` is the home for reusable
+mathematical structures that support this and other repositories.
 
 ## Executive Overview
 
-The central result is a conditional no-go and separation principle:
+The central COSMO result is a conditional no-go and separation principle:
 
 ```text
 local GUP phase-space regularization can make UV vacuum integrals finite,
@@ -24,15 +32,19 @@ local UV regularization
 + explicit observational constraints
 ```
 
-The strongest applied direction is separate and more mature: the same
+The strongest applied COSMO direction is separate and more mature: the same
 phase-space language gives a useful engineering budget for cold-atom quantum
 sensors, gravimetry and a proposed differential atom-interferometer route to
 measuring Newton's `G`.
 
-This repository is not a single finished theory. It is organized as a set of
-research tracks with explicit status labels: verified algebra, numerical tests,
-observational constraints, candidate conjectures, rejected mechanisms and
-engineering proposals.
+The Math namespace starts with `Math/VDF/`, intended to formalize the underlying
+VDF mathematics shared across this and other repositories. VDF should be defined
+as reusable mathematics first, then applied in COSMO or software projects.
+
+This repository is not a single finished theory. It is organized as research
+tracks with explicit status labels: verified algebra, numerical tests,
+observational constraints, candidate conjectures, rejected mechanisms,
+engineering proposals and reusable mathematical foundations.
 
 ## Key Numbers
 
@@ -52,6 +64,12 @@ See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
 
 ## Start Here
 
+- `COSMO/README.md` defines the target namespace for the cosmology/fundamental
+  physics corpus.
+- `Math/README.md` defines the reusable mathematics namespace.
+- `Math/VDF/README.md` starts the VDF mathematical workstream.
+- `docs/NAMESPACE_MIGRATION_PLAN.md` explains how root-level tracks will move
+  into `COSMO/` without breaking scripts or LaTeX builds.
 - `docs/CLAIMS_MATRIX.md` classifies the major claims by status and limitation.
 - `docs/NUMERICAL_RESULTS_INDEX.md` lists the main numerical values and where
   they are generated.
@@ -66,6 +84,9 @@ See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
   tables, falsifiability and robust-vs-speculative separation.
 
 ## Current Research Tracks
+
+These tracks are currently root-level for compatibility. Their target namespace
+is `COSMO/`.
 
 | Track | Type | Status | Purpose |
 |---|---|---|---|
@@ -82,6 +103,12 @@ See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
 | `univers-jumeau-masse-negative-temps-inverse/` | speculative | candidate conjecture | Twin-sector, negative effective mass, zero-mode and Moebius-time analysis |
 | `cellule-phase-vitesse-gup/` | application | engineering proposal | Position-velocity phase-space, cold-atom sensors, gravimetry and Newton `G` metrology |
 | `synthese-travaux-confirmes-gup-uvir/` | synthesis | curated status | Separates confirmed internal results from speculative extensions |
+
+## Math Tracks
+
+| Track | Type | Status | Purpose |
+|---|---|---|---|
+| `Math/VDF/` | mathematical foundation | workstream to formalize | Define the VDF objects, notation, lemmas and links to other repositories |
 
 ## Main Results by Category
 
@@ -160,7 +187,8 @@ This repository uses explicit scientific status labels:
 - `candidate conjecture`
 - `rejected as primary mechanism`
 - `engineering proposal`
+- `mathematical foundation`
 
 The goal is to keep professional separation between what is derived, what is
-tested, what is excluded, what is conjectural and what is an applied design
-proposal.
+tested, what is excluded, what is conjectural, what is an applied design proposal
+and what is reusable mathematics.
