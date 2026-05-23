@@ -118,6 +118,55 @@ The figure of merit is only a screening proxy: it omits contrast, laser phase
 noise, vibration residuals, wavefront aberrations, detection noise, duty cycle
 and Allan-deviation behavior.
 
+\subsection{Technical noise budget extension}
+
+The script \texttt{scripts/simulate\_sensor\_noise\_budget.py} adds a
+first-order technical-noise envelope for a three-pulse gravimeter. It is kept
+separate from the atom-source budget because these terms are instrument and
+site dependent:
+\begin{align}
+\sigma_{\phi,\rm laser}^2
+&=\int |H_\phi(f)|^2S_\phi(f)\,\mathrm df,
+&
+|H_\phi(f)|^2&\simeq16\sin^4(\pi fT_i),
+\\
+\sigma_{\phi,\rm vib}^2
+&=k_{\rm eff}^2\int |H_a(f)|^2S_a(f)\,\mathrm df,
+&
+|H_a(f)|^2&\simeq
+\left[\frac{4\sin^2(\pi fT_i)}{(2\pi f)^2}\right]^2.
+\end{align}
+The combined phase-noise proxy is
+\begin{equation}
+\sigma_{\phi,\rm QPN}=\frac{1}{C\sqrt{N_{\rm at}}},
+\qquad
+\sigma_{\phi,\rm photon}=
+\frac{F_{\rm excess}}{C\sqrt{N_{\rm ph/at}N_{\rm at}\eta_{\rm det}}},
+\end{equation}
+\begin{equation}
+\sigma_{\phi,\rm JN}^2=(2\pi)^2
+\int |H_\nu(f)|^2\left(\frac{\partial\nu}{\partial B}\right)^2S_B(f)\,\mathrm df,
+\end{equation}
+and the total phase-noise proxy is
+\begin{equation}
+\sigma_{\phi,\rm total}^2
+=\sigma_{\phi,\rm QPN}^2+\sigma_{\phi,\rm photon}^2
++\left(\frac{\sigma_{\phi,\rm laser}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm vib}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm therm}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm JN}}{C}\right)^2,
+\end{equation}
+and the corresponding acceleration ASD is
+\begin{equation}
+\delta a_{\sqrt{\rm Hz}}
+=\frac{\sigma_{\phi,\rm total}\sqrt{T_{\rm cycle}}}
+{k_{\rm eff}T_i^2}.
+\end{equation}
+Here $T_{\rm cycle}=T_{\rm prep}+2T_i+T_{\rm det}+T_{\rm dead}$.
+The seismic, laser, magnetic and thermal PSDs in this script are engineering
+envelopes, not universal constants. They should be replaced by measured Raman
+phase-noise, seismometer, magnetometer and thermal data for a real instrument.
+
 \subsection{Example use case}
 
 Consider a portable gravimeter targeting the aggressive transportable level
@@ -239,10 +288,11 @@ not a performance proof; it is an early rejection and ranking metric.}
 
 \section{Scientific limits}
 
-This framework intentionally excludes laser phase noise, wavefront aberrations,
-vibration rejection, magnetic systematics, atom loss, cold collisions, dead
-time, navigation filtering and Allan deviation. These effects must be added in
-an engineering-grade simulator.
+The source CAD budget is now complemented by first-order laser, seismic and
+thermal envelopes. It still intentionally excludes measured instrument PSDs,
+wavefront aberrations, magnetic systematics, atom loss, cold collisions, full
+detection noise, navigation filtering and Allan deviation beyond the root-Hz
+proxy. These effects must be added in an engineering-grade simulator.
 
 The correct interpretation of a high score is therefore:
 \begin{center}
