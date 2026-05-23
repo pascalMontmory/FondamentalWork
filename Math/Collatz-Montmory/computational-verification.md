@@ -33,8 +33,26 @@ whether arbitrary-precision integers were used
 
 No range is recorded yet in this document.
 
-The next step is to run `scripts/verify_collatz_range.py` and paste the exact
-result here, including the commit hash.
+A baseline verifier has been added at:
+
+```text
+Math/Collatz-Montmory/scripts/verify_collatz_range.py
+```
+
+but it has not yet been executed in a local checkout of this PR branch. Therefore
+no finite verification range is claimed here yet.
+
+Run, from a checkout containing this file:
+
+```bash
+python3 Math/Collatz-Montmory/scripts/verify_collatz_range.py --limit 100000 --max-steps 10000
+python3 Math/Collatz-Montmory/tests/test_verify_collatz_range.py
+python3 -m py_compile \
+  Math/Collatz-Montmory/scripts/verify_collatz_range.py \
+  Math/Collatz-Montmory/tests/test_verify_collatz_range.py
+```
+
+Then paste the exact output and commit hash into this file.
 
 ## Non-claim
 
