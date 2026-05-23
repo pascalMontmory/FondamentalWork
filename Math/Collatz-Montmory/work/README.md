@@ -15,6 +15,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `initial-filter-diagnostics.md`: first direct-filter diagnostic results.
 - `jumeau-v1-salvage.md`: corrected extraction from Jumeau V1.
 - `local-dynamics-initial-diagnostic.md`: first diagnostic for empirical local dynamics.
+- `modular-filter-diagnostic.md`: diagnostic for modular filters, rational-density overfitting, and residue correlation of top Collatz scores.
 - `montmory-filter-lock.md`: filter-lock definitions and candidate families.
 - `next-search-diagnostics.md`: extended `10^7` filter diagnostics and first search for a local-product source of the target coefficient.
 - `scripts/`: exploratory and reproducibility scripts.
