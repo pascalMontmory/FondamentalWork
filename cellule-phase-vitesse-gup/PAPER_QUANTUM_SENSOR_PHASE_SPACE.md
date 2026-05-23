@@ -170,13 +170,20 @@ The companion technical-noise script adds the next engineering layer:
 ```text
 sigma_phi_laser^2 = integral |H_phi(f)|^2 S_phi(f) df
 sigma_phi_vib^2 = k_eff^2 integral |H_a(f)|^2 S_a(f) df
-sigma_phi_total^2 = 1/N + (phi_laser/C)^2 + (phi_vib/C)^2 + (phi_thermal/C)^2
+sigma_phi_JN^2 = (2 pi)^2 integral |H_nu(f)|^2 (dnu/dB)^2 S_B(f) df
+sigma_phi_QPN = 1/(C sqrt(N_at))
+sigma_phi_photon = F_excess/(C sqrt(N_ph_per_atom N_at eta_det))
+sigma_phi_total^2 = phi_QPN^2 + phi_photon^2
+                    + (phi_laser/C)^2 + (phi_vib/C)^2
+                    + (phi_thermal/C)^2 + (phi_JN/C)^2
+T_cycle = T_prep + 2 T_i + T_detection + T_dead
 delta a_sqrtHz = sigma_phi_total sqrt(T_cycle)/(k_eff T_i^2)
 ```
 
 This keeps the structure honest: the phase-space source may be adequate while
-laser phase noise, seismic vibration, thermal drift, contrast and cycle time
-still decide the field performance.
+quantum projection noise, photon shot noise, laser phase noise, seismic
+vibration, Johnson-Nyquist magnetic noise, thermal drift, contrast and cycle
+time still decide the field performance.
 
 ## 6. Product concept
 
