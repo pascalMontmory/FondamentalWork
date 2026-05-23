@@ -69,7 +69,28 @@ x        selected/twins      coefficient_estimate
 
 Le seuil calibre a `3*10^6` reste aussi proche de la cible a `10^7`.
 
-## 3. Comparaison avec le score brut
+## 3. Test par fenetres disjointes
+
+Les bornes cumulatives peuvent masquer une derive. On teste donc les fenetres disjointes apres calibration.
+
+Avec `alpha=4.430733769771316` calibre sur `10^6`:
+
+```text
+window              twin_count  selected  selected/twins
+(1000000,3000000]   12763       1005      0.0787432422
+(3000000,10000000]  38048       3133      0.0823433558
+```
+
+Avec `alpha=4.397778941227406` calibre sur `3*10^6`:
+
+```text
+window              twin_count  selected  selected/twins
+(3000000,10000000]  38048       3199      0.0840780067
+```
+
+Ces fenetres restent proches de la cible `0.08178598968`. C'est un signal plus fort que le simple test cumulatif.
+
+## 4. Comparaison avec le score brut
 
 Le score brut calibre sur `10^6` donnait:
 
@@ -91,7 +112,7 @@ x        selected/twins
 
 C'est le premier diagnostic qui ne s'effondre pas immediatement hors echantillon.
 
-## 4. Quantiles du score normalise
+## 5. Quantiles du score normalise
 
 Le seuil superieur qui garde `rho_M` des paires evolue comme suit:
 
@@ -106,7 +127,7 @@ X        count   mean      median    upper_rho_threshold
 
 La moyenne et la mediane continuent de baisser, mais le quantile superieur cible devient beaucoup plus stable a partir de `10^6`.
 
-## 5. Interpretation prudente
+## 6. Interpretation prudente
 
 Ce resultat ne valide pas `C_Montmory`. Il indique seulement qu'une version normalisee du filtre Collatz est plus plausible que le seuil brut.
 
@@ -126,18 +147,17 @@ alpha ~= 4.4
 
 Mais ce seuil reste calibre numeriquement. Il ne doit pas etre presente comme une constante demontree.
 
-## 6. Prochains tests obligatoires
+## 7. Prochains tests obligatoires
 
 Avant toute promotion de cette piste, il faut:
 
 1. pousser le test a `10^8` si le temps de calcul le permet;
 2. comparer `min-log-centered`, `geo-log-centered`, `harm-log-centered`;
-3. tester des fenetres disjointes, pas seulement des bornes cumulatives;
-4. verifier la sensibilite au seuil `B=89`;
-5. chercher une justification probabiliste du facteur `log_2 p`;
-6. comparer aux entiers impairs de controle pour voir si le signal est propre aux jumeaux.
+3. verifier la sensibilite au seuil `B=89`;
+4. chercher une justification probabiliste du facteur `log_2 p`;
+5. comparer aux entiers impairs de controle pour voir si le signal est propre aux jumeaux.
 
-## 7. Commande reproductible
+## 8. Commande reproductible
 
 Depuis la racine du depot:
 
@@ -159,7 +179,7 @@ alpha=4.430733769771316
 10000000,...,0.08149630333039408,...
 ```
 
-## 8. Conclusion de travail
+## 9. Conclusion de travail
 
 La piste `min-log-centered` est actuellement la plus prometteuse des filtres directs testes. Elle ne prouve rien, mais elle transforme l'echec du seuil brut en une hypothese plus precise: `C_Montmory` pourrait correspondre a une queue de grande deviation Collatz apres recentrage par la derive aleatoire moyenne.
 
