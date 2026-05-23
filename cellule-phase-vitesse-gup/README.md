@@ -45,6 +45,9 @@ gyroscopes, aux accelerometres et aux gradiometres.
   cadre CAD pour capteurs quantiques, navigation inertielle, gravimetrie et
   gyroscopes atomiques.
 - `phase_space_cad_quantum_sensors.tex` : version LaTeX/PDF du cadre CAD.
+- `PUBLICATION_MESURE_G_ATOMIQUE.md` : publication autonome proposant une
+  mesure differentielle de la constante gravitationnelle `G` par interferometrie
+  atomique et masses sources modulees.
 - `notes/formula_audit.md` : verification des formules et points de prudence.
 - `notes/cross_conclusions.md` : conclusions tirees du croisement avec la
   note sur la cellule de phase deformee.
@@ -138,6 +141,19 @@ Sanity checks de benchmark :
 - cas NIM-like : `19.72 microGal/sqrtHz` contre `20.5 microGal/sqrtHz` publie ;
 - cas Muquans/Exail-like : `26.44 microGal/sqrtHz` contre `50 microGal/sqrtHz`
   datasheet, meme ordre de grandeur mais sans ajustement force.
+
+## Piste mesure de G
+
+La publication `PUBLICATION_MESURE_G_ATOMIQUE.md` applique ce budget a la mesure
+de la constante gravitationnelle de Newton. La strategie proposee est une mesure
+differentielle : deux nuages atomiques, des masses sources modulees entre des
+configurations `A/B/C/D`, puis un fit global de `G` sur le champ geometrique
+calcule.
+
+Le texte fixe aussi une cible de precision realiste : battre les mesures
+atomiques publiees autour de `150 ppm` est plausible comme premier palier ;
+devenir competitif avec les meilleures mesures modernes demande plutot
+`10-50 ppm`, ou la geometrie des masses et les systematiques dominent.
 
 ## Portee scientifique
 
