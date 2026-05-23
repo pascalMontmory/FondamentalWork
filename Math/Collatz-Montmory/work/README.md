@@ -26,6 +26,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `next-search-diagnostics.md`: extended `10^7` filter diagnostics and first search for a local-product source of the target coefficient.
 - `normalized-score-diagnostic.md`: preliminary positive diagnostic for the centered log-scaled Collatz score.
 - `normalized-score-robustness-controls.md`: robustness checks for `B`, score modes, and non-twin control populations.
+- `resonance-bound-formulas.md`: window-centered formulas for testing whether an integer is a statistical passage center, with a first diagnostic for `B=89`.
 - `terminal-correction-law.md`: conditional formulas for entrance measures, terminal correction laws, and bound equivalence classes.
 - `scripts/`: exploratory and reproducibility scripts.
 
