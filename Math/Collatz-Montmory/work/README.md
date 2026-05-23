@@ -7,6 +7,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 ## Current Contents
 
 - `C_Montmory_Hardy_Littlewood.md`: conditional formulation and research framing.
+- `bound-selection-formulas.md`: formula-first derivation of bound equivalence through terminal stopping-time corrections.
 - `computational-protocol-c-montmory.md`: numerical testing protocol.
 - `computational-verification.md`: computational verification scaffold.
 - `conjectures.md`: conjectural material.
