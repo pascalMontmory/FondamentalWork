@@ -35,9 +35,10 @@ docs/   Repository-level reading guides, structure rules, and status policy.
 ### For MathClass
 
 1. `Math/MathClass/README.md`: entry point for the class-signature framework.
-2. `Math/MathClass/mathclass-terminal-signatures.md`: readable summary of the demonstrated finite identities.
-3. `Math/MathClass/mathclass_terminal_signatures.pdf`: compiled report.
-4. `Math/MathClass/scripts/check_mathclass_identities.py`: finite checks for projection and mixture identities.
+2. `Math/MathClass/non-validated/README.md`: status of the non-validated class-signature programme.
+3. `Math/MathClass/non-validated/mathclass-terminal-signatures.md`: readable research summary, kept out of the verified-facing root.
+4. `Math/MathClass/non-validated/mathclass_terminal_signatures.pdf`: compiled non-validated report.
+5. `Math/MathClass/scripts/check_mathclass_identities.py`: finite checks for projection and mixture identities.
 
 ## 3. Status Levels
 
@@ -95,7 +96,7 @@ The visible Collatz root should stay conservative. A reader should not find unpr
 Current intended workstreams:
 
 - `Math/Collatz-Montmory/`: Collatz, bounds, Lambda_B, filtered Hardy-Littlewood ideas.
-- `Math/MathClass/`: arithmetic classes, terminal signatures, class distances, and projection identities.
+- `Math/MathClass/`: arithmetic classes, terminal signatures, class distances, projection identities, and non-validated class-signature scans.
 - `Math/VDF/`: verifiable-delay-function mathematics.
 - `Math/PRNG/`: pseudo-random-number-generator mathematics.
 

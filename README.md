@@ -34,7 +34,7 @@ Read in this order:
 | `COSMO/` | Existing non-mathematical research tracks formerly located at repository root. |
 | `Math/VDF/` | Notes and verification plan for verifiable-delay-function mathematics. |
 | `Math/PRNG/` | Notes and verification plan for pseudo-random-number-generator work. |
-| `Math/MathClass/` | Structural mathematics of arithmetic classes through terminal signatures and class distances. |
+| `Math/MathClass/` | Arithmetic-class terminal-signature workstream; non-validated reports and scans are kept under `non-validated/`. |
 | `Math/Collatz-Montmory/` | Verified-facing area for Collatz-Montmory definitions and exact/conditional results. |
 | `Math/Collatz-Montmory/non-validated/` | Hypotheses, analyzed drafts, negative diagnostics, and non-verified Collatz-Montmory articles. |
 | `Math/Collatz-Montmory/work/scripts/` | Reproducible exploratory scripts for Collatz-Montmory diagnostics. |

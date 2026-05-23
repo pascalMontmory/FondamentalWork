@@ -1,7 +1,12 @@
 # MathClass
 
-MathClass is the verified-facing framework for arithmetic classes viewed through
-terminal observation maps.
+MathClass is a research area for arithmetic classes viewed through terminal
+observation maps.
+
+**Current status:** the class-signature research programme, reports, PDF and
+large scans are kept in `non-validated/`. The exact finite identities are useful
+and tested, but the broader interpretation as a theory of arithmetic classes is
+not validated as an asymptotic result.
 
 The current application is Collatz terminal entrance:
 
@@ -20,9 +25,9 @@ Here `\mathcal F` may be:
 - sexy primes `{p:p,p+6 prime}`;
 - any explicitly defined arithmetic class.
 
-## Verified Content
+## Verified Finite Content
 
-The current theorem package proves structural facts, not prime-number
+The scripts verify structural facts at finite `N`, not prime-number
 asymptotics:
 
 - empirical terminal laws are probability measures on a finite state space;
@@ -31,9 +36,7 @@ asymptotics:
 - terminal laws induce a pseudometric on classes by total variation distance;
 - bound projection is exact at finite `N`;
 - projection contracts total variation distance;
-- if component limits exist, the same algebraic identities pass to limits;
-- conditional Hardy-Littlewood terminal laws give conditional filtered
-  coefficients.
+- if component limits exist, the same algebraic identities pass to limits.
 
 ## Not Proved
 
@@ -47,24 +50,26 @@ This framework does **not** prove:
 
 ## Files
 
-- `mathclass-terminal-signatures.md`: readable summary of the demonstrated
-  framework.
-- `mathclass_terminal_signatures.tex`: full LaTeX report.
+- `non-validated/mathclass-terminal-signatures.md`: readable research note for
+  the class-signature framework.
+- `non-validated/mathclass_terminal_signatures.tex`: full LaTeX report.
+- `non-validated/mathclass_terminal_signatures.pdf`: compiled report.
+- `non-validated/terminal-signature-verification-protocol.md`: verification
+  protocol for exact identities and experimental convergence scans.
+- `non-validated/reports/terminal-signature-tests-2026-05-23.md`: first
+  diagnostic test report.
+- `non-validated/reports/large-scan-2026-05-23/`: large scan at
+  `N=300000,1000000,3000000` with CSV and SVG curves for prime-pattern
+  distances and terminal filter mass.
 - `scripts/check_mathclass_identities.py`: finite verification script for
   mixture and projection identities.
-- `terminal-signature-verification-protocol.md`: verification protocol for
-  exact identities and experimental convergence scans.
-- `reports/terminal-signature-tests-2026-05-23.md`: first diagnostic test
-  report.
-- `reports/large-scan-2026-05-23/`: large scan at `N=300000,1000000,3000000`
-  with CSV and SVG curves for prime-pattern distances and terminal filter mass.
 
 ## Reproduce
 
 Compile the PDF locally:
 
 ```bash
-latexmk -pdf -interaction=nonstopmode Math/MathClass/mathclass_terminal_signatures.tex
+latexmk -pdf -interaction=nonstopmode Math/MathClass/non-validated/mathclass_terminal_signatures.tex
 ```
 
 Run the finite checks:

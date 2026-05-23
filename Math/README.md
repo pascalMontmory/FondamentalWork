@@ -9,7 +9,7 @@ This namespace is reserved for reusable mathematical foundations that support se
 | `VDF/` | Mathematical notes for verifiable-delay-function work. |
 | `PRNG/` | Mathematical notes for pseudo-random-number-generator work. |
 | `Collatz-Montmory/` | Collatz-Montmory definitions, verified lemmas, computational checks, and conjectures. |
-| `MathClass/` | Verified structural framework for arithmetic classes, terminal signatures, projection, and class distances. |
+| `MathClass/` | Arithmetic-class terminal-signature workstream. Finite identities and scripts stay visible; reports, scans, and asymptotic interpretations stay in `non-validated/`. |
 
 ## Verification Standard
 
