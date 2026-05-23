@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate candidate Montmory filters on twin primes.
+"""Evaluate candidate Montmory filters on twin primes and controls.
 
 This script is intentionally simple and deterministic. It is not a proof of an
 asymptotic constant; it is a reproducible diagnostic for the filter-lock problem.
@@ -31,6 +31,7 @@ SCORE_MODES = [
     "geo-log-centered",
     "harm-log-centered",
 ]
+POPULATIONS = ["twins", "prime-non-twin", "odd-sample"]
 
 
 def sieve(limit: int) -> bytearray:
@@ -47,9 +48,16 @@ def sieve(limit: int) -> bytearray:
     return is_prime
 
 
-def twin_primes_up_to(limit: int) -> List[int]:
+def population_up_to(limit: int, population: str, odd_stride: int) -> List[int]:
+    if population == "odd-sample":
+        return list(range(3, limit + 1, 2 * odd_stride))
+
     is_prime = sieve(limit + 2)
-    return [p for p in range(3, limit + 1, 2) if is_prime[p] and is_prime[p + 2]]
+    if population == "twins":
+        return [p for p in range(3, limit + 1, 2) if is_prime[p] and is_prime[p + 2]]
+    if population == "prime-non-twin":
+        return [p for p in range(3, limit + 1, 2) if is_prime[p] and not is_prime[p + 2]]
+    raise ValueError(f"unknown population: {population}")
 
 
 def accelerated_collatz_step(n: int) -> int:
@@ -97,18 +105,18 @@ def pair_score(p: int, bound: int = 89, max_steps: int = 100000, mode: str = "mi
 @dataclass(frozen=True)
 class Evaluation:
     x: int
-    twin_count: int
+    item_count: int
     selected_count: int
     ratio: float
     coefficient_estimate: float
 
 
-def evaluate_at_x(twins: Sequence[int], scores: Sequence[float], x: int, alpha: float) -> Evaluation:
-    n = bisect.bisect_right(twins, x)
+def evaluate_at_x(items: Sequence[int], scores: Sequence[float], x: int, alpha: float) -> Evaluation:
+    n = bisect.bisect_right(items, x)
     selected = sum(1 for s in scores[:n] if s >= alpha)
     ratio = selected / n if n else float("nan")
     coefficient = selected / (x / (math.log(x) ** 2)) if x > 1 else float("nan")
-    return Evaluation(x=x, twin_count=n, selected_count=selected, ratio=ratio, coefficient_estimate=coefficient)
+    return Evaluation(x=x, item_count=n, selected_count=selected, ratio=ratio, coefficient_estimate=coefficient)
 
 
 def calibrate_alpha(scores: Sequence[float], target_ratio: float) -> float:
@@ -130,6 +138,8 @@ def main() -> None:
     parser.add_argument("--x-values", default="10000,100000,1000000")
     parser.add_argument("--bound", type=int, default=89)
     parser.add_argument("--mode", choices=SCORE_MODES, default="min")
+    parser.add_argument("--population", choices=POPULATIONS, default="twins")
+    parser.add_argument("--odd-stride", type=int, default=20)
     parser.add_argument("--alpha", type=float, default=None)
     parser.add_argument("--calibrate-x", type=int, default=None)
     parser.add_argument("--max-steps", type=int, default=100000)
@@ -137,14 +147,14 @@ def main() -> None:
 
     x_values = parse_x_values(args.x_values)
     limit = max(args.limit, max(x_values) if x_values else args.limit)
-    twins = twin_primes_up_to(limit)
-    scores = [pair_score(p, bound=args.bound, max_steps=args.max_steps, mode=args.mode) for p in twins]
+    items = population_up_to(limit, args.population, args.odd_stride)
+    scores = [pair_score(p, bound=args.bound, max_steps=args.max_steps, mode=args.mode) for p in items]
 
     if args.alpha is None:
         if args.calibrate_x is None:
             calibration_n = len(scores)
         else:
-            calibration_n = bisect.bisect_right(twins, args.calibrate_x)
+            calibration_n = bisect.bisect_right(items, args.calibrate_x)
         alpha = calibrate_alpha(scores[:calibration_n], RHO_TARGET)
     else:
         alpha = args.alpha
@@ -155,12 +165,15 @@ def main() -> None:
     print(f"collatz_random_walk_drift={COLLATZ_RANDOM_WALK_DRIFT:.17f}")
     print(f"bound={args.bound}")
     print(f"mode={args.mode}")
+    print(f"population={args.population}")
+    if args.population == "odd-sample":
+        print(f"odd_stride={args.odd_stride}")
     print(f"alpha={alpha:.17g}")
-    print("x,twin_count,selected_count,selected_ratio,coefficient_estimate")
+    print("x,item_count,selected_count,selected_ratio,coefficient_estimate")
     for x in x_values:
-        result = evaluate_at_x(twins, scores, x, alpha)
+        result = evaluate_at_x(items, scores, x, alpha)
         print(
-            f"{result.x},{result.twin_count},{result.selected_count},"
+            f"{result.x},{result.item_count},{result.selected_count},"
             f"{result.ratio:.17g},{result.coefficient_estimate:.17g}"
         )
 
