@@ -41,11 +41,23 @@ A file may leave this directory only if one of the following is true:
 - full passage law `(P_{B,eta}, U_{B,eta}, R_{B,eta})`;
 - current negative diagnostics for a twin-prime-specific signal at `B=89`.
 
+### Terminal Law Proof Programs
+
+- proof program for terminal entrance measures `nu_{B,F,N}`;
+- exact finite projectivity under bound projection;
+- conditional terminal Hardy-Littlewood law for twins;
+- open problem: existence of terminal limits for residue classes, positive-density families, primes, and twin-prime starts.
+
 ### Collatz-Montmory Draft Articles
 
 - draft publication notes;
 - previously analyzed proposals;
 - abandoned or weakened claims.
+
+## Current Files
+
+- `resonance-hypotheses-status.md`: current status of resonance claims and negative diagnostics around `B=89`.
+- `terminal-laws-proof-program.md`: corrected non-validated proof program for terminal entrance laws; includes verified finite projectivity and explicitly conditional asymptotic statements.
 
 ## Current Hypothesis Status
 

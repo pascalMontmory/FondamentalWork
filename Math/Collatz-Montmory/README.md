@@ -46,6 +46,16 @@ Exploratory material is kept in `work/`:
 
 Material in `work/` is not advertised as verified.
 
+## Non-Validated Area
+
+Analyzed hypotheses and proof programs that should not be presented as verified results are kept in `non-validated/`.
+
+Current examples:
+
+- terminal entrance law proof program;
+- resonance hypotheses around terminal bounds;
+- negative or inconclusive diagnostics.
+
 ## Promotion Rule
 
 A statement can move from `work/` to the visible root only if it has one of the following:
