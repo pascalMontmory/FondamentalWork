@@ -1,0 +1,469 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+
+\title{MathClass: signatures terminales de classes arithmetiques}
+\author{Projet Montmory}
+\date{\today}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theoreme}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{corollary}[theorem]{Corollaire}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remarque}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\TV}{\mathrm{TV}}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
+\newcommand{\M}{\mathcal M}
+\newcommand{\push}{_{\#}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette note formalise une mathematique de classes arithmetiques vues par des
+applications terminales. L'exemple directeur est l'entree terminale des
+trajectoires de Collatz sous une borne \(B\), mais les resultats principaux sont
+des faits finis de theorie de la mesure: decomposition convexe des unions
+disjointes, fibres terminales pures, pseudometrique par distance en variation
+totale, projectivite entre bornes, et contraction des distances par
+push-forward. Ces resultats sont demontres sans supposer la conjecture de
+Collatz, Hardy--Littlewood, ni l'infinite des premiers jumeaux. La partie
+arithmetique profonde reste l'existence de limites terminales pour des classes
+non triviales, notamment les premiers, jumeaux, cousins et sexy primes.
+\end{abstract}
+
+\section{Position}
+
+L'objectif est de transformer une question vague,
+\[
+\text{``Collatz voit-il certaines classes arithmetiques ?''}
+\]
+en une question mesurable. Une classe arithmetique \(\F\subseteq\N\) est envoyee
+sur une loi empirique terminale
+\[
+\F\longmapsto \nu_{B,\F,N}.
+\]
+Deux classes peuvent ensuite etre comparees par
+\[
+D_{B,N}(\F,\G)=\|\nu_{B,\F,N}-\nu_{B,\G,N}\|_{\TV}.
+\]
+
+Les classes visees sont par exemple
+\[
+\N,\quad 2\N+1,\quad \{n:n\equiv a\pmod q\},\quad \Pp,
+\]
+et les motifs premiers
+\[
+\mathcal P_H=\{p:p+h\text{ est premier pour tout }h\in H\}.
+\]
+Les jumeaux correspondent a \(H=\{0,2\}\), les cousins a \(H=\{0,4\}\), les
+sexy primes a \(H=\{0,6\}\).
+
+\section{Observation terminale}
+
+\begin{definition}[Application terminale abstraite]
+Soit \(X_B\) un ensemble fini ou denombrable et soit
+\[
+E_B:\N\to X_B
+\]
+une application. Pour une classe \(\F\subseteq\N\), on pose
+\[
+\F_N=\F\cap[1,N].
+\]
+Si \(\F_N\ne\varnothing\), la signature terminale empirique de \(\F\) est
+\[
+\nu_{B,\F,N}
+=
+(E_B)\push\left(
+\frac{1}{|\F_N|}
+\sum_{n\in\F_N}\delta_n
+\right).
+\]
+\end{definition}
+
+\begin{definition}[Cas Collatz accelere]
+On considere
+\[
+T(n)=
+\begin{cases}
+n/2,& n\equiv0\pmod2,\\
+(3n+1)/2,& n\equiv1\pmod2.
+\end{cases}
+\]
+Pour \(B\ge1\),
+\[
+\tau_B(n)=\inf\{t\ge0:T^t(n)\le B\}.
+\]
+Si l'ensemble est vide, \(\tau_B(n)=\infty\). On definit
+\[
+E_B(n)=
+\begin{cases}
+T^{\tau_B(n)}(n),& \tau_B(n)<\infty,\\
+\infty,& \tau_B(n)=\infty.
+\end{cases}
+\]
+Alors
+\[
+X_B=\{1,\ldots,B\}\cup\{\infty\}.
+\]
+\end{definition}
+
+\begin{remark}
+L'etat \(\infty\) est important: toutes les definitions restent valides sans
+supposer la conjecture globale de Collatz.
+\end{remark}
+
+\section{Algebre finie des classes}
+
+\begin{proposition}[Decomposition des unions disjointes]
+Soient \(\F,\G\subseteq\N\) disjointes. Si
+\((\F\cup\G)_N\ne\varnothing\), alors
+\[
+\nu_{B,\F\cup\G,N}
+=
+\alpha_N\nu_{B,\F,N}+(1-\alpha_N)\nu_{B,\G,N},
+\]
+ou
+\[
+\alpha_N=\frac{|\F_N|}{|\F_N|+|\G_N|},
+\]
+avec la convention naturelle lorsque l'une des deux classes est vide.
+\end{proposition}
+
+\begin{proof}
+La mesure uniforme sur \((\F\cup\G)_N\) est la combinaison convexe des mesures
+uniformes sur \(\F_N\) et \(\G_N\), avec les poids indiques. Le push-forward par
+\(E_B\) est lineaire sur les mesures finies.
+\end{proof}
+
+\begin{corollary}[Partitions finies]
+Si \(\F=\bigsqcup_{i=1}^r \F_i\), alors
+\[
+\nu_{B,\F,N}
+=
+\sum_{i=1}^r
+\frac{|(\F_i)_N|}{|\F_N|}\nu_{B,\F_i,N}.
+\]
+\end{corollary}
+
+\begin{proposition}[Fibres terminales pures]
+Pour \(y\in X_B\), soit
+\[
+A_y(B)=\{n:E_B(n)=y\}.
+\]
+Si \(A_y(B)\cap[1,N]\ne\varnothing\), alors
+\[
+\nu_{B,A_y(B),N}=\delta_y.
+\]
+\end{proposition}
+
+\begin{proof}
+Par definition de \(A_y(B)\), tout element observe dans cette classe a image
+terminale \(y\). Le push-forward de la mesure uniforme est donc la masse de
+Dirac en \(y\).
+\end{proof}
+
+\begin{corollary}[Classes definies par un ensemble terminal]
+Si \(A\subseteq X_B\) et \(\mathcal C_A=E_B^{-1}(A)\), alors
+\[
+\nu_{B,\mathcal C_A,N}(A)=1
+\]
+des que \((\mathcal C_A)_N\ne\varnothing\).
+\end{corollary}
+
+\section{Distances de classes}
+
+\begin{definition}[Distance terminale finie]
+Pour deux classes \(\F,\G\) ayant des echantillons non vides a \(N\),
+\[
+D_{B,N}(\F,\G)
+=
+\|\nu_{B,\F,N}-\nu_{B,\G,N}\|_{\TV}.
+\]
+\end{definition}
+
+\begin{proposition}[Pseudometrique]
+Pour \(B,N\) fixes, \(D_{B,N}\) est une pseudometrique sur les classes
+admissibles:
+\[
+D_{B,N}(\F,\G)\ge0,
+\]
+\[
+D_{B,N}(\F,\G)=D_{B,N}(\G,\F),
+\]
+et
+\[
+D_{B,N}(\F,\mathcal H)\le
+D_{B,N}(\F,\G)+D_{B,N}(\G,\mathcal H).
+\]
+\end{proposition}
+
+\begin{proof}
+Ces trois proprietes sont celles de la distance en variation totale sur les
+mesures de probabilite. Le terme ``pseudo'' est necessaire: deux classes
+distinctes peuvent avoir la meme loi terminale.
+\end{proof}
+
+\section{Projectivite entre bornes}
+
+\begin{definition}[Projection terminale]
+Pour \(B_1<B_2\), on definit
+\[
+\delta_{B_1,B_2}:X_{B_2}\to X_{B_1}
+\]
+par
+\[
+\delta_{B_1,B_2}(\infty)=\infty
+\]
+et, pour \(y\le B_2\),
+\[
+\delta_{B_1,B_2}(y)=E_{B_1}(y).
+\]
+\end{definition}
+
+\begin{theorem}[Projectivite finie exacte]
+Pour tout \(n\in\N\),
+\[
+E_{B_1}(n)=\delta_{B_1,B_2}(E_{B_2}(n)).
+\]
+Par consequent, pour toute classe \(\F\) et tout \(N\) admissible,
+\[
+\nu_{B_1,\F,N}
+=
+(\delta_{B_1,B_2})\push\nu_{B_2,\F,N}.
+\]
+\end{theorem}
+
+\begin{proof}
+Si \(E_{B_2}(n)=\infty\), l'orbite ne rencontre pas \([1,B_2]\), donc elle ne
+rencontre pas \([1,B_1]\). Ainsi \(E_{B_1}(n)=\infty\). Sinon
+\(E_{B_2}(n)=y\le B_2\). Pour entrer sous \(B_1\), l'orbite partant de \(n\)
+atteint d'abord \(y\), puis poursuit comme l'orbite partant de \(y\). L'entree
+sous \(B_1\) est donc \(E_{B_1}(y)\). L'identite des mesures suit par
+push-forward.
+\end{proof}
+
+\begin{lemma}[Contraction par push-forward]
+Pour toute application \(f:X\to Y\) et toutes probabilites \(\mu,\nu\) sur \(X\),
+\[
+\|f\push\mu-f\push\nu\|_{\TV}\le \|\mu-\nu\|_{\TV}.
+\]
+\end{lemma}
+
+\begin{proof}
+Pour tout \(A\subseteq Y\),
+\[
+(f\push\mu)(A)-(f\push\nu)(A)=\mu(f^{-1}(A))-\nu(f^{-1}(A)).
+\]
+Le supremum sur les ensembles \(A\subseteq Y\) est donc borne par le supremum
+sur tous les sous-ensembles de \(X\).
+\end{proof}
+
+\begin{corollary}[Monotonie des distances]
+Pour \(B_1<B_2\),
+\[
+D_{B_1,N}(\F,\G)\le D_{B_2,N}(\F,\G).
+\]
+\end{corollary}
+
+\section{Passage conditionnel aux limites}
+
+\begin{definition}[Loi terminale limite]
+Si la limite existe, on ecrit
+\[
+\nu_{B,\F,N}\longrightarrow \nu_{B,\F}.
+\]
+\end{definition}
+
+\begin{proposition}[Identites limites]
+Si les lois limites des classes d'une partition finie existent et si les poids
+asymptotiques existent, les decompositions convexes finies passent a la limite.
+Si \(\nu_{B_2,\F}\) existe, alors pour tout \(B_1<B_2\),
+\[
+\nu_{B_1,\F}
+=
+(\delta_{B_1,B_2})\push\nu_{B_2,\F}.
+\]
+\end{proposition}
+
+\begin{proof}
+La premiere assertion est le passage a la limite dans une somme finie. La
+seconde suit de la projectivite finie et de la continuite du push-forward sur
+un espace de mesures fini.
+\end{proof}
+
+\section{Critere par densites naturelles}
+
+Le critere suivant est le pont le plus direct vers une mathematique de classes.
+Il transforme l'existence d'une loi terminale en question de densites
+d'intersections.
+
+\begin{theorem}[Critere de densite]
+Supposons \(X_B\) fini. Pour \(y\in X_B\), posons
+\[
+A_y(B)=\{n:E_B(n)=y\}.
+\]
+Soit \(\F\subseteq\N\) une classe de densite naturelle positive \(d(\F)>0\).
+Supposons que chaque intersection \(\F\cap A_y(B)\) possede une densite
+naturelle
+\[
+d_y(\F,B)=d(\F\cap A_y(B)).
+\]
+Alors la loi terminale limite existe et
+\[
+\nu_{B,\F}(y)=\frac{d_y(\F,B)}{d(\F)}.
+\]
+\end{theorem}
+
+\begin{proof}
+Pour chaque \(y\),
+\[
+\nu_{B,\F,N}(y)=
+\frac{|\F\cap A_y(B)\cap[1,N]|}{|\F\cap[1,N]|}
+=
+\frac{|\F\cap A_y(B)\cap[1,N]|/N}{|\F\cap[1,N]|/N}.
+\]
+Le numerateur converge vers \(d_y(\F,B)\) et le denominateur vers \(d(\F)>0\).
+Comme \(X_B\) est fini, la convergence coordonnee donne la convergence de la
+mesure.
+\end{proof}
+
+\begin{corollary}[Neutralite terminale]
+Supposons que \(\nu_{B,\N}\) existe. Si
+\[
+d(\F\cap A_y(B))=d(\F)d(A_y(B))
+\]
+pour tout \(y\in X_B\), alors
+\[
+\nu_{B,\F}=\nu_{B,\N}.
+\]
+\end{corollary}
+
+\begin{proof}
+Par le critere,
+\[
+\nu_{B,\F}(y)=\frac{d(\F)d(A_y(B))}{d(\F)}=d(A_y(B)).
+\]
+Mais \(d(A_y(B))=\nu_{B,\N}(y)\).
+\end{proof}
+
+\begin{proposition}[Forme biaisee]
+Supposons que \(\nu_{B,\N}\) existe et que des poids \(w_y(\F)\ge0\) verifient
+\[
+d(\F\cap A_y(B))=w_y(\F)d(\F)d(A_y(B))
+\]
+pour tout \(y\), avec normalisation non nulle. Alors
+\[
+\nu_{B,\F}(y)=
+\frac{w_y(\F)\nu_{B,\N}(y)}
+{\sum_z w_z(\F)\nu_{B,\N}(z)}.
+\]
+\end{proposition}
+
+\begin{proof}
+La formule brute donne \(\nu_{B,\F}(y)=w_y(\F)d(A_y(B))\). Comme les masses
+doivent sommer a \(1\), on ecrit la meme relation sous forme normalisee.
+\end{proof}
+
+\section{Motifs premiers}
+
+\begin{definition}[Classe d'un motif premier]
+Pour un motif fini \(H\subset\mathbb Z\), on pose
+\[
+\mathcal P_H=\{p:p+h\text{ est premier pour tout }h\in H\}.
+\]
+\end{definition}
+
+\begin{theorem}[Loi terminale conditionnelle pour un motif]
+Supposons que, pour chaque \(y\in X_B\),
+\[
+|\{p\le x:p\in\mathcal P_H,\ E_B(p)=y\}|
+\sim
+c_y(B,H)\frac{x}{(\log x)^{|H|}},
+\]
+et que
+\[
+C_B(H)=\sum_{y\in X_B}c_y(B,H)>0.
+\]
+Alors
+\[
+\nu_{B,\mathcal P_H,N}(y)\longrightarrow
+\frac{c_y(B,H)}{C_B(H)}.
+\]
+\end{theorem}
+
+\begin{proof}
+Le denominateur est la somme finie des numerateurs sur \(y\in X_B\). En
+utilisant les equivalents supposes et \(C_B(H)>0\), le quotient converge vers
+\(c_y(B,H)/C_B(H)\).
+\end{proof}
+
+\begin{remark}
+Ce theoreme ne prouve aucune asymptotique de nombres premiers. Il dit seulement
+que si les asymptotiques locales terminales existent, alors la loi terminale est
+leur normalisation.
+\end{remark}
+
+\section{Filtrage terminal et normalisation}
+
+Soit \(A\subseteq X_B\) et
+\[
+M_A(n)=1\quad\Longleftrightarrow\quad E_B(n)\in A.
+\]
+Si \(\nu_{B,\mathcal P_H}\) existe, on pose
+\[
+\rho_A(H)=\nu_{B,\mathcal P_H}(A).
+\]
+Sous une asymptotique de Hardy--Littlewood
+\[
+|\mathcal P_H\cap[1,x]|
+\sim
+S(H)\frac{x}{(\log x)^{|H|}},
+\]
+le coefficient conditionnel du filtre terminal est
+\[
+S(H)\rho_A(H).
+\]
+Pour les jumeaux, \(S(H)=2C_2\), donc
+\[
+C_{\rm Montmory}=2C_2\,\nu_{B,\rm twin}(A)
+\]
+dans la convention ou \(C_{\rm Montmory}\) designe le coefficient devant
+\(x/\log^2x\). Dans la convention relative,
+\[
+C_{\rm Montmory}^{\rm rel}=\nu_{B,\rm twin}(A).
+\]
+
+\section{Ce qui est obtenu}
+
+On obtient une mathematique finie, exacte et projective des classes:
+\[
+\boxed{\F\longmapsto \nu_{B,\F,N}}
+\]
+et
+\[
+\boxed{(\F,\G)\longmapsto D_{B,N}(\F,\G).}
+\]
+Elle s'applique aux premiers, jumeaux, cousins et sexy primes comme classes,
+mais ne demontre pas encore leurs lois limites. Le verrou mathematique fort est
+donc:
+\[
+\boxed{\text{prouver l'existence de }\nu_{B,\F}
+\text{ pour des classes arithmetiques non triviales}.}
+\]
+
+\end{document}
