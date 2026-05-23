@@ -10,7 +10,7 @@ Only material that is definitional, proven, or explicitly presented as a conditi
 | --- | --- |
 | `definitions.md` | Definitions and required conventions. |
 | `verified-lemmas.md` | Proven elementary statements only. |
-| `publication-c-montmory-hl-validated.md` | Conditional Hardy-Littlewood normalization note restricted to formulas currently valid or conditionally valid. |
+| `conditional-normalization.md` | Conditional Hardy-Littlewood normalization note: validated normalization and conditional implications only; no validation of `C_Montmory` itself. |
 
 ## Work Area
 
