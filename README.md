@@ -17,6 +17,9 @@ engineering proposals.
   of each track.
 - `docs/RESEARCH_WORKFLOW.md` defines how new work should move from idea to
   derivation, test and publication artifact.
+- `docs/SCIENTIFIC_CONSOLIDATION_PLAN.md` turns the current technical review
+  into a concrete action plan: literature positioning, quantitative result
+  tables, falsifiability and robust-vs-speculative separation.
 
 ## Current research tracks
 
