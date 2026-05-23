@@ -4,13 +4,13 @@ Research repository organized around two top-level intellectual namespaces:
 
 ```text
 COSMO/  # GUP, UV/IR, holography, cosmology, dark-energy constraints, sensors
-Math/   # reusable mathematical foundations, including the VDF workstream
+Math/   # reusable mathematical foundations, including VDF and PRNG workstreams
 ```
 
 The current cosmology tracks still live mostly at the repository root for
 compatibility with existing LaTeX and script paths. `COSMO/` is now the target
 namespace and index for their staged migration. `Math/` is the home for reusable
-mathematical structures that support this and other repositories.
+mathematical structures and algorithms that support this and other repositories.
 
 ## Executive Overview
 
@@ -37,9 +37,13 @@ phase-space language gives a useful engineering budget for cold-atom quantum
 sensors, gravimetry and a proposed differential atom-interferometer route to
 measuring Newton's `G`.
 
-The Math namespace starts with `Math/VDF/`, intended to formalize the underlying
-VDF mathematics shared across this and other repositories. VDF should be defined
-as reusable mathematics first, then applied in COSMO or software projects.
+The Math namespace starts with:
+
+- `Math/VDF/` for the underlying VDF mathematics shared across repositories;
+- `Math/PRNG/` for the mathematical and algorithmic structure of your PRNG.
+
+Both should be defined as reusable mathematics first, then linked to COSMO or
+software projects only where they are actually used.
 
 This repository is not a single finished theory. It is organized as research
 tracks with explicit status labels: verified algebra, numerical tests,
@@ -68,6 +72,7 @@ See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
   physics corpus.
 - `Math/README.md` defines the reusable mathematics namespace.
 - `Math/VDF/README.md` starts the VDF mathematical workstream.
+- `Math/PRNG/README.md` starts the PRNG mathematical and algorithmic workstream.
 - `docs/NAMESPACE_MIGRATION_PLAN.md` explains how root-level tracks will move
   into `COSMO/` without breaking scripts or LaTeX builds.
 - `docs/CLAIMS_MATRIX.md` classifies the major claims by status and limitation.
@@ -109,6 +114,7 @@ is `COSMO/`.
 | Track | Type | Status | Purpose |
 |---|---|---|---|
 | `Math/VDF/` | mathematical foundation | workstream to formalize | Define the VDF objects, notation, lemmas and links to other repositories |
+| `Math/PRNG/` | mathematical algorithm | workstream to formalize | Define PRNG state transition, output function, period/statistical/security claims and reference vectors |
 
 ## Main Results by Category
 
@@ -188,6 +194,7 @@ This repository uses explicit scientific status labels:
 - `rejected as primary mechanism`
 - `engineering proposal`
 - `mathematical foundation`
+- `mathematical algorithm`
 
 The goal is to keep professional separation between what is derived, what is
 tested, what is excluded, what is conjectural, what is an applied design proposal
