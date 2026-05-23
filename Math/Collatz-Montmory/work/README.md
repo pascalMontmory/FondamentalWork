@@ -16,6 +16,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `jumeau-v1-salvage.md`: corrected extraction from Jumeau V1.
 - `local-dynamics-initial-diagnostic.md`: first diagnostic for empirical local dynamics.
 - `montmory-filter-lock.md`: filter-lock definitions and candidate families.
+- `next-search-diagnostics.md`: extended `10^7` filter diagnostics and first search for a local-product source of the target coefficient.
 - `scripts/`: exploratory and reproducibility scripts.
 
 ## Rule
