@@ -25,10 +25,13 @@ of VDF/PRNG definitions.
 |---|---|---|
 | `Math/VDF/` | Formalize the VDF mathematical framework shared across projects | definitions pending |
 | `Math/PRNG/` | Formalize the mathematical and algorithmic structure of your PRNG | definitions pending |
+| `Math/Collatz-Montmory/` | Audit the Collatz-Montmory work with proved/verified/conjectural separation | baseline classical definitions added |
 
 VDF should capture reusable mathematical structure. PRNG should capture the
 state transition, output function, period/statistical/security claims and test
-vectors of the pseudo-random generator.
+vectors of the pseudo-random generator. Collatz-Montmory should publish only
+proved statements or finite computational verifications, with conjectures kept
+separate.
 
 ## Intended contents
 
@@ -49,7 +52,8 @@ Do not use `Math/` for:
 - generated plots or reports from applications;
 - speculative physics claims without a mathematical statement;
 - operational documentation for unrelated software;
-- security claims without a stated model and reproducible tests.
+- security claims without a stated model and reproducible tests;
+- claims of solving open problems without a line-by-line proof audit.
 
 ## Standard layout
 
@@ -74,6 +78,15 @@ period.md
 statistical-tests.md
 security-model.md
 reference-vectors.md
+```
+
+Open-problem tracks such as Collatz-Montmory should add:
+
+```text
+verified-lemmas.md
+computational-verification.md
+conjectures.md
+audit-log.md
 ```
 
 ## Review rule
