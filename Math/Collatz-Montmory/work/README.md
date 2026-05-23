@@ -14,6 +14,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `decorrrelation-hypothesis.md`: precise falsifiable decorrelation hypothesis for local Montmory biases.
 - `filter-dynamics-specification.md`: frozen candidate definitions for direct filters and local dynamics.
 - `initial-filter-diagnostics.md`: first direct-filter diagnostic results.
+- `inverse-tree-entrance-measures.md`: formula-first study of inverse Collatz trees and entrance-measure cylinders.
 - `jumeau-v1-salvage.md`: corrected extraction from Jumeau V1.
 - `local-dynamics-initial-diagnostic.md`: first diagnostic for empirical local dynamics.
 - `modular-filter-diagnostic.md`: diagnostic for modular filters, rational-density overfitting, and residue correlation of top Collatz scores.
