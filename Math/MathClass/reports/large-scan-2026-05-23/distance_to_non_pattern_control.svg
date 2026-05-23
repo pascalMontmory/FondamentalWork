@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect width="100%" height="100%" fill="white" />
+<text x="490.0" y="28" font-size="18" text-anchor="middle">D_B(pattern, prime non-pattern control)</text>
+<line x1="70" y1="50.00" x2="950" y2="50.00" stroke="#ddd" stroke-width="1" />
+<line x1="70" y1="150.00" x2="950" y2="150.00" stroke="#ddd" stroke-width="1" />
+<line x1="70" y1="250.00" x2="950" y2="250.00" stroke="#ddd" stroke-width="1" />
+<line x1="70" y1="350.00" x2="950" y2="350.00" stroke="#ddd" stroke-width="1" />
+<line x1="70" y1="450.00" x2="950" y2="450.00" stroke="#ddd" stroke-width="1" />
+<line x1="70" y1="50" x2="70" y2="450" stroke="#333" />
+<line x1="70" y1="450" x2="950" y2="450" stroke="#333" />
+<text x="70.00" y="490" font-size="11" text-anchor="middle">300000</text>
+<text x="298.15" y="490" font-size="11" text-anchor="middle">1000000</text>
+<text x="950.00" y="490" font-size="11" text-anchor="middle">3000000</text>
+<text x="60" y="454.00" font-size="11" text-anchor="end">0.000</text>
+<text x="60" y="354.00" font-size="11" text-anchor="end">0.012</text>
+<text x="60" y="254.00" font-size="11" text-anchor="end">0.024</text>
+<text x="60" y="154.00" font-size="11" text-anchor="end">0.036</text>
+<text x="60" y="54.00" font-size="11" text-anchor="end">0.048</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="70.00,299.22 70.00,154.60 70.00,52.53 298.15,381.65 298.15,281.89 298.15,244.97 950.00,386.89 950.00,357.28 950.00,338.25" /><polyline fill="none" stroke="#d62728" stroke-width="2" points="70.00,281.27 70.00,108.13 70.00,50.00 298.15,335.87 298.15,257.32 298.15,211.78 950.00,383.76 950.00,327.05 950.00,309.01" /><polyline fill="none" stroke="#2ca02c" stroke-width="2" points="70.00,349.57 70.00,202.01 70.00,154.29 298.15,390.29 298.15,311.88 298.15,295.43 950.00,419.27 950.00,356.25 950.00,339.44" />
+<line x1="810" y1="50" x2="835" y2="50" stroke="#1f77b4" stroke-width="3" /><text x="842" y="55" font-size="13">twin</text><line x1="810" y1="70" x2="835" y2="70" stroke="#d62728" stroke-width="3" /><text x="842" y="75" font-size="13">cousin</text><line x1="810" y1="90" x2="835" y2="90" stroke="#2ca02c" stroke-width="3" /><text x="842" y="95" font-size="13">sexy</text>
+<text x="490.0" y="512" font-size="12" text-anchor="middle">N</text>
+</svg>
