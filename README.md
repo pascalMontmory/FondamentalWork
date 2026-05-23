@@ -4,13 +4,57 @@ Research repository for GUP phase-space models, UV/IR holographic relations,
 dark-energy constraints, public-data tests, speculative twin-sector extensions
 and cold-atom quantum-sensor applications.
 
+## Executive Overview
+
+The central result is a conditional no-go and separation principle:
+
+```text
+local GUP phase-space regularization can make UV vacuum integrals finite,
+but direct identification with observed dark energy requires beta0 ~ 10^60,
+which is not viable as a universal local parameter under public photon,
+radiation and dense-fermion constraints.
+```
+
+The viable research direction is therefore not "GUP alone explains Lambda". It
+is a two-layer framework:
+
+```text
+local UV regularization
++ IR/holographic gravitational projection
++ explicit observational constraints
+```
+
+The strongest applied direction is separate and more mature: the same
+phase-space language gives a useful engineering budget for cold-atom quantum
+sensors, gravimetry and a proposed differential atom-interferometer route to
+measuring Newton's `G`.
+
 This repository is not a single finished theory. It is organized as a set of
 research tracks with explicit status labels: verified algebra, numerical tests,
 observational constraints, candidate conjectures, rejected mechanisms and
 engineering proposals.
 
-## Start here
+## Key Numbers
 
+| Result | Value | Status |
+|---|---:|---|
+| Dark-energy density used in synthesis | `5.253229e-10 J/m^3` | reproduced from public constants/cosmology inputs |
+| Direct GUP match to dark energy | `beta0_Lambda(g=1) = 2.363228e60` | robust no-go value under direct `rho_reg = rho_DE` |
+| FIRAS photon-sector bound | `beta0 <= 3.72e58` | excludes `beta0_Lambda` as universal photon parameter |
+| BBN/radiation bound | `beta0 <= 2.64e41` | excludes `beta0_Lambda` in primordial radiation sector |
+| Dense-fermion bound | `beta0 <= 1.66e38` | excludes `beta0_Lambda` for dense fermions |
+| Proposed `alpha^-1` relation | `137.036063742708` vs CODATA `137.035999177` | numerically close conjecture, not confirmed |
+| Sr88 sensor nominal result | `11.52 microGal/sqrtHz` | first-order technical-noise model, vibration dominated |
+| NIM-like gravimeter benchmark | `19.72` model vs `20.5 microGal/sqrtHz` reference | sanity check |
+| Atom-interferometer `G` milestone | `<150 ppm` first target | engineering proposal, not yet simulated end-to-end |
+
+See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
+
+## Start Here
+
+- `docs/CLAIMS_MATRIX.md` classifies the major claims by status and limitation.
+- `docs/NUMERICAL_RESULTS_INDEX.md` lists the main numerical values and where
+  they are generated.
 - `docs/REPOSITORY_STRUCTURE.md` explains the repository organization and file
   policy.
 - `docs/PUBLICATION_CATALOG.md` gives the recommended reading order and status
@@ -21,7 +65,7 @@ engineering proposals.
   into a concrete action plan: literature positioning, quantitative result
   tables, falsifiability and robust-vs-speculative separation.
 
-## Current research tracks
+## Current Research Tracks
 
 | Track | Type | Status | Purpose |
 |---|---|---|---|
@@ -39,7 +83,7 @@ engineering proposals.
 | `cellule-phase-vitesse-gup/` | application | engineering proposal | Position-velocity phase-space, cold-atom sensors, gravimetry and Newton `G` metrology |
 | `synthese-travaux-confirmes-gup-uvir/` | synthesis | curated status | Separates confirmed internal results from speculative extensions |
 
-## Main results by category
+## Main Results by Category
 
 ### Robust negative results
 
@@ -97,7 +141,7 @@ latexmk -pdf -interaction=nonstopmode phase_space_cad_quantum_sensors.tex
 latexmk -pdf -interaction=nonstopmode paper_quantum_sensor_phase_space.tex
 ```
 
-## Generated artifacts
+## Generated Artifacts
 
 Generated PDFs, LaTeX build files, CSV tables, PNG figures and JSON summaries are
 reproducible outputs. They are normally excluded from Git unless intentionally
@@ -106,7 +150,7 @@ published as release artifacts.
 Source files, scripts, tests and Markdown reports are the primary review
 artifacts.
 
-## Editorial policy
+## Editorial Policy
 
 This repository uses explicit scientific status labels:
 
