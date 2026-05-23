@@ -1,0 +1,388 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=2.25cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={Phase-space CAD for cold-atom quantum sensors},
+  pdfauthor={FondamentalWork}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.35em,topsep=0.25em,itemsep=0.15em}
+
+\newcommand{\kb}{k_{\rm B}}
+\newcommand{\lth}{\lambda_{\rm th}}
+\newcommand{\dd}{\mathrm d}
+
+\title{\textbf{Phase-space CAD for cold-atom quantum sensors}\\
+\large A conservative design-budget framework from $D^3v^3\simeq h^3/m^3$}
+\author{FondamentalWork}
+\date{22 May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We turn the position--velocity phase-space cell relation
+$D^3v^3\simeq h^3/m^3$ into a practical first-order design framework for
+cold-atom quantum sensors. The proposal is not a new propulsion mechanism and
+does not rely on experimentally inaccessible GUP corrections. Its useful layer
+is a conservative phase-space budget linking atomic temperature, density,
+velocity dispersion, cloud expansion, aperture survival, detected atom number
+and atom-interferometer shot noise. The resulting software concept,
+\texttt{PhaseSpace CAD}, can reject physically weak source architectures before
+full optical, vibration and navigation simulations are performed.
+\end{abstract}
+
+\section{Purpose}
+
+The most useful industrial application found for the phase-space formulas is
+not chemical propulsion. Hot rocket gases have extremely small
+$n\lambda_{\rm th}^3$ and are deeply classical. The strong application is
+quantum metrology: inertial sensors, gravimeters, gyroscopes and gravity
+gradiometers based on cold atoms.
+
+This phase-space CAD framework is primarily motivated, but not driven, by GUP
+considerations. The deformation gives a useful theoretical language for
+phase-space counting; the applied sensor budget below uses the experimentally
+robust $\beta\to0$ limit.
+
+The key design question is simple: can a candidate atom source reach its target
+sensitivity within its allowed temperature, density, atom number, package size
+and interrogation time? If the answer is negative at the phase-space-budget
+level, the detailed instrument cannot recover the lost performance.
+
+\section{Phase-space budget}
+
+For a thermal atomic cloud,
+\begin{equation}
+\lth=\frac{h}{\sqrt{2\pi m\kb T}},
+\qquad
+\eta=n\lth^3,
+\end{equation}
+where $\eta$ is the thermal phase-space density. The one-dimensional velocity
+spread is
+\begin{equation}
+\sigma_v=\sqrt{\frac{\kb T}{m}}.
+\end{equation}
+For ballistic free expansion,
+\begin{equation}
+R(t)=\sqrt{R_0^2+\sigma_v^2t^2}.
+\end{equation}
+These equations provide the source budget. A colder source has larger
+$\eta$, smaller $\sigma_v$, slower expansion and better aperture survival.
+
+\subsection{Atom-number cap}
+
+For a gravimeter-like instrument, a compact sensitivity figure of merit is
+\begin{equation}
+{\cal F}=\sqrt{N_{\rm det}}T_i^2,
+\qquad
+\delta a\simeq\frac{1}{k_{\rm eff}{\cal F}}.
+\end{equation}
+If the total experimental cycle time $T_{\rm cycle}$ is known, the
+per-root-Hz proxy should instead use
+\begin{equation}
+{\cal F}_{\sqrt{\rm Hz}}=\sqrt{\frac{N_{\rm det}}{T_{\rm cycle}}}T_i^2.
+\end{equation}
+This makes duty cycle explicit: long cooling, preparation, detection or dead
+times reduce the usable sensitivity even if the single-shot atom budget looks
+excellent.
+
+The detected atom number cannot be specified independently of phase-space
+density. In the present budget we impose
+\begin{equation}
+N_{\rm phase}=\eta_{\max}\frac{V_{\rm eff}}{\lambda_{\rm th}^3},
+\qquad
+N_{\rm det}=\min\left(N_{\rm tech}f_{\rm surv},N_{\rm phase}\right),
+\end{equation}
+where $f_{\rm surv}$ is the aperture survival proxy. This makes explicit the
+trade-off between cooling, cloud size, usable volume and atom number.
+The figure of merit is only a screening proxy: it omits contrast, laser phase
+noise, vibration residuals, wavefront aberrations, detection noise, duty cycle
+and Allan-deviation behavior.
+
+\subsection{Technical noise budget extension}
+
+The script \texttt{scripts/simulate\_sensor\_noise\_budget.py} adds a
+first-order technical-noise envelope for a three-pulse gravimeter. It is kept
+separate from the atom-source budget because these terms are instrument and
+site dependent:
+\begin{align}
+\sigma_{\phi,\rm laser}^2
+&=\int |H_\phi(f)|^2S_\phi(f)\,\mathrm df,
+&
+|H_\phi(f)|^2&\simeq16\sin^4(\pi fT_i),
+\\
+\sigma_{\phi,\rm vib}^2
+&=k_{\rm eff}^2\int |H_a(f)|^2S_a(f)\,\mathrm df,
+&
+|H_a(f)|^2&\simeq
+\left[\frac{4\sin^2(\pi fT_i)}{(2\pi f)^2}\right]^2.
+\end{align}
+The combined phase-noise proxy is
+\begin{equation}
+\sigma_{\phi,\rm QPN}=\frac{1}{C\sqrt{N_{\rm at}}},
+\qquad
+\sigma_{\phi,\rm photon}=
+\frac{F_{\rm excess}}{C\sqrt{N_{\rm ph/at}N_{\rm at}\eta_{\rm det}}},
+\end{equation}
+\begin{equation}
+\sigma_{\phi,\rm JN}^2=(2\pi)^2
+\int |H_\nu(f)|^2\left(\frac{\partial\nu}{\partial B}\right)^2S_B(f)\,\mathrm df,
+\end{equation}
+and the total phase-noise proxy is
+\begin{equation}
+\sigma_{\phi,\rm total}^2
+=\sigma_{\phi,\rm QPN}^2+\sigma_{\phi,\rm photon}^2
++\left(\frac{\sigma_{\phi,\rm laser}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm vib}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm therm}}{C}\right)^2
++\left(\frac{\sigma_{\phi,\rm JN}}{C}\right)^2,
+\end{equation}
+and the corresponding acceleration ASD is
+\begin{equation}
+\delta a_{\sqrt{\rm Hz}}
+=\frac{\sigma_{\phi,\rm total}\sqrt{T_{\rm cycle}}}
+{k_{\rm eff}T_i^2}.
+\end{equation}
+Here $T_{\rm cycle}=T_{\rm prep}+2T_i+T_{\rm det}+T_{\rm dead}$.
+The seismic, laser, magnetic and thermal PSDs in this script are engineering
+envelopes, not universal constants. They should be replaced by measured Raman
+phase-noise, seismometer, magnetometer and thermal data for a real instrument.
+
+\subsection{Example use case}
+
+Consider a portable gravimeter targeting the aggressive transportable level
+\begin{equation}
+\delta a_{\rm target}=10\,\mu{\rm Gal}/\sqrt{\rm Hz}
+=10^{-7}\,{\rm m\,s^{-2}/\sqrt{Hz}},
+\end{equation}
+using $1\,\mu{\rm Gal}=10^{-8}\,{\rm m\,s^{-2}}$. A target of
+$10^{-8}\,{\rm m\,s^{-2}/\sqrt{Hz}}$ would instead be
+$1\,\mu{\rm Gal}/\sqrt{\rm Hz}$ and should be described as a stretch research
+target, not a typical current portable field specification.
+Public benchmarks put transportable or mobile atom gravimeters in this
+neighborhood: $20.5\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in the laboratory and
+$10.8\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in a seismic station for a recent NIM
+transportable instrument, $37\,\mu{\rm Gal}/\sqrt{\rm Hz}$ in a mobile gravity
+survey, and about $50\,\mu{\rm Gal}/\sqrt{\rm Hz}$ for a commercial quiet-site
+datasheet \cite{nim-transportable, mobile-gravity-survey, muquans-aqg}.
+
+The phase-space budget says this target is not atom-shot-noise limited at the
+source level. The best Rb87/Sr/Yb points in Table~1 sit near
+$10^{-11}\,{\rm m\,s^{-2}}$ before contrast loss, vibration noise, laser phase
+noise, wavefront aberrations, dead time and detection noise are included. The
+practical conclusion is therefore precise: the cold-atom source is good enough
+in first order; the hard work moves to vibration rejection, optical phase
+stability, contrast preservation, cycle time and field packaging.
+
+For a compact gyroscope aimed at inertial navigation, the same table is only a
+source prefilter. A full gyroscope model must add the enclosed interferometer
+area, transverse velocity, rotation geometry, platform motion, duty cycle and
+long-term bias stability.
+
+\subsection{Atom choice}
+
+The companion script \texttt{scripts/compare\_atom\_phase\_space\_budget.py}
+compares Rb87, Cs133, Sr88, Yb174, Li6 and Li7 using practical temperature
+floors, recoil temperatures and the phase-space atom-number cap. With
+$\eta_{\max}=0.3$, a $12\,{\rm mm}$ aperture and $N_{\rm tech}=10^7$, the
+best practical-floor points are:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llllrrr}
+\toprule
+Atom & access & best $T$ [K] & best $T_i$ [s] & $T_{\rm rec}$ [K] & $\sigma_v$ [m/s] & $\delta a$ [m/s$^2$]\\
+\midrule
+Sr88 & good & $1.0\times10^{-8}$ & 1 & $2.29\times10^{-7}$ & $9.73\times10^{-4}$ & $1.73\times10^{-11}$\\
+Yb174 & good & $1.0\times10^{-8}$ & 1 & $1.78\times10^{-7}$ & $6.91\times10^{-4}$ & $1.40\times10^{-11}$\\
+Cs133 & excellent & $1.0\times10^{-7}$ & 1 & $9.92\times10^{-8}$ & $2.50\times10^{-3}$ & $2.14\times10^{-11}$\\
+Rb87 & excellent & $1.0\times10^{-7}$ & 1 & $1.81\times10^{-7}$ & $3.09\times10^{-3}$ & $1.96\times10^{-11}$\\
+Li7 & specialized & $3.0\times10^{-7}$ & 1 & $3.03\times10^{-6}$ & $1.89\times10^{-2}$ & $5.16\times10^{-11}$\\
+Li6 & specialized & $3.0\times10^{-7}$ & 1 & $3.54\times10^{-6}$ & $2.04\times10^{-2}$ & $5.71\times10^{-11}$\\
+\bottomrule
+\end{tabular}
+\caption{Atom comparison under the phase-space atom-number cap. The table is a
+design-screening result, not a final sensor ranking.}
+\end{table}
+
+\section{Interferometer sensitivity}
+
+For a light-pulse atom interferometer, acceleration is encoded as
+\begin{equation}
+\Delta\phi=k_{\rm eff}aT_i^2.
+\end{equation}
+The ideal shot-noise acceleration floor is approximated by
+\begin{equation}
+\delta a\simeq
+\frac{1}{k_{\rm eff}T_i^2\sqrt{N_{\rm det}}}.
+\end{equation}
+For a gyroscope with transverse velocity $v$, a Sagnac-like proxy is
+\begin{equation}
+\delta\Omega\simeq
+\frac{1}{2k_{\rm eff}vT_i^2\sqrt{N_{\rm det}}}.
+\end{equation}
+Longer interrogation improves the ideal phase response, but it also increases
+cloud expansion. The detected atom number therefore depends on the same
+temperature that sets velocity dispersion.
+
+\section{Implemented CAD proxy}
+
+The script \texttt{scripts/phase\_space\_sensor\_cad.py} scans temperature and
+interrogation time for four use cases:
+\begin{itemize}
+  \item Rb87 inertial accelerometer for GPS-denied navigation;
+  \item Rb87 portable field gravimeter;
+  \item Cs133 compact atomic gyroscope;
+  \item Sr88 source for space gravity gradiometry.
+\end{itemize}
+
+Each design receives a bounded utility score combining aperture survival,
+shot-noise target, phase-space density, package compactness and a practical
+cooling floor. The cooling term prevents the optimizer from blindly selecting
+nanokelvin temperatures when a deployable microkelvin or sub-microkelvin source
+would be the more realistic engineering choice.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llllrrr}
+\toprule
+Scenario & Atom & $T$ [K] & $T_i$ [s] & $\eta$ & radius [mm] & score\\
+\midrule
+GPS-denied accelerometer & Rb87 & $1.0\times10^{-7}$ & 0.05 & $2.08\times10^{-1}$ & 0.81 & 0.974\\
+Field gravimeter & Rb87 & $5.0\times10^{-8}$ & 0.25 & $2.93\times10^{-1}$ & 1.32 & 0.980\\
+Compact gyroscope & Cs133 & $1.0\times10^{-7}$ & 0.10 & $8.79\times10^{-2}$ & 0.74 & 0.960\\
+Space gradiometer source & Sr88 & $1.0\times10^{-8}$ & 1.00 & $1.29$ & 1.79 & 1.000\\
+\bottomrule
+\end{tabular}
+\caption{Best design points from the first-order phase-space CAD proxy. These
+are feasibility-screening points, not final instrument specifications.}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.96\linewidth]{reports/figures/phase_space_sensor_cad.png}
+\caption{Utility-score scans for four cold-atom sensor scenarios. The score is
+not a performance proof; it is an early rejection and ranking metric.}
+\end{figure}
+
+\section{Scientific limits}
+
+The source CAD budget is now complemented by first-order laser, seismic and
+thermal envelopes. It still intentionally excludes measured instrument PSDs,
+wavefront aberrations, magnetic systematics, atom loss, cold collisions, full
+detection noise, navigation filtering and Allan deviation beyond the root-Hz
+proxy. These effects must be added in an engineering-grade simulator.
+
+The correct interpretation of a high score is therefore:
+\begin{center}
+\fbox{the phase-space budget does not already reject the design.}
+\end{center}
+It is not a claim that the final sensor will meet its mission specification.
+
+\subsection{GUP term in the applied regime}
+
+For the GUP-deformed phase-space measure
+\begin{equation}
+\dd N_{\rm GUP}=\frac{\dd N_0}{(1+\beta m^2v^2)^3},
+\end{equation}
+the expansion parameter is
+\begin{equation}
+\epsilon_{\rm GUP}=\beta p^2
+=\beta_0\left(\frac{mv}{p_{\rm Pl}}\right)^2.
+\end{equation}
+For Rb87 at $T=1\,\mu{\rm K}$, $\sigma_v=9.78\times10^{-3}\,{\rm m/s}$ and
+\begin{equation}
+\epsilon_{\rm GUP}(\beta_0=1)=4.68\times10^{-56},
+\qquad
+\epsilon_{\rm GUP}(\beta_0=10^{26})=4.68\times10^{-30}.
+\end{equation}
+Thus $(1+\epsilon_{\rm GUP})^{-3}\simeq1-3\epsilon_{\rm GUP}$ is completely
+negligible for cold-atom sensor engineering. The applied framework uses the
+$\beta\to0$ phase-space budget; it does not claim detection of GUP corrections.
+
+\section{Industrial direction}
+
+The credible product is software, not a speculative engine:
+\begin{center}
+\fbox{\texttt{PhaseSpace CAD for Quantum Sensors}}
+\end{center}
+Its minimum viable version should provide atom databases, phase-space density
+calculation, ballistic cloud expansion, aperture survival, shot-noise
+estimates, scenario ranking and CSV/JSON export. The next version should add
+laser noise, vibration noise, gradiometer geometry and Allan-deviation models.
+
+\section{Conclusion}
+
+The same $h^3$ phase-space cell that gives little leverage for hot chemical
+gases becomes useful when the industrial object is a cold quantum source. The
+practical conclusion is:
+\begin{equation}
+\text{phase-space density}+\text{velocity dispersion}
+\longrightarrow
+\text{early design budget for quantum sensors}.
+\end{equation}
+This is a concrete, testable and conservative use of the theory.
+
+The most useful next form is open-source and community-oriented: transparent
+equations, public benchmark scenarios, atom databases, package constraints,
+cycle-time models, vibration budgets and reproducible reports that can be
+extended without accepting the speculative GUP layer.
+
+\begin{thebibliography}{9}
+\bibitem{nist-sensing}
+NIST, ``Quantum Sensing Explained,'' 2026.
+\url{https://www.nist.gov/quantum-information-science/quantum-sensing-explained}
+
+\bibitem{nist-gyro}
+NIST, ``Atomic Gyroscopes.''
+\url{https://www.nist.gov/noac/technology/time-and-frequency/atomic-gyroscopes}
+
+\bibitem{sandia-gravity}
+Sandia National Laboratories, ``Gravimetry -- Quantum.''
+\url{https://www.sandia.gov/quantum/gravimetry/}
+
+\bibitem{darpa-roqs}
+DARPA, ``From fragile to field-ready: RoQS program launches first phase,'' 2025.
+\url{https://www.darpa.mil/news/2025/roqs-launches-first-phase}
+
+\bibitem{nim-transportable}
+Y. Wang et al.,
+``A Transportable Atomic Gravimeter with Constraint-Structured Active Vibration
+Isolation,''
+\emph{Sensors} \textbf{24}, 2395 (2024).
+\url{https://www.mdpi.com/1424-8220/24/8/2395}
+
+\bibitem{mobile-gravity-survey}
+Y. Wu et al.,
+``Gravity surveys using a mobile atom interferometer,''
+\emph{Science Advances} \textbf{5}, eaax0800 (2019).
+\url{https://pmc.ncbi.nlm.nih.gov/articles/PMC6731071/}
+
+\bibitem{muquans-aqg}
+Muquans,
+``Absolute Quantum Gravimeter'' product page.
+\url{https://www.muquans.com/product/absolute-quantum-gravimeter/}
+\end{thebibliography}
+
+\end{document}

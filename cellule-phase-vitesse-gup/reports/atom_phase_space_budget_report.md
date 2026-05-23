@@ -1,0 +1,86 @@
+# Atom comparison: phase-space budget
+
+This report adds an explicit sensitivity figure of merit with a
+phase-space atom-number cap:
+
+```text
+N_phase_cap = eta_max V_eff / lambda_th^3
+N_detected = min(N_technical survival, N_phase_cap)
+FOM = sqrt(N_detected) T_i^2
+FOM_Hz = sqrt(N_detected / T_cycle) T_i^2, if the total cycle time is known
+delta a ~= 1 / (k_eff FOM)
+```
+
+The GUP correction is also quantified through
+`epsilon_GUP = beta0 (m sigma_v / p_Pl)^2`.
+
+| atom | access | best T [K] | best Ti [s] | recoil T [K] | sigma_v [m/s] | N budget | FOM max | delta a [m/s2] | beta p2 beta0=1 | beta p2 beta0=1e26 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Sr88 | good | 1.00e-08 | 1 | 2.29e-07 | 9.73e-04 | 1.00e+07 | 3.16e+03 | 1.73e-11 | 4.73e-58 | 4.73e-32 |
+| Yb174 | good | 1.00e-08 | 1 | 1.78e-07 | 6.91e-04 | 1.00e+07 | 3.16e+03 | 1.40e-11 | 9.37e-58 | 9.37e-32 |
+| Cs133 | excellent | 1.00e-07 | 1 | 9.92e-08 | 2.50e-03 | 1.00e+07 | 3.16e+03 | 2.14e-11 | 7.16e-57 | 7.16e-31 |
+| Rb87 | excellent | 1.00e-07 | 1 | 1.81e-07 | 3.09e-03 | 9.99e+06 | 3.16e+03 | 1.96e-11 | 4.68e-57 | 4.68e-31 |
+| Li7 | specialized | 3.00e-07 | 1 | 3.03e-06 | 1.89e-02 | 1.07e+06 | 1.03e+03 | 5.16e-11 | 1.13e-57 | 1.13e-31 |
+| Li6 | specialized | 3.00e-07 | 1 | 3.54e-06 | 2.04e-02 | 8.74e+05 | 9.35e+02 | 5.71e-11 | 9.72e-58 | 9.72e-32 |
+
+Interpretation:
+
+- `FOM = sqrt(N_detected) T_i^2` is a first-order proxy. A real
+  instrument must also include contrast, laser phase noise, vibration
+  rejection, wavefront aberrations, detection noise, duty cycle and Allan
+  deviation;
+- when a total cycle time `T_cycle` is specified, the per-root-Hz proxy
+  should be demoted to `FOM_Hz = sqrt(N_detected / T_cycle) T_i^2`; the
+  present table intentionally leaves `T_cycle` outside the atom-source
+  budget;
+- heavier atoms have smaller velocity dispersion at fixed temperature;
+- Sr/Yb benefit from narrow-line cooling but require more complex optics;
+- Li has larger recoil and larger velocity spread, so it is less natural
+  for compact inertial sensors despite specialized advantages;
+- even the deliberately loose `beta0=1e26` GUP column is far below
+  direct relevance for cold-atom sensor design.
+
+Example use case:
+
+- A portable gravimeter targeting `10 microGal/sqrt(Hz)` is aiming at
+  `1e-7 m/s2/sqrt(Hz)`, since `1 microGal = 1e-8 m/s2`. This is an
+  aggressive but contextually plausible transportable target. A target
+  of `1e-8 m/s2/sqrt(Hz)` would be `1 microGal/sqrt(Hz)`, which should
+  be described as a stretch research target rather than a current
+  portable field specification;
+- Public transportable systems are more often reported around
+  `10-65 microGal/sqrt(Hz)`, i.e. `1e-7` to
+  `6.5e-7 m/s2/sqrt(Hz)`;
+- Public context: recent NIM transportable results report
+  `20.5 microGal/sqrt(Hz)` in the laboratory and
+  `10.8 microGal/sqrt(Hz)` in a seismic station; a mobile gravity
+  survey reports `37 microGal/sqrt(Hz)`; a commercial quiet-site
+  datasheet reports `50 microGal/sqrt(Hz)`;
+- In this first-order phase-space budget, the source shot-noise proxy
+  can sit below those field targets. That does not prove a portable
+  instrument can reach them: contrast, vibration rejection, laser phase
+  noise, wavefronts, detection, cycle time and package constraints
+  dominate the real specification;
+- The present scan also does not impose vertical drop/fountain distance,
+  laser power, optical bench volume, vacuum package, thermal control or
+  dead time. A portable design should therefore cap `T_i`, aperture,
+  atom number and cycle rate from a concrete mechanical package before
+  treating the FOM as an engineering target;
+- A compact navigation gyroscope should use this same table as a source
+  prefilter only. The missing terms are rotation geometry, enclosed
+  area, dead time, platform motion and long-term bias stability.
+
+Data: `reports/data/atom_phase_space_budget.csv`
+
+Figure: `reports/figures/atom_phase_space_budget.png`
+
+Focused figure: `reports/figures/atom_phase_space_budget_focus.png`
+shows continuous FOM-vs-temperature curves for Rb87, Sr88 and Yb174
+at `T_i = 0.5 s`, with markers at the maximum of each curve.
+
+Open-source direction:
+
+- The useful product form is an open, reproducible community CAD layer:
+  atom databases, package constraints, cycle-time models, vibration
+  budgets and public benchmark scenarios can be added without changing
+  the core phase-space equations.
