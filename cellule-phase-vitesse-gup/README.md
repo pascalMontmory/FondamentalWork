@@ -16,6 +16,22 @@ depend de la masse :
 v_GUP = 1/(m sqrt(beta)).
 ```
 
+## Lecture rapide
+
+La branche actuelle ajoute une piste applicative autour des capteurs quantiques
+a atomes froids. La contribution doit etre lue en deux niveaux separes :
+
+1. Le cadre GUP fournit le langage position-vitesse et la mesure de cellule de
+   phase.
+2. L'application industrielle exploite surtout la limite robuste `beta -> 0`,
+   c'est-a-dire les grandeurs standard `lambda_th`, `eta`, `sigma_v`, expansion
+   du nuage, nombre d'atomes detectes, contraste et temps de cycle.
+
+La conclusion courte est conservatrice : les gaz chauds industriels restent
+profondement classiques, alors que le meme langage de phase-space devient utile
+pour prefiltrer des sources atomiques froides destinees a la gravimetrie, aux
+gyroscopes, aux accelerometres et aux gradiometres.
+
 ## Contenu
 
 - `main.tex` : version verifiee et corrigee du manuscrit.
@@ -47,25 +63,43 @@ v_GUP = 1/(m sqrt(beta)).
   photonique, laser, vibration sismique, Johnson-Nyquist, thermique et duty
   cycle pour un gravimetre atomique.
 
-## Simulation industrielle
+## Pipeline reproductible
+
+Executer les controles de base :
 
 ```bash
+python3 -m py_compile scripts/*.py
 python3 scripts/test_industrial_phase_space_gases.py
-python3 scripts/simulate_industrial_phase_space_gases.py
 python3 scripts/test_quantum_gas_thresholds.py
+python3 scripts/test_phase_space_sensor_cad.py
+python3 scripts/test_atom_phase_space_budget.py
+python3 scripts/test_sensor_noise_budget.py
+```
+
+Regenerer les rapports numeriques :
+
+```bash
+python3 scripts/simulate_industrial_phase_space_gases.py
 python3 scripts/simulate_quantum_gas_thresholds.py
 python3 scripts/score_industrial_applications.py
 python3 scripts/simulate_cold_atom_sensor_phase_space.py
 python3 scripts/simulate_atom_interferometer_design.py
 python3 scripts/phase_space_sensor_cad.py
-python3 scripts/test_phase_space_sensor_cad.py
 python3 scripts/compare_atom_phase_space_budget.py
-python3 scripts/test_atom_phase_space_budget.py
 python3 scripts/simulate_sensor_noise_budget.py
-python3 scripts/test_sensor_noise_budget.py
 ```
 
-Sorties:
+Compiler les publications LaTeX :
+
+```bash
+latexmk -pdf publication_industrial_phase_space_gases.tex
+latexmk -pdf paper_quantum_sensor_phase_space.tex
+latexmk -pdf phase_space_cad_quantum_sensors.tex
+```
+
+## Sorties generees
+
+Les scripts ecrivent notamment :
 
 - `reports/industrial_phase_space_report.md`
 - `reports/industrial_phase_space_summary.json`
@@ -78,23 +112,63 @@ Sorties:
 - `reports/data/*.csv`
 - `reports/figures/*.png`
 
-Conclusion courte: les gaz de chambre d'un moteur chimique sont beaucoup trop
-classiques pour que `h^3` donne un levier direct de poussee. Le critere devient
-utile pour cryogenie profonde, hydrogene liquide, helium, faisceaux froids et
-controle de validite des equations d'etat.
+Les CSV, PNG et PDF sont des sorties locales reproductibles. La PR privilegie
+les sources, les scripts, les rapports Markdown et les tests plutot que les
+binaires generes.
 
-Compiler la publication industrielle:
+## Resultat capteur nominal
 
-```bash
-latexmk -pdf publication_industrial_phase_space_gases.tex
-latexmk -pdf paper_quantum_sensor_phase_space.tex
-latexmk -pdf phase_space_cad_quantum_sensors.tex
+Le budget technique le plus recent ajoute explicitement :
+
+- Quantum Projection Noise : `sigma_phi_QPN = 1/(C sqrt(N_at))` ;
+- shot photonique de detection avec photons par atome, efficacite et facteur
+  d'exces d'imagerie ;
+- vibration sismique avec isolation dependante de la frequence ;
+- Johnson-Nyquist magnetique separe du bruit thermique ;
+- cycle complet `T_cycle = T_prep + 2 T_i + T_detection + T_dead`.
+
+Cas nominal Sr88 autour de `T_i = 0.102 s` :
+
+- `T_cycle = 1.253 s` ;
+- bruit dominant : vibration ;
+- sensibilite estimee : `11.52 microGal/sqrtHz`.
+
+Sanity checks de benchmark :
+
+- cas NIM-like : `19.72 microGal/sqrtHz` contre `20.5 microGal/sqrtHz` publie ;
+- cas Muquans/Exail-like : `26.44 microGal/sqrtHz` contre `50 microGal/sqrtHz`
+  datasheet, meme ordre de grandeur mais sans ajustement force.
+
+## Portee scientifique
+
+Le dossier ne revendique pas une detection industrielle directe des corrections
+GUP. Pour les atomes froids usuels, le facteur
+`epsilon_GUP = beta0 (m v / p_Pl)^2` reste negligeable meme avec un `beta0`
+phenomenologique tres large.
+
+La valeur applicative est donc le cadre de conception :
+
+```text
+temperature -> vitesse -> expansion -> atomes detectes -> bruit de phase -> sensibilite
 ```
+
+Un score positif signifie seulement que le budget de phase-space ne tue pas deja
+l'architecture. La performance reelle reste decidee par la vibration residuelle,
+le bruit de phase laser, les aberrations de front d'onde, la detection, le
+contraste, le temps de cycle et les donnees PSD mesurees sur instrument.
+
+## Conclusion courte
+
+Les gaz de chambre d'un moteur chimique sont beaucoup trop classiques pour que
+`h^3` donne un levier direct de poussee. Le critere devient utile pour cryogenie
+profonde, hydrogene liquide, helium, faisceaux froids et controle de validite
+des equations d'etat. La piste industrielle la plus solide reste le CAD de
+sources atomiques pour capteurs quantiques.
 
 ## Envoi email style Securaw
 
 Un script local reprend le principe SMTP/MIME de Securaw Attesta sans afficher
-les secrets:
+les secrets :
 
 ```bash
 php tools/send_pdf_attesta_style.php \
