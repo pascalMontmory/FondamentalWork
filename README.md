@@ -4,7 +4,7 @@ Research repository organized around two top-level intellectual namespaces:
 
 ```text
 COSMO/  # GUP, UV/IR, holography, cosmology, dark-energy constraints, sensors
-Math/   # reusable mathematical foundations, including VDF and PRNG workstreams
+Math/   # reusable mathematical foundations, including VDF, PRNG and Collatz tracks
 ```
 
 The current cosmology tracks still live mostly at the repository root for
@@ -40,10 +40,12 @@ measuring Newton's `G`.
 The Math namespace starts with:
 
 - `Math/VDF/` for the underlying VDF mathematics shared across repositories;
-- `Math/PRNG/` for the mathematical and algorithmic structure of your PRNG.
+- `Math/PRNG/` for the mathematical and algorithmic structure of your PRNG;
+- `Math/Collatz-Montmory/` for the Collatz-Montmory workstream with strict
+  proved/verified/conjectural separation.
 
-Both should be defined as reusable mathematics first, then linked to COSMO or
-software projects only where they are actually used.
+These tracks should be defined as reusable mathematics first, then linked to
+COSMO or software projects only where they are actually used.
 
 This repository is not a single finished theory. It is organized as research
 tracks with explicit status labels: verified algebra, numerical tests,
@@ -71,8 +73,11 @@ See `docs/NUMERICAL_RESULTS_INDEX.md` for the longer table and source locations.
 - `COSMO/README.md` defines the target namespace for the cosmology/fundamental
   physics corpus.
 - `Math/README.md` defines the reusable mathematics namespace.
+- `Math/FORMULA_AUDIT.md` audits the central mathematical formulas currently in
+  the repository.
 - `Math/VDF/README.md` starts the VDF mathematical workstream.
 - `Math/PRNG/README.md` starts the PRNG mathematical and algorithmic workstream.
+- `Math/Collatz-Montmory/README.md` starts the Collatz-Montmory workstream.
 - `docs/NAMESPACE_MIGRATION_PLAN.md` explains how root-level tracks will move
   into `COSMO/` without breaking scripts or LaTeX builds.
 - `docs/CLAIMS_MATRIX.md` classifies the major claims by status and limitation.
@@ -115,6 +120,7 @@ is `COSMO/`.
 |---|---|---|---|
 | `Math/VDF/` | mathematical foundation | workstream to formalize | Define the VDF objects, notation, lemmas and links to other repositories |
 | `Math/PRNG/` | mathematical algorithm | workstream to formalize | Define PRNG state transition, output function, period/statistical/security claims and reference vectors |
+| `Math/Collatz-Montmory/` | open-problem math | baseline definitions and verifier added | Separate proved lemmas, finite computational checks and conjectures for Collatz-Montmory |
 
 ## Main Results by Category
 
@@ -174,6 +180,13 @@ latexmk -pdf -interaction=nonstopmode phase_space_cad_quantum_sensors.tex
 latexmk -pdf -interaction=nonstopmode paper_quantum_sensor_phase_space.tex
 ```
 
+For the Collatz-Montmory baseline verifier:
+
+```bash
+python3 Math/Collatz-Montmory/scripts/verify_collatz_range.py --limit 100000 --max-steps 10000
+python3 Math/Collatz-Montmory/tests/test_verify_collatz_range.py
+```
+
 ## Generated Artifacts
 
 Generated PDFs, LaTeX build files, CSV tables, PNG figures and JSON summaries are
@@ -195,6 +208,9 @@ This repository uses explicit scientific status labels:
 - `engineering proposal`
 - `mathematical foundation`
 - `mathematical algorithm`
+- `proved`
+- `mechanically verified`
+- `computational evidence`
 
 The goal is to keep professional separation between what is derived, what is
 tested, what is excluded, what is conjectural, what is an applied design proposal
