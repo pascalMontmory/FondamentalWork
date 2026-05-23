@@ -17,11 +17,20 @@ import argparse
 import bisect
 import math
 from dataclasses import dataclass
-from typing import Iterable, List, Sequence, Tuple
+from typing import List, Sequence
 
 TWIN_PRIME_HL_COEFF = 1.3203236316937391478556242200291115568652467205695
 C_MONTMORY = 0.107983974916
 RHO_TARGET = C_MONTMORY / TWIN_PRIME_HL_COEFF
+COLLATZ_RANDOM_WALK_DRIFT = 1.0 - 0.5 * math.log2(3.0)
+SCORE_MODES = [
+    "min",
+    "geo",
+    "harm",
+    "min-log-centered",
+    "geo-log-centered",
+    "harm-log-centered",
+]
 
 
 def sieve(limit: int) -> bytearray:
@@ -64,16 +73,25 @@ def kappa(n: int, bound: int = 89, max_steps: int = 100000) -> float:
     return math.log2(n) / tau
 
 
-def pair_score(p: int, bound: int = 89, max_steps: int = 100000, mode: str = "min") -> float:
-    a = kappa(p, bound=bound, max_steps=max_steps)
-    b = kappa(p + 2, bound=bound, max_steps=max_steps)
+def combine_pair_scores(a: float, b: float, mode: str) -> float:
     if mode == "min":
         return min(a, b)
     if mode == "geo":
         return math.sqrt(a * b)
     if mode == "harm":
         return 2.0 / (1.0 / a + 1.0 / b)
-    raise ValueError(f"unknown score mode: {mode}")
+    raise ValueError(f"unknown base score mode: {mode}")
+
+
+def pair_score(p: int, bound: int = 89, max_steps: int = 100000, mode: str = "min") -> float:
+    centered = mode.endswith("-log-centered")
+    base_mode = mode.removesuffix("-log-centered") if centered else mode
+    a = kappa(p, bound=bound, max_steps=max_steps)
+    b = kappa(p + 2, bound=bound, max_steps=max_steps)
+    score = combine_pair_scores(a, b, base_mode)
+    if centered:
+        return (score - COLLATZ_RANDOM_WALK_DRIFT) * math.log2(p)
+    return score
 
 
 @dataclass(frozen=True)
@@ -111,7 +129,7 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=1_000_000)
     parser.add_argument("--x-values", default="10000,100000,1000000")
     parser.add_argument("--bound", type=int, default=89)
-    parser.add_argument("--mode", choices=["min", "geo", "harm"], default="min")
+    parser.add_argument("--mode", choices=SCORE_MODES, default="min")
     parser.add_argument("--alpha", type=float, default=None)
     parser.add_argument("--calibrate-x", type=int, default=None)
     parser.add_argument("--max-steps", type=int, default=100000)
@@ -134,6 +152,7 @@ def main() -> None:
     print(f"C_Montmory={C_MONTMORY:.12f}")
     print(f"HL_twin_coefficient_2C2={TWIN_PRIME_HL_COEFF:.16f}")
     print(f"rho_target={RHO_TARGET:.17f}")
+    print(f"collatz_random_walk_drift={COLLATZ_RANDOM_WALK_DRIFT:.17f}")
     print(f"bound={args.bound}")
     print(f"mode={args.mode}")
     print(f"alpha={alpha:.17g}")
