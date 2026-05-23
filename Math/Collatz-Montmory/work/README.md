@@ -18,6 +18,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `modular-filter-diagnostic.md`: diagnostic for modular filters, rational-density overfitting, and residue correlation of top Collatz scores.
 - `montmory-filter-lock.md`: filter-lock definitions and candidate families.
 - `next-search-diagnostics.md`: extended `10^7` filter diagnostics and first search for a local-product source of the target coefficient.
+- `normalized-score-diagnostic.md`: preliminary positive diagnostic for the centered log-scaled Collatz score.
 - `scripts/`: exploratory and reproducibility scripts.
 
 ## Rule
