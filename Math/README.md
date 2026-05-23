@@ -6,6 +6,19 @@ It is deliberately separate from `COSMO/`: the goal is to keep reusable
 mathematics, formalisms, algorithms and proof scaffolding independent from a
 specific physics or software repository.
 
+## Audit entry point
+
+Start with:
+
+```text
+Math/FORMULA_AUDIT.md
+```
+
+It audits the central formulas currently used in the repository: GUP minimum
+length, position-velocity measure, vacuum-energy integral, dark-energy matching,
+Planck-Hubble identities, alpha--Lambda relation, sensor formulas and the status
+of VDF/PRNG definitions.
+
 ## Initial workstreams
 
 | Track | Purpose | Status |
