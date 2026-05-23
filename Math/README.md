@@ -3,20 +3,19 @@
 This namespace is for mathematical foundations shared across projects.
 
 It is deliberately separate from `COSMO/`: the goal is to keep reusable
-mathematics, formalisms and proof scaffolding independent from a specific
-physics or software repository.
+mathematics, formalisms, algorithms and proof scaffolding independent from a
+specific physics or software repository.
 
-## Initial focus
+## Initial workstreams
 
-The first planned track is the VDF framework:
+| Track | Purpose | Status |
+|---|---|---|
+| `Math/VDF/` | Formalize the VDF mathematical framework shared across projects | definitions pending |
+| `Math/PRNG/` | Formalize the mathematical and algorithmic structure of your PRNG | definitions pending |
 
-```text
-Math/VDF/
-```
-
-The exact definition of VDF should be fixed in the first dedicated document. It
-should capture the mathematical structure that supports several of the other
-repositories, not only the cosmology work.
+VDF should capture reusable mathematical structure. PRNG should capture the
+state transition, output function, period/statistical/security claims and test
+vectors of the pseudo-random generator.
 
 ## Intended contents
 
@@ -27,15 +26,17 @@ Use `Math/` for:
 - lemmas and proofs;
 - algebraic identities;
 - geometric or variational formalisms;
-- links between VDF and applied repositories;
-- minimal test scripts for symbolic or numerical sanity checks.
+- algorithm definitions such as PRNG state transitions;
+- links between mathematical workstreams and applied repositories;
+- minimal test scripts for symbolic, numerical or statistical sanity checks.
 
 Do not use `Math/` for:
 
 - repo-specific implementation details;
 - generated plots or reports from applications;
 - speculative physics claims without a mathematical statement;
-- operational documentation for unrelated software.
+- operational documentation for unrelated software;
+- security claims without a stated model and reproducible tests.
 
 ## Standard layout
 
@@ -53,12 +54,21 @@ Math/topic-name/
   tests/
 ```
 
+Algorithmic tracks such as PRNG may add:
+
+```text
+period.md
+statistical-tests.md
+security-model.md
+reference-vectors.md
+```
+
 ## Review rule
 
 A mathematical note should state:
 
 - the objects being defined;
 - the assumptions;
-- the theorem, lemma or identity being claimed;
-- whether it is proved, conjectural or only a working definition;
+- the theorem, lemma, identity or algorithmic claim being made;
+- whether it is proved, conjectural, empirical or only a working definition;
 - where it is used in other repositories.
