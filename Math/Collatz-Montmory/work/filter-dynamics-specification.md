@@ -80,22 +80,49 @@ La constante cible correspondrait a une densite relative:
 
 Le seuil `alpha` ne fait pas partie de la constante tant qu'il n'est pas fixe par une regle reproductible.
 
-## 3. Regle de calibration autorisee
+## 3. Filtre direct normalise: candidat C
+
+Le diagnostic du seuil brut montre une forte derive de `S_B(p)` avec la taille. On introduit donc un score centre sur la derive moyenne du modele aleatoire Collatz accelere.
+
+La derive descendante moyenne en logarithme base 2 est:
+
+```math
+d=1-\frac12\log_2 3
+\approx0.20751874963942196.
+```
+
+On definit le score normalise:
+
+```math
+Z_B(p)=\left(S_B(p)-d\right)\log_2 p.
+```
+
+Le filtre candidat devient:
+
+```math
+M^{log}_\alpha(p,p+2)=1
+\quad\Longleftrightarrow\quad
+Z_B(p)\ge\alpha.
+```
+
+Cette normalisation est une hypothese de travail. Elle est plus plausible que le seuil brut car elle corrige la derive principale observee, mais le seuil `alpha` reste experimental tant qu'une loi limite de `Z_B` n'est pas demontree.
+
+## 4. Regle de calibration autorisee
 
 Une seule calibration est autorisee:
 
 1. choisir une borne d'entrainement `X_train`;
 2. calculer les paires de jumeaux `p,p+2` avec `p<=X_train`;
-3. calculer les scores `S_B(p)`;
+3. calculer les scores choisis (`S_B` ou `Z_B`);
 4. prendre `alpha_train` comme le quantile superieur qui selectionne la proportion `rho_M` sur l'entrainement;
 5. geler `alpha_train`;
 6. tester sans modification sur `X_test > X_train`.
 
 Cette procedure ne prouve rien. Elle sert uniquement a rendre le test hors echantillon bien defini.
 
-## 4. Dynamique locale mu_q: candidate A, affine Collatz aleatoire
+## 5. Dynamique locale mu_q: candidate A, affine Collatz aleatoire
 
-### 4.1. Espace d'etats
+### 5.1. Espace d'etats
 
 Pour un premier impair `q>=3`, l'espace d'etats est:
 
@@ -103,7 +130,7 @@ Pour un premier impair `q>=3`, l'espace d'etats est:
 \mathcal X_q=\mathbb Z/q\mathbb Z.
 ```
 
-### 4.2. Transitions
+### 5.2. Transitions
 
 On definit deux applications affines:
 
@@ -122,7 +149,7 @@ X_{t+1}=f_{\varepsilon_t}(X_t),
 \varepsilon_t\sim\mathrm{Bernoulli}(1/2).
 ```
 
-### 4.3. Probleme de stationnarite
+### 5.3. Probleme de stationnarite
 
 Comme `f_0` et `f_1` sont des bijections modulo `q`, la loi uniforme est stationnaire:
 
@@ -132,7 +159,7 @@ u_q=u_q.
 
 Cette dynamique ne peut produire un biais local non trivial si l'on part de l'uniforme et si le melange est complet. Elle est donc principalement un controle negatif: elle doit redonner Hardy-Littlewood.
 
-### 4.4. Facteur local associe
+### 5.4. Facteur local associe
 
 Pour une loi stationnaire ou empirique `mu_q`, on definit:
 
@@ -154,11 +181,11 @@ B_q=\frac{\Sigma_q}{1-2/q}=1.
 
 Conclusion: la candidate A est utile comme test de normalisation, mais elle ne peut pas expliquer `C_Montmory < 2C_2` sans condition non uniforme ou sans dynamique differente.
 
-## 5. Dynamique locale mu_q: candidate B, projection de trajectoires entieres
+## 6. Dynamique locale mu_q: candidate B, projection de trajectoires entieres
 
 La candidate B est plus proche de l'intuition Collatz-Montmory.
 
-### 5.1. Definition empirique
+### 6.1. Definition empirique
 
 Pour une borne `R`, on considere les trajectoires reelles:
 
@@ -192,7 +219,7 @@ Puis:
 \Sigma_{q;X,R}=1-\mu_{q;X,R}(0)-\mu_{q;X,R}(-2).
 ```
 
-### 5.2. Biais local empirique
+### 6.2. Biais local empirique
 
 ```math
 B_{q;X,R}=\frac{\Sigma_{q;X,R}}{1-2/q}.
@@ -200,7 +227,7 @@ B_{q;X,R}=\frac{\Sigma_{q;X,R}}{1-2/q}.
 
 Cette candidate peut produire un biais non trivial, mais elle est empirique et depend de `X`, `R`, et du choix des graines.
 
-### 5.3. Regle anti-fuite de donnees
+### 6.3. Regle anti-fuite de donnees
 
 Si `G_X` utilise les jumeaux eux-memes, il faut separer:
 
@@ -208,7 +235,7 @@ Si `G_X` utilise les jumeaux eux-memes, il faut separer:
 - `X_test` pour mesurer la stabilite;
 - un controle `G_X^{ctrl}` pour verifier que le biais n'est pas un artefact de selection.
 
-## 6. Coefficient dynamique teste
+## 7. Coefficient dynamique teste
 
 Pour la candidate B, on definit:
 
@@ -234,7 +261,7 @@ ou equivalent:
 \widehat B_M(Q;X,R)\approx0.08178598968002706089.
 ```
 
-## 7. Hypothese de decorrelation precise
+## 8. Hypothese de decorrelation precise
 
 La forme minimale d'une hypothese testable est la suivante.
 
@@ -262,7 +289,7 @@ La valeur cible impose:
 B_M=0.08178598968002706089.
 ```
 
-## 8. Ce qui invaliderait l'hypothese
+## 9. Ce qui invaliderait l'hypothese
 
 L'hypothese doit etre rejetee si:
 
@@ -272,11 +299,11 @@ L'hypothese doit etre rejetee si:
 4. le produit depend fortement de quelques petits modules `q` instables;
 5. la valeur cible n'apparait qu'apres ajustement de parametres.
 
-## 9. Prochaine etape algorithmique
+## 10. Prochaine etape algorithmique
 
 Implementer deux commandes separees:
 
-1. `evaluate_montmory_filter.py`: deja disponible pour le filtre direct;
-2. `evaluate_local_dynamics.py`: a creer pour calculer `mu_{q;X,R}`, `Sigma_q`, `B_q`, et `C_dyn`.
+1. `evaluate_montmory_filter.py`: disponible pour les filtres directs bruts et normalises;
+2. `evaluate_local_dynamics.py`: disponible pour calculer `mu_{q;X,R}`, `Sigma_q`, `B_q`, et `C_dyn`.
 
 Les deux commandes doivent produire des CSV reproductibles.
