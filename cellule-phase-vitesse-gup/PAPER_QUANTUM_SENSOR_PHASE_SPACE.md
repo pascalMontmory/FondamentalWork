@@ -1,5 +1,45 @@
 # Phase-space engineering for cold-atom quantum sensors
 
+## Executive Summary
+
+This paper turns the position--velocity phase-space formalism into a practical
+screening tool for cold-atom quantum sensors. The central message is narrow and
+conservative:
+
+```text
+GUP is not the industrial effect; phase-space source engineering is.
+```
+
+The useful applied layer is the standard `beta -> 0` limit: thermal de Broglie
+wavelength, phase-space density, velocity dispersion, cloud expansion, detected
+atom number, contrast and cycle time. These quantities already decide whether a
+cold-atom source can support a gravimeter, gyroscope, accelerometer or gravity
+gradiometer target.
+
+The paper rejects the overclaim that hot industrial gases or chemical rocket
+chambers benefit directly from the phase-space cell `h^3`. It identifies
+cold-atom inertial sensors as the strongest application because the same
+variables directly control sensitivity:
+
+```text
+temperature -> velocity spread -> cloud expansion -> atom survival -> phase noise -> sensitivity
+```
+
+Key outputs of the companion scripts are:
+
+- atom-source screening with `eta = n lambda_th^3` and
+  `N_phase_cap = eta_max V_eff / lambda_th^3`;
+- a full cycle-time proxy `T_cycle = T_prep + 2 T_i + T_detection + T_dead`;
+- explicit QPN, photon-shot, laser, vibration, thermal and Johnson-Nyquist terms;
+- a nominal Sr88 gravimeter case near `T_i = 0.102 s`, `T_cycle = 1.253 s`,
+  dominated by vibration, with `delta a = 11.52 microGal/sqrtHz`;
+- sanity checks against NIM-like and Muquans/Exail-like gravimeter benchmarks.
+
+The result is not a finished instrument model. It is a reproducible front-end
+CAD layer that tells whether a proposed cold-atom source survives first-order
+phase-space, package, duty-cycle and technical-noise constraints before more
+detailed optical and mechanical modeling begins.
+
 ## Abstract
 
 This paper develops a practical engineering interpretation of the
