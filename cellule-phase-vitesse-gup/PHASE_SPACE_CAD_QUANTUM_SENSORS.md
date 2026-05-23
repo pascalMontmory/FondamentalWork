@@ -138,21 +138,26 @@ sigma_phi_laser^2 = integral |H_phi(f)|^2 S_phi(f) df
 |H_phi(f)|^2 ~= 16 sin^4(pi f T_i)
 sigma_phi_vib^2 = k_eff^2 integral |H_a(f)|^2 S_a(f) df
 |H_a(f)|^2 ~= [4 sin^2(pi f T_i)/(2 pi f)^2]^2
-sigma_phi_total^2 = 1/N + (phi_laser/C)^2 + (phi_vib/C)^2 + (phi_thermal/C)^2
+sigma_phi_JN^2 = (2 pi)^2 integral |H_nu(f)|^2 (dnu/dB)^2 S_B(f) df
+sigma_phi_QPN = 1/(C sqrt(N_at))
+sigma_phi_photon = F_excess/(C sqrt(N_ph_per_atom N_at eta_det))
+sigma_phi_total^2 = phi_QPN^2 + phi_photon^2 + (phi_laser/C)^2
+                    + (phi_vib/C)^2 + (phi_thermal/C)^2 + (phi_JN/C)^2
+T_cycle = T_prep + 2 T_i + T_detection + T_dead
 delta a_sqrtHz = sigma_phi_total sqrt(T_cycle)/(k_eff T_i^2)
 ```
 
 The vibration model uses approximate acceleration ASD envelopes for quiet,
-typical-lab and urban sites. The laser model uses a simple Raman relative
-phase-noise PSD envelope. The thermal model combines a BBR sensitivity proxy
-with an empirical mechanical thermal phase term. These are not universal
-constants; they are placeholders to be replaced by measured PSDs and calibrated
-instrument data.
+typical-lab and urban sites. The isolation transfer is now frequency dependent
+for portable-active and CS-AVI-like cases; the constant `-40 dB` case is kept
+only as an optimistic lower-bound envelope. The laser model uses a simple Raman
+relative phase-noise PSD envelope. The thermal model combines a BBR sensitivity
+proxy with an empirical mechanical thermal phase term. Johnson-Nyquist magnetic
+noise and photon shot noise are explicit but still phenomenological inputs.
 
-The first generated benchmark gives the expected qualitative result: vibration
-dominates in a non-isolated lab, while a `-40 dB` amplitude isolation factor can
-move the model into the `10-50 microGal/sqrt(Hz)` transportable range for
-moderate to long interrogation times.
+The generated report now gives a contribution table for a nominal Sr88
+`T_i ~= 100 ms` case, plus benchmark sanity checks against published
+Muquans/Exail AQG and NIM transportable-gravimeter sensitivity figures.
 
 ## Example use case
 
