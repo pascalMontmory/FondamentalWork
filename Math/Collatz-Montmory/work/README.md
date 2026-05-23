@@ -6,6 +6,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 
 ## Current Contents
 
+- `bibliographic-positioning-lambda.md`: novelty boundary and bibliography positioning for the Lambda_B program.
 - `C_Montmory_Hardy_Littlewood.md`: conditional formulation and research framing.
 - `bound-selection-formulas.md`: formula-first derivation of bound equivalence through terminal stopping-time corrections.
 - `computational-protocol-c-montmory.md`: numerical testing protocol.
@@ -16,6 +17,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `initial-filter-diagnostics.md`: first direct-filter diagnostic results.
 - `inverse-tree-entrance-measures.md`: formula-first study of inverse Collatz trees and entrance-measure cylinders, corrected to use moving depths.
 - `jumeau-v1-salvage.md`: corrected extraction from Jumeau V1.
+- `lambda-filter-formulas.md`: conditional formulas linking Lambda_B score tails, local-bias products, and filtered Hardy-Littlewood coefficients.
 - `lambda-limit-program.md`: formal Lambda_B limit hypothesis, conditional consequences, and window-based diagnostics.
 - `local-dynamics-initial-diagnostic.md`: first diagnostic for empirical local dynamics.
 - `modular-filter-diagnostic.md`: diagnostic for modular filters, rational-density overfitting, and residue correlation of top Collatz scores.
