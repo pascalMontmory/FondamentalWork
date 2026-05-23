@@ -19,6 +19,7 @@ Files here may contain useful research ideas, diagnostics, scripts, protocols, c
 - `montmory-filter-lock.md`: filter-lock definitions and candidate families.
 - `next-search-diagnostics.md`: extended `10^7` filter diagnostics and first search for a local-product source of the target coefficient.
 - `normalized-score-diagnostic.md`: preliminary positive diagnostic for the centered log-scaled Collatz score.
+- `normalized-score-robustness-controls.md`: robustness checks for `B`, score modes, and non-twin control populations.
 - `scripts/`: exploratory and reproducibility scripts.
 
 ## Rule
