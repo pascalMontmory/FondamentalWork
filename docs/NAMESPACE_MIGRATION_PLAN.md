@@ -4,7 +4,7 @@ The repository should move toward two top-level intellectual namespaces:
 
 ```text
 COSMO/  # GUP, UV/IR, holography, cosmology, sensors tied to the framework
-Math/   # reusable mathematical foundations, including VDF
+Math/   # reusable mathematical foundations and algorithms, including VDF and PRNG
 ```
 
 This document defines a non-breaking migration plan.
@@ -47,6 +47,14 @@ FondamentalWork/
       definitions.md
       notation.md
       lemmas.md
+    PRNG/
+      README.md
+      definitions.md
+      notation.md
+      period.md
+      statistical-tests.md
+      security-model.md
+      reference-vectors.md
 ```
 
 ## COSMO migration order
@@ -71,13 +79,26 @@ Reason: migrate the synthesis and no-go/test tracks first because they define
 the review backbone. Migrate the large sensor track last because it has the most
 scripts, reports and generated outputs.
 
-## Math/VDF migration order
+## Math/VDF setup order
 
 1. Write `Math/VDF/definitions.md`.
 2. Write `Math/VDF/notation.md`.
 3. Identify which COSMO formulas depend on VDF concepts.
 4. Add `Math/VDF/links-to-repos.md`.
 5. Only then start extracting mathematical material from COSMO notes into VDF.
+
+## Math/PRNG setup order
+
+1. Write `Math/PRNG/definitions.md` with state, transition, output and seed
+   interfaces.
+2. Write `Math/PRNG/reference-vectors.md` with deterministic output vectors for
+   at least one seed.
+3. Write `Math/PRNG/statistical-tests.md` with reproducible test commands and
+   results.
+4. Write `Math/PRNG/security-model.md` with intended use, threat model and
+   explicit non-claims.
+5. Add `Math/PRNG/links-to-repos.md` listing implementations and dependent
+   repositories.
 
 ## Acceptance checklist for each moved COSMO track
 
@@ -107,6 +128,14 @@ Keep research-track directories lowercase and hyphenated:
 ```text
 contrainte-energie-noire-gup/
 cellule-phase-vitesse-gup/
+```
+
+For mathematical acronyms that are the subject of the track, uppercase is
+acceptable:
+
+```text
+Math/VDF/
+Math/PRNG/
 ```
 
 This keeps the repository readable without turning every path into a title.
