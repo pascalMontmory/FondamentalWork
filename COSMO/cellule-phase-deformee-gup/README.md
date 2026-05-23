@@ -2,7 +2,7 @@
 
 Ce dossier contient une note mathematique de travail autour d'une cellule elementaire de phase dependante de l'impulsion :
 
-```tex
+```math
 \heff^3(p)=h^3(1+\beta p^2)^\gamma
 ```
 

@@ -4,7 +4,7 @@ Ce dossier transforme le test numerique `rho_vac = rho_Lambda` en note analytiqu
 
 Resultat central :
 
-```tex
+```math
 \beta_0^{(\Lambda)}
 =
 \left(\frac{g}{6\pi\Omega_\Lambda}\right)^{1/2}
@@ -13,7 +13,7 @@ Resultat central :
 
 La longueur minimale effective devient alors :
 
-```tex
+```math
 \ell_\Lambda
 =
 \sqrt{\beta_0^{(\Lambda)}}\,\ell_P

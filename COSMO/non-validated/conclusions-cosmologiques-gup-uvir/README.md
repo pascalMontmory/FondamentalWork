@@ -3,7 +3,7 @@
 Ce dossier transforme la synthese cosmologique en note autonome. Le resultat
 central est negatif et constructif :
 
-```tex
+```math
 \text{GUP seul}:\quad \infty\rightarrow\rho_{\rm reg}<\infty
 \quad\text{mais}\quad
 \rho_{\rm reg}\sim\rho_P\quad(\beta_0\sim1).
@@ -11,7 +11,7 @@ central est negatif et constructif :
 
 L'energie noire actuelle necessite une liaison UV/IR :
 
-```tex
+```math
 \rho_{\rm DE}
 =
 \Omega_\Lambda\rho_{\rm BH}(L_H)

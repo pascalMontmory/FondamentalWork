@@ -91,3 +91,12 @@ The following root directories were moved under `COSMO/` without changing their 
 - `theorie-holographique-uvir-cellule-phase-deformee/`
 
 This migration did not validate any scientific claim by itself. Each track still needs per-file status review.
+
+In the first COSMO status cleanup, these tracks were then moved under
+`COSMO/non-validated/` because their own summaries describe them as conjectural,
+programmatic, interpretive, or dependent on unverified assumptions:
+
+- `conclusions-cosmologiques-gup-uvir/`
+- `consequences-alpha-uvir-electromagnetisme/`
+- `constante-structure-fine-uvir/`
+- `programme-tests-experimentaux-uvir/`

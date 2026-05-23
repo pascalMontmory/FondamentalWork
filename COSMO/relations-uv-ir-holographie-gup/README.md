@@ -10,7 +10,7 @@ Ce dossier prolonge les notes precedentes en separant trois niveaux :
 
 Resultat central :
 
-```tex
+```math
 \rho_{\rm DE}
 =
 \frac{3\Omega_\Lambda}{8\pi}\rho_P
@@ -19,7 +19,7 @@ Resultat central :
 
 Equation candidate unificatrice :
 
-```tex
+```math
 \rho_{\rm eff}(L)
 =
 \Omega_L
@@ -31,7 +31,7 @@ Equation candidate unificatrice :
 
 Nouvelle relation de croisement :
 
-```tex
+```math
 L_\times
 =
 \beta_0\sqrt{\frac{6\pi}{g}}\ell_P.

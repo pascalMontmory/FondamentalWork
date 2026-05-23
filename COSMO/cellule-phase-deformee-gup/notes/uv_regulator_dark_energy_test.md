@@ -4,7 +4,7 @@
 
 On teste l'application directe suivante :
 
-```tex
+```math
 \rho_{\mathrm{vac}} =
 \frac{g\rho_P}{16\pi^2\beta_0^2}
 ```
@@ -28,7 +28,7 @@ vide regularisee soit egale a la densite d'energie noire observee ?
 
 On calcule :
 
-```tex
+```math
 \rho_\Lambda = \Omega_\Lambda \frac{3H_0^2}{8\pi G}c^2.
 ```
 
@@ -69,13 +69,13 @@ finie mais encore enorme : environ `10^121` fois la densite d'energie noire.
 
 Pour reproduire l'energie noire observee, il faudrait
 
-```tex
+```math
 \beta_0 \sim 10^{60}
 ```
 
 ce qui correspond a une longueur minimale effective
 
-```tex
+```math
 \Delta x_{\min} = \sqrt{\beta_0}l_P \sim 10^{-5}\ \mathrm{m}.
 ```
 

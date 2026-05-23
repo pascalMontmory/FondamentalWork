@@ -63,6 +63,13 @@ Expected internal logic:
 3. applications such as quantum sensors;
 4. reproducible scripts and generated outputs kept separate.
 
+Current migrated non-validated COSMO tracks:
+
+- `COSMO/non-validated/constante-structure-fine-uvir/`
+- `COSMO/non-validated/consequences-alpha-uvir-electromagnetisme/`
+- `COSMO/non-validated/programme-tests-experimentaux-uvir/`
+- `COSMO/non-validated/conclusions-cosmologiques-gup-uvir/`
+
 ## 5. Collatz-Montmory Structure
 
 ```text

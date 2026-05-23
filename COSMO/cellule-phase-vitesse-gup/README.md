@@ -2,14 +2,14 @@
 
 Ce dossier contient une note de verification et de developpement autour de la reformulation en variables position-vitesse d'une mesure de phase GUP :
 
-```tex
+```math
 \dd N =
 \frac{m^3 \dd^3x \dd^3v}{h^3(1+\beta m^2v^2)^3}.
 ```
 
 Le point central est que la longueur minimale reste universelle, `\Delta x_min = \hbar sqrt(beta)`, tandis que le seuil cinematique en vitesse depend de la masse :
 
-```tex
+```math
 v_GUP = 1/(m sqrt(beta)).
 ```
 

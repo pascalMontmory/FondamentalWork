@@ -4,7 +4,7 @@
 
 La mesure GUP `gamma=3` donne une densite de vide regularisee :
 
-```tex
+```math
 \rho_{\rm reg}
 =
 \frac{g\rho_P}{16\pi^2\beta_0^2}.
@@ -21,7 +21,7 @@ constante cosmologique.
 
 La densite d'energie noire actuelle s'ecrit exactement
 
-```tex
+```math
 \rho_{\rm DE}
 =
 \Omega_\Lambda\rho_c
@@ -37,7 +37,7 @@ Cette relation montre que le petit facteur vient du rapport d'aires
 
 La borne de non-effondrement donne
 
-```tex
+```math
 \rho_{\rm BH}(L)
 =
 \frac{3c^4}{8\pi G L^2}
@@ -47,7 +47,7 @@ La borne de non-effondrement donne
 
 Pour `L=L_H`, `rho_BH(L_H)=rho_c`. Donc
 
-```tex
+```math
 \rho_{\rm DE}=\Omega_\Lambda\rho_{\rm BH}(L_H).
 ```
 
@@ -55,7 +55,7 @@ Pour `L=L_H`, `rho_BH(L_H)=rho_c`. Donc
 
 L'egalite entre branche GUP et branche horizon donne
 
-```tex
+```math
 \boxed{
 L_*=\beta_0\sqrt{\frac{6\pi}{g}}\ell_P.
 }
@@ -71,7 +71,7 @@ Une densite `rho ~ L^{-2}` ne garantit pas `w=-1`. Dans le modele standard
 d'energie noire holographique plat et non interactif, avec horizon des
 evenements futur et parametre dimensionnel note ici `c_hde`, on obtient
 
-```tex
+```math
 \boxed{
 w_{\rm HDE}
 =
@@ -94,7 +94,7 @@ Cette formule indique clairement que la dynamique de `L` est decisive. Si
 
 La meilleure formulation de publication est un theoreme conditionnel :
 
-```tex
+```math
 \text{GUP UV fini}+\text{borne IR d'horizon}
 \Rightarrow
 \rho_{\rm grav}\sim\rho_P(\ell_P/L)^2.

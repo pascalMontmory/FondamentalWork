@@ -4,7 +4,7 @@
 
 Les tests confirment une conclusion nette :
 
-```tex
+```math
 \beta_0^{(\Lambda)}\sim10^{60}
 ```
 
@@ -17,20 +17,20 @@ profit d'une projection UV/IR holographique.
 
 Pour les photons, la deformation utilisee dans les notes donne
 
-```tex
+```math
 u(E,T)\propto
 \frac{E^3}{(e^{E/k_BT}-1)(1+\beta E^2/c^2)^3}.
 ```
 
 Avec
 
-```tex
+```math
 \beta E^2/c^2 = \beta_0(E/E_P)^2,
 ```
 
 le parametre pertinent au CMB est
 
-```tex
+```math
 \theta_{\rm CMB}=\beta_0(k_BT_0/E_P)^2.
 ```
 
@@ -55,14 +55,14 @@ exclu comme parametre photon universel.
 
 La relation
 
-```tex
+```math
 \rho_X(L)=\eta\frac{3c^4}{8\pi G L^2}
 ```
 
 n'est testable cosmologiquement qu'apres un choix dynamique de `L`. Pour
 l'horizon des evenements futur dans le modele HDE plat non interactif :
 
-```tex
+```math
 w_{\rm HDE}
 =
 -\frac13-\frac{2}{3c_{\rm hde}}\sqrt{\Omega_{\rm DE}}.
@@ -79,7 +79,7 @@ et son parametre dynamique sont decisifs.
 
 Les notes donnent deux accelerations possibles :
 
-```tex
+```math
 a_{\rm dS}=c^2\sqrt{\Lambda/3},
 \qquad
 a_\Lambda=c^2\sqrt{\Lambda}.
@@ -95,7 +95,7 @@ coincidence UV/IR interessante, mais pas une preuve du GUP.
 
 La correction de rayonnement des notes est
 
-```tex
+```math
 \frac{\Delta u}{u}
 \simeq
 -\frac{40\pi^2}{7}\beta_0\left(\frac{k_BT}{E_P}\right)^2.
@@ -104,7 +104,7 @@ La correction de rayonnement des notes est
 A `T ~ 1 MeV`, le `beta0_DE` donnerait une correction gigantesque. Une borne
 conservatrice `|Delta rho/rho| < 0.1` impose environ
 
-```tex
+```math
 \beta_0 \lesssim 10^{41}.
 ```
 
@@ -123,19 +123,19 @@ univers.
 
 Dans la matiere dense, un ordre de grandeur typique est
 
-```tex
+```math
 p_F c \sim 300 MeV.
 ```
 
 La correction GUP est controlee par
 
-```tex
+```math
 \chi = \beta_0(p_Fc/E_P)^2.
 ```
 
 Exiger `chi < 0.1` donne une borne d'ordre
 
-```tex
+```math
 \beta_0 \lesssim 10^{38}.
 ```
 
@@ -154,7 +154,7 @@ physique des etoiles a neutrons serait radicalement modifiee.
 
 Les donnees publiques imposent une lecture stricte :
 
-```tex
+```math
 \boxed{
 \text{le } \beta_0\text{ ajuste a }\rho_{\rm DE}
 \text{ ne peut pas etre universel.}
@@ -163,7 +163,7 @@ Les donnees publiques imposent une lecture stricte :
 
 La conclusion positive des travaux reste :
 
-```tex
+```math
 \boxed{
 \text{GUP regularise l'UV, mais l'energie noire doit venir d'une projection IR/holographique.}
 }

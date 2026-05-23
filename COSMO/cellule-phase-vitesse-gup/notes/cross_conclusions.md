@@ -2,7 +2,7 @@
 
 Les deux notes decrivent la meme mesure GUP sous deux angles :
 
-```tex
+```math
 \frac{\dd^3p}{(1+\beta p^2)^3}
 \qquad\Longleftrightarrow\qquad
 \frac{m^3\dd^3v}{(1+\beta m^2v^2)^3}.
@@ -12,7 +12,7 @@ Les deux notes decrivent la meme mesure GUP sous deux angles :
 
 La mesure donne trois comportements differents :
 
-```tex
+```math
 n_{\max}<\infty
 ```
 
@@ -20,7 +20,7 @@ pour le nombre de modes, mais pas une energie thermique universellement bornee.
 
 - Bosons sans masse :
 
-```tex
+```math
 u(T)\sim n_{\max}k_BT
 ```
 
@@ -28,13 +28,13 @@ a haute temperature.
 
 - Gaz classique massif non relativiste :
 
-```tex
+```math
 \frac{U}{N}\to \frac{3}{2m\beta}.
 ```
 
 - Fermions degeneres ultrarelativistes :
 
-```tex
+```math
 \rho_{\max}=\frac{g\pi c}{h^3\beta^2}.
 ```
 
@@ -44,7 +44,7 @@ Conclusion : la deformation GUP ne produit pas une seule notion de saturation, m
 
 Pour la densite de modes relativiste en vitesse,
 
-```tex
+```math
 \frac{\dd n}{\dd v}
 \propto
 \frac{\gamma^5v^2}{(1+\beta\gamma^2m^2v^2)^3},
@@ -52,7 +52,7 @@ Pour la densite de modes relativiste en vitesse,
 
 posons
 
-```tex
+```math
 t=\frac{p}{mc}=\gamma\frac{v}{c},
 \qquad
 A=\beta m^2c^2.
@@ -60,13 +60,13 @@ A=\beta m^2c^2.
 
 Le maximum est donne par `z=t^2`, ou
 
-```tex
+```math
 A z^2-(5-4A)z-2=0.
 ```
 
 Donc
 
-```tex
+```math
 z_{\mathrm{pic}}
 =
 \frac{(5-4A)+\sqrt{(5-4A)^2+8A}}{2A}.
@@ -74,7 +74,7 @@ z_{\mathrm{pic}}
 
 La vitesse du pic est alors
 
-```tex
+```math
 v_{\mathrm{pic,rel}}
 =
 c\sqrt{\frac{z_{\mathrm{pic}}}{1+z_{\mathrm{pic}}}}.
@@ -89,19 +89,19 @@ Limites :
 
 Le premier test a montre que reproduire l'energie noire par
 
-```tex
+```math
 \rho_{\mathrm{vac}}=\frac{g\rho_P}{16\pi^2\beta_0^2}
 ```
 
 exige typiquement :
 
-```tex
+```math
 \beta_0\sim 10^{60}.
 ```
 
 La seconde note traduit cette valeur en seuil vitesse :
 
-```tex
+```math
 v_{\mathrm{GUP}}=
 c\frac{m_P}{m\sqrt{\beta_0}}.
 ```
