@@ -19,6 +19,13 @@ docs/   Repository-level reading guides, structure rules, and status policy.
 3. `docs/REPOSITORY_STRUCTURE.md`: naming and placement rules.
 4. Domain README files, especially `COSMO/README.md` and `Math/README.md`.
 
+### For COSMO
+
+1. `COSMO/README.md`: domain overview and status policy.
+2. `COSMO/READING_ORDER.md`: scientific pipeline and suggested reading order.
+3. `COSMO/non-validated/README.md`: hypotheses, draft articles, and non-verified claims.
+4. `COSMO/work/README.md`: reproducibility scripts, run notes, and data provenance.
+
 ### For Collatz-Montmory
 
 1. `Math/Collatz-Montmory/README.md`: verified-facing overview.
@@ -36,18 +43,16 @@ docs/   Repository-level reading guides, structure rules, and status policy.
 | Script/work product | Executable diagnostic or generated helper. | `work/scripts/` or a domain-specific scripts folder |
 | Old/superseded | Preserved for history, no longer active. | `old/` if created for that domain |
 
-## 4. Collatz-Montmory Structure
+## 4. COSMO Structure
 
 ```text
-Math/Collatz-Montmory/
-  README.md                 Verified-facing entry point.
-  non-validated/            Hypotheses, analyzed drafts, negative diagnostics.
-  work/scripts/             Reproducible exploratory scripts.
+COSMO/
+  README.md                 Domain overview and status policy.
+  READING_ORDER.md          Scientific pipeline and reading path.
+  non-validated/            Hypotheses, draft papers, speculative or weakened claims.
+  work/                     Scripts, data notes, run manifests, temporary work products.
+  <track>/                  Thematic track folders preserved from the original corpus.
 ```
-
-The visible Collatz root should stay conservative. A reader should not find unproven claims there unless they are explicitly conditional and labeled as such.
-
-## 5. COSMO Structure
 
 `COSMO/` contains the fundamental-physics and sensor material. Its role is separate from the reusable math foundations.
 
@@ -57,6 +62,17 @@ Expected internal logic:
 2. numerical or observational tests;
 3. applications such as quantum sensors;
 4. reproducible scripts and generated outputs kept separate.
+
+## 5. Collatz-Montmory Structure
+
+```text
+Math/Collatz-Montmory/
+  README.md                 Verified-facing entry point.
+  non-validated/            Hypotheses, analyzed drafts, negative diagnostics.
+  work/scripts/             Reproducible exploratory scripts.
+```
+
+The visible Collatz root should stay conservative. A reader should not find unproven claims there unless they are explicitly conditional and labeled as such.
 
 ## 6. Math Structure
 
