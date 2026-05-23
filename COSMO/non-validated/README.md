@@ -21,6 +21,19 @@ A file may leave this directory only if one of the following is true:
 
 ## Current COSMO Non-Validated Families
 
+## Migrated Tracks
+
+The first migration pass moved these full tracks here:
+
+| Track | Reason for non-validated status |
+|---|---|
+| `constante-structure-fine-uvir/` | The README explicitly presents an `alpha--UV/IR` conjecture. |
+| `consequences-alpha-uvir-electromagnetisme/` | Consequences depend on the non-validated alpha/UVIR conjecture. |
+| `programme-tests-experimentaux-uvir/` | This is a test plan and decision matrix, not a validated result. |
+| `conclusions-cosmologiques-gup-uvir/` | Interpretive/open cosmological conclusions, including theoretical blocks still to prove. |
+
+These tracks can be promoted later file by file if a proof, a bounded reproducible computation, or a precise conditional theorem is added.
+
 ### GUP / UVIR Master Framework
 
 - candidate GUP deformation laws;

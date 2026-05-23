@@ -12,8 +12,8 @@ Read in this order:
 2. `synthese-travaux-confirmes-gup-uvir/` for the strongest consolidated claims, if each document states its status.
 3. `theorie-holographique-uvir-cellule-phase-deformee/` and `relations-uv-ir-holographie-gup/` for the core theoretical framework.
 4. `contrainte-energie-noire-gup/` and `tests-donnees-publiques-gup-uvir/` for constraints and observational checks.
-5. `programme-tests-experimentaux-uvir/` and `cellule-phase-vitesse-gup/` for experimental/sensor consequences.
-6. [non-validated/README.md](non-validated/README.md) for hypotheses, draft articles, and non-verified claims.
+5. `cellule-phase-vitesse-gup/` for sensor-oriented phase-space consequences.
+6. [non-validated/README.md](non-validated/README.md) for hypotheses, draft articles, alpha conjectures, test programs, and non-verified claims.
 7. [work/README.md](work/README.md) for scripts, reproducibility notes, and temporary work products.
 
 ## Scientific Pipeline
@@ -40,11 +40,11 @@ Each COSMO document should state which step of this pipeline it supports.
 | `relations-uv-ir-holographie-gup/` | UV/IR and holographic scaling relations. | conditional |
 | `theorie-holographique-uvir-cellule-phase-deformee/` | Master holographic UV/IR framework. | conditional |
 | `synthese-travaux-confirmes-gup-uvir/` | Consolidated status of the strongest GUP/UVIR results. | verify per file |
-| `conclusions-cosmologiques-gup-uvir/` | Cosmological interpretation and open theoretical blocks. | non-validated unless stated |
-| `constante-structure-fine-uvir/` | Fine-structure-constant conjecture and related checks. | non-validated unless stated |
-| `consequences-alpha-uvir-electromagnetisme/` | Electromagnetic consequences of the alpha/UVIR conjecture. | non-validated unless stated |
 | `tests-donnees-publiques-gup-uvir/` | Public-data testing program. | computationally bounded if reproducible |
-| `programme-tests-experimentaux-uvir/` | Experimental and observational test plan. | non-validated plan |
+| `non-validated/conclusions-cosmologiques-gup-uvir/` | Cosmological interpretation and open theoretical blocks. | non-validated unless stated |
+| `non-validated/constante-structure-fine-uvir/` | Fine-structure-constant conjecture and related checks. | non-validated unless stated |
+| `non-validated/consequences-alpha-uvir-electromagnetisme/` | Electromagnetic consequences of the alpha/UVIR conjecture. | non-validated unless stated |
+| `non-validated/programme-tests-experimentaux-uvir/` | Experimental and observational test plan. | non-validated plan |
 | `non-validated/` | Hypotheses, draft articles, speculative claims, weakened claims, and negative diagnostics. | non-validated |
 | `work/` | Scripts, run notes, data provenance, and reproducibility work products. | work product |
 
