@@ -1,0 +1,600 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{seqsplit}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdfauthor={Pascal Montmory},
+  pdftitle={A Structural Diagnostic Framework for the Evaluation of PRNG Stability}
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\title{\textbf{A Structural Diagnostic Framework for the Evaluation of PRNG Stability}\\
+\large Cross-Architecture Empirical Analysis on ARM CPU, Apple Metal and CUDA}
+
+\author{Pascal Montmory\\
+ENINCA Consulting\\
+\texttt{hello@eninca.com}}
+
+\date{Version 1.0 -- May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This technical note introduces a structural diagnostic framework for evaluating pseudo-random number generators (PRNGs) in Monte Carlo workloads. The framework is designed to complement, not replace, classical statistical batteries such as TestU01 and PractRand. It focuses on three dimensions that are not directly captured by single-stream distributional tests: seed sensitivity, functional variance dispersion, and cross-backend reproducibility.
+
+A proprietary 64-bit generator, \texttt{Montmory\_CTACM}, is used only as a controlled test vehicle. The generator recurrence, internal constants, and implementation code are not disclosed in this note. The contribution is the public diagnostic methodology and the empirical comparison protocol.
+
+Imported TestU01 BigCrush logs for seed 42 report 160/160 passed statistics on CPU ARM, Apple Metal GPU, and CUDA GPU backends. Structural diagnostics are reported for \texttt{Montmory\_CTACM} and common open or publicly specified generators, including MT19937, MT19937-64, PCG32, xoshiro256**, Philox4x32-10, and MRG32k3a. The results indicate that PRNGs which pass classical batteries can still exhibit significant inter-seed dispersion in Monte Carlo variance, especially on rare-event integrands.
+
+The current public artifact is computational evidence, not a mathematical proof of generator quality. Missing material includes raw SmallCrush logs, stream adapter source or hash, backend implementation hashes, bit-exact stream hashes, x86 CPU raw logs, and complete per-seed variance tables.
+\end{abstract}
+
+\noindent\textbf{Keywords:} PRNG, Monte Carlo, TestU01, BigCrush, seed sensitivity, functional variance, reproducibility, GPU, structural diagnostics.
+
+\section*{Resume en francais}
+
+Cette note technique presente un cadre de diagnostic structurel pour l'evaluation des generateurs pseudo-aleatoires dans les simulations Monte Carlo. L'objectif n'est pas de remplacer les batteries statistiques classiques, comme TestU01 ou PractRand, mais de les completer par des mesures de sensibilite a la seed, de dispersion de variance fonctionnelle et de reproductibilite inter-backend.
+
+Le generateur proprietaire \texttt{Montmory\_CTACM} est utilise uniquement comme vehicule experimental controle. Sa recurrence interne, ses constantes et son code d'implementation ne sont pas publies dans cette note. La contribution principale porte sur la methode d'evaluation et sur le protocole empirique.
+
+Les logs BigCrush importes indiquent 160/160 statistiques passees pour la seed 42 sur CPU ARM, Apple Metal GPU et CUDA GPU. Les diagnostics structurels rapportes montrent que des generateurs passant les batteries classiques peuvent neanmoins presenter une dispersion inter-seed importante de la variance Monte Carlo, notamment sur les evenements rares.
+
+Le document doit etre lu comme une evidence computationnelle et methodologique, pas comme une preuve mathematique de qualite, de periode, de securite ou d'equidistribution.
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Monte Carlo simulation depends critically on pseudo-random number generators. In practice, the quality of a PRNG is often assessed through statistical batteries such as TestU01 \cite{lecuyer2007testu01} and PractRand \cite{practrand}. These tools are essential: they detect many classes of distributional defects in long output streams and remain a necessary condition for any serious empirical PRNG claim.
+
+However, practitioners frequently encounter questions that are not fully answered by a single-stream statistical battery:
+
+\begin{itemize}[nosep]
+  \item Does the Monte Carlo variance of a practical estimator depend strongly on the seed?
+  \item Do different integrands reveal different seed-dependent behaviour?
+  \item Can the same generator be replayed bit-exactly across CPU and GPU backends?
+  \item Can a generator pass BigCrush while still showing functional instability in a Monte Carlo workload?
+\end{itemize}
+
+This note proposes a structural diagnostic layer intended to answer these questions. The term \emph{structural stability} is used here in a practical Monte Carlo sense: low sensitivity of functional variance to the seed, and robustness of this behaviour across computational backends. It is unrelated to the dynamical-systems meaning of structural stability.
+
+\section{Relation to Existing PRNG Evaluation}
+
+Classical PRNG evaluation has several complementary components. The first component is theoretical: period, equidistribution, lattice structure, recurrence properties, and independence properties under explicit assumptions. These results are generator-specific and require disclosure of the transition rule and output map. The present note does not provide such theorems for \texttt{Montmory\_CTACM}, because the generator is not disclosed.
+
+The second component is empirical distributional testing. TestU01, PractRand, Dieharder, and related tools are designed to identify departures from expected random behaviour over long finite streams. Their role is central. A generator that fails strong statistical batteries requires careful justification before being used in demanding Monte Carlo workloads.
+
+The third component, emphasized here, is workload-facing structural behaviour. In this view, the object of interest is not only the stream considered in isolation, but the effect of seed, integrand, backend, and finite-window replay on quantities used by practitioners. This is why the proposed framework focuses on the empirical variance of Monte Carlo functionals and on reproducibility across backends.
+
+The proposed diagnostics are therefore orthogonal to classical batteries. They do not certify randomness. Instead, they identify whether a generator exhibits unstable behaviour under controlled variations that are common in scientific computing workflows.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{0.25\textwidth}p{0.32\textwidth}p{0.32\textwidth}}
+\toprule
+Evaluation layer & Typical question & Evidence type \\
+\midrule
+Mathematical analysis & What can be proved from the recurrence and output map? & Theorem under explicit hypotheses \\
+Statistical battery & Does one or more streams show detectable defects? & Empirical pass/fail and p-value behaviour \\
+Structural diagnostics & Is Monte Carlo performance stable under seeds, functionals, and backends? & Conditional empirical variance and replay evidence \\
+\bottomrule
+\end{tabular}
+\caption{Positioning of structural diagnostics relative to existing PRNG evaluation layers.}
+\label{tab:evaluation_layers}
+\end{table}
+
+\section{Scope and Non-Claims}
+
+The note deliberately separates method, evidence, and claims.
+
+\paragraph{Method.} The diagnostic framework is public: definitions, observables, seed perturbations, functional variance ratios, and backend reproducibility checks are stated explicitly.
+
+\paragraph{Test vehicle.} The proprietary generator \texttt{Montmory\_CTACM} is used as a controlled test vehicle. It is treated as a black-box deterministic PRNG with a fixed public interface:
+
+\begin{lstlisting}
+init(seed) -> state_0
+next_u64(state_t) -> (state_{t+1}, word_t)
+uniform01(word_t) -> u_t in [0, 1)
+\end{lstlisting}
+
+\paragraph{Non-claims.} This document does not disclose the generator recurrence, prove its period, prove equidistribution, prove cryptographic security, or claim that TestU01 success implies functional stability. Statistical evidence is labelled as computational evidence unless a mathematical proof is provided.
+
+\section{Formal PRNG Model}
+
+Let a PRNG be represented by the tuple
+\[
+G = (\mathcal{S}, \mathcal{P}, \mathcal{A}, T, O, U),
+\]
+where:
+
+\begin{itemize}[nosep]
+  \item $\mathcal{S}$ is the state space;
+  \item $\mathcal{P}$ is the parameter space;
+  \item $\mathcal{A}$ is the output alphabet, typically fixed-width integer words;
+  \item $T_p : \mathcal{S}\to\mathcal{S}$ is the transition rule for parameter $p$;
+  \item $O_p : \mathcal{S}\to\mathcal{A}$ is the output map;
+  \item $U : \mathcal{A}\to[0,1)$ maps output words to floating-point uniforms.
+\end{itemize}
+
+Given parameter $p$, seed $s$, and horizon $n$, the finite output window is
+\[
+X_n(p,s) = (x_0,\ldots,x_{n-1}) \in \mathcal{A}^n,
+\]
+and the corresponding uniform sequence is
+\[
+U_n(p,s) = (u_0,\ldots,u_{n-1}) \in [0,1)^n.
+\]
+
+A reproducible empirical claim must specify:
+
+\begin{itemize}[nosep]
+  \item the seed model and any seed derivation rule;
+  \item the parameter set $p$;
+  \item the output map and floating-point conversion convention;
+  \item the horizon $n$;
+  \item the observable applied to the finite output window;
+  \item the command, code version, and expected output or hash.
+\end{itemize}
+
+\section{Structural Diagnostic Framework}
+
+\subsection{Finite-Window Observables}
+
+Let $\Phi$ be a declared observable applied to either integer words or uniforms:
+\[
+\Phi : \mathcal{A}^n \to \mathbb{R}^d
+\quad\text{or}\quad
+\Phi : [0,1)^n \to \mathbb{R}^d.
+\]
+
+Examples include bit-frequency statistics, transition matrices, TestU01 scores, Monte Carlo estimates, or stream hashes. The notation $\Phi(G(p,s,n))$ is shorthand for applying $\Phi$ to the finite window generated by $G$ under $(p,s,n)$.
+
+\subsection{Seed Sensitivity}
+
+Let $B$ be a finite set of tested seeds. A seed perturbation rule is a map
+\[
+N_\delta : \mathrm{Seed} \to \mathcal{P}(\mathrm{Seed}),
+\]
+where $N_\delta(s)$ is the declared neighbourhood of seed $s$. It may be defined through one-bit flips, Hamming balls, arithmetic offsets, cryptographic derivations, or any reproducible finite rule.
+
+For an observable $\Phi$, local seed sensitivity can be measured by
+\[
+\Delta_\Phi(s)
+  =
+  \max_{s'\in N_\delta(s)}
+  \left\Vert \Phi(G(p,s,n)) - \Phi(G(p,s',n)) \right\Vert.
+\]
+
+\subsection{Monte Carlo Functional Variance}
+
+For an integrand $f:[0,1)\to\mathbb{R}$, seed $s$, sample size $N$, and replicate $r$, define the Monte Carlo estimate
+\[
+I_{s,r}(f) = \frac{1}{N}\sum_{t=1}^{N} f(u_{s,r,t}).
+\]
+
+For $R$ independent replicates under the same seed model, define
+\[
+\bar I_s(f) = \frac{1}{R}\sum_{r=1}^{R} I_{s,r}(f)
+\]
+and the seed-conditioned empirical variance
+\[
+V_s(f)
+  =
+  \frac{1}{R-1}
+  \sum_{r=1}^{R}
+  \left(I_{s,r}(f)-\bar I_s(f)\right)^2.
+\]
+
+The inter-seed dispersion ratio is
+\[
+\rho_f(B)
+  =
+  \frac{\max_{s\in B} V_s(f)}
+       {\min_{s\in B,\, V_s(f)>0} V_s(f)}.
+\]
+
+A large $\rho_f(B)$ indicates that Monte Carlo variance depends materially on the seed, even if the generator passes a distributional battery.
+
+\subsection{Diagnostic Integrands}
+
+The reported protocol uses the following simple but informative integrands:
+\[
+f_1(u)=u,\qquad
+f_2(u)=\sin(2\pi u),\qquad
+f_3(u)=u^2,\qquad
+f_4(u)=\mathbf{1}_{\{u>0.99\}}.
+\]
+
+The rare-event indicator is especially useful because defects that are not visible in first-order averages may appear more clearly in tail-sensitive functionals.
+
+\subsection{Open Structural Score}
+
+The proprietary internal scoring functions are not disclosed. A public non-proprietary score can nevertheless be defined from the published observables.
+
+Let $\mathcal{F}$ be the diagnostic integrand set. For each $f\in\mathcal{F}$, define
+\[
+Z_s(f)
+ =
+ \frac{\log V_s(f) - \mathrm{median}_{b\in B}\log V_b(f)}
+      {\mathrm{MAD}_{b\in B}(\log V_b(f))},
+\]
+where MAD is the median absolute deviation, with a declared positive floor if needed.
+
+An open structural seed score is
+\[
+S_{\mathrm{open}}(s)
+  =
+  \frac{1}{|\mathcal{F}|}
+  \sum_{f\in\mathcal{F}} |Z_s(f)|.
+\]
+
+This score is not claimed to be unique. Its role is to make representative seed selection reproducible without revealing proprietary metrics.
+
+\subsection{GSQI: Generator Structural Quality Index}
+
+For public reporting, one may aggregate several dispersion ratios into a bounded index called the Generator Structural Quality Index:
+\[
+\mathrm{GSQI}(G;B,\mathcal{F})
+  =
+  \exp\left(
+    -\frac{1}{|\mathcal{F}|}
+    \sum_{f\in\mathcal{F}}
+    \log \rho_f(B)
+  \right).
+\]
+
+Under this convention, $\mathrm{GSQI}\in(0,1]$ when all $\rho_f\ge 1$. Values closer to 1 indicate lower average inter-seed dispersion over the declared integrand family. This is a diagnostic score, not a proof of randomness or security.
+
+\subsection{\texorpdfstring{Transition Instability $\epsilon(T)$}{Transition Instability epsilon(T)}}
+
+Let $M_s$ be a transition matrix estimated from a symbolic projection of the output stream generated from seed $s$. For example, uniforms may be discretized into $q$ classes and transitions between successive classes counted.
+
+Define the seed-averaged transition matrix
+\[
+\bar M = \frac{1}{|B|}\sum_{s\in B} M_s.
+\]
+
+A finite-window transition instability can be defined as
+\[
+\epsilon(T;B,n,q)
+  =
+  \max_{s\in B} \left\Vert M_s-\bar M \right\Vert_{\infty}.
+\]
+
+This quantity measures backend- and seed-dependent deviations in a declared finite symbolic transition model. It should not be confused with an asymptotic theorem about the generator transition function.
+
+\section{Cross-Backend Reproducibility}
+
+For a declared backend set $\mathcal{B}$, bit-exact single-lane reproducibility means
+\[
+\forall b_1,b_2\in\mathcal{B},\ \forall t<n:\quad
+x_t^{(b_1)} = x_t^{(b_2)}.
+\]
+
+A practical repository check stores
+\[
+H_b(s,n)=\mathrm{SHA256}(x_0^{(b)}\Vert x_1^{(b)}\Vert\cdots\Vert x_{n-1}^{(b)})
+\]
+and requires
+\[
+\forall b_1,b_2\in\mathcal{B}:\quad H_{b_1}(s,n)=H_{b_2}(s,n).
+\]
+
+The current repository defines this requirement, but does not yet include raw stream hashes proving bit-exact equality. Imported BigCrush logs support statistical evidence on three backends, not a direct proof of stream equality.
+
+\section{Experimental Methodology}
+
+\subsection{Generators Compared}
+
+The reported comparison includes:
+
+\begin{itemize}[nosep]
+  \item \texttt{Montmory\_CTACM}, used as a proprietary controlled test vehicle;
+  \item MT19937 \cite{matsumoto1998mersenne};
+  \item MT19937-64;
+  \item PCG32 \cite{oneill2014pcg};
+  \item xoshiro256** \cite{vigna2017scramblings};
+  \item Philox4x32-10 \cite{salmon2011parallel};
+  \item MRG32k3a \cite{lecuyer1999mrg}.
+\end{itemize}
+
+\subsection{Monte Carlo Protocol}
+
+The structural-dispersion protocol is:
+
+\begin{itemize}[nosep]
+  \item 100 tested seeds per generator;
+  \item $N=10^6$ samples per seed;
+  \item $R=8$ replicates;
+  \item four diagnostic integrands: identity, sinusoidal, quadratic, and rare event;
+  \item representative seeds selected from the 100-seed profile.
+\end{itemize}
+
+The reported tables use five representative structural seeds per generator for compact exposition. The complete proprietary sensitivity metrics are not disclosed.
+
+\subsection{TestU01 Protocol}
+
+The imported repository artifacts currently cover BigCrush logs for seed 42 on:
+
+\begin{itemize}[nosep]
+  \item CPU ARM on Darwin;
+  \item Apple Metal GPU on Darwin;
+  \item CUDA GPU on Linux.
+\end{itemize}
+
+SmallCrush logs are reported but not yet imported. An x86 CPU raw log is also not yet imported.
+
+\section{Results}
+
+\subsection{Imported BigCrush Logs}
+
+Table \ref{tab:bigcrush} summarizes the imported BigCrush artifacts.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+Backend & Suite & Seed & Statistics & Result \\
+\midrule
+CPU ARM, Darwin & BigCrush & 42 & 160 & all passed \\
+Apple Metal GPU, Darwin & BigCrush & 42 & 160 & all passed \\
+CUDA GPU, Linux & BigCrush & 42 & 160 & all passed \\
+\bottomrule
+\end{tabular}
+\caption{Imported BigCrush logs for \texttt{Montmory\_CTACM}.}
+\label{tab:bigcrush}
+\end{table}
+
+The imported logs report TestU01 version 1.2.3 and end with \texttt{All tests were passed}. The SHA-256 hashes are listed in Appendix \ref{app:manifest}.
+
+\subsection{Extracted Log Summary}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Backend & Generator label & CPU time & Parsed p-value range \\
+\midrule
+CPU ARM & \texttt{PRNG\_MONTMORY\_CPU\_ARM\_CTAM} & 02:08:48.69 & 0.02--0.9985 \\
+Metal GPU & \texttt{PRNG\_MONTMORY\_GPU\_METAL\_CTAM} & 02:16:17.77 & 2.6e-3--0.9994 \\
+CUDA GPU & \texttt{PRNG\_MONTMORY\_GPU\_CUDA\_CTAM} & 02:37:03.42 & 2.6e-3--0.9994 \\
+\bottomrule
+\end{tabular}
+\caption{Extracted metadata from the imported BigCrush logs.}
+\label{tab:logsummary}
+\end{table}
+
+The number of parsed \texttt{p-value of test} lines is 254 in each log, larger than the 160 BigCrush statistics because several tests report multiple p-values.
+
+\subsection{HAL Artifact Status}
+
+The HAL upload should be a single autonomous PDF. The Git repository is not the HAL artifact; it is supporting material. Table \ref{tab:hal_status} states which parts of the current public material are already covered by this document and which parts remain future work.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{0.32\textwidth}p{0.27\textwidth}p{0.28\textwidth}}
+\toprule
+Item & Current status in this PDF & Remaining gap \\
+\midrule
+Diagnostic framework & Included with formulas for $\rho_f$, GSQI, and $\epsilon(T)$ & Final peer-review refinements \\
+BigCrush results & Included for CPU ARM, Metal, CUDA & SmallCrush and x86 logs absent \\
+Inter-seed dispersion & Included as reported table & Raw per-seed table absent \\
+Cross-backend reproducibility & Formal requirement included & Stream hashes absent \\
+Performance versus Philox & Not included as throughput result & Benchmark table and commands absent \\
+Proprietary generator details & Explicitly excluded & Requires separate disclosure model if ever needed \\
+\bottomrule
+\end{tabular}
+\caption{Current HAL-readiness status of the document.}
+\label{tab:hal_status}
+\end{table}
+
+\subsection{Inter-Seed Dispersion}
+
+Table \ref{tab:dispersion} reports the structural dispersion values currently documented in the repository. These values are reported empirical results; the raw per-seed tables are still pending import.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lllrr}
+\toprule
+PRNG & Backend & Protocol & $\rho_{u^2}$ & $\rho_{\mathbf{1}_{u>0.99}}$ \\
+\midrule
+\texttt{Montmory\_CTACM} & CPU & $N=10^6,R=8,100$ seeds & $\sim 10$ & $\sim 3.4$ \\
+\texttt{Montmory\_CTACM} & GPU lane 1 & $N=10^6,R=8,100$ seeds & $\sim 10$ & $\sim 3.4$ \\
+MT19937 & CPU & $N=10^6,R=8,100$ seeds & $\sim 10$ & $\sim 14$ \\
+MT19937-64 & CPU & $N=10^6,R=8,100$ seeds & $\sim 1.9$ & $\sim 25$ \\
+PCG32 & CPU & $N=10^6,R=8,100$ seeds & $\sim 15$ & $\sim 3.2$ \\
+xoshiro256** & CPU & $N=10^6,R=8,100$ seeds & $\sim 5.9$ & $\sim 10.5$ \\
+Philox4x32-10 & CPU & $N=10^6,R=8,100$ seeds & $\sim 4.6$ & $\sim 11$ \\
+MRG32k3a & CPU & $N=10^6,R=8,100$ seeds & $\sim 7.7$ & $\sim 3.9$ \\
+\bottomrule
+\end{tabular}
+\caption{Reported inter-seed dispersion ratios on quadratic and rare-event integrands.}
+\label{tab:dispersion}
+\end{table}
+
+\section{Discussion}
+
+The reported results support a methodological point: passing BigCrush and exhibiting low functional variance dispersion are distinct properties. BigCrush evaluates distributional behaviour under a large collection of tests. The structural diagnostics proposed here evaluate the stability of Monte Carlo behaviour under controlled changes in seed, integrand, and backend.
+
+The rare-event integrand is particularly informative. Several common generators show larger dispersion on $\mathbf{1}_{\{u>0.99\}}$ than on smoother functionals. This does not imply that these generators are defective in a general sense. It indicates that functional variance can depend on the seed in ways that are not directly summarized by pass/fail battery results.
+
+The proposed framework is therefore best understood as an audit layer:
+
+\begin{itemize}[nosep]
+  \item TestU01 and PractRand remain necessary distributional evidence;
+  \item structural dispersion measures seed-conditioned Monte Carlo stability;
+  \item stream hashes and manifests support backend reproducibility;
+  \item no empirical score replaces a mathematical theorem.
+\end{itemize}
+
+\subsection{Why Seed Sensitivity Matters}
+
+In many Monte Carlo workflows, changing the seed is treated as a harmless way to obtain a fresh pseudo-random stream. This is reasonable only if the generator and the estimator behave stably over the tested seed set. If variance differs substantially from one seed to another, then a single seed can produce a misleading impression of estimator quality.
+
+The diagnostic ratio $\rho_f(B)$ is intentionally simple. It does not attempt to summarize every possible defect. It asks whether the empirical variance of a declared functional changes materially across a declared seed set. Because the diagnostic is conditional on $B$, $N$, $R$, $f$, and the backend, it should always be reported with these parameters.
+
+\subsection{Why Backend Reproducibility Matters}
+
+Modern simulations increasingly mix CPU and GPU implementations. If a generator produces backend-dependent streams, it becomes difficult to distinguish numerical effects from random-stream effects. Bit-exact reproducibility is not always required for every application, but when it is claimed, it should be checked through raw stream hashes rather than inferred from statistical battery pass/fail results.
+
+The imported BigCrush logs are useful because they show that the tested backend streams passed the same battery. They do not, by themselves, prove that the streams are identical. That stronger claim requires fixed-seed output hashes or a replay harness.
+
+\section{Limitations}
+
+The current public material has important limitations:
+
+\begin{itemize}[nosep]
+  \item \texttt{Montmory\_CTACM} is proprietary and undisclosed;
+  \item raw SmallCrush logs are not yet imported;
+  \item raw x86 CPU logs are not yet imported;
+  \item stream adapter source or hash is not yet imported;
+  \item backend implementation hashes and build commands are not yet imported;
+  \item bit-exact stream hashes are not yet imported;
+  \item full per-seed structural variance tables are not yet imported;
+  \item throughput benchmarks against Philox4x32-10 are not yet included.
+\end{itemize}
+
+Consequently, the current note should be read as a public methodological and empirical report, not as a complete independent reproducibility package.
+
+\section{Recommended Public Release Path}
+
+The most useful next public release would separate three layers.
+
+\paragraph{Layer 1: paper artifact.} A stable PDF describing the diagnostic framework, the public formulas, the current BigCrush results, and the reported structural-dispersion table. This is the role of the present document.
+
+\paragraph{Layer 2: reproducibility bundle.} A repository snapshot containing raw logs, manifests, checksums, stream adapter source or hashes, command lines, and environment metadata. This layer should allow another user to verify that the reported artifacts match the published hashes.
+
+\paragraph{Layer 3: optional open implementation.} A non-proprietary reference implementation of the diagnostic harness over open generators. This layer does not require disclosure of \texttt{Montmory\_CTACM}. It would make the framework itself reviewable and reusable.
+
+This release path avoids overclaiming while still making the scientific contribution visible: the proposed structural diagnostic methodology is public, even if the controlled test vehicle remains proprietary.
+
+\section{Conclusion}
+
+This note introduces a structural diagnostic framework for PRNG evaluation in Monte Carlo workloads. The framework formalizes seed sensitivity, functional variance dispersion, open structural scoring, transition instability, and cross-backend reproducibility checks.
+
+The imported BigCrush logs provide computational evidence that \texttt{Montmory\_CTACM} passed BigCrush with 160/160 statistics on CPU ARM, Apple Metal GPU, and CUDA GPU for seed 42. The reported structural dispersion tables suggest that widely used PRNGs can exhibit significant seed-dependent variance amplification on practical integrands, especially rare-event indicators.
+
+The main conclusion is not that any single generator is universally superior. The main conclusion is that PRNG evaluation should treat seed sensitivity and functional stability as first-class empirical properties, complementary to classical statistical batteries.
+
+\section*{Acknowledgement of Artifact Status}
+
+The accompanying Git repository contains raw BigCrush logs and a manifest with SHA-256 hashes. It does not contain confidential correspondence, proprietary recurrence details, or implementation code for the proprietary generator. Public claims should be limited to the artifacts and definitions included in the repository.
+
+\appendix
+
+\section{Imported TestU01 Manifest}
+\label{app:manifest}
+
+\begin{longtable}{p{0.16\textwidth}p{0.18\textwidth}p{0.10\textwidth}p{0.42\textwidth}}
+\toprule
+Artifact & Backend & Suite & SHA-256 \\
+\midrule
+\endhead
+CPU ARM log
+& CPU ARM, Darwin
+& BigCrush
+& \ttfamily\seqsplit{85696c1d4908da2e225083065c0f44a5cc04438c05d193823f8aec62f7a3feb2} \\
+Metal log
+& Apple Metal GPU, Darwin
+& BigCrush
+& \ttfamily\seqsplit{e19a9d95020b8a8bb9b84fe64128f87393cdae263332edb7df2507250b13088e} \\
+CUDA log
+& CUDA GPU, Linux
+& BigCrush
+& \ttfamily\seqsplit{f88b13037aee7c97bd38bc55d1b650524d7afdbe7585ab96de7da5452aecf312} \\
+\bottomrule
+\end{longtable}
+
+The corresponding repository filenames are:
+
+\begin{lstlisting}
+Math/PRNG/tests/testu01/raw/montmory_ctacm_cpu_arm_bigcrush_seed42.log
+Math/PRNG/tests/testu01/raw/montmory_ctacm_metal_bigcrush_seed42.log
+Math/PRNG/tests/testu01/raw/montmory_ctacm_cuda_bigcrush_seed42.log
+\end{lstlisting}
+
+\section{Reproducibility Checklist}
+
+To promote the current material from computational evidence to a stronger reproducibility package, the following artifacts should be added:
+
+\begin{itemize}[nosep]
+  \item raw SmallCrush logs for every claimed backend;
+  \item x86 CPU raw logs if x86 remains part of the backend claim;
+  \item TestU01 stream adapter source or source hash;
+  \item backend implementation commit hashes;
+  \item compiler versions, flags, hardware details, and exact commands;
+  \item fixed-seed stream hashes for bit-exact backend comparison;
+  \item complete per-seed variance tables;
+  \item a replay script validating expected log hashes and stream hashes.
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{lecuyer2007testu01}
+P. L'Ecuyer and R. Simard.
+\newblock TestU01: A C library for empirical testing of random number generators.
+\newblock \emph{ACM Transactions on Mathematical Software}, 33(4), 2007.
+
+\bibitem{practrand}
+C. Doty-Humphrey.
+\newblock PractRand random number test suite.
+\newblock Technical documentation and software distribution.
+
+\bibitem{matsumoto1998mersenne}
+M. Matsumoto and T. Nishimura.
+\newblock Mersenne Twister: A 623-dimensionally equidistributed uniform pseudo-random number generator.
+\newblock \emph{ACM Transactions on Modeling and Computer Simulation}, 8(1), 1998.
+
+\bibitem{oneill2014pcg}
+M. E. O'Neill.
+\newblock PCG: A family of simple fast space-efficient statistically good algorithms for random number generation.
+\newblock Technical report, 2014.
+
+\bibitem{vigna2017scramblings}
+S. Vigna.
+\newblock Further scramblings of Marsaglia's xorshift generators.
+\newblock \emph{Journal of Computational and Applied Mathematics}, 315, 2017.
+
+\bibitem{salmon2011parallel}
+J. K. Salmon, M. A. Moraes, R. O. Dror, and D. E. Shaw.
+\newblock Parallel random numbers: As easy as 1, 2, 3.
+\newblock \emph{Proceedings of SC11}, 2011.
+
+\bibitem{lecuyer1999mrg}
+P. L'Ecuyer.
+\newblock Good parameter sets for combined multiple recursive random number generators.
+\newblock \emph{Operations Research}, 47(1), 1999.
+
+\end{thebibliography}
+
+\end{document}
