@@ -15,7 +15,7 @@ The proprietary generator `Montmory_CTACM` is used here only as a controlled tes
 
 ## Abstract
 
-This technical note introduces a structural diagnostic framework designed to evaluate seed sensitivity, functional variance dispersion, and cross-architecture reproducibility of pseudo-random number generators (PRNGs) in Monte Carlo workloads. These dimensions are largely orthogonal to classical statistical batteries such as TestU01 and PractRand.
+This technical note introduces a structural diagnostic framework designed to evaluate seed sensitivity, functional variance dispersion, and cross-architecture reproducibility of pseudo-random number generators (PRNGs) in Monte Carlo workloads. These dimensions are largely orthogonal to classical statistical batteries such as TestU01 and PractRand. The public formulas used by the framework are collected in `formules-diagnostiques.md`.
 
 A lightweight proprietary 64-bit PRNG, `Montmory_CTACM`, is used solely as a controlled test vehicle for the methodology. The generator itself is not the contribution of this note. Instead, the focus is the diagnostic framework and empirical comparisons across widely used PRNGs:
 
