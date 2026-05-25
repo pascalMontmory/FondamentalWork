@@ -49,10 +49,10 @@ The framework introduces finite-window observables, inter-seed dispersion ratios
 
 Imported BigCrush logs for seed 42 report 160/160 passed statistics on CPU ARM, Apple Metal GPU, and CUDA GPU backends. Reported structural diagnostics compare \texttt{Montmory\_CTACM} with MT19937, MT19937-64, PCG32, xoshiro256**, Philox4x32-10, and MRG32k3a. The results show that generators compatible with classical batteries can still exhibit large inter-seed dispersion in Monte Carlo variance, especially on rare-event integrands.
 
-The current artifact is computational evidence, not a mathematical proof of generator quality. Missing material includes raw SmallCrush logs, stream adapter source or hash, backend implementation hashes, bit-exact stream hashes, x86 CPU raw logs, throughput benchmarks, and complete per-seed variance tables.
+The current artifact is computational evidence, not a mathematical proof of generator quality. Its contribution is to make seed-conditioned Monte Carlo stability a reproducible diagnostic target, while identifying the additional artifacts still required for independent verification: raw SmallCrush logs, stream adapter source or hash, backend implementation hashes, bit-exact stream hashes, x86 CPU raw logs, throughput benchmarks, and complete per-seed variance tables.
 \end{abstract}
 
-\noindent\textbf{Keywords:} PRNG, Monte Carlo, TestU01, BigCrush, seed sensitivity, functional variance, reproducibility, GPU, structural diagnostics.
+\noindent\textbf{Keywords:} PRNG, Monte Carlo, seed sensitivity, functional stability, cross-architecture reproducibility, statistical diagnostics.
 
 \section*{Resume en francais}
 
@@ -509,6 +509,8 @@ This note introduces a structural diagnostic framework for PRNG evaluation in Mo
 The imported BigCrush logs provide computational evidence that \texttt{Montmory\_CTACM} passed BigCrush with 160/160 statistics on CPU ARM, Apple Metal GPU, and CUDA GPU for seed 42. The reported structural dispersion tables indicate seed-dependent variance amplification on practical integrands, especially rare-event indicators, for several tested PRNG families.
 
 The main conclusion is not a ranking of generators. It is that PRNG evaluation should treat seed sensitivity and functional stability as first-class empirical properties, complementary to classical statistical batteries.
+
+This matters for large-scale simulations in finance, physics, engineering, and machine learning, where many runs are compared across seeds, devices, and implementation backends. In such settings, reproducible stream hashes and functional-stability diagnostics can help distinguish genuine model behaviour from artifacts introduced by seed choice or backend-specific random streams.
 
 \section*{Acknowledgement of Artifact Status}
 

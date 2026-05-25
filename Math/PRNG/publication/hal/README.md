@@ -21,7 +21,7 @@ pdflatex -interaction=nonstopmode -halt-on-error Montmory_Structural_Diagnostic_
 
 Current PDF status:
 
-- 12 pages, A4;
+- 13 pages, A4;
 - English abstract and French summary;
 - shortened HAL title: `Structural Diagnostics for PRNG Stability`;
 - no confidential correspondence;
