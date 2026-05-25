@@ -14,6 +14,8 @@ No PRNG quality result is marked as verified here. The material currently define
 | `verified-results.md` | Empty verified ledger except for definitional statements. |
 | `conjectures.md` | Unverified research claims and open questions. |
 | `structural-diagnostic-framework.md` | Technical-note draft on seed sensitivity, functional variance dispersion, and cross-architecture reproducibility. |
+| `montmory-ctacm-public-spec.md` | Public non-confidential boundary for discussing the proprietary `Montmory_CTACM` test vehicle. |
+| `testu01-results.md` | Reported SmallCrush and BigCrush outcomes for x86, Apple Metal, and NVIDIA CUDA pending raw-log import. |
 
 ## Work Area
 
