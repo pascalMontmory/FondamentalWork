@@ -2,17 +2,18 @@
 
 This note records the currently reported TestU01 outcomes for `Montmory_CTACM`.
 
-Status: summary only. Raw log files are not yet imported into this repository.
+Status: BigCrush raw logs imported for CPU ARM, Apple Metal GPU, and CUDA GPU at seed 42. SmallCrush logs, x86 CPU logs, stream adapter source, and rerun commands remain pending.
 
 ## Reported Results
 
 | Backend | SmallCrush | BigCrush | Status |
 | --- | ---: | ---: | --- |
-| x86 CPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
-| Apple Metal GPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
-| CUDA GPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
+| CPU ARM, Darwin | pass reported | `160 / 160` | BigCrush raw log imported for seed 42. |
+| Apple Metal GPU, Darwin | pass reported | `160 / 160` | BigCrush raw log imported for seed 42. |
+| CUDA GPU, Linux | pass reported | `160 / 160` | BigCrush raw log imported for seed 42. |
+| x86 CPU | pass reported | `160 / 160` reported | No raw x86 log imported. |
 
-The reported p-value distributions are described as clean and consistent across backends.
+The imported logs are indexed in `../tests/testu01/MANIFEST.md`.
 
 ## Raw Log Import Checklist
 

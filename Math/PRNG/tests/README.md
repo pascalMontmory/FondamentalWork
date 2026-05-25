@@ -26,4 +26,10 @@ python3 Math/PRNG/tests/affine_markov_micro_uncertainty.py
 
 This does not call `api.eninca.com`; it is a local scaffold for reproducing and isolating formulas before importing API transcripts.
 
+## TestU01 Artifacts
+
+Raw TestU01 logs are stored under `testu01/raw/`, with hashes and completeness notes in `testu01/MANIFEST.md`.
+
+Current imported artifacts cover BigCrush seed 42 for CPU ARM, Apple Metal GPU, and CUDA GPU. SmallCrush raw logs and an x86 CPU raw log are not currently imported.
+
 Future tests should avoid production services and external state. Each test should be runnable from a clean checkout and should print enough information to reproduce the seed model, perturbation rule, parameter values, observable, and expected output.
