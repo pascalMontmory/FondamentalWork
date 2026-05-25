@@ -23,17 +23,18 @@ These are definitions, not claims that any concrete PRNG is good or secure.
 
 ## Reported Computational Results
 
-The following results are reported from prior local experiments. They are not yet promoted to reproducible repository evidence because raw logs, commands, implementation hashes, and complete output artifacts are not yet included.
+The following results are empirical. They are not mathematical verification results. Some raw BigCrush logs are now imported, while commands, implementation hashes, stream adapter source, and complete rerun instructions remain incomplete.
 
 ### TestU01 Summary for Montmory_CTACM
 
 | Backend | SmallCrush | BigCrush | Repository Status |
 | --- | ---: | ---: | --- |
-| x86 CPU | pass | `160 / 160` | Reported; raw log pending. |
-| Apple Metal GPU | pass | `160 / 160` | Reported; raw log pending. |
-| CUDA GPU | pass | `160 / 160` | Reported; raw log pending. |
+| CPU ARM, Darwin | reported pass | `160 / 160` | BigCrush raw log imported for seed 42; SmallCrush raw log pending. |
+| Apple Metal GPU, Darwin | reported pass | `160 / 160` | BigCrush raw log imported for seed 42; SmallCrush raw log pending. |
+| CUDA GPU, Linux | reported pass | `160 / 160` | BigCrush raw log imported for seed 42; SmallCrush raw log pending. |
+| x86 CPU | reported pass | reported `160 / 160` | No raw x86 log imported. |
 
-Reported interpretation: p-value distributions were clean and consistent across tested backends.
+Imported BigCrush log manifest: `tests/testu01/MANIFEST.md`.
 
 ### Reported Inter-Seed Dispersion
 
