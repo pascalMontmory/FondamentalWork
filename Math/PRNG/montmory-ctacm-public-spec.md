@@ -30,7 +30,7 @@ For the purposes of the diagnostic framework, `Montmory_CTACM` is treated as a d
 - deterministic output map to unsigned integer words;
 - deterministic mapping to floating-point uniforms for Monte Carlo tests;
 - single-lane CPU/GPU replay mode;
-- backend targets including x86 CPU, Apple Metal GPU, and CUDA GPU.
+- backend targets including CPU ARM, x86 CPU, Apple Metal GPU, and CUDA GPU.
 
 The exact public test interface should expose:
 
@@ -57,8 +57,10 @@ The proprietary representative-seed score is not disclosed here. The non-proprie
 The public reproducibility target is bit-exact agreement in single-lane mode:
 
 ```text
-x86 CPU stream = Apple Metal stream = CUDA stream
+CPU stream = Apple Metal stream = CUDA stream
 ```
+
+Imported repository artifacts currently include BigCrush logs for CPU ARM, Apple Metal GPU, and CUDA GPU at seed `42`. They do not yet include stream hashes proving bit-exact equality, and they do not yet include an x86 CPU raw log.
 
 For a backend claim to be independently checkable, the repository should eventually include:
 
@@ -68,7 +70,8 @@ For a backend claim to be independently checkable, the repository should eventua
 - seed list;
 - first output words for reference seeds;
 - SHA-256 hash of generated streams;
-- TestU01 command and raw logs.
+- TestU01 command and raw logs;
+- raw stream hashes for the same seed and horizon on every claimed backend.
 
 ## Non-Claims
 
@@ -80,7 +83,7 @@ This document does not claim:
 - proof of cryptographic security;
 - proof that TestU01 success implies functional stability.
 
-The current verified public claim is limited to the existence of a documented diagnostic framework and reported empirical outcomes pending raw-log import.
+The current verified public claim is limited to documented definitions and the existence of imported BigCrush computational artifacts. Generator quality remains empirical, not mathematically verified.
 
 ## Publication Gap
 
@@ -89,5 +92,5 @@ For a serious external review, especially by GPU or numerical-computing teams, t
 - reference stream hashes for fixed seeds;
 - exact floating-point conversion rule;
 - exact TestU01 stream adapter;
-- full SmallCrush and BigCrush logs;
+- full SmallCrush logs and any missing BigCrush backend logs, especially x86 if it remains in scope;
 - non-proprietary version of the seed-sensitivity harness for open PRNGs.

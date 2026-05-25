@@ -128,19 +128,21 @@ L'apport methodologique est de rendre cette dependance explicite. Le resultat sc
 
 ## Reproductibilite Cross-Architecture
 
-La condition cible est:
+La condition cible generale est:
 
 ```text
-stream_x86(seed) = stream_Metal(seed) = stream_CUDA(seed)
+stream_CPU(seed) = stream_Metal(seed) = stream_CUDA(seed)
 ```
 
 ou, de facon verifiable:
 
 ```text
-SHA256(stream_x86(seed,n))
+SHA256(stream_CPU(seed,n))
   = SHA256(stream_Metal(seed,n))
   = SHA256(stream_CUDA(seed,n))
 ```
+
+Dans le depot actuel, les artefacts importes couvrent BigCrush seed `42` sur CPU ARM, Metal et CUDA. Ils ne remplacent pas encore des hashes de flux bit-exact, et le log brut x86 reste a importer si x86 doit faire partie de la revendication publique.
 
 Cette exigence est centrale pour les simulations GPU, car un PRNG utilisable en calcul scientifique doit permettre de distinguer les effets numeriques reels des artefacts de backend.
 

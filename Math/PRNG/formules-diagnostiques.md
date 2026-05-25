@@ -322,10 +322,10 @@ The exact convention for `k0`, centering, normalization, and windowing must be d
 
 ## 11. Cross-Backend Reproducibility
 
-For backend set:
+For a declared backend set `B`, for example:
 
 ```text
-B = {x86, Metal, CUDA}
+B = {CPU_ARM_Darwin, Metal_Darwin, CUDA_Linux}
 ```
 
 bit-exact single-lane reproducibility means:
@@ -344,8 +344,11 @@ Hash_b(seed, n) = SHA256(x_0 || x_1 || ... || x_{n-1})
 and require:
 
 ```text
-Hash_x86(seed, n) = Hash_Metal(seed, n) = Hash_CUDA(seed, n)
+forall b_1, b_2 in B:
+  Hash_{b_1}(seed, n) = Hash_{b_2}(seed, n)
 ```
+
+If x86 is part of the public claim, it must be added explicitly to `B` and supported by its own raw log and stream hash artifacts.
 
 ## 12. Audit Proof
 

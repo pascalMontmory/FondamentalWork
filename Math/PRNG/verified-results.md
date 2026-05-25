@@ -5,7 +5,8 @@ No PRNG quality, security, period, distribution, independence, seed-impact, or p
 This file intentionally separates:
 
 - verified definitions;
-- reported empirical results pending raw artifact import;
+- imported computational artifacts;
+- reported empirical results still pending raw artifact import;
 - requirements for promotion to reproducible computational evidence.
 
 ## Verified Definitional Statements
@@ -46,26 +47,26 @@ Protocol summary:
 - table reports representative structural seeds selected from the 100-seed profile;
 - `rho_f = max_s V_s(f) / min_s V_s(f)` on the selected seed set.
 
-| PRNG | Backend | `rho_{u^2}` | `rho_{1{u>0.99}}` | Repository Status |
-| --- | --- | ---: | ---: | --- |
-| Montmory_CTACM | CPU | `~10` | `~3.4` | Reported; raw table pending. |
-| Montmory_CTACM | GPU lane 1 | `~10` | `~3.4` | Reported; raw table pending. |
-| MT19937 | CPU | `~10` | `~14` | Reported; raw table pending. |
-| MT19937-64 | CPU | `~1.9` | `~25` | Reported; raw table pending. |
-| PCG32 | CPU | `~15` | `~3.2` | Reported; raw table pending. |
-| xoshiro256** | CPU | `~5.9` | `~10.5` | Reported; raw table pending. |
-| Philox4x32-10 | CPU | `~4.6` | `~11` | Reported; raw table pending. |
-| MRG32k3a | CPU | `~7.7` | `~3.9` | Reported; raw table pending. |
+| PRNG | Backend | `N` | `R` | Seeds | `rho_{u^2}` | `rho_{1{u>0.99}}` | Repository Status |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| Montmory_CTACM | CPU | `10^6` | `8` | `100` | `~10` | `~3.4` | Reported; raw table pending. |
+| Montmory_CTACM | GPU lane 1 | `10^6` | `8` | `100` | `~10` | `~3.4` | Reported; raw table pending. |
+| MT19937 | CPU | `10^6` | `8` | `100` | `~10` | `~14` | Reported; raw table pending. |
+| MT19937-64 | CPU | `10^6` | `8` | `100` | `~1.9` | `~25` | Reported; raw table pending. |
+| PCG32 | CPU | `10^6` | `8` | `100` | `~15` | `~3.2` | Reported; raw table pending. |
+| xoshiro256** | CPU | `10^6` | `8` | `100` | `~5.9` | `~10.5` | Reported; raw table pending. |
+| Philox4x32-10 | CPU | `10^6` | `8` | `100` | `~4.6` | `~11` | Reported; raw table pending. |
+| MRG32k3a | CPU | `10^6` | `8` | `100` | `~7.7` | `~3.9` | Reported; raw table pending. |
 
 ### Cross-Backend Reproducibility
 
 Reported condition for `Montmory_CTACM` in single-lane mode:
 
 ```text
-stream_x86(seed) = stream_Metal(seed) = stream_CUDA(seed)
+stream_CPU(seed) = stream_Metal(seed) = stream_CUDA(seed)
 ```
 
-Repository status: reported only. Stream hashes and backend implementation hashes are pending import.
+Repository status: reported only. Stream hashes, backend implementation hashes, and x86 stream artifacts are pending import.
 
 ## Promotion Requirements
 
