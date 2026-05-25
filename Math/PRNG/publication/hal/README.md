@@ -36,3 +36,4 @@ Current PDF status:
 - includes GSQI and epsilon(T) public definitions;
 - includes a numeric inter-seed dispersion table with min/max variances and ratios;
 - labels missing SmallCrush, x86, stream hashes, adapter source, and benchmark artifacts explicitly.
+- avoids naming the proprietary prototype generator in the PDF body.

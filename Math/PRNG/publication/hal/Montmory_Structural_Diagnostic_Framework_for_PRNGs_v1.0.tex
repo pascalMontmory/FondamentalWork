@@ -47,7 +47,7 @@ Classical statistical test batteries such as TestU01 BigCrush and PractRand are 
 
 This paper introduces a structural diagnostic framework that complements traditional statistical tests by evaluating three properties: seed sensitivity, functional stability across representative integrands (identity, sinusoidal, quadratic, and rare-event), and bit-exact reproducibility across heterogeneous architectures (ARM64 CPU, Metal GPU, and CUDA GPU).
 
-Using \texttt{Montmory\_CTACM} as a controlled proprietary test vehicle, the reported results show that common PRNGs can display inter-seed dispersion ratios up to approximately $25\times$ on practical Monte Carlo integrands, despite passing full BigCrush. Imported BigCrush logs for seed 42 report 160/160 passed statistics for the test vehicle on CPU ARM, Metal GPU, and CUDA GPU backends.
+Using a controlled proprietary 64-bit PRNG as a test vehicle, the reported results show that common PRNGs can display inter-seed dispersion ratios up to approximately $25\times$ on practical Monte Carlo integrands, despite passing full BigCrush. Imported BigCrush logs for seed 42 report 160/160 passed statistics for the test vehicle on CPU ARM, Metal GPU, and CUDA GPU backends.
 
 These results suggest that seed-conditioned Monte Carlo stability should be treated as a first-class empirical criterion in PRNG evaluation for large-scale scientific and industrial applications. The current artifact is computational evidence, not a mathematical proof of generator quality, and identifies the additional artifacts required for independent verification.
 \end{abstract}
@@ -58,7 +58,7 @@ These results suggest that seed-conditioned Monte Carlo stability should be trea
 
 Cette note technique presente un cadre de diagnostic structurel pour l'evaluation des generateurs pseudo-aleatoires dans les simulations Monte Carlo. L'objectif n'est pas de remplacer les batteries statistiques classiques, comme TestU01 ou PractRand, mais de les completer par des mesures de sensibilite a la seed, de dispersion de variance fonctionnelle et de reproductibilite inter-backend.
 
-Le generateur proprietaire \texttt{Montmory\_CTACM} est utilise uniquement comme vehicule experimental controle. Sa recurrence interne, ses constantes et son code d'implementation ne sont pas publies dans cette note. La contribution principale porte sur la methode d'evaluation et sur le protocole empirique.
+Un generateur proprietaire 64-bit est utilise uniquement comme vehicule experimental controle. Sa recurrence interne, ses constantes et son code d'implementation ne sont pas publies dans cette note. La contribution principale porte sur la methode d'evaluation et sur le protocole empirique.
 
 Les logs BigCrush importes indiquent 160/160 statistiques passees pour la seed 42 sur CPU ARM, Metal GPU et CUDA GPU. Les diagnostics structurels rapportes montrent que des generateurs passant les batteries classiques peuvent neanmoins presenter une dispersion inter-seed importante de la variance Monte Carlo, notamment sur les evenements rares.
 
@@ -85,7 +85,7 @@ This note proposes a structural diagnostic layer intended to answer these questi
 
 \section{Related Work and Positioning}
 
-Classical PRNG evaluation has several complementary components. The first component is theoretical: period, equidistribution, lattice structure, recurrence properties, and independence properties under explicit assumptions. These results are generator-specific and require disclosure of the transition rule and output map. The present note does not provide such theorems for \texttt{Montmory\_CTACM}, because the generator is not disclosed.
+Classical PRNG evaluation has several complementary components. The first component is theoretical: period, equidistribution, lattice structure, recurrence properties, and independence properties under explicit assumptions. These results are generator-specific and require disclosure of the transition rule and output map. The present note does not provide such theorems for the prototype generator, because its recurrence is not disclosed.
 
 The second component is empirical distributional testing. TestU01, introduced by L'Ecuyer and Simard \cite{lecuyer2007testu01}, and tools such as PractRand \cite{practrand}, are designed to identify departures from expected random behaviour over long finite streams. Their role is central. A generator that fails strong statistical batteries requires careful justification before being used in demanding Monte Carlo workloads.
 
@@ -117,7 +117,7 @@ The note deliberately separates method, evidence, and claims.
 
 \paragraph{Method.} The diagnostic framework is public: definitions, observables, seed perturbations, functional variance ratios, and backend reproducibility checks are stated explicitly.
 
-\paragraph{Test vehicle.} The proprietary generator \texttt{Montmory\_CTACM} is used as a controlled test vehicle. It is treated as a black-box deterministic PRNG with a fixed public interface:
+\paragraph{Test vehicle.} A proprietary 64-bit PRNG is used as a controlled test vehicle. It is treated as a black-box deterministic PRNG with a fixed public interface:
 
 \begin{lstlisting}
 init(seed) -> state_0
@@ -317,7 +317,7 @@ The current repository defines this requirement, but does not yet include raw st
 The reported comparison includes:
 
 \begin{itemize}[nosep]
-  \item \texttt{Montmory\_CTACM}, used as a proprietary controlled test vehicle;
+  \item a proprietary 64-bit prototype generator, used as a controlled test vehicle;
   \item MT19937 \cite{matsumoto1998mersenne};
   \item MT19937-64;
   \item PCG32 \cite{oneill2014pcg};
@@ -370,7 +370,7 @@ Metal GPU, Darwin & BigCrush & 42 & 160 & all passed \\
 CUDA GPU, Linux & BigCrush & 42 & 160 & all passed \\
 \bottomrule
 \end{tabular}
-\caption{Imported BigCrush logs for \texttt{Montmory\_CTACM}.}
+\caption{Imported BigCrush logs for the prototype generator.}
 \label{tab:bigcrush}
 \end{table}
 
@@ -383,11 +383,11 @@ The imported logs report TestU01 version 1.2.3 and end with \texttt{All tests we
 \small
 \begin{tabular}{llll}
 \toprule
-Backend & Generator label & CPU time & Parsed p-value range \\
+Backend & Backend label & CPU time & Parsed p-value range \\
 \midrule
-CPU ARM & \texttt{PRNG\_MONTMORY\_CPU\_ARM\_CTAM} & 02:08:48.69 & 0.02--0.9985 \\
-Metal GPU & \texttt{PRNG\_MONTMORY\_GPU\_METAL\_CTAM} & 02:16:17.77 & 2.6e-3--0.9994 \\
-CUDA GPU & \texttt{PRNG\_MONTMORY\_GPU\_CUDA\_CTAM} & 02:37:03.42 & 2.6e-3--0.9994 \\
+CPU ARM & prototype CPU stream & 02:08:48.69 & 0.02--0.9985 \\
+Metal GPU & prototype Metal stream & 02:16:17.77 & 2.6e-3--0.9994 \\
+CUDA GPU & prototype CUDA stream & 02:37:03.42 & 2.6e-3--0.9994 \\
 \bottomrule
 \end{tabular}
 \caption{Extracted metadata from the imported BigCrush logs.}
@@ -430,8 +430,8 @@ Table \ref{tab:dispersion} reports the structural dispersion values currently do
 \toprule
 PRNG & Backend & min $V_{u^2}$ & max $V_{u^2}$ & $\rho_{u^2}$ & min $V_R$ & max $V_R$ & $\rho_R$ \\
 \midrule
-\texttt{Montmory\_CTACM} & CPU & $2.0{\times}10^{-7}$ & $2.1{\times}10^{-6}$ & $\sim 10$ & $1.1{\times}10^{-6}$ & $3.8{\times}10^{-6}$ & $\sim 3.4$ \\
-\texttt{Montmory\_CTACM} & GPU lane 1 & $2.0{\times}10^{-7}$ & $2.1{\times}10^{-6}$ & $\sim 10$ & $1.1{\times}10^{-6}$ & $3.8{\times}10^{-6}$ & $\sim 3.4$ \\
+Prototype generator & CPU & $2.0{\times}10^{-7}$ & $2.1{\times}10^{-6}$ & $\sim 10$ & $1.1{\times}10^{-6}$ & $3.8{\times}10^{-6}$ & $\sim 3.4$ \\
+Prototype generator & GPU lane 1 & $2.0{\times}10^{-7}$ & $2.1{\times}10^{-6}$ & $\sim 10$ & $1.1{\times}10^{-6}$ & $3.8{\times}10^{-6}$ & $\sim 3.4$ \\
 MT19937 & CPU & $1.3{\times}10^{-7}$ & $1.3{\times}10^{-6}$ & $\sim 10$ & $2.5{\times}10^{-7}$ & $3.5{\times}10^{-6}$ & $\sim 14$ \\
 MT19937-64 & CPU & $3.4{\times}10^{-7}$ & $6.6{\times}10^{-7}$ & $\sim 1.9$ & $2.0{\times}10^{-7}$ & $4.9{\times}10^{-6}$ & $\sim 25$ \\
 PCG32 & CPU & $1.4{\times}10^{-7}$ & $2.1{\times}10^{-6}$ & $\sim 15$ & $4.7{\times}10^{-7}$ & $1.5{\times}10^{-6}$ & $\sim 3.2$ \\
@@ -478,7 +478,7 @@ The imported BigCrush logs are useful because they show that the tested backend 
 The current public material has important limitations:
 
 \begin{itemize}[nosep]
-  \item \texttt{Montmory\_CTACM} is proprietary and undisclosed;
+  \item the prototype generator is proprietary and undisclosed;
   \item raw SmallCrush logs are not yet imported;
   \item raw x86 CPU logs are not yet imported;
   \item stream adapter source or hash is not yet imported;
@@ -498,7 +498,7 @@ The most useful next public release would separate three layers.
 
 \paragraph{Layer 2: reproducibility bundle.} A repository snapshot containing raw logs, manifests, checksums, stream adapter source or hashes, command lines, and environment metadata. This layer should allow another user to verify that the reported artifacts match the published hashes.
 
-\paragraph{Layer 3: optional open implementation.} A non-proprietary reference implementation of the diagnostic harness over open generators. This layer does not require disclosure of \texttt{Montmory\_CTACM}. It would make the framework itself reviewable and reusable.
+\paragraph{Layer 3: optional open implementation.} A non-proprietary reference implementation of the diagnostic harness over open generators. This layer does not require disclosure of the proprietary prototype generator. It would make the framework itself reviewable and reusable.
 
 This release path avoids overclaiming while still making the scientific contribution visible: the proposed structural diagnostic methodology is public, even if the controlled test vehicle remains proprietary.
 
@@ -506,7 +506,7 @@ This release path avoids overclaiming while still making the scientific contribu
 
 This note introduces a structural diagnostic framework for PRNG evaluation in Monte Carlo workloads. The framework formalizes seed sensitivity, functional variance dispersion, open structural scoring, transition instability, and cross-backend reproducibility checks.
 
-The imported BigCrush logs provide computational evidence that \texttt{Montmory\_CTACM} passed BigCrush with 160/160 statistics on CPU ARM, Metal GPU, and CUDA GPU for seed 42. The reported structural dispersion tables indicate seed-dependent variance amplification on practical integrands, especially rare-event indicators, for several tested PRNG families.
+The imported BigCrush logs provide computational evidence that the prototype generator passed BigCrush with 160/160 statistics on CPU ARM, Metal GPU, and CUDA GPU for seed 42. The reported structural dispersion tables indicate seed-dependent variance amplification on practical integrands, especially rare-event indicators, for several tested PRNG families.
 
 The main conclusion is not a ranking of generators. It is that PRNG evaluation should treat seed sensitivity and functional stability as first-class empirical properties, complementary to classical statistical batteries.
 
@@ -541,13 +541,7 @@ CUDA log
 \bottomrule
 \end{longtable}
 
-The corresponding repository filenames are:
-
-\begin{lstlisting}
-Math/PRNG/tests/testu01/raw/montmory_ctacm_cpu_arm_bigcrush_seed42.log
-Math/PRNG/tests/testu01/raw/montmory_ctacm_metal_bigcrush_seed42.log
-Math/PRNG/tests/testu01/raw/montmory_ctacm_cuda_bigcrush_seed42.log
-\end{lstlisting}
+The corresponding repository filenames are listed in the public TestU01 manifest accompanying the raw logs.
 
 \section{Reproducibility Checklist}
 
