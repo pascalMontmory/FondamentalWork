@@ -12,7 +12,7 @@ Raw TestU01 logs are not yet imported into this repository. Until they are added
 | --- | ---: | ---: | --- |
 | x86 CPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
 | Apple Metal GPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
-| NVIDIA CUDA GPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
+| CUDA GPU | pass | `160 / 160` | Reported from local logs; raw log pending. |
 
 The reported p-value distributions are described as clean and consistent across x86, Metal, and CUDA.
 
