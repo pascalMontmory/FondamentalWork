@@ -9,7 +9,9 @@ December 2025
 
 ## Status
 
-This is a technical-note draft. It documents a diagnostic framework and reported empirical observations, but the full dataset, source code, TestU01 logs, backend implementations, and complete sensitivity metrics are not yet included in this repository.
+This is a technical-note draft. It documents a diagnostic framework and reported empirical observations. Raw BigCrush logs for seed `42` are now imported for CPU ARM, Apple Metal GPU, and CUDA GPU under `tests/testu01/raw/`, with hashes in `tests/testu01/MANIFEST.md`.
+
+The repository still does not contain the full dataset, stream adapter source, backend implementation hashes, exact build commands, SmallCrush raw logs, x86 CPU raw logs, or complete proprietary sensitivity metrics.
 
 The proprietary generator `Montmory_CTACM` is used here only as a controlled test vehicle. The contribution claimed by this note is the structural diagnostic framework, not disclosure or validation of the proprietary generator itself.
 
@@ -30,7 +32,7 @@ Experiments were conducted on ARM64 CPU, Apple Metal GPU, and CUDA GPU.
 
 The proprietary nature of `Montmory_CTACM` is explicitly acknowledged. The contribution of this note lies in the diagnostic framework and the observed gaps in existing open-source generators, not the undisclosed generator itself.
 
-Under a single-lane configuration, the prototype generator produces bit-exact outputs across CPU, Metal, and CUDA backends, and passes the full TestU01 SmallCrush, Crush, and BigCrush suite with clean p-value distributions.
+Under a single-lane configuration, the prototype generator is reported to produce bit-exact outputs across CPU, Metal, and CUDA backends. Imported repository artifacts currently support the narrower statement that BigCrush seed `42` logs report `160 / 160` passed statistics on CPU ARM, Apple Metal GPU, and CUDA GPU.
 
 Structural diagnostics reveal that popular PRNGs can exhibit one to two orders of magnitude amplification of Monte Carlo variance depending on the seed, despite all passing BigCrush. In contrast, the prototype displays significantly lower inter-seed dispersion across integrands.
 
@@ -115,24 +117,26 @@ Only the prototype generator satisfied this condition in the reported experiment
 - `N = 10^6` samples per seed;
 - 8 replicates;
 - 100 seeds per PRNG, including seed `0` when meaningful;
-- backends: x86 CPU, Apple Metal GPU, CUDA GPU;
-- TestU01 SmallCrush, Crush, and BigCrush executed for the prototype on all three architectures.
+- backends in the imported raw BigCrush logs: CPU ARM on Darwin, Apple Metal GPU on Darwin, CUDA GPU on Linux;
+- x86 CPU remains a reported target, but its raw log is not yet imported;
+- TestU01 SmallCrush and BigCrush are reported for the prototype; imported raw artifacts currently cover BigCrush seed `42`.
 
 ## 4. Results
 
 ### 4.1 TestU01 Cross-Architecture Logs
 
-`Montmory_CTACM` reportedly passes the TestU01 SmallCrush and BigCrush logs on the three tested execution targets:
+`Montmory_CTACM` has imported raw BigCrush logs for three execution targets:
 
 | Backend | SmallCrush | BigCrush | Notes |
 | --- | ---: | ---: | --- |
-| x86 CPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
-| Apple Metal GPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
-| CUDA GPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
+| CPU ARM, Darwin | reported pass | `160 / 160` | Raw BigCrush log imported for seed `42`. |
+| Apple Metal GPU, Darwin | reported pass | `160 / 160` | Raw BigCrush log imported for seed `42`. |
+| CUDA GPU, Linux | reported pass | `160 / 160` | Raw BigCrush log imported for seed `42`. |
+| x86 CPU | reported pass | reported `160 / 160` | No raw x86 log imported. |
 
-The reported p-value distributions are described as clean and consistent across x86, Metal, and CUDA.
+The imported logs end with `All tests were passed`. The manifest also records SHA-256 hashes, host labels, generator labels, total CPU time, and parsed p-value ranges.
 
-The corresponding raw logs are not yet included in this repository. Until those logs are added, this table should be read as a structured summary of reported log results rather than an independently reproducible repository artifact.
+These logs are repository computational evidence, but not yet a complete independent reproducibility package.
 
 ### 4.2 Mean Functional Variances
 
@@ -184,7 +188,10 @@ To promote this note from draft to reproducible evidence, the repository should 
 - the exact seed list used for each PRNG;
 - the auto-discovery rule for representative structural seeds, or a non-proprietary approximation;
 - CPU, Metal, and CUDA implementation hashes;
-- full TestU01 SmallCrush and BigCrush logs for x86, Metal, and CUDA;
+- raw SmallCrush logs for CPU ARM, Metal, and CUDA;
+- raw x86 CPU SmallCrush and BigCrush logs if x86 remains part of the public backend claim;
+- stream adapter source or source hash for TestU01;
+- exact build commands, compiler versions, flags, and target details;
 - raw variance tables for all 100 seeds;
 - a reproducible script for the four integrands;
 - a verification manifest with commands and expected outputs.

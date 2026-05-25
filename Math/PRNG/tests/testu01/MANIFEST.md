@@ -22,6 +22,22 @@ Status: computational evidence artifact. These logs contain complete BigCrush su
 
 The `p-value of test` count is larger than the BigCrush statistic count because some BigCrush tests report multiple p-values.
 
+## Hash Verification
+
+From the repository root:
+
+```bash
+sha256sum Math/PRNG/tests/testu01/raw/*.log
+```
+
+Expected hashes:
+
+```text
+85696c1d4908da2e225083065c0f44a5cc04438c05d193823f8aec62f7a3feb2  Math/PRNG/tests/testu01/raw/montmory_ctacm_cpu_arm_bigcrush_seed42.log
+f88b13037aee7c97bd38bc55d1b650524d7afdbe7585ab96de7da5452aecf312  Math/PRNG/tests/testu01/raw/montmory_ctacm_cuda_bigcrush_seed42.log
+e19a9d95020b8a8bb9b84fe64128f87393cdae263332edb7df2507250b13088e  Math/PRNG/tests/testu01/raw/montmory_ctacm_metal_bigcrush_seed42.log
+```
+
 ## Completeness Assessment
 
 These artifacts are sufficient to support the narrow statement:
