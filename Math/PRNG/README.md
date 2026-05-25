@@ -1,18 +1,43 @@
 # PRNG
 
-Workspace for mathematical foundations related to pseudo-random-number-generator work.
+Workspace for mathematical foundations related to pseudo-random-number-generator work, with a current focus on micro-uncertainty: how small seed perturbations and controlled parameter changes propagate through a deterministic generator.
 
 ## Current Status
 
-This directory is a namespace placeholder. No PRNG result is marked as verified here until its assumptions, statistical target, proof argument, and reproducible tests are documented.
+No PRNG quality result is marked as verified here. The material currently defines the vocabulary and research protocol for studying seed impact, parameter controls, and reproducible evidence.
 
-## Expected Structure
+## Visible Files
 
-- `definitions.md`: generator state, transition rule, output map, and seed model.
-- `verified-results.md`: proven period, distribution, or independence properties only when actually established.
-- `conjectures.md`: unproven quality claims and open questions.
-- `tests/`: deterministic, reproducible test harnesses and expected outputs.
+| File | Status |
+| --- | --- |
+| `definitions.md` | Neutral definitions for PRNG state, seed models, parameter controls, and micro-uncertainty observables. |
+| `verified-results.md` | Empty verified ledger except for definitional statements. |
+| `conjectures.md` | Unverified research claims and open questions. |
+| `structural-diagnostic-framework.md` | Technical-note draft on seed sensitivity, functional variance dispersion, and cross-architecture reproducibility. |
+
+## Work Area
+
+Exploratory material is kept in `work/`:
+
+- micro-uncertainty analysis plan;
+- candidate metrics and control protocols;
+- notes imported from external API or cryptographic experiments;
+- TestU01 log summaries before raw log import;
+- computational evidence before promotion.
+
+Material in `work/` is not advertised as verified.
+
+## Tests Area
+
+Reproducible checks belong in `tests/`. Each check should declare:
+
+- generator definition and version;
+- seed set and seed perturbation rule;
+- parameter set and controlled parameter grid;
+- sample size and output window;
+- expected output or acceptance interval;
+- command required to reproduce the result.
 
 ## Verification Rule
 
-Empirical randomness tests are evidence, not proof. Label them as computational evidence unless a mathematical theorem is provided.
+Empirical randomness tests are evidence, not proof. Label them as computational evidence unless a mathematical theorem is provided. A claim about seed sensitivity or parameter robustness is not verified until the assumptions, observable, range, command, and expected output are documented locally.
