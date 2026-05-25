@@ -30,7 +30,7 @@ For the purposes of the diagnostic framework, `Montmory_CTACM` is treated as a d
 - deterministic output map to unsigned integer words;
 - deterministic mapping to floating-point uniforms for Monte Carlo tests;
 - single-lane CPU/GPU replay mode;
-- backend targets including x86 CPU, Apple Metal GPU, and NVIDIA CUDA GPU.
+- backend targets including x86 CPU, Apple Metal GPU, and CUDA GPU.
 
 The exact public test interface should expose:
 
@@ -57,7 +57,7 @@ The proprietary representative-seed score is not disclosed here. The non-proprie
 The public reproducibility target is bit-exact agreement in single-lane mode:
 
 ```text
-x86 CPU stream = Apple Metal stream = NVIDIA CUDA stream
+x86 CPU stream = Apple Metal stream = CUDA stream
 ```
 
 For a backend claim to be independently checkable, the repository should eventually include:

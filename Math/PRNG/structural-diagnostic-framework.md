@@ -1,6 +1,6 @@
 # Structural Diagnostic Framework for PRNG Stability
 
-Cross-Architecture Empirical Analysis on ARM CPU, Apple Metal and NVIDIA CUDA
+Cross-Architecture Empirical Analysis on ARM CPU, Apple Metal and CUDA
 
 Pascal Montmory  
 ENINCA Consulting  
@@ -26,7 +26,7 @@ A lightweight proprietary 64-bit PRNG, `Montmory_CTACM`, is used solely as a con
 - Philox4x32-10;
 - MRG32k3a.
 
-Experiments were conducted on ARM64 CPU, Apple Metal GPU, and NVIDIA CUDA GPU.
+Experiments were conducted on ARM64 CPU, Apple Metal GPU, and CUDA GPU.
 
 The proprietary nature of `Montmory_CTACM` is explicitly acknowledged. The contribution of this note lies in the diagnostic framework and the observed gaps in existing open-source generators, not the undisclosed generator itself.
 
@@ -105,7 +105,7 @@ The internal scoring functions mix quadratic and rare-event variances with struc
 Bit-exact equality of sequences is tested across:
 
 ```text
-ARM64 CPU = Apple Metal GPU = NVIDIA CUDA GPU
+ARM64 CPU = Apple Metal GPU = CUDA GPU
 ```
 
 Only the prototype generator satisfied this condition in the reported experiments.
@@ -115,7 +115,7 @@ Only the prototype generator satisfied this condition in the reported experiment
 - `N = 10^6` samples per seed;
 - 8 replicates;
 - 100 seeds per PRNG, including seed `0` when meaningful;
-- backends: x86 CPU, Apple Metal GPU, NVIDIA CUDA GPU;
+- backends: x86 CPU, Apple Metal GPU, CUDA GPU;
 - TestU01 SmallCrush, Crush, and BigCrush executed for the prototype on all three architectures.
 
 ## 4. Results
@@ -128,7 +128,7 @@ Only the prototype generator satisfied this condition in the reported experiment
 | --- | ---: | ---: | --- |
 | x86 CPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
 | Apple Metal GPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
-| NVIDIA CUDA GPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
+| CUDA GPU | pass | `160 / 160` | Reported from local TestU01 logs; raw log file pending import. |
 
 The reported p-value distributions are described as clean and consistent across x86, Metal, and CUDA.
 

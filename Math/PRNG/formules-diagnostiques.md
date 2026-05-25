@@ -395,3 +395,12 @@ The following remain unpublished unless explicitly released:
 - `Montmory_CTACM` extraction formula;
 - proprietary representative-seed scoring function;
 - proprietary constants or implementation-level mixing schedule.
+
+## References
+
+1. P. L'Ecuyer and R. Simard, "TestU01: A C library for empirical testing of random number generators", ACM Transactions on Mathematical Software, 33(4), 2007.
+2. C. Blackman and M. Vigna, "Scrambled Linear Pseudorandom Number Generators", ACM Transactions on Mathematical Software, 47(4), 2021.
+3. M. Matsumoto and T. Nishimura, "Mersenne Twister: A 623-dimensionally equidistributed uniform pseudo-random number generator", ACM Transactions on Modeling and Computer Simulation, 8(1), 1998.
+4. M. E. O'Neill, "PCG: A Family of Simple Fast Space-Efficient Statistically Good Algorithms for Random Number Generation", technical report, 2014.
+5. J. K. Salmon, M. A. Moraes, R. O. Dror, and D. E. Shaw, "Parallel random numbers: As easy as 1, 2, 3", SC11, 2011.
+6. P. L'Ecuyer, "Good parameter sets for combined multiple recursive random number generators", Operations Research, 47(1), 1999.

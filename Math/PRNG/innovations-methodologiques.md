@@ -107,6 +107,25 @@ Les resultats ci-dessous sont des observations reportees dans la note technique.
 
 Le resultat marquant est que plusieurs generateurs connus peuvent montrer une forte amplification de variance sur l'evenement rare, tout en restant compatibles avec les batteries statistiques classiques.
 
+## Lecture des Resultats
+
+Les valeurs `rho_f` ne doivent pas etre interpretees comme des preuves de superiorite generale d'un generateur. Elles mesurent une propriete conditionnelle:
+
+```text
+rho_f(B, N, R, backend, seed_selection)
+```
+
+pour:
+
+- une famille d'integrandes donnee;
+- un ensemble de seeds donne;
+- un nombre d'echantillons `N`;
+- un nombre de repetitions `R`;
+- un backend d'execution;
+- une regle de selection des seeds representatives.
+
+L'apport methodologique est de rendre cette dependance explicite. Le resultat scientifique important n'est donc pas seulement la valeur numerique d'un tableau, mais le fait qu'un test de stabilite inter-seed revele des differences que BigCrush ne mesure pas.
+
 ## Reproductibilite Cross-Architecture
 
 La condition cible est:
