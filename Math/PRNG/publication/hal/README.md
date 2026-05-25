@@ -12,6 +12,12 @@ The LaTeX source is:
 Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.tex
 ```
 
+HAL upload metadata are prepared in:
+
+```text
+HAL_METADATA.md
+```
+
 Build command:
 
 ```bash
@@ -23,7 +29,7 @@ Current PDF status:
 
 - 13 pages, A4;
 - English abstract and French summary;
-- shortened HAL title: `Structural Diagnostics for PRNG Stability`;
+- HAL title: `Structural Stability Diagnostics for Pseudo-Random Number Generators: Seed Sensitivity and Functional Variance Dispersion`;
 - no confidential correspondence;
 - no proprietary recurrence details;
 - includes BigCrush ARM/Metal/CUDA summary and SHA-256 manifest;
