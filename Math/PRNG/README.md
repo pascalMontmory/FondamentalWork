@@ -11,6 +11,8 @@ No PRNG quality result is marked as verified here. The material currently define
 | File | Status |
 | --- | --- |
 | `definitions.md` | Neutral definitions for PRNG state, seed models, parameter controls, and micro-uncertainty observables. |
+| `formules-diagnostiques.md` | Public diagnostic formulas for seed sensitivity, functional variance, Markov diagnostics, spectral proxies, and backend reproducibility. |
+| `innovations-methodologiques.md` | Concise statement of the methodological contribution and reported dispersion results. |
 | `verified-results.md` | Empty verified ledger except for definitional statements. |
 | `conjectures.md` | Unverified research claims and open questions. |
 | `structural-diagnostic-framework.md` | Technical-note draft on seed sensitivity, functional variance dispersion, and cross-architecture reproducibility. |
