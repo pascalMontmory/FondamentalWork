@@ -1,20 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
-<title id="title">Z_s histogram - identity</title>
-<desc id="desc">Histogrammes des scores Z_s par generateur PRNG pour l integrande identity.</desc>
+<title id="title">Z_s histogram - identity - 500 seeds</title>
+<desc id="desc">Histogrammes des scores Z_s par generateur PRNG pour l integrande identity, 500 seeds par generateur.</desc>
 <rect width="100%" height="100%" fill="#ffffff"/>
-<text x="380.0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#1f2937">Z_s histogram - identity</text>
+<text x="380.0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#1f2937">Z_s histogram - identity - 500 seeds</text>
 <line x1="72" y1="390.00" x2="728" y2="390.00" stroke="#e5e7eb" stroke-width="1"/>
 <text x="60" y="394.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">0</text>
-<line x1="72" y1="321.60" x2="728" y2="321.60" stroke="#e5e7eb" stroke-width="1"/>
-<text x="60" y="325.60" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">5</text>
-<line x1="72" y1="253.20" x2="728" y2="253.20" stroke="#e5e7eb" stroke-width="1"/>
-<text x="60" y="257.20" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">10</text>
-<line x1="72" y1="184.80" x2="728" y2="184.80" stroke="#e5e7eb" stroke-width="1"/>
-<text x="60" y="188.80" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">15</text>
-<line x1="72" y1="116.40" x2="728" y2="116.40" stroke="#e5e7eb" stroke-width="1"/>
-<text x="60" y="120.40" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">20</text>
+<line x1="72" y1="304.50" x2="728" y2="304.50" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="308.50" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">20</text>
+<line x1="72" y1="219.00" x2="728" y2="219.00" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="223.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">40</text>
+<line x1="72" y1="133.50" x2="728" y2="133.50" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="137.50" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">60</text>
 <line x1="72" y1="48.00" x2="728" y2="48.00" stroke="#e5e7eb" stroke-width="1"/>
-<text x="60" y="52.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">25</text>
+<text x="60" y="52.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">80</text>
 <line x1="72" y1="48" x2="72" y2="390" stroke="#111827" stroke-width="1.2"/>
 <line x1="72" y1="390" x2="728" y2="390" stroke="#111827" stroke-width="1.2"/>
 <line x1="72.00" y1="390" x2="72.00" y2="395" stroke="#111827" stroke-width="1"/>
@@ -41,12 +39,12 @@
 <text x="728.00" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">1.0</text>
 <text x="380.0" y="446" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">Z_s</text>
 <text x="18" y="219.0" transform="rotate(-90 18 219.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">count</text>
-<line x1="72" y1="253.20" x2="728" y2="253.20" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="5 5"/>
-<text x="724" y="247.20" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">uniform reference</text>
-<polyline points="72.00,212.16 137.60,212.16 137.60,307.92 203.20,307.92 203.20,280.56 268.80,280.56 268.80,225.84 334.40,225.84 334.40,280.56 400.00,280.56 400.00,239.52 465.60,239.52 465.60,321.60 531.20,321.60 531.20,184.80 596.80,184.80 596.80,225.84 662.40,225.84 662.40,253.20 728.00,253.20" fill="none" stroke="#4c78a8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="72.00,212.16 137.60,212.16 137.60,212.16 203.20,212.16 203.20,294.24 268.80,294.24 268.80,239.52 334.40,239.52 334.40,294.24 400.00,294.24 400.00,321.60 465.60,321.60 465.60,280.56 531.20,280.56 531.20,198.48 596.80,198.48 596.80,321.60 662.40,321.60 662.40,157.44 728.00,157.44" fill="none" stroke="#f58518" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="72.00,321.60 137.60,321.60 137.60,280.56 203.20,280.56 203.20,253.20 268.80,253.20 268.80,294.24 334.40,294.24 334.40,102.72 400.00,102.72 400.00,239.52 465.60,239.52 465.60,253.20 531.20,253.20 531.20,266.88 596.80,266.88 596.80,239.52 662.40,239.52 662.40,280.56 728.00,280.56" fill="none" stroke="#54a24b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="72.00,225.84 137.60,225.84 137.60,280.56 203.20,280.56 203.20,225.84 268.80,225.84 268.80,266.88 334.40,266.88 334.40,294.24 400.00,294.24 400.00,239.52 465.60,239.52 465.60,239.52 531.20,239.52 531.20,266.88 596.80,266.88 596.80,294.24 662.40,294.24 662.40,198.48 728.00,198.48" fill="none" stroke="#b279a2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="72" y1="176.25" x2="728" y2="176.25" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<text x="724" y="170.25" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">uniform reference (50/bin)</text>
+<polyline points="72.00,176.25 137.60,176.25 137.60,206.18 203.20,206.18 203.20,154.88 268.80,154.88 268.80,176.25 334.40,176.25 334.40,206.18 400.00,206.18 400.00,227.55 465.60,227.55 465.60,197.62 531.20,197.62 531.20,86.48 596.80,86.48 596.80,124.95 662.40,124.95 662.40,206.18 728.00,206.18" fill="none" stroke="#4c78a8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,150.60 137.60,150.60 137.60,184.80 203.20,184.80 203.20,219.00 268.80,219.00 268.80,219.00 334.40,219.00 334.40,150.60 400.00,150.60 400.00,193.35 465.60,193.35 465.60,133.50 531.20,133.50 531.20,129.23 596.80,129.23 596.80,206.18 662.40,206.18 662.40,176.25 728.00,176.25" fill="none" stroke="#f58518" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,163.43 137.60,163.43 137.60,210.45 203.20,210.45 203.20,180.52 268.80,180.52 268.80,197.62 334.40,197.62 334.40,129.23 400.00,129.23 400.00,129.23 465.60,129.23 465.60,137.77 531.20,137.77 531.20,206.18 596.80,206.18 596.80,206.18 662.40,206.18 662.40,201.90 728.00,201.90" fill="none" stroke="#54a24b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,176.25 137.60,176.25 137.60,176.25 203.20,176.25 203.20,133.50 268.80,133.50 268.80,206.18 334.40,206.18 334.40,184.80 400.00,184.80 400.00,176.25 465.60,176.25 465.60,167.70 531.20,167.70 531.20,184.80 596.80,184.80 596.80,189.07 662.40,189.07 662.40,167.70 728.00,167.70" fill="none" stroke="#b279a2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="82" y1="58" x2="108" y2="58" stroke="#4c78a8" stroke-width="2.8"/>
 <text x="116" y="62" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">MT19937</text>
 <line x1="82" y1="78" x2="108" y2="78" stroke="#f58518" stroke-width="2.8"/>
