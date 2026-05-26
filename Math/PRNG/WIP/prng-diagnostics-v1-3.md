@@ -26,47 +26,42 @@ The v1.3 contribution is interpretive:
 
 ## 2. Seed-Conditioned Monte Carlo Estimates
 
-For seed \(s\), replicate \(r\), sample size \(N\), and integrand \(f\), define:
+For seed `s`, replicate `r`, sample size `N`, and integrand `f`, define:
 
-$$
+```math
 I_{s,r}(f)
 =
-\frac{1}{N}
-\sum_{t=1}^{N}
-f(u_{s,r,t}).
-$$
+\frac{1}{N}\sum_{t=1}^{N} f(u_{s,r,t}).
+```
 
 The replicated mean is:
 
-$$
+```math
 \bar I_s(f)
 =
-\frac{1}{R}
-\sum_{r=1}^{R}
-I_{s,r}(f).
-$$
+\frac{1}{R}\sum_{r=1}^{R} I_{s,r}(f).
+```
 
 The seed-conditioned variance is:
 
-$$
+```math
 V_s(f)
 =
-\frac{1}{R-1}
-\sum_{r=1}^{R}
+\frac{1}{R-1}\sum_{r=1}^{R}
 \left(
 I_{s,r}(f)-\bar I_s(f)
 \right)^2.
-$$
+```
 
-Here \(V_s(f)\) is the empirical variance of replicated Monte Carlo estimates
-\(I_{s,r}(f)\). It is not the within-run sample variance of the raw values
-\(f(u_t)\).
+Here `V_s(f)` is the empirical variance of replicated Monte Carlo estimates
+`I_{s,r}(f)`. It is not the within-run sample variance of the raw values
+`f(u_t)`.
 
 ## 3. Null-Calibrated Diagnostic
 
 Under the null model, the replicated estimator is approximated by:
 
-$$
+```math
 I_{s,r}(f)
 \approx
 \mathcal N
@@ -74,53 +69,53 @@ I_{s,r}(f)
 \mu_f,
 \frac{\sigma_f^2}{N}
 \right).
-$$
+```
 
 Therefore:
 
-$$
+```math
 T_s(f)
 =
 \frac{(R-1)V_s(f)}
 {\sigma_f^2/N}
 \sim
 \chi^2_{R-1}.
-$$
+```
 
 The calibrated diagnostic is:
 
-$$
+```math
 Z_s(f)
 =
 F_{\chi^2_{R-1}}
 \left(
 T_s(f)
 \right).
-$$
+```
 
 Under the null model:
 
-$$
+```math
 Z_s(f)\sim U[0,1].
-$$
+```
 
 The raw ratio:
 
-$$
+```math
 \rho_f
 =
 \frac{\max_s V_s(f)}
 {\min_{s:V_s(f)>0} V_s(f)}
-$$
+```
 
 is therefore only an alert. The calibrated evidence is the distribution of
-\(Z_s(f)\).
+`Z_s(f)`.
 
 ## 4. Tail Rate
 
 The tail-rate diagnostic is:
 
-$$
+```math
 Q_{\mathrm{tail}}(f)
 =
 \frac{1}{|\mathcal B|}
@@ -132,32 +127,32 @@ Z_s(f)<0.01
 Z_s(f)>0.99
 \right\}
 \right|.
-$$
+```
 
 Under uniformity:
 
-$$
+```math
 \mathbb E[Q_{\mathrm{tail}}(f)]\approx 0.02.
-$$
+```
 
 Interpretation:
 
-- \(Q_{\mathrm{tail}}(f)\approx 0.02\): no massive population of extreme seeds;
-- \(Q_{\mathrm{tail}}(f)\gg 0.02\): possible tail anomaly.
+- `Q_tail(f) approx 0.02`: no massive population of extreme seeds;
+- `Q_tail(f) >> 0.02`: possible tail anomaly.
 
 ## 5. ECDF Interpretation
 
 For each generator and integrand, plot the empirical CDF:
 
-$$
+```math
 \widehat F_Z(z)
-$$
+```
 
 against the uniform diagonal:
 
-$$
+```math
 F(z)=z.
-$$
+```
 
 The v1.3 interpretation is:
 
@@ -176,29 +171,29 @@ GitHub renders the underscores correctly.
 
 Use `compatible` when:
 
-$$
+```math
 p_{\mathrm{KS}}\geq 0.05
-$$
+```
 
 and:
 
-$$
+```math
 Q_{\mathrm{tail}}(f)\approx 0.02.
-$$
+```
 
 ### Calibration Drift
 
 Use `calibration_drift` when:
 
-$$
+```math
 p_{\mathrm{KS}}<0.05
-$$
+```
 
 but:
 
-$$
+```math
 Q_{\mathrm{tail}}(f)\approx 0.02.
-$$
+```
 
 This means the ECDF has a detectable global deformation, but no clear excess
 of extreme seeds.
@@ -207,9 +202,9 @@ of extreme seeds.
 
 Use `tail_anomaly` when:
 
-$$
+```math
 Q_{\mathrm{tail}}(f)\gg 0.02.
-$$
+```
 
 This is the most important class for tail-sensitive Monte Carlo workloads.
 
@@ -217,39 +212,38 @@ This is the most important class for tail-sensitive Monte Carlo workloads.
 
 For the rare-event integrand:
 
-$$
+```math
 f(u)=\mathbf 1_{\{u>0.99\}},
-$$
+```
 
 the count per replicate is:
 
-$$
+```math
 K_{s,r}
 =
-\sum_{t=1}^{N}
-\mathbf 1_{\{u_{s,r,t}>0.99\}}.
-$$
+\sum_{t=1}^{N}\mathbf 1_{\{u_{s,r,t}>0.99\}}.
+```
 
 Under the null:
 
-$$
+```math
 K_{s,r}
 \sim
 \mathrm{Binomial}(N,p),
 \qquad
 p=0.01.
-$$
+```
 
 An exact binomial PIT score can therefore be computed as:
 
-$$
+```math
 Z^{\mathrm{bin}}_{s,r}
 =
 F_{\mathrm{Binomial}(N,p)}
 \left(
 K_{s,r}
 \right).
-$$
+```
 
 Because the binomial law is discrete, the reproducibility bundle also provides
 a randomized PIT variant.
@@ -258,21 +252,21 @@ a randomized PIT variant.
 
 With four generators and four integrands, the baseline performs:
 
-$$
+```math
 m=16
-$$
+```
 
 tests. A strict Bonferroni threshold is:
 
-$$
+```math
 p_{\mathrm{Bonf}}
 =
 \frac{0.05}{16}
 =
 0.003125.
-$$
+```
 
-Therefore, an isolated \(p_{\mathrm{KS}}<0.05\) is interpreted as exploratory
+Therefore, an isolated `p_KS < 0.05` is interpreted as exploratory
 unless it survives multiple-testing correction and is supported by tail-rate
 evidence.
 
@@ -287,7 +281,7 @@ Math/PRNG/WIP/prng-ztest/
 It contains:
 
 - public CPU-only generation scripts;
-- \(Z_s\) computation;
+- `Z_s` computation;
 - ECDF and histogram plotting;
 - exact binomial rare-event calibration;
 - summary CSV files and versioned figures.
