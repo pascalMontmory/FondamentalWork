@@ -7,6 +7,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{enumitem}
@@ -37,6 +38,7 @@
 
 \begin{document}
 \maketitle
+\noindent\textbf{Status.} v1.3 CPU-only baseline report with planned robustness extensions. This document is not intended to replace the current v1.0 HAL submission at this stage.
 
 \begin{abstract}
 Version 1.2 introduced a null-calibrated diagnostic for seed-conditioned Monte Carlo variance,
@@ -51,7 +53,7 @@ The central contribution of this revision is a three-class interpretation of cal
 \texttt{calibration\_drift},\qquad
 \texttt{tail\_anomaly}.
 \]
-The document also adds exact binomial calibration for rare-event indicators and simple power tests based on injected defects. The intended use is practical: distinguish ordinary sampling variability, mild calibration drift, and genuine tail-sensitive anomalies in reproducible CPU-only experiments.
+The current report includes the verified CPU-only baseline, ECDF figures, histograms and a reproducibility manifest. Exact binomial rare-event calibration and injected-defect power tests are described as planned robustness extensions, not as completed results. The intended use is practical: distinguish ordinary sampling variability, mild calibration drift, and genuine tail-sensitive anomalies in reproducible CPU-only experiments.
 \end{abstract}
 
 \section{Positioning of Versions}
@@ -125,7 +127,7 @@ Version 1.3 is an interpretation layer for $Z_s$ diagnostics. It is designed to 
 \boxed{\text{tail anomaly}}
 \]
 \[
-\boxed{\text{controlled injected defect}}
+\boxed{\text{planned controlled injected-defect tests}}
 \]
 without over-claiming from isolated p-values or raw max/min ratios.
 
@@ -366,7 +368,7 @@ Interpretation:
 \]
 This is the most important class for tail-sensitive Monte Carlo workloads, risk estimation and rare-event simulation.
 
-\section{Exact Rare-Event Calibration}
+\section{Planned Exact Rare-Event Calibration}
 
 For the rare-event indicator
 \[
@@ -414,26 +416,14 @@ where $U_{s,r}\sim\Unif[0,1]$ is an independent calibration randomizer. This opt
 
 The goal is not to replace the replicated-variance diagnostic, but to ensure that rare-event conclusions do not rely only on a Gaussian or $\chi^2$ approximation.
 
-\begin{table}[h]
-\centering
-\caption{Rare-event exact calibration summary.}
-\begin{tabular}{lrrrrl}
-\toprule
-Generator & $p_{\KS}^{\chi^2}$ & $p_{\KS}^{\mathrm{bin}}$ & $\Qtail$ & $N$ & Verdict \\
-\midrule
-MT19937 & -- & -- & -- & -- & -- \\
-PCG64   & -- & -- & -- & -- & -- \\
-Philox  & -- & -- & -- & -- & -- \\
-SFC64   & -- & -- & -- & -- & -- \\
-\bottomrule
-\end{tabular}
-\end{table}
+\paragraph{Current status.}
+The exact binomial PIT is defined here as the next rare-event robustness check. The current v1.3 draft does not yet report completed binomial PIT tables; it reports the replicated-variance $\chi^2$ calibration only.
 
 \section{Experimental Validation}
 
 \subsection{Public PRNG Baseline}
 
-The recommended v1.3 baseline is
+The current v1.3 CPU-only baseline is
 \[
 S=1000,\qquad N=50\,000,\qquad R=8.
 \]
@@ -456,7 +446,7 @@ For each generator and integrand, report:
   \item the three-class verdict.
 \end{itemize}
 
-\subsection{Power Test 1: Marginal Bias}
+\subsection{Planned Power Test 1: Marginal Bias}
 
 Inject a controlled marginal perturbation, for example
 \[
@@ -480,7 +470,7 @@ The goal is:
 }
 \]
 
-\subsection{Power Test 2: Temporal Correlation}
+\subsection{Planned Power Test 2: Temporal Correlation}
 
 Inject temporal dependence:
 \[
@@ -500,7 +490,7 @@ The goal is:
 }
 \]
 
-\subsection{Power Test 3: Rare-Event Deletion}
+\subsection{Planned Power Test 3: Rare-Event Deletion}
 
 For a tail-specific defect, modify the stream as follows:
 \[
@@ -512,6 +502,9 @@ This directly suppresses rare events above the threshold. The expected diagnosti
 Z^{\mathrm{bin}}\text{ detects the anomaly.}
 }
 \]
+
+\paragraph{Current status.}
+The power tests above are planned experiments for the next robustness bundle. They are not claimed as executed in the present CPU-only baseline report.
 
 \section{Multiple Testing}
 
@@ -540,29 +533,15 @@ p_{\KS}<0.05\text{ is exploratory if multiple-testing correction does not confir
 }
 \]
 
-\section{Synthesis Tables}
+In the current $m=16$ baseline, the smallest observed KS p-value is approximately $0.0032$, just above the strict Bonferroni threshold $0.003125$. Therefore, none of the current KS rejections clearly survives a strict Bonferroni correction. The observed deviations are interpreted as \texttt{calibration\_drift}, not strong evidence of PRNG defect.
+
+\section{Synthesis and Planned Tables}
+
+The completed baseline table is reported in Appendix A with all generator/integrand pairs. The following compact interpretation table summarizes the v1.3 reading of ECDF shapes.
 
 \begin{table}[h]
 \centering
-\caption{Table A: Calibration summary.}
-\begin{tabular}{llrrrrrl}
-\toprule
-Generator & Integrand & $S$ & $N$ & $R$ & $p_{\KS}$ & $\Qtail$ & Verdict \\
-\midrule
-MT19937 & identity  & 1000 & 50000 & 8 & -- & -- & -- \\
-MT19937 & sin       & 1000 & 50000 & 8 & -- & -- & -- \\
-MT19937 & quadratic & 1000 & 50000 & 8 & -- & -- & -- \\
-MT19937 & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
-PCG64   & identity  & 1000 & 50000 & 8 & -- & -- & -- \\
-Philox  & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
-SFC64   & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Table B: ECDF interpretation.}
+\caption{ECDF interpretation rules used in v1.3.}
 \begin{tabular}{lll}
 \toprule
 Generator / Integrand & ECDF shape & Interpretation \\
@@ -574,34 +553,8 @@ Extreme deformation & tail excess & \texttt{tail\_anomaly} \\
 \end{tabular}
 \end{table}
 
-\begin{table}[h]
-\centering
-\caption{Table C: Power tests.}
-\begin{tabular}{llll}
-\toprule
-Defect & Intensity & Expected diagnostic & Detected? \\
-\midrule
-Marginal bias & $\varepsilon$ & $\chi^2$, ECDF & yes/no \\
-Temporal correlation & $\alpha$ & $\lambda$-gap, $\chi^2_{2D}$ & yes/no \\
-Rare-event deletion & $\alpha$ & $Z^{\mathrm{bin}}$ & yes/no \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Table D: Rare-event exact calibration.}
-\begin{tabular}{lrrl}
-\toprule
-Generator & $p_{\KS}^{\chi^2}$ & $p_{\KS}^{\mathrm{binomial}}$ & Comment \\
-\midrule
-MT19937 & -- & -- & -- \\
-PCG64   & -- & -- & -- \\
-Philox  & -- & -- & -- \\
-SFC64   & -- & -- & -- \\
-\bottomrule
-\end{tabular}
-\end{table}
+\paragraph{Planned result tables.}
+Power-test tables and exact binomial rare-event tables are intentionally deferred to the next experimental bundle. They should be added only after the corresponding experiments are run.
 
 \section{Minimal v1.3 Reproducibility Bundle}
 
@@ -656,13 +609,13 @@ The v1.3 interpretation is deliberately cautious:
 
 \section{Conclusion}
 
-The expected v1.3 conclusion is strong but limited:
+The current CPU-only baseline supports the following limited conclusion:
 \[
 \boxed{
-\text{the tested public PRNGs do not show strong seed pathologies in these simple workloads.}
+\text{the tested public PRNGs do not show strong seed-pathological behaviour in these simple workloads.}
 }
 \]
-At the same time:
+Several generator/integrand pairs show mild calibration drift, but not tail anomaly. At the same time:
 \[
 \boxed{
 \text{TACM detects, classifies and interprets raw alerts, calibration drift and tail anomalies.}
@@ -685,5 +638,170 @@ The final message is:
 \text{seed sensitivity in a statistically calibrated and interpretable way.}
 }
 \]
+
+\clearpage
+\appendix
+
+\section{Appendix A: Complete Baseline Calibration Table}
+
+This appendix reports the current CPU-only baseline generated with
+\[
+S=1000,\qquad N=50\,000,\qquad R=8.
+\]
+The table is intentionally kept as an appendix: the main text explains the interpretation, while the appendix preserves the full numerical evidence used for the current v1.3 draft.
+
+\begin{table}[h]
+\centering
+\caption{Complete baseline summary for public NumPy PRNG bit generators.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrrrrrl}
+\toprule
+Generator & Backend & Integrand & $\rho_{\max/\min}$ & $\rho_{95/5}$ & KS stat & $p_{\KS}$ & $\Qtail$ & v1.3 verdict \\
+\midrule
+MT19937 & cpu & identity  & 40.522 & 7.287 & 0.0453 & 0.0322 & 0.026 & calibration\_drift \\
+MT19937 & cpu & quadratic & 40.581 & 6.693 & 0.0235 & 0.6291 & 0.031 & compatible \\
+MT19937 & cpu & rare\_099 & 26.759 & 5.903 & 0.0382 & 0.1060 & 0.015 & compatible \\
+MT19937 & cpu & sin       & 32.541 & 6.215 & 0.0291 & 0.3598 & 0.018 & compatible \\
+PCG64   & cpu & identity  & 43.267 & 6.472 & 0.0472 & 0.0226 & 0.015 & calibration\_drift \\
+PCG64   & cpu & quadratic & 34.453 & 6.701 & 0.0510 & 0.0107 & 0.016 & calibration\_drift \\
+PCG64   & cpu & rare\_099 & 41.566 & 7.069 & 0.0205 & 0.7852 & 0.025 & compatible \\
+PCG64   & cpu & sin       & 46.430 & 6.624 & 0.0210 & 0.7615 & 0.013 & compatible \\
+Philox  & cpu & identity  & 48.845 & 6.278 & 0.0231 & 0.6494 & 0.013 & compatible \\
+Philox  & cpu & quadratic & 87.380 & 6.691 & 0.0140 & 0.9879 & 0.024 & compatible \\
+Philox  & cpu & rare\_099 & 73.519 & 7.333 & 0.0529 & 0.0071 & 0.022 & calibration\_drift \\
+Philox  & cpu & sin       & 22.635 & 6.058 & 0.0184 & 0.8805 & 0.012 & compatible \\
+SFC64   & cpu & identity  & 31.403 & 6.183 & 0.0161 & 0.9537 & 0.019 & compatible \\
+SFC64   & cpu & quadratic & 33.220 & 6.440 & 0.0380 & 0.1091 & 0.018 & compatible \\
+SFC64   & cpu & rare\_099 & 73.639 & 6.125 & 0.0565 & 0.0032 & 0.018 & calibration\_drift \\
+SFC64   & cpu & sin       & 30.664 & 5.726 & 0.0247 & 0.5660 & 0.019 & compatible \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\paragraph{v1.3 reading.}
+Several rows have $p_{\KS}<0.05$, but their tail rates remain close to the null reference level $0.02$. Under the v1.3 interpretation this is better described as possible \texttt{calibration\_drift} than as strong evidence of tail pathology. A \texttt{tail\_anomaly} verdict should require a clearly elevated $\Qtail$ or a visibly extreme ECDF deformation.
+
+None of the current KS rejections clearly survives a strict Bonferroni correction at $m=16$, although SFC64 / rare\_099 is borderline. This reinforces the interpretation as mild calibration drift rather than a confirmed defect.
+
+\clearpage
+\section{Appendix B: ECDF Figures}
+
+The ECDF figures compare $\widehat F_Z(z)$ against the uniform diagonal. These plots are the primary visual diagnostic in v1.3 because they reveal whether deviations are smooth global drifts or concentrated in the tails.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/ecdf_Zs_identity.png}
+\caption{ECDF of $Z_s$ for the identity integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/ecdf_Zs_sin.png}
+\caption{ECDF of $Z_s$ for the sine integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/ecdf_Zs_quadratic.png}
+\caption{ECDF of $Z_s$ for the quadratic integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/ecdf_Zs_rare_099.png}
+\caption{ECDF of $Z_s$ for the rare-event integrand $1_{\{u>0.99\}}$.}
+\end{figure}
+
+\clearpage
+\section{Appendix C: Histogram Figures}
+
+Histograms are secondary to ECDFs, but they remain useful for quickly seeing bin-level departures from a flat distribution. With $S=1000$ seeds, the histograms become more readable than in the earlier $S=100$ exploratory run.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/hist_Zs_identity.png}
+\caption{Histogram of $Z_s$ for the identity integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/hist_Zs_sin.png}
+\caption{Histogram of $Z_s$ for the sine integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/hist_Zs_quadratic.png}
+\caption{Histogram of $Z_s$ for the quadratic integrand.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/hist_Zs_rare_099.png}
+\caption{Histogram of $Z_s$ for the rare-event integrand $1_{\{u>0.99\}}$.}
+\end{figure}
+
+\clearpage
+\section{Appendix D: Reproducibility Manifest}
+
+The figures and tables in this appendix are generated by the CPU-only z-test bundle:
+
+\begin{verbatim}
+prng-ztest/
+  README.md
+  requirements.txt
+  scripts/
+    generate_public_prng_estimates.py
+    compute_z_scores.py
+    plot_z_histograms.py
+    plot_z_ecdf.py
+  data/
+    public_prng_estimates.csv
+  results/
+    z_scores_table.csv
+    z_summary.csv
+  figures/
+    ecdf_Zs_identity.png
+    ecdf_Zs_sin.png
+    ecdf_Zs_quadratic.png
+    ecdf_Zs_rare_099.png
+    hist_Zs_identity.png
+    hist_Zs_sin.png
+    hist_Zs_quadratic.png
+    hist_Zs_rare_099.png
+\end{verbatim}
+
+The baseline command sequence is:
+
+\begin{verbatim}
+python scripts/generate_public_prng_estimates.py --N 50000 --R 8 --seeds 1000
+
+python scripts/compute_z_scores.py \
+  --input data/public_prng_estimates.csv \
+  --out-table results/z_scores_table.csv \
+  --out-summary results/z_summary.csv
+
+python scripts/plot_z_ecdf.py \
+  --input results/z_scores_table.csv \
+  --outdir figures
+
+python scripts/plot_z_histograms.py \
+  --input results/z_scores_table.csv \
+  --outdir figures
+\end{verbatim}
+
+\section{Appendix E: Annex Items for the Next Experimental Revision}
+
+The following items are intentionally not expanded in the main v1.3 text but are natural appendix material for a subsequent experimental revision:
+\begin{itemize}
+  \item exact binomial rare-event calibration tables;
+  \item injected marginal-bias power curves over $\varepsilon$;
+  \item injected temporal-correlation power curves over $\alpha$;
+  \item rare-event deletion detection curves;
+  \item Bonferroni and Benjamini-Hochberg adjusted p-value tables;
+  \item bootstrap calibration as a robustness check;
+  \item multi-$S,N,R$ stability grids.
+\end{itemize}
 
 \end{document}
