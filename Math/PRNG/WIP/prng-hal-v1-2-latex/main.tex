@@ -1,0 +1,1061 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.55cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\setlist[itemize]{leftmargin=1.5em}
+\setlist[enumerate]{leftmargin=1.7em}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\iid}{\mathrm{iid}}
+\newcommand{\Unif}{\mathrm{Uniform}}
+\newcommand{\Bin}{\mathrm{Binomial}}
+\newcommand{\PRNG}{\mathrm{PRNG}}
+\newcommand{\Neff}{N_{\mathrm{eff}}}
+\newcommand{\qtail}{Q_{\mathrm{tail}}}
+\newcommand{\ks}{p_{\mathrm{KS}}}
+
+\title{
+  PRNG Structural Diagnostics v1.2\\
+  \large A Null-Calibrated Framework for Seed-Conditioned Monte Carlo Variance Diagnostics
+}
+
+\author{Pascal Montmory}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document develops version 1.2 of a structural diagnostic framework for pseudo-random number generators (PRNGs) used in Monte Carlo workloads. The initial version introduced inter-seed variance dispersion ratios, transition diagnostics, and functional stability metrics as practical indicators of PRNG behaviour. Version 1.2 strengthens the statistical interpretation of these diagnostics by separating raw exploratory alerts from calibrated null-model evidence.
+
+The central contribution is the diagnostic
+\[
+Z_s(f)
+=
+F_{\chi^2_{R-1}}
+\left(
+\frac{(R-1)V_s(f)}{\sigma_f^2/N}
+\right),
+\]
+where \(V_s(f)\) is the empirical variance of replicated Monte Carlo estimates for a fixed seed \(s\), integrand \(f\), replication count \(R\), and sample size \(N\). Under the reference null model, \(Z_s(f)\sim U[0,1]\). This probability-integral-transform calibration makes it possible to distinguish large but statistically expected variance-ratio fluctuations from genuine seed-conditioned instability signals.
+
+The v1.2 revision therefore changes the status of raw max/min ratios: they remain useful alerts, but they are not evidence by themselves. Evidence requires departure from the null-calibrated distribution of \(Z_s(f)\), assessed through ECDF plots, Kolmogorov--Smirnov diagnostics, tail rates, and effective sample-size summaries. The framework is not a proof of randomness, not a cryptographic security claim, and not a universal standard. It is a reproducible, calibrable diagnostic methodology for simulation, finance, HPC, CPU/GPU backend validation, and industrial Monte Carlo auditing.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+Version 1.0 of the PRNG structural diagnostics framework introduced a practical audit vocabulary for Monte Carlo workloads:
+\begin{itemize}
+  \item seed sensitivity;
+  \item functional variance dispersion;
+  \item GSQI-style inter-seed stability scores;
+  \item transition instability \(\epsilon_T\);
+  \item cross-backend reproducibility diagnostics;
+  \item limitations of bit-exact replay across heterogeneous hardware;
+  \item imported reference batteries such as BigCrush logs.
+\end{itemize}
+
+Version 1.2 does not replace this framework. It clarifies its statistical status and adds a null-calibrated layer:
+\[
+\boxed{
+Z_s(f)=F_0(V_s(f)).
+}
+\]
+Under the reference null model,
+\[
+\boxed{
+Z_s(f)\sim U[0,1].
+}
+\]
+
+This addresses a direct methodological criticism:
+\begin{quote}
+An empirical variance is itself a random quantity. Therefore, the fact that variances differ across seeds is not sufficient to conclude that a PRNG is unstable. The observed dispersion must be compared to its expected null distribution.
+\end{quote}
+
+The v1.2 interpretation is:
+\[
+\boxed{
+\rho_f\ \text{large} \Rightarrow \text{raw exploratory alert}
+}
+\]
+followed by
+\[
+\boxed{
+Z_s(f)\not\sim U[0,1] \Rightarrow \text{calibrated seed-conditioned anomaly signal}.
+}
+\]
+
+\section{Scientific Message of v1.2}
+
+The central scientific message is:
+\[
+\boxed{
+\text{A large inter-seed variance ratio is not, by itself, evidence of PRNG instability.}
+}
+\]
+
+The v1.2 contribution is:
+\[
+\boxed{
+\text{statistical calibration of seed-conditioned variances by their null law.}
+}
+\]
+
+In operational terms, this means that the framework moves from:
+\[
+\text{``large ratio observed''}
+\]
+to:
+\[
+\text{``large ratio observed and inconsistent with the null-calibrated distribution.''}
+\]
+
+This distinction is essential for scientific defensibility. With a small number of replications \(R\), empirical variances fluctuate substantially even for ideal IID data. A raw max/min ratio can therefore be visually impressive while remaining compatible with the null model. Version 1.2 turns this point into a formal diagnostic step rather than an informal caveat.
+
+\section{From v1.0 to v1.2}
+
+\subsection{Status in v1.0}
+
+The initial framework introduced the seed-conditioned replicated variance:
+\[
+V_s(f).
+\]
+It also introduced the raw inter-seed dispersion ratio:
+\[
+\rho_f
+=
+\frac{\max_s V_s(f)}
+{\min_{s,V_s(f)>0}V_s(f)}.
+\]
+
+This ratio describes the spread of replicated Monte Carlo variances across seeds. It is simple, interpretable, and operationally useful. However, it is not calibrated by itself.
+
+\subsection{Limitation of Raw Ratios}
+
+When \(R\) is small, the sample variance estimator is noisy. For example, with
+\[
+R=8,
+\]
+the degrees of freedom of the variance estimate are only
+\[
+R-1=7.
+\]
+Under the null model, substantial seed-to-seed variability in \(V_s(f)\) is expected. Consequently, a large
+\[
+\rho_f
+\]
+can occur even when all seeds behave according to the same ideal law.
+
+\subsection{v1.2 Revision}
+
+Version 1.2 keeps \(\rho_f\), but demotes it to an exploratory alert:
+\[
+\boxed{
+\rho_f\text{ is an alert, not a proof.}
+}
+\]
+
+The calibrated diagnostic becomes:
+\[
+Z_s(f)
+=
+F_{\chi^2_{R-1}}
+\left(
+\frac{(R-1)V_s(f)}{\sigma_f^2/N}
+\right).
+\]
+
+Under the null:
+\[
+\boxed{
+Z_s(f)\sim U[0,1].
+}
+\]
+
+Thus:
+\begin{itemize}
+  \item if \(Z_s(f)\) is compatible with \(U[0,1]\), large raw ratios should be relativized;
+  \item if \(Z_s(f)\) is not compatible with \(U[0,1]\), the data provide a calibrated seed-conditioned signal.
+\end{itemize}
+
+\section{Empirical Measure Viewpoint}
+
+For a seed \(s\), backend \(b\), and horizon \(N\), a PRNG produces
+\[
+u_{s,b,1},\ldots,u_{s,b,N}\in[0,1).
+\]
+
+The marginal empirical measure is
+\[
+\mu^{(1)}_{s,b,N}
+=
+\frac1N
+\sum_{t=1}^{N}
+\delta_{u_{s,b,t}}.
+\]
+
+The temporal dependencies are better represented by block empirical measures:
+\[
+\mu^{(k)}_{s,b,N}
+=
+\frac1{N-k+1}
+\sum_{t=1}^{N-k+1}
+\delta_{(u_{s,b,t},\ldots,u_{s,b,t+k-1})},
+\qquad k\geq2.
+\]
+
+The ideal reference is
+\[
+\lambda^{\otimes k},
+\]
+where \(\lambda\) is the Lebesgue measure on \([0,1)\).
+
+The structural diagnostic problem is therefore:
+\[
+\mu^{(k)}_{s,b,N}\approx \lambda^{\otimes k},
+\]
+observed through finite binnings, transitions, integrands, seeds, lanes, backends, and workload-specific functionals.
+
+The guiding principle is:
+\[
+\boxed{
+\text{A good PRNG does not only produce uniform marginal values; it produces stable empirical measures across seeds, backends, blocks, and workloads.}
+}
+\]
+
+\section{Functional Monte Carlo Diagnostics}
+
+\subsection{Diagnostic Integrands}
+
+Let
+\[
+\mathcal F=\{f_1,\ldots,f_K\}
+\]
+be a family of diagnostic integrands. The current CPU reference protocol uses:
+\[
+f_1(u)=u,
+\qquad
+f_2(u)=\sin(2\pi u),
+\qquad
+f_3(u)=u^2,
+\qquad
+f_4(u)=\mathbf 1_{\{u>0.99\}}.
+\]
+
+These probe:
+\begin{itemize}
+  \item global mean behaviour;
+  \item oscillatory behaviour;
+  \item nonlinear moment behaviour;
+  \item rare-event behaviour.
+\end{itemize}
+
+\subsection{Replicated Estimates}
+
+For each seed \(s\), replication \(r\), and integrand \(f\), define:
+\[
+I_{s,r}(f)
+=
+\frac1N
+\sum_{t=1}^{N}
+f(u_{s,r,t}).
+\]
+
+The replicated mean is:
+\[
+\bar I_s(f)
+=
+\frac1R
+\sum_{r=1}^{R}
+I_{s,r}(f).
+\]
+
+The seed-conditioned replicated variance is:
+\[
+\boxed{
+V_s(f)
+=
+\frac1{R-1}
+\sum_{r=1}^{R}
+\left(
+I_{s,r}(f)-\bar I_s(f)
+\right)^2.
+}
+\]
+
+This is a key point:
+\[
+\boxed{
+V_s(f)\ \text{is the variance of replicated Monte Carlo estimates, not the within-run variance of }f(u_t).
+}
+\]
+
+\section{Null Model and Probability-Integral Calibration}
+
+\subsection{Gaussian Approximation}
+
+Under an IID uniform null model and a regular Monte Carlo central limit approximation,
+\[
+I_{s,r}(f)
+\approx
+\mathcal N
+\left(
+\mu_f,\frac{\sigma_f^2}{N}
+\right),
+\]
+where
+\[
+\mu_f=\E[f(U)],
+\qquad
+\sigma_f^2=\Var(f(U)),
+\qquad
+U\sim U[0,1].
+\]
+
+Then
+\[
+T_s(f)
+=
+\frac{(R-1)V_s(f)}
+{\sigma_f^2/N}
+\sim
+\chi^2_{R-1}.
+\]
+
+\subsection{Definition of \(Z_s(f)\)}
+
+Define:
+\[
+\boxed{
+Z_s(f)
+=
+F_{\chi^2_{R-1}}
+\left(
+T_s(f)
+\right).
+}
+\]
+
+By the probability integral transform:
+\[
+\boxed{
+Z_s(f)\sim U[0,1]
+}
+\]
+under the null.
+
+\subsection{Interpretation}
+
+The sample
+\[
+\{Z_s(f):s\in\mathcal B\}
+\]
+is expected to be approximately uniform if the observed seed-conditioned variance fluctuations are compatible with the null model.
+
+Departures from uniformity can be summarized by:
+\[
+KS_f
+=
+\sup_z
+\left|
+\hat F_Z(z)-z
+\right|,
+\]
+and by the corresponding Kolmogorov--Smirnov \(p\)-value.
+
+The extreme tail rate is:
+\[
+\boxed{
+\qtail(f)
+=
+\frac1{|\mathcal B|}
+\#\{s:Z_s(f)<0.01\ \text{or}\ Z_s(f)>0.99\}.
+}
+\]
+
+Under uniformity:
+\[
+\E[\qtail(f)]\approx 0.02.
+\]
+
+\section{Theoretical Variances of Reference Integrands}
+
+For
+\[
+f_1(u)=u,
+\]
+we have:
+\[
+\sigma_{f_1}^2=\frac1{12}.
+\]
+
+For
+\[
+f_2(u)=\sin(2\pi u),
+\]
+we have:
+\[
+\sigma_{f_2}^2=\frac12.
+\]
+
+For
+\[
+f_3(u)=u^2,
+\]
+we use
+\[
+\E[u^2]=\frac13,
+\qquad
+\E[u^4]=\frac15,
+\]
+therefore:
+\[
+\sigma_{f_3}^2
+=
+\frac15-\frac19
+=
+\frac4{45}.
+\]
+
+For the rare-event indicator
+\[
+f_4(u)=\mathbf 1_{\{u>0.99\}},
+\]
+we have \(p=0.01\), hence:
+\[
+\sigma_{f_4}^2=p(1-p)=0.01\cdot0.99=0.0099.
+\]
+
+\subsection{Rare-Event Caveat}
+
+For rare-event indicators and small \(N\), the normal approximation may be imperfect. In that case, exact binomial calibration or bootstrap calibration should be used as a robustness check.
+
+For the reference rare event:
+\[
+K\sim\Bin(N,0.01),
+\qquad
+I_N=\frac KN.
+\]
+The variance is:
+\[
+\Var(I_N)=\frac{0.01\cdot0.99}{N}.
+\]
+
+For more extreme thresholds,
+\[
+p\ll1,
+\]
+the Gaussian approximation can be visibly less accurate.
+
+\section{Raw and Robust Dispersion Metrics}
+
+\subsection{Raw Max/Min Ratio}
+
+The raw ratio is:
+\[
+\rho_f
+=
+\frac{\max_s V_s(f)}
+{\min_{s,V_s(f)>0}V_s(f)}.
+\]
+
+Its v1.2 status is:
+\[
+\boxed{
+\rho_f\text{ is a raw alert.}
+}
+\]
+
+\subsection{Robust Quantile Ratio}
+
+The robust ratio is:
+\[
+\rho_f^{95/5}
+=
+\frac{Q_{95}(V_s(f))}
+{Q_5(V_s(f))}.
+\]
+
+Its v1.2 status is:
+\[
+\boxed{
+\rho_f^{95/5}\text{ is a robust dispersion summary, not a proof.}
+}
+\]
+
+\section{Effective Number of Draws}
+
+Under ideal Monte Carlo:
+\[
+\Var(I_N(f))=\frac{\sigma_f^2}{N}.
+\]
+
+If the observed replicated variance under seed \(s\) is \(V_s(f)\), define:
+\[
+\boxed{
+N_{\mathrm{eff},s}(f)
+=
+\frac{\sigma_f^2}{V_s(f)}.
+}
+\]
+
+The relative efficiency is:
+\[
+\boxed{
+\eta_s(f)
+=
+\frac{N_{\mathrm{eff},s}(f)}{N}
+=
+\frac{\sigma_f^2/N}{V_s(f)}.
+}
+\]
+
+The protocol reports:
+\[
+Q_5(\eta_s(f)),
+\qquad
+Q_{50}(\eta_s(f)),
+\qquad
+Q_{95}(\eta_s(f)).
+\]
+
+For classical PRNG interpretation, values above \(1\) should not be read as more physical draws; they reflect finite-sample variance fluctuations or quasi-Monte-Carlo-like efficiency if such a method is explicitly declared.
+
+\section{Structural Diagnostics Kept from v1.0}
+
+Version 1.2 does not discard the structural diagnostics. It clarifies their role.
+
+\subsection{Marginal Coverage}
+
+Partition \([0,1)\) into \(m\) bins \(I_1,\ldots,I_m\). Let:
+\[
+O_i(s)=\#\{t:u_{s,t}\in I_i\},
+\qquad
+E_i=\frac Nm.
+\]
+
+The marginal chi-square statistic is:
+\[
+\chi_s^2
+=
+\sum_{i=1}^{m}
+\frac{(O_i(s)-E_i)^2}{E_i}.
+\]
+
+The normalized statistic is:
+\[
+\chi^2_{\rm norm}(s)
+=
+\frac{\chi_s^2}{m-1}.
+\]
+
+It measures marginal coverage, not temporal mixing.
+
+\subsection{Two-Dimensional Transition Map}
+
+For consecutive pairs \((u_t,u_{t+1})\), define a \(q\times q\) grid. The expected count is:
+\[
+E_{ij}=\frac{N-1}{q^2}.
+\]
+
+The standardized residual is:
+\[
+R_{ij}
+=
+\frac{O_{ij}-E_{ij}}{\sqrt{E_{ij}}}.
+\]
+
+The global statistic is:
+\[
+\chi^2_{2D}
+=
+\sum_{i,j}
+\frac{(O_{ij}-E_{ij})^2}{E_{ij}}.
+\]
+
+\subsection{Finite Markov Projection and Spectral Gap}
+
+Let
+\[
+Q_q:[0,1)\to\{1,\ldots,q\}
+\]
+be a quantizer and
+\[
+b_t=Q_q(u_t).
+\]
+
+The empirical row-stochastic transition matrix is:
+\[
+P_s(i,j)
+=
+\frac{
+\#\{t:b_t=i,\ b_{t+1}=j\}
+}{
+\#\{t:b_t=i\}
+}.
+\]
+
+Let
+\[
+1=\lambda_1,\lambda_2,\ldots,\lambda_q
+\]
+be the eigenvalues of \(P_s\). Define:
+\[
+\boxed{
+\mathrm{Gap}_s
+=
+1-|\lambda_2(P_s)|.
+}
+\]
+
+This is a diagnostic of finite projected mixing, not a theorem about the internal state transition of the PRNG.
+
+\subsection{Transition Instability}
+
+For a seed set \(\mathcal B\), define:
+\[
+\bar P
+=
+\frac1{|\mathcal B|}
+\sum_{s\in\mathcal B}P_s.
+\]
+
+The transition instability is:
+\[
+\epsilon_T(\mathcal B,N,q)
+=
+\max_{s\in\mathcal B}
+\|P_s-\bar P\|_\infty.
+\]
+
+The norm must be documented: matrix infinity norm or entrywise max norm.
+
+\section{Experimental Protocol}
+
+\subsection{Input Format}
+
+The reference data format is a CSV file with one row per Monte Carlo replication:
+\begin{verbatim}
+generator,backend,seed,integrand,replicate,N,estimate
+Philox,cpu,0,rare_099,0,1000000,0.00997
+Philox,cpu,0,rare_099,1,1000000,0.01004
+\end{verbatim}
+
+Required columns are:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Column & Meaning \\
+\midrule
+\texttt{generator} & PRNG name \\
+\texttt{backend} & CPU, CUDA, Metal, etc. \\
+\texttt{seed} & tested seed \\
+\texttt{integrand} & diagnostic integrand \\
+\texttt{replicate} & replication index \\
+\texttt{N} & draws per replication \\
+\texttt{estimate} & Monte Carlo estimate \(I_{s,r}(f)\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Reference CPU Generators}
+
+The current CPU-only reproducibility bundle uses:
+\[
+\text{MT19937},\qquad
+\text{PCG64},\qquad
+\text{Philox},\qquad
+\text{SFC64}.
+\]
+
+\subsection{Recommended Run Ladder}
+
+For fast validation:
+\[
+N=50\,000,\qquad R=8,
+\]
+with seed counts:
+\[
+100,\qquad 300,\qquad 1000,\qquad 3000.
+\]
+
+Only after the diagnostic pipeline is stable should \(N\) be increased, for example:
+\[
+N=10^6.
+\]
+
+Increasing the number of seeds makes ECDF plots and \(\qtail\) estimates more interpretable. Increasing \(R\) stabilizes the variance estimate \(V_s(f)\).
+
+\section{Figures and Visual Diagnostics}
+
+\subsection{Histogram of \(Z_s\)}
+
+Histograms are useful for quick inspection, but with 100 seeds and 10 bins, the expected count is only \(10\) per bin. They are noisy.
+
+With 1000 seeds, the expected count is \(100\) per bin:
+\[
+\frac{1000}{10}=100.
+\]
+Histograms become more readable, but ECDF plots remain preferable.
+
+\subsection{ECDF Against Uniform Diagonal}
+
+The preferred v1.2 figure is:
+\[
+\hat F_Z(z)
+\quad\text{against}\quad
+F(z)=z.
+\]
+
+Interpretation:
+\[
+\boxed{
+\text{If the ECDF remains close to the diagonal, raw ratios are likely finite-sample noise.}
+}
+\]
+\[
+\boxed{
+\text{If the ECDF departs strongly from the diagonal, there is a calibrated anomaly signal.}
+}
+\]
+
+\section{Current 1000-Seed WIP Results}
+
+The current VPS WIP run uses:
+\[
+N=50\,000,
+\qquad
+R=8,
+\qquad
+1000\ \text{seeds per generator}.
+\]
+
+The summary table is:
+
+\begin{longtable}{llrrrr}
+\caption{CPU WIP run with \(N=50\,000\), \(R=8\), 1000 seeds per generator.}\\
+\toprule
+Generator & Integrand & \(\rho_{95/5}\) & KS \(p\) & \(\qtail\) & Verdict \\
+\midrule
+\endfirsthead
+\toprule
+Generator & Integrand & \(\rho_{95/5}\) & KS \(p\) & \(\qtail\) & Verdict \\
+\midrule
+\endhead
+MT19937 & identity  & 7.287 & 0.0322 & 0.026 & suspicious \\
+MT19937 & quadratic & 6.693 & 0.6291 & 0.031 & compatible \\
+MT19937 & rare\_099 & 5.903 & 0.1060 & 0.015 & compatible \\
+MT19937 & sin       & 6.215 & 0.3598 & 0.018 & compatible \\
+PCG64   & identity  & 6.472 & 0.0226 & 0.015 & suspicious \\
+PCG64   & quadratic & 6.701 & 0.0107 & 0.016 & suspicious \\
+PCG64   & rare\_099 & 7.069 & 0.7852 & 0.025 & compatible \\
+PCG64   & sin       & 6.624 & 0.7615 & 0.013 & compatible \\
+Philox  & identity  & 6.278 & 0.6494 & 0.013 & compatible \\
+Philox  & quadratic & 6.691 & 0.9879 & 0.024 & compatible \\
+Philox  & rare\_099 & 7.333 & 0.0071 & 0.022 & suspicious \\
+Philox  & sin       & 6.058 & 0.8805 & 0.012 & compatible \\
+SFC64   & identity  & 6.183 & 0.9537 & 0.019 & compatible \\
+SFC64   & quadratic & 6.440 & 0.1091 & 0.018 & compatible \\
+SFC64   & rare\_099 & 6.125 & 0.0032 & 0.018 & suspicious \\
+SFC64   & sin       & 5.726 & 0.5660 & 0.019 & compatible \\
+\bottomrule
+\end{longtable}
+
+\subsection{Interpretation of the Current Run}
+
+Several lines have KS \(p\)-values below \(0.05\), while tail rates remain close to \(0.02\). This is exactly why the v1.2 interpretation must be cautious:
+\begin{itemize}
+  \item low KS \(p\)-values indicate a possible departure in the global ECDF shape;
+  \item tail rates near \(0.02\) indicate no strong overproduction of extreme seeds;
+  \item robust ratios near \(6\)--\(7\) are not automatically anomalous for \(R=8\);
+  \item additional runs with larger seed counts and larger \(R\) are needed before making strong claims.
+\end{itemize}
+
+\section{Reproducibility Bundle}
+
+The bundle structure is:
+\begin{verbatim}
+prng-ztest/
+  README.md
+  requirements.txt
+  scripts/
+    generate_public_prng_estimates.py
+    compute_z_scores.py
+    plot_z_histograms.py
+    plot_z_ecdf.py
+  data/
+    public_prng_estimates.csv
+  results/
+    z_scores_table.csv
+    z_summary.csv
+  figures/
+    hist_Zs_identity.png
+    hist_Zs_sin.png
+    hist_Zs_quadratic.png
+    hist_Zs_rare_099.png
+    ecdf_Zs_identity.svg
+    ecdf_Zs_sin.svg
+    ecdf_Zs_quadratic.svg
+    ecdf_Zs_rare_099.svg
+\end{verbatim}
+
+The full table \(z\_scores\_table.csv\) is a derived artifact. For lightweight repository publication, the summary table and ECDF figures are sufficient, provided that the scripts and command lines are versioned.
+
+\section{Relation to VaR and CVaR Workloads}
+
+For a loss variable \(X\), the quantile \(q_p\) satisfies:
+\[
+q_p=F_X^{-1}(p).
+\]
+
+The asymptotic variance of the quantile estimator is:
+\[
+\Var(\hat q_p)
+\approx
+\frac{p(1-p)}
+{N f_X(q_p)^2}.
+\]
+
+Replacing \(N\) by an effective sample size gives:
+\[
+\Var_{\rm diag}(\hat q_p)
+\approx
+\frac{p(1-p)}
+{\Neff f_X(q_p)^2}.
+\]
+
+For CVaR:
+\[
+\mathrm{CVaR}_p
+=
+\E[X\mid X>q_p].
+\]
+
+A diagnostic approximation is:
+\[
+\Var_{\rm diag}(\widehat{\mathrm{CVaR}}_p)
+\approx
+\frac{
+\Var(X\mid X>q_p)
+}{
+(1-p)\Neff
+}
+\cdot c_{\rm tail}.
+\]
+
+This formula is a calibrable diagnostic approximation, not a universal identity. Depending on the CVaR estimator convention and whether the uncertainty in \(q_p\) is included, an additional penalty linked to \(1-p\) may appear. The factor \(c_{\rm tail}\) absorbs this correction and must be empirically calibrated.
+
+\section{Backend and GPU Considerations}
+
+For each backend \(b\), a replay hash can be computed:
+\[
+H_b(s,N)
+=
+SHA256(x^{(b)}_{s,0}\Vert\cdots\Vert x^{(b)}_{s,N-1}).
+\]
+
+Bit-exact reproducibility is:
+\[
+\boxed{
+H_{\rm CPU}=H_{\rm CUDA}=H_{\rm Metal}.
+}
+\]
+
+When bit-exact reproducibility is not required or not possible, statistical reproducibility can be measured through:
+\[
+D_{\rm backend}
+=
+\max_{b_1,b_2}
+\|\mu^{(k)}_{b_1}-\mu^{(k)}_{b_2}\|_{\rm TV},
+\]
+or through functional differences:
+\[
+\Delta I_{\rm backend}
+=
+\max_{b_1,b_2,f}
+|I_{b_1}(f)-I_{b_2}(f)|.
+\]
+
+For a parallel generator with lanes \(\ell=1,\ldots,L\), one should also report inter-lane correlations:
+\[
+C_{\ell,m}
+=
+\mathrm{Corr}(u_{\ell,t},u_{m,t}),
+\]
+lane distances:
+\[
+D_{\rm lane}
+=
+\max_{\ell,m}
+\|\mu_\ell-\mu_m\|_{\rm TV},
+\]
+and substream collisions:
+\[
+\mathrm{Collisions}
+=
+\#\{(\ell,m,t,r):x_{\ell,t}=x_{m,r}\}.
+\]
+
+\section{Limitations and Non-Claims}
+
+Version 1.2 must explicitly state the following:
+\[
+\boxed{
+\text{The }Z_s\text{ diagnostic is not a mathematical proof of PRNG quality.}
+}
+\]
+\[
+\boxed{
+\text{It depends on the chosen null model.}
+}
+\]
+\[
+\boxed{
+\text{The }\chi^2\text{ calibration assumes approximately Gaussian replicated estimates.}
+}
+\]
+\[
+\boxed{
+\text{Rare events and small }N\text{ may require binomial or bootstrap calibration.}
+}
+\]
+\[
+\boxed{
+\text{Failure to reject }Z_s\sim U[0,1]\text{ does not prove the absence of defects.}
+}
+\]
+
+\section{Recommended Paper Structure}
+
+A HAL v1.2 paper can be structured as follows:
+\begin{enumerate}
+  \item Introduction: recall v1.0 and explain why calibration is necessary.
+  \item Empirical measures and seed-conditioned Monte Carlo estimates.
+  \item Limitation of raw inter-seed variance ratios.
+  \item Null-calibrated diagnostic \(T_s(f)\) and \(Z_s(f)\).
+  \item Experimental protocol: seeds, \(N\), \(R\), PRNGs, integrands.
+  \item Results: ECDF plots, KS tests, tail rates, \(N_{\rm eff}\).
+  \item Discussion: cases with large raw ratios but compatible \(Z_s\).
+  \item Backend and GPU considerations.
+  \item Limitations and non-claims.
+  \item Conclusion.
+\end{enumerate}
+
+\section{Changelog from v1.0}
+
+\begin{itemize}
+  \item Adds the null-calibrated variance diagnostic \(Z_s=F_0(V_s)\).
+  \item Clarifies that raw inter-seed ratios are exploratory alerts.
+  \item Adds KS and tail-rate tests on \(Z_s\).
+  \item Adds ECDF plots against the uniform diagonal.
+  \item Adds \(N_{\rm eff}\) interpretation from replicated estimator variance.
+  \item Adds a reproducible CPU-only reference pipeline.
+  \item Adds rare-event calibration caveats.
+  \item Preserves the v1.0 structural framework and non-claims.
+\end{itemize}
+
+\section{Conclusion}
+
+Version 1.2 strengthens the structural PRNG diagnostic framework by converting raw variance dispersion into a calibrated null-model diagnostic. It preserves the operational value of v1.0 while correcting a possible overinterpretation of raw max/min ratios.
+
+The final contribution can be summarized as:
+\[
+\boxed{
+\text{distinguish raw seed variance dispersion from statistically calibrated seed instability.}
+}
+\]
+
+\appendix
+
+\section{Appendix A: Decision Logic}
+
+An operational decision rule can use:
+\[
+D(S_{\rm audit},\qtail,\Neff/N,\epsilon_T).
+\]
+
+Typical actions:
+\begin{itemize}
+  \item \texttt{continue}: diagnostics compatible with the null and no structural warning;
+  \item \texttt{reseed}: anomaly localized to a small seed subset;
+  \item \texttt{switch}: persistent calibrated anomaly, poor effective sample size, or cross-backend instability.
+\end{itemize}
+
+\section{Appendix B: Score Aggregation}
+
+A global audit score can be defined as a calibrated geometric product:
+\[
+S_{\rm audit}
+=
+\left(
+S_{\rm trans}^{w_1}
+S_{\rm ent}^{w_2}
+S_{\rm MC}^{w_3}
+S_Z^{w_4}
+S_{\rm tail}^{w_5}
+\right)^{
+1/(w_1+\cdots+w_5)
+}.
+\]
+
+This score is not a standard. It is a tunable operational summary.
+
+\section{Appendix C: TACM Architecture}
+
+The complete TACM-style architecture can be organized into:
+\[
+S_{\rm dist},\quad
+S_{\rm trans},\quad
+S_{\rm func},\quad
+S_Z,\quad
+S_{\rm backend},\quad
+S_{\rm lane},\quad
+S_{\rm perf}.
+\]
+
+The final score is:
+\[
+S_{\rm TACM}
+=
+\left(
+S_{\rm dist}^{w_d}
+S_{\rm trans}^{w_t}
+S_{\rm func}^{w_f}
+S_Z^{w_z}
+S_{\rm backend}^{w_b}
+S_{\rm lane}^{w_l}
+S_{\rm perf}^{w_p}
+\right)^{
+1/\sum w
+}.
+\]
+
+All weights and thresholds must be declared in the audit profile.
+
+\end{document}
