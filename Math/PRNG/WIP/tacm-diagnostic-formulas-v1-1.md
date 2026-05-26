@@ -504,6 +504,8 @@ Z_s(f)\sim U[0,1].
 }
 ```
 
+Pour les indicateurs d'événements rares et les petits `N`, l'approximation normale peut être imparfaite. Une calibration binomiale exacte ou une calibration bootstrap peut être utilisée comme contrôle de robustesse.
+
 Variances théoriques utiles :
 
 | Integrande | Variance `sigma_f^2` |
@@ -568,6 +570,8 @@ N_{\rm eff,s}^{\rm func}(f)
 \frac{\sigma_f^2}{V_s(f)}.
 }
 ```
+
+Ici `V_s(f)` désigne la variance des estimateurs Monte Carlo répétés `I_{s,r}(f)` pour une seed fixée, pas la variance brute des valeurs ponctuelles `f(u_t)`.
 
 Efficacité relative :
 
