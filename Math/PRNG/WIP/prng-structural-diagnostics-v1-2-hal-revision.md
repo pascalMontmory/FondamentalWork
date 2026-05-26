@@ -1,5 +1,7 @@
 # PRNG Structural Diagnostics v1.2 — Cahier de révision HAL
 
+Superseded for publication by `Math/PRNG/publication/hal/hal-05633702v1/`.
+
 Statut : document de préparation interne pour une révision HAL.
 
 Objet : définir les ajouts nécessaires à la version HAL v1.0 afin de produire une version v1.2 plus robuste, plus calibrée statistiquement et plus défendable scientifiquement.

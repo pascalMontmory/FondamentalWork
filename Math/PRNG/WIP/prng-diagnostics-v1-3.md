@@ -1,5 +1,7 @@
 # TACM / PRNG Diagnostics v1.3
 
+> **Publication status**: superseded for publication by `Math/PRNG/publication/hal/hal-05633702v1/`.
+>
 > **Status**: publishable revision draft.
 >
 > **Objective**: provide a compact, robust and interpretable v1.3 centered on calibrated interpretation of \(Z_s\) diagnostics.

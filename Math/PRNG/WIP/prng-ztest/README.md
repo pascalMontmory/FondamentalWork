@@ -8,6 +8,13 @@ Z_s(f)=F_{\chi^2_{R-1}}\left(\frac{(R-1)V_s(f)}{\sigma_f^2/N}\right).
 
 The goal is to decide whether a large raw seed-variance ratio is a true anomaly or a fluctuation compatible with the null model.
 
+This bundle is the reproducibility companion for the HAL deposit:
+
+```text
+hal-05633702v1
+TACM / PRNG Structural Diagnostics
+```
+
 ## Input Format
 
 CSV with one row per Monte Carlo replicate:
@@ -53,6 +60,11 @@ python scripts/plot_z_histograms.py \
 python scripts/plot_z_ecdf.py \
   --input results/z_scores_table.csv \
   --outdir figures
+
+python scripts/compute_binomial_rare_event_z.py \
+  --input data/public_prng_estimates.csv \
+  --out-table results/binomial_rare_event_table.csv \
+  --out-summary results/binomial_rare_event_summary.csv
 ```
 
 ## Interpretation
@@ -73,23 +85,41 @@ Z_s(f)\sim U[0,1].
 
 If the `Z_s` values are approximately uniform, the raw variance ratio should be relativized. If the `Z_s` values concentrate near 0 or 1, there is a signal of seed-conditioned instability.
 
-The summary reports:
+The calibrated summary reports:
 
 - `rho_max_min`
 - `rho_q95_q05`
 - `Z_KS_pvalue`
 - `Z_extreme_rate_001`
 - `N_eff_ratio_q05`, median, and q95
-- `verdict`
+- `verdict`, using `compatible`, `calibration_drift`, or `tail_anomaly`
 
 The ECDF figures are often easier to read than histograms. Under the null model, the empirical curve should stay close to the diagonal `F(z)=z`.
 
-## TACM Placement
+For the rare-event integrand, `compute_binomial_rare_event_z.py` adds an exact/randomized binomial PIT check. This avoids relying only on the Gaussian/chi-square approximation for `1_{u>0.99}`.
 
-This protocol is the bridge between raw seed-variance ratios and calibrated null-model diagnostics. In TACM v1.2, it belongs under:
+## Versioned and Generated Artifacts
+
+Recommended versioned artifacts:
 
 ```text
-Calibrated seed-conditioned variance diagnostic
+README.md
+requirements.txt
+scripts/
+results/z_summary.csv
+results/binomial_rare_event_summary.csv
+figures/*.svg
 ```
 
-with `Z_s=F_0(V_s)` as the central formula.
+Generated local artifacts, not necessarily committed:
+
+```text
+data/public_prng_estimates.csv
+results/z_scores_table.csv
+results/binomial_rare_event_table.csv
+figures/*.png
+```
+
+## TACM Placement
+
+This protocol is the bridge between raw seed-variance ratios and calibrated null-model diagnostics. In the consolidated TACM manuscript, it belongs under the seed-conditioned Monte Carlo variance and null-calibrated diagnostic sections, with `Z_s=F_0(V_s)` as the central formula.

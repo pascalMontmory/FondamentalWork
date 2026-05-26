@@ -2,6 +2,12 @@
 
 This directory contains the LaTeX working version of TACM / PRNG Diagnostics v1.3.
 
+Superseded for publication by:
+
+```text
+Math/PRNG/publication/hal/hal-05633702v1/
+```
+
 The v1.3 document focuses on interpretation of null-calibrated seed diagnostics:
 
 - ECDF interpretation of `Z_s`;

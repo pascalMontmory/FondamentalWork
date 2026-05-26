@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--N", type=int, default=50_000)
     parser.add_argument("--R", type=int, default=8)
-    parser.add_argument("--seeds", type=int, default=100)
+    parser.add_argument("--seeds", type=int, default=1000)
     parser.add_argument("--out", default="data/public_prng_estimates.csv")
     return parser.parse_args()
 

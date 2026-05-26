@@ -2,6 +2,12 @@
 
 This directory contains a HAL-oriented LaTeX draft for PRNG Structural Diagnostics v1.2.
 
+Superseded for publication by:
+
+```text
+Math/PRNG/publication/hal/hal-05633702v1/
+```
+
 Build locally with:
 
 ```bash

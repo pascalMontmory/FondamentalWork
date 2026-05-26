@@ -91,8 +91,10 @@ def main() -> None:
         ks = kstest(z, "uniform")
         extreme_rate = float(np.mean((z < 0.01) | (z > 0.99)))
         verdict = "compatible"
-        if ks.pvalue < 0.05 or extreme_rate > 0.06:
-            verdict = "suspicious"
+        if extreme_rate > 0.06:
+            verdict = "tail_anomaly"
+        elif ks.pvalue < 0.05:
+            verdict = "calibration_drift"
 
         summary.append(
             {

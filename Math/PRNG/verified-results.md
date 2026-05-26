@@ -5,6 +5,7 @@ No PRNG quality, security, period, distribution, independence, seed-impact, or p
 This file intentionally separates:
 
 - verified definitions;
+- reproducible repository evidence;
 - imported computational artifacts;
 - reported empirical results still pending raw artifact import;
 - requirements for promotion to reproducible computational evidence.
@@ -21,6 +22,37 @@ The following content is verified at the level of definitions and notation:
 - the distinction between parameter control, seed perturbation rule, observable, horizon, and acceptance criterion.
 
 These are definitions, not claims that any concrete PRNG is good or secure.
+
+## Reproducible Repository Evidence
+
+### Public CPU-Only Null-Calibrated Baseline
+
+The `hal-05633702v1` manuscript reports a reproducible CPU-only baseline for public NumPy bit generators. The companion bundle is:
+
+```text
+WIP/prng-ztest/
+```
+
+Protocol:
+
+- generators: `MT19937`, `PCG64`, `Philox`, `SFC64`;
+- backend: CPU;
+- seeds: `1000`;
+- replicates per seed: `R = 8`;
+- draws per replicate: `N = 50000`;
+- integrands: `identity`, `sin`, `quadratic`, `rare_099`;
+- calibrated diagnostic: `Z_s = F_0(V_s)`;
+- summary artifacts: `results/z_summary.csv` and `results/binomial_rare_event_summary.csv`;
+- figures: `figures/*.svg`.
+
+Interpretation:
+
+- raw max/min variance ratios are alerts, not evidence by themselves;
+- `compatible` means no calibrated deviation was detected by the current protocol;
+- `calibration_drift` means a KS deviation appears without an excessive tail rate;
+- `tail_anomaly` is reserved for excessive extreme `Z_s` rates.
+
+For the current run, several generator/integrand pairs are classified as `calibration_drift`, but the exact/randomized binomial rare-event PIT summary is `compatible` for all four public generators. The large seed-level CSV files are generated locally and may be archived separately as release artifacts.
 
 ## Reported Computational Results
 

@@ -39,10 +39,13 @@ def main() -> None:
         plt.legend()
         plt.tight_layout()
 
-        path = outdir / f"hist_Zs_{integrand}.png"
-        plt.savefig(path, dpi=160)
+        png_path = outdir / f"hist_Zs_{integrand}.png"
+        svg_path = outdir / f"hist_Zs_{integrand}.svg"
+        plt.savefig(png_path, dpi=160)
+        plt.savefig(svg_path)
         plt.close()
-        print(f"written {path}")
+        print(f"written {png_path}")
+        print(f"written {svg_path}")
 
 
 if __name__ == "__main__":

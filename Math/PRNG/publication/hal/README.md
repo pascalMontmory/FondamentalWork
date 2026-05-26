@@ -1,39 +1,45 @@
-# HAL Publication Draft
+# HAL Publications
 
-Upload this PDF to HAL:
+## Current HAL Deposit
+
+```text
+hal-05633702v1
+TACM / PRNG Structural Diagnostics
+Pré-publication, Document de travail
+Deposit date: 2026-05-26
+```
+
+Current submitted files are stored in:
+
+```text
+hal-05633702v1/
+```
+
+The current manuscript supersedes the earlier v1.0 draft as the repository's primary HAL-submitted PRNG document. It adds:
+
+- empirical-measure formulation;
+- null-calibrated seed-conditioned variance diagnostics;
+- ECDF interpretation;
+- exact rare-event binomial calibration;
+- reproducible public CPU-only baseline;
+- explicit separation between reproducible evidence and reported evidence requiring archival raw logs.
+
+## Earlier Draft
+
+The earlier v1.0 draft remains archived here:
 
 ```text
 Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.pdf
-```
-
-The LaTeX source is:
-
-```text
 Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.tex
 ```
 
-HAL upload metadata are prepared in:
+Its original metadata are kept in `HAL_METADATA.md` for traceability.
 
-```text
-HAL_METADATA.md
-```
+## Build Current Submitted PDF
 
-Build command:
+From `hal-05633702v1/`:
 
 ```bash
-pdflatex -interaction=nonstopmode -halt-on-error Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.tex
-pdflatex -interaction=nonstopmode -halt-on-error Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.tex
+pdflatex -interaction=nonstopmode -halt-on-error tacm-prng-structural-diagnostics-hal-05633702v1.tex
+pdflatex -interaction=nonstopmode -halt-on-error tacm-prng-structural-diagnostics-hal-05633702v1.tex
 ```
-
-Current PDF status:
-
-- 13 pages, A4;
-- English abstract and French summary;
-- HAL title: `Structural Stability Diagnostics for Pseudo-Random Number Generators: Seed Sensitivity and Functional Variance Dispersion`;
-- no confidential correspondence;
-- no proprietary recurrence details;
-- includes BigCrush ARM/Metal/CUDA summary and SHA-256 manifest;
-- includes GSQI and epsilon(T) public definitions;
-- includes a numeric inter-seed dispersion table with min/max variances and ratios;
-- labels missing SmallCrush, x86, stream hashes, adapter source, and benchmark artifacts explicitly.
-- avoids naming the proprietary prototype generator in the PDF body.

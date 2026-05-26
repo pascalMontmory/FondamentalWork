@@ -11,10 +11,10 @@ data/public_prng_estimates.csv
 It is produced by:
 
 ```bash
-python scripts/generate_public_prng_estimates.py --N 50000 --R 8 --seeds 100
+python scripts/generate_public_prng_estimates.py --N 50000 --R 8 --seeds 1000
 ```
 
-For the HAL v1.2 target run, use `--N 1000000` after the protocol is frozen.
+The HAL `hal-05633702v1` public baseline uses `N=50000`, `R=8`, and `1000` seeds per generator.
 
 The CSV schema is:
 
@@ -22,4 +22,4 @@ The CSV schema is:
 generator,backend,seed,integrand,replicate,N,estimate
 ```
 
-The generated CSV is intentionally not committed in this WIP bundle until the target run is fixed, because it is a derived artifact and can be regenerated from the scripts.
+The generated CSV is intentionally not committed in this WIP bundle because it is a large derived artifact and can be regenerated from the scripts. It may be archived separately as a release artifact.
