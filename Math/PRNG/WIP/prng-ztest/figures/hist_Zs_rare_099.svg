@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+<title id="title">Z_s histogram - rare_099</title>
+<desc id="desc">Histogrammes des scores Z_s par generateur PRNG pour l integrande rare_099.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="380.0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#1f2937">Z_s histogram - rare_099</text>
+<line x1="72" y1="390.00" x2="728" y2="390.00" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="394.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">0</text>
+<line x1="72" y1="321.60" x2="728" y2="321.60" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="325.60" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">4</text>
+<line x1="72" y1="253.20" x2="728" y2="253.20" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="257.20" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">8</text>
+<line x1="72" y1="184.80" x2="728" y2="184.80" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="188.80" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">12</text>
+<line x1="72" y1="116.40" x2="728" y2="116.40" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="120.40" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">16</text>
+<line x1="72" y1="48.00" x2="728" y2="48.00" stroke="#e5e7eb" stroke-width="1"/>
+<text x="60" y="52.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">20</text>
+<line x1="72" y1="48" x2="72" y2="390" stroke="#111827" stroke-width="1.2"/>
+<line x1="72" y1="390" x2="728" y2="390" stroke="#111827" stroke-width="1.2"/>
+<line x1="72.00" y1="390" x2="72.00" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="72.00" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.0</text>
+<line x1="137.60" y1="390" x2="137.60" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="137.60" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.1</text>
+<line x1="203.20" y1="390" x2="203.20" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="203.20" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.2</text>
+<line x1="268.80" y1="390" x2="268.80" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="268.80" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.3</text>
+<line x1="334.40" y1="390" x2="334.40" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="334.40" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.4</text>
+<line x1="400.00" y1="390" x2="400.00" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="400.00" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.5</text>
+<line x1="465.60" y1="390" x2="465.60" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="465.60" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.6</text>
+<line x1="531.20" y1="390" x2="531.20" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="531.20" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.7</text>
+<line x1="596.80" y1="390" x2="596.80" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="596.80" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.8</text>
+<line x1="662.40" y1="390" x2="662.40" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="662.40" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">0.9</text>
+<line x1="728.00" y1="390" x2="728.00" y2="395" stroke="#111827" stroke-width="1"/>
+<text x="728.00" y="412" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">1.0</text>
+<text x="380.0" y="446" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">Z_s</text>
+<text x="18" y="219.0" transform="rotate(-90 18 219.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">count</text>
+<line x1="72" y1="219.00" x2="728" y2="219.00" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="5 5"/>
+<text x="724" y="213.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">uniform reference</text>
+<polyline points="72.00,167.70 137.60,167.70 137.60,167.70 203.20,167.70 203.20,287.40 268.80,287.40 268.80,133.50 334.40,133.50 334.40,253.20 400.00,253.20 400.00,236.10 465.60,236.10 465.60,321.60 531.20,321.60 531.20,184.80 596.80,184.80 596.80,219.00 662.40,219.00 662.40,219.00 728.00,219.00" fill="none" stroke="#4c78a8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,219.00 137.60,219.00 137.60,167.70 203.20,167.70 203.20,236.10 268.80,236.10 268.80,270.30 334.40,270.30 334.40,253.20 400.00,253.20 400.00,236.10 465.60,236.10 465.60,219.00 531.20,219.00 531.20,201.90 596.80,201.90 596.80,167.70 662.40,167.70 662.40,219.00 728.00,219.00" fill="none" stroke="#f58518" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,219.00 137.60,219.00 137.60,150.60 203.20,150.60 203.20,150.60 268.80,150.60 268.80,184.80 334.40,184.80 334.40,287.40 400.00,287.40 400.00,270.30 465.60,270.30 465.60,253.20 531.20,253.20 531.20,287.40 596.80,287.40 596.80,219.00 662.40,219.00 662.40,167.70 728.00,167.70" fill="none" stroke="#54a24b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="72.00,184.80 137.60,184.80 137.60,116.40 203.20,116.40 203.20,236.10 268.80,236.10 268.80,236.10 334.40,236.10 334.40,184.80 400.00,184.80 400.00,133.50 465.60,133.50 465.60,321.60 531.20,321.60 531.20,253.20 596.80,253.20 596.80,253.20 662.40,253.20 662.40,270.30 728.00,270.30" fill="none" stroke="#b279a2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="82" y1="58" x2="108" y2="58" stroke="#4c78a8" stroke-width="2.8"/>
+<text x="116" y="62" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">MT19937</text>
+<line x1="82" y1="78" x2="108" y2="78" stroke="#f58518" stroke-width="2.8"/>
+<text x="116" y="82" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">PCG64</text>
+<line x1="82" y1="98" x2="108" y2="98" stroke="#54a24b" stroke-width="2.8"/>
+<text x="116" y="102" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">Philox</text>
+<line x1="82" y1="118" x2="108" y2="118" stroke="#b279a2" stroke-width="2.8"/>
+<text x="116" y="122" font-family="Arial, sans-serif" font-size="12" fill="#1f2937">SFC64</text>
+</svg>
