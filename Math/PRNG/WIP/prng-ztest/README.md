@@ -32,37 +32,6 @@ Required columns:
 
 Supported built-in integrands are `identity`, `sin`, `quadratic`, and `rare_099`.
 
-## Bundle Contents
-
-Versioned source files:
-
-```text
-README.md
-requirements.txt
-scripts/generate_public_prng_estimates.py
-scripts/compute_z_scores.py
-scripts/plot_z_histograms.py
-```
-
-Versioned lightweight result:
-
-```text
-results/z_summary.csv
-```
-
-Generated artifacts documented by directory README files:
-
-```text
-data/public_prng_estimates.csv
-results/z_scores_table.csv
-figures/hist_Zs_identity.png
-figures/hist_Zs_sin.png
-figures/hist_Zs_quadratic.png
-figures/hist_Zs_rare_099.png
-```
-
-The generated artifacts are intentionally not committed in this WIP bundle until the final HAL v1.2 target run is fixed.
-
 ## Run Public PRNG Benchmark
 
 ```bash
@@ -70,7 +39,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-python scripts/generate_public_prng_estimates.py --N 50000 --R 8 --seeds 100
+python scripts/generate_public_prng_estimates.py --N 50000 --R 8 --seeds 1000
 
 python scripts/compute_z_scores.py \
   --input data/public_prng_estimates.csv \
@@ -78,6 +47,10 @@ python scripts/compute_z_scores.py \
   --out-summary results/z_summary.csv
 
 python scripts/plot_z_histograms.py \
+  --input results/z_scores_table.csv \
+  --outdir figures
+
+python scripts/plot_z_ecdf.py \
   --input results/z_scores_table.csv \
   --outdir figures
 ```
@@ -108,6 +81,8 @@ The summary reports:
 - `Z_extreme_rate_001`
 - `N_eff_ratio_q05`, median, and q95
 - `verdict`
+
+The ECDF figures are often easier to read than histograms. Under the null model, the empirical curve should stay close to the diagonal `F(z)=z`.
 
 ## TACM Placement
 
