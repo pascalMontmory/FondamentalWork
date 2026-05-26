@@ -1,0 +1,15 @@
+{
+  "schema": "securaw.file_proof.v1",
+  "filename": "Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.pdf",
+  "size": 362735,
+  "mime": "application/pdf",
+  "sha256": "6b088d7889c91004ab47efc2260a8111f678885511d2e6d544e97ab7fc489f19",
+  "event_id": "fileproof-20260526100118-8384",
+  "proof_url": "https://timechain2.com/securaw/proof.php?event=fileproof-20260526100118-8384",
+  "created_at_utc": "2026-05-26T10:01:18.413Z",
+  "verifier": {
+    "page_url": "https://timechain2.com/securaw/proof.php?event=fileproof-20260526100118-8384",
+    "level3_url": "https://timechain2.com/api/file-proof-level3.php?event=fileproof-20260526100118-8384"
+  },
+  "proof_file_name": "Montmory_Structural_Diagnostic_Framework_for_PRNGs_v1.0.pdf.securaw-proof.json"
+}
