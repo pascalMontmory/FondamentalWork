@@ -1,0 +1,689 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=0pt}
+\renewcommand{\arraystretch}{1.18}
+
+\newcommand{\TACM}{\mathrm{TACM}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Bin}{\mathrm{Binomial}}
+\newcommand{\Unif}{\mathrm{Uniform}}
+\newcommand{\Neff}{N_{\mathrm{eff}}}
+\newcommand{\Qtail}{Q_{\mathrm{tail}}}
+\newcommand{\KS}{\mathrm{KS}}
+
+\title{\textbf{TACM / PRNG Diagnostics v1.3}\\
+\large Interpreting Null-Calibrated Seed Sensitivity in Monte Carlo Workloads}
+\author{Pascal Montmory}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Version 1.2 introduced a null-calibrated diagnostic for seed-conditioned Monte Carlo variance,
+\[
+Z_s(f)=F_0(V_s(f)).
+\]
+Version 1.3 focuses on interpretation. Its goal is not to multiply indicators, nor to replace established PRNG test batteries such as TestU01, but to add a Monte Carlo workload-facing layer that quantifies and classifies seed sensitivity in a calibrated and interpretable way.
+
+The central contribution of this revision is a three-class interpretation of calibrated diagnostics:
+\[
+\texttt{compatible},\qquad
+\texttt{calibration\_drift},\qquad
+\texttt{tail\_anomaly}.
+\]
+The document also adds exact binomial calibration for rare-event indicators and simple power tests based on injected defects. The intended use is practical: distinguish ordinary sampling variability, mild calibration drift, and genuine tail-sensitive anomalies in reproducible CPU-only experiments.
+\end{abstract}
+
+\section{Positioning of Versions}
+
+\subsection{Version 1.0: Initial Framework}
+
+Version 1.0 introduced the general structural diagnostics framework for PRNGs under Monte Carlo workloads:
+\begin{itemize}
+  \item seed sensitivity;
+  \item functional variance;
+  \item inter-seed dispersion ratios;
+  \item GSQI;
+  \item transition instability $\epsilon(T)$;
+  \item BigCrush and cross-backend evidence;
+  \item limitations and non-claims.
+\end{itemize}
+
+\subsection{Version 1.1: Development of Formulae}
+
+Version 1.1 developed the formulae around the central empirical measure
+\[
+\mu_{s,b,N}
+=
+\frac1N
+\sum_{t=1}^{N}
+\delta_{u_{s,b,t}}.
+\]
+It clarified the role of $\chi^2$ coverage diagnostics, projected spectral gaps, effective sample size proxies, audit scores, VaR/CVaR approximations, backend reproducibility and multi-lane GPU diagnostics.
+
+\subsection{Version 1.2: Null Calibration}
+
+Version 1.2 introduced the calibrated statistic
+\[
+T_s(f)
+=
+\frac{(R-1)V_s(f)}
+{\sigma_f^2/N},
+\]
+and the probability-integral-transform diagnostic
+\[
+Z_s(f)
+=
+F_{\chi^2_{R-1}}
+\left(
+T_s(f)
+\right).
+\]
+Under the null model,
+\[
+Z_s(f)\sim \Unif[0,1].
+\]
+This changed the status of raw ratios. A large ratio
+\[
+\rho_f
+=
+\frac{\max_s V_s(f)}
+{\min_{s,V_s(f)>0} V_s(f)}
+\]
+is an exploratory alert, not by itself evidence of PRNG instability.
+
+\subsection{Version 1.3: Minimal Experimental Robustness}
+
+Version 1.3 is an interpretation layer for $Z_s$ diagnostics. It is designed to show that TACM can distinguish:
+\[
+\boxed{\text{ordinary null-compatible noise}}
+\]
+\[
+\boxed{\text{mild global calibration drift}}
+\]
+\[
+\boxed{\text{tail anomaly}}
+\]
+\[
+\boxed{\text{controlled injected defect}}
+\]
+without over-claiming from isolated p-values or raw max/min ratios.
+
+\section{Central Message}
+
+The central message of v1.3 is:
+\[
+\boxed{
+\text{TACM does not replace TestU01; it adds a Monte Carlo workload-facing layer}
+}
+\]
+\[
+\boxed{
+\text{that quantifies and classifies seed sensitivity in a calibrated and interpretable way.}
+}
+\]
+
+TestU01-like batteries are designed to detect statistical defects in PRNG streams. TACM is aimed at a complementary question: how do seed-conditioned random streams affect actual Monte Carlo estimators under specified workloads?
+
+\section{The Calibrated Diagnostic}
+
+Let $s$ denote a seed, $r\in\{1,\ldots,R\}$ a replicate, $N$ the number of draws per replicate, and $f$ a diagnostic integrand. The Monte Carlo estimate is
+\[
+I_{s,r}(f)
+=
+\frac1N
+\sum_{t=1}^{N}
+f(u_{s,r,t}).
+\]
+The seed-conditioned replicated mean is
+\[
+\bar I_s(f)
+=
+\frac1R
+\sum_{r=1}^{R}
+I_{s,r}(f).
+\]
+The seed-conditioned variance is
+\[
+V_s(f)
+=
+\frac1{R-1}
+\sum_{r=1}^{R}
+\left(
+I_{s,r}(f)-\bar I_s(f)
+\right)^2.
+\]
+
+\paragraph{Important convention.}
+Here $V_s(f)$ is the empirical variance of the replicated Monte Carlo estimates $I_{s,r}(f)$ under seed $s$. It is not the within-run sample variance of the raw values $f(u_t)$.
+
+Under the idealized null model,
+\[
+I_{s,r}(f)
+\approx
+\mathcal N
+\left(
+\mu_f,\frac{\sigma_f^2}{N}
+\right),
+\]
+which implies
+\[
+T_s(f)
+=
+\frac{(R-1)V_s(f)}
+{\sigma_f^2/N}
+\sim
+\chi^2_{R-1}.
+\]
+The calibrated diagnostic is
+\[
+\boxed{
+Z_s(f)
+=
+F_{\chi^2_{R-1}}
+\left(
+T_s(f)
+\right).
+}
+\]
+Under the null model,
+\[
+\boxed{
+Z_s(f)\sim \Unif[0,1].
+}
+\]
+
+\paragraph{Interpretation.}
+A large raw ratio $\rho_f$ may be compatible with the null model, especially when $R$ is small. Therefore:
+\[
+\boxed{
+\rho_f\text{ is an alert; } Z_s\text{ is the calibration.}
+}
+\]
+
+\section{Interpreting the $Z_s$ Distribution}
+
+Version 1.3 combines three readings of $Z_s$: KS tests, tail-rate diagnostics and ECDF shape.
+
+\subsection{KS Test}
+
+For each generator and integrand, test
+\[
+\{Z_s(f):s\in\mathcal B\}
+\]
+against $\Unif[0,1]$ and report
+\[
+p_{\KS}.
+\]
+This test is useful, but not sufficient. With many seeds, for example
+\[
+S=1000,
+\]
+the KS test may detect very small smooth deformations that are not operationally severe.
+
+Thus
+\[
+p_{\KS}<0.05
+\]
+should not automatically be interpreted as a PRNG defect.
+
+\subsection{Extreme Tail Rate}
+
+Define the extreme-tail rate
+\[
+\Qtail(f)
+=
+\frac1{|\mathcal B|}
+\#\{s:Z_s(f)<0.01\ \text{or}\ Z_s(f)>0.99\}.
+\]
+Under uniformity,
+\[
+\mathbb E[\Qtail(f)]\approx0.02.
+\]
+The interpretation is:
+\[
+\Qtail(f)\approx0.02
+\Rightarrow
+\text{no massive population of extreme seeds,}
+\]
+whereas
+\[
+\Qtail(f)\gg0.02
+\Rightarrow
+\text{possible tail anomaly.}
+\]
+
+\subsection{ECDF Shape}
+
+Plot the empirical distribution function
+\[
+\widehat F_Z(z)
+\]
+against the diagonal
+\[
+F(z)=z.
+\]
+The ECDF is often more readable than histograms because it exposes smooth drift and tail deformation directly.
+
+The v1.3 interpretation is:
+\[
+\boxed{
+\text{ECDF close to the diagonal}\Rightarrow \texttt{compatible}.
+}
+\]
+\[
+\boxed{
+\text{Smooth global ECDF deformation}\Rightarrow \texttt{calibration\_drift}.
+}
+\]
+\[
+\boxed{
+\text{ECDF deformation concentrated near extremes}\Rightarrow \texttt{tail\_anomaly}.
+}
+\]
+
+\section{Three-Class Classification}
+
+Version 1.3 replaces the binary vocabulary
+\[
+\texttt{compatible}/\texttt{suspicious}
+\]
+with three operational classes:
+\[
+\boxed{
+\texttt{compatible},\quad
+\texttt{calibration\_drift},\quad
+\texttt{tail\_anomaly}.
+}
+\]
+
+\subsection{Compatible}
+
+Criteria:
+\[
+p_{\KS}\geq0.05
+\]
+and
+\[
+\Qtail(f)\approx0.02.
+\]
+Interpretation:
+\[
+\boxed{
+\text{the }Z_s\text{ values are compatible with }\Unif[0,1].
+}
+\]
+
+\subsection{Calibration Drift}
+
+Criteria:
+\[
+p_{\KS}<0.05
+\]
+but
+\[
+\Qtail(f)\approx0.02.
+\]
+Interpretation:
+\[
+\boxed{
+\text{small global calibration deformation without excess extreme seeds.}
+}
+\]
+This class is important because it prevents over-interpreting every KS rejection as a severe PRNG failure.
+
+\subsection{Tail Anomaly}
+
+Criterion:
+\[
+\Qtail(f)\gg0.02.
+\]
+Interpretation:
+\[
+\boxed{
+\text{abnormal population of extreme seeds.}
+}
+\]
+This is the most important class for tail-sensitive Monte Carlo workloads, risk estimation and rare-event simulation.
+
+\section{Exact Rare-Event Calibration}
+
+For the rare-event indicator
+\[
+f(u)=\mathbf 1_{\{u>0.99\}},
+\]
+the number of rare events in replicate $r$ under seed $s$ is
+\[
+K_{s,r}
+=
+\sum_{t=1}^{N}
+\mathbf 1_{\{u_{s,r,t}>0.99\}}.
+\]
+Under the null model,
+\[
+K_{s,r}
+\sim
+\Bin(N,p),
+\qquad
+p=0.01.
+\]
+The normal approximation used in the $\chi^2$ variance diagnostic is often adequate for large $N$, but rare-event indicators and small samples deserve a robustness check.
+
+Define the exact binomial calibration
+\[
+\boxed{
+Z^{\mathrm{bin}}_{s,r}
+=
+F_{\Bin(N,p)}
+\left(
+K_{s,r}
+\right).
+}
+\]
+Because the binomial distribution is discrete, the raw CDF transform is conservative and can show ties. A randomized probability-integral transform may be used:
+\[
+Z^{\mathrm{bin,rand}}_{s,r}
+=
+F_{\Bin(N,p)}(K_{s,r}-1)
++
+U_{s,r}
+\cdot
+\mathbb P(K=K_{s,r}),
+\]
+where $U_{s,r}\sim\Unif[0,1]$ is an independent calibration randomizer. This optional randomized version is closer to uniform under the exact discrete null.
+
+The goal is not to replace the replicated-variance diagnostic, but to ensure that rare-event conclusions do not rely only on a Gaussian or $\chi^2$ approximation.
+
+\begin{table}[h]
+\centering
+\caption{Rare-event exact calibration summary.}
+\begin{tabular}{lrrrrl}
+\toprule
+Generator & $p_{\KS}^{\chi^2}$ & $p_{\KS}^{\mathrm{bin}}$ & $\Qtail$ & $N$ & Verdict \\
+\midrule
+MT19937 & -- & -- & -- & -- & -- \\
+PCG64   & -- & -- & -- & -- & -- \\
+Philox  & -- & -- & -- & -- & -- \\
+SFC64   & -- & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Experimental Validation}
+
+\subsection{Public PRNG Baseline}
+
+The recommended v1.3 baseline is
+\[
+S=1000,\qquad N=50\,000,\qquad R=8.
+\]
+The public PRNGs are:
+\[
+\text{MT19937},\quad \text{PCG64},\quad \text{Philox},\quad \text{SFC64}.
+\]
+The diagnostic integrands are:
+\[
+u,\qquad
+\sin(2\pi u),\qquad
+u^2,\qquad
+\mathbf 1_{\{u>0.99\}}.
+\]
+For each generator and integrand, report:
+\begin{itemize}
+  \item $p_{\KS}$;
+  \item $\Qtail$;
+  \item $\rho_{95/5}$;
+  \item the three-class verdict.
+\end{itemize}
+
+\subsection{Power Test 1: Marginal Bias}
+
+Inject a controlled marginal perturbation, for example
+\[
+u'_t=(u_t+\varepsilon)\bmod1,
+\]
+or, for a non-measure-preserving upper-bound perturbation,
+\[
+u'_t=\min(1,u_t+\varepsilon).
+\]
+Expected diagnostics include:
+\begin{itemize}
+  \item $\chi^2$ marginal coverage;
+  \item ECDF of $Z_s$;
+  \item $\Qtail$ if the perturbation affects a tail;
+  \item local drift $\Delta_U$, if available.
+\end{itemize}
+The goal is:
+\[
+\boxed{
+\text{show that TACM detects a controlled marginal bias.}
+}
+\]
+
+\subsection{Power Test 2: Temporal Correlation}
+
+Inject temporal dependence:
+\[
+u'_t=(1-\alpha)u_t+\alpha u_{t-1}\pmod1.
+\]
+Expected diagnostics include:
+\begin{itemize}
+  \item projected $\lambda$-gap;
+  \item transition instability $\epsilon(T)$;
+  \item two-dimensional $\chi^2$ transition maps;
+  \item possibly $Z_s$ ECDFs if the workload is affected.
+\end{itemize}
+The goal is:
+\[
+\boxed{
+\text{show that TACM detects injected temporal structure.}
+}
+\]
+
+\subsection{Power Test 3: Rare-Event Deletion}
+
+For a tail-specific defect, modify the stream as follows:
+\[
+\text{if }u_t>0.99,\text{ replace it with probability }\alpha\text{ by }u'_t=0.98.
+\]
+This directly suppresses rare events above the threshold. The expected diagnostic is:
+\[
+\boxed{
+Z^{\mathrm{bin}}\text{ detects the anomaly.}
+}
+\]
+
+\section{Multiple Testing}
+
+Across multiple generators and integrands, many tests are performed. An isolated
+\[
+p<0.05
+\]
+is therefore not enough to conclude.
+
+For $m$ tests, a simple Bonferroni threshold is
+\[
+p_{\mathrm{Bonf}}=\frac{0.05}{m}.
+\]
+For example, with
+\[
+m=16,
+\]
+the Bonferroni threshold is
+\[
+p_{\mathrm{Bonf}}=0.003125.
+\]
+Thus:
+\[
+\boxed{
+p_{\KS}<0.05\text{ is exploratory if multiple-testing correction does not confirm it.}
+}
+\]
+
+\section{Synthesis Tables}
+
+\begin{table}[h]
+\centering
+\caption{Table A: Calibration summary.}
+\begin{tabular}{llrrrrrl}
+\toprule
+Generator & Integrand & $S$ & $N$ & $R$ & $p_{\KS}$ & $\Qtail$ & Verdict \\
+\midrule
+MT19937 & identity  & 1000 & 50000 & 8 & -- & -- & -- \\
+MT19937 & sin       & 1000 & 50000 & 8 & -- & -- & -- \\
+MT19937 & quadratic & 1000 & 50000 & 8 & -- & -- & -- \\
+MT19937 & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
+PCG64   & identity  & 1000 & 50000 & 8 & -- & -- & -- \\
+Philox  & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
+SFC64   & rare      & 1000 & 50000 & 8 & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Table B: ECDF interpretation.}
+\begin{tabular}{lll}
+\toprule
+Generator / Integrand & ECDF shape & Interpretation \\
+\midrule
+Smooth near diagonal & close to diagonal & \texttt{compatible} \\
+Smooth shifted curve & global drift & \texttt{calibration\_drift} \\
+Extreme deformation & tail excess & \texttt{tail\_anomaly} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Table C: Power tests.}
+\begin{tabular}{llll}
+\toprule
+Defect & Intensity & Expected diagnostic & Detected? \\
+\midrule
+Marginal bias & $\varepsilon$ & $\chi^2$, ECDF & yes/no \\
+Temporal correlation & $\alpha$ & $\lambda$-gap, $\chi^2_{2D}$ & yes/no \\
+Rare-event deletion & $\alpha$ & $Z^{\mathrm{bin}}$ & yes/no \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Table D: Rare-event exact calibration.}
+\begin{tabular}{lrrl}
+\toprule
+Generator & $p_{\KS}^{\chi^2}$ & $p_{\KS}^{\mathrm{binomial}}$ & Comment \\
+\midrule
+MT19937 & -- & -- & -- \\
+PCG64   & -- & -- & -- \\
+Philox  & -- & -- & -- \\
+SFC64   & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Minimal v1.3 Reproducibility Bundle}
+
+The v1.3 bundle should extend the existing z-test pipeline with the following scripts:
+\[
+\texttt{plot\_z\_ecdf.py},
+\quad
+\texttt{compute\_binomial\_rare\_event\_z.py},
+\quad
+\texttt{inject\_prng\_defects.py}.
+\]
+Optional scripts include:
+\[
+\texttt{adjust\_pvalues.py},
+\quad
+\texttt{scan\_snr\_grid.py},
+\quad
+\texttt{bootstrap\_z\_scores.py}.
+\]
+
+The minimal versioned artifacts are:
+\begin{verbatim}
+results/z_summary.csv
+figures/ecdf_Zs_identity.svg
+figures/ecdf_Zs_sin.svg
+figures/ecdf_Zs_quadratic.svg
+figures/ecdf_Zs_rare_099.svg
+figures/hist_Zs_identity.svg
+figures/hist_Zs_sin.svg
+figures/hist_Zs_quadratic.svg
+figures/hist_Zs_rare_099.svg
+\end{verbatim}
+The larger files
+\begin{verbatim}
+data/public_prng_estimates.csv
+results/z_scores_table.csv
+\end{verbatim}
+may be generated locally rather than versioned, depending on repository size policy.
+
+\section{Limitations}
+
+The v1.3 interpretation is deliberately cautious:
+\begin{itemize}
+  \item $Z_s$ depends on the chosen null model;
+  \item the $\chi^2$ calibration assumes approximately Gaussian Monte Carlo estimates;
+  \item for rare-event indicators, exact binomial or bootstrap calibration may be preferable;
+  \item a non-rejected test does not prove absence of PRNG defects;
+  \item public PRNGs tested in the baseline are not exhaustive;
+  \item simple diagnostic integrands do not cover all industrial payoffs;
+  \item injected power tests only cover controlled defect families.
+\end{itemize}
+
+\section{Conclusion}
+
+The expected v1.3 conclusion is strong but limited:
+\[
+\boxed{
+\text{the tested public PRNGs do not show strong seed pathologies in these simple workloads.}
+}
+\]
+At the same time:
+\[
+\boxed{
+\text{TACM detects, classifies and interprets raw alerts, calibration drift and tail anomalies.}
+}
+\]
+
+The final message is:
+\[
+\boxed{
+\text{TACM does not replace TestU01.}
+}
+\]
+\[
+\boxed{
+\text{It adds a Monte Carlo workload-facing layer that quantifies and classifies}
+}
+\]
+\[
+\boxed{
+\text{seed sensitivity in a statistically calibrated and interpretable way.}
+}
+\]
+
+\end{document}
