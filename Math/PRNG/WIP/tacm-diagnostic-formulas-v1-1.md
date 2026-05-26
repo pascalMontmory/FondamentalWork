@@ -1047,7 +1047,7 @@ C_{\ell,m}
 Collision de sous-flux :
 
 \[
-\mathrm{Collisions}
+\mathrf{Collisions}
 =
 \#\{(\ell,m,t,r):x_{\ell,t}=x_{m,r}\}.
 \]
