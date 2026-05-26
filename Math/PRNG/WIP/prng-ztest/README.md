@@ -32,6 +32,37 @@ Required columns:
 
 Supported built-in integrands are `identity`, `sin`, `quadratic`, and `rare_099`.
 
+## Bundle Contents
+
+Versioned source files:
+
+```text
+README.md
+requirements.txt
+scripts/generate_public_prng_estimates.py
+scripts/compute_z_scores.py
+scripts/plot_z_histograms.py
+```
+
+Versioned lightweight result:
+
+```text
+results/z_summary.csv
+```
+
+Generated artifacts documented by directory README files:
+
+```text
+data/public_prng_estimates.csv
+results/z_scores_table.csv
+figures/hist_Zs_identity.png
+figures/hist_Zs_sin.png
+figures/hist_Zs_quadratic.png
+figures/hist_Zs_rare_099.png
+```
+
+The generated artifacts are intentionally not committed in this WIP bundle until the final HAL v1.2 target run is fixed.
+
 ## Run Public PRNG Benchmark
 
 ```bash
@@ -80,7 +111,7 @@ The summary reports:
 
 ## TACM Placement
 
-This protocol is the bridge between raw seed-variance ratios and calibrated null-model diagnostics. In TACM v1.1, it belongs under:
+This protocol is the bridge between raw seed-variance ratios and calibrated null-model diagnostics. In TACM v1.2, it belongs under:
 
 ```text
 Calibrated seed-conditioned variance diagnostic
