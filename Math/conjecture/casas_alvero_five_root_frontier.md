@@ -453,3 +453,135 @@ generating polynomials:
 
 This is a precise finite target: prove that three such mixed-sign products
 cannot cover all remaining coefficient indices.
+
+## 11. Electrostatic obstruction for the first recycled coefficients
+
+The Taylor-coefficient cover has a useful local obstruction over the real
+line.
+
+Keep the real-rooted notation
+\[
+  r_1<r_2<\cdots<r_s,
+  \qquad
+  f(x)=C\prod_{j=1}^s(x-r_j)^{m_j}.
+\]
+Fix a root \(r_i\), and write
+\[
+  f(r_i+y)=C\,y^{m_i}G_i(y),
+  \qquad
+  G_i(y)=\prod_{j\ne i}(r_i-r_j+y)^{m_j}.
+\]
+Put
+\[
+  B_i=G_i(0)=\prod_{j\ne i}(r_i-r_j)^{m_j}\ne0
+\]
+and define the reciprocal power sums
+\[
+  S_i^{(q)}=\sum_{j\ne i}\frac{m_j}{(r_i-r_j)^q}.
+\]
+
+Then the first recycled coefficient is
+\[
+  [y]G_i(y)=B_iS_i^{(1)}.
+\]
+Thus \(r_i\) can cover the derivative order \(m_i+1\) if and only if
+\[
+  S_i^{(1)}=0.
+\]
+
+This is an exact equilibrium equation:
+\[
+  \sum_{j<i}\frac{m_j}{r_i-r_j}
+  =
+  \sum_{j>i}\frac{m_j}{r_j-r_i}.
+\]
+The weighted repulsion from the left and from the right must balance.
+
+Now consider the second recycled coefficient. Since
+\[
+  \frac{G_i'(y)}{G_i(y)}
+  =
+  \sum_{j\ne i}\frac{m_j}{r_i-r_j+y},
+\]
+we have
+\[
+  G_i''(0)
+  =
+  B_i\left((S_i^{(1)})^2-S_i^{(2)}\right).
+\]
+Therefore
+\[
+  [y^2]G_i(y)
+  =
+  \frac{B_i}{2}\left((S_i^{(1)})^2-S_i^{(2)}\right).
+\]
+
+If the first recycled coefficient vanishes, then
+\[
+  [y^2]G_i(y)
+  =
+  -\frac{B_i}{2}S_i^{(2)}.
+\]
+But
+\[
+  S_i^{(2)}=\sum_{j\ne i}\frac{m_j}{(r_i-r_j)^2}>0.
+\]
+Hence
+\[
+  [y]G_i(y)=0
+  \quad\Longrightarrow\quad
+  [y^2]G_i(y)\ne0.
+\]
+
+Proposition. For a real-rooted polynomial, no root can simultaneously cover
+its first two recycled derivative orders
+\[
+  m_i+1
+  \quad\text{and}\quad
+  m_i+2.
+\]
+
+Equivalently,
+\[
+  f^{(m_i+1)}(r_i)=0
+  \quad\Longrightarrow\quad
+  f^{(m_i+2)}(r_i)\ne0.
+\]
+
+This is independent of the Casas-Alvero condition; it is a structural fact
+about real-rooted polynomials.
+
+## 12. Consequence for the five-root real frontier
+
+For a hypothetical five-root real counterexample
+\[
+  r_1<r_2<r_3<r_4<r_5,
+\]
+the endpoint roots \(r_1,r_5\) provide no recycled zeros at all. The interior
+roots \(r_2,r_3,r_4\) may provide recycled zeros, but each of them has a forced
+gap:
+\[
+  m_i+1\text{ covered at }r_i
+  \quad\Longrightarrow\quad
+  m_i+2\text{ not covered at }r_i.
+\]
+
+Thus the cover of derivative orders cannot contain a two-step local block
+coming from a single interior root immediately after its multiplicity. Any
+attempt to cover all derivative orders above the endpoint multiplicities must
+alternate between different interior roots, subject to their three independent
+electrostatic balance equations
+\[
+  S_2^{(1)}=0,\qquad S_3^{(1)}=0,\qquad S_4^{(1)}=0
+\]
+whenever the corresponding first recycled order is used.
+
+This gives a new finite obstruction:
+
+1. endpoint roots only cover automatic ranges;
+2. each interior root can start recycling only at an exact equilibrium point;
+3. after such a start, the immediately following recycled order at the same
+   root is forbidden.
+
+The remaining real five-root task is therefore a constrained covering problem
+with three interior roots and forced local gaps.

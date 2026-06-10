@@ -92,3 +92,45 @@ the roots. In the real-rooted five-root case, endpoint roots can only provide
 automatic zeros from their multiplicities; only the three interior roots can
 provide recycled derivative zeros.
 
+## 2026-06-10, continuation
+
+### Electrostatic obstruction
+
+Added a local real-rooted obstruction for the first recycled Taylor
+coefficients. For a root \(r_i\), write
+\[
+  f(r_i+y)=C\,y^{m_i}G_i(y),
+  \qquad
+  G_i(y)=\prod_{j\ne i}(r_i-r_j+y)^{m_j}.
+\]
+With
+\[
+  S_i^{(q)}=\sum_{j\ne i}\frac{m_j}{(r_i-r_j)^q},
+\]
+the first recycled coefficient is
+\[
+  [y]G_i(y)=G_i(0)S_i^{(1)}.
+\]
+Thus covering derivative order \(m_i+1\) at \(r_i\) requires the exact
+electrostatic balance equation
+\[
+  S_i^{(1)}=0.
+\]
+
+The second recycled coefficient is
+\[
+  [y^2]G_i(y)=
+  \frac{G_i(0)}{2}\left((S_i^{(1)})^2-S_i^{(2)}\right).
+\]
+Since \(S_i^{(2)}>0\) for real roots, the implication
+\[
+  [y]G_i(y)=0
+  \quad\Longrightarrow\quad
+  [y^2]G_i(y)\ne0
+\]
+holds.
+
+Conclusion: no real root can simultaneously cover its first two recycled
+derivative orders \(m_i+1\) and \(m_i+2\). In the five-root real frontier, the
+three interior roots must therefore cover the remaining derivative orders with
+forced local gaps.
