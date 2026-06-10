@@ -864,7 +864,7 @@ Thus the endpoint \(d-5\) branch is now a finite collection of explicit
 two-variable systems indexed by three weight types and cover choices in
 \(\{0,a,Y,z\}^3\).
 
-### Symmetric endpoint \(d-5\) types generically closed
+### Symmetric endpoint \(d-5\) types closed
 
 Checked the two endpoint-\(d-5\) weight types where the two remaining nonzero
 roots have equal multiplicity:
@@ -884,15 +884,31 @@ for \(Q_3,Q_4,Q_5\), using covers
 where \(r\) denotes either root of the symmetric quadratic, the gcd of the
 three cover equations in \(\mathbb Q(n)[a]\) is \(1\).
 
-The verification script is
+The generic gcd verification script is
 \[
   \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_gcds.py}.
 \]
 
-Conclusion: these two endpoint-\(d-5\) types are generically impossible. The
-remaining work is to extract and rule out finitely many exceptional
-specializations in \(n\), plus the genuinely two-variable asymmetric weight
-type
+Then removed the remaining specialization caveat by taking the gcd in
+\(\mathbb Z[n]\) of the pairwise resultants in \(a\) for each cover triple.
+For the double-centroid type, all exceptional roots lie in
+\[
+  \{-6,-3,-2,-1\}.
+\]
+For the double-\(Q_2\)-root type, all exceptional roots lie in
+\[
+  \{-6,-4,-2,-1\}.
+\]
+Since \(n=d-5\ge1\), none is admissible.
+
+The integer resultant verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_resultants.py}.
+\]
+
+Conclusion: these two endpoint-\(d-5\) types are impossible. The only
+remaining endpoint-\(d-5\) family is the genuinely two-variable asymmetric
+weight type
 \[
   (m_0,m_a,m_y,m_z)=(1,1,2,1).
 \]

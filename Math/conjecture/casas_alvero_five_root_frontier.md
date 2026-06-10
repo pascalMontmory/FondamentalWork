@@ -2413,7 +2413,7 @@ modulo the weighted quadratic \(F_m\). Thus the endpoint \(d-5\) gate has been
 reduced from an arbitrary five-root multiplicity problem to three finite
 families of explicit polynomial systems.
 
-## 34. Generic closure of the two symmetric endpoint-\(d-5\) types
+## 34. The two symmetric endpoint-\(d-5\) types are closed
 
 Two of the three endpoint-\(d-5\) weight types are symmetric in the remaining
 roots \(y,z\):
@@ -2444,21 +2444,43 @@ greatest common divisor in the polynomial ring
   \mathbb Q(n)[a]
 \]
 is \(1\). Hence both symmetric endpoint-\(d-5\) types are generically
-inconsistent: over the rational function field in \(n\), no value of \(a\)
-can satisfy \(Q_3,Q_4,Q_5\) simultaneously.
+inconsistent over the rational function field in \(n\).
 
-The verification script is
+The generic gcd verification script is
 \[
   \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_gcds.py}.
 \]
 
-This is not yet a full integer certificate, because a gcd over
-\(\mathbb Q(n)[a]\) can acquire roots at finitely many special parameter
-values. The remaining work in these two symmetric types is therefore finite:
-extract and exclude the exceptional specializations in \(n\). The third
-weight type
+A full integer certificate also has to exclude special parameter values. For
+each cover triple, compute the three pairwise resultants in \(a\), then take
+their gcd in \(\mathbb Z[n]\). A common root would force this gcd to vanish.
+
+For the double-centroid type \((2,1,1,1)\), all such exceptional factors have
+roots only in
+\[
+  \{-6,-3,-2,-1\}.
+\]
+For the double-\(Q_2\)-root type \((1,2,1,1)\), all such exceptional factors
+have roots only in
+\[
+  \{-6,-4,-2,-1\}.
+\]
+But in the endpoint-\(d-5\) branch
+\[
+  n=d-5\ge1.
+\]
+Therefore no exceptional integer specialization is admissible.
+
+The resultant verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_resultants.py}.
+\]
+
+Proposition. The endpoint-\(d-5\) branch cannot occur when the double
+non-endpoint root is either the centroid or the \(Q_2\)-root.
+
+The only endpoint-\(d-5\) weight type still open is the asymmetric type
 \[
   (m_0,m_a,m_y,m_z)=(1,1,2,1)
 \]
-remains genuinely two-variable after reduction and is the other open
-endpoint-\(d-5\) family.
+which remains genuinely two-variable after reduction.
