@@ -307,3 +307,44 @@ Since the five-root frontier has only two nonzero interior roots, either the
 cover repeats the \(Q_2\)-root, or the other nonzero interior root must cover
 both \(d-3\) and \(d-4\) and is therefore clustered within a constant multiple
 of \(|a|\).
+
+### Fifth top derivative and endpoint gate
+
+Computed the normalized fifth top derivative:
+\[
+  Q_5(x)
+  =
+  x^5
+  -\frac{10P_2}{D_2}x^3
+  -\frac{20P_3}{D_3}x^2
+  +\frac{15P_2^2-30P_4}{D_4}x
+  +\frac{20P_2P_3-24P_5}{D_5},
+\]
+where
+\[
+  D_j=d(d-1)\cdots(d-j+1).
+\]
+Thus
+\[
+  Q_5(0)=0
+  \quad\Longleftrightarrow\quad
+  5P_2P_3=6P_5.
+\]
+
+This gives the first clean condition for the centroid to cover \(d-5\).
+
+Endpoint roots can re-enter at \(d-5\), but only through a narrow automatic
+coverage gate. In the real five-root frontier, an endpoint can cover \(d-5\)
+if and only if its multiplicity is exactly \(d-4\). Then the four other roots
+are all simple.
+
+Therefore outside this massive-endpoint branch, \(d-5\) is also forced to an
+interior root. If it is not covered by the centroid identity
+\[
+  5P_2P_3=6P_5,
+\]
+then it must be covered by a nonzero interior root satisfying the quintic
+moment equation
+\[
+  Q_5(z)=0.
+\]

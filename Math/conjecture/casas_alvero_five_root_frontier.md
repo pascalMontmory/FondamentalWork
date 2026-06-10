@@ -1113,3 +1113,87 @@ there are only two nonzero interior roots, one of the following must happen:
 So every noncentroid four-top-order branch either repeats the \(Q_2\) root or
 forces the remaining nonzero interior root into the same \(O(R/\sqrt d)\)
 centroid cluster.
+
+## 19. The fifth top derivative and the endpoint gate
+
+The next derivative is the first one where endpoint roots can re-enter, but
+only through a very narrow multiplicity gate.
+
+Let
+\[
+  D_j=d(d-1)\cdots(d-j+1).
+\]
+Using Newton's identities with \(P_1=0\), we have
+\[
+  e_2=-\frac{P_2}{2},
+  \qquad
+  e_3=\frac{P_3}{3},
+  \qquad
+  e_4=\frac{P_2^2/2-P_4}{4},
+\]
+and
+\[
+  e_5=\frac{P_5}{5}-\frac{P_2P_3}{6}.
+\]
+Therefore the normalized fifth top derivative is
+\[
+  Q_5(x)
+  =
+  x^5
+  -\frac{10P_2}{D_2}x^3
+  -\frac{20P_3}{D_3}x^2
+  +\frac{15P_2^2-30P_4}{D_4}x
+  +\frac{20P_2P_3-24P_5}{D_5}.
+\]
+
+In particular,
+\[
+  Q_5(0)=\frac{20P_2P_3-24P_5}{D_5}.
+\]
+Thus the centroid root covers derivative order \(d-5\) if and only if
+\[
+  5P_2P_3=6P_5.
+\]
+
+Now consider endpoints in the real five-root frontier. An endpoint root has no
+recycled zeros, so it can cover \(d-5\) only automatically. For an endpoint of
+multiplicity \(m\), automatic coverage of \(d-5\) requires
+\[
+  d-5<m,
+\]
+hence
+\[
+  m\ge d-4.
+\]
+But an endpoint multiplicity is always at most \(d-4\), because the other four
+distinct roots have multiplicity at least \(1\). Therefore:
+
+Proposition. In the real five-root frontier, an endpoint can cover \(d-5\) if
+and only if it has multiplicity exactly \(d-4\). In that case the four other
+distinct roots are all simple.
+
+Consequently, outside the massive-endpoint branch
+\[
+  m_{\rm endpoint}=d-4,
+\]
+the fifth top order is also forced to an interior root. It then gives the
+branch:
+
+* \(d-5\mapsto0\) if
+  \[
+    5P_2P_3=6P_5;
+  \]
+* otherwise \(d-5\mapsto z\), where \(z\) is a nonzero interior root satisfying
+  \[
+    Q_5(z)=0.
+  \]
+
+This separates the next obstruction into two explicit cases:
+
+1. a degenerate multiplicity branch with one endpoint of multiplicity \(d-4\)
+   and all other roots simple;
+2. an interior fifth-order branch governed by the quintic moment equation
+   \(Q_5(z)=0\).
+
+The first branch is combinatorially small. The second branch continues the
+top-order incidence cascade entirely inside the three interior roots.
