@@ -382,3 +382,48 @@ The right-endpoint case is symmetric.
 Thus the massive-endpoint branch has two forced degeneracies: almost all
 multiplicity sits at one endpoint, and that endpoint is itself \(O(R/d)\)-close
 to the centroid. For \(d>5\), at most one endpoint can be massive.
+
+### Massive-endpoint normal form
+
+Reduced the massive-endpoint branch to a two-variable algebraic system. After
+reflection and scaling, write the massive endpoint as \(-1\), with
+multiplicity
+\[
+  n=d-4.
+\]
+The roots are
+\[
+  -1,\quad 0,\quad u,\quad v,\quad w,
+\]
+with the four non-endpoint roots simple. The centroid equation gives
+\[
+  w=n-u-v.
+\]
+Thus
+\[
+  P_k=n(-1)^k+u^k+v^k+(n-u-v)^k.
+\]
+
+The branch is now finite:
+
+- \(Q_2\) must be covered by \(a\in\{u,v\}\), so
+  \[
+    D_2a^2=P_2.
+  \]
+- \(Q_3\) is covered either by the centroid, giving \(P_3=0\), or by
+  \(t\in\{u,v\}\), giving
+  \[
+    t^3-3a^2t-\frac{2P_3}{D_3}=0.
+  \]
+- \(Q_4\) is covered either by the centroid, giving \(P_4=P_2^2/2\), or by
+  \(s\in\{u,v\}\), giving
+  \[
+    s^4-6a^2s^2-\frac{8P_3}{D_3}s
+    +\frac{3P_2^2-6P_4}{D_4}=0.
+  \]
+
+So the massive-endpoint branch has become finitely many explicit polynomial
+systems in \(u,v\), indexed by
+\[
+  a\in\{u,v\},\qquad t,s\in\{0,u,v\}.
+\]

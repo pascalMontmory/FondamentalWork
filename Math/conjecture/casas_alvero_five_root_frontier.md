@@ -1297,3 +1297,99 @@ Therefore the five-root real frontier splits cleanly into:
   only \(Q_2,Q_3,Q_4\) remain live;
 * the non-massive branch, where \(d-5\) is also forced to the interior or to
   the centroid identity \(5P_2P_3=6P_5\).
+
+## 21. Massive-endpoint normal form
+
+The massive-endpoint branch can be written as a two-variable algebraic system.
+After reflection if needed, assume the massive endpoint is the left endpoint.
+Scale so that it is
+\[
+  -1.
+\]
+Put
+\[
+  n=d-4.
+\]
+The roots are then
+\[
+  -1,\quad 0,\quad u,\quad v,\quad w,
+\]
+where \(-1\) has multiplicity \(n\), the other four roots are simple, and the
+centroid equation gives
+\[
+  -n+u+v+w=0.
+\]
+Hence
+\[
+  w=n-u-v.
+\]
+
+The power sums become explicit polynomials in \(u,v\):
+\[
+  P_k=n(-1)^k+u^k+v^k+(n-u-v)^k.
+\]
+Since \(d=n+4\), write
+\[
+  D_j=(n+4)(n+3)\cdots(n+5-j).
+\]
+
+The \(Q_2\)-condition must be covered by one of the two nonzero interior roots.
+Thus for some
+\[
+  a\in\{u,v\},
+\]
+we have
+\[
+  D_2a^2=P_2.
+\]
+
+The \(Q_3\)-condition has the finite alternatives
+\[
+  P_3=0
+\]
+if it is covered by the centroid, or
+\[
+  t^3-3a^2t-\frac{2P_3}{D_3}=0
+\]
+for some
+\[
+  t\in\{u,v\}.
+\]
+
+The \(Q_4\)-condition similarly has the finite alternatives
+\[
+  P_4=\frac{P_2^2}{2}
+\]
+if it is covered by the centroid, or
+\[
+  s^4-6a^2s^2-\frac{8P_3}{D_3}s
+  +\frac{3P_2^2-6P_4}{D_4}=0
+\]
+for some
+\[
+  s\in\{u,v\}.
+\]
+
+Therefore the massive-endpoint branch is reduced to finitely many explicit
+systems in the two real variables \(u,v\), indexed by the choices
+\[
+  a\in\{u,v\},
+  \qquad
+  t\in\{0,u,v\},
+  \qquad
+  s\in\{0,u,v\}.
+\]
+
+The order restrictions are also explicit:
+\[
+  -1<u,v<n-u-v,
+\]
+with \(0\) lying strictly between the two endpoints. Any solution of one of
+these finite systems satisfying the order restrictions gives the full
+top-order cover for the massive-endpoint branch; conversely, every
+massive-endpoint real five-root Casas-Alvero candidate appears in this normal
+form.
+
+This is a concrete elimination target: for each integer \(n=d-4\ge2\), rule
+out finitely many two-variable systems. The original infinitely many
+derivative conditions no longer appear in this branch.
