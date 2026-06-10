@@ -585,3 +585,74 @@ This gives a new finite obstruction:
 
 The remaining real five-root task is therefore a constrained covering problem
 with three interior roots and forced local gaps.
+
+## 13. Separation-ratio exclusion
+
+The gap obstruction can be stated as a clean geometric exclusion.
+
+Let \(f\) be real-rooted and centered at the centroid root \(0\). Define
+\[
+  R=\max_\nu|\alpha_\nu|,
+  \qquad
+  \delta=\min\{|\alpha_\nu|:\alpha_\nu\ne0\}.
+\]
+
+If \(f\) is a nontrivial Casas-Alvero polynomial, then
+\[
+  \delta\le \frac{R}{\sqrt{d-1}}.
+\]
+
+Equivalently,
+\[
+  d\le 1+\left(\frac{R}{\delta}\right)^2.
+\]
+
+Therefore:
+
+Proposition. A centered real-rooted polynomial of degree
+\[
+  d>1+\left(\frac{R}{\delta}\right)^2
+\]
+cannot be Casas-Alvero.
+
+This is a scale-invariant obstruction: it depends only on the ratio between
+the outer radius and the closest nonzero root to the centroid.
+
+### Arithmetic-progression corollary
+
+Suppose the distinct roots are contained in a centered arithmetic progression
+\[
+  -Mh,\ldots,-h,0,h,\ldots,Mh,
+\]
+and include at least one endpoint \(\pm Mh\). Then
+\[
+  R=Mh,\qquad \delta=h,
+\]
+so every real-rooted Casas-Alvero candidate of this type must satisfy
+\[
+  d\le M^2+1.
+\]
+
+For the first five-root symmetric progression
+\[
+  -2h,\ -h,\ 0,\ h,\ 2h,
+\]
+this gives
+\[
+  d\le5.
+\]
+
+But a nontrivial Casas-Alvero counterexample is known to require at least five
+distinct roots, and degree \(5\) would force all five roots to be simple. A
+simple-root polynomial cannot be Casas-Alvero because \(f\) and \(f'\) have no
+common root. Hence:
+
+Corollary. No real-rooted Casas-Alvero counterexample has distinct roots
+\[
+  -2h,\ -h,\ 0,\ h,\ 2h
+\]
+for any \(h\ne0\), regardless of multiplicities.
+
+More generally, the separation-ratio exclusion eliminates every centered
+real-rooted configuration whose nearest nonzero root is too far from the
+centroid relative to the outer radius.

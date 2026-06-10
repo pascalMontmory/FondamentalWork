@@ -134,3 +134,33 @@ Conclusion: no real root can simultaneously cover its first two recycled
 derivative orders \(m_i+1\) and \(m_i+2\). In the five-root real frontier, the
 three interior roots must therefore cover the remaining derivative orders with
 forced local gaps.
+
+### Separation-ratio exclusion
+
+Converted the real-root gap obstruction into a scale-invariant exclusion.
+For a centered real-rooted candidate, let
+\[
+  R=\max|\alpha_\nu|,
+  \qquad
+  \delta=\min\{|\alpha_\nu|:\alpha_\nu\ne0\}.
+\]
+Any nontrivial Casas-Alvero polynomial must satisfy
+\[
+  \delta\le \frac{R}{\sqrt{d-1}},
+\]
+or equivalently
+\[
+  d\le 1+\left(\frac{R}{\delta}\right)^2.
+\]
+
+This immediately eliminates centered real-rooted configurations whose roots
+are too well separated from the centroid.
+
+Concrete closed family: no real-rooted Casas-Alvero counterexample can have
+distinct roots
+\[
+  -2h,\ -h,\ 0,\ h,\ 2h
+\]
+for \(h\ne0\), regardless of multiplicities. If the degree is \(>5\), the
+separation-ratio bound excludes it; if the degree is \(5\), all roots are
+simple, so \(f\) and \(f'\) have no common root.
