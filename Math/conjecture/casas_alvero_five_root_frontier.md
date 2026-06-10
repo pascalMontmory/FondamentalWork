@@ -2065,3 +2065,45 @@ only remaining \(Q_3\)-possibility in the massive-endpoint branch is:
   d-3
   \quad\text{is covered by the other nonzero interior root.}
 \]
+
+## 29. Current reduced massive-endpoint branch
+
+The massive-endpoint branch has now reached a single forced \(Q_3\)-pattern.
+
+In the normalization
+\[
+  -1,\quad 0,\quad a,\quad X_-,\quad X_+,
+\]
+where \(-1\) has multiplicity \(n=d-4\), the \(Q_2\)-root is \(a\), and
+\[
+  X_\pm=\frac{S\pm\sqrt{\Delta_a}}2,
+\]
+the right endpoint is \(X_+\) and the remaining interior root is \(X_-\).
+
+The closed gates prove:
+
+1. \(d-3\) cannot be covered by \(a\);
+2. \(d-3\) cannot be covered by \(0\);
+3. endpoints cannot cover \(d-3\).
+
+Therefore the only possible cover is
+\[
+  Q_3(X_-)=0.
+\]
+Equivalently, with
+\[
+  H_3(X)=D_3(X^3-3a^2X)-2M_3(a),
+\]
+the remaining massive-endpoint branch is exactly the oriented algebraic system
+\[
+  H_3(X_-)=0,
+  \qquad
+  \Delta_a\ge0,
+  \qquad
+  \alpha_n<a<\beta_n,
+\]
+together with the \(Q_4\)-cover condition.
+
+This is the next target. The whole massive-endpoint branch has been reduced
+from a cover of all derivative orders to one oriented quadratic-cubic
+incidence plus the final \(Q_4\)-incidence.

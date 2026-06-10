@@ -674,3 +674,24 @@ no root of the exceptional cubic can satisfy \(Q_4\).
 Conclusion: the \(n=2\) centroid exception is impossible. In the massive
 endpoint branch, \(d-3\) cannot be covered by the centroid; after \(Q_2\), it
 must be covered by the other nonzero interior root.
+
+### Reduced massive-endpoint branch
+
+Recorded the current endpoint-massive normal form after the \(Q_3\) closures.
+In the notation
+\[
+  -1,\quad 0,\quad a,\quad X_-,\quad X_+,
+\]
+where \(X_+\) is the right endpoint, the previous sections prove that
+\[
+  d-3
+\]
+cannot be covered by \(a\), by \(0\), or by an endpoint. Hence it must be
+covered by the other interior root:
+\[
+  Q_3(X_-)=0.
+\]
+
+So the massive-endpoint branch is now reduced to one oriented
+quadratic-cubic incidence \(H_3(X_-)=0\), plus the remaining \(Q_4\)-cover
+condition.
