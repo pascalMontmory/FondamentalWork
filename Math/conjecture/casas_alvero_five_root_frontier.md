@@ -1771,3 +1771,99 @@ So each massive-endpoint cubic gate must be tested only on the finite interval
 \]
 with the two noncollision exclusions above. This is the correct domain for a
 Sturm or sign argument.
+
+## 26. Elimination of the same-root \(Q_3\) gate
+
+One of the massive-endpoint cubic gates can already be closed.
+
+Consider the branch where the same root \(a\) covers both
+\[
+  d-2
+  \quad\text{and}\quad
+  d-3.
+\]
+This is the gate
+\[
+  C_a(n,a)=0.
+\]
+The cubic discriminant is
+\[
+  \operatorname{disc}_a C_a
+  =
+  -108n^2(n+1)(n+2)(n+3)^2
+  \left(3n^4+31n^3+102n^2+108n+18\right).
+\]
+Hence, for every \(n\ge2\), the polynomial \(C_a(n,\cdot)\) has exactly one
+real root.
+
+Now compare this root with the reality interval for \(F_a\). Let
+\[
+  \Delta_a=(2n^2+14n+21)a^2+2na-n(n+2).
+\]
+The roots reconstructed from \(F_a\) are real only when
+\[
+  \Delta_a\ge0.
+\]
+
+Reduce \(C_a\) modulo \(\Delta_a\). One obtains
+\[
+  C_a(n,a)\equiv
+  \frac{n(n+3)}{(2n^2+14n+21)^2}(K_na+M_n)
+  \pmod{\Delta_a},
+\]
+where
+\[
+  K_n=
+  4n^5+54n^4+288n^3+783n^2+1130n+693
+  >0,
+\]
+and
+\[
+  M_n=
+  2n^5+18n^4+37n^3-78n^2-339n-294.
+\]
+Put
+\[
+  a_n^*=-\frac{M_n}{K_n}.
+\]
+A direct calculation gives
+\[
+  \Delta_{a_n^*}
+  =
+  -\frac{
+    2(n+2)(2n^2+14n+21)^2
+    \left(n^7+19n^6+149n^5+597n^4+1183n^3+725n^2-859n-1029\right)
+  }{K_n^2}.
+\]
+The final polynomial in parentheses is positive for every \(n\ge2\): its
+possibly negative tail satisfies
+\[
+  725n^2-859n-1029>0
+  \qquad(n\ge2),
+\]
+and all higher terms are positive. Hence
+\[
+  \Delta_{a_n^*}<0.
+\]
+
+Therefore \(a_n^*\) lies strictly between the two real roots of \(\Delta_a\).
+Since the remainder \(K_na+M_n\) has positive leading coefficient, \(C_a\)
+has opposite signs at the two roots of \(\Delta_a\). The unique real root of
+\[
+  C_a(n,a)=0
+\]
+must consequently lie in the interval where
+\[
+  \Delta_a<0.
+\]
+
+Proposition. In the massive-endpoint branch, the same nonzero root cannot
+cover both \(d-2\) and \(d-3\). Equivalently, the gate
+\[
+  C_a(n,a)=0
+\]
+has no admissible real solution.
+
+Thus the massive-endpoint branch loses one of its three \(Q_3\)-possibilities:
+after \(Q_2\), derivative order \(d-3\) must be covered either by the centroid
+root or by the other interior nonzero root.

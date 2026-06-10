@@ -582,3 +582,32 @@ the explicit interval \((\alpha_n,\beta_n)\), with the noncollision exclusions
 \[
   F_a(0)\ne0,\qquad F_a(a)\ne0.
 \]
+
+### Same-root \(Q_3\) gate eliminated
+
+Closed one massive-endpoint subbranch. The gate where the same root \(a\)
+covers both \(d-2\) and \(d-3\) is
+\[
+  C_a(n,a)=0.
+\]
+Its cubic discriminant is
+\[
+  -108n^2(n+1)(n+2)(n+3)^2
+  \left(3n^4+31n^3+102n^2+108n+18\right)<0,
+\]
+so it has exactly one real root for every \(n\ge2\).
+
+Reducing \(C_a\) modulo the discriminant quadratic
+\[
+  \Delta_a=(2n^2+14n+21)a^2+2na-n(n+2)
+\]
+gives a linear remainder \(K_na+M_n\). Its zero \(a_n^*=-M_n/K_n\) satisfies
+\[
+  \Delta_{a_n^*}<0.
+\]
+Therefore \(C_a\) has opposite signs at the two roots of \(\Delta_a\), and its
+unique real zero lies inside the forbidden interval \(\Delta_a<0\).
+
+Conclusion: in the massive-endpoint branch, the same nonzero root cannot cover
+both \(d-2\) and \(d-3\). After \(Q_2\), order \(d-3\) must be covered either
+by the centroid or by the other interior nonzero root.
