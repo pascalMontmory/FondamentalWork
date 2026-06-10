@@ -815,3 +815,51 @@ So the next finite split is:
      -15P_2^3+90P_2P_4+40P_3^2-120P_6=0;
    \]
 3. non-endpoint incidence \(Q_6(t)=0\).
+
+### Endpoint \(d-5\) gate reduced to three weight types
+
+Reduced the endpoint multiplicity \(d-5\) branch to explicit weighted
+quadratic systems.
+
+Normalize the endpoint to \(-1\) with multiplicity
+\[
+  n=d-5.
+\]
+The remaining four distinct roots have total multiplicity \(5\), so exactly
+one of them is double. After choosing the nonzero \(Q_2\)-root \(a\), write the
+other two nonzero roots as \(y,z\), with multiplicities
+\[
+  m_0,\quad m_a,\quad m_y,\quad m_z,
+  \qquad
+  m_0+m_a+m_y+m_z=5.
+\]
+The centroid equation and \(Q_2(a)=0\) give
+\[
+  m_y y+m_z z=n-m_a a,
+\]
+\[
+  m_y y^2+m_z z^2=(n+5)(n+4)a^2-n-m_a a^2.
+\]
+Eliminating \(z\) gives the weighted quadratic
+\[
+\begin{aligned}
+  F_m(Y)=&
+  m_y(m_y+m_z)Y^2+2m_y(m_a a-n)Y+n^2-2m_a n a+m_z n\\
+  &+m_a(m_a+m_z)a^2-m_z(n+5)(n+4)a^2.
+\end{aligned}
+\]
+
+Up to exchanging \(y,z\), only three weight types remain:
+\[
+  (2,1,1,1),\qquad(1,2,1,1),\qquad(1,1,2,1),
+\]
+corresponding to the double root being \(0\), \(a\), or another nonzero root.
+
+The script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_reduction.py}
+\]
+reconstructs these three cases and reduces \(Q_3,Q_4,Q_5\) modulo \(F_m\).
+Thus the endpoint \(d-5\) branch is now a finite collection of explicit
+two-variable systems indexed by three weight types and cover choices in
+\(\{0,a,Y,z\}^3\).

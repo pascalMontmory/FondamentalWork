@@ -2328,3 +2328,87 @@ Thus, after the massive-endpoint closure, the next frontier splits into:
 \]
 
 This is the next finite branch point for the real five-root attack.
+
+## 33. Endpoint multiplicity \(d-5\): weighted quadratic reduction
+
+Consider the first endpoint gate left after the massive-endpoint closure.
+After reflection and scaling, let the left endpoint be \(-1\) with
+multiplicity
+\[
+  n=d-5.
+\]
+The four remaining roots have total multiplicity \(5\). Since they are
+distinct and all have positive multiplicity, exactly one of them is double.
+
+Write the roots as
+\[
+  -1,\quad 0,\quad a,\quad y,\quad z,
+\]
+with multiplicities
+\[
+  n,\quad m_0,\quad m_a,\quad m_y,\quad m_z,
+\]
+where
+\[
+  m_0+m_a+m_y+m_z=5.
+\]
+Choose \(a\) to be the nonzero root selected by \(Q_2\). Then
+\[
+  D_2a^2=P_2.
+\]
+The centroid equation and the \(Q_2\)-condition give
+\[
+  m_y y+m_z z=n-m_a a
+\]
+and
+\[
+  m_y y^2+m_z z^2=D_2a^2-n-m_a a^2.
+\]
+Eliminating \(z\) gives a single weighted quadratic in \(Y\):
+\[
+\begin{aligned}
+  F_{m}(Y)=&
+  m_y(m_y+m_z)Y^2
+  +2m_y(m_a a-n)Y+n^2-2m_a n a+m_z n \\
+  &+m_a(m_a+m_z)a^2-m_z(n+5)(n+4)a^2.
+\end{aligned}
+\]
+Then
+\[
+  z=\frac{n-m_a a-m_yY}{m_z}.
+\]
+
+Up to exchanging the two remaining nonzero roots, there are only three weight
+types:
+\[
+  (m_0,m_a,m_y,m_z)
+  =
+  (2,1,1,1),\quad(1,2,1,1),\quad(1,1,2,1).
+\]
+They correspond respectively to the double root being the centroid, the
+\(Q_2\)-root, or one of the two remaining nonzero roots.
+
+For each of these three types, define
+\[
+  M_k=n(-1)^k+m_a a^k+m_yY^k+m_z z^k.
+\]
+The live endpoint-\(d-5\) branch is now finite: \(Q_3,Q_4,Q_5\) must each be
+covered by one of
+\[
+  0,\quad a,\quad Y,\quad z.
+\]
+Equivalently, for each weight type and each cover choice in
+\[
+  \{0,a,Y,z\}^3,
+\]
+one obtains an explicit two-variable algebraic system in \(a,Y\), together
+with the real ordering constraints.
+
+The reconstruction script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_reduction.py}.
+\]
+It verifies the three weight types and reduces the \(Q_3,Q_4,Q_5\) equations
+modulo the weighted quadratic \(F_m\). Thus the endpoint \(d-5\) gate has been
+reduced from an arbitrary five-root multiplicity problem to three finite
+families of explicit polynomial systems.
