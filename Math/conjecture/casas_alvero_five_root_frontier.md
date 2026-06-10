@@ -895,3 +895,109 @@ the other nonzero interior root.
 This sharpens the top-order branching: either the cover repeats the same
 absolute root and forces a \(1/d\)-scale near-collision with the centroid, or
 the cover must use two genuinely different nonzero interior roots.
+
+## 17. Four-top-order branching
+
+The next step is to make the quartic incidence from Section 9 part of the
+finite top-order cover.
+
+In the real five-root frontier
+\[
+  r_1<r_2<r_3<r_4<r_5,
+\]
+the endpoint multiplicities satisfy
+\[
+  m_1,m_5\le d-4,
+\]
+because the other four distinct roots have multiplicity at least \(1\). Since
+endpoint roots have no recycled zeros, neither endpoint can cover any of the
+four derivative orders
+\[
+  d-1,\quad d-2,\quad d-3,\quad d-4.
+\]
+Thus all four top orders must be covered by the three interior roots.
+
+The order \(d-4\) is governed by
+\[
+  Q_4(x)
+  =
+  x^4-\frac{6P_2}{d(d-1)}x^2
+  -\frac{8P_3}{d(d-1)(d-2)}x
+  +
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}.
+\]
+At the centroid root,
+\[
+  Q_4(0)=
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}.
+\]
+Therefore \(d-4\) can be covered by the centroid if and only if
+\[
+  P_4=\frac{P_2^2}{2}.
+\]
+If this identity fails, then \(d-4\) must be covered by a nonzero interior root
+\[
+  c\in\{r_2,r_3,r_4\}\setminus\{0\}
+\]
+satisfying the exact quartic equation \(Q_4(c)=0\).
+
+This gives the four-top-order branch:
+
+* \(d-1\mapsto0\);
+* \(d-2\mapsto a\ne0\), with
+  \[
+    a^2=\frac{P_2}{d(d-1)};
+  \]
+* \(d-3\mapsto0\) if \(P_3=0\), otherwise \(d-3\mapsto b\ne0\) with
+  \[
+    b^3-3a^2b=\frac{2P_3}{d(d-1)(d-2)};
+  \]
+* \(d-4\mapsto0\) if \(P_4=P_2^2/2\), otherwise \(d-4\mapsto c\ne0\) with
+  \[
+    Q_4(c)=0.
+  \]
+
+There is an immediate compression in the centroid branch. Suppose
+\[
+  P_4=\frac{P_2^2}{2}.
+\]
+For real roots bounded by \(R\),
+\[
+  P_4=\sum_{\nu=1}^d\alpha_\nu^4
+  \le
+  R^2\sum_{\nu=1}^d\alpha_\nu^2
+  =
+  R^2P_2.
+\]
+Since the candidate is nontrivial and real-rooted, \(P_2>0\). Hence
+\[
+  \frac{P_2}{2}\le R^2.
+\]
+Using \(P_2=d(d-1)a^2\), we obtain
+\[
+  |a|\le\frac{\sqrt2\,R}{\sqrt{d(d-1)}}.
+\]
+
+Proposition. In the real five-root frontier, if the centroid root covers both
+\[
+  d-1
+  \quad\text{and}\quad
+  d-4,
+\]
+then the nonzero root forced by \(d-2\) lies at distance at most
+\[
+  \frac{\sqrt2\,R}{\sqrt{d(d-1)}}
+\]
+from the centroid.
+
+This is a stronger \(1/d\)-scale localization than the universal
+\(R/\sqrt{d-1}\) bound. Consequently the top four orders leave only two
+possibilities:
+
+1. the cover returns to the centroid at \(d-4\), forcing the near-collision
+   \(|a|=O(R/d)\);
+2. the order \(d-4\) must be absorbed by one of the two nonzero interior roots,
+   subject to the exact quartic equation \(Q_4(c)=0\).
+
+Either way, the four highest derivatives already force repeated use of the
+three interior roots and exclude the endpoints completely.

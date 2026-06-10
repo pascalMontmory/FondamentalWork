@@ -222,3 +222,41 @@ This improves the earlier \(R/\sqrt{d-1}\) localization to \(R/(d-2)\) in the
 repeated-root branch. Therefore either the top-order cover creates a very
 tight \(1/d\)-scale near-collision with the centroid, or it must use two
 different nonzero interior roots.
+
+### Four-top-order branching
+
+Extended the finite top-order cover to \(d-4\). In the real five-root frontier,
+the endpoint multiplicities are at most \(d-4\), and endpoints have no
+recycled zeros. Hence endpoints cannot cover any of
+\[
+  d-1,\quad d-2,\quad d-3,\quad d-4.
+\]
+All four top orders must therefore be covered by the three interior roots.
+
+The quartic top derivative gives
+\[
+  Q_4(0)=
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}.
+\]
+Thus \(d-4\) is covered by the centroid root if and only if
+\[
+  P_4=\frac{P_2^2}{2}.
+\]
+Otherwise \(d-4\) must be covered by a nonzero interior root \(c\) satisfying
+\[
+  Q_4(c)=0.
+\]
+
+In the centroid branch, the identity \(P_4=P_2^2/2\) gives a sharper
+localization. Since \(P_4\le R^2P_2\) for real roots bounded by \(R\), and
+\[
+  P_2=d(d-1)a^2
+\]
+for the root \(a\) selected by \(Q_2\), one obtains
+\[
+  |a|\le\frac{\sqrt2\,R}{\sqrt{d(d-1)}}.
+\]
+
+This is a new \(1/d\)-scale compression: if the top-order cover returns to the
+centroid at \(d-4\), then the nonzero root forced by \(d-2\) must nearly collide
+with the centroid.
