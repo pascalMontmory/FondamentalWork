@@ -1582,3 +1582,100 @@ The remaining \(Q_3\)-branch, where one of the two roots of \(F_a\) covers
 \(d-3\), is the resultant branch already described in Section 22. Thus the
 massive endpoint case now begins with two explicit cubics plus one explicit
 quadratic-cubic resultant.
+
+## 24. Interior selector for the resultant branches
+
+The resultant branches need one further refinement. The two roots of
+\[
+  F_a(X)=X^2-SX+p
+\]
+are not symmetric for the covering problem: one is the remaining interior root
+and the other is the right endpoint. The endpoint is not allowed to cover
+\[
+  d-3
+  \quad\text{or}\quad
+  d-4.
+\]
+
+Write
+\[
+  \Delta_a=S^2-4p,
+  \qquad
+  X_-=\frac{S-\sqrt{\Delta_a}}2,
+  \qquad
+  X_+=\frac{S+\sqrt{\Delta_a}}2.
+\]
+The admissible root is \(X_-\), while \(X_+\) is the right endpoint.
+
+Let \(H(X)\) be any polynomial condition to be tested on a root of \(F_a\).
+Reduce \(H\) modulo \(F_a\):
+\[
+  H(X)\equiv A_HX+B_H\pmod{F_a}.
+\]
+Then
+\[
+  H(X_-)=0
+\]
+if and only if
+\[
+  A_HS+2B_H=A_H\sqrt{\Delta_a}.
+\]
+Equivalently, this is the pair of algebraic conditions
+\[
+  (A_HS+2B_H)^2=A_H^2\Delta_a
+\]
+and
+\[
+  A_H(A_HS+2B_H)\ge0.
+\]
+The same squared equation with the opposite sign selects the endpoint root
+\[
+  X_+.
+\]
+
+This removes the endpoint contamination from the resultants. The condition
+\[
+  \operatorname{Res}(F_a,H)=0
+\]
+is now replaced by the sharper interior-root test
+\[
+  (A_HS+2B_H)^2=A_H^2\Delta_a,
+  \qquad
+  A_H(A_HS+2B_H)\ge0.
+\]
+
+For the \(Q_3\)-resultant branch, take
+\[
+  H_3(X)=D_3(X^3-3a^2X)-2M_3(a).
+\]
+Modulo \(F_a\),
+\[
+  H_3(X)\equiv A_3X+B_3.
+\]
+The coefficient of \(X\) is
+\[
+  A_3=
+  \frac{(n+2)(n+3)(n+4)}2
+  \left((n+1)(n+6)a^2-2na+n(n-1)\right).
+\]
+For every \(n\ge2\), the quadratic factor in parentheses is strictly
+positive. Indeed its minimum is
+\[
+  n(n-1)-\frac{n^2}{(n+1)(n+6)}>0.
+\]
+Thus
+\[
+  A_3>0.
+\]
+
+Consequently the admissible \(Q_3\)-resultant branch is selected by
+\[
+  (A_3S+2B_3)^2=A_3^2\Delta_a,
+  \qquad
+  A_3S+2B_3\ge0.
+\]
+The endpoint branch has the same squared equation but the reverse inequality.
+
+This is useful because the sign condition is not numerical; it is a formal
+orientation of the two quadratic roots. It identifies which resultant zeros
+are geometrically admissible in the massive-endpoint branch.

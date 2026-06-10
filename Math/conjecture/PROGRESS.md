@@ -495,3 +495,51 @@ If the same root \(a\) covers both \(d-2\) and \(d-3\), then \(a\) must solve
 Thus two massive-endpoint branches now start with explicit cubic gates in the
 single variable \(a\), subject only to the real discriminant and ordering
 conditions from the previous section.
+
+### Interior selector for resultant branches
+
+Refined the resultant branches in the massive-endpoint case. The two roots of
+\[
+  F_a(X)=X^2-SX+p
+\]
+are
+\[
+  X_-=\frac{S-\sqrt{\Delta_a}}2,\qquad
+  X_+=\frac{S+\sqrt{\Delta_a}}2.
+\]
+Only \(X_-\) is admissible as a covering root; \(X_+\) is the right endpoint.
+
+For any polynomial condition \(H(X)\), reduce modulo \(F_a\):
+\[
+  H(X)\equiv A_HX+B_H\pmod{F_a}.
+\]
+Then the admissible interior-root condition is
+\[
+  (A_HS+2B_H)^2=A_H^2\Delta_a,
+  \qquad
+  A_H(A_HS+2B_H)\ge0.
+\]
+The reverse inequality selects the endpoint root and must be rejected.
+
+For the \(Q_3\)-resultant branch,
+\[
+  H_3(X)=D_3(X^3-3a^2X)-2M_3(a),
+\]
+and
+\[
+  H_3(X)\equiv A_3X+B_3\pmod{F_a},
+\]
+with
+\[
+  A_3=
+  \frac{(n+2)(n+3)(n+4)}2
+  \left((n+1)(n+6)a^2-2na+n(n-1)\right)>0
+\]
+for every \(n\ge2\). Therefore the admissible \(Q_3\)-resultant branch is
+selected by
+\[
+  (A_3S+2B_3)^2=A_3^2\Delta_a,
+  \qquad
+  A_3S+2B_3\ge0.
+\]
+This removes endpoint contamination from the one-parameter elimination.
