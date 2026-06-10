@@ -2107,3 +2107,92 @@ together with the \(Q_4\)-cover condition.
 This is the next target. The whole massive-endpoint branch has been reduced
 from a cover of all derivative orders to one oriented quadratic-cubic
 incidence plus the final \(Q_4\)-incidence.
+
+## 30. Two \(Q_4\)-covers are eliminated by exact resultants
+
+In the reduced massive-endpoint branch, the \(Q_3\)-condition is already
+forced to
+\[
+  H_3(X_-)=0.
+\]
+The remaining \(Q_4\)-condition has three possible covers:
+\[
+  0,\qquad a,\qquad X_-.
+\]
+The first two can be eliminated by exact resultants.
+
+Let
+\[
+  E_3(n,a)=\operatorname{Res}_X(F_a(X),H_3(X)).
+\]
+This is the unoriented resultant attached to the forced \(Q_3\)-incidence.
+Any solution of the oriented branch must in particular satisfy
+\[
+  E_3(n,a)=0.
+\]
+
+If \(Q_4\) is covered by the centroid, then
+\[
+  G_0(n,a)=2M_4(a)-M_2(a)^2=0.
+\]
+Thus a solution would force
+\[
+  \operatorname{Res}_a(E_3,G_0)=0.
+\]
+A direct symbolic calculation gives
+\[
+  \operatorname{Res}_a(E_3,G_0)
+  =
+  n^6(n+1)^4(n+2)^4(n+3)^6(n+5)\,P_{39}(n),
+\]
+where \(P_{39}\in\mathbb Z[n]\) has degree \(39\). For integer \(n\ge2\), the
+prefactor is nonzero. The remaining factor has no root modulo \(17\):
+\[
+  P_{39}(r)\not\equiv0\pmod{17}
+  \qquad(r=0,1,\ldots,16).
+\]
+Hence \(P_{39}(n)\ne0\) for every integer \(n\), and the centroid \(Q_4\)-cover
+is impossible in the reduced massive-endpoint branch.
+
+If \(Q_4\) is covered by the same root \(a\), then
+\[
+  G_a(n,a)=D_4Q_4(a)=0.
+\]
+Again any solution would force
+\[
+  \operatorname{Res}_a(E_3,G_a)=0.
+\]
+The exact resultant has the form
+\[
+  \operatorname{Res}_a(E_3,G_a)
+  =
+  4096n^6(n+1)^4(n+2)^6(n+3)^8\,P_{48}(n),
+\]
+where \(P_{48}\in\mathbb Z[n]\) has degree \(48\). The prefactor is nonzero
+for \(n\ge2\), and the remaining factor has no root modulo \(11\):
+\[
+  P_{48}(r)\not\equiv0\pmod{11}
+  \qquad(r=0,1,\ldots,10).
+\]
+Therefore \(P_{48}(n)\ne0\) for every integer \(n\), and the same-root
+\(Q_4\)-cover is impossible.
+
+These modular checks are finite exact arithmetic, not numerical sampling. The
+verification script is
+\[
+  \texttt{Math/conjecture/tools/massive\_endpoint\_q4\_certificates.py}.
+\]
+
+Proposition. In the reduced massive-endpoint branch, \(d-4\) cannot be covered
+by the centroid root \(0\) or by the \(Q_2\)-root \(a\).
+
+Thus the massive-endpoint branch is forced into the single pattern
+\[
+  d-2\mapsto a,
+  \qquad
+  d-3\mapsto X_-,
+  \qquad
+  d-4\mapsto X_-.
+\]
+The only remaining \(Q_4\)-possibility is that the same interior root \(X_-\)
+covers both \(d-3\) and \(d-4\).

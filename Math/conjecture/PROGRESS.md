@@ -695,3 +695,40 @@ covered by the other interior root:
 So the massive-endpoint branch is now reduced to one oriented
 quadratic-cubic incidence \(H_3(X_-)=0\), plus the remaining \(Q_4\)-cover
 condition.
+
+### Two \(Q_4\)-covers eliminated by exact resultants
+
+Closed two of the three remaining \(Q_4\)-possibilities in the reduced
+massive-endpoint branch.
+
+Let
+\[
+  E_3(n,a)=\operatorname{Res}_X(F_a,H_3).
+\]
+If \(Q_4\) is covered by the centroid, then a solution must satisfy
+\[
+  \operatorname{Res}_a(E_3,2M_4-M_2^2)=0.
+\]
+The exact resultant factors as
+\[
+  n^6(n+1)^4(n+2)^4(n+3)^6(n+5)P_{39}(n),
+\]
+where \(P_{39}\) has no root modulo \(17\). Thus this branch has no integer
+\(n\ge2\).
+
+If \(Q_4\) is covered by the \(Q_2\)-root \(a\), then the exact resultant
+factors as
+\[
+  4096n^6(n+1)^4(n+2)^6(n+3)^8P_{48}(n),
+\]
+where \(P_{48}\) has no root modulo \(11\). This branch also has no integer
+\(n\ge2\).
+
+The exact verification script is
+\[
+  \texttt{Math/conjecture/tools/massive\_endpoint\_q4\_certificates.py}.
+\]
+
+Conclusion: in the massive-endpoint branch, \(d-4\) cannot be covered by
+\(0\) or by \(a\). It must be covered by the same interior root \(X_-\) that
+already covers \(d-3\).
