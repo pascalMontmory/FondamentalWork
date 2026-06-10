@@ -543,3 +543,42 @@ selected by
   A_3S+2B_3\ge0.
 \]
 This removes endpoint contamination from the one-parameter elimination.
+
+### Admissibility strip for the \(Q_2\)-root
+
+Derived a simple interval for the \(Q_2\)-root \(a\) in the massive-endpoint
+branch. Since both reconstructed roots of \(F_a\) must lie to the right of the
+massive endpoint \(-1\), one needs
+\[
+  F_a(-1)>0.
+\]
+This gives
+\[
+  (n+5)(n+2)a^2+2(n+1)a-(n+1)(n+2)<0.
+\]
+Therefore
+\[
+  \alpha_n<a<\beta_n,
+\]
+where
+\[
+  \alpha_n=
+  \frac{-n-1-\sqrt{n^4+10n^3+34n^2+46n+21}}
+       {n^2+7n+10},
+\]
+\[
+  \beta_n=
+  \frac{-n-1+\sqrt{n^4+10n^3+34n^2+46n+21}}
+       {n^2+7n+10}.
+\]
+The quadratic has positive values at \(-1\) and \(1\), and a negative value at
+\(0\), so
+\[
+  -1<\alpha_n<0<\beta_n<1.
+\]
+
+Thus every cubic gate in the massive-endpoint branch only has to be tested on
+the explicit interval \((\alpha_n,\beta_n)\), with the noncollision exclusions
+\[
+  F_a(0)\ne0,\qquad F_a(a)\ne0.
+\]

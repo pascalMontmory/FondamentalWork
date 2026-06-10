@@ -1679,3 +1679,95 @@ The endpoint branch has the same squared equation but the reverse inequality.
 This is useful because the sign condition is not numerical; it is a formal
 orientation of the two quadratic roots. It identifies which resultant zeros
 are geometrically admissible in the massive-endpoint branch.
+
+## 25. Admissibility strip for the \(Q_2\)-root
+
+The one-parameter reduction also gives a simple interval for the root \(a\).
+The two reconstructed roots \(X_-,X_+\) of \(F_a\) must both lie strictly to
+the right of the massive endpoint \(-1\). Equivalently,
+\[
+  X_-+1>0,
+  \qquad
+  X_++1>0.
+\]
+In terms of \(F_a\), this implies
+\[
+  F_a(-1)>0.
+\]
+Since
+\[
+  F_a(-1)
+  =
+  \frac{(n+1)(n+2)-2(n+1)a-(n+5)(n+2)a^2}{2},
+\]
+every admissible \(a\) must satisfy
+\[
+  (n+5)(n+2)a^2+2(n+1)a-(n+1)(n+2)<0.
+\]
+
+Thus
+\[
+  \alpha_n<a<\beta_n,
+\]
+where
+\[
+  \alpha_n=
+  \frac{-n-1-\sqrt{n^4+10n^3+34n^2+46n+21}}
+       {n^2+7n+10},
+\]
+and
+\[
+  \beta_n=
+  \frac{-n-1+\sqrt{n^4+10n^3+34n^2+46n+21}}
+       {n^2+7n+10}.
+\]
+
+Moreover,
+\[
+  -1<\alpha_n<0<\beta_n<1.
+\]
+Indeed the quadratic
+\[
+  L_n(a)=(n+5)(n+2)a^2+2(n+1)a-(n+1)(n+2)
+\]
+satisfies
+\[
+  L_n(-1)=2n+6>0,
+  \qquad
+  L_n(0)=-(n+1)(n+2)<0,
+\]
+and
+\[
+  L_n(1)=6n+10>0.
+\]
+
+Proposition. In the massive-endpoint branch, the \(Q_2\)-root \(a\) must lie
+in the explicit strip
+\[
+  \alpha_n<a<\beta_n\subset(-1,1).
+\]
+
+There are also two noncollision filters:
+\[
+  F_a(0)=p\ne0,
+  \qquad
+  F_a(a)\ne0.
+\]
+The first excludes a second copy of the centroid root, and the second excludes
+a repeated nonzero root. Explicitly,
+\[
+  p=
+  \frac{n^2+n-2na-(n+5)(n+2)a^2}{2},
+\]
+and
+\[
+  F_a(a)=
+  \frac{n^2+n-4na-(n+1)(n+6)a^2}{2}.
+\]
+
+So each massive-endpoint cubic gate must be tested only on the finite interval
+\[
+  \alpha_n<a<\beta_n,
+\]
+with the two noncollision exclusions above. This is the correct domain for a
+Sturm or sign argument.
