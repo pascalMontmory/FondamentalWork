@@ -2265,3 +2265,66 @@ Casas-Alvero counterexample.
 Equivalently, in the real five-root frontier, the degenerate branch where an
 endpoint has multiplicity \(d-4\) is closed. Any remaining real five-root
 counterexample must lie in the non-massive branch.
+
+## 32. Post-massive frontier and the sixth top derivative
+
+The closure of the massive-endpoint branch upgrades the fifth top derivative
+from a conditional obstruction to a universal constraint in the real five-root
+frontier.
+
+Indeed, an endpoint root can cover \(d-5\) only if it has multiplicity
+\(d-4\). Since this case is now impossible, derivative order \(d-5\) must be
+covered either by the centroid identity
+\[
+  5P_2P_3=6P_5
+\]
+or by a non-endpoint root \(z\) satisfying
+\[
+  Q_5(z)=0.
+\]
+
+The next point where endpoints can re-enter is derivative order \(d-6\). An
+endpoint of multiplicity \(m\) can cover \(d-6\) automatically only when
+\[
+  d-6<m,
+\]
+that is,
+\[
+  m\ge d-5.
+\]
+Since the \(m=d-4\) endpoint case is already closed, the only remaining
+endpoint gate at this level is
+\[
+  m_{\rm endpoint}=d-5.
+\]
+
+The sixth normalized top derivative is explicit. Newton's identities with
+\(P_1=0\) give
+\[
+  e_6
+  =
+  -\frac{3P_2^3-18P_2P_4-8P_3^2+24P_6}{144}.
+\]
+Therefore
+\[
+\begin{aligned}
+  Q_6(x)=&
+  x^6
+  -\frac{15P_2}{D_2}x^4
+  -\frac{40P_3}{D_3}x^3
+  +\frac{45P_2^2-90P_4}{D_4}x^2 \\
+  &+\frac{120P_2P_3-144P_5}{D_5}x
+  +\frac{-15P_2^3+90P_2P_4+40P_3^2-120P_6}{D_6}.
+\end{aligned}
+\]
+
+Thus, after the massive-endpoint closure, the next frontier splits into:
+
+1. an endpoint gate with one endpoint of multiplicity exactly \(d-5\);
+2. a purely non-endpoint sixth-order incidence \(Q_6(t)=0\);
+3. the centroid sixth-order identity
+\[
+  -15P_2^3+90P_2P_4+40P_3^2-120P_6=0.
+\]
+
+This is the next finite branch point for the real five-root attack.

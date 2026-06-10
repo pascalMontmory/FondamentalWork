@@ -773,3 +773,45 @@ where \(P_{13}\) has no root modulo \(13\) and \(P_{46}\) has no root modulo
 Conclusion: the massive-endpoint branch is impossible. In the real five-root
 frontier, any remaining counterexample must be non-massive, i.e. no endpoint
 has multiplicity \(d-4\).
+
+### Post-massive frontier
+
+Recorded the immediate next branch point after closing the massive-endpoint
+case.
+
+Since endpoints can cover \(d-5\) only with multiplicity \(d-4\), and that
+case is now impossible, derivative order \(d-5\) is universally forced to the
+centroid condition
+\[
+  5P_2P_3=6P_5
+\]
+or to a non-endpoint root \(z\) with
+\[
+  Q_5(z)=0.
+\]
+
+The next endpoint gate is derivative order \(d-6\). An endpoint can cover it
+automatically only if its multiplicity is at least \(d-5\); since \(d-4\) is
+closed, the only remaining endpoint gate here is \(m_{\rm endpoint}=d-5\).
+
+The exact sixth top derivative is
+\[
+\begin{aligned}
+  Q_6(x)=&
+  x^6
+  -\frac{15P_2}{D_2}x^4
+  -\frac{40P_3}{D_3}x^3
+  +\frac{45P_2^2-90P_4}{D_4}x^2 \\
+  &+\frac{120P_2P_3-144P_5}{D_5}x
+  +\frac{-15P_2^3+90P_2P_4+40P_3^2-120P_6}{D_6}.
+\end{aligned}
+\]
+
+So the next finite split is:
+
+1. endpoint multiplicity \(d-5\);
+2. centroid identity
+   \[
+     -15P_2^3+90P_2P_4+40P_3^2-120P_6=0;
+   \]
+3. non-endpoint incidence \(Q_6(t)=0\).
