@@ -1519,3 +1519,66 @@ equations satisfying
 \]
 and the ordering requirement that exactly one of the two roots of \(F_a\) is
 the right endpoint.
+
+## 23. The first cubic gates in the massive branch
+
+The one-parameter collapse makes the first two \(Q_3\)-branches completely
+explicit.
+
+Let
+\[
+  C_0(n,a)=2M_3(a).
+\]
+Then the branch where the centroid covers \(d-3\) is exactly
+\[
+  C_0(n,a)=0,
+\]
+where
+\[
+  \begin{aligned}
+  C_0(n,a)=&
+  -3a^3n^2-21a^3n-30a^3
+  +3a^2n^3+21a^2n^2+30a^2n  \\
+  &+3an^2+3an
+  -n^3-3n^2-2n .
+  \end{aligned}
+\]
+
+Similarly, let
+\[
+  C_a(n,a)=2\left(M_3(a)+D_3a^3\right).
+\]
+Then the branch where the same root \(a\) covers both \(d-2\) and \(d-3\) is
+exactly
+\[
+  C_a(n,a)=0,
+\]
+where
+\[
+  \begin{aligned}
+  C_a(n,a)=&
+  2a^3n^3+15a^3n^2+31a^3n+18a^3
+  +3a^2n^3+21a^2n^2+30a^2n \\
+  &+3an^2+3an
+  -n^3-3n^2-2n .
+  \end{aligned}
+\]
+
+These are genuine cubic gates: for each fixed \(n\ge2\), the two simplest
+massive-endpoint branches can have only the finitely many \(a\)-values solving
+\[
+  C_0(n,a)=0
+  \qquad\text{or}\qquad
+  C_a(n,a)=0,
+\]
+subject to the discriminant and ordering restrictions
+\[
+  \Delta_a\ge0,
+  \qquad
+  -1<a.
+\]
+
+The remaining \(Q_3\)-branch, where one of the two roots of \(F_a\) covers
+\(d-3\), is the resultant branch already described in Section 22. Thus the
+massive endpoint case now begins with two explicit cubics plus one explicit
+quadratic-cubic resultant.

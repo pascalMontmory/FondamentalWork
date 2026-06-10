@@ -468,3 +468,30 @@ branch reduce to univariate equations in \(a\): direct equations if the cover
 uses \(0\) or \(a\), and resultants with \(F_a\) if the cover uses one of the
 two remaining roots. This removes the two-variable system from the massive
 branch.
+
+### First cubic gates in the massive branch
+
+Expanded the two simplest \(Q_3\)-branches after the one-parameter reduction.
+If the centroid covers \(d-3\), then \(a\) must solve the cubic
+\[
+  \begin{aligned}
+  C_0(n,a)=&
+  -3a^3n^2-21a^3n-30a^3
+  +3a^2n^3+21a^2n^2+30a^2n  \\
+  &+3an^2+3an
+  -n^3-3n^2-2n=0.
+  \end{aligned}
+\]
+If the same root \(a\) covers both \(d-2\) and \(d-3\), then \(a\) must solve
+\[
+  \begin{aligned}
+  C_a(n,a)=&
+  2a^3n^3+15a^3n^2+31a^3n+18a^3
+  +3a^2n^3+21a^2n^2+30a^2n \\
+  &+3an^2+3an
+  -n^3-3n^2-2n=0.
+  \end{aligned}
+\]
+Thus two massive-endpoint branches now start with explicit cubic gates in the
+single variable \(a\), subject only to the real discriminant and ordering
+conditions from the previous section.
