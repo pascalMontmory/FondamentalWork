@@ -863,3 +863,36 @@ reconstructs these three cases and reduces \(Q_3,Q_4,Q_5\) modulo \(F_m\).
 Thus the endpoint \(d-5\) branch is now a finite collection of explicit
 two-variable systems indexed by three weight types and cover choices in
 \(\{0,a,Y,z\}^3\).
+
+### Symmetric endpoint \(d-5\) types generically closed
+
+Checked the two endpoint-\(d-5\) weight types where the two remaining nonzero
+roots have equal multiplicity:
+\[
+  (m_0,m_a,m_y,m_z)=(2,1,1,1)
+\]
+and
+\[
+  (m_0,m_a,m_y,m_z)=(1,2,1,1).
+\]
+For these two types, after \(Q_2(a)=0\), the moments \(M_3,M_4,M_5\) are
+univariate in \(a\) over \(\mathbb Q(n)\). For each of the \(27\) cover triples
+for \(Q_3,Q_4,Q_5\), using covers
+\[
+  0,\quad a,\quad r
+\]
+where \(r\) denotes either root of the symmetric quadratic, the gcd of the
+three cover equations in \(\mathbb Q(n)[a]\) is \(1\).
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_gcds.py}.
+\]
+
+Conclusion: these two endpoint-\(d-5\) types are generically impossible. The
+remaining work is to extract and rule out finitely many exceptional
+specializations in \(n\), plus the genuinely two-variable asymmetric weight
+type
+\[
+  (m_0,m_a,m_y,m_z)=(1,1,2,1).
+\]

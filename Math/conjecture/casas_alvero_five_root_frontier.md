@@ -2412,3 +2412,53 @@ It verifies the three weight types and reduces the \(Q_3,Q_4,Q_5\) equations
 modulo the weighted quadratic \(F_m\). Thus the endpoint \(d-5\) gate has been
 reduced from an arbitrary five-root multiplicity problem to three finite
 families of explicit polynomial systems.
+
+## 34. Generic closure of the two symmetric endpoint-\(d-5\) types
+
+Two of the three endpoint-\(d-5\) weight types are symmetric in the remaining
+roots \(y,z\):
+\[
+  (m_0,m_a,m_y,m_z)=(2,1,1,1)
+\]
+and
+\[
+  (m_0,m_a,m_y,m_z)=(1,2,1,1).
+\]
+In these cases, after imposing \(Q_2(a)=0\), the moments \(M_3,M_4,M_5\)
+reduce to polynomials in \(n,a\) alone.
+
+For each \(j=3,4,5\), the possible covers are
+\[
+  0,\qquad a,\qquad r,
+\]
+where \(r\) denotes either root of the symmetric quadratic \(F_m\). The
+\(r\)-cover condition is represented by
+\[
+  \operatorname{Res}_Y(F_m(Y),H_j(Y))=0.
+\]
+
+There are therefore \(3^3=27\) cover triples for each symmetric weight type.
+For each triple, compute the three corresponding equations in \(a\). Their
+greatest common divisor in the polynomial ring
+\[
+  \mathbb Q(n)[a]
+\]
+is \(1\). Hence both symmetric endpoint-\(d-5\) types are generically
+inconsistent: over the rational function field in \(n\), no value of \(a\)
+can satisfy \(Q_3,Q_4,Q_5\) simultaneously.
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_gcds.py}.
+\]
+
+This is not yet a full integer certificate, because a gcd over
+\(\mathbb Q(n)[a]\) can acquire roots at finitely many special parameter
+values. The remaining work in these two symmetric types is therefore finite:
+extract and exclude the exceptional specializations in \(n\). The third
+weight type
+\[
+  (m_0,m_a,m_y,m_z)=(1,1,2,1)
+\]
+remains genuinely two-variable after reduction and is the other open
+endpoint-\(d-5\) family.
