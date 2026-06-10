@@ -957,3 +957,57 @@ The exact verification script is
 \]
 
 Conclusion: the endpoint \(d-5\) branch is impossible.
+
+### Post-endpoint-\(d-5\) frontier and endpoint \(d-6\) reduction
+
+Since endpoint multiplicities \(d-4\) and \(d-5\) are closed, derivative order
+\(d-6\) cannot be covered by an endpoint. It is now forced to the centroid
+identity
+\[
+  -15P_2^3+90P_2P_4+40P_3^2-120P_6=0
+\]
+or to a non-endpoint root satisfying \(Q_6=0\).
+
+The next endpoint gate is derivative order \(d-7\), where the only remaining
+endpoint multiplicity is \(d-6\). The seventh top derivative is
+\[
+\begin{aligned}
+  Q_7(x)=&
+  x^7
+  -\frac{21P_2}{D_2}x^5
+  -\frac{70P_3}{D_3}x^4
+  +\frac{105(P_2^2-2P_4)}{D_4}x^3\\
+  &+\frac{84(5P_2P_3-6P_5)}{D_5}x^2\\
+  &-\frac{35(3P_2^3-18P_2P_4-8P_3^2+24P_6)}{D_6}x\\
+  &-\frac{6(35P_2^2P_3-84P_2P_5-70P_3P_4+120P_7)}{D_7}.
+\end{aligned}
+\]
+The centroid \(Q_7\)-condition is therefore
+\[
+  35P_2^2P_3-84P_2P_5-70P_3P_4+120P_7=0.
+\]
+
+For endpoint multiplicity \(d-6\), write \(n=d-6\). The four remaining roots
+have total multiplicity \(6\). After choosing the nonzero \(Q_2\)-root \(a\),
+the two remaining nonzero roots satisfy
+\[
+\begin{aligned}
+  F_m(Y)=&
+  m_y(m_y+m_z)Y^2+2m_y(m_a a-n)Y+n^2-2m_a n a+m_z n\\
+  &+m_a(m_a+m_z)a^2-m_z(n+6)(n+5)a^2.
+\end{aligned}
+\]
+Up to exchanging the two remaining roots, there are seven weight types:
+\[
+\begin{gathered}
+  (1,1,2,2),\quad(1,1,3,1),\quad(1,2,2,1),\\
+  (1,3,1,1),\quad(2,1,2,1),\quad(2,2,1,1),\quad(3,1,1,1).
+\end{gathered}
+\]
+
+The reconstruction script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_reduction.py}
+\]
+checks these seven types and reduces \(H_3,H_4,H_5,H_6\) modulo \(F_m\).
+Four types become univariate in \(a\), and three remain linear in \(Y\).

@@ -2560,3 +2560,99 @@ Proposition. The asymmetric endpoint-\(d-5\) type is impossible.
 
 Together with the two symmetric closures, this proves that the whole endpoint
 \(d-5\) branch is impossible.
+
+## 36. Post-endpoint-\(d-5\) frontier and \(Q_7\)
+
+Since the endpoint \(d-5\) branch is impossible, an endpoint cannot cover
+derivative order \(d-6\). Indeed, automatic endpoint coverage of \(d-6\)
+would require endpoint multiplicity at least \(d-5\), and the cases
+\(d-4\) and \(d-5\) are both closed.
+
+Thus \(d-6\) is now forced to be covered by the centroid identity
+\[
+  -15P_2^3+90P_2P_4+40P_3^2-120P_6=0
+\]
+or by a non-endpoint root satisfying \(Q_6=0\).
+
+The next endpoint gate is derivative order \(d-7\). An endpoint can cover it
+automatically only if its multiplicity is at least \(d-6\). Since the higher
+endpoint multiplicities are closed, the only new gate here is
+\[
+  m_{\rm endpoint}=d-6.
+\]
+
+The seventh normalized top derivative is
+\[
+\begin{aligned}
+  Q_7(x)=&
+  x^7
+  -\frac{21P_2}{D_2}x^5
+  -\frac{70P_3}{D_3}x^4
+  +\frac{105(P_2^2-2P_4)}{D_4}x^3\\
+  &+\frac{84(5P_2P_3-6P_5)}{D_5}x^2\\
+  &-\frac{35(3P_2^3-18P_2P_4-8P_3^2+24P_6)}{D_6}x\\
+  &-\frac{6(35P_2^2P_3-84P_2P_5-70P_3P_4+120P_7)}{D_7}.
+\end{aligned}
+\]
+Consequently the centroid covers \(d-7\) exactly when
+\[
+  35P_2^2P_3-84P_2P_5-70P_3P_4+120P_7=0.
+\]
+
+## 37. Endpoint multiplicity \(d-6\): weighted quadratic reduction
+
+In the new endpoint gate, normalize the endpoint to \(-1\) with multiplicity
+\[
+  n=d-6.
+\]
+The four remaining roots have total multiplicity \(6\). Write
+\[
+  -1,\quad 0,\quad a,\quad y,\quad z
+\]
+with multiplicities
+\[
+  n,\quad m_0,\quad m_a,\quad m_y,\quad m_z,
+  \qquad
+  m_0+m_a+m_y+m_z=6,
+\]
+and choose \(a\) as the nonzero \(Q_2\)-root.
+
+The centroid equation and \(Q_2(a)=0\) again give
+\[
+  m_y y+m_z z=n-m_a a,
+\]
+\[
+  m_y y^2+m_z z^2=(n+6)(n+5)a^2-n-m_a a^2.
+\]
+Eliminating \(z\) gives the weighted quadratic
+\[
+\begin{aligned}
+  F_m(Y)=&
+  m_y(m_y+m_z)Y^2+2m_y(m_a a-n)Y+n^2-2m_a n a+m_z n\\
+  &+m_a(m_a+m_z)a^2-m_z(n+6)(n+5)a^2.
+\end{aligned}
+\]
+
+Up to exchanging \(y,z\), there are seven weight types:
+\[
+\begin{gathered}
+  (1,1,2,2),\quad(1,1,3,1),\quad(1,2,2,1),\\
+  (1,3,1,1),\quad(2,1,2,1),\quad(2,2,1,1),\quad(3,1,1,1).
+\end{gathered}
+\]
+
+For each type, the live endpoint-\(d-6\) branch is the finite system where
+\[
+  Q_3,\quad Q_4,\quad Q_5,\quad Q_6
+\]
+are covered by roots among
+\[
+  0,\quad a,\quad Y,\quad z.
+\]
+The reconstruction script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_reduction.py}
+\]
+verifies these seven types and reduces \(H_3,H_4,H_5,H_6\) modulo \(F_m\).
+Four of the seven types become univariate in \(a\) after \(Q_2\); the other
+three remain linear in \(Y\). This is the next finite elimination target.
