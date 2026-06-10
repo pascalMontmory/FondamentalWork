@@ -164,3 +164,30 @@ distinct roots
 for \(h\ne0\), regardless of multiplicities. If the degree is \(>5\), the
 separation-ratio bound excludes it; if the degree is \(5\), all roots are
 simple, so \(f\) and \(f'\) have no common root.
+
+### Top-order anchoring
+
+Added an anchoring lemma for the two highest derivative orders. In centered
+normal form, for a root \(r\) of multiplicity \(m\),
+\[
+  f(r+y)=C\,y^mG_r(y),\qquad D=\deg G_r=d-m.
+\]
+The coefficient of \(y^{D-1}\) in \(G_r\) equals \(dr\). Hence
+\[
+  f^{(d-1)}(r)=0\quad\Longleftrightarrow\quad r=0.
+\]
+So the top derivative condition is covered uniquely by the centroid root.
+
+The next order cannot be covered by \(0\), because
+\[
+  Q_2(0)=-P_2/(d(d-1))\ne0
+\]
+for nontrivial real-rooted candidates. It also cannot be covered by an
+endpoint root, since endpoint local products have all coefficients nonzero and
+the order \(d-2\) is not automatic in the five-root frontier.
+
+Conclusion: in the real five-root frontier, \(d-1\) is forced to the centroid
+root, while \(d-2\) is forced to a nonzero interior root satisfying
+\[
+  |a|\le R/\sqrt{d-1}.
+\]

@@ -656,3 +656,99 @@ for any \(h\ne0\), regardless of multiplicities.
 More generally, the separation-ratio exclusion eliminates every centered
 real-rooted configuration whose nearest nonzero root is too far from the
 centroid relative to the outer radius.
+
+## 14. Top-order anchoring
+
+The two highest derivative orders are anchored in a particularly rigid way.
+
+Let \(f\) be centered, so that
+\[
+  \sum_{\nu=1}^d\alpha_\nu=0,
+\]
+and let \(r\) be a distinct root of multiplicity \(m\). Write
+\[
+  f(r+y)=C\,y^mG_r(y),
+  \qquad
+  D=\deg G_r=d-m.
+\]
+The coefficient of \(y^{D-1}\) in \(G_r\) is
+\[
+  \sum_{\alpha_\nu\ne r}(r-\alpha_\nu).
+\]
+Counting multiplicities, this equals
+\[
+  (d-m)r-\sum_{\alpha_\nu\ne r}\alpha_\nu.
+\]
+Since the total sum of all roots is \(0\), we have
+\[
+  \sum_{\alpha_\nu\ne r}\alpha_\nu=-mr.
+\]
+Therefore
+\[
+  [y^{D-1}]G_r(y)=dr.
+\]
+
+But derivative order \(d-1\) at \(r\) corresponds exactly to this coefficient:
+\[
+  f^{(d-1)}(r)=0
+  \quad\Longleftrightarrow\quad
+  [y^{D-1}]G_r(y)=0.
+\]
+Hence
+\[
+  f^{(d-1)}(r)=0
+  \quad\Longleftrightarrow\quad
+  r=0.
+\]
+
+So in centered normal form, the top derivative condition is covered uniquely
+by the centroid root.
+
+Now consider the next order. The normalized top derivative is
+\[
+  Q_2(x)=x^2-\frac{P_2}{d(d-1)}.
+\]
+For a nontrivial real-rooted polynomial,
+\[
+  P_2>0,
+\]
+so
+\[
+  Q_2(0)\ne0.
+\]
+Thus the centroid root cannot cover derivative order \(d-2\). Any
+Casas-Alvero candidate must use a nonzero root \(a\) satisfying
+\[
+  a^2=\frac{P_2}{d(d-1)}.
+\]
+In the real-rooted case this root cannot be the centroid and is small:
+\[
+  |a|\le\frac{R}{\sqrt{d-1}}<R
+  \qquad(d\ge3).
+\]
+Moreover it cannot be an endpoint root. Indeed, for an endpoint root \(r\),
+all shifts \(r-\alpha_\nu\) appearing in \(G_r\) have the same sign, so every
+coefficient of \(G_r\) is nonzero. Hence an endpoint root provides no recycled
+zeros at all; it only provides the automatic zeros below its multiplicity. In
+a five-root candidate, every endpoint multiplicity is at most \(d-4\), so the
+order \(d-2\) is not automatic at an endpoint either.
+
+Proposition. In any centered, nontrivial, real-rooted Casas-Alvero candidate:
+
+1. \(f^{(d-1)}\) is covered uniquely at the centroid root \(0\);
+2. \(f^{(d-2)}\) is covered at a nonzero interior root \(a\);
+3. the covering root \(a\) satisfies
+   \[
+     |a|\le R/\sqrt{d-1}.
+   \]
+
+For the real five-root frontier \(r_1<r_2<r_3<r_4<r_5\), this means the top
+two derivative orders are forced into the pattern
+\[
+  d-1\mapsto 0,
+  \qquad
+  d-2\mapsto r_i\in\{r_2,r_3,r_4\}\setminus\{0\},
+\]
+where \(0\) is whichever one of \(r_2,r_3,r_4\) is the centroid root.
+
+Thus the \(d-2\) covering root is an interior nonzero root, never an endpoint.
