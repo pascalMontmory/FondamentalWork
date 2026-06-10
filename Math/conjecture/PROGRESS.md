@@ -1045,3 +1045,25 @@ next exact target is the saturation by
 \]
 followed by elimination of \(Y\) and \(a\) to recover univariate obstruction
 factors in \(n\).
+
+### Four endpoint \(d-6\) weight types closed generically
+
+The first exact \(d-6\) elimination pass closes four of the seven weight types
+over the generic parameter field \(\mathbb{Q}(n)\). For
+\[
+  (1,1,2,2),\quad(1,3,1,1),\quad(2,2,1,1),\quad(3,1,1,1),
+\]
+all \(4^4=256\) cover quadruples have gcd \(1\) in \(\mathbb{Q}(n)[a]\)
+after eliminating \(Y\) with resultants and linear-root compatibility
+determinants. These four types are therefore impossible away from finitely
+many specializations of \(n\).
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_type\_generic\_probe.py}.
+\]
+The remaining non-generically-certified types are
+\[
+  (1,1,3,1),\quad(1,2,2,1),\quad(2,1,2,1).
+\]
+They require a specialization certificate rather than the naive generic sweep.

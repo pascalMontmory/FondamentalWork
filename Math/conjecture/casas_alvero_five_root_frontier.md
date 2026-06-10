@@ -2691,3 +2691,25 @@ points to the right exact target: saturate by
   a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6)
 \]
 and then eliminate \(Y\) and \(a\) to produce univariate factors in \(n\).
+
+## 39. Endpoint multiplicity \(d-6\): four generic type closures
+
+For the four weight types
+\[
+  (1,1,2,2),\quad(1,3,1,1),\quad(2,2,1,1),\quad(3,1,1,1),
+\]
+every one of the \(4^4=256\) cover quadruples has gcd \(1\) after eliminating
+\(Y\), over the field \(\mathbb{Q}(n)\) in the variable \(a\). Thus these
+four types are impossible for generic \(n\).
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_type\_generic\_probe.py}.
+\]
+
+The three remaining types are
+\[
+  (1,1,3,1),\quad(1,2,2,1),\quad(2,1,2,1).
+\]
+They are exactly the types where all covers stay linear in \(Y\), and they
+need a more targeted specialization certificate.
