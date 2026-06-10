@@ -752,3 +752,146 @@ two derivative orders are forced into the pattern
 where \(0\) is whichever one of \(r_2,r_3,r_4\) is the centroid root.
 
 Thus the \(d-2\) covering root is an interior nonzero root, never an endpoint.
+
+## 15. Three-top-order pattern in the real five-root frontier
+
+The previous anchoring extends one more step with a clean dichotomy.
+
+In centered notation,
+\[
+  Q_3(x)=x^3-\frac{3P_2}{d(d-1)}x
+  -\frac{2P_3}{d(d-1)(d-2)}.
+\]
+Thus
+\[
+  Q_3(0)=
+  -\frac{2P_3}{d(d-1)(d-2)}.
+\]
+
+Therefore:
+
+* if \(P_3=0\), the centroid root \(0\) covers derivative order \(d-3\);
+* if \(P_3\ne0\), the centroid root cannot cover \(d-3\), so the order must be
+  covered by a nonzero root \(b\) satisfying
+  \[
+    b^3-\frac{3P_2}{d(d-1)}b
+    =
+    \frac{2P_3}{d(d-1)(d-2)}.
+  \]
+
+In the real five-root frontier, endpoint roots cannot cover any of the three
+orders
+\[
+  d-1,\quad d-2,\quad d-3.
+\]
+Indeed, endpoint roots have no recycled zeros, and their multiplicities are at
+most \(d-4\), so none of these orders is automatic there.
+
+Hence all three top orders must be covered by the three interior roots.
+
+Proposition. Let a real-rooted five-root Casas-Alvero candidate be ordered as
+\[
+  r_1<r_2<r_3<r_4<r_5.
+\]
+Then:
+
+1. \(d-1\) is covered by the centroid root \(0\), which is one of
+   \(r_2,r_3,r_4\);
+2. \(d-2\) is covered by an interior nonzero root
+   \[
+     a\in\{r_2,r_3,r_4\}\setminus\{0\};
+   \]
+3. if \(P_3\ne0\), then \(d-3\) is also covered by an interior nonzero root
+   \[
+     b\in\{r_2,r_3,r_4\}\setminus\{0\}
+   \]
+   lying on the cubic fiber
+   \[
+     b^3-3a^2b
+     =
+     \frac{2P_3}{d(d-1)(d-2)},
+   \]
+   where \(a^2=P_2/(d(d-1))\);
+4. if \(P_3=0\), then \(d-3\) may be covered by the centroid root \(0\), and
+   the cubic top derivative factors as
+   \[
+     Q_3(x)=x(x^2-3a^2).
+   \]
+
+Thus the top three derivative orders leave only two possible signatures:
+
+* **even-moment signature:** \(P_3=0\), with
+  \[
+    d-1\mapsto0,\quad d-2\mapsto a,\quad d-3\mapsto0;
+  \]
+* **asymmetric signature:** \(P_3\ne0\), with
+  \[
+    d-1\mapsto0,\quad d-2\mapsto a,\quad d-3\mapsto b,
+  \]
+  where \(a,b\) are nonzero interior roots.
+
+This gives a small finite branching at the top of the covering problem. The
+remaining derivative orders must extend one of these two signatures without
+using endpoints for recycled zeros.
+
+## 16. Repeated-root compression
+
+There is a sharper estimate when the same absolute root participates in the
+top-order cover more than once.
+
+Assume again that \(a\) is selected by \(Q_2\), so that
+\[
+  a^2=\frac{P_2}{d(d-1)}.
+\]
+Suppose that \(Q_3\) is covered by either \(a\) or \(-a\). Then
+\[
+  |a|\le \frac{R}{d-2}.
+\]
+
+Proof.
+
+If \(Q_3(a)=0\), then
+\[
+  a^3-3a^3-\frac{2P_3}{d(d-1)(d-2)}=0,
+\]
+so
+\[
+  P_3=-d(d-1)(d-2)a^3.
+\]
+If \(Q_3(-a)=0\), the same computation gives
+\[
+  P_3=d(d-1)(d-2)a^3.
+\]
+In either case,
+\[
+  |P_3|=d(d-1)(d-2)|a|^3.
+\]
+
+But for real roots bounded by \(R\),
+\[
+  |P_3|
+  =
+  \left|\sum_{\nu=1}^d\alpha_\nu^3\right|
+  \le
+  R\sum_{\nu=1}^d\alpha_\nu^2
+  =
+  RP_2
+  =
+  Rd(d-1)a^2.
+\]
+Since \(a\ne0\), division gives
+\[
+  |a|\le \frac{R}{d-2}.
+\]
+
+Corollary. In the real five-root frontier, if no nonzero interior root lies in
+\[
+  \left[-\frac{R}{d-2},\frac{R}{d-2}\right],
+\]
+then the roots covering \(d-2\) and \(d-3\) cannot be opposites or identical in
+absolute value. In the asymmetric signature, \(d-3\) must then be covered by
+the other nonzero interior root.
+
+This sharpens the top-order branching: either the cover repeats the same
+absolute root and forces a \(1/d\)-scale near-collision with the centroid, or
+the cover must use two genuinely different nonzero interior roots.

@@ -191,3 +191,34 @@ root, while \(d-2\) is forced to a nonzero interior root satisfying
 \[
   |a|\le R/\sqrt{d-1}.
 \]
+
+### Three-top-order pattern
+
+Extended the anchoring to \(d-3\). Since
+\[
+  Q_3(0)=-\frac{2P_3}{d(d-1)(d-2)},
+\]
+there are two top-order signatures:
+
+- if \(P_3=0\), then \(d-3\) may be covered by the centroid root \(0\);
+- if \(P_3\ne0\), then \(d-3\) must be covered by a nonzero interior root
+  \(b\) satisfying the cubic fiber equation
+  \[
+    b^3-3a^2b=\frac{2P_3}{d(d-1)(d-2)},
+  \]
+  where \(a^2=P_2/(d(d-1))\).
+
+Endpoint roots cannot cover any of \(d-1,d-2,d-3\) in the real five-root
+frontier.
+
+### Repeated-root compression
+
+If the same absolute root covers both \(d-2\) and \(d-3\), i.e. \(Q_3(a)=0\)
+or \(Q_3(-a)=0\) for the root \(a\) selected by \(Q_2\), then
+\[
+  |a|\le \frac{R}{d-2}.
+\]
+This improves the earlier \(R/\sqrt{d-1}\) localization to \(R/(d-2)\) in the
+repeated-root branch. Therefore either the top-order cover creates a very
+tight \(1/d\)-scale near-collision with the centroid, or it must use two
+different nonzero interior roots.
