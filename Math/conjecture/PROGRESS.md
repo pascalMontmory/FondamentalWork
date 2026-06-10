@@ -260,3 +260,50 @@ for the root \(a\) selected by \(Q_2\), one obtains
 This is a new \(1/d\)-scale compression: if the top-order cover returns to the
 centroid at \(d-4\), then the nonzero root forced by \(d-2\) must nearly collide
 with the centroid.
+
+### Non-Q2 double-cover clustering
+
+Added the repeated-cover analysis for the case where a nonzero root \(b\)
+covers both \(d-3\) and \(d-4\). If \(a\) is the root selected by \(Q_2\), then
+eliminating \(P_3\) from
+\[
+  Q_3(b)=0,\qquad Q_4(b)=0
+\]
+gives the exact identity
+\[
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}
+  =
+  3b^2(b^2-2a^2).
+\]
+Equivalently,
+\[
+  P_4
+  =
+  \frac{P_2^2-d(d-1)(d-2)(d-3)b^2(b^2-2a^2)}{2}.
+\]
+
+Because \(P_4\ge0\) for real roots, this implies
+\[
+  \frac{b^2}{a^2}
+  \left(\frac{b^2}{a^2}-2\right)
+  \le
+  \frac{d(d-1)}{(d-2)(d-3)}.
+\]
+Hence
+\[
+  |b|
+  \le
+  \left(
+    1+\sqrt{1+\frac{d(d-1)}{(d-2)(d-3)}}
+  \right)^{1/2}|a|.
+\]
+
+This gives a pigeonhole consequence for the noncentroid branch
+\[
+  P_3\ne0,\qquad P_4\ne P_2^2/2.
+\]
+The orders \(d-3\) and \(d-4\) are then both covered by nonzero interior roots.
+Since the five-root frontier has only two nonzero interior roots, either the
+cover repeats the \(Q_2\)-root, or the other nonzero interior root must cover
+both \(d-3\) and \(d-4\) and is therefore clustered within a constant multiple
+of \(|a|\).

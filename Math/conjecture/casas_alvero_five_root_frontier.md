@@ -1001,3 +1001,115 @@ possibilities:
 
 Either way, the four highest derivatives already force repeated use of the
 three interior roots and exclude the endpoints completely.
+
+## 18. Non-Q2 double-cover clustering
+
+The four-top-order branch forces repetition. The cleanest repeated case is
+when one nonzero root, not necessarily the root selected by \(Q_2\), covers
+both \(d-3\) and \(d-4\).
+
+Assume \(a\) is selected by \(Q_2\), so that
+\[
+  a^2=\frac{P_2}{d(d-1)}.
+\]
+Suppose a nonzero root \(b\) satisfies
+\[
+  Q_3(b)=0
+  \qquad\text{and}\qquad
+  Q_4(b)=0.
+\]
+Then
+\[
+  P_3=\frac{d(d-1)(d-2)}{2}\,b(b^2-3a^2).
+\]
+Substitute this into \(Q_4(b)=0\). The quartic equation becomes
+\[
+  b^4-6a^2b^2-4b^2(b^2-3a^2)
+  +
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}
+  =
+  0.
+\]
+Hence
+\[
+  \frac{3P_2^2-6P_4}{d(d-1)(d-2)(d-3)}
+  =
+  3b^2(b^2-2a^2).
+\]
+Equivalently,
+\[
+  P_4
+  =
+  \frac{P_2^2-d(d-1)(d-2)(d-3)b^2(b^2-2a^2)}{2}.
+\]
+
+This identity gives an immediate localization. Since \(P_4\ge0\) for real
+roots,
+\[
+  d(d-1)(d-2)(d-3)b^2(b^2-2a^2)\le P_2^2.
+\]
+Put
+\[
+  t=\frac{b^2}{a^2}.
+\]
+Using \(P_2=d(d-1)a^2\), we obtain
+\[
+  t(t-2)\le
+  \frac{d(d-1)}{(d-2)(d-3)}.
+\]
+Therefore
+\[
+  t\le
+  1+
+  \sqrt{
+    1+\frac{d(d-1)}{(d-2)(d-3)}
+  }.
+\]
+
+Proposition. If the same nonzero root \(b\) covers \(d-3\) and \(d-4\), then
+\[
+  |b|
+  \le
+  \Lambda_d |a|,
+  \qquad
+  \Lambda_d=
+  \left(
+    1+
+    \sqrt{
+      1+\frac{d(d-1)}{(d-2)(d-3)}
+    }
+  \right)^{1/2}.
+\]
+In particular, since \(d\ge5\) on the five-root frontier,
+\[
+  |b|\le \Lambda_d\frac{R}{\sqrt{d-1}},
+\]
+and \(\Lambda_d\to\sqrt{1+\sqrt2}\) as \(d\to\infty\).
+
+Thus the non-Q2 double-cover branch also clusters near the centroid. It cannot
+send the \(d-3\) and \(d-4\) conditions to a root at macroscopic distance while
+\(a\) is forced near \(0\).
+
+Pigeonhole corollary. Work in the real five-root frontier and assume the
+noncentroid branch
+\[
+  P_3\ne0,
+  \qquad
+  P_4\ne \frac{P_2^2}{2}.
+\]
+Then \(d-3\) and \(d-4\) are both covered by nonzero interior roots. Since
+there are only two nonzero interior roots, one of the following must happen:
+
+1. \(d-3\) is covered by a root with square \(a^2\), giving the previous
+   repeated-root compression
+   \[
+     |a|\le \frac{R}{d-2};
+   \]
+2. \(d-4\) is covered by a root with square \(a^2\), so the quartic equation
+   repeats the \(Q_2\)-root;
+3. the other nonzero interior root covers both \(d-3\) and \(d-4\), and hence
+   satisfies the clustering bound above.
+
+So every noncentroid four-top-order branch either repeats the \(Q_2\) root or
+forces the remaining nonzero interior root into the same \(O(R/\sqrt d)\)
+centroid cluster.
