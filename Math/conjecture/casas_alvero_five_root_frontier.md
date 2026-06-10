@@ -1197,3 +1197,103 @@ This separates the next obstruction into two explicit cases:
 
 The first branch is combinatorially small. The second branch continues the
 top-order incidence cascade entirely inside the three interior roots.
+
+## 20. Massive-endpoint reduction
+
+The massive-endpoint branch is not just a special way to cover \(d-5\). It
+collapses the whole lower part of the Casas-Alvero cover.
+
+Assume a real five-root candidate has an endpoint root \(e\) of multiplicity
+\[
+  m_e=d-4.
+\]
+Then the other four distinct roots are simple. Since
+\[
+  f(x)=(x-e)^{d-4}H(x),
+  \qquad
+  H(e)\ne0,
+\]
+we have
+\[
+  f^{(k)}(e)=0
+  \qquad(0\le k\le d-5).
+\]
+Thus every derivative order
+\[
+  1,\ldots,d-5
+\]
+is automatically covered by the massive endpoint.
+
+The endpoint still cannot cover any recycled order, and in particular cannot
+cover
+\[
+  d-4,\quad d-3,\quad d-2,\quad d-1.
+\]
+Therefore, in this branch, the full Casas-Alvero condition is equivalent to
+the four top-order incidences:
+\[
+  Q_1(0)=0,
+  \qquad
+  Q_2(a)=0,
+  \qquad
+  Q_3(b)=0,
+  \qquad
+  Q_4(c)=0,
+\]
+where \(a,b,c\) are interior roots, with \(a\ne0\). The centroid condition
+already supplies \(Q_1(0)=0\), so the live content is exactly the finite system
+\[
+  Q_2(a)=Q_3(b)=Q_4(c)=0
+\]
+on the three interior roots.
+
+There is also a geometric cost. Suppose the massive endpoint is the left
+endpoint
+\[
+  e=-A<0,
+\]
+and let \(B>0\) be the right endpoint. The centroid equation has the form
+\[
+  -(d-4)A+x+y+B=0,
+\]
+where \(x,y\) are the two remaining nonzero simple roots. Since
+\[
+  x,y\le B,
+\]
+we get
+\[
+  (d-4)A=x+y+B\le3B.
+\]
+Hence
+\[
+  A\le\frac{3B}{d-4}\le\frac{3R}{d-4}.
+\]
+The right-endpoint massive case is symmetric.
+
+Proposition. In the massive-endpoint branch, the massive endpoint itself lies
+within
+\[
+  \frac{3R}{d-4}
+\]
+of the centroid.
+
+Thus the branch has two simultaneous degeneracies:
+
+1. one endpoint carries almost all multiplicity and automatically covers the
+   low derivative orders;
+2. that same endpoint must be \(O(R/d)\)-close to the centroid, while the four
+   top orders are still forced onto the three interior roots.
+
+For \(d>5\), at most one endpoint can be massive. Indeed, two endpoint
+multiplicities \(d-4\) would leave at least three more simple roots, so
+\[
+  2(d-4)+3\le d,
+\]
+which implies \(d\le5\).
+
+Therefore the five-root real frontier splits cleanly into:
+
+* the massive-endpoint finite system, where all lower orders are automatic and
+  only \(Q_2,Q_3,Q_4\) remain live;
+* the non-massive branch, where \(d-5\) is also forced to the interior or to
+  the centroid identity \(5P_2P_3=6P_5\).

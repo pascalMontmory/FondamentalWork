@@ -348,3 +348,37 @@ moment equation
 \[
   Q_5(z)=0.
 \]
+
+### Massive-endpoint reduction
+
+Separated the endpoint-gate branch. If an endpoint \(e\) has multiplicity
+\[
+  m_e=d-4,
+\]
+then
+\[
+  f^{(k)}(e)=0\qquad(0\le k\le d-5).
+\]
+So all derivative orders \(1,\ldots,d-5\) are automatically covered by the
+massive endpoint. The full Casas-Alvero condition in this branch is therefore
+equivalent to the four top-order incidences. Since \(d-1\) is already anchored
+at the centroid, the live finite system is
+\[
+  Q_2(a)=Q_3(b)=Q_4(c)=0
+\]
+on the three interior roots.
+
+The centroid equation also forces the massive endpoint close to the centroid.
+If the massive endpoint is \(-A\) and the opposite endpoint is \(B>0\), then
+\[
+  (d-4)A=x+y+B\le3B,
+\]
+where \(x,y\) are the two remaining nonzero simple roots. Hence
+\[
+  A\le\frac{3R}{d-4}.
+\]
+The right-endpoint case is symmetric.
+
+Thus the massive-endpoint branch has two forced degeneracies: almost all
+multiplicity sits at one endpoint, and that endpoint is itself \(O(R/d)\)-close
+to the centroid. For \(d>5\), at most one endpoint can be massive.
