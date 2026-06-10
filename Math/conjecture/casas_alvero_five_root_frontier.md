@@ -2484,3 +2484,79 @@ The only endpoint-\(d-5\) weight type still open is the asymmetric type
   (m_0,m_a,m_y,m_z)=(1,1,2,1)
 \]
 which remains genuinely two-variable after reduction.
+
+## 35. The asymmetric endpoint-\(d-5\) type is closed
+
+It remains to treat
+\[
+  (m_0,m_a,m_y,m_z)=(1,1,2,1).
+\]
+For this type the weighted quadratic becomes
+\[
+  F(Y)
+  =
+  6Y^2+4(a-n)Y+n^2-2na+n-(n+3)(n+6)a^2.
+\]
+The remaining simple nonzero root is
+\[
+  z=n-a-2Y.
+\]
+
+For every cover \(c\in\{0,a,Y,z\}\) and each \(j=3,4,5\), reduce the
+condition \(H_j(c)=0\) modulo \(F\):
+\[
+  H_j(c)\equiv A_{j,c}Y+B_{j,c}\pmod F.
+\]
+Thus each cover condition is linear in \(Y\).
+
+Fix a cover triple
+\[
+  (c_3,c_4,c_5)\in\{0,a,Y,z\}^3.
+\]
+A solution must satisfy
+\[
+  F(Y)=0,\qquad
+  A_{3,c_3}Y+B_{3,c_3}=0,
+\]
+and the three linear cover equations must have the same \(Y\)-root. Hence it
+must satisfy the necessary equations
+\[
+  R_3(n,a):=\operatorname{Res}_Y(F,A_{3,c_3}Y+B_{3,c_3})=0,
+\]
+\[
+  C_{34}(n,a):=A_{3,c_3}B_{4,c_4}-A_{4,c_4}B_{3,c_3}=0,
+\]
+\[
+  C_{35}(n,a):=A_{3,c_3}B_{5,c_5}-A_{5,c_5}B_{3,c_3}=0.
+\]
+Eliminating \(a\) by pairwise resultants gives a necessary polynomial
+condition in \(n\).
+
+The exact verification over all \(4^3=64\) cover triples shows that every
+such necessary polynomial factors into linear factors with roots contained in
+\[
+  \{-6,-4,-3,-2,-1,0\}
+\]
+and five nonlinear factors. These nonlinear factors have degrees
+\[
+  5,\quad7,\quad7,\quad20,\quad22.
+\]
+The degree-\(5\) factor has no root modulo \(7\); the two degree-\(7\) factors
+have no root modulo \(5\); the degree-\(20\) factor has no root modulo \(11\);
+and the degree-\(22\) factor has no root modulo \(7\).
+
+Therefore no integer
+\[
+  n=d-5\ge1
+\]
+can satisfy any asymmetric endpoint-\(d-5\) cover triple.
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_asymmetric\_resultants.py}.
+\]
+
+Proposition. The asymmetric endpoint-\(d-5\) type is impossible.
+
+Together with the two symmetric closures, this proves that the whole endpoint
+\(d-5\) branch is impossible.

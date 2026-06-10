@@ -912,3 +912,48 @@ weight type
 \[
   (m_0,m_a,m_y,m_z)=(1,1,2,1).
 \]
+
+### Endpoint \(d-5\) branch closed
+
+Closed the remaining asymmetric endpoint-\(d-5\) type
+\[
+  (m_0,m_a,m_y,m_z)=(1,1,2,1).
+\]
+In this type,
+\[
+  F(Y)
+  =
+  6Y^2+4(a-n)Y+n^2-2na+n-(n+3)(n+6)a^2
+\]
+and
+\[
+  z=n-a-2Y.
+\]
+For every cover \(c\in\{0,a,Y,z\}\), each \(Q_j(c)\)-condition
+\((j=3,4,5)\) reduces modulo \(F\) to a linear form
+\[
+  A_{j,c}Y+B_{j,c}.
+\]
+
+For each of the \(64\) cover triples, the script eliminates \(Y\) using one
+resultant and two linear-root compatibility determinants, then eliminates
+\(a\) by pairwise resultants. Every necessary polynomial in \(n\) factors into
+linear factors with roots in
+\[
+  \{-6,-4,-3,-2,-1,0\}
+\]
+and five nonlinear factors of degrees
+\[
+  5,\quad7,\quad7,\quad20,\quad22.
+\]
+The degree-\(5\) factor has no root modulo \(7\), the two degree-\(7\) factors
+have no root modulo \(5\), the degree-\(20\) factor has no root modulo \(11\),
+and the degree-\(22\) factor has no root modulo \(7\). Since \(n=d-5\ge1\),
+no cover triple is possible.
+
+The exact verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d5\_asymmetric\_resultants.py}.
+\]
+
+Conclusion: the endpoint \(d-5\) branch is impossible.
