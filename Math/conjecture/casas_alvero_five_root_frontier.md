@@ -2196,3 +2196,72 @@ Thus the massive-endpoint branch is forced into the single pattern
 \]
 The only remaining \(Q_4\)-possibility is that the same interior root \(X_-\)
 covers both \(d-3\) and \(d-4\).
+
+## 31. The last \(Q_4\)-cover is eliminated
+
+It remains to exclude the possibility
+\[
+  H_3(X_-)=0,
+  \qquad
+  H_4(X_-)=0,
+\]
+where
+\[
+  H_4(X)
+  =
+  D_4(X^4-6a^2X^2)-8M_3(a)X+3M_2(a)^2-6M_4(a).
+\]
+
+Reduce both equations modulo the quadratic \(F_a\):
+\[
+  H_3(X)\equiv A_3X+B_3,
+  \qquad
+  H_4(X)\equiv A_4X+B_4
+  \pmod {F_a}.
+\]
+For \(n\ge2\), \(A_3\ne0\). Thus if a common root of \(F_a\) is to annul
+both \(H_3\) and \(H_4\), the two linear remainders must have the same zero.
+Hence any solution must satisfy
+\[
+  C_{34}(n,a):=A_3B_4-A_4B_3=0.
+\]
+Together with the already forced condition
+\[
+  E_3(n,a)=\operatorname{Res}_X(F_a,H_3)=0,
+\]
+this gives the necessary elimination condition
+\[
+  \operatorname{Res}_a(E_3,C_{34})=0.
+\]
+
+The exact resultant factors as
+\[
+\begin{aligned}
+  \operatorname{Res}_a(E_3,C_{34})
+  =&\;2^{30}n^{10}(n+1)^8(n+2)^{12}(n+3)^{16}  \\
+   &\cdot (n+4)^6(n+5)^2P_{13}(n)^2P_{46}(n),
+\end{aligned}
+\]
+where \(P_{13}\in\mathbb Z[n]\) has degree \(13\) and \(P_{46}\in\mathbb Z[n]\)
+has degree \(46\). The prefactor is nonzero for every integer \(n\ge2\).
+Moreover
+\[
+  P_{13}(r)\not\equiv0\pmod {13}
+  \qquad(r=0,\ldots,12),
+\]
+and
+\[
+  P_{46}(r)\not\equiv0\pmod {17}
+  \qquad(r=0,\ldots,16).
+\]
+Therefore neither \(P_{13}\) nor \(P_{46}\) can vanish at an integer \(n\).
+
+So the final \(Q_4\)-possibility is impossible. Combined with the two previous
+\(Q_4\)-eliminations, this proves:
+
+Proposition. The massive-endpoint branch contains no real five-root
+Casas-Alvero counterexample.
+
+Equivalently, in the real five-root frontier, the degenerate branch where an
+endpoint has multiplicity \(d-4\) is closed. Any remaining real five-root
+counterexample must lie in the non-massive branch.

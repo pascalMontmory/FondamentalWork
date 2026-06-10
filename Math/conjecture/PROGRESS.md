@@ -732,3 +732,44 @@ The exact verification script is
 Conclusion: in the massive-endpoint branch, \(d-4\) cannot be covered by
 \(0\) or by \(a\). It must be covered by the same interior root \(X_-\) that
 already covers \(d-3\).
+
+### Massive-endpoint branch closed
+
+Closed the final \(Q_4\)-possibility in the reduced massive-endpoint branch.
+The last remaining pattern was
+\[
+  d-2\mapsto a,\qquad d-3\mapsto X_-,\qquad d-4\mapsto X_-.
+\]
+Let
+\[
+  H_4(X)
+  =
+  D_4(X^4-6a^2X^2)-8M_3(a)X+3M_2(a)^2-6M_4(a).
+\]
+Reducing \(H_3\) and \(H_4\) modulo \(F_a\) gives
+\[
+  H_3\equiv A_3X+B_3,\qquad H_4\equiv A_4X+B_4.
+\]
+Since \(A_3\ne0\) for \(n\ge2\), a common root must satisfy
+\[
+  C_{34}(n,a)=A_3B_4-A_4B_3=0.
+\]
+Together with
+\[
+  E_3(n,a)=\operatorname{Res}_X(F_a,H_3)=0,
+\]
+this gives the necessary resultant condition
+\[
+  \operatorname{Res}_a(E_3,C_{34})=0.
+\]
+The exact resultant factors as
+\[
+  2^{30}n^{10}(n+1)^8(n+2)^{12}(n+3)^{16}(n+4)^6(n+5)^2
+  P_{13}(n)^2P_{46}(n),
+\]
+where \(P_{13}\) has no root modulo \(13\) and \(P_{46}\) has no root modulo
+\(17\). Thus no integer \(n\ge2\) can satisfy the final branch.
+
+Conclusion: the massive-endpoint branch is impossible. In the real five-root
+frontier, any remaining counterexample must be non-massive, i.e. no endpoint
+has multiplicity \(d-4\).
