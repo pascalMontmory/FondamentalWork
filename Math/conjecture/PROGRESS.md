@@ -1106,3 +1106,29 @@ families after saturation by
 \[
   a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6).
 \]
+
+### Checkpoint: equation-level endpoint \(d-6\) elimination
+
+Started the equation-level approach suggested after the residue sieve. Instead
+of enumerating the \(4^4\) cover quadruples, define
+\[
+  R_k=\prod_{X\in\{0,a,Y,z\}}H_k(X),\qquad k=3,4,5,6,
+\]
+and reduce each \(R_k\) modulo the weighted quadratic \(F_m\). The draft
+script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_elimination.py}.
+\]
+
+For the remaining type \((1,1,3,1)\), the reduced products are all linear in
+\(Y\), with degrees in \(a\)
+\[
+  12,\quad16,\quad20,\quad22.
+\]
+The resulting equation-level eliminants have degrees in \(a\)
+\[
+  24,\quad27,\quad31,\quad33.
+\]
+This confirms that the construction of the four compact equations is feasible;
+the next blocker is the gcd of these larger eliminants over \(\mathbb{Q}(n)[a]\)
+or a faster modular substitute.

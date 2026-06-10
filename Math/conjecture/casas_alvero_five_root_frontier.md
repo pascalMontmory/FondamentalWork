@@ -2751,3 +2751,29 @@ This does not close the three types, but it shows that the remaining
 specialization set is arithmetically thin. The next step is to turn these
 residue constraints into exact saturated resultants for the surviving residue
 families.
+
+## 41. Endpoint multiplicity \(d-6\): equation-level elimination checkpoint
+
+The next approach is to avoid the \(4^4\) cover enumeration. For each order,
+define the global cover equation
+\[
+  R_k=\prod_{X\in\{0,a,Y,z\}}H_k(X),\qquad k=3,4,5,6,
+\]
+then reduce \(R_k\) modulo \(F_m\). The draft script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_elimination.py}.
+\]
+
+For \((1,1,3,1)\), the reduced products are linear in \(Y\), with degrees in
+\(a\)
+\[
+  12,\quad16,\quad20,\quad22.
+\]
+The corresponding eliminants have degrees
+\[
+  24,\quad27,\quad31,\quad33.
+\]
+Thus the compact equation-level system is feasible. The remaining task is to
+compute the gcd of these larger eliminants efficiently, most likely by a
+modular or residue-specialized method rather than by the current direct
+SymPy gcd over \(\mathbb{Q}(n)[a]\).
