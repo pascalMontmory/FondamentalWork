@@ -2724,3 +2724,30 @@ The three remaining types are
 \]
 They are exactly the types where all covers stay linear in \(Y\), and they
 need a more targeted specialization certificate.
+
+## 40. Endpoint multiplicity \(d-6\): residue sieve for remaining types
+
+For the three remaining types, the script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_residue\_sieve.py}
+\]
+records, prime by prime, the \(n\)-residues that can still support a
+nondegenerate finite-field point. The tested primes are
+\[
+  7,11,13,17,19,23,29,31.
+\]
+
+The residue densities after combining these local constraints are:
+\[
+\begin{array}{c|c}
+  \text{type} & \text{surviving density}\\
+  \hline
+  (1,1,3,1) & 4064256/6685349671\\
+  (1,2,2,1) & 2667168/6685349671\\
+  (2,1,2,1) & 3111696/6685349671.
+\end{array}
+\]
+This does not close the three types, but it shows that the remaining
+specialization set is arithmetically thin. The next step is to turn these
+residue constraints into exact saturated resultants for the surviving residue
+families.

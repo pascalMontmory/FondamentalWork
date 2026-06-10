@@ -1076,3 +1076,33 @@ The remaining non-generically-certified types are
   (1,1,3,1),\quad(1,2,2,1),\quad(2,1,2,1).
 \]
 They require a specialization certificate rather than the naive generic sweep.
+
+### Residue sieve for the three remaining endpoint \(d-6\) types
+
+Added a residue-level modular sieve for the three remaining types:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_residue\_sieve.py}.
+\]
+It records the allowed \(n\)-residues for each tested prime, including both
+bad denominator residues and residues with actual nondegenerate finite-field
+points. For primes
+\[
+  7,11,13,17,19,23,29,31
+\]
+the combined surviving densities are
+\[
+\begin{array}{c|c}
+  \text{type} & \text{surviving density}\\
+  \hline
+  (1,1,3,1) & 4064256/6685349671\\
+  (1,2,2,1) & 2667168/6685349671\\
+  (2,1,2,1) & 3111696/6685349671.
+\end{array}
+\]
+
+This is still diagnostic rather than a closure. It narrows the exact target:
+the specialization certificates should be built on the surviving residue
+families after saturation by
+\[
+  a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6).
+\]

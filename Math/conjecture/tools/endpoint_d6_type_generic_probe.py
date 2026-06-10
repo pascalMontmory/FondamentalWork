@@ -92,15 +92,18 @@ def certify_weights(weights: tuple[int, int, int, int]) -> None:
                 domain=field,
             )
 
-    linear_keys = [key for key, shape in shapes.items() if shape[0] == "linear"]
-    for left, right in itertools.combinations(linear_keys, 2):
+    def determinant(left: tuple[int, str], right: tuple[int, str]) -> sp.Poly:
+        pair = tuple(sorted([left, right]))
+        if pair in determinants:
+            return determinants[pair]
         left_y, left_0 = shapes[left][1], shapes[left][2]
         right_y, right_0 = shapes[right][1], shapes[right][2]
-        determinants[(left, right)] = sp.Poly(
+        determinants[pair] = sp.Poly(
             primitive_expr(left_y * right_0 - right_y * left_0, n, a),
             a,
             domain=field,
         )
+        return determinants[pair]
 
     summary: dict[int, int] = {}
     examples: dict[int, tuple[str, str, str, str]] = {}
@@ -115,8 +118,7 @@ def certify_weights(weights: tuple[int, int, int, int]) -> None:
             first = linears[0]
             eliminants.append(line_resultants[first])
             for key in linears[1:]:
-                pair = tuple(sorted([first, key]))
-                eliminants.append(determinants[pair])
+                eliminants.append(determinant(first, key))
 
         if not eliminants:
             degree = -1
