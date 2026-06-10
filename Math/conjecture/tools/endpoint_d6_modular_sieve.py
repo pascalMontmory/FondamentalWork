@@ -26,7 +26,7 @@ from endpoint_d6_cover_degrees import h_polynomials, reduced_condition
 from endpoint_d6_reduction import weight_types
 
 
-PRIMES = [5, 7, 11, 13, 17, 19, 23, 29, 31]
+PRIMES = [7, 11, 13, 17, 19, 23, 29, 31]
 
 
 def poly_terms(expr: sp.Expr, variables: tuple[sp.Symbol, ...]) -> list[tuple[tuple[int, ...], int]]:

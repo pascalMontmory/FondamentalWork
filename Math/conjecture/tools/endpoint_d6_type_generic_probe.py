@@ -73,6 +73,9 @@ def certify_weights(weights: tuple[int, int, int, int]) -> None:
     f, conditions = build_conditions(weights, n, a, y, x)
     shapes = {key: condition_shape(condition, y) for key, condition in conditions.items()}
     field = sp.QQ.frac_field(n)
+    f_y2 = f.coeff_monomial(y**2)
+    f_y1 = f.coeff_monomial(y)
+    f_y0 = f.coeff_monomial(1)
 
     constants: dict[tuple[int, str], sp.Poly] = {}
     line_resultants: dict[tuple[int, str], sp.Poly] = {}
@@ -82,8 +85,9 @@ def certify_weights(weights: tuple[int, int, int, int]) -> None:
         if kind == "constant":
             constants[key] = sp.Poly(primitive_expr(coeff_y, n, a), a, domain=field)
         elif kind == "linear":
+            resultant_expr = f_y2 * coeff_0**2 - f_y1 * coeff_y * coeff_0 + f_y0 * coeff_y**2
             line_resultants[key] = sp.Poly(
-                primitive_expr(sp.resultant(f.as_expr(), coeff_y * y + coeff_0, y), n, a),
+                primitive_expr(resultant_expr, n, a),
                 a,
                 domain=field,
             )

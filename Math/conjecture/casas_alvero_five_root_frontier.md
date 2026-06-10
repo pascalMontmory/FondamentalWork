@@ -2678,11 +2678,22 @@ tests the finite-field system
   F_m=0,\qquad
   \prod_{X\in\{0,a,Y,z\}} H_k(X)=0,\quad k=3,4,5,6.
 \]
-Modulo \(5\), all seven weight types have no nondegenerate points after
-excluding \(a=0\) and the bad denominator residues
+The corrected diagnostic starts at primes \(p>6\), so that the bad denominator
+residues
 \[
-  n+1,\ldots,n+6\equiv0\pmod 5.
+  n+1,\ldots,n+6\equiv0\pmod p
 \]
+do not cover the whole field. Five types have no nondegenerate points modulo
+\(7\):
+\[
+  (1,1,2,2),\quad(1,2,2,1),\quad(1,3,1,1),\quad
+  (2,1,2,1),\quad(2,2,1,1).
+\]
+The remaining two diagnostic cases,
+\[
+  (1,1,3,1),\quad(3,1,1,1),
+\]
+have nondegenerate points modulo \(7\), but none modulo \(11\).
 
 This is not yet a characteristic-zero closure: unlike the earlier univariate
 certificates in \(n\), this is a multivariate diagnostic. Its value is that it

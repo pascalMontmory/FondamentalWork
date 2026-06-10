@@ -1034,9 +1034,18 @@ It evaluates the system
   F_m=0,\qquad
   \prod_{X\in\{0,a,Y,z\}} H_k(X)=0,\quad k=3,4,5,6.
 \]
-For all seven weight types there are no nondegenerate points modulo \(5\);
-the remaining points all lie on \(a=0\) or on one of the bad denominator
-residues \(n+1,\ldots,n+6\equiv0\pmod 5\).
+The corrected diagnostic starts at primes \(p>6\), since for \(p=5\) the bad
+denominator residues \(n+1,\ldots,n+6\equiv0\pmod p\) cover the whole field.
+Five types have no nondegenerate points modulo \(7\):
+\[
+  (1,1,2,2),\quad(1,2,2,1),\quad(1,3,1,1),\quad
+  (2,1,2,1),\quad(2,2,1,1).
+\]
+The remaining two diagnostic cases,
+\[
+  (1,1,3,1),\quad(3,1,1,1),
+\]
+have nondegenerate points modulo \(7\), but none modulo \(11\).
 
 This is currently a diagnostic, not the final characteristic-zero proof. The
 next exact target is the saturation by
