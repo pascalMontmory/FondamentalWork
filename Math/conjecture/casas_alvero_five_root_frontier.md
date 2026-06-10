@@ -1989,3 +1989,79 @@ Thus, in the massive-endpoint branch, the \(Q_3\)-stage is reduced to:
 
 1. the other-interior-root resultant branch for all \(n\ge2\);
 2. the finite exceptional centroid case \(n=2\).
+
+## 28. The finite centroid exception \(n=2\) is closed
+
+It remains to check the exceptional centroid gate
+\[
+  n=2.
+\]
+Then \(d=6\), and the \(Q_3\)-centroid condition is
+\[
+  C_0(2,a)=0.
+\]
+Explicitly,
+\[
+  C_0(2,a)=-6(14a^3-28a^2-3a+4).
+\]
+Let
+\[
+  R(a)=14a^3-28a^2-3a+4.
+\]
+The quadratic reconstructing the other interior root and the right endpoint is
+\[
+  F_a(X)=X^2+(a-2)X-14a^2-2a+3.
+\]
+
+Now impose the remaining top condition \(Q_4\). There are three possibilities.
+
+If the centroid covers \(d-4\), then
+\[
+  P_4=\frac{P_2^2}{2},
+\]
+which reduces, after substituting \(n=2\) and \(C_0(2,a)=0\), to the condition
+\[
+  28a^3-11a^2-6a+3=0.
+\]
+But
+\[
+  \gcd(14a^3-28a^2-3a+4,\,
+       28a^3-11a^2-6a+3)=1.
+\]
+
+If the same root \(a\) covers \(d-4\), the condition reduces to
+\[
+  61a^4+14a^2+2a-3=0,
+\]
+and
+\[
+  \gcd(14a^3-28a^2-3a+4,\,
+       61a^4+14a^2+2a-3)=1.
+\]
+
+Finally, if the remaining interior root covers \(d-4\), then \(Q_4\) must have
+a common root with \(F_a\). The resultant is, up to a nonzero constant,
+\[
+  \begin{aligned}
+  &2663836a^8+2912392a^7-3145793a^6-2239544a^5\\
+  &\quad+1292520a^4+545096a^3-234903a^2-42308a+15876.
+  \end{aligned}
+\]
+This polynomial is also coprime to \(R(a)\):
+\[
+  \gcd(R(a),\operatorname{Res}_X(F_a,Q_4(X)))=1.
+\]
+
+Therefore no root of the exceptional cubic \(R(a)=0\) can satisfy the
+remaining \(Q_4\)-condition.
+
+Proposition. The exceptional massive-endpoint centroid case \(n=2\) is
+impossible.
+
+Consequently, in the massive-endpoint branch, derivative order \(d-3\) cannot
+be covered by the centroid root at all. Combined with Sections 26 and 27, the
+only remaining \(Q_3\)-possibility in the massive-endpoint branch is:
+\[
+  d-3
+  \quad\text{is covered by the other nonzero interior root.}
+\]

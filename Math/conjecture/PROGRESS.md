@@ -644,3 +644,33 @@ massive-endpoint solution. The only remaining centroid-gate exception is
 \[
   n=2\quad(d=6).
 \]
+
+### Finite centroid exception \(n=2\) closed
+
+Checked the remaining centroid \(Q_3\)-exception in the massive-endpoint
+branch. For \(n=2\),
+\[
+  C_0(2,a)=-6(14a^3-28a^2-3a+4).
+\]
+Let
+\[
+  R(a)=14a^3-28a^2-3a+4.
+\]
+The remaining \(Q_4\)-condition has three possible covers:
+
+- the centroid, giving
+  \[
+    28a^3-11a^2-6a+3=0;
+  \]
+- the same root \(a\), giving
+  \[
+    61a^4+14a^2+2a-3=0;
+  \]
+- the other interior root, giving a degree-eight resultant with \(F_a\).
+
+In all three cases, the relevant polynomial is coprime to \(R(a)\). Therefore
+no root of the exceptional cubic can satisfy \(Q_4\).
+
+Conclusion: the \(n=2\) centroid exception is impossible. In the massive
+endpoint branch, \(d-3\) cannot be covered by the centroid; after \(Q_2\), it
+must be covered by the other nonzero interior root.
