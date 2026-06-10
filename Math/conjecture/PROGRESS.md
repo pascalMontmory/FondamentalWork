@@ -427,3 +427,44 @@ systems in \(u,v\), indexed by
 \[
   a\in\{u,v\},\qquad t,s\in\{0,u,v\}.
 \]
+
+### One-parameter collapse after \(Q_2\)
+
+Refined the massive-endpoint branch further. Once the root \(a\) selected by
+\(Q_2\) is fixed, the two remaining nonzero roots \(y,z\) have forced sum and
+product:
+\[
+  S=y+z=n-a,
+\]
+\[
+  p=yz
+  =
+  \frac{S^2+n+a^2-D_2a^2}{2}
+  =
+  \frac{n^2+n-2na-(n+5)(n+2)a^2}{2}.
+\]
+Thus \(y,z\) are roots of
+\[
+  F_a(X)=X^2-SX+p.
+\]
+The reality condition is
+\[
+  \Delta_a
+  =
+  (2n^2+14n+21)a^2+2na-n(n+2)\ge0.
+\]
+
+Using the recurrence
+\[
+  T_0=2,\qquad T_1=S,\qquad T_k=ST_{k-1}-pT_{k-2},
+\]
+all moments become one-variable polynomials:
+\[
+  M_k(a)=n(-1)^k+a^k+T_k.
+\]
+
+Therefore all \(Q_3\) and \(Q_4\) cover alternatives in the massive-endpoint
+branch reduce to univariate equations in \(a\): direct equations if the cover
+uses \(0\) or \(a\), and resultants with \(F_a\) if the cover uses one of the
+two remaining roots. This removes the two-variable system from the massive
+branch.

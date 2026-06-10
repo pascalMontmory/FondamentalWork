@@ -1393,3 +1393,129 @@ form.
 This is a concrete elimination target: for each integer \(n=d-4\ge2\), rule
 out finitely many two-variable systems. The original infinitely many
 derivative conditions no longer appear in this branch.
+
+## 22. One-parameter collapse after \(Q_2\)
+
+The massive-endpoint normal form collapses further after the \(Q_2\)-root is
+chosen.
+
+Keep the normalization
+\[
+  -1,\quad 0,\quad u,\quad v,\quad w,
+  \qquad
+  w=n-u-v,
+\]
+with \(-1\) of multiplicity \(n=d-4\). Suppose \(Q_2\) is covered by the root
+\[
+  a=u.
+\]
+The case \(a=v\) is identical after renaming \(u,v\).
+
+Let \(y,z\) denote the two remaining nonzero roots. Their sum is forced by the
+centroid equation:
+\[
+  S=y+z=n-a.
+\]
+The \(Q_2\)-condition says
+\[
+  D_2a^2=P_2=n+a^2+y^2+z^2.
+\]
+Since
+\[
+  y^2+z^2=S^2-2yz,
+\]
+their product is forced:
+\[
+  p=yz
+  =
+  \frac{S^2+n+a^2-D_2a^2}{2}.
+\]
+Equivalently,
+\[
+  p=
+  \frac{n^2+n-2na-(n+5)(n+2)a^2}{2}.
+\]
+
+Thus \(y,z\) are the two roots of the explicit quadratic
+\[
+  F_a(X)=X^2-SX+p.
+\]
+The reality condition is just
+\[
+  \Delta_a=S^2-4p\ge0,
+\]
+that is
+\[
+  \Delta_a
+  =
+  (2n^2+14n+21)a^2+2na-n(n+2)\ge0.
+\]
+
+Now define
+\[
+  T_0=2,\qquad T_1=S,\qquad T_k=ST_{k-1}-pT_{k-2}\quad(k\ge2).
+\]
+Then
+\[
+  T_k=y^k+z^k.
+\]
+Consequently every moment is a polynomial in the single variable \(a\):
+\[
+  M_k(a)=n(-1)^k+a^k+T_k,
+  \qquad
+  P_k=M_k(a).
+\]
+
+This gives a one-parameter elimination form for the whole massive-endpoint
+branch.
+
+For \(Q_3\), the finite alternatives become:
+\[
+  M_3(a)=0
+\]
+if the centroid covers \(d-3\);
+\[
+  M_3(a)=-D_3a^3
+\]
+if the same root \(a\) covers \(d-3\); or
+\[
+  \operatorname{Res}_X
+  \left(
+    F_a(X),
+    X^3-3a^2X-\frac{2M_3(a)}{D_3}
+  \right)=0
+\]
+if one of the two remaining nonzero roots covers \(d-3\).
+
+For \(Q_4\), the finite alternatives are:
+\[
+  M_4(a)=\frac{M_2(a)^2}{2}
+\]
+if the centroid covers \(d-4\);
+\[
+  -5a^4-\frac{8M_3(a)}{D_3}a
+  +\frac{3M_2(a)^2-6M_4(a)}{D_4}=0
+\]
+if the same root \(a\) covers \(d-4\); or
+\[
+  \operatorname{Res}_X
+  \left(
+    F_a(X),
+    X^4-6a^2X^2-\frac{8M_3(a)}{D_3}X
+    +\frac{3M_2(a)^2-6M_4(a)}{D_4}
+  \right)=0
+\]
+if one of the two remaining nonzero roots covers \(d-4\).
+
+Therefore, after \(Q_2\), every massive-endpoint branch is governed by
+univariate equations in \(a\), plus the real-order restrictions for the roots
+of \(F_a\). The two-variable system has disappeared.
+
+This is a sharper elimination target: for each integer \(n\ge2\), one must
+exclude finitely many real roots \(a\) of explicit univariate polynomial
+equations satisfying
+\[
+  -1<a,\qquad \Delta_a\ge0,
+\]
+and the ordering requirement that exactly one of the two roots of \(F_a\) is
+the right endpoint.
