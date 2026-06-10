@@ -611,3 +611,36 @@ unique real zero lies inside the forbidden interval \(\Delta_a<0\).
 Conclusion: in the massive-endpoint branch, the same nonzero root cannot cover
 both \(d-2\) and \(d-3\). After \(Q_2\), order \(d-3\) must be covered either
 by the centroid or by the other interior nonzero root.
+
+### Centroid \(Q_3\) gate reduced to \(n=2\)
+
+Almost eliminated the other cubic gate in the massive-endpoint branch. The
+centroid \(Q_3\)-gate is
+\[
+  C_0(n,a)=0.
+\]
+For \(n\ge3\), the cubic \(C_0(n,\cdot)\) has three distinct real roots. By
+reducing \(C_0\) modulo
+\[
+  \Delta_a=(2n^2+14n+21)a^2+2na-n(n+2),
+\]
+one checks that
+\[
+  C_0(n,\delta_-)>0,\qquad C_0(n,\delta_+)>0,
+\]
+where \(\delta_-<0<\delta_+\) are the two roots of \(\Delta_a\). Since
+\[
+  C_0(n,0)=-n(n+1)(n+2)<0,
+\]
+two roots of \(C_0\) lie in the forbidden interval \(\Delta_a<0\). The third
+root lies to the right of \(1\), because
+\[
+  C_0(n,1)=2(n-1)(n^2+10n+15)>0
+\]
+and the leading coefficient is negative.
+
+Conclusion: for every \(n\ge3\), the centroid \(Q_3\)-gate has no admissible
+massive-endpoint solution. The only remaining centroid-gate exception is
+\[
+  n=2\quad(d=6).
+\]

@@ -1867,3 +1867,125 @@ has no admissible real solution.
 Thus the massive-endpoint branch loses one of its three \(Q_3\)-possibilities:
 after \(Q_2\), derivative order \(d-3\) must be covered either by the centroid
 root or by the other interior nonzero root.
+
+## 27. The centroid \(Q_3\) gate is finite-exceptional
+
+The centroid gate
+\[
+  C_0(n,a)=0
+\]
+can also be almost eliminated.
+
+Its discriminant is
+\[
+  \operatorname{disc}_a C_0
+  =
+  108n^2(n+1)(n+2)(n+3)^2(n+5)
+  \left(n^5+10n^4+31n^3+26n^2-10n-10\right),
+\]
+which is positive for \(n\ge2\). Thus \(C_0(n,\cdot)\) has three distinct real
+roots.
+
+Let \(\delta_-<0<\delta_+\) be the two roots of
+\[
+  \Delta_a=(2n^2+14n+21)a^2+2na-n(n+2).
+\]
+The admissible real reconstruction requires
+\[
+  \Delta_a\ge0.
+\]
+
+Reducing \(C_0\) modulo \(\Delta_a\) gives
+\[
+  C_0(n,a)\equiv
+  -\frac{n(n+3)}{(2n^2+14n+21)^2}(K_n^{(0)}a+M_n^{(0)})
+  \pmod{\Delta_a},
+\]
+where
+\[
+  K_n^{(0)}
+  =
+  6n^4+66n^3+225n^2+222n-21,
+\]
+and
+\[
+  M_n^{(0)}
+  =
+  -2n^5-22n^4-69n^3-2n^2+275n+294.
+\]
+For \(n\ge3\), \(K_n^{(0)}>0\) and \(M_n^{(0)}<0\). Put
+\[
+  b_n^*=-\frac{M_n^{(0)}}{K_n^{(0)}}.
+\]
+Then \(b_n^*>0\), and
+\[
+  \Delta_{b_n^*}
+  =
+  \frac{
+    2(n+2)(2n^2+14n+21)^2
+    \left(n^7+13n^6+47n^5-33n^4-455n^3-469n^2+731n+1029\right)
+  }{(K_n^{(0)})^2}.
+\]
+The polynomial in parentheses is positive for \(n\ge3\). It is positive at
+\(n=3\), and its derivative
+\[
+  7n^6+78n^5+235n^4-132n^3-1365n^2-938n+731
+\]
+is positive for \(n\ge3\), by grouping the positive differences
+\[
+  78n^5-132n^3,\qquad
+  235n^4-1365n^2,\qquad
+  7n^6-938n+731.
+\]
+Hence
+\[
+  \Delta_{b_n^*}>0.
+\]
+Since \(b_n^*>0\), this implies
+\[
+  b_n^*>\delta_+.
+\]
+Therefore
+\[
+  K_n^{(0)}\delta_-+M_n^{(0)}<0,
+  \qquad
+  K_n^{(0)}\delta_++M_n^{(0)}<0,
+\]
+and the negative prefactor in the remainder gives
+\[
+  C_0(n,\delta_-)>0,
+  \qquad
+  C_0(n,\delta_+)>0.
+\]
+
+But
+\[
+  C_0(n,0)=-n(n+1)(n+2)<0.
+\]
+Thus two of the three real roots of \(C_0(n,\cdot)\) lie in the forbidden
+interval
+\[
+  \delta_-<a<\delta_+,
+  \qquad
+  \Delta_a<0.
+\]
+The third root lies to the right of \(1\), because
+\[
+  C_0(n,1)=2(n-1)(n^2+10n+15)>0
+\]
+while the leading coefficient of \(C_0\) is negative.
+
+Proposition. For every \(n\ge3\), the centroid \(Q_3\)-gate
+\[
+  C_0(n,a)=0
+\]
+has no admissible massive-endpoint solution.
+
+The only remaining centroid-gate exception is \(n=2\), equivalently degree
+\[
+  d=n+4=6.
+\]
+Thus, in the massive-endpoint branch, the \(Q_3\)-stage is reduced to:
+
+1. the other-interior-root resultant branch for all \(n\ge2\);
+2. the finite exceptional centroid case \(n=2\).
