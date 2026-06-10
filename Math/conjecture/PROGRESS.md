@@ -1011,3 +1011,37 @@ The reconstruction script
 \]
 checks these seven types and reduces \(H_3,H_4,H_5,H_6\) modulo \(F_m\).
 Four types become univariate in \(a\), and three remain linear in \(Y\).
+
+### Endpoint \(d-6\) cover degrees and modular diagnostic
+
+The explicit cover substitution has now been checked. For every \(d-6\)
+weight type and every cover
+\[
+  X\in\{0,a,Y,z\},
+\]
+the reduced \(H_3,H_4,H_5,H_6\) cover condition has degree at most one in
+\(Y\). The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_cover\_degrees.py}.
+\]
+
+A finite-field diagnostic was also added:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_modular\_sieve.py}.
+\]
+It evaluates the system
+\[
+  F_m=0,\qquad
+  \prod_{X\in\{0,a,Y,z\}} H_k(X)=0,\quad k=3,4,5,6.
+\]
+For all seven weight types there are no nondegenerate points modulo \(5\);
+the remaining points all lie on \(a=0\) or on one of the bad denominator
+residues \(n+1,\ldots,n+6\equiv0\pmod 5\).
+
+This is currently a diagnostic, not the final characteristic-zero proof. The
+next exact target is the saturation by
+\[
+  a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6)
+\]
+followed by elimination of \(Y\) and \(a\) to recover univariate obstruction
+factors in \(n\).

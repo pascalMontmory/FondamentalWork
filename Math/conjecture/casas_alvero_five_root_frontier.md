@@ -2656,3 +2656,38 @@ The reconstruction script
 verifies these seven types and reduces \(H_3,H_4,H_5,H_6\) modulo \(F_m\).
 Four of the seven types become univariate in \(a\) after \(Q_2\); the other
 three remain linear in \(Y\). This is the next finite elimination target.
+
+## 38. Endpoint multiplicity \(d-6\): modular diagnostic
+
+After substituting each possible cover
+\[
+  X\in\{0,a,Y,z\}
+\]
+and reducing modulo \(F_m\), every \(Q_3,Q_4,Q_5,Q_6\) cover condition has
+degree at most one in \(Y\). The degree-check script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_cover\_degrees.py}.
+\]
+
+As an orientation check, the modular diagnostic script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_modular\_sieve.py}
+\]
+tests the finite-field system
+\[
+  F_m=0,\qquad
+  \prod_{X\in\{0,a,Y,z\}} H_k(X)=0,\quad k=3,4,5,6.
+\]
+Modulo \(5\), all seven weight types have no nondegenerate points after
+excluding \(a=0\) and the bad denominator residues
+\[
+  n+1,\ldots,n+6\equiv0\pmod 5.
+\]
+
+This is not yet a characteristic-zero closure: unlike the earlier univariate
+certificates in \(n\), this is a multivariate diagnostic. Its value is that it
+points to the right exact target: saturate by
+\[
+  a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6)
+\]
+and then eliminate \(Y\) and \(a\) to produce univariate factors in \(n\).
