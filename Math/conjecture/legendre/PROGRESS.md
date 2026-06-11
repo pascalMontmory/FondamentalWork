@@ -1432,3 +1432,56 @@ The exact residue split for this exceptional repetition is:
 So the first universal triple now gives a finite exact local obstruction.
 It does not close Legendre, but it sharply restricts the start of any
 remaining \(m\)-certificate before the later interval is considered.
+
+## Initial mod 10 gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_mod10\_gate.md}.
+\]
+
+This compresses the initial-block obstruction into an exact residue
+classification modulo \(10\).
+
+For \(m\ge11\), the first three blocks are complete.  Their behavior is:
+\[
+\begin{array}{c|c}
+  m\bmod10 & \text{gate}\\
+  \hline
+  2,4,5,6,8 & \text{all three blocks coprime; no same-layer repetition}\\
+  0 & \text{all three blocks coprime; only A1 can repeat }5\\
+  3,7 & \text{all three blocks coprime; only A0 can repeat }5\\
+  1,9 & B_1\text{ is a bridge block with bridge prime }5.
+\end{array}
+\]
+
+The bridge classes are exactly
+\[
+  m\equiv1,9\pmod{10},
+\]
+because then \(m\) is odd, \(t_1(1)=5\), and
+\[
+  5\mid9m^2+1.
+\]
+Consequently \(5\) divides both middle-block candidates
+\[
+  9m^2+4^2,\qquad 9m^2+5^2+1.
+\]
+
+The A0 repetition classes are exactly
+\[
+  m\equiv3,7\pmod{10},
+\]
+coming from
+\[
+  9m^2+2^2\equiv0\pmod5.
+\]
+The A1 repetition class is exactly
+\[
+  m\equiv0\pmod{10}.
+\]
+
+Thus every remaining \(m\ge11\) certificate must enter one of four finite
+gates: strong no-repetition, A0-\(5\), A1-\(5\), or bridge-\(5\).  The next
+exact closure target is to show that none of these gates can be extended to a
+full two-layer certificate over the complete block interval.

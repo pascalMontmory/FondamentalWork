@@ -58,6 +58,9 @@ Main notes:
   constraints; for \(m\ge11\), the initial triple has no adjacent same-layer
   repetition, and the only possible nonadjacent repetition is the prime \(5\)
   in explicit residue classes.
+- `legendre_initial_mod10_gate.md`: exact reduction of the initial triple to
+  four residue gates modulo \(10\): strong no-repetition classes, A0 reuse of
+  \(5\), A1 reuse of \(5\), and bridge classes.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -87,7 +90,10 @@ consecutive blocks in the same layer.  The first universal triple
 \(q=0,1,2\) has now been isolated exactly: once complete and coprime, adjacent
 same-layer repetition is impossible, and the only possible nonadjacent
 repetition is \(p=5\), with A0 restricted to odd \(m\equiv\pm2\pmod5\) and
-A1 restricted to even \(5\mid m\).
+A1 restricted to even \(5\mid m\).  This has been compressed into an exact
+mod \(10\) gate: classes \(2,4,5,6,8\) force full same-layer distinctness,
+class \(0\) permits only A1 reuse of \(5\), classes \(3,7\) permit only A0
+reuse of \(5\), and classes \(1,9\) are bridge-block cases.
 
 Computational scripts live in `tools/`.
 
