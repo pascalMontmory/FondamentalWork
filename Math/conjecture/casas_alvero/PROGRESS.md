@@ -726,7 +726,7 @@ where \(P_{48}\) has no root modulo \(11\). This branch also has no integer
 
 The exact verification script is
 \[
-  \texttt{Math/conjecture/tools/massive\_endpoint\_q4\_certificates.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/massive\_endpoint\_q4\_certificates.py}.
 \]
 
 Conclusion: in the massive-endpoint branch, \(d-4\) cannot be covered by
@@ -857,7 +857,7 @@ corresponding to the double root being \(0\), \(a\), or another nonzero root.
 
 The script
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d5\_reduction.py}
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d5\_reduction.py}
 \]
 reconstructs these three cases and reduces \(Q_3,Q_4,Q_5\) modulo \(F_m\).
 Thus the endpoint \(d-5\) branch is now a finite collection of explicit
@@ -886,7 +886,7 @@ three cover equations in \(\mathbb Q(n)[a]\) is \(1\).
 
 The generic gcd verification script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_gcds.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d5\_symmetric\_gcds.py}.
 \]
 
 Then removed the remaining specialization caveat by taking the gcd in
@@ -903,7 +903,7 @@ Since \(n=d-5\ge1\), none is admissible.
 
 The integer resultant verification script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d5\_symmetric\_resultants.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d5\_symmetric\_resultants.py}.
 \]
 
 Conclusion: these two endpoint-\(d-5\) types are impossible. The only
@@ -953,7 +953,7 @@ no cover triple is possible.
 
 The exact verification script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d5\_asymmetric\_resultants.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d5\_asymmetric\_resultants.py}.
 \]
 
 Conclusion: the endpoint \(d-5\) branch is impossible.
@@ -1007,7 +1007,7 @@ Up to exchanging the two remaining roots, there are seven weight types:
 
 The reconstruction script
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_reduction.py}
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_reduction.py}
 \]
 checks these seven types and reduces \(H_3,H_4,H_5,H_6\) modulo \(F_m\).
 Four types become univariate in \(a\), and three remain linear in \(Y\).
@@ -1022,12 +1022,12 @@ weight type and every cover
 the reduced \(H_3,H_4,H_5,H_6\) cover condition has degree at most one in
 \(Y\). The verification script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_cover\_degrees.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_cover\_degrees.py}.
 \]
 
 A finite-field diagnostic was also added:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_modular\_sieve.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_modular\_sieve.py}.
 \]
 It evaluates the system
 \[
@@ -1069,7 +1069,7 @@ many specializations of \(n\).
 
 The verification script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_type\_generic\_probe.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_type\_generic\_probe.py}.
 \]
 The remaining non-generically-certified types are
 \[
@@ -1081,7 +1081,7 @@ They require a specialization certificate rather than the naive generic sweep.
 
 Added a residue-level modular sieve for the three remaining types:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_residue\_sieve.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_residue\_sieve.py}.
 \]
 It records the allowed \(n\)-residues for each tested prime, including both
 bad denominator residues and residues with actual nondegenerate finite-field
@@ -1117,7 +1117,7 @@ of enumerating the \(4^4\) cover quadruples, define
 and reduce each \(R_k\) modulo the weighted quadratic \(F_m\). The draft
 script is
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_elimination.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_equation\_elimination.py}.
 \]
 
 For the remaining type \((1,1,3,1)\), the reduced products are all linear in
@@ -1137,7 +1137,7 @@ or a faster modular substitute.
 
 Added the modular-specialization substitute:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_modular\_probe.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_equation\_modular\_probe.py}.
 \]
 It fixes \(n\) modulo a prime before constructing the four equation-level
 products. If a good specialization gives gcd \(1\) in \(\mathbb F_p[a]\), then
@@ -1171,7 +1171,7 @@ many exceptional specializations of \(n\).
 
 Added the exact extraction skeleton:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_n.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_equation\_exceptional\_n.py}.
 \]
 It forms the four equation-level eliminants, takes pairwise resultants in
 \(a\), and saturates the resulting univariate obstruction by
@@ -1184,7 +1184,7 @@ than as the final engine.
 
 Added the lighter residue extractor:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_residues.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_equation\_exceptional\_residues.py}.
 \]
 For each residue \(n\bmod p\), it computes the gcd of the four specialized
 eliminants in \(\mathbb F_p[a]\). A residue with gcd \(0\) is excluded over
@@ -1221,7 +1221,7 @@ is still too large for a direct SymPy computation.
 
 Added the interpolation prototype:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_resultant\_interpolate.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_resultant\_interpolate.py}.
 \]
 For \((1,1,3,1)\), modulo \(1009\), the first pairwise resultant has degree
 greater than \(39\) in \(n\). This confirms the next implementation target:
@@ -1265,7 +1265,7 @@ treatment of the CRT classes selected by these modular factors.
 
 Added the CRT refinement driver:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_crt\_classes.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_exceptional\_crt\_classes.py}.
 \]
 It has three uses:
 
@@ -1302,7 +1302,7 @@ with \(t\) retained, instead of relying only on residue membership.
 
 Added the class-parameter probe:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_class\_t\_probe.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_exceptional\_class\_t\_probe.py}.
 \]
 For a CRT class \(n\equiv c\pmod M\), it substitutes
 \[
@@ -1426,7 +1426,7 @@ descendants rather than merely intersecting nonempty residue sets.
 
 Added the local fiber classifier:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_class\_t\_fiber\_classify.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_class\_t\_fiber\_classify.py}.
 \]
 For a fixed class \(n=c+Mt\), it separates each \(t\bmod p\) into:
 
@@ -1483,7 +1483,7 @@ the regular-gcd factor, not the raw live factor.
 
 Added the regular-factor comparator:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_factor\_compare.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_regular\_t\_factor\_compare.py}.
 \]
 It uses the local classifier and keeps only the `regular_gcd` fibers, removing
 saturated, all-zero, and degree-drop artifacts before comparing primes.
@@ -1514,7 +1514,7 @@ constraints on the regular fibers.
 
 Added the regular root extractor:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_root\_lift.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_regular\_t\_root\_lift.py}.
 \]
 For each regular \(t\)-fiber it recomputes the four specialized eliminants
 and extracts the gcd in \(\mathbb F_p[a]\). In the representative class
@@ -1548,7 +1548,7 @@ corresponding \(Y\)-root and \(z\)-root degeneracy conditions.
 
 Added the geometric lift checker:
 \[
-  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_geometry\_check.py}.
+  \texttt{Math/conjecture/casas_alvero/tools/endpoint\_d6\_regular\_t\_geometry\_check.py}.
 \]
 For each regular local \(t\)-fiber it extracts the common \(a\)-root from the
 four \(a\)-eliminants, then tests every \(Y\in\mathbb F_p\) against the full

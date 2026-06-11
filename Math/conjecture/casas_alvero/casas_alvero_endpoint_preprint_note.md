@@ -198,12 +198,12 @@ should use Sage/Singular/Magma or a separate geometric argument.
 
 The following scripts support the claims in this note:
 
-- `Math/conjecture/tools/massive_endpoint_q4_certificates.py`
-- `Math/conjecture/tools/endpoint_d5_reduction.py`
-- `Math/conjecture/tools/endpoint_d5_symmetric_gcds.py`
-- `Math/conjecture/tools/endpoint_d5_symmetric_resultants.py`
-- `Math/conjecture/tools/endpoint_d5_asymmetric_resultants.py`
-- `Math/conjecture/tools/endpoint_d6_reduction.py`
-- `Math/conjecture/tools/endpoint_d6_type_generic_probe.py`
-- `Math/conjecture/tools/endpoint_d6_equation_modular_probe.py`
+- `Math/conjecture/casas_alvero/tools/massive_endpoint_q4_certificates.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d5_reduction.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d5_symmetric_gcds.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d5_symmetric_resultants.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d5_asymmetric_resultants.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d6_reduction.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d6_type_generic_probe.py`
+- `Math/conjecture/casas_alvero/tools/endpoint_d6_equation_modular_probe.py`
 
