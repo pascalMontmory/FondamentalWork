@@ -1666,3 +1666,49 @@ eight distinct certificate labels:
 The remaining strong-gate target is now sharper: either eight distinct small
 labels appear immediately, or \(m\) is forced into one of the listed
 cross-layer collision classes.
+
+## Initial pairwise-coprime cluster
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_pairwise\_coprime\_cluster.md}.
+\]
+
+This records the clean strong-gate consequence of the same-layer and
+cross-layer collision lemmas.
+
+For \(j=0,1,2,3\), define
+\[
+  G_j=9m^2+t_0(j)^2,
+  \qquad
+  U_j=9m^2+t_1(j)^2+1.
+\]
+
+Assume \(m\ge21\), the first four blocks are coprime, \(m\) lies in a
+no-same-layer-repetition class modulo \(70\), and \(m\) avoids the explicit
+cross-layer collision congruences.  Then:
+\[
+\boxed{
+  G_0,G_1,G_2,G_3,U_0,U_1,U_2,U_3
+  \text{ are pairwise coprime.}
+}
+\]
+
+The proof is exact:
+
+- same-block coprimality is the A-block gcd formula;
+- same-layer gcds would be same-layer repetitions, forbidden by the mod
+  \(70\) gate;
+- cross-layer gcds would satisfy
+  \[
+    p\mid t_1(j)^2+1-t_0(i)^2,
+  \]
+  hence are exactly the cross-layer collisions already listed.
+
+Therefore, if the A-channel failed on the first four blocks in the clean
+strong gate, the counterexample would force eight pairwise coprime composite
+integers in a short interval near \(9m^2\).  Each would have a distinct prime
+divisor \(p\le3m\).
+
+The strong-gate closure target is now equivalent to excluding this
+pairwise-coprime composite cluster.

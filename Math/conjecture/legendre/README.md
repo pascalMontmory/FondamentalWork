@@ -70,6 +70,10 @@ Main notes:
 - `legendre_initial_cross_layer_collisions.md`: exact cross-layer collision
   lemma for the first four blocks; outside bridge classes, shared A0/A1 labels
   are confined to fixed primes \(13,17,29,37,53\) with explicit congruences.
+- `legendre_initial_pairwise_coprime_cluster.md`: clean strong-gate
+  consequence showing that the eight first-four-block A0/A1 candidates are
+  pairwise coprime; a counterexample must begin with eight distinct small
+  prime labels.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -110,7 +114,11 @@ The first-four gate has been compressed modulo \(70\), giving six disjoint
 types: bridge, no-repetition, A0-\(5\), A1-\(5\), A1-\(7\), and double-A1.
 Cross-layer label sharing among the first four blocks has also been
 localized exactly: outside bridge classes, it can only occur through the
-fixed primes \(13,17,29,37,53\) in explicitly listed block positions.
+fixed primes \(13,17,29,37,53\) in explicitly listed block positions.  In
+the clean strong gate, excluding those cross-layer congruences, the eight
+initial A0/A1 candidate values are pairwise coprime.  A counterexample there
+must therefore start with eight pairwise coprime composites, each carrying a
+distinct small prime label.
 
 Computational scripts live in `tools/`.
 
