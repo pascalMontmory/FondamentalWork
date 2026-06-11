@@ -268,12 +268,26 @@ one obtains the descent criterion above and Legendre closes.
 
 ## 6. Next exact lemma to attack
 
-The most promising sharp sublemma is the following.
+The first tempting sharp sublemma is the following.
 
 > Near-diagonal terminal lemma.  In a minimal counterexample to Legendre,
 > no Campbell \(P_3\) survivor can lie in T1 or T2.
 
-If this lemma is proved, then every terminal \(P_3\) survivor lies in Tfar,
+This lemma is not a consequence of terminal geometry alone.  The channel T1
+contains the formal value
+\[
+  N=n(n+1)
+\]
+obtained from \(a=0,k=1\), so a geometry-only proof of T1/T2 elimination is
+too optimistic.
+
+The corrected target is recorded in
+\[
+  \texttt{legendre\_p3\_weighted\_terminal\_gap.md}.
+\]
+
+If a weighted T1/T2 elimination is proved, then every terminal \(P_3\)
+survivor lies in Tfar,
 where
 \[
   a(a+k)\ge n(k-2).

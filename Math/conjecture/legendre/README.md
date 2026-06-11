@@ -170,6 +170,17 @@ Main notes:
   \(P_3\) theorem to terminal composite factor equations
   \(N=(n-a)(n+a+k)\), splitting the almost-prime obstruction into the T1,
   T2, and Tfar channels.
+- `legendre_p3_weighted_terminal_gap.md`: correction of the geometry-only
+  \(P_3\) descent attempt; shows that T1 contains \(n(n+1)\), so near-diagonal
+  channels must be attacked through Campbell's actual sieve weights or by
+  synchronization with quotient certificates.
+- `legendre_campbell_weight_extraction.md`: exact extraction of Campbell's
+  Richert weights, final parameters \(k=3,k_1=8,k_2=3.17,z=X^{1/8}\), and the
+  \(0.0249\sqrt N/\log X\) margin; identifies the Richert-core terminal
+  certificate lemma as the usable \(P_3\)-upgrade target.
+- `legendre_richert_terminal_atom_types.md`: classification of Richert-core
+  terminal \(P_3\) composites into exactly three atom types: prime-prime,
+  lower-prime/upper-semiprime, and lower-semiprime/upper-prime.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

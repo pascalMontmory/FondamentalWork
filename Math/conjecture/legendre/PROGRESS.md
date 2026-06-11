@@ -3580,3 +3580,123 @@ The new closure target is a descent lemma: in a minimal Legendre
 counterexample, eliminate T1 and T2 terminal \(P_3\) survivors, then use the
 forced \(Tfar\) factor drop to descend from \(n\) to a smaller
 between-squares obstruction.
+
+## P3 weighted terminal correction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_p3\_weighted\_terminal\_gap.md}.
+\]
+
+This corrects the first terminal-descent target.  The geometry-only
+near-diagonal lemma is too strong: T1 contains the always-admissible formal
+terminal value
+\[
+  N=n(n+1)
+\]
+from \(a=0,k=1\).  Thus T1/T2 elimination cannot follow from terminal factor
+geometry alone.
+
+The corrected closure target is weighted.  Under a prime-free assumption,
+Campbell's \(P_3\) lower bound must be entirely accounted for by terminal
+composites, so one needs a strict inequality of the form
+\[
+  W_{\mathrm{T1}}(n)+W_{\mathrm{T2}}(n)+W_{\mathrm{Tfar}}(n)
+  <
+  W_{P_3}(n),
+\]
+where the \(W_{\mathrm{T*}}\) use the same sieve weights as the \(P_3\)
+theorem.
+
+The next exact task is to extract Campbell's actual \(P_3\) weight and
+rewrite its lower bound over terminal pairs \((a,k)\).  If T1 and T2 cannot
+saturate that lower bound, the remaining Tfar channel becomes the genuine
+descent target.
+
+## Campbell weight extraction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_campbell\_weight\_extraction.md}.
+\]
+
+The source TeX for Campbell's arXiv preprint was inspected locally in
+\[
+  \texttt{/tmp/2603.10356\_src}
+\]
+without committing the third-party source to Git.
+
+The exact large-range parameters are:
+\[
+  k=3,\qquad k_1=8,\qquad k_2=3.17,
+\]
+\[
+  z=X^{1/8},\qquad y=X^{1/3.17},\qquad \lambda=0.83.
+\]
+
+The Richert weight is
+\[
+  w(a)=
+  \lambda
+  -
+  \sum_{\substack{z\le p<y\\p\mid a}}
+  \left(1-\frac{\log p}{\log y}\right),
+\]
+summed over \((a,P(z))=1\).
+
+Campbell's final margin is
+\[
+  r_3(\mathcal A)>0.0249\frac{\sqrt N}{\log X}>0
+\]
+for \(N\ge10^{31}\).
+
+This exposes a real limitation: a naive upper bound for composite \(P_3\)'s
+is unlikely to beat that small margin.  The usable target must instead focus
+on Richert-core survivors, i.e. composite \(P_3\)'s with no prime factor
+below
+\[
+  z=X^{1/8},
+\]
+and synchronize them with the small-prime certificates forced by
+prime-freeness of the whole interval.
+
+## Richert-core terminal atom types
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_richert\_terminal\_atom\_types.md}.
+\]
+
+For a prime-free interval, a Richert-core \(P_3\) survivor satisfies
+\[
+  \Omega(A)\le3,
+  \qquad
+  (A,P(z))=1,
+  \qquad
+  z=X^{1/8}.
+\]
+
+Its terminal factorization
+\[
+  A=dD,\qquad d\le n<D
+\]
+has only three atomic shapes:
+\[
+  \mathrm{R2}: d=p,\ D=q,
+\]
+\[
+  \mathrm{R3L}: d=p,\ D=qr,
+\]
+\[
+  \mathrm{R3R}: d=pq,\ D=r.
+\]
+
+All atomic primes lie above \(z\).  The lower-side atoms are \(\le n\), and
+if the upper terminal side is composite then at least one of its atoms is
+\(<n+1\).  Thus every prime-free Richert-core survivor has a medium-prime
+certificate in \([z,n+1)\), but not every atom has to lie below \(n+1\).
+
+The next algebraic obstruction is to synchronize these three atom types with
+the existing quotient-certificate equations, and prove that two or three
+medium-prime atoms cannot certify enough structured composites to support a
+prime-free Legendre interval.
