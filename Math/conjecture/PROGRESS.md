@@ -1132,3 +1132,74 @@ The resulting equation-level eliminants have degrees in \(a\)
 This confirms that the construction of the four compact equations is feasible;
 the next blocker is the gcd of these larger eliminants over \(\mathbb{Q}(n)[a]\)
 or a faster modular substitute.
+
+### Equation-level modular specialization closes the remaining generic types
+
+Added the modular-specialization substitute:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_modular\_probe.py}.
+\]
+It fixes \(n\) modulo a prime before constructing the four equation-level
+products. If a good specialization gives gcd \(1\) in \(\mathbb F_p[a]\), then
+the generic gcd over \(\mathbb Q(n)[a]\) is also \(1\).
+
+For the three previously remaining endpoint-\(d-6\) types, the probe finds:
+\[
+\begin{array}{c|c|c}
+  \text{type} & p & n\pmod p \\
+  \hline
+  (1,1,3,1) & 11 & 4 \\
+  (1,2,2,1) & 11 & 1 \\
+  (2,1,2,1) & 11 & 1
+\end{array}
+\]
+Each row gives equation-level gcd \(1\) after specialization. Together with
+the earlier four cover-enumeration generic closures, all seven endpoint
+\(d-6\) weight types are now impossible over the generic parameter field.
+
+The remaining work in this endpoint branch is no longer generic gcd
+construction. It is the finite specialization problem: identify and eliminate
+the exceptional integer values of \(n\) where denominators, leading
+coefficients, or specialization resultants can degenerate.
+
+### Endpoint \(d-6\): exceptional specialization extraction started
+
+Clarified the final \(d-6\) lock. The modular-specialization probe does not
+close all integer \(n\ge1\). It proves that the three remaining types have no
+generic component. Therefore any remaining solution must lie over finitely
+many exceptional specializations of \(n\).
+
+Added the exact extraction skeleton:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_n.py}.
+\]
+It forms the four equation-level eliminants, takes pairwise resultants in
+\(a\), and saturates the resulting univariate obstruction by
+\[
+  a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6).
+\]
+The direct global symbolic path is currently too heavy, so it should be used
+as the target specification for a modular/reconstructed computation rather
+than as the final engine.
+
+Added the lighter residue extractor:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_residues.py}.
+\]
+For each residue \(n\bmod p\), it computes the gcd of the four specialized
+eliminants in \(\mathbb F_p[a]\). A residue with gcd \(0\) is excluded over
+the algebraic closure; a positive-degree gcd, or total vanishing of the
+specialized eliminants, is kept as live.
+
+With primes \(11,13,17\), the saturated live classes are:
+\[
+\begin{array}{c|c}
+  \text{type} & \text{saturated live classes mod }2431 \\
+  \hline
+  (1,1,3,1) & 64 \\
+  (1,2,2,1) & 144 \\
+  (2,1,2,1) & 54
+\end{array}
+\]
+These are not yet a closure, but they are the right finite targets for the
+next exact reconstruction of exceptional factors in \(n\).

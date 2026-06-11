@@ -2777,3 +2777,100 @@ Thus the compact equation-level system is feasible. The remaining task is to
 compute the gcd of these larger eliminants efficiently, most likely by a
 modular or residue-specialized method rather than by the current direct
 SymPy gcd over \(\mathbb{Q}(n)[a]\).
+
+## 42. Endpoint multiplicity \(d-6\): modular generic closure
+
+The direct gcd of the equation-level eliminants over \(\mathbb Q(n)[a]\) can
+be bypassed by specializing \(n\) modulo a prime before constructing the
+products. If a non-bad specialization has gcd \(1\) in \(\mathbb F_p[a]\),
+then the generic gcd over \(\mathbb Q(n)[a]\) must also be \(1\), because any
+positive-degree generic common factor would survive all but finitely many
+specializations.
+
+The verification script is
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_modular\_probe.py}.
+\]
+It closes the three previously remaining generic endpoint-\(d-6\) types with
+the following specializations:
+\[
+\begin{array}{c|c|c}
+  \text{type} & p & n\pmod p \\
+  \hline
+  (1,1,3,1) & 11 & 4 \\
+  (1,2,2,1) & 11 & 1 \\
+  (2,1,2,1) & 11 & 1
+\end{array}
+\]
+
+Thus all seven endpoint-\(d-6\) weight types are now closed over the generic
+parameter field: four by the explicit cover-enumeration gcds, and three by
+the equation-level modular specialization.
+
+What remains is the specialization problem. One still has to remove the
+finite exceptional set of integer \(n\)-values where a denominator, leading
+coefficient, or specialization resultant degenerates. The next exact target is
+therefore not another generic gcd, but a univariate exceptional-factor
+certificate in \(n\), saturated by
+\[
+  a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6).
+\]
+
+## 43. Endpoint multiplicity \(d-6\): exceptional specializations
+
+The final \(d-6\) obstruction is now precisely separated from the generic
+closure.
+
+Let \(E_3,E_{34},E_{35},E_{36}\in\mathbb Z[n,a]\) be the four equation-level
+eliminants obtained from
+\[
+  F_m=0,\qquad R_3=R_4=R_5=R_6=0,
+\]
+where \(R_k\) is reduced modulo \(F_m\), \(E_3=\operatorname{Res}_Y(F_m,R_3)\),
+and \(E_{3j}\) is the \(2\times2\) determinant forcing \(R_3\) and \(R_j\) to
+have the same \(Y\)-root.
+
+The remaining ideal to project is the saturated ideal
+\[
+  \langle E_3,E_{34},E_{35},E_{36}\rangle
+  :
+  \langle a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6)\rangle^\infty.
+\]
+The target is its elimination to \(\mathbb Z[n]\). Any integer
+\(n\ge1\) not vanishing on that elimination factor is impossible.
+
+The script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_n.py}
+\]
+implements this exact target by pairwise resultants in \(a\), followed by
+saturation of the univariate factors. The direct global computation is still
+too heavy in SymPy, so the practical route is modular reconstruction or
+residue-specialized exact computation.
+
+As a first localization pass, the script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_residues.py}
+\]
+computes, for each residue \(n\bmod p\), the gcd of the specialized
+eliminants in \(\mathbb F_p[a]\). This tests for common roots over the
+algebraic closure, not merely \(\mathbb F_p\)-rational points.
+
+With primes \(11,13,17\), the saturated live classes are:
+\[
+\begin{array}{c|c}
+  \text{type} & \text{saturated live classes mod }2431 \\
+  \hline
+  (1,1,3,1) & 64 \\
+  (1,2,2,1) & 144 \\
+  (2,1,2,1) & 54
+\end{array}
+\]
+
+Thus the current status is:
+
+1. all seven endpoint-\(d-6\) types are generically impossible;
+2. the remaining obstruction is finite over the \(n\)-line;
+3. the finite exceptional fibers are now localized by algebraic modular gcd
+   conditions and should be attacked by reconstructed univariate factors in
+   \(n\).
