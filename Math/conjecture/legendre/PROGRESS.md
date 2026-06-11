@@ -1712,3 +1712,70 @@ divisor \(p\le3m\).
 
 The strong-gate closure target is now equivalent to excluding this
 pairwise-coprime composite cluster.
+
+## Initial factor-gap system
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_factor\_gap\_system.md}.
+\]
+
+This converts the clean strong-gate cluster into exact centered
+factorizations.
+
+Set
+\[
+  A=3m.
+\]
+For any candidate
+\[
+  N=A^2+c
+\]
+with \(0<c\le2A\), compositeness gives a factorization
+\[
+  N=(A-r)(A+s),
+  \qquad r\ge1,\quad s\ge1.
+\]
+Since \(N>A^2\), one has \(s>r\).  Writing
+\[
+  e=s-r\ge1,
+\]
+gives the exact factor-gap equation
+\[
+  c=Ae-r(r+e).
+\]
+Equivalently,
+\[
+  w^2=e^2+4Ae-4c,
+  \qquad w\equiv e\pmod2.
+\]
+
+For the first-four-block cluster, the offset sets are:
+\[
+  \mathcal C_{\rm even}=\{1,5,17,25,49,65,101,121\},
+\]
+\[
+  \mathcal C_{\rm odd}=\{2,4,16,26,50,64,100,122\}.
+\]
+For \(m\ge21\), all these offsets satisfy \(c\le2A\).
+
+Thus a clean strong-gate counterexample must solve, for every
+\[
+  c\in\mathcal C_{\rm parity(m)},
+\]
+the simultaneous equations
+\[
+  A^2+c=(A-r_c)(A+r_c+e_c),
+\]
+or
+\[
+  c=Ae_c-r_c(r_c+e_c),
+\]
+with the distinct small labels
+\[
+  p_c=A-r_c
+\]
+respecting the A0/A1 restrictions.
+
+The remaining strong-gate obstruction is now a Diophantine system with one
+shared center \(A=3m\) and eight fixed offsets.

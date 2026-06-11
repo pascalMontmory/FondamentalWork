@@ -74,6 +74,9 @@ Main notes:
   consequence showing that the eight first-four-block A0/A1 candidates are
   pairwise coprime; a counterexample must begin with eight distinct small
   prime labels.
+- `legendre_initial_factor_gap_system.md`: exact centered factorization
+  equations for the clean strong-gate cluster, replacing small prime labels
+  by eight simultaneous factor-gap equations around \(A=3m\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -118,7 +121,13 @@ fixed primes \(13,17,29,37,53\) in explicitly listed block positions.  In
 the clean strong gate, excluding those cross-layer congruences, the eight
 initial A0/A1 candidate values are pairwise coprime.  A counterexample there
 must therefore start with eight pairwise coprime composites, each carrying a
-distinct small prime label.
+distinct small prime label.  This cluster has now been rewritten as eight
+centered factor-gap equations
+\[
+  A^2+c=(A-r_c)(A+r_c+e_c),
+  \qquad A=3m,
+\]
+with \(c\) running through an explicit parity-dependent offset set.
 
 Computational scripts live in `tools/`.
 
