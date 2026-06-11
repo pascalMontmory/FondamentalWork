@@ -52,6 +52,8 @@ Main notes:
   progression or mirror congruences on block indices.
 - `legendre_adjacent_block_obstruction.md`: adjacent-block rule showing that
   same-prime repetition on neighboring blocks forces \(p\mid q+1\).
+- `legendre_triple_block_labeling.md`: no-triple repetition rule and
+  two-layer labeling formulation for the remaining obstruction.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -76,7 +78,8 @@ for the product family \(\Phi_m(q)\); the product route reduces the target to
 a transversality lemma rather than a fixed-divisor contradiction.  Repetition
 by the same certificate prime now has explicit progression/mirror structure
 on the \(q\)-line, and adjacent same-prime repetition can occur only at
-divisor positions \(p\mid q+1\).
+divisor positions \(p\mid q+1\).  In particular, one prime cannot label three
+consecutive blocks in the same layer.
 
 Computational scripts live in `tools/`.
 

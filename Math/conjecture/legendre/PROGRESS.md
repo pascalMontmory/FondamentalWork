@@ -1288,6 +1288,42 @@ must satisfy their local quadratic restrictions, the two labels at a vertex
 are distinct, and adjacent repeated labels are allowed only at divisor
 positions.
 
+## Triple-block labeling obstruction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_triple\_block\_labeling.md}.
+\]
+
+This records a direct consequence of the adjacent-block obstruction.
+
+In a fixed layer \(i\), suppose the same prime \(p\ge5\) certifies three
+consecutive blocks
+\[
+  q,\qquad q+1,\qquad q+2.
+\]
+Applying the adjacent obstruction to \(q,q+1\) gives
+\[
+  p\mid q+1.
+\]
+Applying it to \(q+1,q+2\) gives
+\[
+  p\mid q+2.
+\]
+Hence \(p\mid1\), impossible.
+
+Therefore
+\[
+\boxed{
+\text{one prime cannot certify three consecutive blocks in one layer.}
+}
+\]
+
+The remaining counterexample condition is now a two-layer labeling problem:
+each coprime complete block needs an A0 label and an A1 label; the two labels
+at a block are distinct; adjacent repeated labels are allowed only at divisor
+positions; and triple repetition is impossible.
+
 ## Primitive double-cover measurements
 
 Added
