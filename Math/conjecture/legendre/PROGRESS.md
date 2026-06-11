@@ -406,6 +406,48 @@ destroy every primitive opposite-parity Gaussian norm, and then, for most
 remaining primitive positions when \(3\nmid n\), also destroy the twin-shift
 \(n^2+t^2+2\).
 
+## Multiple-of-three channel
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_multiple\_of\_three\_channel.md}.
+\]
+For the remaining obstruction, write
+\[
+  n=3m.
+\]
+There are two channels.
+
+If \(3\nmid t\), then on the primitive opposite-parity channel the previous
+modulo-\(6\) reduction leaves only the pure Gaussian candidate
+\[
+  9m^2+t^2.
+\]
+
+If \(3\mid t\), write \(t=3u\).  Then
+\[
+  n^2+t^2=9(m^2+u^2).
+\]
+The offset \(r=0\) is automatically composite, and the repair channel becomes
+\[
+  9(m^2+u^2)-1,\qquad
+  9(m^2+u^2)+1,\qquad
+  9(m^2+u^2)+2.
+\]
+Parity collapses this further.  If \(m\equiv u\pmod2\), the possible primes are
+\[
+  9(m^2+u^2)-1
+  \quad\text{or}\quad
+  9(m^2+u^2)+1.
+\]
+If \(m\not\equiv u\pmod2\), the only possible prime is
+\[
+  9(m^2+u^2)+2.
+\]
+
+Thus the \(3\mid n\) obstruction has been reduced to a mixed
+primitive/nonprimitive dichotomy, not a global residue cover.
+
 ## Primitive double-cover measurements
 
 Added

@@ -17,6 +17,9 @@ Main notes:
   reduction to the Gaussian norm \(A\) and its twin shift \(A+2\).
 - `legendre_primitive_double_cover.md`: reduction of counterexamples to a
   primitive Gaussian cover \(I_n\subseteq G(n)\) plus a twin-shift double cover.
+- `legendre_multiple_of_three_channel.md`: exact \(n=3m\) split into the
+  primitive \(3\nmid t\) Gaussian channel and the nonprimitive \(t=3u\)
+  repair channel.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining observed survivors are concentrated at \(3\mid n\), where the
