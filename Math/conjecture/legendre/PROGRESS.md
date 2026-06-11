@@ -4684,3 +4684,68 @@ This kills the old first-escape move
 structurally, not by a finite modulo-\(5\) certificate.  The rank automaton
 for the hard branch must now be rebuilt over this thinner multiplicative
 zero-layer semigroup.
+
+## A0 four-layer refinement
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_four\_layer\_refinement.md}.
+\]
+
+This is the companion consequence for the A0 offsets
+\[
+  c=4,\ 100.
+\]
+
+The old layer was
+\[
+  f\equiv2,4,10,20\pmod{24}.
+\]
+
+The A0 quotient theorem forces every admissible quotient in this layer to be
+\[
+\boxed{
+  f=2s\quad\text{or}\quad f=4s,
+}
+\]
+where
+\[
+\boxed{
+  s\text{ is odd},\qquad
+  3\nmid s,\qquad
+  q\mid s\Rightarrow q\equiv1\pmod4.
+}
+\]
+
+The \(v_2(f)=1\) part gives exactly
+\[
+  f\equiv2,10\pmod{24}.
+\]
+
+The \(v_2(f)=2\) part is sharper:
+\[
+\boxed{
+  f\equiv4,20\pmod{48}.
+}
+\]
+
+Thus the old residue classes
+\[
+  f\equiv4,20\pmod{24}
+\]
+were too large by a factor \(2\).  The sub-classes
+\[
+\boxed{
+  f\equiv28,44\pmod{48}
+}
+\]
+are impossible because after division by \(4\) their odd part is
+\[
+  s\equiv3\pmod4,
+\]
+contradicting the A0 quotient theorem.
+
+Together with the zero-layer collapse, this replaces both A0 rank lattices
+by multiplicative semigroups.  The next rank model should use these
+semigroups directly, then impose the A1 splitting laws and the pairwise Pell
+synchronization equations.

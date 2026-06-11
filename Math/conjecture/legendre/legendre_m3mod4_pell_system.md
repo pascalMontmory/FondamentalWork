@@ -968,3 +968,80 @@ Consequently the previous first-escape family
 is not merely locally killed modulo \(5\); it is absent from the intrinsic
 quotient lattice.  The hard rank game now has a thinner zero-layer lattice
 before any pairwise Pell synchronization is applied.
+
+## 22. A0 four-layer refinement
+
+For the other A0 offsets
+\[
+  c=4,\ 100,
+\]
+the old layer was
+\[
+  f\equiv2,4,10,20\pmod{24}.
+\]
+
+The A0 quotient theorem forces
+\[
+  f=2s
+  \quad\text{or}\quad
+  f=4s,
+\]
+where
+\[
+  s\text{ is odd},
+  \qquad
+  3\nmid s,
+  \qquad
+  q\mid s\Rightarrow q\equiv1\pmod4.
+\]
+
+Therefore \(s\equiv1\pmod4\).
+
+If \(f=2s\), this gives
+\[
+  f\equiv2,10\pmod{24}.
+\]
+
+If \(f=4s\), the residue is sharper:
+\[
+\boxed{
+  f\equiv4,20\pmod{48}.
+}
+\]
+
+Thus the old modulo-\(24\) classes
+\[
+  f\equiv4,20\pmod{24}
+\]
+contained two impossible modulo-\(48\) sub-classes:
+\[
+\boxed{
+  f\equiv28,44\pmod{48}.
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_four\_layer\_refinement.md}.
+\]
+
+After Sections 21 and 22, the A0 part of the hard branch is no longer an
+additive rank lattice.  It is a pair of explicit multiplicative quotient
+semigroups:
+\[
+  2\mathcal S\cup4\mathcal S
+  \quad(c=4,100),
+\]
+and
+\[
+  \{2^\nu s:3\le\nu\le5\text{ or }3\le\nu\le7,\ q\mid s\Rightarrow q\equiv1\pmod4\}
+  \quad(c=16,64),
+\]
+where
+\[
+  \mathcal S=\{s:\ s\text{ odd},\ 3\nmid s,\ q\mid s\Rightarrow q\equiv1\pmod4\}.
+\]
+
+The remaining exact target is to combine these A0 semigroups with the A1
+quadratic-field semigroups through the pairwise Pell synchronization
+equations.

@@ -261,6 +261,12 @@ Main notes:
   \(f\equiv14,22\pmod{24}\) are impossible; the layer collapses to
   \(f\equiv8,16\pmod{24}\) with \(f=2^\nu s\) and all odd primes of \(s\)
   equal to \(1\bmod4\).
+- `legendre_m3mod4_A0_four_layer_refinement.md`: companion structural
+  refinement for \(c=4,100\).  The old layer
+  \(f\equiv2,4,10,20\pmod{24}\) becomes
+  \(f=2s\) or \(4s\), where \(s\) is odd, \(3\nmid s\), and all primes of
+  \(s\) are \(1\bmod4\); residue-wise this excludes
+  \(f\equiv28,44\pmod{48}\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
