@@ -1297,3 +1297,43 @@ Thus the CRT sieve is a localization map, not a final lock. The next proof
 step must use stronger algebra on the classes: either reconstruct the
 exceptional gcd in \(\mathbb F_p[n]\), or specialize \(n=c+Mt\) and eliminate
 with \(t\) retained, instead of relying only on residue membership.
+
+### Endpoint \(d-6\): class-parameter \(t\) probes
+
+Added the class-parameter probe:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_class\_t\_probe.py}.
+\]
+For a CRT class \(n\equiv c\pmod M\), it substitutes
+\[
+  n=c+Mt
+\]
+and can build the four equation-level eliminants over \(\mathbb F_p(t)[a]\).
+The direct symbolic gcd over \(\mathbb F_p(t)[a]\) builds the eliminants for
+the test class but is still too slow at the gcd step, so the script also has
+a faster `--scan-t` mode.
+
+The scan mode searches for good \(t\)-specializations whose specialized gcd
+in \(\mathbb F_p[a]\) is \(1\). Such a point is a generic-elimination witness
+for the class: any remaining obstruction must be confined to the finite set
+of bad \(t\)-fibers where denominators, leading coefficients, or
+specialization resultants degenerate.
+
+With \(p=1009\), base classes from \(11,13,17\), and \(t=0,\ldots,5\), every
+baseline CRT class in all three remaining types has such a witness:
+\[
+\begin{array}{c|c|c}
+  \text{type} & \text{classes mod }2431 & \text{witnessed classes} \\
+  \hline
+  (1,1,3,1) & 64 & 64 \\
+  (1,2,2,1) & 144 & 144 \\
+  (2,1,2,1) & 54 & 54.
+\end{array}
+\]
+For example, for \((2,1,2,1)\) and \(n\equiv0\pmod{2431}\), the first live
+witness is \(t=1\), giving \(n\equiv413\pmod{1009}\) and gcd degree \(0\) in
+\(\mathbb F_{1009}[a]\).
+
+This is the right next reduction: the endpoint-\(d-6\) problem has moved from
+generic components in \(n\), to generic components along CRT classes, and now
+to finite bad \(t\)-fibers on those classes.

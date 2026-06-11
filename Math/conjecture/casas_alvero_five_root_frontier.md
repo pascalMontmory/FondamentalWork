@@ -3015,3 +3015,59 @@ This confirms that the CRT layer is only a localization mechanism. The final
 endpoint-\(d-6\) lock must now add algebra along these classes, for example by
 substituting \(n=c+Mt\) and eliminating with \(t\) retained, or by
 reconstructing the exceptional gcd in \(\mathbb F_p[n]\) directly.
+
+## 47. Endpoint multiplicity \(d-6\): class-parameter probes
+
+The next layer keeps the class parameter. For a CRT class
+\[
+  n\equiv c\pmod M
+\]
+write
+\[
+  n=c+Mt.
+\]
+The script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_class\_t\_probe.py}
+\]
+builds the four equation-level eliminants after this substitution, modulo a
+coefficient prime \(p\nmid M\). Its direct mode targets the gcd in
+\(\mathbb F_p(t)[a]\). For the test class
+\[
+  (2,1,2,1),\qquad n\equiv0\pmod{2431},\qquad p=1009,
+\]
+the construction reaches eliminant degrees
+\[
+  (24,27,30,33)
+\]
+in \(a\), but the symbolic gcd over \(\mathbb F_p(t)[a]\) remains too slow in
+SymPy.
+
+The same script therefore includes a specialization scan. If one good value
+of \(t\) gives gcd \(1\) in \(\mathbb F_p[a]\), then the class has no visible
+generic common factor away from the finite set of bad \(t\)-fibers where
+denominators, leading coefficients, or specialization resultants degenerate.
+
+With \(p=1009\), base CRT classes from \(11,13,17\), and
+\[
+  t=0,\ldots,5,
+\]
+all baseline classes in the three remaining types have such a witness:
+\[
+\begin{array}{c|c|c}
+  \text{type} & \text{classes mod }2431 & \text{witnessed classes} \\
+  \hline
+  (1,1,3,1) & 64 & 64 \\
+  (1,2,2,1) & 144 & 144 \\
+  (2,1,2,1) & 54 & 54.
+\end{array}
+\]
+For the representative class above, \(t=1\) gives
+\[
+  n\equiv413\pmod{1009}
+\]
+and the specialized gcd degree is \(0\).
+
+Thus the remaining endpoint-\(d-6\) work has moved one level lower again:
+not generic \(n\), and not generic CRT classes, but the finite exceptional
+\(t\)-fibers inside those classes.
