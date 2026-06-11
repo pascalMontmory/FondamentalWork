@@ -25,13 +25,17 @@ Main notes:
   false because it misses the \(3\nmid t,\ r=1\) unit-lift channel.
 - `legendre_m3star_certificate.md`: exact small-prime certificate for failure
   of the corrected \(M_3^\ast\) target.
+- `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
+  channel, including the adjacent-block bridge-prime obstruction.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
 the primitive Gaussian channel \(r=0\), the nonmultiple unit-lift channel
 \(r=1\), and the \(t=3u\) repair channel.  The corrected target is
 \(M_3^\ast\), and a counterexample is now equivalent to a simultaneous
-A0/A1/B small-prime cover.
+A0/A1/B small-prime cover.  The combined A-cover now has a sharper block
+rigidity: a single prime can cover both members of a complete
+\((3q+1,3q+2)\) block only if it divides \(9m^2+1\).
 
 Computational scripts live in `tools/`.
 

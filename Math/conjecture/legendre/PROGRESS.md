@@ -594,6 +594,83 @@ where
 For \(3\nmid t\), this single parity-twisted family is exactly the surviving
 \(3\nmid t\) channel.
 
+## Combined A-cover rigidity
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_combined\_A\_cover.md}.
+\]
+
+This note attacks the combined \(3\nmid t\) channel directly instead of
+treating A0 and A1 as independent covers.
+
+For
+\[
+  3\nmid t,
+\]
+the surviving candidate is
+\[
+  P_m(t)=9m^2+t^2+\epsilon_m(t),
+\]
+where
+\[
+  \epsilon_m(t)=
+  \begin{cases}
+  0,&t\not\equiv m\pmod2,\\
+  1,&t\equiv m\pmod2.
+  \end{cases}
+\]
+
+The values \(3\nmid t\) occur in adjacent blocks
+\[
+  B_q=\{3q+1,\ 3q+2\}.
+\]
+In every complete admissible block, one member lies on A0 and the other lies
+on A1.
+
+The key exact lemma is the adjacent-pair collision lemma.  Let
+\[
+  a=3q+1,\qquad b=3q+2.
+\]
+If an odd prime \(p\) divides both
+\[
+  P_m(a)
+  \qquad\text{and}\qquad
+  P_m(b),
+\]
+then
+\[
+  p\mid9m^2+1.
+\]
+More precisely:
+
+- if \(a\equiv m\pmod2\), then \(p\mid a\);
+- if \(a\not\equiv m\pmod2\), then \(p\mid b\).
+
+Thus a single prime can certify both members of a complete A-block only if it
+is a bridge prime
+\[
+  p\mid9m^2+1.
+\]
+Every bridge prime satisfies
+\[
+  p\equiv1\pmod4.
+\]
+
+Therefore an A-cover counterexample must provide, for every complete
+A-block, either two independent small-prime certificates or one bridge prime
+with an explicit linear congruence:
+\[
+\begin{array}{c|c}
+  a\equiv m\pmod2 & 3q+1\equiv0\pmod p \\
+  a\not\equiv m\pmod2 & 3q+2\equiv0\pmod p.
+\end{array}
+\]
+
+This is the new exact obstruction.  The next target is to prove that the
+complete A-blocks cannot all satisfy this two-certificate-or-bridge
+alternative.
+
 ## Primitive double-cover measurements
 
 Added
