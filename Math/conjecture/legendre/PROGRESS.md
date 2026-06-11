@@ -4603,3 +4603,84 @@ by intrinsic splitting laws rather than by a fixed finite set of external
 moduli.  The remaining proof problem is to combine these splitting laws with
 the pairwise Pell synchronization equations to force rank descent into the
 already closed prefix range.
+
+## A0 zero-layer collapse
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_zero\_layer\_collapse.md}.
+\]
+
+This is the first direct rank-game consequence of the A0 quotient theorem.
+
+For the A0 zero offsets
+\[
+  c=16,\ 64,
+\]
+the old hard-branch layer was
+\[
+  f\equiv8,14,16,22\pmod{24}.
+\]
+
+But the A0 theorem forces
+\[
+  f=2^\nu s,
+  \qquad
+  s\text{ odd},
+  \qquad
+  q\mid s\Rightarrow q\equiv1\pmod4.
+\]
+
+Hence
+\[
+  s\equiv1\pmod4.
+\]
+
+If
+\[
+  f\equiv14\pmod{24},
+\]
+then \(v_2(f)=1\) and
+\[
+  s=f/2\equiv7\pmod{12},
+\]
+so \(s\equiv3\pmod4\), contradiction.  The same argument with
+\[
+  f\equiv22\pmod{24}
+\]
+gives
+\[
+  s=f/2\equiv11\pmod{12}\equiv3\pmod4,
+\]
+again impossible.
+
+Therefore:
+\[
+\boxed{
+  c=16,64
+  \quad\Longrightarrow\quad
+  f\equiv8,16\pmod{24}.
+}
+\]
+
+More sharply:
+\[
+\begin{array}{c|c}
+  c & \text{allowed form}\\
+  \hline
+  16
+    & f=2^\nu s,\quad3\le\nu\le5,\quad
+      q\mid s\Rightarrow q\equiv1\pmod4\\
+  64
+    & f=2^\nu s,\quad3\le\nu\le7,\quad
+      q\mid s\Rightarrow q\equiv1\pmod4.
+\end{array}
+\]
+
+This kills the old first-escape move
+\[
+  16\leadsto22
+\]
+structurally, not by a finite modulo-\(5\) certificate.  The rank automaton
+for the hard branch must now be rebuilt over this thinner multiplicative
+zero-layer semigroup.

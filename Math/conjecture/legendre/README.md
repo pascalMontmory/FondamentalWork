@@ -256,6 +256,11 @@ Main notes:
   \(u^2\equiv-c\pmod f\).  A1 quotients must split in the offset-specific
   quadratic fields \(\mathbb Q(\sqrt{-c})\), with ramified caps
   \(v_{13}(f)\le1\), \(v_5(f)\le2\), and \(v_{61}(f)\le1\).
+- `legendre_m3mod4_A0_zero_layer_collapse.md`: structural consequence of
+  the A0 quotient theorem.  For \(c=16,64\), the old zero-layer classes
+  \(f\equiv14,22\pmod{24}\) are impossible; the layer collapses to
+  \(f\equiv8,16\pmod{24}\) with \(f=2^\nu s\) and all odd primes of \(s\)
+  equal to \(1\bmod4\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

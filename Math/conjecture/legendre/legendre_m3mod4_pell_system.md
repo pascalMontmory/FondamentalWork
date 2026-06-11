@@ -895,3 +895,76 @@ The hard branch is now reduced to a more rigid problem:
   \Longrightarrow \text{rank descent.}
 }
 \]
+
+## 21. A0 zero-layer collapse
+
+The A0 zero offsets
+\[
+  c=16,\ 64
+\]
+originally had the layer
+\[
+  f\equiv8,14,16,22\pmod{24}.
+\]
+
+The A0 quotient theorem collapses this layer.
+
+Indeed, for both \(c=16\) and \(c=64\),
+\[
+  f=2^\nu s,
+  \qquad
+  s\text{ odd},
+  \qquad
+  q\mid s\Rightarrow q\equiv1\pmod4.
+\]
+
+Thus
+\[
+  s\equiv1\pmod4.
+\]
+
+If \(f\equiv14\pmod{24}\), then \(v_2(f)=1\) and
+\[
+  s=f/2\equiv7\pmod{12}\equiv3\pmod4,
+\]
+impossible.  If \(f\equiv22\pmod{24}\), then
+\[
+  s=f/2\equiv11\pmod{12}\equiv3\pmod4,
+\]
+also impossible.
+
+Therefore:
+\[
+\boxed{
+  c=16,64
+  \quad\Longrightarrow\quad
+  f\equiv8,16\pmod{24}.
+}
+\]
+
+The precise surviving forms are
+\[
+\begin{array}{c|c}
+  c & \text{allowed form}\\
+  \hline
+  16
+    & f=2^\nu s,\quad3\le\nu\le5,\quad
+      q\mid s\Rightarrow q\equiv1\pmod4\\
+  64
+    & f=2^\nu s,\quad3\le\nu\le7,\quad
+      q\mid s\Rightarrow q\equiv1\pmod4.
+\end{array}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_zero\_layer\_collapse.md}.
+\]
+
+Consequently the previous first-escape family
+\[
+  16\leadsto22
+\]
+is not merely locally killed modulo \(5\); it is absent from the intrinsic
+quotient lattice.  The hard rank game now has a thinner zero-layer lattice
+before any pairwise Pell synchronization is applied.
