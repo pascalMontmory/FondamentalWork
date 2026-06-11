@@ -1203,3 +1203,60 @@ With primes \(11,13,17\), the saturated live classes are:
 \]
 These are not yet a closure, but they are the right finite targets for the
 next exact reconstruction of exceptional factors in \(n\).
+
+### Endpoint \(d-6\): resultant reconstruction path
+
+Tested the direct symbolic resultant path after optimizing the quadratic
+reduction. The construction of the four compact products is now traceable and
+reaches the expected degrees for \((1,1,3,1)\):
+\[
+  \deg_a(R_3,R_4,R_5,R_6)=(12,16,20,22),
+\]
+and the corresponding eliminants have
+\[
+  \deg_a(E_3,E_{34},E_{35},E_{36})=(24,27,31,33).
+\]
+However, the first pairwise resultant \(\operatorname{Res}_a(E_3,E_{34})\)
+is still too large for a direct SymPy computation.
+
+Added the interpolation prototype:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_resultant\_interpolate.py}.
+\]
+For \((1,1,3,1)\), modulo \(1009\), the first pairwise resultant has degree
+greater than \(39\) in \(n\). This confirms the next implementation target:
+compute exceptional factors by modular evaluation/interpolation and gcd
+reconstruction, rather than by direct global resultants.
+
+### Endpoint \(d-6\): modular exceptional factors
+
+Extended the residue extractor with a `--factors` mode. For each coefficient
+prime \(p\), it now records the live residues as the polynomial
+\[
+  P_p(n)=\prod_{r\ \mathrm{live}}(n-r)\in\mathbb F_p[n].
+\]
+This is a cleaner modular form of the exceptional-specialization data: an
+admissible integer \(n\) must satisfy \(P_p(n)\equiv0\pmod p\) for every
+tested prime, after excluding the saturated denominator residues.
+
+For the baseline primes \(11,13,17\), the live factors are:
+\[
+\begin{array}{c|c|c}
+  \text{type} & p & P_p(n) \\
+  \hline
+  (1,1,3,1) & 11 & n(n-1)(n-2)(n-3) \\
+  (1,1,3,1) & 13 & n(n-1)(n-2)(n-5) \\
+  (1,1,3,1) & 17 & n(n-1)(n-2)(n-6) \\
+  (1,2,2,1) & 11 & n(n-2)(n-3) \\
+  (1,2,2,1) & 13 & n(n-1)(n-2)(n-3)(n-4)(n-5) \\
+  (1,2,2,1) & 17 & n(n-1)(n-2)(n-3)(n-5)(n-6)(n-8)(n+8) \\
+  (2,1,2,1) & 11 & n(n-2)(n-3) \\
+  (2,1,2,1) & 13 & n(n-1)(n-5) \\
+  (2,1,2,1) & 17 & n(n-1)(n-4)(n-6)(n-7)(n+8).
+\end{array}
+\]
+
+An additional check through primes \(11,13,17,19,23\) did not empty the live
+sets, so the next useful computation is not just a larger residue sieve. It
+is either a reconstructed exceptional gcd in \(\mathbb F_p[n]\), or direct
+treatment of the CRT classes selected by these modular factors.

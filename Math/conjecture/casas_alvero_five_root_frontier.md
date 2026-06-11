@@ -2874,3 +2874,92 @@ Thus the current status is:
 3. the finite exceptional fibers are now localized by algebraic modular gcd
    conditions and should be attacked by reconstructed univariate factors in
    \(n\).
+
+## 44. Endpoint multiplicity \(d-6\): reconstruction route
+
+The exact global resultant route has now been tested more sharply. Replacing
+generic polynomial remainder computations by explicit quadratic reduction
+makes the construction of the four compact products traceable. For the
+hardest remaining type \((1,1,3,1)\), it recovers
+\[
+  \deg_a(R_3,R_4,R_5,R_6)=(12,16,20,22)
+\]
+and then
+\[
+  \deg_a(E_3,E_{34},E_{35},E_{36})=(24,27,31,33).
+\]
+
+The obstruction is the next step:
+\[
+  \operatorname{Res}_a(E_i,E_j).
+\]
+Even the first pairwise resultant is too large for a direct SymPy resultant.
+
+The script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_resultant\_interpolate.py}
+\]
+therefore starts the modular reconstruction route. It evaluates a chosen
+pairwise resultant at many \(n\)-values over \(\mathbb F_p\), interpolates the
+univariate polynomial, and verifies on extra points. For
+\((1,1,3,1)\), \(p=1009\), and the pair \((E_3,E_{34})\), 40 samples are not
+enough; the degree is \(>39\).
+
+Thus the next computational target is now precise: reconstruct the
+exceptional gcd in \(\mathbb F_p[n]\) by modular evaluation and interpolation,
+preferably avoiding reconstruction of all six full pairwise resultants when
+only their gcd is needed.
+
+## 45. Endpoint multiplicity \(d-6\): modular exceptional factors
+
+The residue-localization output can be promoted from a list of live residues
+to a polynomial certificate modulo \(p\). For each tested coefficient prime,
+define
+\[
+  P_p(n)=\prod_{r\in L_p}(n-r)\in\mathbb F_p[n],
+\]
+where \(L_p\) is the set of saturated live residues: those good residues
+\(n\bmod p\) for which the four specialized eliminants still have a
+positive-degree gcd in \(\mathbb F_p[a]\), or all vanish.
+
+Then any integer specialization surviving the endpoint-\(d-6\) equations must
+satisfy
+\[
+  P_p(n)\equiv0\pmod p
+\]
+for every tested prime \(p\), after the saturation by
+\[
+  (n+1)(n+2)(n+3)(n+4)(n+5)(n+6)
+\]
+has removed the forbidden denominator residues.
+
+The script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_equation\_exceptional\_residues.py}
+\]
+now has a \(\texttt{--factors}\) mode that prints these polynomials. For the
+baseline primes \(11,13,17\), it gives:
+\[
+\begin{array}{c|c|c}
+  \text{type} & p & P_p(n) \\
+  \hline
+  (1,1,3,1) & 11 & n(n-1)(n-2)(n-3) \\
+  (1,1,3,1) & 13 & n(n-1)(n-2)(n-5) \\
+  (1,1,3,1) & 17 & n(n-1)(n-2)(n-6) \\
+  (1,2,2,1) & 11 & n(n-2)(n-3) \\
+  (1,2,2,1) & 13 & n(n-1)(n-2)(n-3)(n-4)(n-5) \\
+  (1,2,2,1) & 17 & n(n-1)(n-2)(n-3)(n-5)(n-6)(n-8)(n+8) \\
+  (2,1,2,1) & 11 & n(n-2)(n-3) \\
+  (2,1,2,1) & 13 & n(n-1)(n-5) \\
+  (2,1,2,1) & 17 & n(n-1)(n-4)(n-6)(n-7)(n+8).
+\end{array}
+\]
+
+Testing further through \(p=23\) does not empty the live sets. This means the
+remaining work should not be framed as a broad search in \(n\), but as one of
+two exact finite tasks:
+
+1. reconstruct the true exceptional elimination factor in
+   \(\mathbb F_p[n]\), then lift or compare across primes;
+2. treat the CRT-selected congruence classes directly by adding the
+   corresponding specialization constraints.
