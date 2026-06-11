@@ -77,6 +77,10 @@ Main notes:
 - `legendre_initial_factor_gap_system.md`: exact centered factorization
   equations for the clean strong-gate cluster, replacing small prime labels
   by eight simultaneous factor-gap equations around \(A=3m\).
+- `legendre_initial_center_divisor_parametrization.md`: equivalent
+  center-divisor form \(A-r\mid r^2+c\), eliminating the cofactor gap
+  variable and restating the clean strong-gate obstruction as eight shifted
+  square divisibilities.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -127,7 +131,12 @@ centered factor-gap equations
   A^2+c=(A-r_c)(A+r_c+e_c),
   \qquad A=3m,
 \]
-with \(c\) running through an explicit parity-dependent offset set.
+with \(c\) running through an explicit parity-dependent offset set.  The
+cofactor gap can be eliminated: each composite candidate is equivalently
+certified by a distance \(r_c\) such that
+\[
+  A-r_c\mid r_c^2+c.
+\]
 
 Computational scripts live in `tools/`.
 

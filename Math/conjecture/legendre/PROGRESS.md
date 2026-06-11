@@ -1779,3 +1779,68 @@ respecting the A0/A1 restrictions.
 
 The remaining strong-gate obstruction is now a Diophantine system with one
 shared center \(A=3m\) and eight fixed offsets.
+
+## Initial center-divisor parametrization
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_center\_divisor\_parametrization.md}.
+\]
+
+This eliminates the cofactor gap \(e\) from the factor-gap system.
+
+For
+\[
+  N=A^2+c,\qquad 0<c\le2A,
+\]
+and a divisor
+\[
+  d=A-r,
+\]
+one has
+\[
+  A\equiv r\pmod d.
+\]
+Therefore
+\[
+\boxed{
+  A-r\mid A^2+c
+  \quad\Longleftrightarrow\quad
+  A-r\mid r^2+c.
+}
+\]
+
+The old factor-gap equation
+\[
+  c=Ae-r(r+e)
+\]
+is equivalent to
+\[
+  r^2+c=e(A-r),
+\]
+so
+\[
+  e=\frac{r^2+c}{A-r}.
+\]
+
+Thus a clean strong-gate counterexample gives, for every offset
+\[
+  c\in\mathcal C_{\rm parity(m)},
+\]
+a distance
+\[
+  1\le r_c\le A-5
+\]
+such that
+\[
+  p_c=A-r_c
+\]
+is a distinct admissible prime and
+\[
+\boxed{
+  p_c\mid r_c^2+c.
+}
+\]
+
+The obstruction is now eight shifted-square divisibilities tied to the same
+center \(A=3m\), rather than eight three-variable factorizations.
