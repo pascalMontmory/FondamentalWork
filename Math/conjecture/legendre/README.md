@@ -292,6 +292,10 @@ Main notes:
   forces \(c=16\) to use only \(8\mathcal S_4\cup16\mathcal S_4\), and
   \(c=64\) to use only \(8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4\);
   in particular \(f=16\) can only belong to the \(c=16\) row.
+- `legendre_m3mod4_A1_dual_sign_parity.md`: two-sided A1 sign law.  Since
+  \(f_c\equiv1\bmod4\) and \(F_c=f_c+6m\equiv3\bmod4\), the two factors
+  split in the same quadratic field but have opposite parity for the number
+  of prime divisors \(q\equiv3\bmod4\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

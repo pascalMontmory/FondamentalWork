@@ -5188,3 +5188,67 @@ to use the surviving A0 lower semigroups:
 
 This keeps the main hard-branch certificate aligned with the strongest
 known intrinsic constraints.
+
+## A1 dual sign-parity law
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A1\_dual\_sign\_parity.md}.
+\]
+
+For every A1 row,
+\[
+  f_c\equiv9\pmod{12}.
+\]
+
+With
+\[
+  L=6m\equiv18\pmod{24},
+  \qquad
+  F_c=f_c+L,
+\]
+one gets
+\[
+\boxed{
+  f_c\equiv1\pmod4,
+  \qquad
+  F_c\equiv3\pmod4.
+}
+\]
+
+Both factors satisfy the same quadratic-field splitting law, but their
+signs modulo \(4\) are opposite.
+
+For an odd integer \(N\), define
+\[
+  \Omega_3(N)
+  =
+  \sum_{\substack{q^\alpha\Vert N\\ q\equiv3\pmod4}}\alpha.
+\]
+
+Then
+\[
+  N\equiv(-1)^{\Omega_3(N)}\pmod4.
+\]
+
+Therefore every A1 row satisfies
+\[
+\boxed{
+  \Omega_3(f_c)\equiv0\pmod2,
+  \qquad
+  \Omega_3(F_c)\equiv1\pmod2.
+}
+\]
+
+Since \(3\mid f_c,F_c\) and \(3\equiv3\pmod4\), this can also be written as
+\[
+  v_3(f_c)+\Omega_3^{(\ne3)}(f_c)\equiv0\pmod2,
+\]
+and
+\[
+  v_3(F_c)+\Omega_3^{(\ne3)}(F_c)\equiv1\pmod2.
+\]
+
+Thus the non-\(3\) split primes \(3\bmod4\) must compensate the \(3\)-adic
+parity of the lower and upper A1 factors.  This gives a new exact descent
+target inside the A1 same-field pair.

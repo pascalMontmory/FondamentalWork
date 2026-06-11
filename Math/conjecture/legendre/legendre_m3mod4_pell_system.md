@@ -1435,3 +1435,57 @@ In particular, the lower quotient \(f=16\) is assignment-rigid:
 \]
 
 The bottom of the A0 zero layer is therefore no longer symmetric.
+
+## 28. A1 dual sign-parity law
+
+For every A1 row,
+\[
+  f_c\equiv9\pmod{12}.
+\]
+
+Since
+\[
+  L=6m\equiv18\pmod{24},
+  \qquad
+  F_c=f_c+L,
+\]
+one has
+\[
+\boxed{
+  f_c\equiv1\pmod4,
+  \qquad
+  F_c\equiv3\pmod4.
+}
+\]
+
+Both factors satisfy the same A1 splitting law, but they have opposite
+prime-sign parity.
+
+For odd \(N\), define
+\[
+  \Omega_3(N)
+  =
+  \sum_{\substack{q^\alpha\Vert N\\q\equiv3\pmod4}}\alpha.
+\]
+
+Then
+\[
+  N\equiv(-1)^{\Omega_3(N)}\pmod4.
+\]
+
+Therefore:
+\[
+\boxed{
+  \Omega_3(f_c)\equiv0\pmod2,
+  \qquad
+  \Omega_3(F_c)\equiv1\pmod2.
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A1\_dual\_sign\_parity.md}.
+\]
+
+The A1 descent problem is now a same-field split-pair problem with opposite
+sign parity across the common gap \(L\).
