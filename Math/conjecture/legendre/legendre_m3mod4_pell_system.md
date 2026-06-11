@@ -1671,3 +1671,59 @@ Therefore neither survivor gives a positive hard-branch point, and
 For prefix \(8\), new local survivors appear beyond these two ghost fibers;
 some pass through the small positive class \(m=3\).  They form the next
 exceptional boundary target.
+
+## 32. Prefix 8: exceptional fibers, not an infinite descent
+
+The next structural prefix does not produce a new generic component.  It
+produces a finite exceptional frontier whose exact algebraic content is
+recorded in
+\[
+  \texttt{legendre\_m3mod4\_prefix8\_exceptional\_pell\_fibers.md}.
+\]
+
+For prefix \(8\), the verifier leaves \(15\) local survivors.  They split as:
+\[
+\begin{array}{c|c}
+\text{fiber type} & \#\\
+\hline
+m=-1 & 2\\
+m=3 & 8\\
+\text{empty modulo }9 & 3\\
+\text{residual Pell systems} & 2.
+\end{array}
+\]
+
+The \(m=-1\) and \(m=3\) fibers are saturated boundary fibers.  The three
+modulo-\(9\) systems have no integral point.  Hence only two residual
+systems remain.
+
+Both residual systems force
+\[
+  m=27k+3,\qquad 2k+1=s^2,
+\]
+and share the common core
+\[
+\begin{aligned}
+  2X_4^2   &=153s^2-55,\\
+  2X_{100}^2&=41s^2+9,\\
+  2X_{16}^2&=45s^2-13,\\
+  X_2^2    &=2673s^2-992,\\
+  X_{50}^2 &=4617s^2-392.
+\end{aligned}
+\]
+
+The first terminal pair is
+\[
+  X_{26}^2=1701s^2-908,\qquad
+  X_{122}^2=7533s^2+2668.
+\]
+
+The second terminal pair is
+\[
+  X_{26}^2=3645s^2-836,\qquad
+  X_{122}^2=1701s^2-1004.
+\]
+
+This replaces the former prefix-growth problem by a fixed Diophantine
+problem: prove that these two coupled Pell systems have no positive integral
+point after the \(m=-1\) and \(m=3\) saturations.

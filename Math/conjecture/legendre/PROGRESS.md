@@ -5426,6 +5426,105 @@ Thus \(X=1,Y=3\), and in both cases
   m=-1.
 \]
 
+## Prefix 8 exceptional fibers reduced to two Pell systems
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_prefix8\_exceptional\_pell\_fibers.md}.
+\]
+
+The prefix-\(8\) structural frontier has
+\[
+  9307368
+\]
+pairwise-distinct assignments.  Finite local certificates at odd primes
+different from \(3\) kill all but \(15\).
+
+Those \(15\) survivors split exactly as follows:
+\[
+\begin{array}{c|c}
+\text{type} & \#\\
+\hline
+m=-1\text{ ghost fibers} & 2\\
+m=3\text{ boundary fibers} & 8\\
+\text{impossible modulo }9 & 3\\
+\text{residual coupled Pell systems} & 2.
+\end{array}
+\]
+
+The two residual systems share
+\[
+\begin{array}{c|cccccc}
+c & 4 & 100 & 16 & 64 & 2 & 50\\
+\hline
+f_c & 34 & 82 & 40 & 64 & 33 & 57.
+\end{array}
+\]
+
+Modulo \(81\) they force
+\[
+  m=27k+3.
+\]
+The row \((c,f)=(64,64)\) then gives
+\[
+  U_{64}^2=5184(2k+1),
+\]
+so for positive fibers
+\[
+  2k+1=s^2.
+\]
+
+The common core becomes
+\[
+\begin{aligned}
+  2X_4^2   &=153s^2-55,\\
+  2X_{100}^2&=41s^2+9,\\
+  2X_{16}^2&=45s^2-13,\\
+  X_2^2    &=2673s^2-992,\\
+  X_{50}^2 &=4617s^2-392.
+\end{aligned}
+\]
+
+The two terminal alternatives are
+\[
+\begin{aligned}
+  X_{26}^2&=1701s^2-908,\\
+  X_{122}^2&=7533s^2+2668,
+\end{aligned}
+\]
+or
+\[
+\begin{aligned}
+  X_{26}^2&=3645s^2-836,\\
+  X_{122}^2&=1701s^2-1004.
+\end{aligned}
+\]
+
+Therefore the next exact closure target is a genuine Diophantine one:
+prove that these two coupled Pell systems have no positive integral point
+after saturating the already identified fibers \(m=-1\) and \(m=3\).
+
+The common equations
+\[
+  2X_{100}^2=41s^2+9,
+  \qquad
+  2X_{16}^2=45s^2-13
+\]
+give the genus-one quartic
+\[
+  W^2=1845s^4-128s^2-117,
+  \qquad W=2X_{100}X_{16}.
+\]
+
+Added the external exact closure target
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_pell\_fibers.magma}.
+\]
+
+If its integral-point computation returns only \(s=\pm1\) after the separated
+square-equation filter, then \(k=0\), hence \(m=3\), and the two residual
+prefix-\(8\) fibers are closed by the existing \(m-3\) saturation.
+
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[
 \boxed{

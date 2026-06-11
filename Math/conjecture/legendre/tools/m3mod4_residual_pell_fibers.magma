@@ -1,0 +1,71 @@
+// Exact closure target for the two residual prefix-8 Pell fibers.
+//
+// This file is intentionally not a search over Legendre intervals.  It asks
+// Magma to solve the genus-one integral-point problem that remains after the
+// structural prefix-8 reduction.
+
+Q := Rationals();
+P<s> := PolynomialRing(Q);
+
+// Common core obtained from
+//   2*X_100^2 = 41*s^2 + 9,
+//   2*X_16^2  = 45*s^2 - 13.
+//
+// Multiplying the two equations gives
+//   W^2 = (41*s^2+9)(45*s^2-13)
+//       = 1845*s^4 - 128*s^2 - 117,
+// where W = 2*X_100*X_16.
+C := HyperellipticCurve(1845*s^4 - 128*s^2 - 117);
+
+pts := IntegralPoints(C);
+pts;
+
+// The closure needed in the note is:
+//   s = +/-1
+// are the only integral x-coordinates on C that also satisfy the separated
+// square equations below.  If IntegralPoints(C) already returns only those
+// x-coordinates, the common core is closed immediately.
+
+function IsSquareInteger(n)
+    if n lt 0 then
+        return false;
+    end if;
+    ok, _ := IsSquare(Integers()!n);
+    return ok;
+end function;
+
+function PassesCommonCore(z)
+    return
+        IsDivisibleBy(153*z^2 - 55, 2) and
+        IsSquareInteger((153*z^2 - 55) div 2) and
+        IsDivisibleBy(41*z^2 + 9, 2) and
+        IsSquareInteger((41*z^2 + 9) div 2) and
+        IsDivisibleBy(45*z^2 - 13, 2) and
+        IsSquareInteger((45*z^2 - 13) div 2) and
+        IsSquareInteger(2673*z^2 - 992) and
+        IsSquareInteger(4617*z^2 - 392);
+end function;
+
+function PassesR4(z)
+    return PassesCommonCore(z) and
+        IsSquareInteger(1701*z^2 - 908) and
+        IsSquareInteger(7533*z^2 + 2668);
+end function;
+
+function PassesR5(z)
+    return PassesCommonCore(z) and
+        IsSquareInteger(3645*z^2 - 836) and
+        IsSquareInteger(1701*z^2 - 1004);
+end function;
+
+common_x := Sort([ Integers()!p[1] : p in pts | PassesCommonCore(Integers()!p[1]) ]);
+r4_x := Sort([ Integers()!p[1] : p in pts | PassesR4(Integers()!p[1]) ]);
+r5_x := Sort([ Integers()!p[1] : p in pts | PassesR5(Integers()!p[1]) ]);
+
+common_x;
+r4_x;
+r5_x;
+
+assert Set(common_x) subset {-1, 1};
+assert Set(r4_x) subset {-1, 1};
+assert Set(r5_x) subset {-1, 1};

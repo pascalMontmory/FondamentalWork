@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 from itertools import product
+from math import isqrt
 
 
 OFFSETS = (4, 100, 16, 64, 2, 26, 50, 122)
@@ -227,13 +228,93 @@ def verify_ghost_closure(open_assignments: list[tuple[tuple[int, int], ...]]) ->
     return True
 
 
+def is_square(n: int) -> bool:
+    if n < 0:
+        return False
+    r = isqrt(n)
+    return r * r == n
+
+
+def exact_fiber_values(
+    assignment: tuple[tuple[int, int], ...], m: int
+) -> list[int] | None:
+    values: list[int] = []
+    for c, f in assignment:
+        n = f * f + 6 * m * f - c
+        if not is_square(n):
+            return None
+        values.append(isqrt(n))
+    return values
+
+
+def square_residues(q: int) -> set[int]:
+    return {x * x % q for x in range(q)}
+
+
+def local_residues(assignment: tuple[tuple[int, int], ...], q: int) -> list[int]:
+    sq = square_residues(q)
+    return [
+        m
+        for m in range(q)
+        if all((f * f + 6 * m * f - c) % q in sq for c, f in assignment)
+    ]
+
+
+def explain_prefix8_exceptional(
+    open_assignments: list[tuple[tuple[int, int], ...]]
+) -> None:
+    """Print the exact algebraic meaning of the prefix-8 survivors.
+
+    This is deliberately not a search closure.  It converts the prefix-8
+    survivors into exact fibers and residual Pell-type systems.
+    """
+
+    if len(open_assignments) != 15:
+        print("prefix-8 exceptional explainer expects the 15-survivor frontier")
+        return
+
+    print("prefix-8 exceptional decomposition")
+    for i, assignment in enumerate(open_assignments):
+        ghost = exact_fiber_values(assignment, -1)
+        small = exact_fiber_values(assignment, 3)
+        mod9 = local_residues(assignment, 9)
+        if ghost is not None:
+            print(f"OPEN[{i}]: exact ghost fiber m=-1, roots={ghost}")
+        elif small is not None:
+            print(f"OPEN[{i}]: exact boundary fiber m=3, roots={small}")
+        elif not mod9:
+            print(f"OPEN[{i}]: impossible modulo 9")
+        else:
+            print(
+                f"OPEN[{i}]: residual Pell fiber, m residues mod 81="
+                f"{local_residues(assignment, 81)}"
+            )
+
+    print("residual Pell reduction")
+    print("For the two residual fibers, modulo 81 forces m = 27k + 3.")
+    print("The common row (c,f)=(64,64) gives U_64^2=5184(2k+1),")
+    print("so for positive fibers 2k+1=s^2.")
+    print("The remaining five common rows become:")
+    print("  2X_4^2   = 153s^2 - 55")
+    print("  2X_100^2 =  41s^2 + 9")
+    print("  2X_16^2  =  45s^2 - 13")
+    print("  X_2^2    = 2673s^2 - 992")
+    print("  X_50^2   = 4617s^2 - 392")
+    print("plus one of the two terminal pairs:")
+    print("  R4: X_26^2=1701s^2-908 and X_122^2=7533s^2+2668")
+    print("  R5: X_26^2=3645s^2-836 and X_122^2=1701s^2-1004")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--prefix", type=int, default=7)
     parser.add_argument("--close-ghosts", action="store_true")
+    parser.add_argument("--explain-prefix8", action="store_true")
     args = parser.parse_args()
 
     _, open_assignments = verify_prefix(args.prefix)
+    if args.explain_prefix8:
+        explain_prefix8_exceptional(open_assignments)
     if not open_assignments:
         return 0
     if args.close_ghosts and verify_ghost_closure(open_assignments):

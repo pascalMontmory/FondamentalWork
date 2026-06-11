@@ -310,8 +310,18 @@ Main notes:
   kills 2,882,250 distinct assignments by finite local certificates except
   two ghost fibers, and both ghost fibers force \(m=-1\), hence no positive
   hard-branch point.
+- `legendre_m3mod4_prefix8_exceptional_pell_fibers.md`: exact decomposition
+  of the prefix-\(8\) frontier.  The 15 survivors split into two ghost
+  fibers \(m=-1\), eight boundary fibers \(m=3\), three systems impossible
+  modulo \(9\), and two residual coupled Pell systems.  The remaining closure
+  target is to kill these two explicit systems, not to extend a CRT descent.
 - `tools/m3mod4_structural_prefix_certificate.py`: reproduces the structural
-  prefix certificate and the \(m=-1\) ghost-fiber closure.
+  prefix certificate, the \(m=-1\) ghost-fiber closure, and the prefix-\(8\)
+  exceptional-fiber decomposition.
+- `tools/m3mod4_residual_pell_fibers.magma`: exact external closure target
+  for the two remaining residual prefix-\(8\) systems.  It asks Magma to solve
+  the genus-one quartic
+  \(W^2=1845s^4-128s^2-117\) and then filters the separated square equations.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
