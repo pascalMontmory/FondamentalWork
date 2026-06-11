@@ -1199,3 +1199,82 @@ The closure target is now graph-theoretic as well as Pell-theoretic:
   \text{rank descent.}
 }
 \]
+
+## 25. Dual-factor gap model
+
+Each reduced Pell line can be factored:
+\[
+  u_c^2=f_c^2+6mf_c-c
+  \quad\Longleftrightarrow\quad
+  u_c^2+c=f_c(f_c+6m).
+\]
+
+Set
+\[
+  L=6m,
+  \qquad
+  F_c=f_c+L.
+\]
+
+Since \(m\equiv3\pmod4\),
+\[
+\boxed{
+  L\equiv18\pmod{24}.
+}
+\]
+
+Then every row is a same-gap factorization:
+\[
+\boxed{
+  u_c^2+c=f_cF_c,
+  \qquad
+  F_c-f_c=L.
+}
+\]
+
+The upper factor obeys the same self-residue law:
+\[
+\boxed{
+  u_c^2\equiv-c\pmod{F_c}.
+}
+\]
+
+Hence all prime-power splitting laws already proved for \(f_c\) also apply
+to \(F_c\).  In particular:
+
+- for A0, every odd prime divisor of \(f_cF_c\) is \(1\bmod4\), with the
+  offset-specific \(2\)-adic ceiling on both factors;
+- for A1, both \(f_c\) and \(F_c\) obey the same quadratic-field splitting
+  law and the same ramified caps.
+
+For A1 rows,
+\[
+  f_c\equiv9\pmod{12},
+  \qquad
+  F_c=f_c+L\equiv3\pmod{12}.
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_dual\_factor\_gap\_model.md}.
+\]
+
+The hard branch is therefore an eight-row same-gap factorization problem:
+\[
+\boxed{
+  u_c^2+c=f_cF_c,\quad
+  F_c-f_c=L\equiv18\pmod{24},
+}
+\]
+where both factors on every row satisfy the offset-specific splitting law.
+
+The strengthened descent target is:
+\[
+\boxed{
+  \text{two-sided splitting laws}
+  +\text{common gap }L
+  +\text{prime-label admissibility}
+  \Longrightarrow
+  \text{rank descent.}
+}
+\]

@@ -4898,3 +4898,88 @@ descent target is:
   \Longrightarrow \text{rank descent.}
 }
 \]
+
+## Dual-factor common-gap model
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_dual\_factor\_gap\_model.md}.
+\]
+
+This is a two-sided strengthening of the multiplicative model.
+
+The reduced Pell line
+\[
+  u_c^2=f_c^2+6mf_c-c
+\]
+is equivalent to
+\[
+\boxed{
+  u_c^2+c=f_c(f_c+6m).
+}
+\]
+
+Set
+\[
+  L=6m.
+\]
+
+Since \(m\equiv3\pmod4\),
+\[
+\boxed{
+  L\equiv18\pmod{24}.
+}
+\]
+
+For each offset define the upper factor
+\[
+  F_c=f_c+L.
+\]
+
+Then
+\[
+\boxed{
+  u_c^2+c=f_cF_c,
+  \qquad
+  F_c-f_c=L.
+}
+\]
+
+The key point is that both factors divide \(u_c^2+c\).  Hence both satisfy
+the same self-residue law:
+\[
+\boxed{
+  u_c^2\equiv-c\pmod{f_c},
+  \qquad
+  u_c^2\equiv-c\pmod{F_c}.
+}
+\]
+
+Therefore every splitting restriction proved for \(f_c\) also applies to
+the upper factor \(F_c\).  For A0, both factors have all odd prime divisors
+\(1\bmod4\) and the same offset-specific \(2\)-adic ceiling.  For A1, both
+factors obey the same quadratic-field splitting law and ramified caps.
+
+In the A1 case,
+\[
+  f_c\equiv9\pmod{12},
+  \qquad
+  F_c=f_c+L\equiv3\pmod{12}.
+\]
+
+Thus the remaining hard branch is no longer one-sided:
+\[
+\boxed{
+  f_c\text{ and }f_c+L
+  \text{ must both satisfy the offset-specific splitting law}
+}
+\]
+for the same gap
+\[
+  L\equiv18\pmod{24}
+\]
+across all eight offsets.
+
+The next descent target is to show that a lower factor outside the closed
+prefix range forces a forbidden prime divisor either in \(f_c\) or in its
+upper partner \(f_c+L\).

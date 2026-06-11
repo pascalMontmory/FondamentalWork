@@ -277,6 +277,12 @@ Main notes:
   intersection of the two relevant splitting laws; in particular A0--A1
   common divisors are coprime to \(6\), and nonramified shared primes split
   in \(\mathbb Q(\sqrt{-c},\sqrt{-d})\).
+- `legendre_m3mod4_dual_factor_gap_model.md`: two-sided strengthening of
+  the multiplicative model.  Each line factors as
+  \(u_c^2+c=f_c(f_c+6m)\), so the upper factor \(F_c=f_c+6m\) satisfies the
+  same offset-specific splitting law as the lower quotient \(f_c\).  The
+  hard branch becomes eight same-gap factor pairs with
+  \(F_c-f_c\equiv18\pmod{24}\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
