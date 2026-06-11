@@ -1984,3 +1984,65 @@ The clean strong-gate obstruction is therefore stronger: for \(m\ge4881\),
 the eight prime quotients and the eight quotient parameters \(e_c\) must both
 be pairwise distinct, and every pair of offsets must satisfy this quadratic
 compatibility.
+
+## Initial order constraints
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_order\_constraints.md}.
+\]
+
+For fixed \(A\), define
+\[
+  F_c(r)=\frac{r^2+c}{A-r}.
+\]
+Then \(e_c=F_c(r_c)\).
+
+The function \(F_c\) is strictly increasing in \(r\):
+\[
+  F_c(s)-F_c(r)
+  =
+  \frac{(s-r)\bigl(A(r+s)-rs+c\bigr)}
+       {(A-r)(A-s)}
+  >0
+\]
+for \(1\le r<s<A\).
+
+It is also strictly increasing in \(c\):
+\[
+  F_d(r)-F_c(r)=\frac{d-c}{A-r}>0
+\]
+for \(c<d\).
+
+Therefore, for two offsets \(c<d\),
+\[
+\boxed{
+  r_c\le r_d
+  \quad\Longrightarrow\quad
+  e_c<e_d.
+}
+\]
+Equivalently,
+\[
+\boxed{
+  c<d,\ e_c>e_d
+  \quad\Longrightarrow\quad
+  r_c>r_d.
+}
+\]
+Since \(p_c=A-r_c\), this also implies
+\[
+  c<d,\ e_c>e_d
+  \quad\Longrightarrow\quad
+  p_c<p_d.
+\]
+
+For \(m\ge4881\), the quotients are already known to be distinct, so they
+define a permutation of the eight offsets.  The new order constraint is:
+\[
+  \operatorname{Inv}_e\subseteq\operatorname{Inv}_r.
+\]
+
+Thus the quotient permutation is not arbitrary.  Every quotient inversion
+must be matched by a distance inversion and by the opposite prime-label
+ordering.

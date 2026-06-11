@@ -88,6 +88,9 @@ Main notes:
   compatibility equation for two offsets sharing the same center; for
   \(m\ge4881\), all eight initial quotients \(e_c\) must be distinct in the
   clean strong gate.
+- `legendre_initial_order_constraints.md`: monotonicity constraints for
+  \(e=(r^2+c)/(A-r)\); quotient-order inversions must be mirrored by
+  distance-order inversions and opposite prime-label order.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -148,7 +151,8 @@ This gives the square-root barrier \(r_c^2+r_c+c\ge A\), so for \(A>122\)
 all eight initial distances satisfy \(r_c\gg\sqrt A\).  Comparing two offsets
 in the quotient form yields a binary quadratic compatibility equation; in
 particular, for \(m\ge4881\), equal quotients are impossible among distinct
-initial offsets in the clean strong gate.
+initial offsets in the clean strong gate.  The quotient order is also
+constrained: if \(c<d\) but \(e_c>e_d\), then \(r_c>r_d\) and \(p_c<p_d\).
 
 Computational scripts live in `tools/`.
 
