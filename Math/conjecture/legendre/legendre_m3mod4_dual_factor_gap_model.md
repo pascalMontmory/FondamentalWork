@@ -142,6 +142,21 @@ Thus the gap equation
 must connect two integers whose odd prime factors are all \(1\bmod4\), with
 the same offset-specific \(2\)-adic ceiling.
 
+The later A0 dual collapses sharpen the lower A0 factors to:
+\[
+\begin{array}{c|c}
+  c & \text{surviving lower factors}\\
+  \hline
+  4,100 & 2\mathcal S_4\\
+  16 & 8\mathcal S_4\cup16\mathcal S_4\\
+  64 & 8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4.
+\end{array}
+\]
+
+For \(c=4,100\), the upper factor then lies in \(4\mathcal S_4\).
+For \(c=16,64\), the upper factor has \(v_2(F)=1\) and the same
+sum-of-two-squares odd part condition.
+
 ## 4. A1 dual restrictions
 
 For A1 offsets

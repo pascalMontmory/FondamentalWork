@@ -43,7 +43,7 @@ Define
 Equivalently, \(\mathcal S_4\) is the odd, \(3\)-free part of the
 sum-of-two-squares semigroup.
 
-The A0 four-layer offsets satisfy
+The one-sided A0 four-layer theorem first gives
 \[
 \boxed{
   c=4,100
@@ -52,14 +52,21 @@ The A0 four-layer offsets satisfy
 }
 \]
 
-Residue-wise this is
+The dual-factor collapse sharpens this to
 \[
-  f\equiv2,10\pmod{24}
-  \quad\text{or}\quad
-  f\equiv4,20\pmod{48}.
+\boxed{
+  c=4,100
+  \quad\Longrightarrow\quad
+  f\in2\mathcal S_4.
+}
 \]
 
-The A0 zero-layer offsets satisfy
+Residue-wise this is now only
+\[
+  f\equiv2,10\pmod{24}.
+\]
+
+The one-sided A0 zero-layer theorem first gives
 \[
 \boxed{
   c=16
@@ -78,11 +85,29 @@ and
 }
 \]
 
+The dual valuation collapse sharpens these to
+\[
+\boxed{
+  c=16
+  \quad\Longrightarrow\quad
+  f\in8\mathcal S_4\cup16\mathcal S_4,
+}
+\]
+and
+\[
+\boxed{
+  c=64
+  \quad\Longrightarrow\quad
+  f\in8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4.
+}
+\]
+
 In particular, for both \(c=16\) and \(c=64\),
 \[
   f\equiv8,16\pmod{24},
 \]
-and the old classes \(14,22\pmod{24}\) are impossible.
+and the old classes \(14,22\pmod{24}\) are impossible.  Moreover the lower
+quotient \(f=16\) can occur only on the \(c=16\) row.
 
 ## 2. A1 splitting semigroups
 
@@ -168,9 +193,9 @@ and an integer \(m\equiv3\pmod4\) such that:
    \begin{array}{c|c}
      c & f_c\text{ belongs to}\\
      \hline
-     4,100 & 2\mathcal S_4\cup4\mathcal S_4\\
-     16 & \bigcup_{\nu=3}^{5}2^\nu\mathcal S_4\\
-     64 & \bigcup_{\nu=3}^{7}2^\nu\mathcal S_4\\
+     4,100 & 2\mathcal S_4\\
+     16 & 8\mathcal S_4\cup16\mathcal S_4\\
+     64 & 8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4\\
      2 & \mathcal T_2\\
      26 & \mathcal T_{26}\\
      50 & \mathcal T_{50}\\

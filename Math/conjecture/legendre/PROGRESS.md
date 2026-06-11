@@ -5164,3 +5164,27 @@ Consequently the lower quotient \(f=16\) can occur only on the \(c=16\)
 row, not on \(c=64\).  The A0 zero layer is now assignment-rigid at the
 bottom, again by intrinsic \(2\)-adic factorization rather than by finite
 local testing.
+
+## Multiplicative model updated after A0 dual collapses
+
+Updated
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_multiplicative\_rank\_model.md}
+\]
+and
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_dual\_factor\_gap\_model.md}
+\]
+to use the surviving A0 lower semigroups:
+\[
+\begin{array}{c|c}
+  c & \text{surviving lower semigroup}\\
+  \hline
+  4,100 & 2\mathcal S_4\\
+  16 & 8\mathcal S_4\cup16\mathcal S_4\\
+  64 & 8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4.
+\end{array}
+\]
+
+This keeps the main hard-branch certificate aligned with the strongest
+known intrinsic constraints.
