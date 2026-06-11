@@ -27,6 +27,8 @@ Main notes:
   of the corrected \(M_3^\ast\) target.
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
+- `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a
+  complete A-block, isolating bridge blocks from coprime blocks.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -35,7 +37,9 @@ the primitive Gaussian channel \(r=0\), the nonmultiple unit-lift channel
 \(M_3^\ast\), and a counterexample is now equivalent to a simultaneous
 A0/A1/B small-prime cover.  The combined A-cover now has a sharper block
 rigidity: a single prime can cover both members of a complete
-\((3q+1,3q+2)\) block only if it divides \(9m^2+1\).
+\((3q+1,3q+2)\) block only if it divides \(9m^2+1\).  The full block gcd is
+exactly \(\gcd(c_q,9m^2+1)\), so coprime blocks require two genuinely
+distinct prime certificates.
 
 Computational scripts live in `tools/`.
 

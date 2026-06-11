@@ -671,6 +671,84 @@ This is the new exact obstruction.  The next target is to prove that the
 complete A-blocks cannot all satisfy this two-certificate-or-bridge
 alternative.
 
+## Exact gcd in complete A-blocks
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_A\_block\_gcd.md}.
+\]
+
+This sharpens the bridge-prime obstruction by computing the full gcd inside
+each complete A-block.
+
+Let
+\[
+  a=3q+1,\qquad b=3q+2.
+\]
+For the combined A-family
+\[
+  P_m(t)=9m^2+t^2+\epsilon_m(t),
+\]
+define the bridge coordinate
+\[
+  c_q=
+  \begin{cases}
+  a,&a\equiv m\pmod2,\\
+  b,&a\not\equiv m\pmod2.
+  \end{cases}
+\]
+Then for every complete A-block,
+\[
+  \boxed{
+  \gcd(P_m(a),P_m(b))=\gcd(c_q,9m^2+1).
+  }
+\]
+
+Proof outline:
+
+- if \(a\equiv m\pmod2\), then
+  \[
+    P_m(a)=9m^2+a^2+1,\qquad P_m(b)=9m^2+b^2,
+  \]
+  and
+  \[
+    P_m(b)-P_m(a)=2a.
+  \]
+  Since both values are odd,
+  \[
+    \gcd(P_m(a),P_m(b))=\gcd(a,9m^2+1).
+  \]
+- if \(a\not\equiv m\pmod2\), then
+  \[
+    P_m(a)=9m^2+a^2,\qquad P_m(b)=9m^2+b^2+1,
+  \]
+  and
+  \[
+    P_m(b)-P_m(a)=2b.
+  \]
+  Hence
+  \[
+    \gcd(P_m(a),P_m(b))=\gcd(b,9m^2+1).
+  \]
+
+Therefore all common prime factors in a complete A-block are exactly bridge
+prime factors.  There are no hidden common divisors.
+
+Call a block coprime when
+\[
+  \gcd(c_q,9m^2+1)=1.
+\]
+On such a block, a counterexample must provide two genuinely distinct prime
+certificates
+\[
+  p_a\mid P_m(3q+1),\qquad p_b\mid P_m(3q+2),\qquad p_a\ne p_b.
+\]
+
+The remaining proof target is now narrower: prove that for every \(m\), some
+coprime complete A-block cannot carry two independent small-prime
+certificates.  If this is achieved, the combined A-channel closes and the
+nonprimitive B-channel becomes unnecessary.
+
 ## Primitive double-cover measurements
 
 Added
