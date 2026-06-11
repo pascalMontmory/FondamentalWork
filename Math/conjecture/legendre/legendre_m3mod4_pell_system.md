@@ -654,3 +654,95 @@ inside one of the three layers.
 
 This does not yet close the hard branch, but it replaces the vague
 "skipped-rank" gap by a concrete lower-rank exclusion theorem.
+
+## 17. Why finite local tests cannot close arbitrary skipped ranks
+
+There is a structural obstruction to continuing the prefix-rank method
+indefinitely by adding more local primes.
+
+For any finite set of odd primes \(\mathcal P\), choose
+\[
+  m\equiv0\pmod{\prod_{\ell\in\mathcal P}\ell}.
+\]
+
+Then the local line
+\[
+  u^2=f^2+6mf-c
+\]
+reduces modulo each \(\ell\in\mathcal P\) to
+\[
+  u^2\equiv f^2-c.
+\]
+
+Equivalently,
+\[
+  (f-u)(f+u)=c.
+\]
+
+This has local solutions modulo every odd prime.  By CRT, these local
+choices can be combined with the layer lattices for \(f\), and by adding
+multiples of the full CRT modulus the corresponding ranks can be made
+arbitrarily large and distinct.
+
+Thus:
+\[
+\boxed{
+  \text{finite independent local-square tests cannot close arbitrary}
+  \text{ skipped ranks.}
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_no\_finite\_local\_modular\_closure.md}.
+\]
+
+The remaining hard-branch closure must use either:
+
+1. pairwise Pell synchronization; or
+2. a rank descent into the closed prefix range.
+
+## 18. Self-residue filter
+
+There is an intrinsic quotient filter not captured by fixed finite local
+prime tests.
+
+Reduce
+\[
+  u^2=f^2+6mf-c
+\]
+modulo \(f\).  One obtains
+\[
+\boxed{
+  u^2\equiv-c\pmod f.
+}
+\]
+
+Hence every odd prime divisor
+\[
+  q\mid f,\qquad q\nmid c
+\]
+must satisfy
+\[
+\boxed{
+  \left(\frac{-c}{q}\right)=1.
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_self\_residue\_filter.md}.
+\]
+
+The modulo \(7\) zero-filter was only one instance of this rule.  The
+general form supplies a non-finite obstruction for skipped ranks: as
+quotients climb, their own prime divisors create new necessary quadratic
+residue tests.
+
+The next theoretical closure target is now:
+\[
+\boxed{
+  \text{self-residue filter}+\text{pairwise Pell synchronization}
+  \Longrightarrow \text{rank descent.}
+}
+\]

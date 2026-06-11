@@ -4366,3 +4366,103 @@ must use at least one layer rank
 
 This is stronger than the boundary automaton closure: skipped-rank
 configurations are now directly eliminated through the first ten values.
+
+## No finite local-modular closure for arbitrary skipped ranks
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_no\_finite\_local\_modular\_closure.md}.
+\]
+
+This note proves that the modular-certificate strategy cannot close the
+fully arbitrary skipped-rank problem by merely adding finitely many local
+square tests.
+
+For any finite set of odd primes
+\[
+  \mathcal P,
+\]
+take
+\[
+  m\equiv0\pmod{\prod_{\ell\in\mathcal P}\ell}.
+\]
+
+Then each row reduces locally to
+\[
+  u^2\equiv f^2-c\pmod\ell.
+\]
+
+For each odd prime \(\ell\), the congruence
+\[
+  f^2-u^2=c
+\]
+has solutions because
+\[
+  (f-u)(f+u)=c
+\]
+can be solved by choosing \(t=f-u\) and setting
+\[
+  f=\frac{t+c/t}{2}.
+\]
+
+CRT then combines these local residues with the hard-branch layer lattices.
+Ranks can be made arbitrarily large and distinct by adding multiples of the
+CRT modulus.
+
+Therefore:
+\[
+\boxed{
+  \text{no finite independent local-square prime set closes arbitrary}
+  \text{ skipped ranks.}
+}
+\]
+
+The remaining closure must use:
+
+1. the pairwise Pell synchronization equations; or
+2. a genuine rank descent into the already closed prefix range.
+
+## Self-residue filter for skipped ranks
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_self\_residue\_filter.md}.
+\]
+
+This is the first intrinsic obstruction on arbitrary skipped ranks.
+
+Reducing the line
+\[
+  u^2=f^2+6mf-c
+\]
+modulo \(f\) gives
+\[
+\boxed{
+  u^2\equiv-c\pmod f.
+}
+\]
+
+Therefore, for every odd prime
+\[
+  q\mid f,\qquad q\nmid c,
+\]
+one must have
+\[
+\boxed{
+  \left(\frac{-c}{q}\right)=1.
+}
+\]
+
+This generalizes the earlier modulo \(7\) zero-filter: the obstruction is
+not tied to a fixed external prime, but to whatever prime divisors appear in
+the skipped quotient \(f\).
+
+This is the first viable theoretical route beyond finite modular
+certificates:
+
+\[
+\boxed{
+  \text{self-residue filter}+\text{Pell synchronization}
+  \Longrightarrow \text{rank descent target.}
+}
+\]

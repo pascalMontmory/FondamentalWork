@@ -236,6 +236,16 @@ Main notes:
   assignments for \(N=7,8,9,10\) are killed by
   \(\{5,7,11,13,17,19,23,29,83\}\).  For \(N=9\), this is 15,676,416
   assignments; for \(N=10\), this is 40,824,000 assignments.
+- `legendre_m3mod4_no_finite_local_modular_closure.md`: proof that no finite
+  set of independent local square tests can close arbitrary skipped ranks.
+  For any finite prime set, sufficiently skipped layer ranks can satisfy all
+  local conditions by CRT with \(m\equiv0\).  The remaining closure must use
+  Pell synchronization or rank descent.
+- `legendre_m3mod4_self_residue_filter.md`: intrinsic quotient filter from
+  reducing \(u^2=f^2+6mf-c\) modulo \(f\).  Every quotient must satisfy
+  \(u^2\equiv-c\pmod f\), so each prime divisor \(q\mid f\), \(q\nmid c\),
+  must have \(\left(\frac{-c}{q}\right)=1\).  This is the first non-finite
+  prime mechanism for attacking arbitrary skipped ranks.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -535,6 +545,13 @@ closed by
 Any remaining hard-branch counterexample must escape beyond rank \(8\) in at
 least one layer, and in fact beyond rank \(9\) after the \(N=10\)
 certificate.
+However, arbitrary skipped ranks cannot be closed by simply adding finitely
+many independent local square tests: CRT lets sufficiently high ranks satisfy
+any fixed finite prime set.  The next proof step must use global Pell
+synchronization or a rank descent.
+The new self-residue filter supplies the missing non-finite mechanism:
+reducing each row modulo its own quotient \(f\) forces \(-c\) to be a square
+modulo \(f\), so bad prime divisors of \(f\) kill skipped ranks intrinsically.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods
