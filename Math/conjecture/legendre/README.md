@@ -166,6 +166,9 @@ Main notes:
   methods do not currently close Legendre, and identifies the two plausible
   next routes: Pell-synchronized finite-certificate elimination or an
   almost-prime-to-prime upgrade.
+- `literature/`: reading pack with an arXiv manifest, BibTeX file, and
+  proof-use notes for short-interval primes, almost-primes between squares,
+  prime gaps, Maier matrix methods, and computational verification.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:

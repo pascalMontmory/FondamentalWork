@@ -1,0 +1,15 @@
+arxiv_id	title	authors	url	pdf_url	role
+2401.13753	An algorithm and computation to verify Legendre's Conjecture up to 3.33*10^13	Jonathan Sorenson; Jonathan Webster	https://arxiv.org/abs/2401.13753	https://arxiv.org/pdf/2401.13753	verification; Oppermann/Legendre computational frontier
+2603.10356	On the Existence of Integers with At Most 3 Prime Factors Between Every Pair of Consecutive Squares	Peter Campbell	https://arxiv.org/abs/2603.10356	https://arxiv.org/pdf/2603.10356	almost-prime P3 analogue of Legendre
+2405.20552	New large value estimates for Dirichlet polynomials	Larry Guth; James Maynard	https://arxiv.org/abs/2405.20552	https://arxiv.org/pdf/2405.20552	modern short-interval prime technology
+2308.04458	The number of primes in short intervals and numerical calculations for Harman's sieve	Runbo Li	https://arxiv.org/abs/2308.04458	https://arxiv.org/pdf/2308.04458	refines short-interval prime bounds around exponent 0.52
+1908.08613	Large prime gaps and probabilistic models	William Banks; Kevin Ford; Terence Tao	https://arxiv.org/abs/1908.08613	https://arxiv.org/pdf/1908.08613	probabilistic prime-gap models; interval sieve
+1408.4505	Large gaps between consecutive prime numbers	Kevin Ford; Ben Green; Sergei Konyagin; Terence Tao	https://arxiv.org/abs/1408.4505	https://arxiv.org/pdf/1408.4505	modern large-gap construction
+1401.4233	An Explicit Result for Primes Between Cubes	Adrian Dudek	https://arxiv.org/abs/1401.4233	https://arxiv.org/pdf/1401.4233	explicit consecutive-cubes analogue
+2107.14468	Primes between consecutive powers	Michaela Cully-Hugill	https://arxiv.org/abs/2107.14468	https://arxiv.org/pdf/2107.14468	explicit consecutive-power theorem; published JNT version
+2601.15564	Primes and almost primes between cubes	Daniel R. Johnston; Simon N. Thomas; Jonathan P. Sorenson; Jonathan E. Webster	https://arxiv.org/abs/2601.15564	https://arxiv.org/pdf/2601.15564	cube analogue; computation plus sieve
+2407.05651	Primes in almost all short intervals	Runbo Li	https://arxiv.org/abs/2407.05651	https://arxiv.org/pdf/2407.05651	almost-all short intervals
+2207.05038	Almost primes in almost all short intervals II	Kaisa Matomaki; Joni Teravainen	https://arxiv.org/abs/2207.05038	https://arxiv.org/pdf/2207.05038	almost-prime sieve technology
+2012.11565	Almost primes in almost all very short intervals	Kaisa Matomaki	https://arxiv.org/abs/2012.11565	https://arxiv.org/pdf/2012.11565	almost-prime sieve technology
+2606.01115	Piatetski-Shapiro Primes in short intervals	Lingyu Guo; Victor Zhenyu Guo	https://arxiv.org/abs/2606.01115	https://arxiv.org/pdf/2606.01115	related short-interval prime technology
+1908.08995	Existence of primes between two consecutive squares	Sundarakannan Mahilmaran	https://arxiv.org/abs/1908.08995	https://arxiv.org/pdf/1908.08995	claim watchlist; do not use as proof without independent verification

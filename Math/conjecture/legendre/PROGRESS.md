@@ -3519,3 +3519,20 @@ Therefore the current recommended pivot is:
 
 This note explicitly downgrades the previous route from "proof path" to
 "certificate framework until a Pell contradiction is found."
+
+## Literature pack
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/literature/}.
+\]
+
+The folder contains:
+
+- `README.md`: reading map and proof-use notes;
+- `arxiv_manifest.tsv`: arXiv IDs, abstracts links, PDF links, and roles;
+- `references.bib`: BibTeX entries for the current Legendre bibliography.
+
+PDFs are intentionally not committed at this stage.  The repository stores
+metadata and source links first, because journal PDFs may be copyrighted and
+arXiv papers have paper-specific licenses.
