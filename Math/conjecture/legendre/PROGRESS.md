@@ -3700,3 +3700,168 @@ The next algebraic obstruction is to synchronize these three atom types with
 the existing quotient-certificate equations, and prove that two or three
 medium-prime atoms cannot certify enough structured composites to support a
 prime-free Legendre interval.
+
+## Boundary of the P3 upgrade route
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_p3\_upgrade\_boundary.md}.
+\]
+
+This records a hard boundary for the attempted \(P_3\)-to-prime upgrade.
+A single terminal \(P_3\) survivor cannot force a prime or a descent.
+
+The semiprime atom type R2 is formally compatible with the interval:
+\[
+  A=pq,\qquad p=n-a,\quad q=n+a+k,
+\]
+and the full Legendre interval permits the upper-edge shape
+\[
+  a=0,\qquad k=2,
+\]
+namely
+\[
+  A=n(n+2)=n^2+2n=(n+1)^2-1.
+\]
+
+Campbell's open analytic set excludes that exact upper-edge point, but R2 is
+also compatible inside the open set; for example
+\[
+  7\cdot17=119\in(10^2,10^2+2\cdot10).
+\]
+This does not threaten Legendre; it shows that existence of one composite
+\(P_3\) is not contradictory.
+
+The corrected closure target is collective:
+
+\[
+  \text{Richert survivor}
+  +
+  \text{local certificate packet}
+  +
+  \text{no-repetition constraints}
+  \Longrightarrow
+  \Omega(A)\ge4.
+\]
+
+This would contradict \(\Omega(A)\le3\).  The next exact task is therefore
+to define a forced packet around a Richert-core terminal survivor.  If no
+forced packet exists, the \(P_3\)-upgrade route should be downgraded and the
+main closure path returns to Pell-synchronized quotient skeleton elimination.
+
+## Explicit \(m\equiv3\pmod4\) Pell system
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_pell\_system.md}.
+\]
+
+This writes the hardest quotient skeleton as an exact reduced system.
+
+Use
+\[
+  e_i=2f_i,\qquad w_i=2u_i.
+\]
+Then every offset satisfies
+\[
+  u_i^2=f_i^2+6mf_i-c_i.
+\]
+
+For \(m\equiv3\pmod4\), the offsets split as
+\[
+  \mathrm{A0}=\{4,16,64,100\},
+  \qquad
+  \mathrm{A1}=\{2,26,50,122\}.
+\]
+
+The residue classes are:
+
+- for \(c=4,100\):
+  \[
+    f\equiv2,4,10,20\pmod{24};
+  \]
+- for \(c=16,64\):
+  \[
+    f\equiv8,14,16,22\pmod{24};
+  \]
+- for \(c=2,26,50,122\):
+  \[
+    f\equiv9\pmod{12}.
+  \]
+
+The sorted quotient skeleton
+\[
+  (4,8,16,18,28,42,66,90)
+\]
+becomes
+\[
+  (2,4,8,9,14,21,33,45)
+\]
+in \(f\)-variables.
+
+Pairwise elimination of \(m\) gives the 28 reduced Pell equations
+\[
+  f_j u_i^2-f_i u_j^2
+  =
+  f_if_j(f_i-f_j)-f_jc_i+f_ic_j.
+\]
+
+This is now the main exact closure target: prove that the finite union over
+rank assignments, residue choices, and \(m\bmod8\) has no integral point
+satisfying the label and ladder constraints.  The first component to attack
+is the minimal boundary component with
+\[
+  f=(2,4,8,9,14,21,33,45).
+\]
+
+## Minimal \(m\equiv3\pmod4\) component killed modulo 7
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_minimal\_component\_mod7.md}.
+\]
+
+The first boundary component of the hardest skeleton is eliminated exactly.
+
+In the minimal \(f\)-skeleton
+\[
+  (2,4,8,9,14,21,33,45),
+\]
+the A0 offsets \(c=16,64\), i.e. the \(x^2\equiv0\pmod{16}\) offsets, must
+receive \(f=8,14\).  Hence one of them must receive
+\[
+  f=14.
+\]
+
+The reduced Pell line
+\[
+  u^2=f^2+6mf-c
+\]
+then reduces modulo \(7\) to
+\[
+  u^2\equiv-c\pmod7.
+\]
+
+For \(c=16\),
+\[
+  -c\equiv5\pmod7,
+\]
+and for \(c=64\),
+\[
+  -c\equiv6\pmod7.
+\]
+
+But the square classes modulo \(7\) are
+\[
+  0,1,2,4.
+\]
+
+Therefore neither pairing is possible.  The exact minimal component is killed
+modulo \(7\).
+
+This is the first actual elimination inside the \(m\equiv3\pmod4\) Pell
+skeleton.  The next components must raise the \(x^2\equiv0\pmod{16}\) A0
+quotient beyond the naive \(f=14\) boundary, or use \(f=14+24t\) with
+\[
+  t\not\equiv0\pmod7.
+\]

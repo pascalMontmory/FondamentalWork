@@ -181,6 +181,17 @@ Main notes:
 - `legendre_richert_terminal_atom_types.md`: classification of Richert-core
   terminal \(P_3\) composites into exactly three atom types: prime-prime,
   lower-prime/upper-semiprime, and lower-semiprime/upper-prime.
+- `legendre_p3_upgrade_boundary.md`: proof-level boundary showing that one
+  terminal \(P_3\) survivor cannot force Legendre; the semiprime R2 shape
+  \(n(n+2)\) is formally compatible, so any \(P_3\)-upgrade must be a
+  collective packet/certificate-capacity argument.
+- `legendre_m3mod4_pell_system.md`: explicit reduced Pell system for the
+  hardest quotient skeleton \(m\equiv3\pmod4\), using \(e=2f,w=2u\),
+  layer-specific \(f\)-residue classes, the sorted skeleton
+  \((2,4,8,9,14,21,33,45)\), and the 28 pairwise synchronization equations.
+- `legendre_m3mod4_minimal_component_mod7.md`: exact modulo-\(7\)
+  certificate eliminating the naive minimal \(m\equiv3\pmod4\) component:
+  the required \(f=14\) on \(c=16\) or \(c=64\) forces a nonsquare.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

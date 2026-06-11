@@ -241,7 +241,8 @@ The next lemma should be formulated as follows.
 > \[
 >   a=(n-a_0)(n+a_0+k)
 > \]
-> whose prime factors all lie in \([z,n+1)\).  Show that such terminal
+> whose prime factors all lie above \(z\), and which has at least one
+> certifying prime factor in \([z,n+1)\).  Show that such terminal
 > factorizations cannot supply the positive Richert weight
 > \[
 >   0.0249\frac{\sqrt N}{\log X}
