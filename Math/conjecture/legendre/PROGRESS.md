@@ -2457,3 +2457,79 @@ Thus the clean strong gate is no longer an open search over \(m\).  It is a
 finite family of exact two-layer ladder certificates: layer word, matching,
 quotient-rank permutation, distances, quotients, and pairwise compatibility.
 The next closure target is to eliminate these certificates structurally.
+
+## Initial quotient Pell pencil
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_quotient\_pell\_pencil.md}.
+\]
+
+This is the next nonstandard attack: make the quotient \(e\), not the center
+\(A\), the primary variable.
+
+The centered equation
+\[
+  c=Ae-r(r+e)
+\]
+is equivalent, with
+\[
+  w=2r+e,
+\]
+to the square-line equation
+\[
+\boxed{
+  w^2=4eA+e^2-4c.
+}
+\]
+
+Since \(A=3m\), every quotient must satisfy the local congruence
+\[
+\boxed{
+  w^2\equiv e^2-4c\pmod{12e}.
+}
+\]
+
+Thus, before choosing any center \(A\), the pair \((c,e)\) must pass a local
+square test modulo \(12e\).  In particular, if an odd prime \(\ell\mid e\)
+does not divide \(c\), then
+\[
+\boxed{
+  \left(\frac{-c}{\ell}\right)=1.
+}
+\]
+
+For A0 offsets \(c=x^2\), this becomes
+\[
+\boxed{
+  \ell\equiv1\pmod4
+}
+\]
+for every odd quotient prime \(\ell\nmid x\).  Therefore the hidden quotient
+side of an A0 factorization is also Gaussian, not just the visible prime
+label side.
+
+For A1 offsets \(c=y^2+1\), every non-degenerate odd quotient prime must
+satisfy
+\[
+\boxed{
+  \left(\frac{-(y^2+1)}{\ell}\right)=1.
+}
+\]
+
+Finally, eliminating \(A\) between two offsets gives the Pell-type
+synchronization equation
+\[
+\boxed{
+  e_jw_i^2-e_iw_j^2
+  =
+  e_ie_j(e_i-e_j)
+  -4(e_jc_i-e_ic_j).
+}
+\]
+
+The clean strong gate now has a quotient-first closure target: eliminate
+eight distinct quotients \(e_i\) satisfying the quotient-local splitting
+conditions, the two-layer ladder restrictions, and the \(28\) pairwise Pell
+synchronization equations.  This avoids a center-by-center search over
+\(m\).

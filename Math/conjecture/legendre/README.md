@@ -115,6 +115,11 @@ Main notes:
   A0 adds modulo-\(4\) ladder edges, and any clean strong-gate counterexample
   must choose a layer word, offset-label matching, quotient-rank permutation,
   and compatible centered divisor equations.
+- `legendre_initial_quotient_pell_pencil.md`: quotient-first reformulation
+  using \(w=2r+e\), so each offset imposes
+  \(w^2=4eA+e^2-4c\); since \(A=3m\), every quotient must pass the local
+  congruence \(w^2\equiv e^2-4c\pmod{12e}\), and pairs of offsets satisfy a
+  synchronized Pell-type equation independent of \(A\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -213,6 +218,20 @@ two-layer ladder certificate: a layer word, a layer-respecting matching from
 offsets to label positions, a quotient-rank permutation satisfying
 \(\operatorname{Inv}(q)\subseteq\operatorname{Inv}(s)\), and the centered
 divisor equations for all eight offsets.
+The quotient-first variant writes \(w=2r+e\), turning each centered
+factorization into
+\[
+  w^2=4eA+e^2-4c.
+\]
+Since \(A=3m\), every quotient must satisfy the local congruence
+\[
+  w^2\equiv e^2-4c\pmod{12e}.
+\]
+Thus odd primes dividing \(e\), away from \(c\), must split in
+\(\mathbb Q(\sqrt{-c})\).  For A0 this forces quotient primes
+\(\equiv1\pmod4\), except for coordinate primes.  Eliminating \(A\) between
+two offsets gives a Pell-type synchronization equation independent of the
+center.
 
 Computational scripts live in `tools/`.
 
