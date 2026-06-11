@@ -5082,3 +5082,85 @@ is now structural, just like the previous zero-layer collapse made
 \]
 structural.  Both A0 escape moves have therefore been absorbed into the
 intrinsic quotient geometry.
+
+## A0 dual valuation collapse
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_dual\_valuation\_collapse.md}.
+\]
+
+This pushes the dual-factor model one step further by using the equality
+\[
+\boxed{
+  u^2+x^2=fF,
+  \qquad
+  F=f+6m.
+}
+\]
+
+For A0 zero-layer offsets \(c=16,64\), write
+\[
+  f=2^\nu s,
+  \qquad
+  \nu\ge3,
+  \qquad
+  s\text{ odd}.
+\]
+
+Since
+\[
+  6m=2h,
+  \qquad
+  h\equiv1\pmod4,
+\]
+the upper factor has
+\[
+\boxed{
+  v_2(F)=1.
+}
+\]
+
+Hence
+\[
+\boxed{
+  v_2(fF)=\nu+1.
+}
+\]
+
+For \(c=16\), one has \(x=4\), so the possible valuations of
+\[
+  u^2+16
+\]
+are only
+\[
+  0,\ 2,\ 4,\ 5.
+\]
+
+Thus \(\nu=5\) is impossible, and
+\[
+\boxed{
+  c=16:\quad f\in8\mathcal S_4\cup16\mathcal S_4.
+}
+\]
+
+For \(c=64\), one has \(x=8\), so the possible valuations of
+\[
+  u^2+64
+\]
+are only
+\[
+  0,\ 2,\ 4,\ 6,\ 7.
+\]
+
+Thus \(\nu=4\) and \(\nu=7\) are impossible, and
+\[
+\boxed{
+  c=64:\quad f\in8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4.
+}
+\]
+
+Consequently the lower quotient \(f=16\) can occur only on the \(c=16\)
+row, not on \(c=64\).  The A0 zero layer is now assignment-rigid at the
+bottom, again by intrinsic \(2\)-adic factorization rather than by finite
+local testing.

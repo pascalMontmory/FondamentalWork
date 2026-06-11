@@ -287,6 +287,11 @@ Main notes:
   the A0 \(c=4,100\) lower layer.  The branch \(f=4s\) is impossible because
   the upper factor has odd part \(3\bmod4\); hence \(f\in2\mathcal S_4\),
   and the first two distinct lower quotients are \(2,10\), not \(2,4\).
+- `legendre_m3mod4_A0_dual_valuation_collapse.md`: exact \(2\)-adic product
+  valuation collapse for the A0 zero layer.  The equality \(u^2+x^2=fF\)
+  forces \(c=16\) to use only \(8\mathcal S_4\cup16\mathcal S_4\), and
+  \(c=64\) to use only \(8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4\);
+  in particular \(f=16\) can only belong to the \(c=16\) row.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

@@ -1362,3 +1362,76 @@ instead of \(2,4\).  The old escape
   4\leadsto10
 \]
 is now a structural consequence of the two-sided factorization.
+
+## 27. A0 dual valuation collapse
+
+The equality
+\[
+  u^2+x^2=fF
+\]
+also sharpens the A0 zero layer.
+
+For \(c=16,64\), write
+\[
+  f=2^\nu s,
+  \qquad
+  \nu\ge3,
+  \qquad
+  s\text{ odd}.
+\]
+
+Since
+\[
+  F=f+6m=f+2h,
+  \qquad
+  h\equiv1\pmod4,
+\]
+one has
+\[
+\boxed{
+  v_2(F)=1.
+}
+\]
+
+Thus
+\[
+  v_2(fF)=\nu+1.
+\]
+
+For \(c=16\), \(x=4\), and the possible valuations of \(u^2+16\) are
+\[
+  0,\ 2,\ 4,\ 5.
+\]
+
+So \(\nu=5\) is impossible:
+\[
+\boxed{
+  c=16:\quad f\in8\mathcal S_4\cup16\mathcal S_4.
+}
+\]
+
+For \(c=64\), \(x=8\), and the possible valuations of \(u^2+64\) are
+\[
+  0,\ 2,\ 4,\ 6,\ 7.
+\]
+
+So \(\nu=4\) and \(\nu=7\) are impossible:
+\[
+\boxed{
+  c=64:\quad f\in8\mathcal S_4\cup32\mathcal S_4\cup64\mathcal S_4.
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_dual\_valuation\_collapse.md}.
+\]
+
+In particular, the lower quotient \(f=16\) is assignment-rigid:
+\[
+\boxed{
+  f=16\quad\Longrightarrow\quad c=16.
+}
+\]
+
+The bottom of the A0 zero layer is therefore no longer symmetric.
