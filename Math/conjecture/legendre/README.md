@@ -20,11 +20,15 @@ Main notes:
 - `legendre_multiple_of_three_channel.md`: exact \(n=3m\) split into the
   primitive \(3\nmid t\) Gaussian channel and the nonprimitive \(t=3u\)
   repair channel.
+- `legendre_multiple_of_three_refined_channels.md`: corrected exact
+  classification of the \(n=3m\) channels; the first \(M_3\) candidate is
+  false because it misses the \(3\nmid t,\ r=1\) unit-lift channel.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
-remaining observed survivors are concentrated at \(3\mid n\), where the
-primitive channel collapses to the pure Gaussian norm and a nonprimitive or
-divisor-channel argument is needed.
+remaining \(3\mid n\) channel has been refined into three exact subchannels:
+the primitive Gaussian channel \(r=0\), the nonmultiple unit-lift channel
+\(r=1\), and the \(t=3u\) repair channel.  The corrected target is
+\(M_3^\ast\), not the first \(M_3\) candidate.
 
 Computational scripts live in `tools/`.
 

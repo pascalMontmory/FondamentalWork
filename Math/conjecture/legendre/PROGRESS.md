@@ -448,6 +448,78 @@ If \(m\not\equiv u\pmod2\), the only possible prime is
 Thus the \(3\mid n\) obstruction has been reduced to a mixed
 primitive/nonprimitive dichotomy, not a global residue cover.
 
+## Refined multiple-of-three channels
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_multiple\_of\_three\_refined\_channels.md}
+\]
+and the auxiliary checker
+\[
+  \texttt{Math/conjecture/legendre/tools/multiple\_of\_three\_channel\_measure.py}.
+\]
+
+The first \(M_3\) candidate is false as stated.  It omitted an exact surviving
+subchannel.
+
+For \(n=3m\) and \(3\nmid t\),
+\[
+  n^2+t^2+r\equiv1+r\pmod3.
+\]
+Hence the offsets \(r=-1\) and \(r=2\) are automatically divisible by \(3\),
+and the only possible prime subchannels are
+\[
+  r=0,\qquad r=1.
+\]
+
+The \(r=0\) subchannel is exactly the primitive opposite-parity Gaussian
+channel:
+\[
+  \gcd(3m,t)=1,\qquad 3m+t\equiv1\pmod2,\qquad
+  9m^2+t^2\ \text{prime}.
+\]
+The missing subchannel is the unit lift
+\[
+  3\nmid t,\qquad t\equiv m\pmod2,\qquad
+  9m^2+t^2+1\ \text{prime}.
+\]
+
+This missing channel gives an exact counterexample to the first \(M_3\)
+candidate:
+\[
+  m=4,\qquad n=12.
+\]
+The primitive Gaussian channel gives only
+\[
+  12^2+1^2=145=5\cdot29,
+\]
+and the \(t=3u\) channel gives
+\[
+  9(4^2+1^2)+2=155=5\cdot31.
+\]
+But the full four-offset family is repaired by
+\[
+  12^2+2^2+1=149,
+\]
+which is prime.
+
+Therefore the corrected target is \(M_3^\ast\), with three exact channels:
+
+1. \(A0\): \(3\nmid t\), primitive opposite-parity, \(9m^2+t^2\) prime;
+2. \(A1\): \(3\nmid t\), same parity, \(9m^2+t^2+1\) prime;
+3. \(B\): \(t=3u\), with the parity-collapsed candidates
+   \[
+     9(m^2+u^2)-1,\quad 9(m^2+u^2)+1,\quad 9(m^2+u^2)+2.
+   \]
+
+The auxiliary checker is not a proof, but it confirms that this corrected
+classification is the right object to attack: up to \(m=1000000\), the full
+four-offset \(n=3m\) channel had no failures; only two cases required
+\(t=3u\), namely
+\[
+  m=10,\qquad m=391.
+\]
+
 ## Primitive double-cover measurements
 
 Added
