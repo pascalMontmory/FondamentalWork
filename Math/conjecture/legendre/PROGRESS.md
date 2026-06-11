@@ -885,6 +885,66 @@ The next exact target is to prove that these oriented conic-product
 incidences cannot cover all coprime complete A-blocks after bridge blocks are
 removed.
 
+## A1 local filter
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_A1\_local\_filter.md}.
+\]
+
+This computes the exact local filter on \(m\bmod p\) imposed by the A1
+certificate condition
+\[
+  \left(\frac{-9m^2-1}{p}\right)=1,
+\]
+with the nonzero condition
+\[
+  p\nmid9m^2+1.
+\]
+
+Let \(\chi\) be the quadratic character modulo \(p\ge5\).  For
+\[
+  f(m)=-9m^2-1,
+\]
+the discriminant is
+\[
+  -36\not\equiv0\pmod p.
+\]
+Hence the standard quadratic character sum gives
+\[
+  \sum_{m\bmod p}\chi(-9m^2-1)=-\chi(-9)=-\chi(-1).
+\]
+
+The zero classes satisfy
+\[
+  (3m)^2\equiv-1\pmod p,
+\]
+so there are
+\[
+  Z_p=1+\chi(-1)
+\]
+of them.
+
+Therefore the number \(R_p\) of A1-admissible classes is
+\[
+  R_p=\frac{p-Z_p-\chi(-1)}{2},
+\]
+or explicitly
+\[
+\boxed{
+R_p=
+\begin{cases}
+\dfrac{p-3}{2},&p\equiv1\pmod4,\\[2mm]
+\dfrac{p+1}{2},&p\equiv3\pmod4.
+\end{cases}}
+\]
+
+Thus an A1 prime \(p_1\) is unavailable for residue classes \(m\) outside this
+set, and for each available class it contributes exactly two nonzero roots.
+
+The next exact target is to combine this A1 \(m\)-filter with the
+coprime-block \(q\)-interval and the A0 restriction \(p_0\equiv1\pmod4\).
+
 ## Primitive double-cover measurements
 
 Added
