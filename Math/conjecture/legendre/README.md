@@ -251,6 +251,11 @@ Main notes:
   \(u^2+x^2\equiv0\pmod f\), with \(x\in\{2,4,8,10\}\).  It forces all odd
   prime divisors of \(f\) to be \(1\bmod4\) in these four cases, and gives
   offset-specific \(2\)-adic ceilings \(v_2(f)\le3,5,7,3\).
+- `legendre_m3mod4_A1_quadratic_field_quotient_theorem.md`: exact
+  prime-power classification of the A1 self-residue condition
+  \(u^2\equiv-c\pmod f\).  A1 quotients must split in the offset-specific
+  quadratic fields \(\mathbb Q(\sqrt{-c})\), with ramified caps
+  \(v_{13}(f)\le1\), \(v_5(f)\le2\), and \(v_{61}(f)\le1\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

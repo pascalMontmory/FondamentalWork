@@ -817,3 +817,81 @@ The closure target is correspondingly refined:
   \Longrightarrow \text{rank descent.}
 }
 \]
+
+## 20. A1 quadratic-field quotient theorem
+
+For A1 rows,
+\[
+  c\in\{2,26,50,122\},
+  \qquad
+  f\equiv9\pmod{12}.
+\]
+
+Thus \(f\) is odd and divisible by \(3\), and the self-residue condition is
+\[
+\boxed{
+  u^2\equiv-c\pmod f.
+}
+\]
+
+Let
+\[
+  q^\alpha\Vert f,
+  \qquad
+  \gamma=v_q(c)
+\]
+for an odd prime \(q\).  The congruence modulo \(q^\alpha\) is governed by
+the quadratic field \(\mathbb Q(\sqrt{-c})\):
+
+- if \(q\nmid c\), then \(q\) must split:
+  \[
+    \left(\frac{-c}{q}\right)=1;
+  \]
+- if \(q\mid c\) and \(\alpha\le\gamma\), then \(u=0\) works;
+- if \(q\mid c\), \(\alpha>\gamma\), and \(\gamma\) is even, then
+  \[
+    \left(\frac{-c/q^\gamma}{q}\right)=1;
+  \]
+- if \(q\mid c\), \(\alpha>\gamma\), and \(\gamma\) is odd, no solution
+  exists.
+
+Therefore:
+\[
+\begin{array}{c|c}
+  c & \text{condition on }f\\
+  \hline
+  2
+    & \left(\frac{-2}{q}\right)=1\text{ for every }q\mid f\\
+  26
+    & v_{13}(f)\le1,\quad
+      \left(\frac{-26}{q}\right)=1\text{ for }q\mid f,\ q\ne13\\
+  50
+    & v_5(f)\le2,\quad
+      \left(\frac{-50}{q}\right)=1\text{ for }q\mid f,\ q\ne5\\
+  122
+    & v_{61}(f)\le1,\quad
+      \left(\frac{-122}{q}\right)=1\text{ for }q\mid f,\ q\ne61.
+\end{array}
+\]
+
+The forced factor \(3\mid f\) is harmless for every A1 offset because
+\[
+  c\equiv2\pmod3,
+  \qquad
+  -c\equiv1\pmod3.
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A1\_quadratic\_field\_quotient\_theorem.md}.
+\]
+
+The hard branch is now reduced to a more rigid problem:
+\[
+\boxed{
+  \text{A0 sum-of-two-squares quotient laws}
+  +\text{A1 quadratic-field quotient laws}
+  +\text{pairwise Pell synchronization}
+  \Longrightarrow \text{rank descent.}
+}
+\]

@@ -4530,3 +4530,76 @@ The hard \(m\equiv3\pmod4\) closure target is now sharper:
   \Longrightarrow \text{rank descent.}
 }
 \]
+
+## A1 quadratic-field quotient theorem
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A1\_quadratic\_field\_quotient\_theorem.md}.
+\]
+
+For the A1 offsets
+\[
+  c\in\{2,26,50,122\},
+\]
+one always has
+\[
+  f\equiv9\pmod{12}.
+\]
+
+Thus \(f\) is odd and divisible by \(3\), and the self-residue condition is
+\[
+\boxed{
+  u^2\equiv-c\pmod f.
+}
+\]
+
+For an odd prime power
+\[
+  q^\alpha\Vert f,\qquad \gamma=v_q(c),
+\]
+the exact criterion is:
+
+- if \(q\nmid c\), then
+  \[
+    \left(\frac{-c}{q}\right)=1;
+  \]
+- if \(q\mid c\) and \(\alpha\le\gamma\), then \(u=0\) works;
+- if \(q\mid c\), \(\alpha>\gamma\), and \(\gamma\) is even, then
+  \[
+    \left(\frac{-c/q^\gamma}{q}\right)=1;
+  \]
+- if \(q\mid c\), \(\alpha>\gamma\), and \(\gamma\) is odd, no solution
+  exists.
+
+For the four A1 rows this gives:
+\[
+\begin{array}{c|c}
+  c & \text{condition on }f\\
+  \hline
+  2
+    & \left(\frac{-2}{q}\right)=1\text{ for every }q\mid f\\
+  26
+    & v_{13}(f)\le1,\quad
+      \left(\frac{-26}{q}\right)=1\text{ for }q\mid f,\ q\ne13\\
+  50
+    & v_5(f)\le2,\quad
+      \left(\frac{-50}{q}\right)=1\text{ for }q\mid f,\ q\ne5\\
+  122
+    & v_{61}(f)\le1,\quad
+      \left(\frac{-122}{q}\right)=1\text{ for }q\mid f,\ q\ne61.
+\end{array}
+\]
+
+The forced divisor \(3\mid f\) is always compatible because
+\[
+  c\equiv2\pmod3,
+  \qquad
+  -c\equiv1\pmod3.
+\]
+
+Together with the A0 theorem, arbitrary skipped quotients are now controlled
+by intrinsic splitting laws rather than by a fixed finite set of external
+moduli.  The remaining proof problem is to combine these splitting laws with
+the pairwise Pell synchronization equations to force rank descent into the
+already closed prefix range.
