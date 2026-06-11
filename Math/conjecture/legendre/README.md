@@ -81,6 +81,9 @@ Main notes:
   center-divisor form \(A-r\mid r^2+c\), eliminating the cofactor gap
   variable and restating the clean strong-gate obstruction as eight shifted
   square divisibilities.
+- `legendre_initial_sqrt_barrier.md`: square-root lower bound on center
+  distances \(r_c\) and quotient parametrization
+  \(A=r_c+(r_c^2+c)/e_c\) for the clean strong-gate cluster.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -137,6 +140,8 @@ certified by a distance \(r_c\) such that
 \[
   A-r_c\mid r_c^2+c.
 \]
+This gives the square-root barrier \(r_c^2+r_c+c\ge A\), so for \(A>122\)
+all eight initial distances satisfy \(r_c\gg\sqrt A\).
 
 Computational scripts live in `tools/`.
 

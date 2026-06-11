@@ -1844,3 +1844,61 @@ is a distinct admissible prime and
 
 The obstruction is now eight shifted-square divisibilities tied to the same
 center \(A=3m\), rather than eight three-variable factorizations.
+
+## Initial square-root barrier
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_sqrt\_barrier.md}.
+\]
+
+From the center-divisor condition
+\[
+  A-r\mid r^2+c,
+\]
+one gets
+\[
+  A-r\le r^2+c.
+\]
+Hence
+\[
+  r^2+r+c\ge A.
+\]
+Whenever \(A>c\),
+\[
+  r\ge
+  \left\lceil
+    \frac{-1+\sqrt{1+4(A-c)}}{2}
+  \right\rceil.
+\]
+
+For the initial cluster, \(c_{\max}=122\).  Therefore, for \(A>122\), all
+eight center distances satisfy the uniform barrier
+\[
+  r_c\ge
+  \left\lceil
+    \frac{-1+\sqrt{1+4(A-122)}}{2}
+  \right\rceil.
+\]
+Equivalently, no prime label can lie in the top interval
+\[
+  A-R(A)<p\le A.
+\]
+
+The same note also records the quotient parametrization
+\[
+  r^2+c=e(A-r),
+\]
+or
+\[
+  A=r+\frac{r^2+c}{e},
+  \qquad
+  p=\frac{r^2+c}{e}.
+\]
+
+Thus a clean strong-gate counterexample must represent the same center \(A\)
+eight times as
+\[
+  A=r_c+\frac{r_c^2+c}{e_c},
+\]
+with eight distinct admissible prime quotients.
