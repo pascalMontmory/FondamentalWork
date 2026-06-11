@@ -749,6 +749,80 @@ coprime complete A-block cannot carry two independent small-prime
 certificates.  If this is achieved, the combined A-channel closes and the
 nonprimitive B-channel becomes unnecessary.
 
+## Coprime A-block pair cover
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_coprime\_A\_pair\_cover.md}.
+\]
+
+On a coprime complete A-block, write
+\[
+  t_1(q)=
+  \begin{cases}
+  3q+1,&3q+1\equiv m\pmod2,\\
+  3q+2,&3q+1\not\equiv m\pmod2,
+  \end{cases}
+\]
+for the A1 coordinate, and let \(t_0(q)\) be the other coordinate.
+
+The two candidates are
+\[
+  U_q=9m^2+t_1(q)^2+1,
+  \qquad
+  G_q=9m^2+t_0(q)^2.
+\]
+
+For a coprime block,
+\[
+  \gcd(U_q,G_q)=1.
+\]
+Thus if both candidates are composite, their certificate primes
+\[
+  p_1\mid U_q,\qquad p_0\mid G_q
+\]
+must be distinct.
+
+The exact congruences are
+\[
+  t_0(q)^2\equiv-9m^2\pmod{p_0},
+  \qquad
+  t_1(q)^2\equiv-9m^2-1\pmod{p_1},
+\]
+with
+\[
+  p_0\le3m,\quad p_0\equiv1\pmod4,\quad p_0\nmid3m,
+\]
+and
+\[
+  p_1\le3m,\quad p_1\ge5,\quad p_1\ne p_0.
+\]
+
+Because \(t_0(q)\) and \(t_1(q)\) are linear in \(q\), each ordered pair
+\[
+  (p_0,p_1)
+\]
+contributes at most four CRT residue classes modulo
+\[
+  p_0p_1.
+\]
+
+This is the pair-cover form of the coprime A-block obstruction.  It is
+strictly stronger than the earlier prime-by-prime cover: the two members of a
+coprime block cannot reuse a certificate prime.
+
+The current exact bottleneck is now:
+
+1. control the small ordered pairs
+   \[
+     p_0p_1\le Q_{\max}(m);
+   \]
+2. show that large ordered pairs
+   \[
+     p_0p_1>Q_{\max}(m)
+   \]
+   give only isolated hits and cannot fill all remaining coprime blocks.
+
 ## Primitive double-cover measurements
 
 Added
