@@ -110,6 +110,11 @@ Main notes:
 - `legendre_initial_A1_spacing_envelope.md`: A1 lower-tail envelope using
   odd-prime parity; the four A1 distances are congruent modulo \(2\), hence
   spaced by at least \(2\).
+- `legendre_initial_two_layer_ladder_certificate.md`: global label-order
+  certificate combining A0 and A1; all eight distances have the same parity,
+  A0 adds modulo-\(4\) ladder edges, and any clean strong-gate counterexample
+  must choose a layer word, offset-label matching, quotient-rank permutation,
+  and compatible centered divisor equations.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -200,6 +205,14 @@ Projecting onto A0 gives \(Q_j\le A-B_{5-j}(A)\) for the four labels
   \left(B_{5-\ell}(A)+4(\ell-j)\right).
 \]
 The A1 distances satisfy the analogous parity envelope with spacing \(2\).
+Globally, all eight labels are odd primes, so all eight center-distances lie
+in the same parity class.  For a fixed A0/A1 label-order word \(L\), this
+gives a word-dependent ladder \(D_i\ge H_i^L(A)\); A0 positions add stronger
+modulo-\(4\) edges.  A clean strong-gate counterexample is therefore a finite
+two-layer ladder certificate: a layer word, a layer-respecting matching from
+offsets to label positions, a quotient-rank permutation satisfying
+\(\operatorname{Inv}(q)\subseteq\operatorname{Inv}(s)\), and the centered
+divisor equations for all eight offsets.
 
 Computational scripts live in `tools/`.
 
