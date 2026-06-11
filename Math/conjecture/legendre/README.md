@@ -11,6 +11,8 @@ Main notes:
   reformulation of the \(t^2-1,t^2,t^2+1,t^2+2\) route.
 - `legendre_circle_residue_calculus.md`: exact formulas for local bad
   residue sets \(B_p(n)\).
+- `legendre_four_consecutive_certificate.md`: exact certificate layer for
+  the four consecutive candidates \(A-1,A,A+1,A+2\).
 
 Computational scripts live in `tools/`.
 

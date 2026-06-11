@@ -292,3 +292,39 @@ Averaging over \(n\bmod p\) gives the exact local bias
 This proves that the circle cover is structurally asymmetric: primes
 \(1\pmod4\) cover more local \(t\)-classes on average because they can cover
 the primitive Gaussian channel \(r=0\), while primes \(3\pmod4\) cannot.
+
+## Four-consecutive certificate layer
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_four\_consecutive\_certificate.md}.
+\]
+For fixed \(n,t\), write
+\[
+  A=n^2+t^2.
+\]
+The four candidates
+\[
+  A-1,\quad A,\quad A+1,\quad A+2
+\]
+are consecutive.  Hence
+\[
+  \gcd(A+r,A+s)\mid |r-s|.
+\]
+Consequently, any prime \(p>3\) can certify at most one offset at a fixed
+\(t\).  The only shared-prime layers are deterministic:
+
+1. \(2\) certifies exactly two parity-selected candidates;
+2. \(3\) certifies one candidate, except when \(A\equiv1\pmod3\), where it
+   certifies both \(A-1\) and \(A+2\).
+
+After removing the \(2,3\)-layer, the residual demand has size at most \(2\),
+depending only on \(A\bmod6\).  The Gaussian residual \(A=n^2+t^2\) remains
+only when
+\[
+  A\equiv1\text{ or }5\pmod6,
+\]
+and on primitive \(t\)'s it can only be certified by primes \(1\pmod4\).
+
+This converts the next proof target into a constrained certificate-assignment
+problem for residual primes \(p>3\), not a raw prime-gap estimate.
