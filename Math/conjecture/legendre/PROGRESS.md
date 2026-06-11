@@ -4004,3 +4004,59 @@ of the following layer raises must occur:
 }
 \]
 in \(f\)-variables.
+
+## Complete next \(m\equiv3\pmod4\) boundary layer killed
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_next\_boundary\_layer\_modular\_closure.md}.
+\]
+
+The full first escape layer after the lifted component is eliminated.  The
+three exact families are:
+
+\[
+\begin{array}{c|c|c|c}
+  \text{family} & \mathrm{A0},\ x^2\equiv4 & \mathrm{A0},\ x^2\equiv0 & \mathrm{A1}\\
+  \hline
+  F_{04} & 2,10 & 8,16 & 9,21,33,45\\
+  F_{00} & 2,4 & 8,22 & 9,21,33,45\\
+  F_{1}  & 2,4 & 8,16 & 9,21,33,57.
+\end{array}
+\]
+
+The certificates are:
+
+- \(F_{00}\) dies modulo \(5\).  A0 leaves only \(m\equiv2,3\pmod5\).  At
+  \(m\equiv2\), the offset \(c=2\) has no admissible A1 quotient; at
+  \(m\equiv3\), the offsets \(c=26\) and \(c=50\) both require \(f=45\).
+- \(F_{04}\) is reduced modulo \(5\) to two assignments.  Modulo \(7\) kills
+  one and forces \(m\equiv6\pmod7\) for the other.  Modulo \(11\), the first
+  five rows force \(m\equiv9\pmod{11}\), but the row \(c=26,f=45\) forbids
+  that class.
+- \(F_1\) is reduced modulo \(5\) to one assignment and modulo \(7\) to
+  \(m\equiv5\pmod7\).  Modulo \(11\), the row \(c=26,f=33\) has no
+  admissible class:
+  \[
+    M_{11}(26,33)=\varnothing.
+  \]
+
+Therefore the hard branch cannot escape by exactly one first boundary raise:
+\[
+\boxed{
+  F_{04}\cup F_{00}\cup F_1=\varnothing.
+}
+\]
+
+This is the first multi-family closure step in the \(m\equiv3\pmod4\)
+quotient game.  It also exposes the real missing theorem:
+
+\[
+\boxed{
+  \text{prove a rank cap for the hard quotient game.}
+}
+\]
+
+Once such a cap exists, the remaining modular matching certificates become a
+finite proof object.  Without such a cap, the modular eliminations may climb
+forever and cannot by themselves close Legendre.

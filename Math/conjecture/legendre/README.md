@@ -205,6 +205,11 @@ Main notes:
   the lifted \(m\equiv3\pmod4\) boundary
   \(f=(2,4,8,9,16,21,33,45)\); modulo \(5\) forces a unique assignment, and
   that assignment has empty \(m\bmod11\) intersection.
+- `legendre_m3mod4_next_boundary_layer_modular_closure.md`: exact closure of
+  the complete next escape layer after the lifted boundary.  The three
+  families \(4\leadsto10\), \(16\leadsto22\), and \(45\leadsto57\) are killed
+  by small-prime congruence certificates, reducing the hard branch to a
+  rank-cap problem.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -468,6 +473,11 @@ layer boundary is raised:
   45\leadsto57
 \]
 in \(f\)-variables.
+That complete first escape layer is now also killed: \(16\leadsto22\) dies
+modulo \(5\), while \(4\leadsto10\) and \(45\leadsto57\) die by
+\((5,7,11)\) certificates.  The remaining closure mechanism must supply an
+a priori rank cap for the hard quotient game; then the modular matching
+certificates become a finite proof object.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

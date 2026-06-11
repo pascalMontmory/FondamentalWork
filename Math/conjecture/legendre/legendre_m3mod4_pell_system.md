@@ -406,3 +406,47 @@ least one layer boundary:
   45\leadsto57.
 }
 \]
+
+## 11. Next boundary layer killed
+
+The complete first escape layer after the lifted boundary also has no
+integral point.  The proof is recorded in
+\[
+  \texttt{legendre\_m3mod4\_next\_boundary\_layer\_modular\_closure.md}.
+\]
+
+The three families are:
+\[
+\begin{array}{c|c|c|c}
+  \text{family} & \mathrm{A0},\ x^2\equiv4 & \mathrm{A0},\ x^2\equiv0 & \mathrm{A1}\\
+  \hline
+  F_{04} & 2,10 & 8,16 & 9,21,33,45\\
+  F_{00} & 2,4 & 8,22 & 9,21,33,45\\
+  F_{1}  & 2,4 & 8,16 & 9,21,33,57.
+\end{array}
+\]
+
+They are eliminated as follows:
+
+- \(F_{00}\) is killed modulo \(5\);
+- \(F_{04}\) is reduced modulo \(5\), then killed by modulo \(7\) and
+  modulo \(11\);
+- \(F_1\) is reduced modulo \(5\), survives modulo \(7\) in one class, and
+  dies modulo \(11\) because \(M_{11}(26,33)=\varnothing\).
+
+Thus a hard-branch counterexample must climb beyond the first escape layer:
+at least two layer boundaries must rise, or one boundary must jump past its
+first successor.
+
+The local closure problem is therefore no longer just a component-killing
+problem.  It is a rank problem:
+
+\[
+\boxed{
+  \text{prove an a priori cap on the quotient ranks in the hard branch.}
+}
+\]
+
+With such a cap, the remaining modular matching eliminations become a finite
+certificate.  Without it, the method can still climb indefinitely without
+closing Legendre.
