@@ -4749,3 +4749,75 @@ Together with the zero-layer collapse, this replaces both A0 rank lattices
 by multiplicative semigroups.  The next rank model should use these
 semigroups directly, then impose the A1 splitting laws and the pairwise Pell
 synchronization equations.
+
+## Multiplicative rank model
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_multiplicative\_rank\_model.md}.
+\]
+
+This note replaces the old additive rank automaton by eight intrinsic
+multiplicative quotient semigroups.
+
+Let
+\[
+  \mathcal S_4
+  =
+  \{s\ge1:\ s\text{ odd},\ 3\nmid s,\ q\mid s\Rightarrow q\equiv1\pmod4\}.
+\]
+
+Then the A0 part becomes:
+\[
+\begin{array}{c|c}
+  c & \text{quotient semigroup}\\
+  \hline
+  4,100 & 2\mathcal S_4\cup4\mathcal S_4\\
+  16 & \bigcup_{\nu=3}^{5}2^\nu\mathcal S_4\\
+  64 & \bigcup_{\nu=3}^{7}2^\nu\mathcal S_4.
+\end{array}
+\]
+
+The A1 part becomes:
+\[
+\begin{array}{c|c}
+  c & \text{quotient semigroup}\\
+  \hline
+  2 & \mathcal T_2\\
+  26 & \mathcal T_{26}\\
+  50 & \mathcal T_{50}\\
+  122 & \mathcal T_{122},
+\end{array}
+\]
+where each \(\mathcal T_c\) is defined by
+\[
+  f\equiv9\pmod{12}
+\]
+and the corresponding splitting law
+\[
+  \left(\frac{-c}{q}\right)=1
+\]
+away from the ramified primes, with the exact ramified caps
+\[
+  v_{13}(f)\le1,\qquad
+  v_5(f)\le2,\qquad
+  v_{61}(f)\le1.
+\]
+
+A hard-branch counterexample must now be an integral point of the pairwise
+Pell synchronization system
+\[
+  f_d u_c^2-f_c u_d^2
+  =
+  f_cf_d(f_c-f_d)-f_dc+f_cd
+\]
+with every \(f_c\) in its offset-specific semigroup.
+
+The closure target is no longer "add more local primes".  It is:
+\[
+\boxed{
+  \text{multiplicative semigroup constraints}
+  +\text{pairwise Pell synchronization}
+  \Longrightarrow \text{rank descent into the closed prefix range.}
+}
+\]

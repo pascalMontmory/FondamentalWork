@@ -1045,3 +1045,88 @@ where
 The remaining exact target is to combine these A0 semigroups with the A1
 quadratic-field semigroups through the pairwise Pell synchronization
 equations.
+
+## 23. Multiplicative rank model
+
+The old rank automaton was additive: it listed allowed residue classes for
+the three quotient layers.
+
+The intrinsic quotient theorems replace it by a multiplicative model.
+
+Define
+\[
+  \mathcal S_4
+  =
+  \{s\ge1:\ s\text{ odd},\ 3\nmid s,\ q\mid s\Rightarrow q\equiv1\pmod4\}.
+\]
+
+Then the A0 quotient sets are:
+\[
+\begin{array}{c|c}
+  c & f_c\text{ belongs to}\\
+  \hline
+  4,100 & 2\mathcal S_4\cup4\mathcal S_4\\
+  16 & \bigcup_{\nu=3}^{5}2^\nu\mathcal S_4\\
+  64 & \bigcup_{\nu=3}^{7}2^\nu\mathcal S_4.
+\end{array}
+\]
+
+The A1 quotient sets are the splitting semigroups
+\[
+  \mathcal T_2,\quad
+  \mathcal T_{26},\quad
+  \mathcal T_{50},\quad
+  \mathcal T_{122},
+\]
+where always
+\[
+  f\equiv9\pmod{12},
+\]
+and away from ramified primes one has
+\[
+  \left(\frac{-c}{q}\right)=1.
+\]
+
+The ramified caps are
+\[
+  v_{13}(f)\le1,
+  \qquad
+  v_5(f)\le2,
+  \qquad
+  v_{61}(f)\le1.
+\]
+
+Thus a hard-branch clean-gate counterexample must solve
+\[
+  u_c^2=f_c^2+6mf_c-c
+\]
+with
+\[
+  f_c\in\mathcal M_c
+\]
+for the corresponding multiplicative semigroup \(\mathcal M_c\).
+
+Equivalently, after eliminating \(m\), every pair of offsets satisfies
+\[
+\boxed{
+  f_d u_c^2-f_c u_d^2
+  =
+  f_cf_d(f_c-f_d)-f_dc+f_cd.
+}
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_multiplicative\_rank\_model.md}.
+\]
+
+The remaining closure target is now:
+\[
+\boxed{
+  f_c\in\mathcal M_c
+  \text{ for all }c
+  +\text{pairwise Pell synchronization}
+  \Longrightarrow
+  \text{rank descent into the closed prefix range.}
+}
+\]

@@ -267,6 +267,11 @@ Main notes:
   \(f=2s\) or \(4s\), where \(s\) is odd, \(3\nmid s\), and all primes of
   \(s\) are \(1\bmod4\); residue-wise this excludes
   \(f\equiv28,44\pmod{48}\).
+- `legendre_m3mod4_multiplicative_rank_model.md`: replacement of the old
+  additive rank automaton by offset-specific multiplicative quotient
+  semigroups.  A hard-branch counterexample must solve the pairwise Pell
+  synchronization equations with \(f_c\) in the A0 sum-of-two-squares
+  semigroups or the A1 quadratic-field splitting semigroups.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
