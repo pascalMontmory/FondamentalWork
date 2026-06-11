@@ -2963,3 +2963,55 @@ two exact finite tasks:
    \(\mathbb F_p[n]\), then lift or compare across primes;
 2. treat the CRT-selected congruence classes directly by adding the
    corresponding specialization constraints.
+
+## 46. Endpoint multiplicity \(d-6\): CRT refinement limit
+
+The CRT classes selected by the modular exceptional factors are now generated
+by
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_crt\_classes.py}.
+\]
+The script has a \(\texttt{--classes}\) mode, a targeted
+\(\texttt{--probe-class=c,M}\) mode, and a \(\texttt{--refine-all}\) mode.
+
+The targeted class test makes the limitation of a pure residue sieve explicit.
+If
+\[
+  n=c+Mt
+\]
+and \(q\nmid M\), then \(t\mapsto c+Mt\) is a bijection modulo \(q\). Hence
+an auxiliary prime \(q\) usually does not eliminate the class
+\(n\equiv c\pmod M\); it only refines it into descendants modulo \(Mq\), one
+for each compatible live residue modulo \(q\).
+
+For example, starting from \(n\equiv0\pmod{2431}\) in type \((1,1,3,1)\):
+\[
+\begin{array}{c|c|c}
+  q & \text{live residues }n\bmod q
+    & \text{compatible }t\bmod q \\
+  \hline
+  19 & \{0,1,3,6,7,9,12\}
+     & \{0,7,10,12,13,16,18\} \\
+  23 & \{0,1,2,3,4,13\}
+     & \{0,5,10,14,19,21\}.
+\end{array}
+\]
+The class therefore refines to \(42\) descendants modulo \(1062347\), rather
+than disappearing.
+
+Refining all baseline classes from \(11,13,17\) through \(19,23\) gives:
+\[
+\begin{array}{c|c|c}
+  \text{type} & \text{classes mod }2431
+              & \text{classes mod }1062347 \\
+  \hline
+  (1,1,3,1) & 64 & 2688 \\
+  (1,2,2,1) & 144 & 4320 \\
+  (2,1,2,1) & 54 & 2700.
+\end{array}
+\]
+
+This confirms that the CRT layer is only a localization mechanism. The final
+endpoint-\(d-6\) lock must now add algebra along these classes, for example by
+substituting \(n=c+Mt\) and eliminating with \(t\) retained, or by
+reconstructing the exceptional gcd in \(\mathbb F_p[n]\) directly.

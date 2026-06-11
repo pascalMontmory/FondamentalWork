@@ -1260,3 +1260,40 @@ An additional check through primes \(11,13,17,19,23\) did not empty the live
 sets, so the next useful computation is not just a larger residue sieve. It
 is either a reconstructed exceptional gcd in \(\mathbb F_p[n]\), or direct
 treatment of the CRT classes selected by these modular factors.
+
+### Endpoint \(d-6\): CRT class refinement
+
+Added the CRT refinement driver:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_exceptional\_crt\_classes.py}.
+\]
+It has three uses:
+
+- `--classes` builds the CRT classes selected by the live residue factors;
+- `--probe-class=c,M` refines one class \(n\equiv c\pmod M\) by auxiliary
+  primes and reports the compatible \(t\)-residues in \(n=c+Mt\);
+- `--refine-all` refines all current classes by auxiliary primes.
+
+The key structural point is now explicit in the tool: if \(q\nmid M\), then
+\(n=c+Mt\) runs through every residue modulo \(q\) as \(t\) varies. Therefore
+a residue-only auxiliary prime usually refines a class into sub-classes
+modulo \(Mq\); it does not eliminate the class unless the live set modulo
+\(q\) is empty or incompatible.
+
+For the baseline classes from \(11,13,17\), followed by refinement through
+\(19,23\), the counts are:
+\[
+\begin{array}{c|c|c}
+  \text{type} & \text{base classes mod }2431
+              & \text{refined classes mod }1062347 \\
+  \hline
+  (1,1,3,1) & 64 & 2688 \\
+  (1,2,2,1) & 144 & 4320 \\
+  (2,1,2,1) & 54 & 2700.
+\end{array}
+\]
+
+Thus the CRT sieve is a localization map, not a final lock. The next proof
+step must use stronger algebra on the classes: either reconstruct the
+exceptional gcd in \(\mathbb F_p[n]\), or specialize \(n=c+Mt\) and eliminate
+with \(t\) retained, instead of relying only on residue membership.
