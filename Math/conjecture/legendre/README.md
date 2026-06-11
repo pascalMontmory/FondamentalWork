@@ -283,6 +283,10 @@ Main notes:
   same offset-specific splitting law as the lower quotient \(f_c\).  The
   hard branch becomes eight same-gap factor pairs with
   \(F_c-f_c\equiv18\pmod{24}\).
+- `legendre_m3mod4_A0_dual_four_layer_collapse.md`: dual-factor collapse of
+  the A0 \(c=4,100\) lower layer.  The branch \(f=4s\) is impossible because
+  the upper factor has odd part \(3\bmod4\); hence \(f\in2\mathcal S_4\),
+  and the first two distinct lower quotients are \(2,10\), not \(2,4\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

@@ -1278,3 +1278,87 @@ The strengthened descent target is:
   \text{rank descent.}
 }
 \]
+
+## 26. A0 dual four-layer collapse
+
+The dual-factor model collapses the A0 \(c=4,100\) lower layer further.
+
+For these two offsets the earlier A0 four-layer refinement gave
+\[
+  f=2s
+  \quad\text{or}\quad
+  f=4s,
+\]
+where
+\[
+  s\in\mathcal S_4.
+\]
+
+In particular,
+\[
+  s\equiv1\pmod4.
+\]
+
+Write
+\[
+  L=6m=2h.
+\]
+
+Since \(m\equiv3\pmod4\),
+\[
+  h=3m\equiv1\pmod4.
+\]
+
+If \(f=4s\), the upper factor is
+\[
+  F=f+L=4s+2h=2(2s+h).
+\]
+
+But
+\[
+  2s+h\equiv3\pmod4.
+\]
+
+This is impossible because the dual A0 splitting law requires every odd
+prime divisor of \(F\) to be \(1\bmod4\), hence the odd part of \(F\) must be
+\(1\bmod4\).
+
+Therefore:
+\[
+\boxed{
+  c=4,100
+  \quad\Longrightarrow\quad
+  f\in2\mathcal S_4.
+}
+\]
+
+If \(f=2s\), then
+\[
+  F=2(s+h),
+\]
+and since \(s+h\equiv2\pmod4\), one has
+\[
+  F=4t.
+\]
+
+The upper splitting law then imposes
+\[
+  t\in\mathcal S_4.
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_dual\_four\_layer\_collapse.md}.
+\]
+
+Thus the \(c=4,100\) pair has first two distinct lower quotients
+\[
+\boxed{
+  2,\ 10
+}
+\]
+instead of \(2,4\).  The old escape
+\[
+  4\leadsto10
+\]
+is now a structural consequence of the two-sided factorization.

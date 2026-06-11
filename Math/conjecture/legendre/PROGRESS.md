@@ -4983,3 +4983,102 @@ across all eight offsets.
 The next descent target is to show that a lower factor outside the closed
 prefix range forces a forbidden prime divisor either in \(f_c\) or in its
 upper partner \(f_c+L\).
+
+## A0 dual four-layer collapse
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_dual\_four\_layer\_collapse.md}.
+\]
+
+This is a genuine structural gain from the dual-factor model.
+
+For \(c=4,100\), the previous A0 four-layer refinement gave
+\[
+  f=2s
+  \quad\text{or}\quad
+  f=4s,
+\]
+where
+\[
+  s\text{ is odd},\qquad
+  3\nmid s,\qquad
+  q\mid s\Rightarrow q\equiv1\pmod4.
+\]
+
+Thus
+\[
+  s\equiv1\pmod4.
+\]
+
+Write
+\[
+  L=6m=2h.
+\]
+
+Since \(m\equiv3\pmod4\),
+\[
+  h=3m\equiv1\pmod4.
+\]
+
+The upper factor is
+\[
+  F=f+L=f+2h.
+\]
+
+If \(f=4s\), then
+\[
+  F=2(2s+h).
+\]
+
+But
+\[
+  2s+h\equiv2\cdot1+1\equiv3\pmod4.
+\]
+
+This contradicts the dual A0 splitting law, because every odd prime divisor
+of \(F\) must be \(1\bmod4\).  Therefore:
+\[
+\boxed{
+  c=4,100
+  \quad\Longrightarrow\quad
+  f\notin4\mathcal S_4.
+}
+\]
+
+Only the branch
+\[
+\boxed{
+  f=2s,\qquad s\in\mathcal S_4
+}
+\]
+survives.  Its upper partner automatically has
+\[
+  F=4t,
+\]
+and the dual splitting law imposes
+\[
+  t\in\mathcal S_4.
+\]
+
+Consequently the first two distinct lower quotients for \(c=4,100\) are
+\[
+\boxed{
+  2,\ 10
+}
+\]
+instead of
+\[
+  2,\ 4.
+\]
+
+The old first-escape move
+\[
+  4\leadsto10
+\]
+is now structural, just like the previous zero-layer collapse made
+\[
+  16\leadsto22
+\]
+structural.  Both A0 escape moves have therefore been absorbed into the
+intrinsic quotient geometry.
