@@ -22,6 +22,7 @@ A04_OFFSETS = (4, 100)
 A00_OFFSETS = (16, 64)
 A1_OFFSETS = (2, 26, 50, 122)
 PRIMES = (5, 7, 11, 13, 17)
+PERIODIC_PRIMES = (5, 7, 11, 13, 17, 83)
 
 
 def layer_values(limit: int) -> tuple[list[int], list[int], list[int]]:
@@ -50,6 +51,99 @@ def squares_mod(p: int) -> set[int]:
 def allowed_m(c: int, f: int, p: int) -> set[int]:
     sq = squares_mod(p)
     return {m for m in range(p) if (f * f + 6 * m * f - c) % p in sq}
+
+
+def periodic_values(kind: str, p: int) -> list[int]:
+    """Residues of the variable rank slot over one period modulo p."""
+    if kind == "a":
+        values = []
+        n = 1
+        while len(values) < 4 * p:
+            if n % 24 in (2, 4, 10, 20):
+                values.append(n % p)
+            n += 1
+        return values
+
+    if kind == "b":
+        values = []
+        n = 1
+        period = 24 if p == 7 else 24 * p
+        while len(values) < period:
+            if n % 24 in (8, 14, 16, 22) and n % 7 != 0:
+                values.append(n % p)
+            n += 1
+        return values
+
+    if kind == "c":
+        return [(45 + 12 * i) % p for i in range(p)]
+
+    raise ValueError(f"unknown variable kind: {kind}")
+
+
+def pattern_surviving_m(
+    pattern: tuple[tuple[int, str], ...], p: int, fixed: dict[str, int]
+) -> list[int]:
+    sq = squares_mod(p)
+    variable_values = {kind: periodic_values(kind, p) for kind in ("a", "b", "c")}
+    surviving = []
+    for m in range(p):
+        ok = True
+        for offset, label in pattern:
+            if label in fixed:
+                f = fixed[label]
+                if (f * f + 6 * m * f - offset) % p not in sq:
+                    ok = False
+                    break
+            else:
+                values = variable_values[label]
+                if not any((f * f + 6 * m * f - offset) % p in sq for f in values):
+                    ok = False
+                    break
+        if ok:
+            surviving.append(m)
+    return surviving
+
+
+def periodic_patterns() -> list[tuple[tuple[int, str], ...]]:
+    patterns = []
+    for p04 in permutations(("a0", "a")):
+        for p00 in permutations(("b0", "b")):
+            for p1 in permutations(("c0", "c1", "c2", "c")):
+                pattern = (
+                    tuple(zip(A04_OFFSETS, p04))
+                    + tuple(zip(A00_OFFSETS, p00))
+                    + tuple(zip(A1_OFFSETS, p1))
+                )
+                if any(label == "c1" and offset not in (26, 122) for offset, label in pattern):
+                    continue
+                patterns.append(pattern)
+    return patterns
+
+
+def verify_periodic_patterns() -> int:
+    fixed = {"a0": 2, "b0": 8, "c0": 9, "c1": 21, "c2": 33}
+    killer_counts: dict[str, int] = {}
+    open_patterns = []
+
+    for index, pattern in enumerate(periodic_patterns()):
+        killer = None
+        for p in PERIODIC_PRIMES:
+            if not pattern_surviving_m(pattern, p, fixed):
+                killer = p
+                break
+        if killer is None:
+            open_patterns.append((index, pattern))
+        else:
+            key = str(killer)
+            killer_counts[key] = killer_counts.get(key, 0) + 1
+
+    ordered = " ".join(f"{key}:{killer_counts[key]}" for key in sorted(killer_counts))
+    print(f"periodic-patterns total={len(periodic_patterns())} {ordered}")
+    if open_patterns:
+        print("OPEN", open_patterns)
+        return 1
+    print("certificate: all periodic boundary patterns closed")
+    return 0
 
 
 def family_values(
@@ -100,7 +194,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-weight", type=int, default=30)
     parser.add_argument("--min-weight", type=int, default=0)
+    parser.add_argument(
+        "--periodic-patterns",
+        action="store_true",
+        help="verify all periodic boundary assignment patterns using 5,7,11,13,17,83",
+    )
     args = parser.parse_args()
+
+    if args.periodic_patterns:
+        return verify_periodic_patterns()
 
     a04, a00, a1 = layer_values(args.max_weight + 10)
     open_families = []

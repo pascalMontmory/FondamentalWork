@@ -4245,3 +4245,63 @@ The next closure target is now sharper:
 \]
 
 or else add a new modulus that is genuinely forced by the survivor pattern.
+
+## Periodic boundary automaton closed with 83
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_periodic\_boundary\_automaton\_closed.md}.
+\]
+
+The survivor pattern from the previous note is killed uniformly by the prime
+\[
+  83.
+\]
+
+The verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py}
+\]
+now supports
+\[
+  \texttt{--periodic-patterns}.
+\]
+
+Running
+\[
+  \texttt{python3 Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py --periodic-patterns}
+\]
+returns:
+\[
+  \texttt{periodic-patterns total=48 11:4 13:5 17:2 5:33 7:3 83:1}
+\]
+and ends with
+\[
+  \texttt{certificate: all periodic boundary patterns closed}.
+\]
+
+Therefore the periodic boundary-rank automaton is closed by
+\[
+\boxed{
+  \{5,7,11,13,17,83\}.
+}
+\]
+
+This is a real closure of the boundary model
+\[
+  F(a,b,c)
+  =
+  \{L_{04}[0],L_{04}[1+a]\},
+  \{L_{00}[0],L_{00}[1+b]\},
+  \{L_1[0],L_1[1],L_1[2],L_1[3+c]\}.
+\]
+
+The remaining gap is now structural, not modular:
+
+\[
+\boxed{
+  \text{prove a descent from arbitrary skipped ranks to this boundary model.}
+}
+\]
+
+Once that descent is proved, the hard \(m\equiv3\pmod4\) branch closes.

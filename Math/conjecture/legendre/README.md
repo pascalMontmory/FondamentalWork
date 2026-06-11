@@ -226,6 +226,10 @@ Main notes:
   kill the full rank automaton: an explicit assignment pattern survives at
   \(m\equiv14325\pmod{85085}\).  The next target is to kill that survivor by
   Pell synchronization or by adding a genuinely necessary modulus.
+- `legendre_m3mod4_periodic_boundary_automaton_closed.md`: closure of the
+  periodic boundary-rank automaton.  Adding the prime \(83\) kills the unique
+  five-prime survivor, and the verifier proves all 48 boundary assignment
+  patterns are killed by \(\{5,7,11,13,17,83\}\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -508,6 +512,14 @@ The first periodicity attempt with only \(5,7,11,13,17\) is false: one
 periodic assignment pattern survives.  The closure target has therefore
 shifted from more weight climbing to killing that survivor pattern by the
 pairwise Pell synchronization equations.
+That survivor is killed uniformly by \(83\), and all 48 periodic boundary
+assignment patterns are now closed by
+\[
+  \{5,7,11,13,17,83\}.
+\]
+The remaining hard-branch gap is no longer this boundary automaton; it is
+the descent/reduction from arbitrary skipped quotient ranks to the boundary
+rank model.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

@@ -571,3 +571,46 @@ periodically closed" is invalid.
 The next target is to kill this explicit survivor pattern by using the
 pairwise Pell synchronization equations, or to identify the next modulus
 that kills it uniformly.
+
+## 15. Periodic boundary automaton closed
+
+The survivor pattern is killed uniformly by
+\[
+  83.
+\]
+
+The verifier command
+\[
+  \texttt{python3 Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py --periodic-patterns}
+\]
+checks all \(48\) periodic boundary assignment patterns and returns:
+\[
+  \texttt{certificate: all periodic boundary patterns closed}.
+\]
+
+The killer distribution is:
+\[
+\begin{array}{c|cccccc}
+  \ell & 5 & 7 & 11 & 13 & 17 & 83\\
+  \hline
+  \#\text{patterns killed} & 33 & 3 & 4 & 5 & 2 & 1.
+\end{array}
+\]
+
+Therefore:
+\[
+\boxed{
+  \text{the boundary-rank automaton is closed by }
+  \{5,7,11,13,17,83\}.
+}
+\]
+
+The remaining task is not more modular killing inside this boundary model.
+It is the descent problem:
+\[
+\boxed{
+  \text{reduce arbitrary skipped quotient ranks to the boundary model.}
+}
+\]
+
+If that descent is proved, the hard \(m\equiv3\pmod4\) branch is closed.
