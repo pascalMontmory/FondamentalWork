@@ -15,6 +15,8 @@ Main notes:
   the four consecutive candidates \(A-1,A,A+1,A+2\).
 - `legendre_primitive_channel_reduction.md`: primitive opposite-parity
   reduction to the Gaussian norm \(A\) and its twin shift \(A+2\).
+- `legendre_primitive_double_cover.md`: reduction of counterexamples to a
+  primitive Gaussian cover \(I_n\subseteq G(n)\) plus a twin-shift double cover.
 
 Computational scripts live in `tools/`.
 

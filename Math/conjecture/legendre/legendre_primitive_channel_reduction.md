@@ -159,7 +159,7 @@ The next lemma should attack the primitive channel directly.
 
 Lemma P candidate.  For every \(n\ge2\), there exists
 \[
-  1\le t\le\lfloor\sqrt{2n}\rfloor+1,
+  1\le t\le\lfloor\sqrt{2n}\rfloor,
   \qquad \gcd(n,t)=1,
   \qquad n+t\equiv1\pmod2,
 \]
@@ -171,7 +171,10 @@ such that either:
      n^2+t^2,
      \qquad n^2+t^2+2
    \]
-   is prime.
+   is prime, with the second candidate used only when
+   \[
+     t^2+2\le2n.
+   \]
 
 Lemma P would imply the four-offset lemma, hence Legendre.
 

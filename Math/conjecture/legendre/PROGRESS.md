@@ -362,3 +362,46 @@ a Gaussian norm/twin-shift statement:
   n^2+t^2+2.
 \]
 This is a sharper exact target than the full four-circle cover.
+
+## Primitive double-cover reduction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_primitive\_double\_cover.md}.
+\]
+Let
+\[
+  I_n=\{1\le t\le\lfloor\sqrt{2n}\rfloor:
+  \gcd(n,t)=1,\ n+t\equiv1\pmod2\}.
+\]
+Define the Gaussian bad set
+\[
+  G(n)=
+  \bigcup_{\substack{p\le n\\ p\equiv1\pmod4}}
+  \{t:t^2\equiv -n^2\pmod p\}.
+\]
+Then every counterexample must satisfy the universal primitive Gaussian cover
+\[
+  I_n\subseteq G(n).
+\]
+If \(3\nmid n\), there is also a double-cover condition on the interior
+nonmultiples of \(3\).  With
+\[
+  T(n)=
+  \bigcup_{\substack{q\le n\\ q>3}}
+  \{t:t^2\equiv -n^2-2\pmod q\},
+\]
+and
+\[
+  I_n^+=\{t\in I_n:t^2+2\le2n\},
+\]
+one needs
+\[
+  I_n^{(\ast)}\cap I_n^+\subseteq G(n)\cap T(n),
+\]
+where \(I_n^{(\ast)}=\{t\in I_n:3\nmid t\}\).
+
+This is the strongest current exact reduction: any counterexample must first
+destroy every primitive opposite-parity Gaussian norm, and then, for most
+remaining primitive positions when \(3\nmid n\), also destroy the twin-shift
+\(n^2+t^2+2\).
