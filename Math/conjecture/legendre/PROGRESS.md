@@ -1548,3 +1548,63 @@ remaining certificate is therefore a finite explicit graph, not an arbitrary
 labeling pattern.  The apparent \(B_0/B_3\) repetition by \(5\) occurs
 precisely in the \(B_3\) bridge classes \(m\equiv4,6\pmod{10}\), so it is not
 a coprime-block edge.
+
+## Initial mod 70 gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_mod70\_gate.md}.
+\]
+
+This compresses the first-four-block graph into a single CRT classification.
+The relevant moduli are \(10\) and \(14\), so the gate is modulo
+\[
+  70.
+\]
+
+For \(m\ge21\), the bridge classes are exactly
+\[
+  m\equiv\pm1\pmod5.
+\]
+There are \(28\) such residue classes modulo \(70\).
+
+Outside the bridge classes, the possible same-layer edges are:
+\[
+\begin{array}{c|c|c|c}
+  \text{edge} & \text{layer} & \text{prime} & \text{condition}\\
+  \hline
+  B_0/B_2 & \text{A1} & 5 & m\equiv0\pmod{10}\\
+  B_0/B_2 & \text{A0} & 5 & m\equiv3,7\pmod{10}\\
+  B_1/B_3 & \text{A1} & 7 & m\equiv4,10\pmod{14}.
+\end{array}
+\]
+
+The exact modulo \(70\) partition is:
+\[
+  28\ \text{bridge classes}
+  +17\ \text{no-repetition classes}
+  +14\ \text{A0-edge classes}
+  +5\ \text{A1-}5\text{-only classes}
+  +4\ \text{A1-}7\text{-only classes}
+  +2\ \text{double-A1 classes}
+  =70.
+\]
+
+The no-repetition classes are:
+\[
+  2,5,8,12,15,22,25,28,35,42,45,48,55,58,62,65,68.
+\]
+In these classes, each layer needs four pairwise distinct labels on the first
+four blocks.
+
+The double-A1 classes are:
+\[
+  10,60.
+\]
+There A1 may reuse \(5\) on \(B_0/B_2\) and \(7\) on \(B_1/B_3\), while A0
+has no same-layer repetition among the first four blocks.
+
+Thus the beginning of any remaining \(m\)-certificate is now completely
+localized modulo \(70\).  The next exact target is to eliminate the six gate
+types separately, starting with the strong no-repetition gate and the bridge
+gate.

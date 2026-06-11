@@ -64,6 +64,9 @@ Main notes:
 - `legendre_initial_four_block_graph.md`: exact repetition graph for the
   first four blocks; all same-layer repetitions are reduced to listed
   \(5\)- and \(7\)-edges or to explicit bridge classes.
+- `legendre_initial_mod70_gate.md`: exact CRT classification modulo \(70\)
+  of the first-four-block gates: bridge, no-repetition, A0-\(5\), A1-\(5\),
+  A1-\(7\), and double-A1.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -100,6 +103,8 @@ reuse of \(5\), and classes \(1,9\) are bridge-block cases.  Extending to
 the first four blocks adds bridge classes \(4,6\) through \(B_3\); outside
 the bridge classes \(m\equiv\pm1\pmod5\), every same-layer repetition among
 \(B_0,\dots,B_3\) is now one of finitely many explicit \(5\)- or \(7\)-edges.
+The first-four gate has been compressed modulo \(70\), giving six disjoint
+types: bridge, no-repetition, A0-\(5\), A1-\(5\), A1-\(7\), and double-A1.
 
 Computational scripts live in `tools/`.
 
