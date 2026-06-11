@@ -215,6 +215,12 @@ Main notes:
   \(a+b+c=2,3,4\) are killed by finite congruence certificates using
   \(5,7,11,13,17\).  Any remaining hard-branch counterexample must have
   \(a+b+c\ge5\), or else the branch closes.
+- `legendre_m3mod4_rank_weight_0_30_certificate.md`: deeper finite
+  certificate for the hard rank game.  The verifier
+  `tools/m3mod4_rank_certificate.py` proves that all rank families with
+  \(0\le a+b+c\le30\) are killed by the primes \(5,7,11,13,17\) or by the
+  modulo-\(7\) zero filter.  Any remaining hard-branch counterexample must
+  have \(a+b+c\ge31\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -490,6 +496,9 @@ The next three rank weights are also closed: all families with
 die by finite congruence certificates.  The sharp closure fork is now:
 prove \(a+b+c\le4\) for any hard-branch counterexample, or prove that the
 same modular automaton kills all rank triples periodically.
+The finite certificate has since been pushed to weight \(30\).  Thus the
+rank-cap route would now need only \(a+b+c\le30\), while the more natural
+route is a periodicity or descent theorem for the modular automaton.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

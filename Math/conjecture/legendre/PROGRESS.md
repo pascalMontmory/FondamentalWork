@@ -4142,3 +4142,63 @@ or
 
 The second path is the more promising nonstandard route: prove periodic
 modular killing in the rank variables, avoiding an analytic quotient bound.
+
+## \(m\equiv3\pmod4\) rank weights 0--30 certified
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_rank\_weight\_0\_30\_certificate.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py}.
+\]
+
+The verifier checks the exact finite local sets
+\[
+  M_\ell(c,f)
+  =
+  \{m\bmod\ell:\ f^2+6mf-c\text{ is a square modulo }\ell\}
+\]
+for every rank family
+\[
+  F(a,b,c)
+\]
+with
+\[
+  0\le a+b+c\le30.
+\]
+
+It uses only
+\[
+  \ell\in\{5,7,11,13,17\}
+\]
+plus the modulo \(7\) zero-quotient filter.
+
+The exact command
+\[
+  \texttt{python3 Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py --max-weight 30}
+\]
+ends with
+\[
+  \texttt{certificate: all weights 0..30 closed}.
+\]
+
+Therefore any remaining hard \(m\equiv3\pmod4\) clean-gate counterexample
+must satisfy
+\[
+\boxed{
+  a+b+c\ge31.
+}
+\]
+
+This is the strongest current obstruction in the Legendre thread.  The
+closure problem is now sharply reduced to one of:
+
+1. prove a rank cap
+   \[
+     a+b+c\le30;
+   \]
+2. prove periodic modular killing for all rank triples;
+3. prove a descent from any surviving weight \(>30\) to a smaller surviving
+   weight.

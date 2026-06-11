@@ -496,3 +496,44 @@ The most promising closure route is now not an analytic estimate on one
 quotient.  It is a periodic modular-killing theorem for the rank automaton:
 prove that every triple \((a,b,c)\) is killed by a finite set of small
 primes, or prove an independent rank cap \(a+b+c\le4\).
+
+## 13. Rank weights 0--30 certified
+
+The finite certificate has been extended substantially.
+
+The note
+\[
+  \texttt{legendre\_m3mod4\_rank\_weight\_0\_30\_certificate.md}
+\]
+and verifier
+\[
+  \texttt{tools/m3mod4\_rank\_certificate.py}
+\]
+prove that every rank family with
+\[
+\boxed{
+  0\le a+b+c\le30
+}
+\]
+has no integral point in the reduced hard-branch Pell system.
+
+Only the primes
+\[
+  5,\ 7,\ 11,\ 13,\ 17
+\]
+are needed, together with the modulo \(7\) zero-quotient filter.
+
+Thus any remaining \(m\equiv3\pmod4\) clean-gate counterexample must satisfy
+\[
+\boxed{
+  a+b+c\ge31.
+}
+\]
+
+This makes the closure problem sharper:
+
+- a rank cap \(a+b+c\le30\) would close this branch;
+- a periodicity theorem for the modular automaton would close it without an
+  analytic rank cap;
+- a descent theorem from weight \(>30\) to a smaller surviving weight would
+  also close it, since no smaller surviving weight exists.
