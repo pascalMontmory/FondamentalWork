@@ -3329,3 +3329,82 @@ not \(42\).  This pushes the strongest label exclusion window to roughly
 This is a genuine closure path for the odd clean strong gate: the A1
 quotient lattice becomes sparse enough that the fully colored Pell
 certificate may be impossible to realize.
+
+## Initial even mod-8 quotient lift
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_even\_mod8\_quotient\_lift.md}.
+\]
+
+This is the even-branch analogue of the odd mod-\(24\) lift.  For even \(m\),
+the initial A0 coordinates are
+\[
+  1,5,7,11,
+\]
+and the A1 coordinates are
+\[
+  2,4,8,10.
+\]
+
+Write
+\[
+  e=2f,\qquad u=r+f.
+\]
+Since \(A\) is even, all labels are odd and \(r\) is odd.  The quotient
+classes make \(f\) odd, so \(u\) is even and
+\[
+  u^2\equiv0\text{ or }4\pmod{16}.
+\]
+
+For A1,
+\[
+  u^2=f^2+6mf-(y^2+1),
+  \qquad
+  f\equiv3\pmod6.
+\]
+The exact modulo-\(16\) table gives A1 quotient minima:
+\[
+\boxed{
+\begin{array}{c|c}
+  m\bmod8 & \text{A1 quotient minima}\\
+  \hline
+  0 & 6,\ 18,\ 30,\ 42\\
+  2 & 30,\ 42,\ 78,\ 90\\
+  4 & 6,\ 18,\ 30,\ 42\\
+  6 & 6,\ 18,\ 54,\ 66
+\end{array}
+}
+\]
+
+For A0, the modulo-\(16\) table preserves the A0 minima
+\[
+  2,\ 10,\ 14,\ 22
+\]
+in every even class, while assigning allowed \(e\bmod48\) classes to the
+individual coordinate types \(x^2\equiv1,9\pmod{16}\).
+
+Combining A0 and A1 yields:
+\[
+\boxed{
+\begin{array}{c|c}
+  m\bmod8 & \text{global quotient minima}\\
+  \hline
+  0 & 2,\ 6,\ 10,\ 14,\ 18,\ 22,\ 30,\ 42\\
+  2 & 2,\ 10,\ 14,\ 22,\ 30,\ 42,\ 78,\ 90\\
+  4 & 2,\ 6,\ 10,\ 14,\ 18,\ 22,\ 30,\ 42\\
+  6 & 2,\ 6,\ 10,\ 14,\ 18,\ 22,\ 54,\ 66
+\end{array}
+}
+\]
+
+Thus the clean strong gate now splits into six exact quotient skeletons:
+four even classes modulo \(8\), plus the two odd classes modulo \(4\).  The
+strongest cases force
+\[
+  e_{(8)}\ge90.
+\]
+
+The next exact target is to stop increasing \(e\)-barriers globally and
+eliminate these six skeletons one by one with the colored ladder and Pell
+synchronization equations.

@@ -153,6 +153,10 @@ Main notes:
   A1 half-quotient equation modulo \(8\) gives \(mf\equiv3\pmod4\).  Thus
   \(m\equiv1\pmod4\) forces A1 quotients \(e\equiv6\pmod{24}\), while
   \(m\equiv3\pmod4\) forces \(e\equiv18\pmod{24}\).
+- `legendre_initial_even_mod8_quotient_lift.md`: even-branch modulo-\(16\)
+  lift; the half-quotient equations split \(m\equiv0,2,4,6\pmod8\), with
+  \(m\equiv2\pmod8\) forcing global quotient minima
+  \(2,10,14,22,30,42,78,90\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -377,6 +381,18 @@ So if \(m\equiv1\pmod4\), A1 quotients are \(6\bmod24\), giving
 and if \(m\equiv3\pmod4\), A1 quotients are \(18\bmod24\), giving
 \[
   (4,8,16,18,20,42,66,90).
+\]
+In the even branch, reducing the half-quotient equations modulo \(16\)
+splits \(m\bmod8\).  The quotient skeletons become
+\[
+\begin{array}{c|c}
+  m\bmod8 & \text{global quotient minima}\\
+  \hline
+  0 & 2,6,10,14,18,22,30,42\\
+  2 & 2,10,14,22,30,42,78,90\\
+  4 & 2,6,10,14,18,22,30,42\\
+  6 & 2,6,10,14,18,22,54,66.
+\end{array}
 \]
 
 Computational scripts live in `tools/`.
