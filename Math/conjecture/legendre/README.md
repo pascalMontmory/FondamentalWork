@@ -67,6 +67,9 @@ Main notes:
 - `legendre_initial_mod70_gate.md`: exact CRT classification modulo \(70\)
   of the first-four-block gates: bridge, no-repetition, A0-\(5\), A1-\(5\),
   A1-\(7\), and double-A1.
+- `legendre_initial_cross_layer_collisions.md`: exact cross-layer collision
+  lemma for the first four blocks; outside bridge classes, shared A0/A1 labels
+  are confined to fixed primes \(13,17,29,37,53\) with explicit congruences.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -105,6 +108,9 @@ the bridge classes \(m\equiv\pm1\pmod5\), every same-layer repetition among
 \(B_0,\dots,B_3\) is now one of finitely many explicit \(5\)- or \(7\)-edges.
 The first-four gate has been compressed modulo \(70\), giving six disjoint
 types: bridge, no-repetition, A0-\(5\), A1-\(5\), A1-\(7\), and double-A1.
+Cross-layer label sharing among the first four blocks has also been
+localized exactly: outside bridge classes, it can only occur through the
+fixed primes \(13,17,29,37,53\) in explicitly listed block positions.
 
 Computational scripts live in `tools/`.
 

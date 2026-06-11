@@ -1608,3 +1608,61 @@ Thus the beginning of any remaining \(m\)-certificate is now completely
 localized modulo \(70\).  The next exact target is to eliminate the six gate
 types separately, starting with the strong no-repetition gate and the bridge
 gate.
+
+## Initial cross-layer collision lemma
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_cross\_layer\_collisions.md}.
+\]
+
+This studies when a single prime can appear once as an A0 label and once as
+an A1 label among \(B_0,\dots,B_3\).
+
+If \(x\) is an A0 coordinate and \(y\) is an A1 coordinate, a cross-layer
+collision by \(p\ge5\) imposes
+\[
+  9m^2+x^2\equiv0\pmod p,
+\]
+\[
+  9m^2+y^2+1\equiv0\pmod p.
+\]
+Subtracting eliminates \(m\):
+\[
+  y^2+1-x^2\equiv0\pmod p.
+\]
+Thus the collision prime must divide the fixed integer
+\[
+  \Delta(x,y)=y^2+1-x^2.
+\]
+
+Outside the first-four bridge classes \(m\not\equiv\pm1\pmod5\), the exact
+valid cross-layer collisions are:
+\[
+\begin{array}{c|c|c|c|c}
+  m\text{ parity} & \text{A0 block} & \text{A1 block} & p & \text{condition on }m\\
+  \hline
+  \text{even} & B_2 & B_3 & 13 & m\equiv\pm3\pmod{13}\\
+  \text{even} & B_3 & B_0 & 29 & m\equiv\pm14\pmod{29}\\
+  \text{even} & B_3 & B_1 & 13 & m\equiv\pm1\pmod{13}\\
+  \text{odd} & B_1 & B_2 & 17 & m\equiv\pm6\pmod{17}\\
+  \text{odd} & B_1 & B_3 & 53 & m\equiv\pm13\pmod{53}\\
+  \text{odd} & B_2 & B_3 & 29 & m\equiv\pm3\pmod{29}\\
+  \text{odd} & B_3 & B_1 & 37 & m\equiv\pm17\pmod{37}.
+\end{array}
+\]
+
+All other finite candidates either lie in bridge classes, violate the A0
+condition \(p\nmid3m\), or require a non-square class for \(m^2\).
+
+Consequently, in strong no-same-layer-repetition classes, if \(m\) also
+avoids these cross-layer collision congruences, the first four blocks force
+eight distinct certificate labels:
+\[
+  p_0(0),p_0(1),p_0(2),p_0(3),
+  p_1(0),p_1(1),p_1(2),p_1(3).
+\]
+
+The remaining strong-gate target is now sharper: either eight distinct small
+labels appear immediately, or \(m\) is forced into one of the listed
+cross-layer collision classes.
