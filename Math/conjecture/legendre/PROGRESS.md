@@ -66,3 +66,55 @@ The next viable target is not Lemma G as stated.  It is either:
    exceptional classes by another offset family; or
 2. use the square-offset data as a structured subcover inside the full
    residue-cover formulation.
+
+## Gaussian failure offset analysis
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/gaussian\_failure\_analyzer.py}.
+\]
+For each failure of the strict square-offset lemma, it finds the first actual
+prime in the Legendre interval and writes its offset as
+\[
+  m=t^2+r,
+\]
+choosing the nearest square.
+
+For the \(33\) strict failures observed up to \(100000\), the first prime
+offset is always very close to a square:
+\[
+\begin{array}{c|c}
+  |r| & \text{number of failures} \\
+  \hline
+  1 & 14 \\
+  2 & 10 \\
+  3 & 7 \\
+  4 & 1 \\
+  5 & 1.
+\end{array}
+\]
+Thus every observed strict failure is repaired by the broadened offset family
+\[
+  n^2+t^2+r,\qquad |r|\le5.
+\]
+The smaller band \(|r|\le4\) covers \(32/33\) failures; the unique \(|r|=5\)
+case in this run is
+\[
+  n=1284,\qquad n^2+41=1648697,\qquad 41=6^2+5.
+\]
+
+This suggests the next experimental lemma:
+
+Lemma \(G_5\) candidate. For every \(n\ge2\), there exist integers
+\[
+  1\le t\le\lfloor\sqrt{2n}\rfloor+1,\qquad |r|\le5,
+\]
+such that
+\[
+  1\le t^2+r\le 2n
+\]
+and \(n^2+t^2+r\) is prime.
+
+This no longer has the clean Gaussian-norm divisor exclusion when \(r\ne0\),
+but it may be the correct empirical bridge: square norms provide the main
+skeleton, and a bounded correction handles the sparse failures.

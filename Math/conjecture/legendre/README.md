@@ -21,3 +21,7 @@ with the parity condition needed to avoid the divisor \(2\).
 First checkpoint: Lemma G is false as a universal statement, with first
 counterexample \(n=12\).  The square-offset route should now be treated as a
 sparse-failure subcover, not a direct proof of Legendre.
+
+Second checkpoint: the first primes in all strict failures observed up to
+\(100000\) have offsets \(t^2+r\) with \(|r|\le5\).  The next candidate is a
+bounded correction band around Gaussian square offsets.

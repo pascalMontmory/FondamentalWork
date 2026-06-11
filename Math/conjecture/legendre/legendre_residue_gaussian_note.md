@@ -190,3 +190,19 @@ current run.  This suggests replacing Lemma G by a weaker target:
 2. handle that exceptional set by a second offset family or by the full
    residue-cover formulation.
 
+The first failure analysis supports a bounded-correction variant.  For every
+strict failure observed up to \(100000\), the first actual prime in the
+Legendre interval has offset
+\[
+  m=t^2+r
+\]
+with
+\[
+  |r|\le5.
+\]
+The exact histogram over the \(33\) observed failures is
+\[
+  |r|=1:14,\quad |r|=2:10,\quad |r|=3:7,\quad |r|=4:1,\quad |r|=5:1.
+\]
+So the next experimental target is a bounded band around Gaussian square
+offsets, rather than pure square offsets.
