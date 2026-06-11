@@ -149,6 +149,10 @@ Main notes:
   restriction; in both parity branches, A1 gives \(e\equiv2\pmod4\).
   Combined with \(e\equiv0\pmod6\), this forces all A1 quotients into the
   single class \(e\equiv6\pmod{12}\), with minima \(6,18,30,42\).
+- `legendre_initial_odd_A1_mod24_lift.md`: odd-branch A1 lift; reducing the
+  A1 half-quotient equation modulo \(8\) gives \(mf\equiv3\pmod4\).  Thus
+  \(m\equiv1\pmod4\) forces A1 quotients \(e\equiv6\pmod{24}\), while
+  \(m\equiv3\pmod4\) forces \(e\equiv18\pmod{24}\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -360,6 +364,19 @@ are
 \]
 \[
   M^{\mathrm{odd},\mathrm{cof}}=(4,6,8,16,18,20,30,42).
+\]
+In the odd branch this sharpens further.  Writing \(e=2f\), the A1 equation
+modulo \(8\) forces
+\[
+  mf\equiv3\pmod4.
+\]
+So if \(m\equiv1\pmod4\), A1 quotients are \(6\bmod24\), giving
+\[
+  (4,6,8,16,20,30,54,78),
+\]
+and if \(m\equiv3\pmod4\), A1 quotients are \(18\bmod24\), giving
+\[
+  (4,8,16,18,20,42,66,90).
 \]
 
 Computational scripts live in `tools/`.

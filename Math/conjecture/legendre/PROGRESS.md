@@ -3234,3 +3234,98 @@ This is the first quotient skeleton rigid enough to be a plausible closure
 mechanism: eliminate the even and odd cofactor-mirrored certificates with
 A1 restricted to \(6\bmod12\), together with colored ladders and Pell
 synchronization.
+
+## Initial odd A1 mod-24 lift
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_odd\_A1\_mod24\_lift.md}.
+\]
+
+This sharpens the A1 cofactor mirror in the odd branch.  Write
+\[
+  e=2f.
+\]
+The reduced A1 equation is
+\[
+\boxed{
+  u^2=f^2+6mf-(y^2+1),
+  \qquad
+  u=r+f.
+}
+\]
+
+The A1 cofactor mirror gives
+\[
+  f\equiv3\pmod6.
+\]
+
+If \(m\) is odd, then the initial A1 coordinate \(y\) is odd, so
+\[
+  y^2\equiv1\pmod8.
+\]
+Also \(f\) is odd, so \(f^2\equiv1\pmod8\).  Reducing modulo \(8\) gives
+\[
+  u^2\equiv6mf-1\pmod8.
+\]
+Since an odd square is \(1\bmod8\), one must have
+\[
+\boxed{
+  mf\equiv3\pmod4.
+}
+\]
+
+Thus
+\[
+\boxed{
+  f\equiv3m\pmod4.
+}
+\]
+
+Combining with \(f\equiv3\pmod6\):
+\[
+\boxed{
+  m\equiv1\pmod4
+  \Rightarrow
+  \mathrm{A1}:\ e\equiv6\pmod{24},
+}
+\]
+and
+\[
+\boxed{
+  m\equiv3\pmod4
+  \Rightarrow
+  \mathrm{A1}:\ e\equiv18\pmod{24}.
+}
+\]
+
+For \(m\equiv1\pmod4\), the odd-branch quotient skeleton becomes
+\[
+\boxed{
+  M^{1\bmod4}=(4,6,8,16,20,30,54,78).
+}
+\]
+
+For \(m\equiv3\pmod4\), it becomes
+\[
+\boxed{
+  M^{3\bmod4}=(4,8,16,18,20,42,66,90).
+}
+\]
+
+So the largest quotient-rank lower bound in the odd branch is now
+\[
+  78
+  \quad\text{or}\quad
+  90,
+\]
+not \(42\).  This pushes the strongest label exclusion window to roughly
+\[
+  A-\sqrt{78A}
+  \quad\text{or}\quad
+  A-\sqrt{90A}.
+\]
+
+This is a genuine closure path for the odd clean strong gate: the A1
+quotient lattice becomes sparse enough that the fully colored Pell
+certificate may be impossible to realize.
