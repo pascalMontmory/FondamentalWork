@@ -20,6 +20,7 @@ extraction.
 from __future__ import annotations
 
 import sys
+from dataclasses import dataclass
 
 import sympy as sp
 
@@ -48,6 +49,7 @@ def parse_args() -> tuple[
     bool,
     bool,
     bool,
+    bool,
     int | None,
 ]:
     args = sys.argv[1:]
@@ -56,9 +58,11 @@ def parse_args() -> tuple[
     base_primes = DEFAULT_BASE_PRIMES
     build_only = "--build-only" in args
     scan_t = "--scan-t" in args
+    collect_t = "--collect-t" in args
     scan_base_classes = "--scan-base-classes" in args
     args = [arg for arg in args if arg != "--build-only"]
     args = [arg for arg in args if arg != "--scan-t"]
+    args = [arg for arg in args if arg != "--collect-t"]
     args = [arg for arg in args if arg != "--scan-base-classes"]
     max_t = None
     for arg in list(args):
@@ -80,7 +84,14 @@ def parse_args() -> tuple[
     weights_list = DEFAULT_TYPES if not args else [
         tuple(int(part) for part in arg.split(",")) for arg in args
     ]
-    return weights_list, prime, cls, base_primes, build_only, scan_t, scan_base_classes, max_t
+    return weights_list, prime, cls, base_primes, build_only, scan_t, collect_t, scan_base_classes, max_t
+
+
+@dataclass(frozen=True)
+class TScan:
+    witness: tuple[int, int] | None
+    live_t: tuple[tuple[int, int, int], ...]
+    bad_t: tuple[tuple[int, int], ...]
 
 
 def reduce_mod_f(
@@ -187,6 +198,19 @@ def bad_n_residues(prime: int) -> set[int]:
     return {(-offset) % prime for offset in range(1, 7)}
 
 
+def residue_factor(residues: list[int], symbol: sp.Symbol, prime: int) -> sp.Poly:
+    poly = sp.Poly(1, symbol, modulus=prime)
+    for residue in residues:
+        poly *= sp.Poly(symbol - residue, symbol, modulus=prime)
+    return sp.Poly(poly.as_expr(), symbol, modulus=prime)
+
+
+def format_residue_factor(poly: sp.Poly, prime: int) -> str:
+    if poly.degree() == 0:
+        return "1"
+    return str(sp.factor(poly.as_expr(), modulus=prime))
+
+
 def scan_t_specializations(
     weights: tuple[int, int, int, int],
     prime: int,
@@ -194,12 +218,16 @@ def scan_t_specializations(
     modulus: int,
     max_t: int | None,
     verbose: bool = True,
-) -> bool:
+    stop_at_witness: bool = True,
+) -> TScan:
     if modulus % prime == 0:
         raise ValueError(f"prime {prime} divides class modulus {modulus}")
 
     limit = prime if max_t is None else min(max_t, prime)
     bad_n = bad_n_residues(prime)
+    witness = None
+    live_t = []
+    bad_t = []
     if verbose:
         print(
             f"weights {weights}, scanning n={cls}+{modulus}*t mod {prime}, "
@@ -209,6 +237,7 @@ def scan_t_specializations(
     for t_value in range(limit):
         n_value = (cls + modulus * t_value) % prime
         if n_value in bad_n:
+            bad_t.append((t_value, n_value))
             if verbose:
                 print(f"  t={t_value}: n={n_value} is saturated-bad; skipped", flush=True)
             continue
@@ -220,17 +249,38 @@ def scan_t_specializations(
                 flush=True,
             )
         if gcd_degree == 0:
-            if verbose:
+            if witness is None:
+                witness = (t_value, n_value)
+            if verbose and stop_at_witness:
                 print(
-                "  specialization witness: generic gcd in F_p(t)[a] is 1 away from finite bad t-fibers",
-                flush=True,
-            )
+                    "  specialization witness: generic gcd in F_p(t)[a] is 1 away from finite bad t-fibers",
+                    flush=True,
+                )
                 print("  CRT class generically eliminated over this prime up to finite t-exceptions", flush=True)
-            return True
+            if stop_at_witness:
+                return TScan(witness, tuple(live_t), tuple(bad_t))
+        else:
+            live_t.append((t_value, n_value, gcd_degree))
 
-    if verbose:
+    if verbose and witness is None:
         print("  no gcd-1 t-specialization found in scanned range", flush=True)
-    return False
+    if verbose and not stop_at_witness:
+        t_symbol = sp.symbols("t")
+        live_factor = residue_factor([item[0] for item in live_t], t_symbol, prime)
+        bad_factor = residue_factor([item[0] for item in bad_t], t_symbol, prime)
+        print(f"  live t residues in scanned range: {live_t}", flush=True)
+        print(f"  saturated-bad t residues in scanned range: {bad_t}", flush=True)
+        print(
+            f"  live t factor in F_{prime}[t]: "
+            f"degree={live_factor.degree()}, {format_residue_factor(live_factor, prime)}",
+            flush=True,
+        )
+        print(
+            f"  saturated-bad t factor in F_{prime}[t]: "
+            f"degree={bad_factor.degree()}, {format_residue_factor(bad_factor, prime)}",
+            flush=True,
+        )
+    return TScan(witness, tuple(live_t), tuple(bad_t))
 
 
 def scan_base_classes(
@@ -246,12 +296,20 @@ def scan_base_classes(
         flush=True,
     )
     failures = []
+    witness_counts: dict[int, int] = {}
     for index, cls in enumerate(classes, start=1):
-        certified = scan_t_specializations(weights, prime, cls, modulus, max_t, verbose=False)
-        status = "witnessed" if certified else "open"
-        print(f"  class {index}/{len(classes)}: n={cls} mod {modulus}: {status}", flush=True)
-        if not certified:
+        scan = scan_t_specializations(weights, prime, cls, modulus, max_t, verbose=False)
+        if scan.witness is None:
+            print(f"  class {index}/{len(classes)}: n={cls} mod {modulus}: open", flush=True)
             failures.append(cls)
+        else:
+            t_value, n_value = scan.witness
+            witness_counts[t_value] = witness_counts.get(t_value, 0) + 1
+            print(
+                f"  class {index}/{len(classes)}: n={cls} mod {modulus}: "
+                f"witness t={t_value}, n={n_value} mod {prime}",
+                flush=True,
+            )
 
     if failures:
         print(
@@ -260,6 +318,7 @@ def scan_base_classes(
         )
     else:
         print("  all base CRT classes have generic-elimination witnesses", flush=True)
+    print(f"  witness t distribution: {dict(sorted(witness_counts.items()))}", flush=True)
 
 
 def probe_class(
@@ -301,14 +360,22 @@ def main() -> None:
         base_primes,
         build_only,
         scan_t,
+        collect_t,
         scan_base_classes_mode,
         max_t,
     ) = parse_args()
     for weights in weights_list:
         if scan_base_classes_mode:
             scan_base_classes(weights, prime, base_primes, max_t)
-        elif scan_t:
-            scan_t_specializations(weights, prime, cls, modulus, max_t)
+        elif scan_t or collect_t:
+            scan_t_specializations(
+                weights,
+                prime,
+                cls,
+                modulus,
+                max_t,
+                stop_at_witness=not collect_t,
+            )
         else:
             probe_class(weights, prime, cls, modulus, build_only)
 

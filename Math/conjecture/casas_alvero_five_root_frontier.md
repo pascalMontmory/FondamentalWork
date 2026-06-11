@@ -3071,3 +3071,42 @@ and the specialized gcd degree is \(0\).
 Thus the remaining endpoint-\(d-6\) work has moved one level lower again:
 not generic \(n\), and not generic CRT classes, but the finite exceptional
 \(t\)-fibers inside those classes.
+
+## 48. Endpoint multiplicity \(d-6\): finite \(t\)-fiber factors
+
+The class-parameter script now also extracts finite modular factors in the
+class parameter. In \(\texttt{--collect-t}\) mode, for a fixed class
+\[
+  n=c+Mt
+\]
+and coefficient prime \(p\nmid M\), it records the \(t\)-residues for which
+the specialized eliminants still have a positive-degree gcd in
+\(\mathbb F_p[a]\). These residues define
+\[
+  T_p(t)=\prod_{r\ \mathrm{live}}(t-r)\in\mathbb F_p[t].
+\]
+The saturated-bad residues, where \(n+1,\ldots,n+6\) vanish modulo \(p\), are
+recorded separately.
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n\equiv0\pmod{2431},
+\]
+write \(n=2431t\). Modulo \(101\), a full scan of \(t=0,\ldots,100\) gives
+\[
+  L_{101}=\{0,10,22,25,26,30,38,89\}.
+\]
+The corresponding finite live factor is
+\[
+  T_{101}(t)=
+  t(t-10)(t-22)(t-25)(t-26)(t-30)(t-38)(t-89).
+\]
+The saturated-bad \(t\)-residues are
+\[
+  \{14,28,43,57,72,86\}.
+\]
+
+This is the first explicit finite exceptional set in the class parameter.
+The remaining task is now concrete: either extract such \(T_p(t)\) factors
+for every CRT class, or reconstruct a class-level exceptional factor directly
+and prove that its admissible integer fibers are empty.

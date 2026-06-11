@@ -1337,3 +1337,40 @@ witness is \(t=1\), giving \(n\equiv413\pmod{1009}\) and gcd degree \(0\) in
 This is the right next reduction: the endpoint-\(d-6\) problem has moved from
 generic components in \(n\), to generic components along CRT classes, and now
 to finite bad \(t\)-fibers on those classes.
+
+### Endpoint \(d-6\): first finite \(t\)-fiber factors
+
+Extended the class-parameter probe with two refinements:
+
+- `--scan-base-classes` now records the first witness \(t\) and the
+  corresponding \(n\bmod p\) for each CRT class;
+- `--collect-t` scans a bounded or full residue range in \(t\) and prints the
+  live \(t\)-factor
+  \[
+    T_p(t)=\prod_{r\ \mathrm{live}}(t-r)\in\mathbb F_p[t],
+  \]
+  with saturated-bad \(t\)-residues separated.
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+modulo \(p=101\), the full scan \(t=0,\ldots,100\) leaves only the live
+residues
+\[
+  t\in\{0,10,22,25,26,30,38,89\}\pmod{101}.
+\]
+The saturated-bad residues are
+\[
+  t\in\{14,28,43,57,72,86\}\pmod{101}.
+\]
+Thus the first explicit finite \(t\)-fiber factor is
+\[
+  T_{101}(t)=
+  t(t-10)(t-22)(t-25)(t-26)(t-30)(t-38)(t-89).
+\]
+
+This is the next usable object: instead of a CRT class carrying an infinite
+parameter \(t\), the representative class now has a finite modular
+exceptional set in \(t\). The next step is to repeat this extraction across
+classes or reconstruct the corresponding exceptional \(t\)-factor directly.
