@@ -5358,3 +5358,76 @@ lower quotient beyond this prefix:
   c=64:\ f\ge40.
 }
 \]
+
+## Structural prefix 6 closed
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_structural\_prefix6\_certificate.md}
+\]
+and verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_structural\_prefix\_certificate.py}.
+\]
+
+The verifier checks the first six structural quotient values in every
+offset row, using the A0 dual semigroups and A1 splitting semigroups.
+
+There are
+\[
+  678720
+\]
+pairwise-distinct assignments.  Finite local certificates kill all but two,
+with killer counts:
+\[
+\begin{array}{c|r}
+  p & \#\\
+  \hline
+  5 & 562842\\
+  7 & 99585\\
+  11 & 14308\\
+  13 & 1589\\
+  17 & 308\\
+  19 & 65\\
+  23 & 13\\
+  29 & 5\\
+  37 & 1\\
+  41 & 1\\
+  43 & 1.
+\end{array}
+\]
+
+The two survivors are ghost fibers:
+\[
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 10 & 58 & 8 & 40 & 9 & 21 & 33 & 69
+\end{array}
+\]
+and
+\[
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 10 & 58 & 16 & 40 & 9 & 21 & 33 & 69.
+\end{array}
+\]
+
+Both contain the universal local class \(m\equiv-1\).  Over the integers,
+the A0 rows force two squares whose difference is \(8\):
+\[
+  Y^2-X^2=8.
+\]
+
+Thus \(X=1,Y=3\), and in both cases
+\[
+  m=-1.
+\]
+
+So neither survivor gives a positive hard-branch point.  Therefore:
+\[
+\boxed{
+  \text{structural prefix }6\text{ is closed.}
+}
+\]

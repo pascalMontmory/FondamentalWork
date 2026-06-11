@@ -1592,3 +1592,78 @@ quotient:
   c=64:\ f\ge40.
 }
 \]
+
+## 31. Structural prefix 6 closed
+
+The structural quotient model now has a finite prefix certificate using the
+first six values in each offset row.
+
+The verifier is
+\[
+  \texttt{tools/m3mod4\_structural\_prefix\_certificate.py}.
+\]
+
+For prefix \(6\), it checks
+\[
+  678720
+\]
+pairwise-distinct assignments.  Finite local certificates kill all but two
+assignments.  The two survivors are:
+\[
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 10 & 58 & 8 & 40 & 9 & 21 & 33 & 69
+\end{array}
+\]
+and
+\[
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 10 & 58 & 16 & 40 & 9 & 21 & 33 & 69.
+\end{array}
+\]
+
+Both are ghost fibers with the universal local class
+\[
+  m\equiv-1.
+\]
+
+For the first survivor, the row \((c,f)=(16,8)\) gives
+\[
+  m=12n^2-1.
+\]
+
+The rows \((4,10)\) and \((64,40)\) then force
+\[
+  X^2=20n^2+1,
+  \qquad
+  Y^2=20n^2+9.
+\]
+
+Thus
+\[
+  Y^2-X^2=8,
+\]
+so \(X=1,Y=3\), hence \(n=0\) and \(m=-1\).
+
+For the second survivor, the same two rows give
+\[
+  3X^2=5m+8,
+  \qquad
+  3Y^2=5m+32,
+\]
+again forcing
+\[
+  Y^2-X^2=8
+  \quad\Longrightarrow\quad
+  m=-1.
+\]
+
+Therefore neither survivor gives a positive hard-branch point, and
+\[
+\boxed{
+  \text{structural prefix }6\text{ is closed.}
+}
+\]
