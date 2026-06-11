@@ -1485,3 +1485,66 @@ Thus every remaining \(m\ge11\) certificate must enter one of four finite
 gates: strong no-repetition, A0-\(5\), A1-\(5\), or bridge-\(5\).  The next
 exact closure target is to show that none of these gates can be extended to a
 full two-layer certificate over the complete block interval.
+
+## Initial four-block repetition graph
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_four\_block\_graph.md}.
+\]
+
+This extends the exact initial obstruction to
+\[
+  B_0=\{1,2\},\quad B_1=\{4,5\},\quad B_2=\{7,8\},\quad B_3=\{10,11\}.
+\]
+The four blocks are complete for \(m\ge21\).
+
+The new block \(B_3\) adds bridge classes.  If \(t_1(3)=10\), then
+\[
+  5\mid9m^2+1
+  \quad\Longleftrightarrow\quad
+  m^2\equiv1\pmod5.
+\]
+Thus \(B_3\) is a bridge block exactly for
+\[
+  m\equiv4,6\pmod{10}.
+\]
+If \(t_1(3)=11\), a common factor would require
+\[
+  m^2\equiv6\pmod{11},
+\]
+which is impossible.
+
+The two coordinate sequences are
+\[
+  E=(2,4,8,10),\qquad O=(1,5,7,11).
+\]
+For primes \(p\ge5\), repetitions inside \(E\) are possible only for
+\[
+  (2,8)\text{ by }5,\qquad (4,10)\text{ by }7,
+\]
+and repetitions inside \(O\) are possible only for
+\[
+  (1,11)\text{ by }5.
+\]
+
+Consequently, for \(m\ge21\) outside the first-four bridge classes
+\[
+  m\equiv\pm1\pmod5,
+\]
+all same-layer repetitions among \(B_0,\dots,B_3\) are exactly:
+\[
+\begin{array}{c|c|c|c}
+  \text{layer} & \text{blocks} & \text{prime} & \text{condition on }m\\
+  \hline
+  \text{A1} & B_0/B_2 & 5 & m\equiv0\pmod{10}\\
+  \text{A1} & B_1/B_3 & 7 & m\text{ even},\ m\equiv\pm3\pmod7\\
+  \text{A0} & B_0/B_2 & 5 & m\equiv3,7\pmod{10}\\
+\end{array}
+\]
+
+There are no other early same-layer repetitions.  The beginning of any
+remaining certificate is therefore a finite explicit graph, not an arbitrary
+labeling pattern.  The apparent \(B_0/B_3\) repetition by \(5\) occurs
+precisely in the \(B_3\) bridge classes \(m\equiv4,6\pmod{10}\), so it is not
+a coprime-block edge.

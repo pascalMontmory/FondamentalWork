@@ -61,6 +61,9 @@ Main notes:
 - `legendre_initial_mod10_gate.md`: exact reduction of the initial triple to
   four residue gates modulo \(10\): strong no-repetition classes, A0 reuse of
   \(5\), A1 reuse of \(5\), and bridge classes.
+- `legendre_initial_four_block_graph.md`: exact repetition graph for the
+  first four blocks; all same-layer repetitions are reduced to listed
+  \(5\)- and \(7\)-edges or to explicit bridge classes.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -93,7 +96,10 @@ repetition is \(p=5\), with A0 restricted to odd \(m\equiv\pm2\pmod5\) and
 A1 restricted to even \(5\mid m\).  This has been compressed into an exact
 mod \(10\) gate: classes \(2,4,5,6,8\) force full same-layer distinctness,
 class \(0\) permits only A1 reuse of \(5\), classes \(3,7\) permit only A0
-reuse of \(5\), and classes \(1,9\) are bridge-block cases.
+reuse of \(5\), and classes \(1,9\) are bridge-block cases.  Extending to
+the first four blocks adds bridge classes \(4,6\) through \(B_3\); outside
+the bridge classes \(m\equiv\pm1\pmod5\), every same-layer repetition among
+\(B_0,\dots,B_3\) is now one of finitely many explicit \(5\)- or \(7\)-edges.
 
 Computational scripts live in `tools/`.
 
