@@ -4466,3 +4466,67 @@ certificates:
   \Longrightarrow \text{rank descent target.}
 }
 \]
+
+## A0 square-offset quotient theorem
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_square\_quotient\_theorem.md}.
+\]
+
+For A0 rows the offsets are genuine squares:
+\[
+  c=x^2,\qquad x\in\{2,4,8,10\}.
+\]
+
+The intrinsic self-residue filter therefore becomes
+\[
+\boxed{
+  u^2+x^2\equiv0\pmod f.
+}
+\]
+
+This congruence has an exact prime-power classification.  If
+\[
+  q^\alpha\Vert f,\qquad \beta=v_q(x),
+\]
+then:
+
+\[
+\begin{array}{c|c}
+  q & \text{condition}\\
+  \hline
+  q\text{ odd} & \alpha\le2\beta\text{ or }q\equiv1\pmod4\\
+  q=2 & \alpha\le2\beta+1.
+\end{array}
+\]
+
+Consequently the four A0 square offsets impose:
+\[
+\begin{array}{c|c|c}
+  c & x & \text{condition on }f\\
+  \hline
+  4 & 2
+    & v_2(f)\le3,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  16 & 4
+    & v_2(f)\le5,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  64 & 8
+    & v_2(f)\le7,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  100 & 10
+    & v_2(f)\le3,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4.
+\end{array}
+\]
+
+This is not a finite modular test.  It is an intrinsic arithmetic restriction
+on every skipped A0 quotient: its odd prime divisors must lie in the
+sum-of-two-squares class, and its power of \(2\) is capped by the offset.
+
+The hard \(m\equiv3\pmod4\) closure target is now sharper:
+\[
+\boxed{
+  \text{A0 square quotient theorem}
+  +\text{A1 self-residue constraints}
+  +\text{Pell synchronization}
+  \Longrightarrow \text{rank descent.}
+}
+\]

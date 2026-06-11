@@ -246,6 +246,11 @@ Main notes:
   \(u^2\equiv-c\pmod f\), so each prime divisor \(q\mid f\), \(q\nmid c\),
   must have \(\left(\frac{-c}{q}\right)=1\).  This is the first non-finite
   prime mechanism for attacking arbitrary skipped ranks.
+- `legendre_m3mod4_A0_square_quotient_theorem.md`: exact prime-power
+  classification of the A0 square-offset quotient condition
+  \(u^2+x^2\equiv0\pmod f\), with \(x\in\{2,4,8,10\}\).  It forces all odd
+  prime divisors of \(f\) to be \(1\bmod4\) in these four cases, and gives
+  offset-specific \(2\)-adic ceilings \(v_2(f)\le3,5,7,3\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

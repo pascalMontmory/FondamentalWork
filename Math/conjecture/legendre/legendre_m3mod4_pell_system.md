@@ -746,3 +746,74 @@ The next theoretical closure target is now:
   \Longrightarrow \text{rank descent.}
 }
 \]
+
+## 19. A0 square-offset quotient theorem
+
+The A0 offsets are squares:
+\[
+  c=x^2,\qquad x\in\{2,4,8,10\}.
+\]
+
+For these rows the self-residue filter becomes the sum-of-two-squares
+quotient condition
+\[
+\boxed{
+  u^2+x^2\equiv0\pmod f.
+}
+\]
+
+Let
+\[
+  q^\alpha\Vert f,\qquad \beta=v_q(x).
+\]
+
+Then this congruence is solvable modulo \(q^\alpha\) if and only if:
+\[
+\begin{array}{c|c}
+  q & \text{condition}\\
+  \hline
+  q\text{ odd} & \alpha\le2\beta\text{ or }q\equiv1\pmod4\\
+  q=2 & \alpha\le2\beta+1.
+\end{array}
+\]
+
+Indeed, if \(\alpha\le2\beta\), the choice \(u=0\) works.  Otherwise divide
+by \(q^{2\beta}\).  For odd \(q\), the reduced condition is that \(-1\) is a
+quadratic residue modulo \(q\), equivalently \(q\equiv1\pmod4\).  For
+\(q=2\), the residual modulus can only be \(2\), since modulo \(4\) the
+congruence \(v^2\equiv-1\) is impossible.
+
+Thus:
+\[
+\begin{array}{c|c|c}
+  c & x & \text{condition on }f\\
+  \hline
+  4 & 2
+    & v_2(f)\le3,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  16 & 4
+    & v_2(f)\le5,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  64 & 8
+    & v_2(f)\le7,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4\\
+  100 & 10
+    & v_2(f)\le3,\ \text{all odd }q\mid f\text{ satisfy }q\equiv1\pmod4.
+\end{array}
+\]
+
+The offsets \(c=16\) and \(c=64\) are therefore no longer symmetric in the
+skipped-rank problem: for example \(f=64\) passes the A0 square quotient
+filter for \(c=64\), but not for \(c=16\).
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_square\_quotient\_theorem.md}.
+\]
+
+The closure target is correspondingly refined:
+\[
+\boxed{
+  \text{A0 prime-power quotient theorem}
+  +\text{A1 self-residue constraints}
+  +\text{pairwise Pell synchronization}
+  \Longrightarrow \text{rank descent.}
+}
+\]
