@@ -4,19 +4,21 @@ This note uses the complementary factor
 \[
   A+r+e
 \]
-in the centered A0 factorization.  This is stronger than looking only at the
-small prime label
-\[
-  A-r
-\]
-and the quotient residue \(e\bmod6\).
+in the centered A0 factorization.
 
-The result is an exact \(4\)-adic lift for A0 quotients:
+It corrects an important point: the difference between the complementary
+factor and the small factor is not \(e\), but
 \[
-  \mathrm{A0}:\qquad e\equiv4\text{ or }8\pmod{12}.
+  2r+e.
 \]
 
-## 1. A0 complementary factor
+Therefore the cofactor mirror is parity-sensitive.  It splits the clean
+strong gate into two exact quotient lattices according to the parity of
+\[
+  m.
+\]
+
+## 1. Complementary factor congruence
 
 For an A0 offset
 \[
@@ -31,21 +33,17 @@ The small factor
 \[
   p=A-r
 \]
-is an A0 label, so the Gaussian restriction gives
+is an A0 label, so
 \[
   p\equiv1\pmod4.
 \]
 
-In the initial cluster the value
+In the initial cluster,
 \[
-  A^2+x^2
-\]
-is odd and congruent to
-\[
-  1\pmod4.
+  A^2+x^2\equiv1\pmod4.
 \]
 
-Therefore the complementary factor
+Thus the complementary factor
 \[
   Q=A+r+e
 \]
@@ -56,120 +54,151 @@ also satisfies
 }
 \]
 
+Subtracting the two factors gives
+\[
+  Q-p=(A+r+e)-(A-r)=2r+e.
+\]
+
+Hence
+\[
+\boxed{
+  2r+e\equiv0\pmod4.
+}
+\]
+
+This is the correct cofactor-mirror congruence.
+
+## 2. Dependence on the parity of \(m\)
+
 Since
 \[
-  e=Q-p,
+  A=3m,
 \]
-we get
+the parity of \(A\) is the parity of \(m\).
+
+The A0 label condition
+\[
+  A-r\equiv1\pmod4
+\]
+gives
+\[
+  r\equiv A-1\pmod4.
+\]
+
+### Even \(m\)
+
+If \(m\) is even, then \(A\) is even.  Therefore
+\[
+  r\equiv A-1\pmod4
+\]
+is odd, so
+\[
+  2r\equiv2\pmod4.
+\]
+
+The cofactor mirror
+\[
+  2r+e\equiv0\pmod4
+\]
+then gives
+\[
+\boxed{
+  e\equiv2\pmod4.
+}
+\]
+
+Combining with the A0 mod-\(6\) quotient lattice
+\[
+  e\equiv2\text{ or }4\pmod6
+\]
+gives
+\[
+\boxed{
+  m\text{ even},\ \mathrm{A0}:
+  \qquad
+  e\equiv2\text{ or }10\pmod{12}.
+}
+\]
+
+### Odd \(m\)
+
+If \(m\) is odd, then \(A\) is odd.  Therefore
+\[
+  r\equiv A-1\pmod4
+\]
+is even, so
+\[
+  2r\equiv0\pmod4.
+\]
+
+The cofactor mirror gives
 \[
 \boxed{
   e\equiv0\pmod4.
 }
 \]
 
-This is a new A0 restriction: the hidden cofactor gap is divisible by \(4\).
-
-## 2. Combining with the mod-\(6\) lattice
-
-The mod-\(6\) quotient lattice already gave
-\[
-  \mathrm{A0}:\qquad e\equiv2\text{ or }4\pmod6.
-\]
-
-Together with
-\[
-  e\equiv0\pmod4,
-\]
-this sharpens to
+Combining with the A0 mod-\(6\) quotient lattice gives
 \[
 \boxed{
-  \mathrm{A0}:\qquad e\equiv8\text{ or }4\pmod{12}.
+  m\text{ odd},\ \mathrm{A0}:
+  \qquad
+  e\equiv4\text{ or }8\pmod{12}.
 }
 \]
 
-Equivalently:
-\[
-\boxed{
-  \begin{array}{c|c|c}
-    e\bmod12 & e\bmod6 & \text{A0 label class}\\
-    \hline
-    8 & 2 & p\equiv1\pmod{12}\\
-    4 & 4 & p\equiv5\pmod{12}
-  \end{array}
-}
-\]
+## 3. Parity-sensitive quotient skeletons
 
-The A0 color should therefore be upgraded from
+A1 quotients remain positive multiples of \(6\).  Their four smallest
+distinct values are
 \[
-  \chi\in\{2,4\}\pmod6
-\]
-to the sharper cofactor color
-\[
-\boxed{
-  \gamma\in\{4,8\}\pmod{12}.
-}
-\]
-
-## 3. A0 color-rank forcing
-
-For an A0 offset \(i\), let
-\[
-  \gamma_i\in\{4,8\}
-\]
-be its cofactor color.  Define the same-color A0 quotient rank
-\[
-\boxed{
-  \kappa_i
-  =
-  1+
-  \#\{j:\ j\text{ is A0},\ \gamma_j=\gamma_i,\ q_j<q_i\}.
-}
-\]
-
-Positive integers in the class
-\[
-  \gamma_i\pmod{12}
-\]
-are
-\[
-  \gamma_i,\ \gamma_i+12,\ \gamma_i+24,\dots.
-\]
-
-Therefore
-\[
-\boxed{
-  e_i\ge \gamma_i+12(\kappa_i-1).
-}
-\]
-
-This replaces the weaker A0 color-rank bound
-\[
-  e_i\ge\chi_i+6(\kappa_i-1).
-\]
-
-## 4. Lifted global quotient lattice
-
-The four A0 quotients are distinct and lie in
-\[
-  4,8\pmod{12}.
-\]
-
-The smallest possible four A0 quotients, allowing both cofactor colors, are
-\[
-\boxed{
-  4,\ 8,\ 16,\ 20.
-}
-\]
-
-The four A1 quotients remain distinct positive multiples of \(6\), with
-smallest possible values
-\[
-\boxed{
   6,\ 12,\ 18,\ 24.
+\]
+
+For A0, the cofactor mirror gives different residue classes according to
+the parity of \(m\).
+
+### Even \(m\)
+
+A0 quotients lie in
+\[
+  2,\ 10\pmod{12}.
+\]
+
+The four smallest possible A0 quotients are
+\[
+  2,\ 10,\ 14,\ 22.
+\]
+
+Together with the A1 minima, the globally sorted quotient tuple satisfies
+\[
+\boxed{
+  e_{(1)},\dots,e_{(8)}
+  \ge
+  2,\ 6,\ 10,\ 12,\ 14,\ 18,\ 22,\ 24.
 }
 \]
 
-Thus the globally sorted quotient tuple satisfies the componentwise bound
+Define
+\[
+\boxed{
+  M^{\mathrm{even}}=(2,6,10,12,14,18,22,24).
+}
+\]
+
+### Odd \(m\)
+
+A0 quotients lie in
+\[
+  4,\ 8\pmod{12}.
+\]
+
+The four smallest possible A0 quotients are
+\[
+  4,\ 8,\ 16,\ 20.
+\]
+
+Together with the A1 minima, the globally sorted quotient tuple satisfies
 \[
 \boxed{
   e_{(1)},\dots,e_{(8)}
@@ -181,45 +210,62 @@ Thus the globally sorted quotient tuple satisfies the componentwise bound
 Define
 \[
 \boxed{
-  M^\ast=(4,6,8,12,16,18,20,24).
+  M^{\mathrm{odd}}=(4,6,8,12,16,18,20,24).
 }
 \]
 
-This removes the previously allowed small quotient classes
-\[
-  e=2,\qquad e=10
-\]
-from the clean strong-gate quotient skeleton.
+## 4. Cofactor colors
 
-## 5. Cofactor-mirrored quotient barrier
+The A0 cofactor color must now include the parity branch.
 
-If an offset has global quotient rank
+For even \(m\):
 \[
-  q_i=k,
-\]
-then the global lattice gives
-\[
-  e_i\ge M^\ast_k.
+\boxed{
+  \gamma_i\in\{2,10\}\pmod{12}.
+}
 \]
 
-For A0, the same-color cofactor rank gives the additional lower bound
+For odd \(m\):
 \[
+\boxed{
+  \gamma_i\in\{4,8\}\pmod{12}.
+}
+\]
+
+If \(\kappa_i\) is the same-color A0 quotient rank, then in both branches
+\[
+\boxed{
   e_i\ge \gamma_i+12(\kappa_i-1).
+}
 \]
 
-For A1, the layer rank still gives
+The A1 layer-rank bound remains
 \[
+\boxed{
   e_i\ge6\lambda_i.
+}
 \]
 
-Define
+## 5. Corrected cofactor-mirrored barrier
+
+Let
 \[
-  E_i^\ast(q,\gamma)
+  M^\parity
   =
   \begin{cases}
-    \max\{M^\ast_{q_i},\ \gamma_i+12(\kappa_i-1)\},
+    M^{\mathrm{even}}, & m\text{ even},\\
+    M^{\mathrm{odd}}, & m\text{ odd}.
+  \end{cases}
+\]
+
+For an offset \(i\), define
+\[
+  E_i^\parity(q,\gamma)
+  =
+  \begin{cases}
+    \max\{M^\parity_{q_i},\ \gamma_i+12(\kappa_i-1)\},
       & i\text{ in A0},\\
-    \max\{M^\ast_{q_i},\ 6\lambda_i\},
+    \max\{M^\parity_{q_i},\ 6\lambda_i\},
       & i\text{ in A1}.
   \end{cases}
 \]
@@ -227,15 +273,15 @@ Define
 Then
 \[
 \boxed{
-  e_i\ge E_i^\ast(q,\gamma).
+  e_i\ge E_i^\parity(q,\gamma).
 }
 \]
 
-The distance barrier becomes
+The distance barrier is
 \[
 \boxed{
   r_i\ge
-  \mathcal B_{E_i^\ast(q,\gamma)}(A),
+  \mathcal B_{E_i^\parity(q,\gamma)}(A),
 }
 \]
 where
@@ -247,24 +293,32 @@ where
   \right\rceil.
 \]
 
-## 6. Why this is a closure path
+## 6. Correct closure path
 
-The clean strong-gate certificate now has a cofactor mirror:
-
-- A0 label class modulo \(4\) forces the complementary factor modulo \(4\);
-- this forces \(e\equiv0\pmod4\);
-- combined with the layer quotient lattice, A0 quotients live in
-  \(4,8\bmod12\);
-- the global quotient skeleton loses \(e=2\) and \(e=10\);
-- A0 same-color ranks progress by \(12\), not by \(6\).
-
-This is a genuine closure direction because it attacks both factors in
+The cofactor mirror does not universally eliminate
 \[
-  A^2+x^2=(A-r)(A+r+e),
+  e=2
 \]
-not just the small prime label.  The next exact target is to insert
+from the clean strong gate.  It eliminates it in the odd branch, but the even
+branch keeps the A0 classes
 \[
-  E_i^\ast(q,\gamma)
+  2,\ 10\pmod{12}.
 \]
-into the fully colored ladder and the Pell synchronization equations, then
-eliminate the cofactor-mirrored certificates.
+
+This is still a useful closure path because it splits the certificate into
+two different quotient skeletons:
+\[
+  M^{\mathrm{even}}=(2,6,10,12,14,18,22,24),
+\]
+\[
+  M^{\mathrm{odd}}=(4,6,8,12,16,18,20,24).
+\]
+
+The next exact target is therefore parity-bifurcated:
+
+> eliminate even and odd cofactor-mirrored certificates separately, with
+> their own A0 cofactor colors, fully colored ladder envelopes, and Pell
+> synchronization equations.
+
+This corrected form is weaker than the overstrong universal \(e\equiv0\bmod4\)
+claim, but it is mathematically exact and gives a genuine structural split.

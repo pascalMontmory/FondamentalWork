@@ -2991,7 +2991,7 @@ Added
   \texttt{Math/conjecture/legendre/legendre\_initial\_A0\_cofactor\_mirror.md}.
 \]
 
-This is the first closure-oriented use of the complementary factor.  For A0,
+This is a corrected closure-oriented use of the complementary factor.  For A0,
 \[
   A^2+x^2=(A-r)(A+r+e).
 \]
@@ -3016,29 +3016,56 @@ in the initial cluster.  Therefore the complementary factor satisfies
 Subtracting the two factors gives
 \[
 \boxed{
-  e\equiv0\pmod4.
+  2r+e\equiv0\pmod4.
 }
 \]
 
+This is the correct mirror congruence.  Since
+\[
+  A-r\equiv1\pmod4,
+\]
+one has
+\[
+  r\equiv A-1\pmod4.
+\]
+Therefore the consequence depends on the parity of \(m\).
+
+If \(m\) is even, then \(A\) is even and \(r\) is odd.  Thus
+\[
+  e\equiv2\pmod4.
+\]
 Combined with the mod-\(6\) quotient lattice
 \[
   \mathrm{A0}:\quad e\equiv2,4\pmod6,
 \]
-this sharpens A0 to
+this gives
 \[
 \boxed{
-  \mathrm{A0}:\quad e\equiv8,4\pmod{12}.
+  m\text{ even},\ \mathrm{A0}:\quad e\equiv2,10\pmod{12}.
 }
 \]
 
-Thus the A0 color is lifted from
+If \(m\) is odd, then \(A\) is odd and \(r\) is even.  Thus
+\[
+  e\equiv0\pmod4,
+\]
+and hence
+\[
+\boxed{
+  m\text{ odd},\ \mathrm{A0}:\quad e\equiv4,8\pmod{12}.
+}
+\]
+
+Thus the A0 color is parity-bifurcated from
 \[
   \chi\in\{2,4\}\pmod6
 \]
 to
 \[
 \boxed{
-  \gamma\in\{4,8\}\pmod{12}.
+  \gamma\in\{2,10\}\pmod{12}\quad(m\text{ even}),
+  \qquad
+  \gamma\in\{4,8\}\pmod{12}\quad(m\text{ odd}).
 }
 \]
 
@@ -3056,15 +3083,24 @@ one now has
 }
 \]
 
-The four A0 quotient minima are therefore
+For even \(m\), the four A0 quotient minima are
+\[
+  2,10,14,22,
+\]
+and the global quotient tuple satisfies
+\[
+\boxed{
+  e_{(1)},\dots,e_{(8)}
+  \ge
+  2,6,10,12,14,18,22,24.
+}
+\]
+
+For odd \(m\), the four A0 quotient minima are
 \[
   4,8,16,20,
 \]
-while A1 remains
-\[
-  6,12,18,24.
-\]
-The global quotient tuple satisfies
+and the global quotient tuple satisfies
 \[
 \boxed{
   e_{(1)},\dots,e_{(8)}
@@ -3073,20 +3109,128 @@ The global quotient tuple satisfies
 }
 \]
 
-This removes \(e=2\) and \(e=10\) from the clean strong-gate quotient
-skeleton.  The cofactor-mirrored bound is
+Thus the cofactor mirror does not universally remove \(e=2\).  It instead
+splits the clean strong-gate quotient skeleton into even and odd branches.
+The corrected cofactor-mirrored bound is
 \[
 \boxed{
-  e_i\ge E_i^\ast(q,\gamma),
+  e_i\ge E_i^\parity(q,\gamma),
 }
 \]
 and hence
 \[
 \boxed{
-  r_i\ge \mathcal B_{E_i^\ast(q,\gamma)}(A).
+  r_i\ge \mathcal B_{E_i^\parity(q,\gamma)}(A).
 }
 \]
 
 This is a genuine closure path: it attacks both centered factors, not just
-the small prime label, and it gives a sharper certificate family to eliminate
-with the fully colored ladder and Pell synchronization equations.
+the small prime label, but it must be handled in two parity branches with
+their own fully colored ladder and Pell synchronization equations.
+
+## Initial A1 cofactor mirror
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A1\_cofactor\_mirror.md}.
+\]
+
+This is the strongest cofactor-mirror gain so far.  For A1,
+\[
+  A^2+y^2+1=(A-r)(A+r+e).
+\]
+Let
+\[
+  p=A-r,\qquad Q=A+r+e.
+\]
+Then
+\[
+  Q-p=2r+e.
+\]
+
+If \(m\) is even, then \(A\) and the A1 coordinate \(y\) are even, so
+\[
+  A^2+y^2+1\equiv1\pmod4.
+\]
+Thus \(Q\equiv p\pmod4\), hence \(2r+e\equiv0\pmod4\).  Since \(r\) is odd,
+\[
+  e\equiv2\pmod4.
+\]
+
+If \(m\) is odd, then \(A\) and \(y\) are odd, so
+\[
+  A^2+y^2+1\equiv3\pmod4.
+\]
+The two odd factors have opposite classes modulo \(4\), hence
+\[
+  2r+e\equiv2\pmod4.
+\]
+Since \(r\) is even, again
+\[
+  e\equiv2\pmod4.
+\]
+
+Therefore A1 has the uniform cofactor mirror
+\[
+\boxed{
+  \mathrm{A1}:\quad e\equiv2\pmod4.
+}
+\]
+
+Together with the mod-\(6\) quotient lattice
+\[
+  \mathrm{A1}:\quad e\equiv0\pmod6,
+\]
+this gives
+\[
+\boxed{
+  \mathrm{A1}:\quad e\equiv6\pmod{12}.
+}
+\]
+
+So the four A1 quotient minima are no longer
+\[
+  6,12,18,24,
+\]
+but
+\[
+\boxed{
+  6,18,30,42.
+}
+\]
+
+Combining with the corrected A0 cofactor mirror gives the parity-bifurcated
+cofactor quotient skeletons
+\[
+\boxed{
+  M^{\mathrm{even},\mathrm{cof}}
+  =
+  (2,6,10,14,18,22,30,42),
+}
+\]
+and
+\[
+\boxed{
+  M^{\mathrm{odd},\mathrm{cof}}
+  =
+  (4,6,8,16,18,20,30,42).
+}
+\]
+
+Thus
+\[
+  e_{(8)}\ge42,
+\]
+so the largest-rank distance barrier is asymptotic to
+\[
+  \sqrt{42A}.
+\]
+At least one clean strong-gate label must lie below approximately
+\[
+  A-\sqrt{42A}.
+\]
+
+This is the first quotient skeleton rigid enough to be a plausible closure
+mechanism: eliminate the even and odd cofactor-mirrored certificates with
+A1 restricted to \(6\bmod12\), together with colored ladders and Pell
+synchronization.

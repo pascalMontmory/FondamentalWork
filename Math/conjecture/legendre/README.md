@@ -141,10 +141,14 @@ Main notes:
   layer ranks, giving offset-specific lower bounds
   \(e_i\ge E_i(q,\chi)\), stronger than the global rank barrier alone.
 - `legendre_initial_A0_cofactor_mirror.md`: A0 complementary-factor
-  restriction; since \(A^2+x^2\equiv1\pmod4\) and the small A0 label is
-  \(1\bmod4\), the large factor is also \(1\bmod4\), hence A0 quotients
-  satisfy \(e\equiv0\pmod4\).  Combined with the mod-\(6\) lattice this gives
-  \(e\equiv4,8\pmod{12}\).
+  restriction; since \(A^2+x^2\equiv1\pmod4\) and both centered factors are
+  \(1\bmod4\), one gets \(2r+e\equiv0\pmod4\), not \(e\equiv0\pmod4\).
+  This splits A0 quotients by parity of \(m\): \(e\equiv2,10\pmod{12}\) for
+  even \(m\), and \(e\equiv4,8\pmod{12}\) for odd \(m\).
+- `legendre_initial_A1_cofactor_mirror.md`: A1 complementary-factor
+  restriction; in both parity branches, A1 gives \(e\equiv2\pmod4\).
+  Combined with \(e\equiv0\pmod6\), this forces all A1 quotients into the
+  single class \(e\equiv6\pmod{12}\), with minima \(6,18,30,42\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -320,12 +324,43 @@ A0 has an additional cofactor mirror: in
 \[
   A^2+x^2=(A-r)(A+r+e),
 \]
-both factors are \(1\bmod4\), so \(e\equiv0\pmod4\).  Therefore A0 quotients
-are actually \(4\) or \(8\bmod12\).  The lifted global quotient minima become
+both factors are \(1\bmod4\), so
+\[
+  2r+e\equiv0\pmod4.
+\]
+This is parity-sensitive.  If \(m\) is even, A0 quotients are
+\[
+  2\text{ or }10\bmod12,
+\]
+and the quotient minima are
+\[
+  2,6,10,12,14,18,22,24.
+\]
+If \(m\) is odd, A0 quotients are
+\[
+  4\text{ or }8\bmod12,
+\]
+and the quotient minima are
 \[
   4,6,8,12,16,18,20,24,
 \]
-and A0 same-color ranks advance by \(12\).
+with A0 same-color ranks advancing by \(12\) in both parity branches.
+A1 also has a cofactor mirror.  It gives uniformly
+\[
+  e\equiv2\pmod4,
+\]
+and since A1 already has \(e\equiv0\pmod6\), every A1 quotient satisfies
+\[
+  e\equiv6\pmod{12}.
+\]
+Thus A1 minima become \(6,18,30,42\), and the cofactor quotient skeletons
+are
+\[
+  M^{\mathrm{even},\mathrm{cof}}=(2,6,10,14,18,22,30,42),
+\]
+\[
+  M^{\mathrm{odd},\mathrm{cof}}=(4,6,8,16,18,20,30,42).
+\]
 
 Computational scripts live in `tools/`.
 
