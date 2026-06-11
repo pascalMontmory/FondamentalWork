@@ -4060,3 +4060,85 @@ quotient game.  It also exposes the real missing theorem:
 Once such a cap exists, the remaining modular matching certificates become a
 finite proof object.  Without such a cap, the modular eliminations may climb
 forever and cannot by themselves close Legendre.
+
+## \(m\equiv3\pmod4\) rank weights 2--4 closed
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_rank\_weight\_2\_4\_closure.md}.
+\]
+
+The first escape layer was weight \(1\).  The new note closes the next three
+rank weights.
+
+Use rank coordinates
+\[
+  (a,b,c)
+\]
+for the three layer raises:
+
+- \(a\): A0 \(x^2\equiv4\pmod{16}\);
+- \(b\): A0 \(x^2\equiv0\pmod{16}\);
+- \(c\): A1.
+
+The weight is
+\[
+  w=a+b+c.
+\]
+
+The exact result is:
+\[
+\boxed{
+  w=2,3,4
+  \quad\Longrightarrow\quad
+  \text{no integral point in the hard }m\equiv3\pmod4\text{ Pell system.}
+}
+\]
+
+The certificates use only the finite local sets
+\[
+  M_\ell(c,f)
+  =
+  \{m\bmod\ell:\ f^2+6mf-c\text{ is a square modulo }\ell\},
+\]
+with small primes
+\[
+  \ell\in\{5,7,11,13,17\}.
+\]
+
+Thus, combining the previous notes:
+\[
+\boxed{
+  w=0,1,2,3,4
+  \quad\Longrightarrow\quad
+  \text{the rank family is impossible.}
+}
+\]
+
+Any remaining hard-branch clean-gate counterexample must therefore satisfy
+\[
+\boxed{
+  a+b+c\ge5.
+}
+\]
+
+This sharpens the closure problem.  It is no longer enough to say "find a
+rank cap".  The exact missing theorem is one of:
+
+\[
+\boxed{
+  a+b+c\le4
+  \quad\text{for every hard-branch clean-gate counterexample;}
+}
+\]
+
+or
+
+\[
+\boxed{
+  \text{the finite modular automaton kills every rank triple }(a,b,c).
+}
+\]
+
+The second path is the more promising nonstandard route: prove periodic
+modular killing in the rank variables, avoiding an analytic quotient bound.

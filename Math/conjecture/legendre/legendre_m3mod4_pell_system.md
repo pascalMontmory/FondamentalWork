@@ -450,3 +450,49 @@ problem.  It is a rank problem:
 With such a cap, the remaining modular matching eliminations become a finite
 certificate.  Without it, the method can still climb indefinitely without
 closing Legendre.
+
+## 12. Rank weights 2--4 killed
+
+The rank game can be organized by three nonnegative integers
+\[
+  (a,b,c)
+\]
+measuring the raises in:
+
+1. A0 \(x^2\equiv4\pmod{16}\);
+2. A0 \(x^2\equiv0\pmod{16}\);
+3. A1.
+
+The weight is
+\[
+  w=a+b+c.
+\]
+
+Weight \(0\) is the lifted boundary.  Weight \(1\) is the first escape
+layer.  Both are dead by the previous notes.
+
+The note
+\[
+  \texttt{legendre\_m3mod4\_rank\_weight\_2\_4\_closure.md}
+\]
+closes the next three layers:
+\[
+\boxed{
+  w=2,3,4
+  \quad\Longrightarrow\quad
+  \text{no integral point.}
+}
+\]
+
+Therefore any remaining \(m\equiv3\pmod4\) clean-gate counterexample must
+have
+\[
+\boxed{
+  a+b+c\ge5.
+}
+\]
+
+The most promising closure route is now not an analytic estimate on one
+quotient.  It is a periodic modular-killing theorem for the rank automaton:
+prove that every triple \((a,b,c)\) is killed by a finite set of small
+primes, or prove an independent rank cap \(a+b+c\le4\).

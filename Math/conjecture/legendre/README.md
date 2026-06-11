@@ -210,6 +210,11 @@ Main notes:
   families \(4\leadsto10\), \(16\leadsto22\), and \(45\leadsto57\) are killed
   by small-prime congruence certificates, reducing the hard branch to a
   rank-cap problem.
+- `legendre_m3mod4_rank_weight_2_4_closure.md`: rank-game closure of the next
+  three layers.  With rank coordinates \((a,b,c)\), all families of weights
+  \(a+b+c=2,3,4\) are killed by finite congruence certificates using
+  \(5,7,11,13,17\).  Any remaining hard-branch counterexample must have
+  \(a+b+c\ge5\), or else the branch closes.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -478,6 +483,13 @@ modulo \(5\), while \(4\leadsto10\) and \(45\leadsto57\) die by
 \((5,7,11)\) certificates.  The remaining closure mechanism must supply an
 a priori rank cap for the hard quotient game; then the modular matching
 certificates become a finite proof object.
+The next three rank weights are also closed: all families with
+\[
+  a+b+c=2,3,4
+\]
+die by finite congruence certificates.  The sharp closure fork is now:
+prove \(a+b+c\le4\) for any hard-branch counterexample, or prove that the
+same modular automaton kills all rank triples periodically.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods
