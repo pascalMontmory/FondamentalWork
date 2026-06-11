@@ -5252,3 +5252,62 @@ and
 Thus the non-\(3\) split primes \(3\bmod4\) must compensate the \(3\)-adic
 parity of the lower and upper A1 factors.  This gives a new exact descent
 target inside the A1 same-field pair.
+
+## A0 dual boundary killed modulo 23
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_dual\_boundary\_mod23.md}.
+\]
+
+After the A0 dual collapses, the first A0 structural boundary is:
+\[
+  c=4,100\quad\text{receive}\quad f=2,10,
+\]
+and
+\[
+  c=16,64\quad\text{receive}\quad f=16,8,
+\]
+with \(f=16\) forced onto \(c=16\).
+
+Only two assignments remain:
+\[
+\begin{array}{c|cc}
+  \text{case} & c=4 & c=100\\
+  \hline
+  I & 2 & 10\\
+  II & 10 & 2.
+\end{array}
+\]
+
+Modulo \(23\), define
+\[
+  M_{23}(c,f)
+  =
+  \{m\bmod23:\ f^2+6mf-c\text{ is a square modulo }23\}.
+\]
+
+Case I dies because
+\[
+  M_{23}(4,2)\cap M_{23}(100,10)=\{0\},
+\]
+but
+\[
+  0\notin M_{23}(16,16).
+\]
+
+Case II dies because
+\[
+  M_{23}(4,10)
+  \cap M_{23}(100,2)
+  \cap M_{23}(16,16)
+  =
+  \{10,17\},
+\]
+but
+\[
+  \{10,17\}\cap M_{23}(64,8)=\varnothing.
+\]
+
+Therefore the whole new A0 dual structural boundary has no integral point.
+Any remaining hard-branch counterexample must leave this A0 boundary.

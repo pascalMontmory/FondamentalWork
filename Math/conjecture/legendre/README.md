@@ -296,6 +296,10 @@ Main notes:
   \(f_c\equiv1\bmod4\) and \(F_c=f_c+6m\equiv3\bmod4\), the two factors
   split in the same quadratic field but have opposite parity for the number
   of prime divisors \(q\equiv3\bmod4\).
+- `legendre_m3mod4_A0_dual_boundary_mod23.md`: exact modulo-\(23\)
+  certificate killing the new A0 structural boundary after the dual
+  collapses.  With \(c=16\mapsto16\), \(c=64\mapsto8\), both possible
+  assignments \(c=4,100\mapsto2,10\) have empty \(m\bmod23\) intersection.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

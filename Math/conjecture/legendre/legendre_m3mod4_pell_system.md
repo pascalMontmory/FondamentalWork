@@ -1489,3 +1489,60 @@ This is recorded in
 
 The A1 descent problem is now a same-field split-pair problem with opposite
 sign parity across the common gap \(L\).
+
+## 29. A0 dual boundary killed modulo 23
+
+After the A0 dual collapses, the first A0 structural boundary is:
+\[
+  c=4,100:\quad f=2,10,
+\]
+and
+\[
+  c=16,64:\quad f=16,8,
+\]
+with \(f=16\) forced on \(c=16\).
+
+There are only two assignments for \(c=4,100\):
+\[
+\begin{array}{c|cc}
+  \text{case} & c=4 & c=100\\
+  \hline
+  I & 2 & 10\\
+  II & 10 & 2.
+\end{array}
+\]
+
+Both are killed modulo \(23\).
+
+For
+\[
+  M_{23}(c,f)
+  =
+  \{m\bmod23:\ f^2+6mf-c\text{ is a square modulo }23\},
+\]
+case I satisfies
+\[
+  M_{23}(4,2)\cap M_{23}(100,10)=\{0\},
+  \qquad
+  0\notin M_{23}(16,16).
+\]
+
+Case II satisfies
+\[
+  M_{23}(4,10)
+  \cap M_{23}(100,2)
+  \cap M_{23}(16,16)
+  =
+  \{10,17\},
+\]
+and
+\[
+  \{10,17\}\cap M_{23}(64,8)=\varnothing.
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_A0\_dual\_boundary\_mod23.md}.
+\]
+
+Therefore the new A0 dual boundary has no integral point.
