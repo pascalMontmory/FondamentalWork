@@ -1144,6 +1144,66 @@ The next possible nonstandard attack is to study the product family
 \]
 using the exact fact that on coprime blocks the two factors are coprime.
 
+## Product attack for coprime A-blocks
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_phi\_product\_attack.md}.
+\]
+
+This develops the product route
+\[
+  \Phi_m(q)=G_qU_q,
+\]
+where
+\[
+  G_q=9m^2+t_0(q)^2,
+  \qquad
+  U_q=9m^2+t_1(q)^2+1.
+\]
+
+There are two orientations:
+
+- if \(a=3q+1\equiv m\pmod2\), then
+  \[
+    \Phi_m^{(I)}(q)
+    =
+    (9m^2+(3q+2)^2)(9m^2+(3q+1)^2+1);
+  \]
+- if \(a\not\equiv m\pmod2\), then
+  \[
+    \Phi_m^{(II)}(q)
+    =
+    (9m^2+(3q+1)^2)(9m^2+(3q+2)^2+1).
+  \]
+
+On coprime blocks,
+\[
+  \gcd(G_q,U_q)=1.
+\]
+The two factors also have the exact small difference
+\[
+  |G_q-U_q|=2t_1(q).
+\]
+
+The product route gives useful structure:
+
+1. the two factors are coprime;
+2. their difference is a small linear term;
+3. their small prime divisors must come from different quadratic families.
+
+However, the route does not close by a simple fixed-divisor argument.  The
+product congruence
+\[
+  \Phi_m(q)\equiv0\pmod{p_0p_1}
+\]
+is exactly the pair-cover condition already isolated.
+
+Thus this is a failed shortcut but a useful reformulation.  The remaining
+target is a transversality lemma: not every coprime complete block can carry
+two transverse small-prime certificates satisfying the Gaussian and A1
+restrictions.
+
 ## Primitive double-cover measurements
 
 Added
