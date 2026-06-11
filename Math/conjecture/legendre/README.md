@@ -221,6 +221,11 @@ Main notes:
   \(0\le a+b+c\le30\) are killed by the primes \(5,7,11,13,17\) or by the
   modulo-\(7\) zero filter.  Any remaining hard-branch counterexample must
   have \(a+b+c\ge31\).
+- `legendre_m3mod4_periodic_automaton_obstruction.md`: exact obstruction to
+  the first periodic closure attempt.  The primes \(5,7,11,13,17\) do not
+  kill the full rank automaton: an explicit assignment pattern survives at
+  \(m\equiv14325\pmod{85085}\).  The next target is to kill that survivor by
+  Pell synchronization or by adding a genuinely necessary modulus.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -499,6 +504,10 @@ same modular automaton kills all rank triples periodically.
 The finite certificate has since been pushed to weight \(30\).  Thus the
 rank-cap route would now need only \(a+b+c\le30\), while the more natural
 route is a periodicity or descent theorem for the modular automaton.
+The first periodicity attempt with only \(5,7,11,13,17\) is false: one
+periodic assignment pattern survives.  The closure target has therefore
+shifted from more weight climbing to killing that survivor pattern by the
+pairwise Pell synchronization equations.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

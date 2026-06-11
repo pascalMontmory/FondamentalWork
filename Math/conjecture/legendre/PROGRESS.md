@@ -4202,3 +4202,46 @@ closure problem is now sharply reduced to one of:
 2. prove periodic modular killing for all rank triples;
 3. prove a descent from any surviving weight \(>30\) to a smaller surviving
    weight.
+
+## First periodic automaton closure attempt fails
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_periodic\_automaton\_obstruction.md}.
+\]
+
+The five-prime automaton
+\[
+  \{5,7,11,13,17\}
+\]
+does not close the full rank game by periodicity.
+
+There is an explicit surviving assignment pattern:
+\[
+\begin{array}{c|cccccccc}
+  \text{offset} & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  \text{slot} & 2 & a & b & 8 & c & 21 & 33 & 9.
+\end{array}
+\]
+
+It survives the five-prime local-square automaton in the center class
+\[
+\boxed{
+  m\equiv14325\pmod{85085}.
+}
+\]
+
+This does not affect the finite certificate up to weight \(30\).  It only
+rules out the naive extrapolation that the same five primes kill every rank
+triple periodically.
+
+The next closure target is now sharper:
+
+\[
+\boxed{
+  \text{kill this survivor pattern by Pell synchronization,}
+}
+\]
+
+or else add a new modulus that is genuinely forced by the survivor pattern.

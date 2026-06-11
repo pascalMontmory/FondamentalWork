@@ -537,3 +537,37 @@ This makes the closure problem sharper:
   analytic rank cap;
 - a descent theorem from weight \(>30\) to a smaller surviving weight would
   also close it, since no smaller surviving weight exists.
+
+## 14. Five-prime periodicity obstruction
+
+The first natural periodicity theorem is false.
+
+Using only
+\[
+  5,\ 7,\ 11,\ 13,\ 17,
+\]
+the full periodic rank automaton has a surviving pattern:
+\[
+\begin{array}{c|cccccccc}
+  \text{offset} & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f\text{-slot} & 2 & a & b & 8 & c & 21 & 33 & 9.
+\end{array}
+\]
+
+It survives in the center residue class
+\[
+  m\equiv14325\pmod{85085}.
+\]
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_periodic\_automaton\_obstruction.md}.
+\]
+
+Therefore the route "weights \(0..30\) die, so the five-prime automaton is
+periodically closed" is invalid.
+
+The next target is to kill this explicit survivor pattern by using the
+pairwise Pell synchronization equations, or to identify the next modulus
+that kills it uniformly.
