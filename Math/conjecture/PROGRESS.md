@@ -1478,3 +1478,34 @@ There are no all-zero fibers in either test.
 
 This is the desired local separation. The next reconstruction should target
 the regular-gcd factor, not the raw live factor.
+
+### Endpoint \(d-6\): regular \(t\)-factor comparison
+
+Added the regular-factor comparator:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_factor\_compare.py}.
+\]
+It uses the local classifier and keeps only the `regular_gcd` fibers, removing
+saturated, all-zero, and degree-drop artifacts before comparing primes.
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the first regular factors have:
+\[
+\begin{array}{c|c|c}
+  p & \deg T^{\mathrm{regular}}_p & \text{regular }t\text{-roots} \\
+  \hline
+  101 & 7 & \{10,22,25,26,30,38,89\} \\
+  103 & 12 & \{4,9,12,17,20,24,25,32,50,51,58,89\} \\
+  107 & 6 & \{4,39,47,57,59,95\}.
+\end{array}
+\]
+In all three cases, every regular gcd has degree \(1\) in \(a\).
+
+The regular degree is not stable across these primes. Therefore the current
+data does not support a naive lift of a single stable regular factor in
+\(\mathbb Z[t]\). The local obstruction is sharper, but the next step must
+identify which primes are bad for the local model or add further algebraic
+constraints on the regular fibers.

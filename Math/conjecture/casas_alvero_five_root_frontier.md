@@ -3211,3 +3211,34 @@ while degree-drop fibers are
 Thus the target has been sharpened: reconstruct the regular local factor in
 \(t\), not the raw live factor that mixes regular gcds with specialization
 artifacts.
+
+## 51. Endpoint multiplicity \(d-6\): comparing regular \(t\)-factors
+
+The comparison script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_factor\_compare.py}
+\]
+keeps only regular positive-gcd fibers and discards saturated, all-zero, and
+degree-drop fibers before comparing primes.
+
+For the representative local class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the regular factors have:
+\[
+\begin{array}{c|c|c}
+  p & \deg T^{\mathrm{regular}}_p & \text{regular }t\text{-roots} \\
+  \hline
+  101 & 7 & \{10,22,25,26,30,38,89\} \\
+  103 & 12 & \{4,9,12,17,20,24,25,32,50,51,58,89\} \\
+  107 & 6 & \{4,39,47,57,59,95\}.
+\end{array}
+\]
+Each regular fiber has gcd degree \(1\) in \(a\).
+
+The regular degree is therefore not stable across these primes. This rules
+out the simplest reconstruction path where the observed regular factors are
+reductions of one stable integer factor in \(t\). The remaining local problem
+is subtler: either identify bad primes for the class model, or add another
+algebraic condition that separates the regular degree-one fibers themselves.
