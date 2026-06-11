@@ -1,4 +1,4 @@
-# \(m\equiv3\pmod4\) Arbitrary Prefix-Rank Certificate
+# \(m\equiv3\pmod4\) Arbitrary Prefix-Rank Certificate Through \(N=10\)
 
 The periodic boundary automaton is closed, but a hard-branch counterexample
 could still skip ranks in a way that is not represented by the boundary
@@ -64,6 +64,10 @@ The modulo \(7\) zero-quotient filter is also imposed:
 \]
 
 ## 2. Results
+
+The verifier was optimized by precomputing layer masks.  This allows the
+\(N=10\) certificate below without changing the mathematical certificate
+language.
 
 ### Prefix \(N=7\)
 
@@ -156,6 +160,37 @@ and:
   \texttt{certificate: all arbitrary assignments from first 9 ranks closed}.
 \]
 
+### Prefix \(N=10\)
+
+\[
+  40\,824\,000
+\]
+ordered assignments are checked.
+
+The verifier returns:
+
+\[
+\begin{array}{c|c}
+  \text{killer} & \#\\
+  \hline
+  5 & 18371658\\
+  7 & 1759247\\
+  11 & 177621\\
+  13 & 11317\\
+  17 & 1259\\
+  19 & 143\\
+  23 & 20\\
+  29 & 8\\
+  83 & 7\\
+  \mathrm{zero} & 20502720
+\end{array}
+\]
+
+and:
+\[
+  \texttt{certificate: all arbitrary assignments from first 10 ranks closed}.
+\]
+
 ## 3. Consequence
 
 This is stronger than the boundary automaton closure.
@@ -173,12 +208,12 @@ Thus any remaining hard \(m\equiv3\pmod4\) clean-gate counterexample must
 use at least one layer rank
 \[
 \boxed{
-  \ge9.
+  \ge10.
 }
 \]
 
 Equivalently, after sorting within layers, it must escape beyond the first
-nine admissible values in at least one layer.
+ten admissible values in at least one layer.
 
 ## 4. New closure target
 

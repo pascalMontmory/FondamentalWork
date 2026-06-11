@@ -163,42 +163,45 @@ def verify_prefix_ranks(prefix: int) -> int:
     a00 = a00[:prefix]
     a1 = a1[:prefix]
 
-    all_values = set(a04 + a00 + a1)
-    row_masks = {
-        (offset, f, p): row_mask(offset, f, p)
-        for offset in A04_OFFSETS + A00_OFFSETS + A1_OFFSETS
-        for f in all_values
-        for p in PREFIX_PRIMES
-    }
+    def layer_assignments(offsets: tuple[int, ...], values: list[int]):
+        rows = []
+        for fs in permutations(values, len(offsets)):
+            if any(f % 7 == 0 and offset not in (26, 122) for offset, f in zip(offsets, fs)):
+                rows.append(("zero", None))
+                continue
+            masks = []
+            for p in PREFIX_PRIMES:
+                common = (1 << p) - 1
+                for offset, f in zip(offsets, fs):
+                    common &= row_mask(offset, f, p)
+                masks.append(common)
+            rows.append(("ok", tuple(masks)))
+        return rows
+
+    layer04 = layer_assignments(A04_OFFSETS, a04)
+    layer00 = layer_assignments(A00_OFFSETS, a00)
+    layer1 = layer_assignments(A1_OFFSETS, a1)
 
     killer_counts: dict[str, int] = {str(p): 0 for p in PREFIX_PRIMES}
     killer_counts["zero"] = 0
     total = 0
 
-    for p04 in permutations(a04, 2):
-        for p00 in permutations(a00, 2):
-            for p1 in permutations(a1, 4):
+    for state04, masks04 in layer04:
+        for state00, masks00 in layer00:
+            zero_prefix = state04 == "zero" or state00 == "zero"
+            for state1, masks1 in layer1:
                 total += 1
-                ass = (
-                    tuple(zip(A04_OFFSETS, p04))
-                    + tuple(zip(A00_OFFSETS, p00))
-                    + tuple(zip(A1_OFFSETS, p1))
-                )
-                if any(f % 7 == 0 and offset not in (26, 122) for offset, f in ass):
+                if zero_prefix or state1 == "zero":
                     killer_counts["zero"] += 1
                     continue
 
-                for p in PREFIX_PRIMES:
-                    common = (1 << p) - 1
-                    for offset, f in ass:
-                        common &= row_masks[(offset, f, p)]
-                        if common == 0:
-                            break
+                for idx, p in enumerate(PREFIX_PRIMES):
+                    common = masks04[idx] & masks00[idx] & masks1[idx]
                     if common == 0:
                         killer_counts[str(p)] += 1
                         break
                 else:
-                    print("OPEN", ass)
+                    print("OPEN prefix-rank assignment")
                     return 1
 
     ordered = " ".join(

@@ -633,7 +633,8 @@ The exact results are:
   \hline
   7 & 1\,481\,760 & \text{closed}\\
   8 & 5\,268\,480 & \text{closed}\\
-  9 & 15\,676\,416 & \text{closed}.
+  9 & 15\,676\,416 & \text{closed}\\
+  10 & 40\,824\,000 & \text{closed}.
 \end{array}
 \]
 
@@ -646,7 +647,7 @@ Therefore any remaining hard-branch counterexample must use at least one
 rank
 \[
 \boxed{
-  \ge9
+  \ge10
 }
 \]
 inside one of the three layers.

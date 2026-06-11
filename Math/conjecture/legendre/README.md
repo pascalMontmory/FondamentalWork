@@ -233,9 +233,9 @@ Main notes:
 - `legendre_m3mod4_arbitrary_prefix_rank_certificate.md`: stronger
   skipped-rank certificate.  The verifier mode `--prefix-ranks N` checks all
   arbitrary ordered assignments from the first \(N\) layer values; all
-  assignments for \(N=7,8,9\) are killed by
+  assignments for \(N=7,8,9,10\) are killed by
   \(\{5,7,11,13,17,19,23,29,83\}\).  For \(N=9\), this is 15,676,416
-  assignments.
+  assignments; for \(N=10\), this is 40,824,000 assignments.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -527,13 +527,14 @@ The remaining hard-branch gap is no longer this boundary automaton; it is
 the descent/reduction from arbitrary skipped quotient ranks to the boundary
 rank model.
 The skipped-rank gap is now partially attacked directly: all arbitrary
-ordered assignments using the first nine admissible values of each layer are
+ordered assignments using the first ten admissible values of each layer are
 closed by
 \[
   \{5,7,11,13,17,19,23,29,83\}.
 \]
 Any remaining hard-branch counterexample must escape beyond rank \(8\) in at
-least one layer.
+least one layer, and in fact beyond rank \(9\) after the \(N=10\)
+certificate.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

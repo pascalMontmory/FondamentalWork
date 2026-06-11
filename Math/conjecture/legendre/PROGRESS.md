@@ -4339,7 +4339,8 @@ The exact certificates obtained:
   \hline
   7 & 1\,481\,760 & \text{closed}\\
   8 & 5\,268\,480 & \text{closed}\\
-  9 & 15\,676\,416 & \text{closed}
+  9 & 15\,676\,416 & \text{closed}\\
+  10 & 40\,824\,000 & \text{closed}
 \end{array}
 \]
 
@@ -4350,18 +4351,18 @@ The prime set used is
 }
 \]
 
-For \(N=9\), the verifier returns:
+For \(N=10\), the verifier returns:
 \[
-  \texttt{certificate: all arbitrary assignments from first 9 ranks closed}.
+  \texttt{certificate: all arbitrary assignments from first 10 ranks closed}.
 \]
 
 Therefore any remaining hard \(m\equiv3\pmod4\) clean-gate counterexample
 must use at least one layer rank
 \[
 \boxed{
-  \ge9.
+  \ge10.
 }
 \]
 
 This is stronger than the boundary automaton closure: skipped-rank
-configurations are now directly eliminated through the first nine values.
+configurations are now directly eliminated through the first ten values.
