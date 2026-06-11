@@ -300,6 +300,11 @@ Main notes:
   certificate killing the new A0 structural boundary after the dual
   collapses.  With \(c=16\mapsto16\), \(c=64\mapsto8\), both possible
   assignments \(c=4,100\mapsto2,10\) have empty \(m\bmod23\) intersection.
+- `legendre_m3mod4_A0_dual_prefix2_certificate.md`: exact certificate
+  killing all six pairwise-distinct assignments from the first two
+  structural A0 lower quotients after the dual collapses.  Any remaining
+  hard-branch point must use \(f\ge26\) on \(c=4,100\), or \(f\ge40\) on
+  \(c=16\) or \(c=64\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

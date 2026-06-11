@@ -5311,3 +5311,50 @@ but
 
 Therefore the whole new A0 dual structural boundary has no integral point.
 Any remaining hard-branch counterexample must leave this A0 boundary.
+
+## A0 dual two-value prefix certificate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_A0\_dual\_prefix2\_certificate.md}.
+\]
+
+This closes the complete A0 structural prefix obtained by taking the first
+two available lower quotients for each A0 offset after the dual collapses:
+\[
+\begin{array}{c|c}
+  c & \text{first two values}\\
+  \hline
+  4 & 2,\ 10\\
+  100 & 2,\ 10\\
+  16 & 8,\ 16\\
+  64 & 8,\ 32.
+\end{array}
+\]
+
+There are exactly six pairwise-distinct assignments.  They are killed by
+finite congruence certificates:
+\[
+\begin{array}{c|c|c|c|c}
+  c=4 & c=100 & c=16 & c=64 & \text{killing prime}\\
+  \hline
+  2 & 10 & 8  & 32 & 7\\
+  2 & 10 & 16 & 8  & 13\\
+  2 & 10 & 16 & 32 & 13\\
+  10 & 2 & 8  & 32 & 5\\
+  10 & 2 & 16 & 8  & 23\\
+  10 & 2 & 16 & 32 & 17.
+\end{array}
+\]
+
+Thus any remaining hard-branch counterexample must use at least one A0
+lower quotient beyond this prefix:
+\[
+\boxed{
+  c=4,100:\ f\ge26
+  \quad\text{or}\quad
+  c=16:\ f\ge40
+  \quad\text{or}\quad
+  c=64:\ f\ge40.
+}
+\]
