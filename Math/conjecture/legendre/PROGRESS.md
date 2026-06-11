@@ -2316,3 +2316,56 @@ Equivalently,
 
 Thus the A0 layer must satisfy the Gaussian divisor equations inside one
 fixed residue class modulo \(4\), with a spacing-refined lower-tail profile.
+
+## Initial A1 spacing envelope
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A1\_spacing\_envelope.md}.
+\]
+
+Let the A1 labels be sorted increasingly:
+\[
+  S_1<S_2<S_3<S_4.
+\]
+The same pigeonhole projection gives
+\[
+  S_j\le P_{j+4},
+\]
+and hence
+\[
+  S_j\le A-B_{5-j}(A).
+\]
+
+Writing
+\[
+  S_j=A-\sigma_j,
+\]
+the A1 labels are odd primes, so
+\[
+  \sigma_j\equiv A-1\pmod2.
+\]
+Since the four \(\sigma_j\) are distinct and congruent modulo \(2\),
+\[
+  \sigma_j\ge\sigma_\ell+2(\ell-j)
+  \qquad(1\le j<\ell\le4).
+\]
+
+Combining with the tail bounds gives
+\[
+\boxed{
+  \sigma_j\ge
+  F_j(A):=
+  \max_{j\le\ell\le4}
+  \left(B_{5-\ell}(A)+2(\ell-j)\right).
+}
+\]
+
+Thus the A1 layer must satisfy its own parity-spaced lower-tail envelope and
+the four divisor equations
+\[
+  A-\sigma_j\mid \sigma_j^2+y^2+1.
+\]
+
+The next exact obstruction is to interleave the A0 spacing envelope and A1
+spacing envelope under the cross-layer compatibility equations.

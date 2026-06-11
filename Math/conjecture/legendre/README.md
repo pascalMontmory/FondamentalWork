@@ -107,6 +107,9 @@ Main notes:
 - `legendre_initial_A0_spacing_envelope.md`: strengthened A0 lower-tail
   envelope using the fact that the four A0 distances are distinct and all
   congruent modulo \(4\), hence spaced by at least \(4\).
+- `legendre_initial_A1_spacing_envelope.md`: A1 lower-tail envelope using
+  odd-prime parity; the four A1 distances are congruent modulo \(2\), hence
+  spaced by at least \(2\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -196,6 +199,7 @@ Projecting onto A0 gives \(Q_j\le A-B_{5-j}(A)\) for the four labels
   \max_{j\le\ell\le4}
   \left(B_{5-\ell}(A)+4(\ell-j)\right).
 \]
+The A1 distances satisfy the analogous parity envelope with spacing \(2\).
 
 Computational scripts live in `tools/`.
 
