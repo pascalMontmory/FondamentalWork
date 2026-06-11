@@ -2983,3 +2983,110 @@ certificates with colored quotient-rank forcing, while preserving
   \operatorname{Inv}(q)\subseteq\operatorname{Inv}(s)
 \]
 and the pairwise Pell synchronization equations.
+
+## Initial A0 cofactor mirror
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A0\_cofactor\_mirror.md}.
+\]
+
+This is the first closure-oriented use of the complementary factor.  For A0,
+\[
+  A^2+x^2=(A-r)(A+r+e).
+\]
+The small factor
+\[
+  A-r
+\]
+is an A0 label, hence
+\[
+  A-r\equiv1\pmod4.
+\]
+Also
+\[
+  A^2+x^2\equiv1\pmod4
+\]
+in the initial cluster.  Therefore the complementary factor satisfies
+\[
+\boxed{
+  A+r+e\equiv1\pmod4.
+}
+\]
+Subtracting the two factors gives
+\[
+\boxed{
+  e\equiv0\pmod4.
+}
+\]
+
+Combined with the mod-\(6\) quotient lattice
+\[
+  \mathrm{A0}:\quad e\equiv2,4\pmod6,
+\]
+this sharpens A0 to
+\[
+\boxed{
+  \mathrm{A0}:\quad e\equiv8,4\pmod{12}.
+}
+\]
+
+Thus the A0 color is lifted from
+\[
+  \chi\in\{2,4\}\pmod6
+\]
+to
+\[
+\boxed{
+  \gamma\in\{4,8\}\pmod{12}.
+}
+\]
+
+For same-color A0 rank
+\[
+  \kappa_i
+  =
+  1+
+  \#\{j:\ j\text{ A0},\ \gamma_j=\gamma_i,\ q_j<q_i\},
+\]
+one now has
+\[
+\boxed{
+  e_i\ge \gamma_i+12(\kappa_i-1).
+}
+\]
+
+The four A0 quotient minima are therefore
+\[
+  4,8,16,20,
+\]
+while A1 remains
+\[
+  6,12,18,24.
+\]
+The global quotient tuple satisfies
+\[
+\boxed{
+  e_{(1)},\dots,e_{(8)}
+  \ge
+  4,6,8,12,16,18,20,24.
+}
+\]
+
+This removes \(e=2\) and \(e=10\) from the clean strong-gate quotient
+skeleton.  The cofactor-mirrored bound is
+\[
+\boxed{
+  e_i\ge E_i^\ast(q,\gamma),
+}
+\]
+and hence
+\[
+\boxed{
+  r_i\ge \mathcal B_{E_i^\ast(q,\gamma)}(A).
+}
+\]
+
+This is a genuine closure path: it attacks both centered factors, not just
+the small prime label, and it gives a sharper certificate family to eliminate
+with the fully colored ladder and Pell synchronization equations.
