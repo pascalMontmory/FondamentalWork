@@ -152,3 +152,41 @@ by square roots of \(-1\).
 
 The remaining task is to prove that this structured cover cannot be complete.
 
+## 7. Computational checkpoint: Lemma G is false as stated
+
+The first probe of Lemma G was implemented in
+\[
+  \texttt{Math/conjecture/legendre/tools/gaussian\_lemma\_g\_probe.py}.
+\]
+It tests the strict sufficient version: \(1\le t\le\lfloor\sqrt{2n}\rfloor\),
+\(\gcd(n,t)=1\), \(n,t\) of opposite parity, and no prime
+\[
+  p\equiv1\pmod4,\qquad p\le n+1
+\]
+dividing \(n^2+t^2\).
+
+The lemma fails already at \(n=12\).  Since
+\[
+  \lfloor\sqrt{24}\rfloor=4,
+\]
+the square offsets are \(t=1,2,3,4\).  The only primitive opposite-parity
+candidate is \(t=1\), and
+\[
+  12^2+1^2=145=5\cdot29.
+\]
+The remaining square offsets give
+\[
+  148,\quad153,\quad160,
+\]
+all composite.  Thus the Gaussian square-offset subfamily does not contain a
+prime in every Legendre interval.
+
+The route is still informative.  Up to \(100000\), the probe finds only \(33\)
+failures of the strict square-offset lemma, all already below \(4000\) in the
+current run.  This suggests replacing Lemma G by a weaker target:
+
+1. prove that square offsets work outside a finite or structured exceptional
+   set; then
+2. handle that exceptional set by a second offset family or by the full
+   residue-cover formulation.
+
