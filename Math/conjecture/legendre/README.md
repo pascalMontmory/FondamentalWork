@@ -97,6 +97,9 @@ Main notes:
 - `legendre_initial_rank_position_coupling.md`: exact band for the distance
   rank forced by placing quotient rank \(k\) at offset position \(i\), with
   the strongest case \(k=8\) forcing \(s_i\ge9-i\).
+- `legendre_initial_label_order_statistic_barrier.md`: global sorted-label
+  consequence of the quotient ranks; the \(j\)-th smallest prime label
+  satisfies \(P_j\le A-B_{9-j}(A)\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -169,6 +172,14 @@ The quotient ranks give stronger distance barriers:
 Combining quotient rank with order gives the rank-position band
 \[
   \max(1,k-i+1)\le s_i\le\min(8,8+k-i).
+\]
+Globally, if the prime labels are sorted
+\[
+  P_1<\cdots<P_8,
+\]
+then
+\[
+  P_j\le A-B_{9-j}(A).
 \]
 
 Computational scripts live in `tools/`.

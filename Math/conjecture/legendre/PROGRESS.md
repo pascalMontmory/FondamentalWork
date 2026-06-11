@@ -2158,3 +2158,58 @@ Thus the "last-rank" label must be both far from \(A\) and sufficiently late
 in the distance order.  The next obstruction is now finite and combinatorial:
 rule out all rank placements compatible with the rank-position band, the
 rank barriers, and the prime-label congruence restrictions.
+
+## Initial label order-statistic barrier
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_label\_order\_statistic\_barrier.md}.
+\]
+
+Let the eight center distances be sorted increasingly:
+\[
+  R_1<\cdots<R_8.
+\]
+The quotient-rank barriers form the increasing sequence
+\[
+  B_k(A)=
+  \left\lceil
+  \frac{-k+\sqrt{k^2+4(kA-122)}}{2}
+  \right\rceil.
+\]
+
+Since the quotient ranks are exactly \(1,\dots,8\), at most \(j-1\) distances
+can lie below \(B_j(A)\).  Hence
+\[
+\boxed{
+  R_j\ge B_j(A)
+  \qquad(1\le j\le8).
+}
+\]
+
+If the eight prime labels are sorted increasingly
+\[
+  P_1<\cdots<P_8,
+\]
+then \(P_j=A-R_{9-j}\), so
+\[
+\boxed{
+  P_j\le A-B_{9-j}(A)
+  \qquad(1\le j\le8).
+}
+\]
+
+Equivalently, for every \(k\), at least \(9-k\) labels satisfy
+\[
+  p\le A-B_k(A).
+\]
+
+Thus the last-rank barrier is part of a full lower-tail constraint:
+\[
+  P_1\le A-B_8(A),\quad
+  P_2\le A-B_7(A),\quad\dots,\quad
+  P_8\le A-B_1(A).
+\]
+
+The next exact target is to combine this lower-tail requirement with the A0
+condition \(p\equiv1\pmod4\) and the offset-specific congruence restrictions.
