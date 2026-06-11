@@ -136,6 +136,10 @@ Main notes:
   since A1 has \(e=2f\) with \(3\mid f\), the reduced root satisfies
   \(r+f\equiv\pm1\pmod3\).  The sign determines the A1 label class modulo
   \(6\), and equal signs create distance spacing \(6\), not just \(2\).
+- `legendre_initial_colored_quotient_rank_forcing.md`: quotient-rank
+  refinement; \(q\) now determines A0 same-color quotient ranks and A1
+  layer ranks, giving offset-specific lower bounds
+  \(e_i\ge E_i(q,\chi)\), stronger than the global rank barrier alone.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -293,6 +297,20 @@ Then
   \varepsilon=-1\Rightarrow p\equiv1\pmod6.
 \]
 Equal A1 signs therefore force distance spacing \(6\).
+The quotient permutation \(q\) is now colored: an A0 quotient of color
+\(\chi\in\{2,4\}\) with same-color rank \(\kappa\) satisfies
+\[
+  e\ge \chi+6(\kappa-1),
+\]
+while an A1 quotient with A1-layer rank \(\lambda\) satisfies
+\[
+  e\ge6\lambda.
+\]
+Thus each offset gets an individual quotient lower bound
+\[
+  E_i(q,\chi),
+\]
+which replaces the rank-only barrier in the fully colored ladder.
 
 Computational scripts live in `tools/`.
 

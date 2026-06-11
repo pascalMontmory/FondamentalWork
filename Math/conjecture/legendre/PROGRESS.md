@@ -2887,3 +2887,99 @@ ladder now carries A0 quotient colors and A1 root signs.  Its envelope is
 The next exact closure target is to eliminate fully colored ladder
 certificates with A0 colors, A1 signs, quotient-rank constraints, centered
 divisor equations, and pairwise Pell synchronization.
+
+## Initial colored quotient-rank forcing
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_colored\_quotient\_rank\_forcing.md}.
+\]
+
+The quotient permutation \(q\) is no longer treated as an abstract global
+permutation.  It must respect the mod-\(6\) quotient lattice inside each
+layer and, for A0, inside each color.
+
+For A0, with color
+\[
+  \chi_i\in\{2,4\},
+\]
+define the same-color quotient rank
+\[
+\boxed{
+  \kappa_i
+  =
+  1+
+  \#\{j:\ j\text{ is A0},\ \chi_j=\chi_i,\ q_j<q_i\}.
+}
+\]
+Then
+\[
+\boxed{
+  e_i\ge \chi_i+6(\kappa_i-1).
+}
+\]
+
+For A1, define the A1-layer quotient rank
+\[
+\boxed{
+  \lambda_i
+  =
+  1+
+  \#\{j:\ j\text{ is A1},\ q_j<q_i\}.
+}
+\]
+Since A1 quotients are positive multiples of \(6\),
+\[
+\boxed{
+  e_i\ge6\lambda_i.
+}
+\]
+
+Combining these with the global quotient lattice
+\[
+  M=(2,4,6,8,10,12,18,24)
+\]
+gives an offset-specific lower bound
+\[
+\boxed{
+  e_i\ge E_i(q,\chi).
+}
+\]
+
+Therefore
+\[
+\boxed{
+  r_i\ge
+  \mathcal B_{E_i(q,\chi)}(A),
+}
+\]
+where
+\[
+\boxed{
+  \mathcal B_E(A)
+  =
+  \left\lceil
+    \frac{-E+\sqrt{E^2+4(EA-122)}}{2}
+  \right\rceil.
+}
+\]
+
+If \(\pi(i)\) is the label position of offset \(i\), then the fully colored
+certificate must satisfy
+\[
+\boxed{
+  D_{\pi(i)}
+  \ge
+  \max\left\{
+    H_{\pi(i)}^{L,\chi,\varepsilon}(A),
+    \mathcal B_{E_i(q,\chi)}(A)
+  \right\}.
+}
+\]
+
+The next exact target is now sharper: eliminate fully colored ladder
+certificates with colored quotient-rank forcing, while preserving
+\[
+  \operatorname{Inv}(q)\subseteq\operatorname{Inv}(s)
+\]
+and the pairwise Pell synchronization equations.
