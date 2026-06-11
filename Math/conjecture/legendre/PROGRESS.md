@@ -5525,6 +5525,64 @@ If its integral-point computation returns only \(s=\pm1\) after the separated
 square-equation filter, then \(k=0\), hence \(m=3\), and the two residual
 prefix-\(8\) fibers are closed by the existing \(m-3\) saturation.
 
+## Residual elliptic curve Mordell-Weil data
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_residual\_elliptic\_mwrank\_certificate.md}
+\]
+and reproducibility wrapper
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_elliptic\_mwrank.sh}.
+\]
+
+The quartic
+\[
+  W^2=1845s^4-128s^2-117
+\]
+maps to
+\[
+  E:\quad Y^2=X^3-128X^2-215865X
+\]
+by
+\[
+  X=1845s^2,\qquad Y=1845sW.
+\]
+
+Using eclib `mwrank`, the Mordell-Weil group is certified
+unconditionally:
+\[
+  E(\mathbf Q)_{\mathrm{tors}}\simeq(\mathbf Z/2\mathbf Z)^2,
+  \qquad
+  \operatorname{rank}E(\mathbf Q)=3.
+\]
+
+A basis is
+\[
+\begin{aligned}
+  G_1&=(-363,3696),\\
+  G_2&=(-195,5460),\\
+  G_3&=(-117,4680).
+\end{aligned}
+\]
+
+The boundary point
+\[
+  (s,W)=(1,40)
+\]
+maps to
+\[
+  P=(1845,73800)=G_3+(0,0).
+\]
+
+Thus the final residual closure is now a precise Mordell-Weil sieve:
+show that the only points in the rank-\(3\) lattice with
+\[
+  X\in1845\mathbf Z^2
+\]
+come from \(P\) and \(-P\), then observe that the two terminal residual pairs
+fail at \(s=1\).
+
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[
 \boxed{

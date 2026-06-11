@@ -322,6 +322,13 @@ Main notes:
   for the two remaining residual prefix-\(8\) systems.  It asks Magma to solve
   the genus-one quartic
   \(W^2=1845s^4-128s^2-117\) and then filters the separated square equations.
+- `legendre_m3mod4_residual_elliptic_mwrank_certificate.md`: elliptic
+  reformulation of the residual quartic as
+  \(Y^2=X^3-128X^2-215865X\), together with the unconditional `mwrank`
+  Mordell-Weil data: torsion \((\mathbf Z/2\mathbf Z)^2\), rank \(3\), and
+  basis \((-363,3696),(-195,5460),(-117,4680)\).
+- `tools/m3mod4_residual_elliptic_mwrank.sh`: reproduces the `mwrank`
+  certificate when eclib is available.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
