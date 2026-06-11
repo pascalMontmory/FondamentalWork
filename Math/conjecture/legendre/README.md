@@ -306,8 +306,8 @@ Main notes:
   hard-branch point must use \(f\ge26\) on \(c=4,100\), or \(f\ge40\) on
   \(c=16\) or \(c=64\).
 - `legendre_m3mod4_structural_prefix6_certificate.md`: exact closure of the
-  first six structural quotient values in every offset row.  The verifier
-  kills 678,720 distinct assignments by finite local certificates except
+  first seven structural quotient values in every offset row.  The verifier
+  kills 2,882,250 distinct assignments by finite local certificates except
   two ghost fibers, and both ghost fibers force \(m=-1\), hence no positive
   hard-branch point.
 - `tools/m3mod4_structural_prefix_certificate.py`: reproduces the structural

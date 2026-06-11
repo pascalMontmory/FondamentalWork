@@ -1593,19 +1593,19 @@ quotient:
 }
 \]
 
-## 31. Structural prefix 6 closed
+## 31. Structural prefix 7 closed
 
 The structural quotient model now has a finite prefix certificate using the
-first six values in each offset row.
+first seven values in each offset row.
 
 The verifier is
 \[
   \texttt{tools/m3mod4\_structural\_prefix\_certificate.py}.
 \]
 
-For prefix \(6\), it checks
+For prefix \(7\), it checks
 \[
-  678720
+  2882250
 \]
 pairwise-distinct assignments.  Finite local certificates kill all but two
 assignments.  The two survivors are:
@@ -1664,6 +1664,10 @@ again forcing
 Therefore neither survivor gives a positive hard-branch point, and
 \[
 \boxed{
-  \text{structural prefix }6\text{ is closed.}
+  \text{structural prefix }7\text{ is closed.}
 }
 \]
+
+For prefix \(8\), new local survivors appear beyond these two ghost fibers;
+some pass through the small positive class \(m=3\).  They form the next
+exceptional boundary target.

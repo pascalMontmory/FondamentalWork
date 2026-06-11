@@ -229,7 +229,7 @@ def verify_ghost_closure(open_assignments: list[tuple[tuple[int, int], ...]]) ->
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--prefix", type=int, default=6)
+    parser.add_argument("--prefix", type=int, default=7)
     parser.add_argument("--close-ghosts", action="store_true")
     args = parser.parse_args()
 

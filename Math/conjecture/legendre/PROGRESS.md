@@ -5359,7 +5359,7 @@ lower quotient beyond this prefix:
 }
 \]
 
-## Structural prefix 6 closed
+## Structural prefix 7 closed
 
 Added
 \[
@@ -5370,12 +5370,12 @@ and verifier
   \texttt{Math/conjecture/legendre/tools/m3mod4\_structural\_prefix\_certificate.py}.
 \]
 
-The verifier checks the first six structural quotient values in every
+The verifier checks the first seven structural quotient values in every
 offset row, using the A0 dual semigroups and A1 splitting semigroups.
 
 There are
 \[
-  678720
+  2882250
 \]
 pairwise-distinct assignments.  Finite local certificates kill all but two,
 with killer counts:
@@ -5383,14 +5383,15 @@ with killer counts:
 \begin{array}{c|r}
   p & \#\\
   \hline
-  5 & 562842\\
-  7 & 99585\\
-  11 & 14308\\
-  13 & 1589\\
-  17 & 308\\
-  19 & 65\\
-  23 & 13\\
-  29 & 5\\
+  5 & 2381772\\
+  7 & 420640\\
+  11 & 70472\\
+  13 & 7556\\
+  17 & 1321\\
+  19 & 389\\
+  23 & 69\\
+  29 & 21\\
+  31 & 5\\
   37 & 1\\
   41 & 1\\
   43 & 1.
@@ -5428,6 +5429,11 @@ Thus \(X=1,Y=3\), and in both cases
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[
 \boxed{
-  \text{structural prefix }6\text{ is closed.}
+  \text{structural prefix }7\text{ is closed.}
 }
 \]
+
+The next prefix is qualitatively different: prefix \(8\) has new local
+survivors beyond the two \(m=-1\) ghost fibers, including fibers passing
+through the small positive class \(m=3\).  Those are boundary exceptions to
+analyze algebraically, not evidence for closure.

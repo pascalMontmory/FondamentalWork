@@ -1,6 +1,6 @@
-# Structural Prefix-6 Certificate
+# Structural Prefix-7 Certificate
 
-This note closes the first six structural quotient values in every offset
+This note closes the first seven structural quotient values in every offset
 row of the hard \(m\equiv3\pmod4\) branch.
 
 It uses the offset-specific multiplicative quotient sets obtained after the
@@ -19,27 +19,27 @@ The verifier is
 
 ## 1. Structural prefix values
 
-The first six values in each offset row are:
+The first seven values in each offset row are:
 \[
 \begin{array}{c|l}
-  c & \text{first six structural values}\\
+  c & \text{first seven structural values}\\
   \hline
   4
-    & 2,\ 10,\ 26,\ 34,\ 50,\ 58\\
+    & 2,\ 10,\ 26,\ 34,\ 50,\ 58,\ 74\\
   100
-    & 2,\ 10,\ 26,\ 34,\ 50,\ 58\\
+    & 2,\ 10,\ 26,\ 34,\ 50,\ 58,\ 74\\
   16
-    & 8,\ 16,\ 40,\ 80,\ 104,\ 136\\
+    & 8,\ 16,\ 40,\ 80,\ 104,\ 136,\ 200\\
   64
-    & 8,\ 32,\ 40,\ 64,\ 104,\ 136\\
+    & 8,\ 32,\ 40,\ 64,\ 104,\ 136,\ 160\\
   2
-    & 9,\ 33,\ 57,\ 81,\ 129,\ 153\\
+    & 9,\ 33,\ 57,\ 81,\ 129,\ 153,\ 177\\
   26
-    & 9,\ 21,\ 45,\ 81,\ 93,\ 105\\
+    & 9,\ 21,\ 45,\ 81,\ 93,\ 105,\ 117\\
   50
-    & 9,\ 33,\ 45,\ 57,\ 81,\ 129\\
+    & 9,\ 33,\ 45,\ 57,\ 81,\ 129,\ 153\\
   122
-    & 9,\ 21,\ 57,\ 69,\ 81,\ 93.
+    & 9,\ 21,\ 57,\ 69,\ 81,\ 93,\ 189.
 \end{array}
 \]
 
@@ -57,7 +57,7 @@ quotients pairwise distinct.
 The exact count is:
 \[
 \boxed{
-  678720
+  2882250
 }
 \]
 distinct assignments.
@@ -67,14 +67,15 @@ The local certificates kill all but two assignments:
 \begin{array}{c|r}
   p & \#\text{assignments killed}\\
   \hline
-  5 & 562842\\
-  7 & 99585\\
-  11 & 14308\\
-  13 & 1589\\
-  17 & 308\\
-  19 & 65\\
-  23 & 13\\
-  29 & 5\\
+  5 & 2381772\\
+  7 & 420640\\
+  11 & 70472\\
+  13 & 7556\\
+  17 & 1321\\
+  19 & 389\\
+  23 & 69\\
+  29 & 21\\
+  31 & 5\\
   37 & 1\\
   41 & 1\\
   43 & 1.
@@ -217,18 +218,18 @@ So the second survivor also has no positive integral point.
 
 ## 5. Consequence
 
-The complete structural prefix of length \(6\) has no positive hard-branch
+The complete structural prefix of length \(7\) has no positive hard-branch
 point:
 \[
 \boxed{
-  \text{structural prefix }6
+  \text{structural prefix }7
   \quad\Longrightarrow\quad
   \text{closed.}
 }
 \]
 
 Therefore any remaining hard-branch counterexample must use at least one
-offset beyond the six listed structural values.
+offset beyond the seven listed structural values.
 
 This is a stronger statement than the old additive prefix certificates:
 the prefix is now built from intrinsic quotient semigroups and the only
