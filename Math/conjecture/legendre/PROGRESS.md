@@ -1902,3 +1902,85 @@ eight times as
   A=r_c+\frac{r_c^2+c}{e_c},
 \]
 with eight distinct admissible prime quotients.
+
+## Initial pair-quotient compatibility
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_pair\_quotient\_compatibility.md}.
+\]
+
+For two offsets \(c\ne d\) sharing the same center \(A\), write
+\[
+  A=r_c+\frac{r_c^2+c}{e_c}
+   =r_d+\frac{r_d^2+d}{e_d}.
+\]
+Let
+\[
+  h=r_d-r_c.
+\]
+Since
+\[
+  p_c=A-r_c,\qquad p_d=A-r_d,
+\]
+one has
+\[
+  p_c-p_d=h.
+\]
+Therefore
+\[
+  \frac{r_c^2+c}{e_c}
+  -
+  \frac{r_d^2+d}{e_d}
+  =
+  r_d-r_c.
+\]
+After clearing denominators:
+\[
+  e_d(r_c^2+c)-e_c(r_d^2+d)=e_ce_d(r_d-r_c).
+\]
+With \(r_d=r_c+h\), this becomes the binary quadratic compatibility equation
+\[
+  (e_d-e_c)r_c^2
+  -2e_chr_c
+  +e_dc-e_c(h^2+d)-e_ce_dh
+  =0.
+\]
+
+If \(e_c=e_d=e\), this collapses to
+\[
+  c-d=h(r_c+r_d+e).
+\]
+Since distinct labels imply \(h\ne0\), this forces
+\[
+  r_c\le |c-d|-2.
+\]
+
+Both initial offset sets have maximum difference
+\[
+  D=120.
+\]
+Combining this with the square-root barrier gives:
+\[
+\boxed{
+  m\ge4881
+  \quad\Longrightarrow\quad
+  e_c\ne e_d
+  \text{ for all distinct initial offsets }c,d
+}
+\]
+in the clean strong gate.
+
+For \(e_c\ne e_d\), the compatibility equation gives a discriminant-square
+condition:
+\[
+  e_c^2h^2
+  -(e_d-e_c)
+  \bigl(e_dc-e_c(h^2+d)-e_ce_dh\bigr)
+  \text{ is a square.}
+\]
+
+The clean strong-gate obstruction is therefore stronger: for \(m\ge4881\),
+the eight prime quotients and the eight quotient parameters \(e_c\) must both
+be pairwise distinct, and every pair of offsets must satisfy this quadratic
+compatibility.

@@ -84,6 +84,10 @@ Main notes:
 - `legendre_initial_sqrt_barrier.md`: square-root lower bound on center
   distances \(r_c\) and quotient parametrization
   \(A=r_c+(r_c^2+c)/e_c\) for the clean strong-gate cluster.
+- `legendre_initial_pair_quotient_compatibility.md`: exact pairwise
+  compatibility equation for two offsets sharing the same center; for
+  \(m\ge4881\), all eight initial quotients \(e_c\) must be distinct in the
+  clean strong gate.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -141,7 +145,10 @@ certified by a distance \(r_c\) such that
   A-r_c\mid r_c^2+c.
 \]
 This gives the square-root barrier \(r_c^2+r_c+c\ge A\), so for \(A>122\)
-all eight initial distances satisfy \(r_c\gg\sqrt A\).
+all eight initial distances satisfy \(r_c\gg\sqrt A\).  Comparing two offsets
+in the quotient form yields a binary quadratic compatibility equation; in
+particular, for \(m\ge4881\), equal quotients are impossible among distinct
+initial offsets in the clean strong gate.
 
 Computational scripts live in `tools/`.
 
