@@ -405,3 +405,54 @@ This is the strongest current exact reduction: any counterexample must first
 destroy every primitive opposite-parity Gaussian norm, and then, for most
 remaining primitive positions when \(3\nmid n\), also destroy the twin-shift
 \(n^2+t^2+2\).
+
+## Primitive double-cover measurements
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/primitive\_double\_cover\_measure.py}.
+\]
+For each \(n\), it measures the exact primitive-channel quantities
+\[
+  |I_n|,
+  \qquad
+  |G(n)\cap I_n|,
+  \qquad
+  |G(n)\cap T(n)\cap I_n^{(\ast)}\cap I_n^+|.
+\]
+The implementation uses the exact primality interpretation on the primitive
+channel: \(t\in G(n)\) iff \(n^2+t^2\) is composite, and on the interior
+Case-II channel \(t\in T(n)\) iff \(n^2+t^2+2\) is composite.
+
+For \(2\le n\le100000\), the result is:
+\[
+\begin{array}{c|c}
+  \text{quantity} & \text{value} \\
+  \hline
+  \text{Gaussian full covers } I_n\subseteq G(n) & 33 \\
+  \text{killed by Gaussian layer} & 99966 \\
+  \text{killed by double layer after Gaussian cover} & 7 \\
+  \text{primitive double-cover survivors} & 26.
+\end{array}
+\]
+The \(33\) Gaussian full covers are exactly the previously known pure-square
+failures.  The \(7\) cases killed by the double layer are
+\[
+  23,83,113,152,196,592,811.
+\]
+The remaining \(26\) primitive double-cover survivors all satisfy
+\[
+  3\mid n.
+\]
+For these values, the primitive channel has no Case-II twin-shift domain:
+primitivity forces \(3\nmid t\), so exactly one of \(n,t\) is divisible by
+\(3\), and only the Gaussian candidate \(n^2+t^2\) survives the deterministic
+\(2,3\)-layer.
+
+Thus the current exact picture is:
+
+1. if \(3\nmid n\), the primitive Gaussian plus twin-shift channel already
+   kills all observed Gaussian full covers up to \(100000\);
+2. the remaining obstruction is concentrated at \(3\mid n\), where one must
+   use a nonprimitive/divisor channel or another offset to escape the pure
+   Gaussian cover.

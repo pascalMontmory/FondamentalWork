@@ -18,6 +18,11 @@ Main notes:
 - `legendre_primitive_double_cover.md`: reduction of counterexamples to a
   primitive Gaussian cover \(I_n\subseteq G(n)\) plus a twin-shift double cover.
 
+Current exact bottleneck: after the primitive double-cover reduction, the
+remaining observed survivors are concentrated at \(3\mid n\), where the
+primitive channel collapses to the pure Gaussian norm and a nonprimitive or
+divisor-channel argument is needed.
+
 Computational scripts live in `tools/`.
 
 Current first target: test the Gaussian Lemma G experimentally and record

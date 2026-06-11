@@ -217,3 +217,33 @@ Lemma P is equivalent to the nonexistence of the following covers:
 
 This is the next proof target.  It removes all deterministic small-prime
 noise and leaves only a Gaussian cover and a Gaussian/twin-shift double cover.
+
+## 7. Measurement of the Two Layers
+
+The diagnostic script
+\[
+  \texttt{Math/conjecture/legendre/tools/primitive\_double\_cover\_measure.py}
+\]
+measures the two exact layers on the primitive channel.
+
+For \(2\le n\le100000\), the Gaussian cover
+\[
+  I_n\subseteq G(n)
+\]
+holds only \(33\) times.  These are exactly the pure-square failures found
+earlier.  In the remaining \(99966\) cases, the primitive Gaussian channel
+already supplies an escaping prime.
+
+Among the \(33\) Gaussian full covers, the double condition kills the seven
+cases
+\[
+  23,83,113,152,196,592,811.
+\]
+The \(26\) survivors all satisfy \(3\mid n\).  For these, there is no
+Case-II primitive twin-shift domain: if \(3\mid n\) and \(\gcd(n,t)=1\), then
+\(3\nmid t\), so exactly one of \(n,t\) is divisible by \(3\), and the
+deterministic layer leaves only \(A=n^2+t^2\).
+
+Therefore the next exact target is the \(3\mid n\) divisor channel.  The
+primitive channel alone cannot handle those survivors, because it has been
+reduced to the pure Gaussian norm and the Gaussian norm is covered.
