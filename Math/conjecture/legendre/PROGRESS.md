@@ -3536,3 +3536,47 @@ The folder contains:
 PDFs are intentionally not committed at this stage.  The repository stores
 metadata and source links first, because journal PDFs may be copyrighted and
 arXiv papers have paper-specific licenses.
+
+## P3 terminal descent target
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_p3\_terminal\_descent.md}.
+\]
+
+This is the first exact attempt to turn the modern \(P_3\)-between-squares
+theorem into a possible Legendre closure route without pretending that a
+sieve almost-prime theorem is already a prime theorem.
+
+If \(I_n=(n^2,(n+1)^2)\) is prime-free but contains a \(P_3\) integer \(N\),
+then \(N\) is composite.  Choosing \(N=dD\) with \(d\le\sqrt N<D\) gives
+\[
+  1<d\le n<D,
+  \qquad
+  \Omega(d)+\Omega(D)\le3.
+\]
+
+Writing
+\[
+  d=n-a,\qquad D=n+a+k
+\]
+gives the exact terminal equation
+\[
+  N=(n-a)(n+a+k),
+  \qquad
+  1\le nk-a(a+k)\le2n.
+\]
+
+The obstruction splits into:
+
+- \(T1\): \(k=1\), with \(0\le a(a+1)\le n-1\);
+- \(T2\): \(k=2\), with \(0\le a(a+2)\le2n-1\);
+- \(Tfar\): \(k\ge3\), with
+  \[
+    n(k-2)\le a(a+k)\le nk-1.
+  \]
+
+The new closure target is a descent lemma: in a minimal Legendre
+counterexample, eliminate T1 and T2 terminal \(P_3\) survivors, then use the
+forced \(Tfar\) factor drop to descend from \(n\) to a smaller
+between-squares obstruction.

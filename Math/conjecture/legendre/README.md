@@ -166,6 +166,10 @@ Main notes:
   methods do not currently close Legendre, and identifies the two plausible
   next routes: Pell-synchronized finite-certificate elimination or an
   almost-prime-to-prime upgrade.
+- `legendre_p3_terminal_descent.md`: exact bridge from a between-squares
+  \(P_3\) theorem to terminal composite factor equations
+  \(N=(n-a)(n+a+k)\), splitting the almost-prime obstruction into the T1,
+  T2, and Tfar channels.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
