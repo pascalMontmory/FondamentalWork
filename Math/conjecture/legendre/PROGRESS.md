@@ -328,3 +328,37 @@ and on primitive \(t\)'s it can only be certified by primes \(1\pmod4\).
 
 This converts the next proof target into a constrained certificate-assignment
 problem for residual primes \(p>3\), not a raw prime-gap estimate.
+
+## Primitive Gaussian channel reduction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_primitive\_channel\_reduction.md}.
+\]
+On the natural Gaussian-safe channel
+\[
+  \gcd(n,t)=1,\qquad n+t\equiv1\pmod2,
+\]
+write
+\[
+  A=n^2+t^2.
+\]
+Then \(A\) is odd, and the deterministic \(2,3\)-layer collapses the
+four-offset family as follows:
+\[
+\begin{array}{c|c|c}
+  \text{condition mod }3 & A\bmod6 & \text{remaining prime condition} \\
+  \hline
+  \text{exactly one of } n,t \text{ divisible by }3 & 1 & A\text{ prime} \\
+  \text{neither } n \text{ nor } t \text{ divisible by }3 & 5 &
+  A\text{ prime or }A+2\text{ prime}.
+\end{array}
+\]
+Thus the four-offset statement becomes, on primitive opposite-parity \(t\)'s,
+a Gaussian norm/twin-shift statement:
+\[
+  n^2+t^2
+  \quad\text{or}\quad
+  n^2+t^2+2.
+\]
+This is a sharper exact target than the full four-circle cover.

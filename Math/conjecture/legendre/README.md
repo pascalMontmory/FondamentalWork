@@ -13,6 +13,8 @@ Main notes:
   residue sets \(B_p(n)\).
 - `legendre_four_consecutive_certificate.md`: exact certificate layer for
   the four consecutive candidates \(A-1,A,A+1,A+2\).
+- `legendre_primitive_channel_reduction.md`: primitive opposite-parity
+  reduction to the Gaussian norm \(A\) and its twin shift \(A+2\).
 
 Computational scripts live in `tools/`.
 
