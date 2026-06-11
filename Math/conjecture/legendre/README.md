@@ -94,6 +94,9 @@ Main notes:
 - `legendre_initial_quotient_rank_barrier.md`: ranked square-root barriers
   from the distinct quotients \(e_{(k)}\ge k\); higher quotient rank forces
   deeper exclusion windows for prime labels below \(A\).
+- `legendre_initial_rank_position_coupling.md`: exact band for the distance
+  rank forced by placing quotient rank \(k\) at offset position \(i\), with
+  the strongest case \(k=8\) forcing \(s_i\ge9-i\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -162,6 +165,10 @@ The quotient ranks give stronger distance barriers:
   \left\lceil
   \frac{-k+\sqrt{k^2+4(kA-122)}}{2}
   \right\rceil.
+\]
+Combining quotient rank with order gives the rank-position band
+\[
+  \max(1,k-i+1)\le s_i\le\min(8,8+k-i).
 \]
 
 Computational scripts live in `tools/`.

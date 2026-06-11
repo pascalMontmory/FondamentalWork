@@ -2096,3 +2096,65 @@ In particular, the largest quotient forces
 
 So the eight labels do not merely avoid the top \(\sqrt A\)-window: the
 quotient ranks impose progressively deeper exclusion windows below \(A\).
+
+## Initial rank-position coupling
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_rank\_position\_coupling.md}.
+\]
+
+Let the offsets be ordered as
+\[
+  c_1<\cdots<c_8.
+\]
+Let
+\[
+  q_i=\operatorname{rank}(e_{c_i})
+\]
+be the quotient rank at offset position \(i\), and
+\[
+  s_i=\operatorname{rank}(r_{c_i})
+\]
+be the corresponding distance rank.
+
+For \(m\ge4881\), both are permutations of \(\{1,\dots,8\}\).  The order
+constraint gives
+\[
+  \operatorname{Inv}(q)\subseteq\operatorname{Inv}(s).
+\]
+
+If
+\[
+  q_i=k,
+\]
+then the inversion constraint forces the exact band
+\[
+\boxed{
+  \max(1,k-i+1)
+  \le
+  s_i
+  \le
+  \min(8,8+k-i).
+}
+\]
+
+In particular, for the largest quotient rank \(k=8\), if it occurs at offset
+position \(i\), then
+\[
+\boxed{
+  s_i\ge9-i.
+}
+\]
+At the same time, the quotient-rank barrier gives
+\[
+  r_{c_i}\ge
+  \left\lceil
+  \frac{-8+\sqrt{32A-424}}{2}
+  \right\rceil.
+\]
+
+Thus the "last-rank" label must be both far from \(A\) and sufficiently late
+in the distance order.  The next obstruction is now finite and combinatorial:
+rule out all rank placements compatible with the rank-position band, the
+rank barriers, and the prime-label congruence restrictions.
