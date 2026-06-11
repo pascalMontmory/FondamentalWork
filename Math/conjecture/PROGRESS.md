@@ -1509,3 +1509,37 @@ data does not support a naive lift of a single stable regular factor in
 \(\mathbb Z[t]\). The local obstruction is sharper, but the next step must
 identify which primes are bad for the local model or add further algebraic
 constraints on the regular fibers.
+
+### Endpoint \(d-6\): regular \(a\)-root extraction
+
+Added the regular root extractor:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_root\_lift.py}.
+\]
+For each regular \(t\)-fiber it recomputes the four specialized eliminants
+and extracts the gcd in \(\mathbb F_p[a]\). In the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+all regular fibers over \(p=101,103,107\) have linear gcds in \(a\).
+
+Modulo \(101\), the regular pairs \((t,a)\) are:
+\[
+  (10,55),(22,38),(25,49),(26,53),(30,41),(38,55),(89,70).
+\]
+Modulo \(103\), they are:
+\[
+\begin{aligned}
+  &(4,96),(9,71),(12,36),(17,18),(20,59),(24,28),\\
+  &(25,59),(32,20),(50,77),(51,7),(58,100),(89,18).
+\end{aligned}
+\]
+Modulo \(107\), they are:
+\[
+  (4,0),(39,83),(47,65),(57,41),(59,7),(95,101).
+\]
+
+The first new geometric filter appears at \(p=107\): the fiber \(t=4\) has
+common root \(a=0\), so it is killed by the saturation in \(a\). The remaining
+regular fibers have nonzero \(a\)-roots. The next filter should evaluate the
+corresponding \(Y\)-root and \(z\)-root degeneracy conditions.

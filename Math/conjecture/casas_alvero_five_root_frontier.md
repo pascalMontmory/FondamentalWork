@@ -3242,3 +3242,40 @@ out the simplest reconstruction path where the observed regular factors are
 reductions of one stable integer factor in \(t\). The remaining local problem
 is subtler: either identify bad primes for the class model, or add another
 algebraic condition that separates the regular degree-one fibers themselves.
+
+## 52. Endpoint multiplicity \(d-6\): common \(a\)-roots on regular fibers
+
+The regular fibers all have a common factor of degree \(1\) in \(a\). The
+script
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_root\_lift.py}
+\]
+extracts this root:
+\[
+  \gcd(E_1,E_2,E_3,E_4)=a-A.
+\]
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the regular \((t,A)\) pairs are:
+\[
+\begin{array}{c|c}
+  p & (t,A) \\
+  \hline
+  101 &
+  (10,55),(22,38),(25,49),(26,53),(30,41),(38,55),(89,70) \\
+  103 &
+  (4,96),(9,71),(12,36),(17,18),(20,59),(24,28),
+  (25,59),(32,20),(50,77),(51,7),(58,100),(89,18) \\
+  107 &
+  (4,0),(39,83),(47,65),(57,41),(59,7),(95,101).
+\end{array}
+\]
+
+The first direct geometric saturation appears modulo \(107\): the regular
+fiber \(t=4\) has \(A=0\), so it is excluded by the \(a\ne0\) saturation. All
+other listed regular roots are nonzero. The next local filter should compute
+the corresponding \(Y\)-root and \(z=(n-a-2Y)\) behavior to detect hidden
+collisions or denominator degeneracies.
