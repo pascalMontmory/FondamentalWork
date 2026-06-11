@@ -520,6 +520,80 @@ four-offset \(n=3m\) channel had no failures; only two cases required
   m=10,\qquad m=391.
 \]
 
+## \(M_3^\ast\) counterexample certificate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3star\_certificate.md}.
+\]
+
+This note removes the remaining ambiguity in what a failure of the corrected
+\(M_3^\ast\) target would mean.
+
+For every admissible candidate
+\[
+  N=9m^2+t^2+r,\qquad 1\le t^2+r\le6m,
+\]
+one has
+\[
+  9m^2<N<(3m+1)^2.
+\]
+Therefore, if \(N\) is composite, it has a prime divisor
+\[
+  p\le3m.
+\]
+Since the surviving channels have already passed the \(2\)- and \(3\)-layers,
+every certificate prime satisfies \(p\ge5\).
+
+Thus a counterexample to \(M_3^\ast\) is equivalent to three simultaneous
+small-prime covers.
+
+The A0 cover is Gaussian:
+\[
+  \mathcal A_0(m)
+  \subseteq
+  \bigcup_{\substack{p\le3m\\ p\equiv1\pmod4\\ p\nmid3m}}
+  \{t:t^2\equiv-9m^2\pmod p\}.
+\]
+
+The A1 cover is the new unit-lift cover:
+\[
+  \mathcal A_1(m)
+  \subseteq
+  \bigcup_{\substack{p\le3m\\ p\ge5}}
+  \{t:t^2\equiv-9m^2-1\pmod p\}.
+\]
+If \(p\mid m\), then A1 reduces to
+\[
+  t^2\equiv-1\pmod p,
+\]
+so primes \(p\mid m\), \(p\equiv3\pmod4\), are invisible to A1.
+
+The B cover is the parity-split \(t=3u\) cover:
+\[
+  (3u)^2\equiv1-9m^2,\qquad
+  (3u)^2\equiv-1-9m^2,\qquad
+  (3u)^2\equiv-2-9m^2
+  \pmod p,
+\]
+with the corresponding admissibility bounds.
+
+The next exact target is therefore the combined A-cover, not another
+simulation:
+\[
+  P_m(t)=9m^2+t^2+\epsilon_m(t),
+\]
+where
+\[
+  \epsilon_m(t)=
+  \begin{cases}
+  0,&t\not\equiv m\pmod2,\\
+  1,&t\equiv m\pmod2.
+  \end{cases}
+\]
+For \(3\nmid t\), this single parity-twisted family is exactly the surviving
+\(3\nmid t\) channel.
+
 ## Primitive double-cover measurements
 
 Added

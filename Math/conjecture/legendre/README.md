@@ -23,12 +23,15 @@ Main notes:
 - `legendre_multiple_of_three_refined_channels.md`: corrected exact
   classification of the \(n=3m\) channels; the first \(M_3\) candidate is
   false because it misses the \(3\nmid t,\ r=1\) unit-lift channel.
+- `legendre_m3star_certificate.md`: exact small-prime certificate for failure
+  of the corrected \(M_3^\ast\) target.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
 the primitive Gaussian channel \(r=0\), the nonmultiple unit-lift channel
 \(r=1\), and the \(t=3u\) repair channel.  The corrected target is
-\(M_3^\ast\), not the first \(M_3\) candidate.
+\(M_3^\ast\), and a counterexample is now equivalent to a simultaneous
+A0/A1/B small-prime cover.
 
 Computational scripts live in `tools/`.
 
