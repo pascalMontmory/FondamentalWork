@@ -1421,3 +1421,60 @@ The next required step is no longer adding more independent \(t\)-primes
 blindly. It is to extract a true class-level exceptional factor in
 \(\mathbb F_p[t]\), or to add algebraic constraints that distinguish the CRT
 descendants rather than merely intersecting nonempty residue sets.
+
+### Endpoint \(d-6\): local \(t\)-fiber classification
+
+Added the local fiber classifier:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_class\_t\_fiber\_classify.py}.
+\]
+For a fixed class \(n=c+Mt\), it separates each \(t\bmod p\) into:
+
+- saturated-bad: one of \(n+1,\ldots,n+6\) vanishes;
+- all-zero: all four eliminants vanish;
+- degree-drop: at least one eliminant drops below the observed generic
+  degree;
+- regular-gcd: no degree drop and the gcd in \(\mathbb F_p[a]\) has positive
+  degree;
+- excluded: no degree drop and gcd degree \(0\).
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the observed generic eliminant degrees are
+\[
+  (24,27,30,33)
+\]
+for both \(p=101\) and \(p=103\).
+
+Modulo \(101\), the raw live factor
+\[
+  t(t-10)(t-22)(t-25)(t-26)(t-30)(t-38)(t-89)
+\]
+splits as:
+\[
+\begin{array}{c|c}
+  \text{category} & t\text{-residues mod }101 \\
+  \hline
+  \text{saturated-bad} & \{14,28,43,57,72,86\} \\
+  \text{all-zero} & \varnothing \\
+  \text{degree-drop} & \{0,24,29,54,60,61,66,74,87,100\} \\
+  \text{regular-gcd} & \{10,22,25,26,30,38,89\}.
+\end{array}
+\]
+Thus the regular part has degree \(7\), not \(8\); the missing raw live fiber
+is \(t=0\), which is a degree-drop artifact.
+
+Modulo \(103\), the regular-gcd residues are
+\[
+  \{4,9,12,17,20,24,25,32,50,51,58,89\},
+\]
+while the degree-drop residues are
+\[
+  \{0,3,5,11,18,35,45,55,57,59,61,66,68,75\}.
+\]
+There are no all-zero fibers in either test.
+
+This is the desired local separation. The next reconstruction should target
+the regular-gcd factor, not the raw live factor.

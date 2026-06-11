@@ -3156,3 +3156,58 @@ This confirms the precise limitation of independent \(t\)-prime sieving:
 when both live sets are nonempty, CRT combines them into descendants rather
 than eliminating the class. The useful object is now the class-level
 exceptional factor in \(t\), not a longer list of independent prime sieves.
+
+## 50. Endpoint multiplicity \(d-6\): regular local \(t\)-fibers
+
+The local factor must exclude specialization artifacts. The classifier
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_class\_t\_fiber\_classify.py}
+\]
+does this for a fixed class \(n=c+Mt\) by separating:
+
+- saturated-bad fibers;
+- all-zero eliminant fibers;
+- degree-drop fibers;
+- regular positive-gcd fibers;
+- excluded fibers.
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the observed generic degrees of the four eliminants are
+\[
+  (24,27,30,33).
+\]
+
+Modulo \(101\), the raw live set
+\[
+  \{0,10,22,25,26,30,38,89\}
+\]
+splits into one degree-drop artifact and seven regular fibers:
+\[
+  \text{degree-drop}=\{0\},
+  \qquad
+  \text{regular-gcd}=\{10,22,25,26,30,38,89\}.
+\]
+There are additional degree-drop fibers with gcd \(0\),
+\[
+  \{24,29,54,60,61,66,74,87,100\},
+\]
+and saturated-bad fibers
+\[
+  \{14,28,43,57,72,86\}.
+\]
+
+Modulo \(103\), the regular positive-gcd fibers are
+\[
+  \{4,9,12,17,20,24,25,32,50,51,58,89\},
+\]
+while degree-drop fibers are
+\[
+  \{0,3,5,11,18,35,45,55,57,59,61,66,68,75\}.
+\]
+
+Thus the target has been sharpened: reconstruct the regular local factor in
+\(t\), not the raw live factor that mixes regular gcds with specialization
+artifacts.
