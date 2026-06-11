@@ -2533,3 +2533,84 @@ eight distinct quotients \(e_i\) satisfying the quotient-local splitting
 conditions, the two-layer ladder restrictions, and the \(28\) pairwise Pell
 synchronization equations.  This avoids a center-by-center search over
 \(m\).
+
+## Initial even quotient lift
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_even\_quotient\_lift.md}.
+\]
+
+This extracts the \(2\)-adic consequence of the initial offset parities.
+If \(m\) is even, then \(A\) is even and all initial offsets are odd.  If
+\(m\) is odd, then \(A\) is odd and all initial offsets are even.  In both
+cases
+\[
+  A^2+c
+\]
+is odd for all eight initial offsets.
+
+The centered factorization
+\[
+  A^2+c=(A-r)(A+r+e)
+\]
+therefore has two odd factors.  Hence
+\[
+\boxed{
+  e\equiv0\pmod2.
+}
+\]
+
+Thus every initial quotient is even.  For \(m\ge4881\), the eight quotients
+are distinct, so their increasing order satisfies
+\[
+\boxed{
+  e_{(k)}\ge2k
+  \qquad(1\le k\le8).
+}
+\]
+
+This doubles the quotient-rank barrier.  Define
+\[
+\boxed{
+  \widetilde B_k(A)=
+  \left\lceil
+    -k+\sqrt{k^2+2kA-122}
+  \right\rceil.
+}
+\]
+
+Then an offset carrying quotient rank \(k\) satisfies
+\[
+\boxed{
+  r\ge\widetilde B_k(A).
+}
+\]
+
+The largest quotient rank gives
+\[
+\boxed{
+  r\ge
+  \widetilde B_8(A)
+  =
+  \left\lceil -8+\sqrt{16A-58}\right\rceil.
+}
+\]
+
+Therefore the smallest prime label in a clean strong-gate counterexample
+must satisfy
+\[
+\boxed{
+  P_1\le
+  A-\left\lceil -8+\sqrt{16A-58}\right\rceil.
+}
+\]
+
+This is the first genuinely stronger tail barrier after the quotient Pell
+pencil: the initial cluster must contain an admissible prime label around
+\[
+  A-4\sqrt A,
+\]
+not merely around \(A-\sqrt{8A}\).  The two-layer ladder certificate should
+now use the lifted barriers \(\widetilde B_k(A)\) everywhere a quotient rank
+barrier is invoked.

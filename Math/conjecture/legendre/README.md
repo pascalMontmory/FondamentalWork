@@ -120,6 +120,10 @@ Main notes:
   \(w^2=4eA+e^2-4c\); since \(A=3m\), every quotient must pass the local
   congruence \(w^2\equiv e^2-4c\pmod{12e}\), and pairs of offsets satisfy a
   synchronized Pell-type equation independent of \(A\).
+- `legendre_initial_even_quotient_lift.md`: exact \(2\)-adic lift showing
+  all eight initial quotients are even; hence distinct quotient ranks satisfy
+  \(e_{(k)}\ge2k\), strengthening the largest label barrier to roughly
+  \(A-4\sqrt A\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -232,6 +236,22 @@ Thus odd primes dividing \(e\), away from \(c\), must split in
 \(\equiv1\pmod4\), except for coordinate primes.  Eliminating \(A\) between
 two offsets gives a Pell-type synchronization equation independent of the
 center.
+The same parity analysis gives a stronger rank input: all eight initial
+quotients are even.  For \(m\ge4881\), they are distinct, hence
+\[
+  e_{(k)}\ge2k.
+\]
+The quotient-rank barrier is therefore upgraded to
+\[
+  \widetilde B_k(A)=
+  \left\lceil -k+\sqrt{k^2+2kA-122}\right\rceil,
+\]
+so the smallest label must already fall below
+\[
+  A-\widetilde B_8(A)
+  =
+  A-\left\lceil -8+\sqrt{16A-58}\right\rceil.
+\]
 
 Computational scripts live in `tools/`.
 
