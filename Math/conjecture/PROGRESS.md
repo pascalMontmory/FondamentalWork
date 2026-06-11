@@ -1374,3 +1374,50 @@ This is the next usable object: instead of a CRT class carrying an infinite
 parameter \(t\), the representative class now has a finite modular
 exceptional set in \(t\). The next step is to repeat this extraction across
 classes or reconstruct the corresponding exceptional \(t\)-factor directly.
+
+### Endpoint \(d-6\): base-class \(t\)-fiber collector
+
+Added a `--collect-base-t` mode to the class-parameter probe. For every base
+CRT class \(n\equiv c\pmod{2431}\), and for each chosen \(t\)-prime \(p\), it
+computes the live \(t\)-fibers by transporting the live \(n\)-residues:
+\[
+  t\equiv (r-c)2431^{-1}\pmod p.
+\]
+This avoids redoing the specialized gcd calculation for every class.
+
+With base primes \(11,13,17\) and \(t\)-primes \(101,103\), the collector
+gives:
+\[
+\begin{array}{c|c|c|c|c}
+  \text{type} & \text{classes} & |L_{101}| & |L_{103}|
+              & \text{descendants mod }101\cdot103 \\
+  \hline
+  (1,1,3,1) & 64 & 9 & 17 & 9792 \\
+  (1,2,2,1) & 144 & 16 & 12 & 27648 \\
+  (2,1,2,1) & 54 & 8 & 13 & 5616.
+\end{array}
+\]
+
+Here \(|L_p|\) is the number of live \(n\)-residues modulo \(p\), hence also
+the number of live \(t\)-residues for each class because \(p\nmid2431\). The
+second \(t\)-prime therefore refines the finite fibers but cannot empty them
+by itself when both live sets are nonempty: CRT combines every pair of live
+residues.
+
+For the representative class \(n=2431t\) in type \((2,1,2,1)\), the first two
+finite factors are:
+\[
+  T_{101}(t)=
+  t(t-10)(t-22)(t-25)(t-26)(t-30)(t-38)(t-89),
+\]
+and
+\[
+  T_{103}(t)=
+  t(t-4)(t-9)(t-12)(t-17)(t-20)(t-24)(t-25)
+  (t-32)(t-50)(t-51)(t-58)(t-89).
+\]
+
+The next required step is no longer adding more independent \(t\)-primes
+blindly. It is to extract a true class-level exceptional factor in
+\(\mathbb F_p[t]\), or to add algebraic constraints that distinguish the CRT
+descendants rather than merely intersecting nonempty residue sets.

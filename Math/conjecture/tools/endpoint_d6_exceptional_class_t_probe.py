@@ -25,7 +25,12 @@ from dataclasses import dataclass
 import sympy as sp
 
 from endpoint_d6_cover_degrees import h_polynomials
-from endpoint_d6_exceptional_crt_classes import build_crt_classes, display_classes
+from endpoint_d6_exceptional_crt_classes import (
+    bad_residues as saturated_bad_n_residues,
+    build_crt_classes,
+    display_classes,
+    live_residues,
+)
 from endpoint_d6_equation_modular_probe import (
     COVERS,
     DEFAULT_TYPES,
@@ -39,6 +44,8 @@ from endpoint_d6_equation_modular_probe import (
 DEFAULT_PRIME = 1009
 DEFAULT_CLASS = (0, 2431)
 DEFAULT_BASE_PRIMES = [11, 13, 17]
+DEFAULT_T_PRIMES = [101, 103]
+DEFAULT_LIMIT_CLASSES = 20
 
 
 def parse_args() -> tuple[
@@ -50,6 +57,8 @@ def parse_args() -> tuple[
     bool,
     bool,
     bool,
+    list[int],
+    int,
     int | None,
 ]:
     args = sys.argv[1:]
@@ -60,17 +69,24 @@ def parse_args() -> tuple[
     scan_t = "--scan-t" in args
     collect_t = "--collect-t" in args
     scan_base_classes = "--scan-base-classes" in args
+    collect_base_t = "--collect-base-t" in args
     args = [arg for arg in args if arg != "--build-only"]
     args = [arg for arg in args if arg != "--scan-t"]
     args = [arg for arg in args if arg != "--collect-t"]
     args = [arg for arg in args if arg != "--scan-base-classes"]
+    args = [arg for arg in args if arg != "--collect-base-t"]
     max_t = None
+    t_primes = DEFAULT_T_PRIMES
+    limit_classes = DEFAULT_LIMIT_CLASSES
     for arg in list(args):
         if arg.startswith("--prime="):
             prime = int(arg.removeprefix("--prime="))
             args.remove(arg)
         elif arg.startswith("--base-primes="):
             base_primes = [int(part) for part in arg.removeprefix("--base-primes=").split(",")]
+            args.remove(arg)
+        elif arg.startswith("--t-primes="):
+            t_primes = [int(part) for part in arg.removeprefix("--t-primes=").split(",")]
             args.remove(arg)
         elif arg.startswith("--class="):
             raw_class = arg.removeprefix("--class=")
@@ -80,11 +96,27 @@ def parse_args() -> tuple[
         elif arg.startswith("--max-t="):
             max_t = int(arg.removeprefix("--max-t="))
             args.remove(arg)
+        elif arg.startswith("--limit-classes="):
+            limit_classes = int(arg.removeprefix("--limit-classes="))
+            args.remove(arg)
 
     weights_list = DEFAULT_TYPES if not args else [
         tuple(int(part) for part in arg.split(",")) for arg in args
     ]
-    return weights_list, prime, cls, base_primes, build_only, scan_t, collect_t, scan_base_classes, max_t
+    return (
+        weights_list,
+        prime,
+        cls,
+        base_primes,
+        build_only,
+        scan_t,
+        collect_t,
+        scan_base_classes,
+        collect_base_t,
+        t_primes,
+        limit_classes,
+        max_t,
+    )
 
 
 @dataclass(frozen=True)
@@ -321,6 +353,85 @@ def scan_base_classes(
     print(f"  witness t distribution: {dict(sorted(witness_counts.items()))}", flush=True)
 
 
+def t_residues_from_n_residues(
+    cls: int,
+    modulus: int,
+    residues: tuple[int, ...] | set[int],
+    prime: int,
+) -> list[int]:
+    if modulus % prime == 0:
+        raise ValueError(f"prime {prime} divides class modulus {modulus}")
+    inverse = pow(modulus % prime, -1, prime)
+    return sorted({((residue - cls) * inverse) % prime for residue in residues})
+
+
+def collect_base_t_fibers(
+    weights: tuple[int, int, int, int],
+    base_primes: list[int],
+    t_primes: list[int],
+    limit_classes: int,
+) -> None:
+    modulus, classes = build_crt_classes(weights, base_primes)
+    print(
+        f"weights {weights}, base primes={base_primes}, "
+        f"{len(classes)} classes mod {modulus}",
+        flush=True,
+    )
+
+    prime_data = {}
+    for prime in t_primes:
+        live_n, gcd_degrees = live_residues(weights, prime)
+        bad_n = saturated_bad_n_residues(prime)
+        live_factor = residue_factor(list(live_n), sp.symbols("n"), prime)
+        print(
+            f"  t-prime={prime}: live_n={list(live_n)}, bad_n={sorted(bad_n)}, "
+            f"live_n_factor_degree={live_factor.degree()}",
+            flush=True,
+        )
+        print(f"    gcd_degrees={dict(gcd_degrees)}", flush=True)
+        prime_data[prime] = (live_n, bad_n)
+
+    total_descendants = 0
+    per_prime_totals = {prime: 0 for prime in t_primes}
+    for index, cls in enumerate(classes, start=1):
+        class_descendants = 1
+        class_lines = []
+        for prime in t_primes:
+            live_n, bad_n = prime_data[prime]
+            live_t = t_residues_from_n_residues(cls, modulus, live_n, prime)
+            bad_t = t_residues_from_n_residues(cls, modulus, bad_n, prime)
+            class_descendants *= len(live_t)
+            per_prime_totals[prime] += len(live_t)
+            if index <= limit_classes:
+                t = sp.symbols("t")
+                factor = residue_factor(live_t, t, prime)
+                class_lines.append(
+                    f"p={prime}: live_t={live_t}, bad_t={bad_t}, "
+                    f"T_degree={factor.degree()}, T={format_residue_factor(factor, prime)}"
+                )
+        total_descendants += class_descendants
+        if index <= limit_classes:
+            print(
+                f"  class {index}/{len(classes)}: n={cls} mod {modulus}; "
+                f"descendants over {t_primes}={class_descendants}",
+                flush=True,
+            )
+            for line in class_lines:
+                print(f"    {line}", flush=True)
+
+    if len(classes) > limit_classes:
+        print(f"  ... {len(classes) - limit_classes} classes omitted from detailed output", flush=True)
+    print(f"  per-prime total live t residues: {per_prime_totals}", flush=True)
+    print(
+        f"  total CRT descendants over t-primes {t_primes}: {total_descendants}",
+        flush=True,
+    )
+    print(
+        "  note: nonempty live t sets combine by CRT; this refines finite fibers but does not empty them by itself",
+        flush=True,
+    )
+
+
 def probe_class(
     weights: tuple[int, int, int, int],
     prime: int,
@@ -362,10 +473,15 @@ def main() -> None:
         scan_t,
         collect_t,
         scan_base_classes_mode,
+        collect_base_t_mode,
+        t_primes,
+        limit_classes,
         max_t,
     ) = parse_args()
     for weights in weights_list:
-        if scan_base_classes_mode:
+        if collect_base_t_mode:
+            collect_base_t_fibers(weights, base_primes, t_primes, limit_classes)
+        elif scan_base_classes_mode:
             scan_base_classes(weights, prime, base_primes, max_t)
         elif scan_t or collect_t:
             scan_t_specializations(

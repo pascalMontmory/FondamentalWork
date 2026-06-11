@@ -3110,3 +3110,49 @@ This is the first explicit finite exceptional set in the class parameter.
 The remaining task is now concrete: either extract such \(T_p(t)\) factors
 for every CRT class, or reconstruct a class-level exceptional factor directly
 and prove that its admissible integer fibers are empty.
+
+## 49. Endpoint multiplicity \(d-6\): collecting \(t\)-fibers over all classes
+
+The \(\texttt{--collect-base-t}\) mode now performs the finite \(t\)-fiber
+collection for every base CRT class. For a fixed class
+\[
+  n\equiv c\pmod{2431},\qquad n=c+2431t,
+\]
+and a \(t\)-prime \(p\nmid2431\), live \(t\)-residues are obtained from live
+\(n\)-residues by
+\[
+  t\equiv(r-c)2431^{-1}\pmod p.
+\]
+Thus the expensive specialized gcd computation is done once per type and
+prime, not once per class.
+
+Using \(t\)-primes \(101\) and \(103\) gives:
+\[
+\begin{array}{c|c|c|c|c}
+  \text{type} & \text{classes mod }2431
+              & |L_{101}| & |L_{103}|
+              & \text{descendants mod }10403 \\
+  \hline
+  (1,1,3,1) & 64 & 9 & 17 & 9792 \\
+  (1,2,2,1) & 144 & 16 & 12 & 27648 \\
+  (2,1,2,1) & 54 & 8 & 13 & 5616.
+\end{array}
+\]
+
+For the representative class \(n=2431t\) in type \((2,1,2,1)\), the factors
+are
+\[
+  T_{101}(t)=
+  t(t-10)(t-22)(t-25)(t-26)(t-30)(t-38)(t-89),
+\]
+and
+\[
+  T_{103}(t)=
+  t(t-4)(t-9)(t-12)(t-17)(t-20)(t-24)(t-25)
+  (t-32)(t-50)(t-51)(t-58)(t-89).
+\]
+
+This confirms the precise limitation of independent \(t\)-prime sieving:
+when both live sets are nonempty, CRT combines them into descendants rather
+than eliminating the class. The useful object is now the class-level
+exceptional factor in \(t\), not a longer list of independent prime sieves.
