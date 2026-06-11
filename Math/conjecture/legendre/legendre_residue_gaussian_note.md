@@ -218,3 +218,18 @@ Thus the working experimental statement is now the \(G_2\) candidate:
   \forall n\ge2,\quad \exists t,r,\quad |r|\le2,\quad
   1\le t^2+r\le2n,\quad n^2+t^2+r\text{ prime}.
 \]
+
+A sharper correction-case analysis shows that no \(r=-2\) witness is used up
+to \(1000000\).  All pure-square failures in this range are repaired by
+\[
+  r\in\{-1,1,2\}.
+\]
+Equivalently, the tested offset set can be reduced to
+\[
+  t^2-1,\quad t^2,\quad t^2+1,\quad t^2+2.
+\]
+The pure-square failures are also concentrated early: none occur after
+\[
+  n=3954
+\]
+in the range \(2\le n\le1000000\).

@@ -29,3 +29,7 @@ bounded correction band around Gaussian square offsets.
 Third checkpoint: the bounded band \(|r|\le2\) has no failures for
 \(2\le n\le1000000\).  The band \(|r|\le1\) has one failure in the same range,
 at \(n=23\).
+
+Fourth checkpoint: all pure-square failures up to \(1000000\) are the same
+33 cases already below \(10000\), and every one is repaired by
+\(r\in\{-1,1,2\}\).  No \(r=-2\) witness is needed in this range.

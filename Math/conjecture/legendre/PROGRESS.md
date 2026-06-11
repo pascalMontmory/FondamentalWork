@@ -171,3 +171,63 @@ is prime.
 
 Up to \(1000000\), the only non-square corrections needed are \(r=-1,1,2\),
 and \(r=2\) occurs only for \(n=23\) in the tested range.
+
+## Gaussian correction case analysis
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/gaussian\_correction\_case\_analyzer.py}.
+\]
+It isolates the pure-square failures and compares two quantities:
+
+1. the first actual prime in the Legendre interval;
+2. the first prime found by the \(R=2\) correction-band search.
+
+Up to \(1000000\), the pure-square failures are exactly the same \(33\) cases
+already observed below \(10000\):
+\[
+\begin{gathered}
+12,23,30,39,48,60,63,83,105,113,114,141,152,174,186,196,\\
+408,459,592,651,678,811,921,1173,1284,2046,2058,2163,\\
+2181,2376,2658,2697,3954.
+\end{gathered}
+\]
+No new pure-square failure appears for
+\[
+  3955\le n\le1000000.
+\]
+
+Every one of the \(33\) failures is repaired by \(R=2\).  The actual repair
+histogram is sharper than the symmetric band:
+\[
+\begin{array}{c|c}
+  r & \text{repair count} \\
+  \hline
+  -1 & 11 \\
+  1 & 21 \\
+  2 & 1.
+\end{array}
+\]
+Thus \(r=-2\) is not used in the tested range.  The current minimal empirical
+candidate is therefore the four-family offset set
+\[
+  m\in\{t^2-1,\ t^2,\ t^2+1,\ t^2+2\},
+\]
+rather than the full symmetric band \(|r|\le2\).
+
+The first-prime offsets themselves can be farther from the nearest square:
+\[
+\begin{array}{c|c}
+  r_{\rm nearest} & \text{count} \\
+  \hline
+  -3 & 3 \\
+  -2 & 10 \\
+  -1 & 4 \\
+  1 & 10 \\
+  3 & 4 \\
+  4 & 1 \\
+  5 & 1.
+\end{array}
+\]
+So the \(R=2\) family is not always capturing the first prime; it is capturing
+a nearby prime later in the same interval.
