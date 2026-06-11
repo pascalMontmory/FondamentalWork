@@ -54,6 +54,10 @@ Main notes:
   same-prime repetition on neighboring blocks forces \(p\mid q+1\).
 - `legendre_triple_block_labeling.md`: no-triple repetition rule and
   two-layer labeling formulation for the remaining obstruction.
+- `legendre_initial_block_obstruction.md`: exact first-three-block
+  constraints; for \(m\ge11\), the initial triple has no adjacent same-layer
+  repetition, and the only possible nonadjacent repetition is the prime \(5\)
+  in explicit residue classes.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -79,7 +83,11 @@ a transversality lemma rather than a fixed-divisor contradiction.  Repetition
 by the same certificate prime now has explicit progression/mirror structure
 on the \(q\)-line, and adjacent same-prime repetition can occur only at
 divisor positions \(p\mid q+1\).  In particular, one prime cannot label three
-consecutive blocks in the same layer.
+consecutive blocks in the same layer.  The first universal triple
+\(q=0,1,2\) has now been isolated exactly: once complete and coprime, adjacent
+same-layer repetition is impossible, and the only possible nonadjacent
+repetition is \(p=5\), with A0 restricted to odd \(m\equiv\pm2\pmod5\) and
+A1 restricted to even \(5\mid m\).
 
 Computational scripts live in `tools/`.
 

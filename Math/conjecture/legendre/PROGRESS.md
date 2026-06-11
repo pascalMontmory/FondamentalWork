@@ -1374,3 +1374,61 @@ Thus the current exact picture is:
 2. the remaining obstruction is concentrated at \(3\mid n\), where one must
    use a nonprimitive/divisor channel or another offset to escape the pure
    Gaussian cover.
+
+## Initial block obstruction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_block\_obstruction.md}.
+\]
+
+This applies the two-layer labeling rules to the first three A-blocks
+\[
+  B_0=\{1,2\},\qquad B_1=\{4,5\},\qquad B_2=\{7,8\}.
+\]
+They are complete for \(m\ge11\), since the largest initial A1 offset
+satisfies
+\[
+  8^2+1=65\le6m.
+\]
+
+The coprime-block condition
+\[
+  \gcd(t_1(q),9m^2+1)=1
+\]
+is automatic for \(B_0\) and \(B_2\).  For \(B_1\), the only loss is
+\[
+  m\ \text{odd},\qquad m\equiv\pm1\pmod5.
+\]
+
+Thus, for \(m\ge11\) outside those two residue classes, the first three
+blocks are complete and coprime.  The adjacent-block obstruction then gives:
+\[
+  p_i(0)\ne p_i(1),\qquad p_i(1)\ne p_i(2)
+\]
+in each layer \(i=0,1\), because adjacent repetition would force \(p\mid1\)
+or \(p\mid2\).
+
+The only possible same-layer repetition inside this initial triple is between
+\(B_0\) and \(B_2\).  Since the orientations agree and the coordinates differ
+by \(6\), such a repetition forces
+\[
+  p\mid 2t_i(0)+6.
+\]
+With \(t_i(0)\in\{1,2\}\), the only possible certificate prime \(p\ge5\) is
+\[
+  p=5,
+\]
+and only for the coordinate \(t_i(0)=2\).
+
+The exact residue split for this exceptional repetition is:
+\[
+\begin{array}{ll}
+  \text{A0 repetition by }5: & m\ \text{odd},\ m\equiv\pm2\pmod5,\\
+  \text{A1 repetition by }5: & m\ \text{even},\ 5\mid m.
+\end{array}
+\]
+
+So the first universal triple now gives a finite exact local obstruction.
+It does not close Legendre, but it sharply restricts the start of any
+remaining \(m\)-certificate before the later interval is considered.
