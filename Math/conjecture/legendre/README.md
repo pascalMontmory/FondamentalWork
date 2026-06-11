@@ -7,6 +7,8 @@ Main notes:
 - `PROGRESS.md`: chronological progress log.
 - `legendre_residue_gaussian_note.md`: residue-cover and Gaussian-integer
   route.
+- `legendre_exact_circle_cover_attack.md`: exact finite-field circle-cover
+  reformulation of the \(t^2-1,t^2,t^2+1,t^2+2\) route.
 
 Computational scripts live in `tools/`.
 

@@ -231,3 +231,39 @@ The first-prime offsets themselves can be farther from the nearest square:
 \]
 So the \(R=2\) family is not always capturing the first prime; it is capturing
 a nearby prime later in the same interval.
+
+## Exact circle-cover reformulation
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_exact\_circle\_cover\_attack.md}.
+\]
+This is the non-computational reformulation of the current route.
+
+The four-offset target is:
+\[
+  n^2+t^2+r,\qquad r\in\{-1,0,1,2\}.
+\]
+If this family failed for some \(n\), then for every admissible \((t,r)\)
+there would be a prime \(p\le n\) such that
+\[
+  n^2+t^2+r\equiv0\pmod p.
+\]
+Equivalently,
+\[
+  n^2+t^2\equiv c\pmod p,\qquad c\in\{1,0,-1,-2\}.
+\]
+Thus a counterexample is exactly a finite-field circle cover of a short
+vertical segment by the four neighboring conics
+\[
+  X^2+Y^2=1,\quad X^2+Y^2=0,\quad X^2+Y^2=-1,\quad X^2+Y^2=-2.
+\]
+
+The key rigidity is that, for fixed \(t\), an odd prime \(p\ne3\) can certify
+at most one of the four offsets.  The Gaussian offset \(r=0\) is even more
+rigid: on primitive \(t\), it can only be certified by primes
+\[
+  p\equiv1\pmod4.
+\]
+This gives an exact target for proof: rule out the existence of such a
+multi-offset certificate system, rather than estimating prime gaps directly.
