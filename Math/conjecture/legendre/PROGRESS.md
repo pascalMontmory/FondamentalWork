@@ -3861,7 +3861,146 @@ modulo \(7\).
 
 This is the first actual elimination inside the \(m\equiv3\pmod4\) Pell
 skeleton.  The next components must raise the \(x^2\equiv0\pmod{16}\) A0
-quotient beyond the naive \(f=14\) boundary, or use \(f=14+24t\) with
+quotient beyond the naive \(f=14\) boundary.  The sharper zero-quotient
+filter below identifies the true next boundary.
+
+## \(m\equiv3\pmod4\) modulo 7 zero-quotient filter
+
+Added
 \[
-  t\not\equiv0\pmod7.
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_mod7\_zero\_filter.md}.
 \]
+
+The modulo \(7\) obstruction is stronger than the single \(f=14\) boundary
+kill.
+
+For the reduced line
+\[
+  u^2=f^2+6mf-c,
+\]
+if
+\[
+  7\mid f,
+\]
+then the \(m\)-dependent term disappears modulo \(7\), giving the necessary
+condition
+\[
+  u^2\equiv-c\pmod7.
+\]
+
+Since the square classes modulo \(7\) are
+\[
+  0,1,2,4,
+\]
+the only offsets among
+\[
+  2,4,16,26,50,64,100,122
+\]
+which can carry \(7\mid f\) are
+\[
+  c=26,\ 122.
+\]
+
+Consequences:
+
+1. the A0 zero-square offsets \(c=16,64\) cannot carry \(f\equiv0\pmod7\);
+2. their first two admissible values are \(8,16\), not \(8,14\);
+3. the hard-branch sorted quotient lower bound sharpens from
+   \[
+     e=(4,8,16,18,28,42,66,90)
+   \]
+   to
+   \[
+   \boxed{
+     e=(4,8,16,18,32,42,66,90);
+   }
+   \]
+4. the A1 boundary value \(f=21\) must be attached to \(c=26\) or \(c=122\).
+
+The active exact target is now the lifted boundary component
+\[
+\boxed{
+  f=(2,4,8,9,16,21,33,45),
+  \qquad
+  f=21\text{ attached to }c=26\text{ or }122.
+}
+\]
+
+## Lifted \(m\equiv3\pmod4\) boundary killed modulo 5 and 11
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_lifted\_boundary\_mod5\_mod11.md}.
+\]
+
+The lifted boundary component
+\[
+  f=(2,4,8,9,16,21,33,45)
+\]
+is also eliminated exactly.
+
+The proof uses no search over \(m\).  It is a finite congruence certificate
+for the reduced Pell lines
+\[
+  u^2=f^2+6mf-c.
+\]
+
+Modulo \(5\), the square classes are
+\[
+  0,1,4.
+\]
+
+The two A0 sublayers force:
+
+1. \(c=4\) must receive \(f=2\), and \(c=100\) must receive \(f=4\);
+2. the only surviving A0 zero-square assignment is
+   \[
+     c=16\mapsto16,\qquad c=64\mapsto8,
+   \]
+   with
+   \[
+     m\equiv0\pmod5.
+   \]
+
+At this same residue, the A1 layer is forced uniquely:
+\[
+\boxed{
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 2 & 4 & 16 & 8 & 9 & 45 & 33 & 21.
+\end{array}
+}
+\]
+
+For this unique assignment, modulo \(11\) gives an empty intersection of
+allowed \(m\)-classes.  The first five constraints force
+\[
+  m\equiv9\pmod{11},
+\]
+but the row
+\[
+  c=26,\qquad f=45
+\]
+does not allow \(m\equiv9\pmod{11}\).
+
+Therefore:
+\[
+\boxed{
+  f=(2,4,8,9,16,21,33,45)
+  \text{ has no integral point.}
+}
+\]
+
+The next exact boundary is a finite union, not a single tuple.  At least one
+of the following layer raises must occur:
+\[
+\boxed{
+  4\leadsto10,
+  \qquad
+  16\leadsto22,
+  \qquad
+  45\leadsto57
+}
+\]
+in \(f\)-variables.

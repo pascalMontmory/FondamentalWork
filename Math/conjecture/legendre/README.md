@@ -161,6 +161,11 @@ Main notes:
   lift; in the branch \(m\equiv3\pmod4\), the A0 minima sharpen from
   \(4,8,16,20\) to \(4,8,16,28\), giving the final skeleton
   \(4,8,16,18,28,42,66,90\).
+- `legendre_m3mod4_mod7_zero_filter.md`: structural modulo-\(7\) filter in
+  the hard \(m\equiv3\pmod4\) Pell system; if \(7\mid f\), then
+  \(u^2\equiv-c\pmod7\), so only offsets \(26,122\) can carry
+  \(7\mid f\).  This raises the active skeleton from
+  \(4,8,16,18,28,42,66,90\) to \(4,8,16,18,32,42,66,90\).
 - `legendre_literature_strategy_reset.md`: proof-strategy reset after the
   quotient-skeleton phase; explains why known short-interval and pure sieve
   methods do not currently close Legendre, and identifies the two plausible
@@ -187,11 +192,19 @@ Main notes:
   collective packet/certificate-capacity argument.
 - `legendre_m3mod4_pell_system.md`: explicit reduced Pell system for the
   hardest quotient skeleton \(m\equiv3\pmod4\), using \(e=2f,w=2u\),
-  layer-specific \(f\)-residue classes, the sorted skeleton
-  \((2,4,8,9,14,21,33,45)\), and the 28 pairwise synchronization equations.
+  layer-specific \(f\)-residue classes, the lifted active sorted skeleton
+  \((2,4,8,9,16,21,33,45)\), and the 28 pairwise synchronization equations.
 - `legendre_m3mod4_minimal_component_mod7.md`: exact modulo-\(7\)
   certificate eliminating the naive minimal \(m\equiv3\pmod4\) component:
   the required \(f=14\) on \(c=16\) or \(c=64\) forces a nonsquare.
+- `legendre_m3mod4_mod7_zero_filter.md`: structural upgrade of the previous
+  certificate; \(7\mid f\) is possible only for offsets \(c=26,122\), raising
+  the active hard-branch quotient skeleton to
+  \(e=(4,8,16,18,32,42,66,90)\).
+- `legendre_m3mod4_lifted_boundary_mod5_mod11.md`: exact certificate killing
+  the lifted \(m\equiv3\pmod4\) boundary
+  \(f=(2,4,8,9,16,21,33,45)\); modulo \(5\) forces a unique assignment, and
+  that assignment has empty \(m\bmod11\) intersection.
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.
@@ -438,8 +451,23 @@ The odd A0 modulo-\(16\) lift sharpens the \(m\equiv3\pmod4\) branch:
   \quad\leadsto\quad
   (4,8,16,18,28,42,66,90).
 \]
-At this point \(e\) has been reduced to a finite residue skeleton list; the
-next obstruction must eliminate those skeletons with the Pell equations.
+The modulo-\(7\) zero-quotient filter then raises this hard branch once more:
+\[
+  (4,8,16,18,28,42,66,90)
+  \quad\leadsto\quad
+  (4,8,16,18,32,42,66,90).
+\]
+The lifted boundary is then killed exactly by the modulo \(5\)/\(11\)
+certificate.  The next obstruction is the finite union in which at least one
+layer boundary is raised:
+\[
+  4\leadsto10
+  \quad\text{or}\quad
+  16\leadsto22
+  \quad\text{or}\quad
+  45\leadsto57
+\]
+in \(f\)-variables.
 The strategy reset records the current status: the quotient skeletons are a
 certificate language, not a proof.  Known short-interval prime technology
 still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods

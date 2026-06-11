@@ -211,7 +211,7 @@ such that:
    \[
      f_{(1)},\dots,f_{(8)}
      \ge
-     2,4,8,9,14,21,33,45;
+     2,4,8,9,16,21,33,45;
    \]
 5. each line equation holds:
    \[
@@ -239,15 +239,19 @@ By contrast, the system above is exactly what a clean strong-gate
 counterexample in the hardest odd branch must satisfy.  Eliminating it, even
 for one quotient-rank component, is real progress toward closing the gate.
 
-The next concrete step is to encode one component of this system in
-Sage/Singular:
+The next concrete step is to encode the next boundary families of this
+system in Sage/Singular:
 
 - choose \(m\equiv3\pmod8\) or \(m\equiv7\pmod8\);
-- choose the minimal rank assignment
+- choose one of the boundary raises left after the modulo \(5\)/\(11\)
+  certificate:
   \[
-    f=(2,4,8,9,14,21,33,45)
+    4\leadsto10,
+    \qquad
+    16\leadsto22,
+    \qquad
+    45\leadsto57;
   \]
-  as the first boundary component;
 - saturate by
   \[
     f_i f_j(f_i-f_j),\quad u_i-f_i,\quad p_i;
@@ -289,7 +293,116 @@ and the square classes modulo \(7\) are
 
 Thus the exact minimal component is killed modulo \(7\).  The next component
 must raise the \(x^2\equiv0\pmod{16}\) A0 quotient beyond the naive
-\(f=14\) boundary, or use a nonzero lift \(f=14+24t\) with
+\(f=14\) boundary.
+
+## 9. Modulo 7 zero-quotient filter
+
+The previous component died for a structural reason.  If \(7\mid f\), then
+the reduced line
 \[
-  t\not\equiv0\pmod7.
+  u^2=f^2+6mf-c
+\]
+forces
+\[
+  u^2\equiv-c\pmod7.
+\]
+
+Thus \(7\mid f\) is allowed only when \(-c\) is a square modulo \(7\).
+Among the eight offsets
+\[
+  2,4,16,26,50,64,100,122,
+\]
+this happens only for
+\[
+  c=26,\ 122.
+\]
+
+Therefore the A0 zero-square offsets \(c=16,64\) cannot carry any quotient
+with \(7\mid f\).  Their first two admissible values are no longer
+\[
+  8,14,
+\]
+but
+\[
+  8,16.
+\]
+
+The active hard-branch lower bound is now
+\[
+\boxed{
+  f_{(1)},\dots,f_{(8)}
+  \ge
+  2,4,8,9,16,21,33,45
+}
+\]
+or, equivalently,
+\[
+\boxed{
+  e_{(1)},\dots,e_{(8)}
+  \ge
+  4,8,16,18,32,42,66,90.
+}
+\]
+
+Moreover, the A1 value \(f=21\) satisfies \(7\mid f\), so it must be attached
+to
+\[
+  c=26
+  \quad\text{or}\quad
+  c=122.
+\]
+
+## 10. Lifted boundary killed modulo 5 and 11
+
+The lifted boundary component
+\[
+  f=(2,4,8,9,16,21,33,45)
+\]
+also dies.
+
+The proof is recorded in
+\[
+  \texttt{legendre\_m3mod4\_lifted\_boundary\_mod5\_mod11.md}.
+\]
+
+Modulo \(5\), the A0 and A1 lines force the unique assignment
+\[
+\begin{array}{c|cccccccc}
+  c & 4 & 100 & 16 & 64 & 2 & 26 & 50 & 122\\
+  \hline
+  f & 2 & 4 & 16 & 8 & 9 & 45 & 33 & 21
+\end{array}
+\]
+with
+\[
+  m\equiv0\pmod5.
+\]
+
+For this assignment, reducing the eight lines modulo \(11\) gives an empty
+intersection of admissible \(m\bmod11\) classes.  In fact, the first five
+nontrivial constraints force
+\[
+  m\equiv9\pmod{11},
+\]
+but the row
+\[
+  c=26,\qquad f=45
+\]
+forbids
+\[
+  m\equiv9\pmod{11}.
+\]
+
+Therefore the first lifted boundary has no integral point.
+
+The active exact target is now the next finite union, obtained by raising at
+least one layer boundary:
+\[
+\boxed{
+  4\leadsto10,
+  \qquad
+  16\leadsto22,
+  \qquad
+  45\leadsto57.
+}
 \]
