@@ -1543,3 +1543,45 @@ The first new geometric filter appears at \(p=107\): the fiber \(t=4\) has
 common root \(a=0\), so it is killed by the saturation in \(a\). The remaining
 regular fibers have nonzero \(a\)-roots. The next filter should evaluate the
 corresponding \(Y\)-root and \(z\)-root degeneracy conditions.
+
+### Endpoint \(d-6\): local geometric lift check on regular fibers
+
+Added the geometric lift checker:
+\[
+  \texttt{Math/conjecture/tools/endpoint\_d6\_regular\_t\_geometry\_check.py}.
+\]
+For each regular local \(t\)-fiber it extracts the common \(a\)-root from the
+four \(a\)-eliminants, then tests every \(Y\in\mathbb F_p\) against the full
+reduced system
+\[
+  F=R_3=R_4=R_5=R_6=0.
+\]
+Every actual lift is then checked for the geometric degeneracies
+\[
+  a=0,\quad Y=0,\quad Y=a,\quad z=0,\quad z=a,\quad z=Y
+\]
+and for hidden denominator failures.
+
+For the representative class
+\[
+  (2,1,2,1),\qquad n=2431t,
+\]
+the regular fibers over \(p=101,103,107\) do not lift to any \(Y\)-root of the
+full system:
+\[
+\begin{array}{c|c|c}
+  p & \text{regular }t\text{-roots} & \text{geometric survivors} \\
+  \hline
+  101 & \{10,22,25,26,30,38,89\} & \varnothing \\
+  103 & \{4,9,12,17,20,24,25,32,50,51,58,89\} & \varnothing \\
+  107 & \{4,39,47,57,59,95\} & \varnothing.
+\end{array}
+\]
+The \(p=107\), \(t=4\) fiber is also killed by \(a=0\). No hidden denominator
+failure is needed in these tests: the obstruction is already `no_Y_solution`.
+
+This is the first local certificate that the regular \(a\)-gcd fibers are
+projection artifacts: they survive in the \(a\)-eliminants but do not lift to
+solutions of the full \((a,Y)\)-system. The result currently covers this
+representative CRT class only; the same lift check should now be run across
+the remaining finite regular classes.
