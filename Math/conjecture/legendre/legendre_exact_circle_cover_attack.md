@@ -243,3 +243,25 @@ The critical object is not the size of \(B_p(n)\), but the forced
 four-offset certification at the same \(t\).  The computational scripts should
 therefore be used only to guess exact overlap lemmas, not as evidence for the
 conjecture.
+
+The first local calculation is recorded in
+\[
+  \texttt{Math/conjecture/legendre/legendre\_circle\_residue\_calculus.md}.
+\]
+For \(p>3\), the four bad-root sets are disjoint and
+\[
+  |B_p(n)|
+  =
+  4+\sum_{r\in\{-1,0,1,2\}}\chi_p(-n^2-r).
+\]
+Averaging over \(n\bmod p\) gives the exact bias
+\[
+  \mathbb E |B_p(n)|
+  =
+  \begin{cases}
+    5-\dfrac4p, & p\equiv1\pmod4,\\[6pt]
+    3+\dfrac4p, & p\equiv3\pmod4.
+  \end{cases}
+\]
+Thus the four-circle cover is not a generic \(8/p\)-density sieve: it is a
+quadratic-character cover with a built-in \(1\bmod4\) Gaussian bias.

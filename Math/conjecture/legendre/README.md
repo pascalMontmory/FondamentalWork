@@ -9,6 +9,8 @@ Main notes:
   route.
 - `legendre_exact_circle_cover_attack.md`: exact finite-field circle-cover
   reformulation of the \(t^2-1,t^2,t^2+1,t^2+2\) route.
+- `legendre_circle_residue_calculus.md`: exact formulas for local bad
+  residue sets \(B_p(n)\).
 
 Computational scripts live in `tools/`.
 

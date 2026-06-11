@@ -267,3 +267,28 @@ rigid: on primitive \(t\), it can only be certified by primes
 \]
 This gives an exact target for proof: rule out the existence of such a
 multi-offset certificate system, rather than estimating prime gaps directly.
+
+## Local residue calculus
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_circle\_residue\_calculus.md}.
+\]
+For \(p>3\), the four offset root sets are disjoint.  Therefore
+\[
+  |B_p(n)|
+  =
+  4+\sum_{r\in\{-1,0,1,2\}}\chi_p(-n^2-r).
+\]
+Averaging over \(n\bmod p\) gives the exact local bias
+\[
+  \mathbb E |B_p(n)|
+  =
+  \begin{cases}
+    5-\dfrac4p, & p\equiv1\pmod4,\\[6pt]
+    3+\dfrac4p, & p\equiv3\pmod4.
+  \end{cases}
+\]
+This proves that the circle cover is structurally asymmetric: primes
+\(1\pmod4\) cover more local \(t\)-classes on average because they can cover
+the primitive Gaussian channel \(r=0\), while primes \(3\pmod4\) cannot.
