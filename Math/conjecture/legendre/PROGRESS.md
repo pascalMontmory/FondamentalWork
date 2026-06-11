@@ -1204,6 +1204,49 @@ target is a transversality lemma: not every coprime complete block can carry
 two transverse small-prime certificates satisfying the Gaussian and A1
 restrictions.
 
+## Transversality repetition constraints
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_transversality\_repetition.md}.
+\]
+
+This extracts the first multi-block obstruction from the transversality
+formulation.
+
+If the same prime \(p\) certifies two blocks \(q\) and \(r\) in the same
+layer, then the two relevant linear coordinates satisfy
+\[
+  t(q)^2\equiv t(r)^2\pmod p.
+\]
+Therefore
+\[
+  t(q)\equiv\pm t(r)\pmod p.
+\]
+
+Writing
+\[
+  t(q)=3q+\alpha,\qquad t(r)=3r+\beta,\qquad \alpha,\beta\in\{1,2\},
+\]
+the plus sign gives
+\[
+  q\equiv r\pmod p,
+\]
+and the minus sign gives the mirror relation
+\[
+  q+r\equiv-\frac{\alpha+\beta}{3}\pmod p.
+\]
+
+Thus a single certificate prime does not produce arbitrary coverage of block
+indices.  Its fiber is a union of arithmetic progressions and mirror
+progressions.  A full counterexample would require both A0 and A1 layers to
+cover every coprime complete block by two transverse systems of such
+progression/mirror fibers.
+
+This is sharper than the pair-density bound and the product formulation.  It
+turns the next target into an additive congruence obstruction on the
+\(q\)-line.
+
 ## Primitive double-cover measurements
 
 Added
