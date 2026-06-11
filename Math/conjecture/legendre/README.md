@@ -32,6 +32,8 @@ Main notes:
 - `legendre_coprime_A_pair_cover.md`: pair-cover reformulation for coprime
   complete A-blocks, where each ordered prime pair contributes at most four
   CRT classes.
+- `legendre_pair_incidence_geometry.md`: conic-product incidence formulation
+  for the coprime A-block pair cover, including nonzero A1 restrictions.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -44,7 +46,8 @@ rigidity: a single prime can cover both members of a complete
 exactly \(\gcd(c_q,9m^2+1)\), so coprime blocks require two genuinely
 distinct prime certificates.  On coprime blocks this becomes a pair-cover
 problem by ordered primes \((p_0,p_1)\), each contributing at most four
-classes modulo \(p_0p_1\).
+classes modulo \(p_0p_1\).  The pair-cover has now been rewritten as an
+incidence problem in \((m,q)\) on two oriented products of conics.
 
 Computational scripts live in `tools/`.
 

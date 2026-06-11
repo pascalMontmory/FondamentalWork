@@ -823,6 +823,68 @@ The current exact bottleneck is now:
    \]
    give only isolated hits and cannot fill all remaining coprime blocks.
 
+## Pair incidence geometry
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_pair\_incidence\_geometry.md}.
+\]
+
+This rewrites the coprime A-block pair cover as an incidence problem in
+\((m,q)\).
+
+Let
+\[
+  a=3q+1,\qquad b=3q+2.
+\]
+There are two orientations.
+
+If \(a\equiv m\pmod2\), then \(a\) is A1 and \(b\) is A0, so a pair
+certificate satisfies
+\[
+  (3q+2)^2+9m^2\equiv0\pmod{p_0},
+\]
+\[
+  (3q+1)^2+9m^2+1\equiv0\pmod{p_1}.
+\]
+
+If \(a\not\equiv m\pmod2\), then \(a\) is A0 and \(b\) is A1, so
+\[
+  (3q+1)^2+9m^2\equiv0\pmod{p_0},
+\]
+\[
+  (3q+2)^2+9m^2+1\equiv0\pmod{p_1}.
+\]
+
+Thus the obstruction is a cover by two oriented products of conics over
+\[
+  \mathbb F_{p_0}\times\mathbb F_{p_1}.
+\]
+
+The coprime condition removes the degenerate A1 case.  On a coprime block,
+an A1 certificate prime must satisfy
+\[
+  p_1\nmid9m^2+1.
+\]
+Therefore A1 exists only when
+\[
+  \left(\frac{-9m^2-1}{p_1}\right)=1,
+\]
+with a nonzero root.
+
+The sharpened pair-certificate restrictions are:
+\[
+\begin{array}{ll}
+  p_0\le3m, & p_0\equiv1\pmod4,\quad p_0\nmid3m,\\
+  p_1\le3m, & p_1\ne p_0,\quad p_1\nmid9m^2+1,\\
+             & \left(\frac{-9m^2-1}{p_1}\right)=1.
+\end{array}
+\]
+
+The next exact target is to prove that these oriented conic-product
+incidences cannot cover all coprime complete A-blocks after bridge blocks are
+removed.
+
 ## Primitive double-cover measurements
 
 Added
