@@ -25,3 +25,7 @@ sparse-failure subcover, not a direct proof of Legendre.
 Second checkpoint: the first primes in all strict failures observed up to
 \(100000\) have offsets \(t^2+r\) with \(|r|\le5\).  The next candidate is a
 bounded correction band around Gaussian square offsets.
+
+Third checkpoint: the bounded band \(|r|\le2\) has no failures for
+\(2\le n\le1000000\).  The band \(|r|\le1\) has one failure in the same range,
+at \(n=23\).

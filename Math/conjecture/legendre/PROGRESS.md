@@ -118,3 +118,56 @@ and \(n^2+t^2+r\) is prime.
 This no longer has the clean Gaussian-norm divisor exclusion when \(r\ne0\),
 but it may be the correct empirical bridge: square norms provide the main
 skeleton, and a bounded correction handles the sparse failures.
+
+## Gaussian bounded-band probe
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/gaussian\_band\_probe.py}.
+\]
+For a fixed radius \(R\), it tests whether every interval has a prime of the
+form
+\[
+  n^2+t^2+r,\qquad |r|\le R,\qquad 1\le t^2+r\le2n.
+\]
+The script uses deterministic Miller-Rabin for fast primality testing and
+orders candidates by increasing \(|r|\), then by \(t\).
+
+The initial \(G_5\) candidate was stronger than needed in the tested range.
+For \(2\le n\le100000\), the probe found no failures with \(R=5\), and no
+witness used \(|r|>2\):
+\[
+\begin{array}{c|c}
+  r & \text{witness count} \\
+  \hline
+  -1 & 11 \\
+  0 & 99966 \\
+  1 & 21 \\
+  2 & 1.
+\end{array}
+\]
+
+Testing the smaller bands gives:
+\[
+\begin{array}{c|c|c}
+  R & \text{range} & \text{failures} \\
+  \hline
+  1 & 2\le n\le1000000 & 1\quad(n=23) \\
+  2 & 2\le n\le1000000 & 0.
+\end{array}
+\]
+Thus the sharpened experimental target is now:
+
+Lemma \(G_2\) candidate. For every \(n\ge2\), there exist integers \(t,r\)
+with
+\[
+  |r|\le2,\qquad 1\le t^2+r\le2n,
+\]
+such that
+\[
+  n^2+t^2+r
+\]
+is prime.
+
+Up to \(1000000\), the only non-square corrections needed are \(r=-1,1,2\),
+and \(r=2\) occurs only for \(n=23\) in the tested range.

@@ -206,3 +206,15 @@ The exact histogram over the \(33\) observed failures is
 \]
 So the next experimental target is a bounded band around Gaussian square
 offsets, rather than pure square offsets.
+
+The bounded-band probe sharpens this further.  Up to \(1000000\), every
+Legendre interval contains a prime of the form
+\[
+  n^2+t^2+r,\qquad |r|\le2.
+\]
+The radius \(1\) band has a single failure in the same range, namely \(n=23\).
+Thus the working experimental statement is now the \(G_2\) candidate:
+\[
+  \forall n\ge2,\quad \exists t,r,\quad |r|\le2,\quad
+  1\le t^2+r\le2n,\quad n^2+t^2+r\text{ prime}.
+\]
