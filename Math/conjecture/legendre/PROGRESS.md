@@ -1247,6 +1247,47 @@ This is sharper than the pair-density bound and the product formulation.  It
 turns the next target into an additive congruence obstruction on the
 \(q\)-line.
 
+## Adjacent block obstruction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_adjacent\_block\_obstruction.md}.
+\]
+
+This strengthens the repetition constraint for neighboring blocks.
+
+For adjacent indices \(q\) and \(q+1\), the block orientation flips.  In both
+layers \(i=0,1\), one has
+\[
+  t_i(q)+t_i(q+1)=6(q+1).
+\]
+
+If a prime \(p\ge5\) certifies both adjacent blocks in the same layer, then
+\[
+  t_i(q)^2\equiv t_i(q+1)^2\pmod p.
+\]
+Since the adjacent difference is \(2\) or \(4\), it is nonzero modulo
+\(p\ge5\).  Hence
+\[
+  p\mid t_i(q)+t_i(q+1)=6(q+1),
+\]
+and therefore
+\[
+\boxed{
+  p\mid q+1.
+}
+\]
+
+Thus same-prime repetition on adjacent blocks is possible only at explicit
+divisor positions.  Away from indices \(q\) with \(p\mid q+1\), the
+certificate prime must change from one block to the next in that layer.
+
+The obstruction has now become a labeling problem on an interval of
+coprime-block indices: every vertex needs an A0 label and an A1 label, labels
+must satisfy their local quadratic restrictions, the two labels at a vertex
+are distinct, and adjacent repeated labels are allowed only at divisor
+positions.
+
 ## Primitive double-cover measurements
 
 Added

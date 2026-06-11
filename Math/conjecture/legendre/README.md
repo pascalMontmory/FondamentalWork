@@ -50,6 +50,8 @@ Main notes:
 - `legendre_transversality_repetition.md`: multi-block repetition constraints
   showing that repeated certificates by one prime impose arithmetic
   progression or mirror congruences on block indices.
+- `legendre_adjacent_block_obstruction.md`: adjacent-block rule showing that
+  same-prime repetition on neighboring blocks forces \(p\mid q+1\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -73,7 +75,8 @@ remaining bottleneck is a quadratic covering lemma or a valuation argument
 for the product family \(\Phi_m(q)\); the product route reduces the target to
 a transversality lemma rather than a fixed-divisor contradiction.  Repetition
 by the same certificate prime now has explicit progression/mirror structure
-on the \(q\)-line.
+on the \(q\)-line, and adjacent same-prime repetition can occur only at
+divisor positions \(p\mid q+1\).
 
 Computational scripts live in `tools/`.
 
