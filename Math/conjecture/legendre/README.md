@@ -157,6 +157,10 @@ Main notes:
   lift; the half-quotient equations split \(m\equiv0,2,4,6\pmod8\), with
   \(m\equiv2\pmod8\) forcing global quotient minima
   \(2,10,14,22,30,42,78,90\).
+- `legendre_initial_odd_A0_mod16_lift.md`: odd-branch A0 modulo-\(16\)
+  lift; in the branch \(m\equiv3\pmod4\), the A0 minima sharpen from
+  \(4,8,16,20\) to \(4,8,16,28\), giving the final skeleton
+  \(4,8,16,18,28,42,66,90\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -394,6 +398,14 @@ splits \(m\bmod8\).  The quotient skeletons become
   6 & 2,6,10,14,18,22,54,66.
 \end{array}
 \]
+The odd A0 modulo-\(16\) lift sharpens the \(m\equiv3\pmod4\) branch:
+\[
+  (4,8,16,18,20,42,66,90)
+  \quad\leadsto\quad
+  (4,8,16,18,28,42,66,90).
+\]
+At this point \(e\) has been reduced to a finite residue skeleton list; the
+next obstruction must eliminate those skeletons with the Pell equations.
 
 Computational scripts live in `tools/`.
 

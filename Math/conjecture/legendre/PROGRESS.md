@@ -3408,3 +3408,72 @@ strongest cases force
 The next exact target is to stop increasing \(e\)-barriers globally and
 eliminate these six skeletons one by one with the colored ladder and Pell
 synchronization equations.
+
+## Initial odd A0 mod-16 lift
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_odd\_A0\_mod16\_lift.md}.
+\]
+
+This closes one remaining \(e\)-refinement in the odd branch.  For A0,
+\[
+  u^2=f^2+6mf-x^2,
+  \qquad
+  e=2f.
+\]
+
+In the odd branch, the A0 coordinates are
+\[
+  2,4,8,10,
+\]
+so \(x^2\equiv0\) or \(4\bmod16\).  The corrected A0 cofactor mirror gives
+\[
+  e\equiv4\text{ or }8\pmod{12}.
+\]
+Reducing the half-quotient equation modulo \(16\) gives the exact table
+recorded in the note.
+
+For \(m\equiv1\pmod4\), the A0 minima remain
+\[
+  4,8,16,20,
+\]
+and the global skeleton remains
+\[
+\boxed{
+  M^{1\bmod4}=(4,6,8,16,20,30,54,78).
+}
+\]
+
+For \(m\equiv3\pmod4\), the A0 minima sharpen to
+\[
+  4,8,16,28,
+\]
+and the global skeleton becomes
+\[
+\boxed{
+  M^{3\bmod4}_{\mathrm{sharp}}
+  =
+  (4,8,16,18,28,42,66,90).
+}
+\]
+
+Thus the quotient-refinement phase has a finite exact endpoint:
+\[
+\boxed{
+\begin{array}{c|c}
+  \text{residue branch} & \text{global quotient minima}\\
+  \hline
+  m\equiv0\pmod8 & 2,6,10,14,18,22,30,42\\
+  m\equiv2\pmod8 & 2,10,14,22,30,42,78,90\\
+  m\equiv4\pmod8 & 2,6,10,14,18,22,30,42\\
+  m\equiv6\pmod8 & 2,6,10,14,18,22,54,66\\
+  m\equiv1\pmod4 & 4,6,8,16,20,30,54,78\\
+  m\equiv3\pmod4 & 4,8,16,18,28,42,66,90
+\end{array}
+}
+\]
+
+This does not close Legendre.  It marks the point where further progress
+must come from eliminating the six skeletons by Pell synchronization and
+colored ladder incompatibility, not by adding more isolated \(e\)-barriers.
