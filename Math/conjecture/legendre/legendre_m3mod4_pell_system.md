@@ -614,3 +614,42 @@ It is the descent problem:
 \]
 
 If that descent is proved, the hard \(m\equiv3\pmod4\) branch is closed.
+
+## 16. Arbitrary prefix-rank certificate
+
+The skipped-rank gap has been attacked directly.
+
+The verifier mode
+\[
+  \texttt{--prefix-ranks N}
+\]
+checks all arbitrary ordered assignments using the first \(N\) admissible
+values in each layer, not only the boundary-rank model.
+
+The exact results are:
+\[
+\begin{array}{c|c|c}
+  N & \#\text{ordered assignments} & \text{status}\\
+  \hline
+  7 & 1\,481\,760 & \text{closed}\\
+  8 & 5\,268\,480 & \text{closed}\\
+  9 & 15\,676\,416 & \text{closed}.
+\end{array}
+\]
+
+The prime set is
+\[
+  \{5,7,11,13,17,19,23,29,83\}.
+\]
+
+Therefore any remaining hard-branch counterexample must use at least one
+rank
+\[
+\boxed{
+  \ge9
+}
+\]
+inside one of the three layers.
+
+This does not yet close the hard branch, but it replaces the vague
+"skipped-rank" gap by a concrete lower-rank exclusion theorem.

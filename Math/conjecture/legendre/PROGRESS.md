@@ -4305,3 +4305,63 @@ The remaining gap is now structural, not modular:
 \]
 
 Once that descent is proved, the hard \(m\equiv3\pmod4\) branch closes.
+
+## Arbitrary prefix ranks closed through \(N=9\)
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_arbitrary\_prefix\_rank\_certificate.md}.
+\]
+
+This attacks the skipped-rank gap directly.
+
+The verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_rank\_certificate.py}
+\]
+now supports
+\[
+  \texttt{--prefix-ranks N}.
+\]
+
+For a given \(N\), it checks all arbitrary ordered assignments using the
+first \(N\) admissible values of each layer:
+\[
+  N(N-1)\cdot N(N-1)\cdot N(N-1)(N-2)(N-3)
+\]
+assignments.
+
+The exact certificates obtained:
+
+\[
+\begin{array}{c|c|c}
+  N & \#\text{ordered assignments} & \text{status}\\
+  \hline
+  7 & 1\,481\,760 & \text{closed}\\
+  8 & 5\,268\,480 & \text{closed}\\
+  9 & 15\,676\,416 & \text{closed}
+\end{array}
+\]
+
+The prime set used is
+\[
+\boxed{
+  \{5,7,11,13,17,19,23,29,83\}.
+}
+\]
+
+For \(N=9\), the verifier returns:
+\[
+  \texttt{certificate: all arbitrary assignments from first 9 ranks closed}.
+\]
+
+Therefore any remaining hard \(m\equiv3\pmod4\) clean-gate counterexample
+must use at least one layer rank
+\[
+\boxed{
+  \ge9.
+}
+\]
+
+This is stronger than the boundary automaton closure: skipped-rank
+configurations are now directly eliminated through the first nine values.
