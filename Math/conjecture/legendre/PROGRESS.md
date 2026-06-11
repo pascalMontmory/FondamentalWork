@@ -2264,3 +2264,55 @@ modulo \(4\), with the forced ordered lower-tail profile
 \[
   B_4(A),B_3(A),B_2(A),B_1(A).
 \]
+
+## Initial A0 spacing envelope
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A0\_spacing\_envelope.md}.
+\]
+
+Let the A0 labels be sorted increasingly:
+\[
+  Q_1<Q_2<Q_3<Q_4,
+\]
+and write
+\[
+  Q_j=A-\rho_j.
+\]
+Then
+\[
+  \rho_1>\rho_2>\rho_3>\rho_4.
+\]
+All A0 labels satisfy \(Q_j\equiv1\pmod4\), hence
+\[
+  \rho_j\equiv A-1\pmod4.
+\]
+
+Since the four distances are distinct and congruent modulo \(4\),
+\[
+  \rho_j\ge \rho_\ell+4(\ell-j)
+  \qquad(1\le j<\ell\le4).
+\]
+
+Combining this with the A0 tail bounds
+\[
+  \rho_\ell\ge B_{5-\ell}(A)
+\]
+gives the exact strengthened envelope
+\[
+\boxed{
+  \rho_j\ge
+  E_j(A):=
+  \max_{j\le\ell\le4}
+  \left(B_{5-\ell}(A)+4(\ell-j)\right).
+}
+\]
+
+Equivalently,
+\[
+  Q_j\le A-E_j(A).
+\]
+
+Thus the A0 layer must satisfy the Gaussian divisor equations inside one
+fixed residue class modulo \(4\), with a spacing-refined lower-tail profile.

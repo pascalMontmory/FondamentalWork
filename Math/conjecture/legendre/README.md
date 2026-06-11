@@ -104,6 +104,9 @@ Main notes:
   global label tail onto A0; the \(j\)-th smallest A0 label satisfies
   \(Q_j\le A-B_{5-j}(A)\) and all A0 distances satisfy
   \(r\equiv A-1\pmod4\).
+- `legendre_initial_A0_spacing_envelope.md`: strengthened A0 lower-tail
+  envelope using the fact that the four A0 distances are distinct and all
+  congruent modulo \(4\), hence spaced by at least \(4\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -186,7 +189,13 @@ then
   P_j\le A-B_{9-j}(A).
 \]
 Projecting onto A0 gives \(Q_j\le A-B_{5-j}(A)\) for the four labels
-\(Q_j\equiv1\pmod4\).
+\(Q_j\equiv1\pmod4\).  The corresponding A0 distances are all congruent to
+\(A-1\pmod4\), so their ordered lower bounds strengthen to
+\[
+  \rho_j\ge
+  \max_{j\le\ell\le4}
+  \left(B_{5-\ell}(A)+4(\ell-j)\right).
+\]
 
 Computational scripts live in `tools/`.
 
