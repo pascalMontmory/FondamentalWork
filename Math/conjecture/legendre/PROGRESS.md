@@ -2614,3 +2614,114 @@ pencil: the initial cluster must contain an admissible prime label around
 not merely around \(A-\sqrt{8A}\).  The two-layer ladder certificate should
 now use the lifted barriers \(\widetilde B_k(A)\) everywhere a quotient rank
 barrier is invoked.
+
+## Initial mod-6 quotient lattice
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_mod6\_quotient\_lattice.md}.
+\]
+
+This strengthens the even quotient lift by using the \(3\)-adic part of the
+reduced quotient pencil.  Write
+\[
+  e=2f.
+\]
+Then
+\[
+\boxed{
+  (r+f)^2=f^2+6mf-c.
+}
+\]
+
+Modulo \(3\),
+\[
+\boxed{
+  (r+f)^2\equiv f^2-c\pmod3.
+}
+\]
+
+For A0 offsets, \(c=x^2\) and \(3\nmid x\), so
+\[
+  c\equiv1\pmod3.
+\]
+Thus \(3\mid f\) would force
+\[
+  f^2-c\equiv2\pmod3,
+\]
+impossible.  Therefore
+\[
+\boxed{
+  \mathrm{A0}:\quad e\equiv2,4\pmod6.
+}
+\]
+
+For A1 offsets, \(c=y^2+1\) and \(3\nmid y\), so
+\[
+  c\equiv2\pmod3.
+\]
+Thus \(3\nmid f\) would force
+\[
+  f^2-c\equiv2\pmod3,
+\]
+impossible.  Therefore
+\[
+\boxed{
+  \mathrm{A1}:\quad e\equiv0\pmod6.
+}
+\]
+
+The four A0 quotients have ordered minima
+\[
+  2,4,8,10,
+\]
+while the four A1 quotients have ordered minima
+\[
+  6,12,18,24.
+\]
+Hence the global quotient tuple satisfies the componentwise bound
+\[
+\boxed{
+  e_{(1)},\dots,e_{(8)}
+  \ge
+  2,4,6,8,10,12,18,24.
+}
+\]
+
+With
+\[
+  M=(2,4,6,8,10,12,18,24),
+\]
+define
+\[
+\boxed{
+  \widehat B_k(A):=
+  \left\lceil
+    \frac{-M_k+\sqrt{M_k^2+4(M_kA-122)}}{2}
+  \right\rceil.
+}
+\]
+
+Then quotient rank \(k\) forces
+\[
+\boxed{
+  r\ge\widehat B_k(A).
+}
+\]
+
+In particular,
+\[
+\boxed{
+  r\ge
+  \widehat B_8(A)
+  =
+  \left\lceil -12+\sqrt{24A+22}\right\rceil.
+}
+\]
+
+So the smallest prime label in the clean strong gate must now lie around
+\[
+  A-\sqrt{24A},
+\]
+which is sharper than the even-only \(A-4\sqrt A\) barrier.  This is an
+exact layer-sensitive obstruction on the quotient lattice.

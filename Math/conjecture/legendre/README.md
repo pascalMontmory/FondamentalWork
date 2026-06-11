@@ -124,6 +124,10 @@ Main notes:
   all eight initial quotients are even; hence distinct quotient ranks satisfy
   \(e_{(k)}\ge2k\), strengthening the largest label barrier to roughly
   \(A-4\sqrt A\).
+- `legendre_initial_mod6_quotient_lattice.md`: reduced quotient pencil
+  modulo \(3\); A0 quotients satisfy \(e\equiv2,4\pmod6\), A1 quotients
+  satisfy \(e\equiv0\pmod6\), giving global quotient lower bounds
+  \(2,4,6,8,10,12,18,24\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -251,6 +255,16 @@ so the smallest label must already fall below
   A-\widetilde B_8(A)
   =
   A-\left\lceil -8+\sqrt{16A-58}\right\rceil.
+\]
+Reducing the half-quotient pencil modulo \(3\) separates the layers:
+A0 quotients are \(2\) or \(4\bmod6\), while A1 quotients are \(0\bmod6\).
+Thus the global quotient ranks are bounded below by
+\[
+  2,4,6,8,10,12,18,24,
+\]
+and the largest-rank distance is forced beyond
+\[
+  \left\lceil -12+\sqrt{24A+22}\right\rceil.
 \]
 
 Computational scripts live in `tools/`.
