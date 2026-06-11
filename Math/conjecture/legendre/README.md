@@ -91,6 +91,9 @@ Main notes:
 - `legendre_initial_order_constraints.md`: monotonicity constraints for
   \(e=(r^2+c)/(A-r)\); quotient-order inversions must be mirrored by
   distance-order inversions and opposite prime-label order.
+- `legendre_initial_quotient_rank_barrier.md`: ranked square-root barriers
+  from the distinct quotients \(e_{(k)}\ge k\); higher quotient rank forces
+  deeper exclusion windows for prime labels below \(A\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -153,6 +156,13 @@ in the quotient form yields a binary quadratic compatibility equation; in
 particular, for \(m\ge4881\), equal quotients are impossible among distinct
 initial offsets in the clean strong gate.  The quotient order is also
 constrained: if \(c<d\) but \(e_c>e_d\), then \(r_c>r_d\) and \(p_c<p_d\).
+The quotient ranks give stronger distance barriers:
+\[
+  r_{(k)}\ge
+  \left\lceil
+  \frac{-k+\sqrt{k^2+4(kA-122)}}{2}
+  \right\rceil.
+\]
 
 Computational scripts live in `tools/`.
 

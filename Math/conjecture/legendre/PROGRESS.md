@@ -2046,3 +2046,53 @@ define a permutation of the eight offsets.  The new order constraint is:
 Thus the quotient permutation is not arbitrary.  Every quotient inversion
 must be matched by a distance inversion and by the opposite prime-label
 ordering.
+
+## Initial quotient-rank barrier
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_quotient\_rank\_barrier.md}.
+\]
+
+For \(m\ge4881\), the clean strong gate has eight distinct positive quotients
+\[
+  e_c.
+\]
+Ordering them as
+\[
+  e_{(1)}<e_{(2)}<\cdots<e_{(8)},
+\]
+one has
+\[
+  e_{(k)}\ge k.
+\]
+
+For each quotient, the center equation is
+\[
+  r^2+er+c=eA.
+\]
+Since every initial offset satisfies \(c\le122\), this gives the uniform
+ranked lower bound
+\[
+  r_{(k)}\ge
+  B_k(A):=
+  \left\lceil
+  \frac{-k+\sqrt{k^2+4(kA-122)}}{2}
+  \right\rceil.
+\]
+
+Thus the prime labels ordered by quotient rank satisfy
+\[
+  p_{(k)}=A-r_{(k)}\le A-B_k(A).
+\]
+
+In particular, the largest quotient forces
+\[
+  r_{(8)}\ge
+  \left\lceil
+  \frac{-8+\sqrt{32A-424}}{2}
+  \right\rceil.
+\]
+
+So the eight labels do not merely avoid the top \(\sqrt A\)-window: the
+quotient ranks impose progressively deeper exclusion windows below \(A\).
