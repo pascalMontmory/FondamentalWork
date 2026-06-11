@@ -161,6 +161,11 @@ Main notes:
   lift; in the branch \(m\equiv3\pmod4\), the A0 minima sharpen from
   \(4,8,16,20\) to \(4,8,16,28\), giving the final skeleton
   \(4,8,16,18,28,42,66,90\).
+- `legendre_literature_strategy_reset.md`: proof-strategy reset after the
+  quotient-skeleton phase; explains why known short-interval and pure sieve
+  methods do not currently close Legendre, and identifies the two plausible
+  next routes: Pell-synchronized finite-certificate elimination or an
+  almost-prime-to-prime upgrade.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -406,6 +411,12 @@ The odd A0 modulo-\(16\) lift sharpens the \(m\equiv3\pmod4\) branch:
 \]
 At this point \(e\) has been reduced to a finite residue skeleton list; the
 next obstruction must eliminate those skeletons with the Pell equations.
+The strategy reset records the current status: the quotient skeletons are a
+certificate language, not a proof.  Known short-interval prime technology
+still lies above the \(x^{1/2}\) Legendre threshold, and pure sieve methods
+run into the parity problem.  The next serious proof attempt should either
+eliminate one quotient skeleton by Pell synchronization, or connect modern
+almost-prime-in-square-interval results to a prime-producing descent.
 
 Computational scripts live in `tools/`.
 

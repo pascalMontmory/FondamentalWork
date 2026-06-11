@@ -3477,3 +3477,45 @@ Thus the quotient-refinement phase has a finite exact endpoint:
 This does not close Legendre.  It marks the point where further progress
 must come from eliminating the six skeletons by Pell synchronization and
 colored ladder incompatibility, not by adding more isolated \(e\)-barriers.
+
+## Literature strategy reset
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_literature\_strategy\_reset.md}.
+\]
+
+This is a deliberate pause after the quotient-skeleton phase.
+
+The current route has produced a precise certificate language but not a
+contradiction.  Known short-interval prime technology remains above the
+Legendre threshold: the interval length is
+\[
+  (n+1)^2-n^2\asymp x^{1/2},
+  \qquad x=n^2,
+\]
+while unconditional prime-gap technology still needs an exponent strictly
+larger than \(1/2\).  Recent Guth-Maynard Dirichlet-polynomial methods are
+major progress, but still do not directly give Legendre.
+
+Modern almost-prime results are much closer structurally: there are now
+explicit theorems placing a \(P_3\) in every interval between consecutive
+squares.  But pure sieve methods hit the parity problem, so a direct
+almost-prime proof does not become a prime proof without an additional
+prime-detecting mechanism.
+
+Therefore the current recommended pivot is:
+
+1. treat the quotient skeletons as a finite certificate language;
+2. stop refining isolated \(e\)-congruences;
+3. try to eliminate one skeleton, beginning with
+   \[
+     m\equiv3\pmod4,\quad
+     M=(4,8,16,18,28,42,66,90),
+   \]
+   using the pairwise Pell synchronization equations;
+4. if this fails, pivot to an almost-prime-to-prime upgrade, using the
+   quotient certificates as the obstruction language.
+
+This note explicitly downgrades the previous route from "proof path" to
+"certificate framework until a Pell contradiction is found."
