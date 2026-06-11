@@ -1585,3 +1585,33 @@ projection artifacts: they survive in the \(a\)-eliminants but do not lift to
 solutions of the full \((a,Y)\)-system. The result currently covers this
 representative CRT class only; the same lift check should now be run across
 the remaining finite regular classes.
+
+### Endpoint workbench: pause and toolchain transition
+
+The endpoint computation now has a clean separation between stable results
+and the remaining heavy exceptional-fiber work.
+
+Added the short note
+\[
+  \texttt{Math/conjecture/casas\_alvero\_endpoint\_preprint\_note.md}
+\]
+collecting the parts that are ready to be read independently:
+
+1. endpoint multiplicity \(d-4\) is closed;
+2. endpoint multiplicity \(d-5\) is closed;
+3. endpoint multiplicity \(d-6\) is generically closed for all seven weight
+   types.
+
+Added the transition plan
+\[
+  \texttt{Math/conjecture/d6\_toolchain\_transition\_plan.md}
+\]
+for the remaining \(d-6\) exceptional specializations. The next exact object
+is still the saturated elimination
+\[
+  \langle E_3,E_{34},E_{35},E_{36}\rangle:
+  \langle a(n+1)(n+2)(n+3)(n+4)(n+5)(n+6)\rangle^\infty
+\]
+projected to \(\mathbb Z[n]\), but this should no longer be treated as a
+SymPy-first computation. The recommended next phase is Sage/Singular or
+Magma, with the local geometric checker kept as a projection-artifact filter.
