@@ -38,6 +38,9 @@ Main notes:
   for which the A1 congruence has nonzero roots.
 - `legendre_pair_density_bound.md`: exact local density of one ordered
   pair incidence and failed naive union-bound route.
+- `legendre_fixed_m_sieve_decomposition.md`: fixed-\(m\) reformulation of
+  coprime A-block failure as \(\mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap
+  S_1(m)\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -55,7 +58,8 @@ incidence problem in \((m,q)\) on two oriented products of conics.  The A1
 side has an exact local filter: \((p-3)/2\) admissible \(m\)-classes for
 \(p\equiv1\pmod4\), and \((p+1)/2\) for \(p\equiv3\pmod4\).  The local
 density of one ordered pair is known exactly, but the naive union bound is
-too weak; the next target must use fixed-\(m\) correlations.
+too weak; the target has been sharpened to a fixed-\(m\) double-sieve
+inclusion \(\mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap S_1(m)\).
 
 Computational scripts live in `tools/`.
 

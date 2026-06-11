@@ -1022,6 +1022,66 @@ next proof attempt must use fixed-\(m\) correlations, especially:
 The next exact target is a fixed-\(m\) large-sieve style obstruction for the
 available A1 primes.
 
+## Fixed-\(m\) sieve decomposition
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_fixed\_m\_sieve\_decomposition.md}.
+\]
+
+This replaces the ordered pair union by a two-layer fixed-\(m\) sieve.
+
+For a coprime complete block \(B_q=\{3q+1,3q+2\}\), let \(t_0(q)\) be the A0
+coordinate and \(t_1(q)\) the A1 coordinate.  Define
+\[
+  G_q=9m^2+t_0(q)^2,
+\]
+\[
+  U_q=9m^2+t_1(q)^2+1.
+\]
+
+Let \(\mathcal Q_{\rm cop}(m)\) be the set of complete coprime blocks.
+
+The Gaussian sieve layer is
+\[
+  S_0(m)
+  =
+  \mathcal Q_{\rm cop}(m)
+  \cap
+  \bigcup_{\substack{p\le3m\\p\equiv1\pmod4\\p\nmid3m}}
+  \{q:t_0(q)^2\equiv-9m^2\pmod p\}.
+\]
+Each prime in this union contributes exactly two classes modulo \(p\).
+
+The unit-lift sieve layer is
+\[
+  S_1(m)
+  =
+  \mathcal Q_{\rm cop}(m)
+  \cap
+  \bigcup_{\substack{p\le3m\\p\nmid9m^2+1\\
+  \left(\frac{-9m^2-1}{p}\right)=1}}
+  \{q:t_1(q)^2\equiv-9m^2-1\pmod p\}.
+\]
+Each available prime again contributes exactly two classes modulo \(p\), while
+unavailable A1 primes contribute none.
+
+The exact fixed-\(m\) obstruction is now
+\[
+\boxed{
+  \mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap S_1(m).
+}
+\]
+
+Therefore the combined A-channel closes if one proves
+\[
+  \mathcal Q_{\rm cop}(m)\not\subseteq S_0(m)\cap S_1(m)
+  \qquad\text{for every }m\ge1.
+\]
+
+This is the cleanest current proof target.  It avoids the weak naive
+pair-density union bound and keeps the fixed-\(m\) correlations visible.
+
 ## Primitive double-cover measurements
 
 Added
