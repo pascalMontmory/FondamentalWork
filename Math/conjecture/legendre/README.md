@@ -100,6 +100,10 @@ Main notes:
 - `legendre_initial_label_order_statistic_barrier.md`: global sorted-label
   consequence of the quotient ranks; the \(j\)-th smallest prime label
   satisfies \(P_j\le A-B_{9-j}(A)\).
+- `legendre_initial_A0_tail_constraints.md`: pigeonhole projection of the
+  global label tail onto A0; the \(j\)-th smallest A0 label satisfies
+  \(Q_j\le A-B_{5-j}(A)\) and all A0 distances satisfy
+  \(r\equiv A-1\pmod4\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -181,6 +185,8 @@ then
 \[
   P_j\le A-B_{9-j}(A).
 \]
+Projecting onto A0 gives \(Q_j\le A-B_{5-j}(A)\) for the four labels
+\(Q_j\equiv1\pmod4\).
 
 Computational scripts live in `tools/`.
 

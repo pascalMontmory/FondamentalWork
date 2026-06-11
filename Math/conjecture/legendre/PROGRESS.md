@@ -2213,3 +2213,54 @@ Thus the last-rank barrier is part of a full lower-tail constraint:
 
 The next exact target is to combine this lower-tail requirement with the A0
 condition \(p\equiv1\pmod4\) and the offset-specific congruence restrictions.
+
+## Initial A0 tail constraints
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A0\_tail\_constraints.md}.
+\]
+
+Let the four A0 labels be sorted increasingly:
+\[
+  Q_1<Q_2<Q_3<Q_4.
+\]
+Since there are only four A1 labels, among the first \(j+4\) global labels
+there must be at least \(j\) A0 labels.  Therefore
+\[
+  Q_j\le P_{j+4}.
+\]
+Using the global label order-statistic barrier
+\[
+  P_\ell\le A-B_{9-\ell}(A)
+\]
+gives
+\[
+\boxed{
+  Q_j\le A-B_{5-j}(A)
+  \qquad(1\le j\le4).
+}
+\]
+
+Explicitly:
+\[
+  Q_1\le A-B_4(A),\quad
+  Q_2\le A-B_3(A),\quad
+  Q_3\le A-B_2(A),\quad
+  Q_4\le A-B_1(A).
+\]
+
+Each A0 label also satisfies
+\[
+  Q_j\equiv1\pmod4.
+\]
+In distance form, with \(Q_j=A-\rho_j\), this is
+\[
+  \rho_j\equiv A-1\pmod4.
+\]
+
+Thus the A0 layer must supply four distances in one fixed residue class
+modulo \(4\), with the forced ordered lower-tail profile
+\[
+  B_4(A),B_3(A),B_2(A),B_1(A).
+\]
