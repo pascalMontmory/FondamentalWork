@@ -128,6 +128,10 @@ Main notes:
   modulo \(3\); A0 quotients satisfy \(e\equiv2,4\pmod6\), A1 quotients
   satisfy \(e\equiv0\pmod6\), giving global quotient lower bounds
   \(2,4,6,8,10,12,18,24\).
+- `legendre_initial_A0_mod12_colored_ladder.md`: A0 quotient-label coupling;
+  \(e\equiv2\pmod6\) forces the A0 label \(p\equiv1\pmod{12}\), while
+  \(e\equiv4\pmod6\) forces \(p\equiv5\pmod{12}\).  Equal A0 quotient colors
+  therefore create distance spacing \(12\), not just \(4\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -266,6 +270,14 @@ and the largest-rank distance is forced beyond
 \[
   \left\lceil -12+\sqrt{24A+22}\right\rceil.
 \]
+For A0, the quotient class modulo \(6\) also determines the label class
+modulo \(12\):
+\[
+  e\equiv2\pmod6\Rightarrow p\equiv1\pmod{12},\qquad
+  e\equiv4\pmod6\Rightarrow p\equiv5\pmod{12}.
+\]
+The A0 ladder is therefore colored: equal quotient colors force distance
+spacing \(12\), while different A0 colors retain the basic spacing \(4\).
 
 Computational scripts live in `tools/`.
 

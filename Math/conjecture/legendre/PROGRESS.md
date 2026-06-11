@@ -2725,3 +2725,83 @@ So the smallest prime label in the clean strong gate must now lie around
 \]
 which is sharper than the even-only \(A-4\sqrt A\) barrier.  This is an
 exact layer-sensitive obstruction on the quotient lattice.
+
+## Initial A0 mod-12 colored ladder
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A0\_mod12\_colored\_ladder.md}.
+\]
+
+This continues the quotient-side attack without searching over \(m\).  For
+A0 offsets, write
+\[
+  e=2f,\qquad c=x^2.
+\]
+The reduced quotient pencil gives
+\[
+\boxed{
+  (r+f)^2=f^2+6mf-x^2.
+}
+\]
+
+Modulo \(3\), since \(3\nmid f\) and \(3\nmid x\),
+\[
+  f^2\equiv x^2\equiv1\pmod3,
+\]
+so
+\[
+  r+f\equiv0\pmod3.
+\]
+Thus
+\[
+\boxed{
+  p=A-r\equiv f\pmod3.
+}
+\]
+
+Together with \(p\equiv1\pmod4\), this gives
+\[
+\boxed{
+  e\equiv2\pmod6
+  \Rightarrow
+  p\equiv1\pmod{12},
+}
+\]
+and
+\[
+\boxed{
+  e\equiv4\pmod6
+  \Rightarrow
+  p\equiv5\pmod{12}.
+}
+\]
+
+Therefore the hidden A0 quotient color controls the visible A0 label class.
+If two A0 labels have the same quotient color, their distances are congruent
+modulo \(12\), hence distinct ordered distances are spaced by at least
+\[
+  12.
+\]
+
+The two-layer ladder certificate should now carry an A0 color word
+\[
+  \chi\in\{2,4\}^4.
+\]
+Its graph has the global parity edges, the ordinary A0 modulo-\(4\) edges,
+and additional same-color A0 edges of weight \(12\).  With
+\[
+  W_{L,\chi}(i,j)
+\]
+the maximum path weight, the colored envelope is
+\[
+\boxed{
+  H_i^{L,\chi}(A)=
+  \max_{i\le j\le8}
+  \left(\widehat B_{9-j}(A)+W_{L,\chi}(i,j)\right).
+}
+\]
+
+The next exact target is to eliminate these colored two-layer ladder
+certificates, not by testing centers but by showing that their spacing,
+quotient-rank, and Pell synchronization equations are incompatible.
