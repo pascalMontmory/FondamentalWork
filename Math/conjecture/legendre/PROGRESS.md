@@ -1082,6 +1082,68 @@ Therefore the combined A-channel closes if one proves
 This is the cleanest current proof target.  It avoids the weak naive
 pair-density union bound and keeps the fixed-\(m\) correlations visible.
 
+## Fixed-\(m\) large-sieve target
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_fixed\_m\_large\_sieve\_target.md}.
+\]
+
+This formulates the closure criterion as a covering obstruction.
+
+For fixed \(m\), define
+\[
+  \Omega_{0,p}(m)=
+  \{q:t_0(q)^2\equiv-9m^2\pmod p\},
+\]
+for
+\[
+  p\in\mathcal P_0(m)=
+  \{p\le3m:p\equiv1\pmod4,\ p\nmid3m\},
+\]
+and
+\[
+  \Omega_{1,p}(m)=
+  \{q:t_1(q)^2\equiv-9m^2-1\pmod p\},
+\]
+for
+\[
+  p\in\mathcal P_1(m)=
+  \left\{
+  p\le3m:p\nmid9m^2+1,\quad
+  \left(\frac{-9m^2-1}{p}\right)=1
+  \right\}.
+\]
+
+Each available prime contributes exactly two residue classes.
+
+The fixed-\(m\) double-sieve lemma needed for closure is:
+\[
+  \mathcal Q_{\rm cop}(m)\not\subseteq S_0(m)\cap S_1(m)
+  \qquad(m\ge1).
+\]
+
+Equivalently, one must show that the two quadratic-root covering systems
+\[
+  \{\Omega_{0,p}(m)\}_{p\in\mathcal P_0(m)}
+  \quad\text{and}\quad
+  \{\Omega_{1,p}(m)\}_{p\in\mathcal P_1(m)}
+\]
+cannot simultaneously cover every coprime complete block.
+
+The note also records a limitation: the classical large sieve is not directly
+enough, because it bounds sets occupying few residue classes, whereas here
+the bad sets are unions of few residue classes and the desired conclusion is
+that their union does not cover the interval.
+
+The next possible nonstandard attack is to study the product family
+\[
+  \Phi_m(q)=
+  \left(9m^2+t_0(q)^2\right)
+  \left(9m^2+t_1(q)^2+1\right),
+\]
+using the exact fact that on coprime blocks the two factors are coprime.
+
 ## Primitive double-cover measurements
 
 Added

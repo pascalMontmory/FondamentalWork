@@ -41,6 +41,9 @@ Main notes:
 - `legendre_fixed_m_sieve_decomposition.md`: fixed-\(m\) reformulation of
   coprime A-block failure as \(\mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap
   S_1(m)\).
+- `legendre_fixed_m_large_sieve_target.md`: exact large-sieve/covering
+  target for the fixed-\(m\) double sieve, including why the classical large
+  sieve is not directly enough.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -59,7 +62,9 @@ side has an exact local filter: \((p-3)/2\) admissible \(m\)-classes for
 \(p\equiv1\pmod4\), and \((p+1)/2\) for \(p\equiv3\pmod4\).  The local
 density of one ordered pair is known exactly, but the naive union bound is
 too weak; the target has been sharpened to a fixed-\(m\) double-sieve
-inclusion \(\mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap S_1(m)\).
+inclusion \(\mathcal Q_{\rm cop}(m)\subseteq S_0(m)\cap S_1(m)\).  The
+remaining bottleneck is a quadratic covering lemma or a valuation argument
+for the product family \(\Phi_m(q)\).
 
 Computational scripts live in `tools/`.
 
