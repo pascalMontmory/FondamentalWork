@@ -272,6 +272,11 @@ Main notes:
   semigroups.  A hard-branch counterexample must solve the pairwise Pell
   synchronization equations with \(f_c\) in the A0 sum-of-two-squares
   semigroups or the A1 quadratic-field splitting semigroups.
+- `legendre_m3mod4_shared_prime_compatibility.md`: edge constraint for the
+  multiplicative model.  Any prime dividing two quotients must lie in the
+  intersection of the two relevant splitting laws; in particular A0--A1
+  common divisors are coprime to \(6\), and nonramified shared primes split
+  in \(\mathbb Q(\sqrt{-c},\sqrt{-d})\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

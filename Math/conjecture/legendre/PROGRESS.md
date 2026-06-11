@@ -4821,3 +4821,80 @@ The closure target is no longer "add more local primes".  It is:
   \Longrightarrow \text{rank descent into the closed prefix range.}
 }
 \]
+
+## Shared-prime compatibility graph
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_shared\_prime\_compatibility.md}.
+\]
+
+This is the first edge constraint in the multiplicative model.
+
+If an odd prime satisfies
+\[
+  q\mid f_c,
+  \qquad
+  q\mid f_d,
+  \qquad
+  q\nmid cd,
+\]
+then the two self-residue equations force
+\[
+\boxed{
+  \left(\frac{-c}{q}\right)=
+  \left(\frac{-d}{q}\right)=1.
+}
+\]
+
+Thus \(q\) splits completely in
+\[
+\boxed{
+  \mathbb Q(\sqrt{-c},\sqrt{-d}).
+}
+\]
+
+For A0--A1 edges this gives a particularly useful restriction.  A0
+quotients are even with \(3\)-free odd part, while A1 quotients are odd and
+divisible by \(3\).  Therefore
+\[
+\boxed{
+  \gcd(f_a,f_b)\text{ is coprime to }6
+}
+\]
+for every A0 offset \(a\) and A1 offset \(b\).
+
+Moreover, every nonramified prime \(q\mid\gcd(f_a,f_b)\) must satisfy
+\[
+  q\equiv1\pmod4
+  \qquad\text{and}\qquad
+  \left(\frac{-b}{q}\right)=1.
+\]
+
+Equivalently:
+\[
+\begin{array}{c|c}
+  b & \text{condition on nonramified }q\mid\gcd(f_a,f_b)\\
+  \hline
+  2 & q\equiv1\pmod8\\
+  26 & q\equiv1\pmod4,\ \left(\frac{26}{q}\right)=1\\
+  50 & q\equiv1\pmod8\\
+  122 & q\equiv1\pmod4,\ \left(\frac{122}{q}\right)=1.
+\end{array}
+\]
+
+For A1--A1 edges, \(3\) is the universal shared prime, but every other
+unramified shared prime must split in the corresponding biquadratic field.
+
+The hard branch is now a labelled complete graph problem: each vertex label
+\(f_c\) lies in its multiplicative semigroup, and every common prime divisor
+of two labels must lie in the edge compatibility set.  The remaining
+descent target is:
+\[
+\boxed{
+  \text{vertex semigroups}
+  +\text{shared-prime edge compatibility}
+  +\text{Pell synchronization}
+  \Longrightarrow \text{rank descent.}
+}
+\]

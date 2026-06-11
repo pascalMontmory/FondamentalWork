@@ -1130,3 +1130,72 @@ The remaining closure target is now:
   \text{rank descent into the closed prefix range.}
 }
 \]
+
+## 24. Shared-prime compatibility
+
+The multiplicative model also has edge constraints.
+
+If an odd prime \(q\) divides both \(f_c\) and \(f_d\), and
+\[
+  q\nmid cd,
+\]
+then the two self-residue congruences give
+\[
+\boxed{
+  \left(\frac{-c}{q}\right)=
+  \left(\frac{-d}{q}\right)=1.
+}
+\]
+
+Thus \(q\) splits in both quadratic fields
+\[
+  \mathbb Q(\sqrt{-c}),
+  \qquad
+  \mathbb Q(\sqrt{-d}),
+\]
+or equivalently splits completely in
+\[
+  \mathbb Q(\sqrt{-c},\sqrt{-d}).
+\]
+
+In particular, for any A0 offset \(a\) and A1 offset \(b\),
+\[
+\boxed{
+  \gcd(f_a,f_b)\text{ is coprime to }6.
+}
+\]
+
+Every nonramified common prime on an A0--A1 edge must satisfy
+\[
+  q\equiv1\pmod4,
+  \qquad
+  \left(\frac{-b}{q}\right)=1.
+\]
+
+Since \(q\equiv1\pmod4\), this is the same as
+\[
+  \left(\frac{b}{q}\right)=1.
+\]
+
+For A1--A1 edges, the prime \(3\) is always allowed, since
+\[
+  -c\equiv1\pmod3
+\]
+for all A1 offsets.  Every other nonramified shared prime must split in the
+corresponding biquadratic field.
+
+This is recorded in
+\[
+  \texttt{legendre\_m3mod4\_shared\_prime\_compatibility.md}.
+\]
+
+The closure target is now graph-theoretic as well as Pell-theoretic:
+\[
+\boxed{
+  \text{vertex semigroups}
+  +\text{edge shared-prime compatibility}
+  +\text{pairwise Pell synchronization}
+  \Longrightarrow
+  \text{rank descent.}
+}
+\]
