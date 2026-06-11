@@ -2805,3 +2805,85 @@ the maximum path weight, the colored envelope is
 The next exact target is to eliminate these colored two-layer ladder
 certificates, not by testing centers but by showing that their spacing,
 quotient-rank, and Pell synchronization equations are incompatible.
+
+## Initial A1 mod-6 signed ladder
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_initial\_A1\_mod6\_signed\_ladder.md}.
+\]
+
+This is the A1 analogue of the A0 colored ladder.  For A1, write
+\[
+  e=2f,\qquad c=y^2+1.
+\]
+The mod-\(6\) quotient lattice gives
+\[
+  3\mid f.
+\]
+Since the initial A1 coordinate satisfies \(3\nmid y\), one has
+\[
+  y^2+1\equiv2\pmod3.
+\]
+The reduced quotient pencil gives
+\[
+\boxed{
+  (r+f)^2=f^2+6mf-(y^2+1).
+}
+\]
+Modulo \(3\), this becomes
+\[
+\boxed{
+  (r+f)^2\equiv1\pmod3.
+}
+\]
+
+Therefore
+\[
+\boxed{
+  r+f\equiv\varepsilon\pmod3,
+  \qquad
+  \varepsilon\in\{1,-1\}.
+}
+\]
+Since \(f\equiv0\pmod3\),
+\[
+\boxed{
+  r\equiv\varepsilon\pmod3.
+}
+\]
+
+The prime label \(p=A-r\) satisfies
+\[
+\boxed{
+  p\equiv-\varepsilon\pmod3.
+}
+\]
+As \(p\) is odd, the sign determines the label class modulo \(6\):
+\[
+\boxed{
+  \varepsilon=1\Rightarrow p\equiv5\pmod6,
+}
+\]
+and
+\[
+\boxed{
+  \varepsilon=-1\Rightarrow p\equiv1\pmod6.
+}
+\]
+
+Thus equal A1 signs force equal distance classes modulo \(6\), so ordered
+same-sign A1 distances are spaced by at least \(6\).  The fully colored
+ladder now carries A0 quotient colors and A1 root signs.  Its envelope is
+\[
+\boxed{
+  H_i^{L,\chi,\varepsilon}(A)
+  =
+  \max_{i\le j\le8}
+  \left(\widehat B_{9-j}(A)+W_{L,\chi,\varepsilon}(i,j)\right).
+}
+\]
+
+The next exact closure target is to eliminate fully colored ladder
+certificates with A0 colors, A1 signs, quotient-rank constraints, centered
+divisor equations, and pairwise Pell synchronization.

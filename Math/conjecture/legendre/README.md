@@ -132,6 +132,10 @@ Main notes:
   \(e\equiv2\pmod6\) forces the A0 label \(p\equiv1\pmod{12}\), while
   \(e\equiv4\pmod6\) forces \(p\equiv5\pmod{12}\).  Equal A0 quotient colors
   therefore create distance spacing \(12\), not just \(4\).
+- `legendre_initial_A1_mod6_signed_ladder.md`: A1 root-sign coupling;
+  since A1 has \(e=2f\) with \(3\mid f\), the reduced root satisfies
+  \(r+f\equiv\pm1\pmod3\).  The sign determines the A1 label class modulo
+  \(6\), and equal signs create distance spacing \(6\), not just \(2\).
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -278,6 +282,17 @@ modulo \(12\):
 \]
 The A0 ladder is therefore colored: equal quotient colors force distance
 spacing \(12\), while different A0 colors retain the basic spacing \(4\).
+For A1, the quotient class is always \(0\bmod6\), but the reduced root sign
+plays the same role:
+\[
+  r+f\equiv\varepsilon\pmod3,\qquad \varepsilon=\pm1.
+\]
+Then
+\[
+  \varepsilon=1\Rightarrow p\equiv5\pmod6,\qquad
+  \varepsilon=-1\Rightarrow p\equiv1\pmod6.
+\]
+Equal A1 signs therefore force distance spacing \(6\).
 
 Computational scripts live in `tools/`.
 
