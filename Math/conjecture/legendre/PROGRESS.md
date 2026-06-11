@@ -945,6 +945,83 @@ set, and for each available class it contributes exactly two nonzero roots.
 The next exact target is to combine this A1 \(m\)-filter with the
 coprime-block \(q\)-interval and the A0 restriction \(p_0\equiv1\pmod4\).
 
+## Pair incidence density bound
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_pair\_density\_bound.md}.
+\]
+
+This computes the exact local density contributed by one ordered certificate
+pair
+\[
+  (p_0,p_1).
+\]
+
+For A0, since \(p_0\equiv1\pmod4\), every nonzero \(m\bmod p_0\) gives
+exactly two \(q\)-classes.  Thus A0 contributes
+\[
+  2(p_0-1)
+\]
+incidence pairs modulo \(p_0\).
+
+For A1, the local filter gives
+\[
+R_{p_1}=
+\begin{cases}
+\dfrac{p_1-3}{2},&p_1\equiv1\pmod4,\\[2mm]
+\dfrac{p_1+1}{2},&p_1\equiv3\pmod4.
+\end{cases}
+\]
+For each admissible \(m\bmod p_1\), A1 contributes exactly two
+\(q\)-classes, hence
+\[
+  2R_{p_1}
+\]
+incidence pairs modulo \(p_1\).
+
+By CRT, the ordered pair contributes exactly
+\[
+  4(p_0-1)R_{p_1}
+\]
+points \((m,q)\) modulo \(p_0p_1\).  The local density is
+\[
+\boxed{
+  \delta(p_0,p_1)
+  =
+  \frac{4(p_0-1)R_{p_1}}{p_0^2p_1^2}.
+}
+\]
+
+In particular,
+\[
+  \delta(p_0,p_1)\approx \frac{2}{p_0p_1}.
+\]
+
+This gives a useful failed route: the naive union bound over ordered pairs is
+not strong enough to close the cover, because
+\[
+  \sum_{p_0p_1\le Q}\frac1{p_0p_1}
+\]
+does not give a uniform contradiction.
+
+Therefore pair density alone does not close the combined A-channel.  The
+next proof attempt must use fixed-\(m\) correlations, especially:
+
+1. A1 availability depends on the fixed value
+   \[
+     \left(\frac{-9m^2-1}{p_1}\right);
+   \]
+2. bridge blocks have been removed by
+   \[
+     \gcd(t_1(q),9m^2+1)=1;
+   \]
+3. the \(q\)-classes come from two oriented conic systems, not arbitrary
+   residue classes.
+
+The next exact target is a fixed-\(m\) large-sieve style obstruction for the
+available A1 primes.
+
 ## Primitive double-cover measurements
 
 Added

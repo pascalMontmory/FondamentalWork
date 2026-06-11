@@ -36,6 +36,8 @@ Main notes:
   for the coprime A-block pair cover, including nonzero A1 restrictions.
 - `legendre_A1_local_filter.md`: exact count of the \(m\bmod p\) classes
   for which the A1 congruence has nonzero roots.
+- `legendre_pair_density_bound.md`: exact local density of one ordered
+  pair incidence and failed naive union-bound route.
 
 Current exact bottleneck: after the primitive double-cover reduction, the
 remaining \(3\mid n\) channel has been refined into three exact subchannels:
@@ -51,7 +53,9 @@ problem by ordered primes \((p_0,p_1)\), each contributing at most four
 classes modulo \(p_0p_1\).  The pair-cover has now been rewritten as an
 incidence problem in \((m,q)\) on two oriented products of conics.  The A1
 side has an exact local filter: \((p-3)/2\) admissible \(m\)-classes for
-\(p\equiv1\pmod4\), and \((p+1)/2\) for \(p\equiv3\pmod4\).
+\(p\equiv1\pmod4\), and \((p+1)/2\) for \(p\equiv3\pmod4\).  The local
+density of one ordered pair is known exactly, but the naive union bound is
+too weak; the next target must use fixed-\(m\) correlations.
 
 Computational scripts live in `tools/`.
 
