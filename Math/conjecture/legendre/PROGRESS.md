@@ -7345,3 +7345,91 @@ a modular certificate for quotient-rank permutations, or a genuine descent
 \[
   A\mapsto A'<A.
 \]
+
+## Cross-field toolkit
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_cross\_field\_toolkit.md}.
+\]
+
+This answers the interdisciplinary question in exact terms.
+
+The useful tools from physics-adjacent mathematics are:
+
+- hard-core gas / cluster expansion: certificates become independent sets
+  in a compatibility graph;
+- transfer matrices: full A-block covers become paths in a finite state
+  automaton if the state space can be compressed;
+- quantum Hamiltonian / frustration-free language: certificates are
+  zero-energy states, and nonexistence should be proven by an SOS or
+  Nullstellensatz certificate;
+- renormalization: a real proof would be a contraction
+  \[
+    A\mapsto A'<A
+  \]
+  preserving certificate type.
+
+The selected nonstandard route is:
+
+> Hamiltonian/SOS non-realization for the compressed shared-\(5\) system.
+
+For each quotient-rank permutation and ramification pattern, build a finite
+polynomial system in
+\[
+  A,\ r_c,\ e_c,\qquad c\in\{5,17,25,49,65\},
+\]
+with equations
+\[
+  (A-r_c)e_c=r_c^2+c
+\]
+and pair compatibility equations.  Then try to prove
+\[
+  1\in\langle P_{\pi,\rho}\rangle
+\]
+over finite fields or over \(\mathbf Z\) after saturation.
+
+This gives a concrete nonstandard proof target, not another analogy and not
+another fiber split.
+
+## Geometric and topological toolkit
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_geometric\_topological\_toolkit.md}.
+\]
+
+This records exact geometric/topological routes that could avoid repeating
+fiber enumeration.
+
+The main objects are:
+
+- incidence varieties for centered certificates;
+- elimination ideals
+  \[
+    I_{\pi,\rho}\cap\mathbf Z[A];
+  \]
+- curve/genus reductions from pair compatibility equations;
+- tropical cones for quotient-rank balances;
+- nerve complexes of label covers;
+- discrete Morse matchings on certificate complexes.
+
+The recommended geometric pivot is shared-\(5\) incidence elimination.  For
+each quotient-rank permutation and ramification pattern, build the ideal
+\[
+  I_{\pi,\rho}
+  =
+  \left\langle
+    (A-r_c)e_c-r_c^2-c,\ \text{pair equations},\
+    \text{rank cases},\ \text{color cases}
+  \right\rangle
+\]
+for
+\[
+  c\in\{5,17,25,49,65\},
+\]
+then prove emptiness by elimination or by a modular Nullstellensatz
+certificate.
+
+This is the first genuinely geometric non-repetition target: prove the
+compressed certificate variety is empty.

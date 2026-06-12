@@ -9,6 +9,16 @@ Main notes:
   already explored.  It marks which paths should not be repeated and states
   the current non-repetitive pivot: compressed certificate non-realization,
   with shared-\(5\) as pilot.
+- `legendre_cross_field_toolkit.md`: rigorous translation of tools from
+  statistical mechanics, transfer matrices, quantum Hamiltonians/SOS, and
+  renormalization into exact Legendre proof targets.  It selects
+  Hamiltonian/SOS non-realization for the shared-\(5\) certificate as the
+  most concrete nonstandard route.
+- `legendre_geometric_topological_toolkit.md`: turns geometric and
+  topological ideas into exact targets: incidence varieties, elimination,
+  curves/genus, tropical cones, nerve complexes, and discrete Morse
+  compression.  It identifies shared-\(5\) incidence elimination as the
+  most concrete geometric pivot.
 - `legendre_residue_gaussian_note.md`: residue-cover and Gaussian-integer
   route.
 - `legendre_exact_circle_cover_attack.md`: exact finite-field circle-cover
