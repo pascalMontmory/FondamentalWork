@@ -53,6 +53,10 @@ Main notes:
   pair covering the anchor block \(q=0\) cannot also cover any of
   \(q=1,2,3\); the first block has a forced one-shot pair cost among the
   first four blocks.
+- `legendre_first_four_ordered_pair_distinct.md`: proves that no ordered
+  pair \((p_0,p_1)\) can cover two distinct coprime blocks among
+  \(B_0,\dots,B_3\).  The possible same-layer repetitions in \(E=(2,4,8,10)\)
+  and \(O=(1,5,7,11)\) occur on disjoint block pairs.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

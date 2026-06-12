@@ -5941,6 +5941,37 @@ Since \(p_0,p_1\ge5\), the only possible prime candidate in these small
 divisor lists is \(5\), and no row contains \(5\) in both layers.  Therefore
 the anchor pair is necessarily one-shot relative to the next three blocks.
 
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_first\_four\_ordered\_pair\_distinct.md}.
+\]
+This strengthens the previous anchor result.  Among the first four blocks,
+the two coordinate sequences are
+\[
+  E=(2,4,8,10),
+  \qquad
+  O=(1,5,7,11).
+\]
+For \(E\), same-layer repetition by primes \(p\ge5\) can occur only on
+\[
+  (B_0,B_2)\text{ by }5,
+  \qquad
+  (B_1,B_3)\text{ by }7.
+\]
+For \(O\), same-layer repetition by primes \(p\ge5\) can occur only on
+\[
+  (B_0,B_3)\text{ by }5.
+\]
+If \(m\) is even, A0 uses \(O\) and A1 uses \(E\); if \(m\) is odd, A0 uses
+\(E\) and A1 uses \(O\).  The possible repetition block pairs are therefore
+disjoint between the two layers.  Hence no ordered pair \((p_0,p_1)\) can
+cover two distinct coprime blocks among
+\[
+  B_0,B_1,B_2,B_3.
+\]
+Thus, when these four blocks are complete and coprime, any counterexample
+must use four distinct ordered prime pairs on them.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

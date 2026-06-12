@@ -227,3 +227,23 @@ Indeed, the collision divisibility tables for \(r=1,2,3\) only offer the
 prime \(5\) as a possible divisor \(\ge5\), and never in both layers of the
 same row.  Therefore the anchor pair is forced to be one-shot among the
 first four blocks.
+
+This is strengthened in
+\[
+  \texttt{legendre\_first\_four\_ordered\_pair\_distinct.md}.
+\]
+There are two coordinate sequences
+\[
+  E=(2,4,8,10),\qquad O=(1,5,7,11).
+\]
+Inside \(E\), same-layer repetition can occur only on
+\[
+  (B_0,B_2)\text{ by }5,\qquad (B_1,B_3)\text{ by }7.
+\]
+Inside \(O\), same-layer repetition can occur only on
+\[
+  (B_0,B_3)\text{ by }5.
+\]
+Since A0 and A1 use opposite sequences according to the parity of \(m\), no
+block pair admits repetition in both layers.  Thus no ordered pair
+\((p_0,p_1)\) can cover two distinct coprime blocks among \(B_0,\dots,B_3\).
