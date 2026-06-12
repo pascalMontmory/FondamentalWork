@@ -33,6 +33,9 @@ Main notes:
   the final residual R4/R5 fibers; it filters integral points on the
   certified elliptic curve by \(X=1845s^2\) and the separated square
   equations.
+- `tools/m3mod4_residual_coset_integral_points.magma`: narrow Magma target
+  for the final two cosets \(P\in\pm P_0+1320E(\mathbf Q)\), where
+  \(P_0=(10045/9,-849520/27)\).
 - `tools/m3mod4_residual_mw_sieve.py`: exact finite Mordell-Weil sieve; the
   option `--expect-prefix8-terminal-pair` asserts that both residual terminal
   fibers reduce to the two opposite coefficient classes modulo \(1320\).

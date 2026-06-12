@@ -20,6 +20,7 @@ G1 = E(-363, 3696)
 G2 = E(-195, 5460)
 G3 = E(-117, 4680)
 BASIS = [G1, G2, G3]
+P0 = 2*G2 + G3 + E(0, 0)
 
 TORSION_EXPECTED = {
     E(0), E(0, 0), E(533, 0), E(-405, 0),
@@ -90,6 +91,9 @@ def integral_points_with_basis():
 print("curve =", E)
 print("torsion =", sorted(TORSION_EXPECTED, key=str))
 print("basis =", BASIS)
+print("residual coset representative P0 =", P0)
+assert P0[0] == QQ(10045) / 9
+assert P0[1] == -QQ(849520) / 27
 print("rank =", E.rank())
 
 points = sorted(set(integral_points_with_basis()), key=lambda P: (P[0], P[1]))

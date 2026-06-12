@@ -1,0 +1,131 @@
+// Coset-specific IntegralPoints target for the final residual Legendre fibers.
+//
+// This is the smallest exact target left after the finite Mordell-Weil sieve:
+//
+//   P in +/-P0 + 1320 E(Q),
+//   P0 = 2*G2 + G3 + (0,0) = (10045/9, -849520/27),
+//   x(P) = 1845*s^2,
+//
+// together with the separated R4 or R5 square equations.
+//
+// Run with:
+//   magma Math/conjecture/legendre/tools/m3mod4_residual_coset_integral_points.magma
+
+Q := Rationals();
+E := EllipticCurve([ Q | 0, -128, 0, -215865, 0 ]);
+
+G1 := E![-363, 3696];
+G2 := E![-195, 5460];
+G3 := E![-117, 4680];
+T0 := E![0, 0];
+P0 := 2*G2 + G3 + T0;
+
+assert P0 eq E![ Q!10045/9, -Q!849520/27 ];
+
+function IsSquareInteger(n)
+    if n lt 0 then
+        return false;
+    end if;
+    ok, _ := IsSquare(Integers()!n);
+    return ok;
+end function;
+
+function SquareSFromX(P)
+    if P eq E!0 then
+        return false, 0;
+    end if;
+    x := P[1];
+    if Denominator(x) ne 1 then
+        return false, 0;
+    end if;
+    xz := Integers()!x;
+    if xz mod 1845 ne 0 then
+        return false, 0;
+    end if;
+    s2 := xz div 1845;
+    if not IsSquareInteger(s2) then
+        return false, 0;
+    end if;
+    return true, SquareRoot(Integers()!s2);
+end function;
+
+function PassesCommon(s)
+    z := s^2;
+    return
+        (153*z - 55) mod 2 eq 0 and
+        IsSquareInteger((153*z - 55) div 2) and
+        (41*z + 9) mod 2 eq 0 and
+        IsSquareInteger((41*z + 9) div 2) and
+        (45*z - 13) mod 2 eq 0 and
+        IsSquareInteger((45*z - 13) div 2) and
+        IsSquareInteger(2673*z - 992) and
+        IsSquareInteger(4617*z - 392);
+end function;
+
+function PassesR4(s)
+    z := s^2;
+    return PassesCommon(s) and
+        IsSquareInteger(1701*z - 908) and
+        IsSquareInteger(7533*z + 2668);
+end function;
+
+function PassesR5(s)
+    z := s^2;
+    return PassesCommon(s) and
+        IsSquareInteger(3645*z - 836) and
+        IsSquareInteger(1701*z - 1004);
+end function;
+
+// Magma's MordellWeilGroup gives an abstract finitely generated abelian group
+// A and a map phi: A -> E(Q).  The inverse @@ phi lets us test the exact coset
+// modulo 1320E(Q).
+A, phi := MordellWeilGroup(E);
+preP0 := P0 @@ phi;
+MW1320 := sub< A | [ 1320*A.i : i in [1..Ngens(A)] ] >;
+
+function InResidualCoset(P)
+    preP := P @@ phi;
+    return (preP - preP0 in MW1320) or (preP + preP0 in MW1320);
+end function;
+
+pts := IntegralPoints(E);
+
+coset_x := [];
+common_x := [];
+r4_x := [];
+r5_x := [];
+
+for P in pts do
+    if not InResidualCoset(P) then
+        continue;
+    end if;
+
+    ok, s := SquareSFromX(P);
+    if not ok then
+        continue;
+    end if;
+
+    Append(~coset_x, <P, s>);
+    for ss in {s, -s} do
+        if PassesCommon(ss) then
+            Append(~common_x, <P, ss>);
+        end if;
+        if PassesR4(ss) then
+            Append(~r4_x, <P, ss>);
+        end if;
+        if PassesR5(ss) then
+            Append(~r5_x, <P, ss>);
+        end if;
+    end for;
+end for;
+
+"P0", P0;
+"Integral points in residual coset with x=1845*s^2", coset_x;
+"Common separated candidates", common_x;
+"R4 candidates", r4_x;
+"R5 candidates", r5_x;
+
+assert #r4_x eq 0;
+assert #r5_x eq 0;
+
+"CERTIFIED: the residual Mordell-Weil coset pair contains no R4/R5 integral point.";

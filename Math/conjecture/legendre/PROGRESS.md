@@ -5639,6 +5639,30 @@ assert this result directly.  Thus the residual problem is no longer a broad
 CRT sieve problem: it is the global task of excluding one opposite pair of
 rank-\(3\) Mordell-Weil classes.
 
+The corresponding rational representative is
+\[
+  P_0=2G_2+G_3+(0,0)
+      =
+      \left(\frac{10045}{9},-\frac{849520}{27}\right).
+\]
+So the final target can be written in the short coset form
+\[
+  P\in\pm P_0+1320E(\mathbf Q),
+  \qquad
+  x(P)=1845s^2,
+\]
+plus the separated \(R4\) or \(R5\) equations.
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_coset\_integral\_points.magma}.
+\]
+This Magma target asks for integral points on \(E\), filters the two exact
+cosets \(\pm P_0+1320E(\mathbf Q)\), and then applies the residual square
+conditions.  It is narrower than the previous quartic and elliptic
+IntegralPoints scripts because it uses the terminal Mordell-Weil pair
+certificate directly.
+
 This local Mordell-Weil layer still does not close the residual fibers by
 itself.  A height bound plus a full Mordell-Weil sieve, or an external
 integral-points computation, is still required.

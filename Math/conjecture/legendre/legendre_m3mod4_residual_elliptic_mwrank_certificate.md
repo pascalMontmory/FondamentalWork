@@ -186,10 +186,41 @@ of Mordell-Weil classes:
   \boxed{(0,\pm2,\pm1)+(0,0)\pmod{1320}.}
 \]
 
+The positive representative is
+\[
+  P_0=2G_2+G_3+(0,0)
+      =
+      \left(\frac{10045}{9},-\frac{849520}{27}\right).
+\]
+
+Thus every remaining residual point must satisfy the exact coset condition
+\[
+  P\in P_0+1320E(\mathbf Q)
+  \quad\text{or}\quad
+  P\in -P_0+1320E(\mathbf Q),
+\]
+in addition to
+\[
+  x(P)=1845s^2
+\]
+and the separated \(R4\) or \(R5\) square equations.
+
 This is an exact finite-group certificate, not an interval computation.  It
 does not close the residual fibers, because a global rational point may still
 lie in one of these two congruence classes.  It does however reduce the final
 obstruction to one pair of rank-\(3\) Mordell-Weil residue classes.
+
+The coset-specific Magma target is recorded in
+\[
+  \texttt{tools/m3mod4\_residual\_coset\_integral\_points.magma}.
+\]
+It computes \(E(\mathbf Q)\), tests membership in the two cosets above, and
+then applies the \(x=1845s^2\), \(R4\), and \(R5\) filters.  The desired final
+certificate is
+\[
+  \texttt{R4 candidates}=\varnothing,\qquad
+  \texttt{R5 candidates}=\varnothing.
+\]
 
 The final proof still needs either:
 
