@@ -166,41 +166,31 @@ The modes \(\texttt{r4}\) and \(\texttt{r5}\) impose not only
 but also the separated square conditions for the corresponding terminal
 residual pair.
 
-With primes
+The implemented certificate option
 \[
-  23,43,47
+  \texttt{--expect-prefix8-terminal-pair}
 \]
-the residual classes modulo \(24\) reduce to:
+now verifies the strongest local Mordell-Weil reduction reached so far.  For
+both terminal fibers \(R4\) and \(R5\), the surviving coefficient classes
+modulo \(1320\) are exactly
 \[
-\begin{array}{c|c}
-\text{fiber} & \text{surviving coefficient classes}\\
-\hline
-R4 & 16\\
-R5 & 32.
-\end{array}
-\]
-
-Adding \(31\) gives modulus \(120\):
-\[
-\begin{array}{c|c}
-\text{fiber} & \text{surviving coefficient classes}\\
-\hline
-R4 & 800\\
-R5 & 1600.
-\end{array}
+\begin{aligned}
+  (n_1,n_2,n_3;T)&\equiv(0,2,1;(0,0))\pmod{1320},\\
+  (n_1,n_2,n_3;T)&\equiv(0,-2,-1;(0,0))\pmod{1320}.
+\end{aligned}
 \]
 
-Adding \(19\) before lifting by \(37\) gives:
+Equivalently, the two residual terminal systems share the same opposite pair
+of Mordell-Weil classes:
 \[
-\begin{array}{c|c}
-\text{fiber} & \text{classes modulo }1320\\
-\hline
-R4 & 145200\\
-R5 & 96800.
-\end{array}
+  \boxed{(0,\pm2,\pm1)+(0,0)\pmod{1320}.}
 \]
 
-Thus these local Mordell-Weil reductions do not close the residual fibers.
+This is an exact finite-group certificate, not an interval computation.  It
+does not close the residual fibers, because a global rational point may still
+lie in one of these two congruence classes.  It does however reduce the final
+obstruction to one pair of rank-\(3\) Mordell-Weil residue classes.
+
 The final proof still needs either:
 
 1. a height bound plus a full Mordell-Weil sieve, or

@@ -5610,9 +5610,38 @@ Current exact sieve status:
 \end{array}
 \]
 
-Therefore the implemented local sieve layer does not close the residual
-fibers by itself.  A height bound plus a full Mordell-Weil sieve, or an
-external integral-points computation, is still required.
+The strengthened certificate option
+\[
+  \texttt{--expect-prefix8-terminal-pair}
+\]
+pushes both residual terminal fibers to the same exact pair of
+Mordell-Weil residue classes modulo \(1320\):
+\[
+\begin{aligned}
+  (n_1,n_2,n_3;T)&\equiv(0,2,1;(0,0))\pmod{1320},\\
+  (n_1,n_2,n_3;T)&\equiv(0,-2,-1;(0,0))\pmod{1320}.
+\end{aligned}
+\]
+
+The two commands
+```bash
+python3 Math/conjecture/legendre/tools/m3mod4_residual_mw_sieve.py \
+  --mode r4 --prime-bound 0 --scan-bound 0 \
+  --combine-primes 23,43,47,31,19,37,449,191,509,167,79,229,127,227,53,521 \
+  --max-classes 1200000 --expect-prefix8-terminal-pair
+
+python3 Math/conjecture/legendre/tools/m3mod4_residual_mw_sieve.py \
+  --mode r5 --prime-bound 0 --scan-bound 0 \
+  --combine-primes 23,43,47,31,19,37,229,191,449,509,227,127,521,53,167,79 \
+  --max-classes 1200000 --expect-prefix8-terminal-pair
+```
+assert this result directly.  Thus the residual problem is no longer a broad
+CRT sieve problem: it is the global task of excluding one opposite pair of
+rank-\(3\) Mordell-Weil classes.
+
+This local Mordell-Weil layer still does not close the residual fibers by
+itself.  A height bound plus a full Mordell-Weil sieve, or an external
+integral-points computation, is still required.
 
 ## Residual IntegralPoints certificate target
 

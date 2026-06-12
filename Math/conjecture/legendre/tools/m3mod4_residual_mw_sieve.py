@@ -259,7 +259,9 @@ def bounded_scan(bound: int) -> list[tuple[tuple[int, int, int], int, Point, int
     return hits
 
 
-def combined_sieve(primes: Iterable[int], max_classes: int, mode: str) -> None:
+def combined_sieve(
+    primes: Iterable[int], max_classes: int, mode: str
+) -> tuple[int, list[tuple[int, int, int, int]]]:
     prime_list = list(primes)
     modulus = 1
     survivors: list[tuple[int, int, int, int]] = [(0, 0, 0, ti) for ti in range(4)]
@@ -316,6 +318,22 @@ def combined_sieve(primes: Iterable[int], max_classes: int, mode: str) -> None:
         print(f"survivor {((item[0], item[1], item[2]), item[3])}")
     if len(survivors) > 100:
         print("...")
+    return modulus, survivors
+
+
+def assert_prefix8_terminal_pair(
+    mode: str, modulus: int, survivors: list[tuple[int, int, int, int]]
+) -> None:
+    if modulus != 1320:
+        raise AssertionError(f"expected modulus 1320, got {modulus}")
+    expected = {
+        (0, 2, 1, 1),
+        (0, 1318, 1319, 1),
+    }
+    actual = set(survivors)
+    if actual != expected:
+        raise AssertionError(f"unexpected {mode} survivors: {sorted(actual)}")
+    print(f"CERTIFIED {mode}: only +/-((0,2,1), torsion_index=1) modulo 1320")
 
 
 def terminal_status(s: int) -> tuple[bool, bool]:
@@ -334,6 +352,11 @@ def main() -> int:
         default="",
         help="Comma-separated good primes for a direct combined coefficient sieve.",
     )
+    parser.add_argument(
+        "--expect-prefix8-terminal-pair",
+        action="store_true",
+        help="Assert the known residual prefix-8 terminal pair modulo 1320.",
+    )
     parser.add_argument("--max-classes", type=int, default=2_000_000)
     args = parser.parse_args()
 
@@ -350,7 +373,11 @@ def main() -> int:
 
     if args.combine_primes:
         primes = [int(part) for part in args.combine_primes.split(",") if part]
-        combined_sieve(primes, args.max_classes, args.mode)
+        modulus, survivors = combined_sieve(primes, args.max_classes, args.mode)
+        if args.expect_prefix8_terminal_pair:
+            if args.mode not in {"r4", "r5"}:
+                raise ValueError("--expect-prefix8-terminal-pair requires r4 or r5 mode")
+            assert_prefix8_terminal_pair(args.mode, modulus, survivors)
 
     print(f"bounded coordinate scan: |n_i| <= {args.scan_bound}")
     hits = bounded_scan(args.scan_bound)

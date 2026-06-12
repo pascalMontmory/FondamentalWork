@@ -33,6 +33,9 @@ Main notes:
   the final residual R4/R5 fibers; it filters integral points on the
   certified elliptic curve by \(X=1845s^2\) and the separated square
   equations.
+- `tools/m3mod4_residual_mw_sieve.py`: exact finite Mordell-Weil sieve; the
+  option `--expect-prefix8-terminal-pair` asserts that both residual terminal
+  fibers reduce to the two opposite coefficient classes modulo \(1320\).
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a
