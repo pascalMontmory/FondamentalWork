@@ -38,6 +38,10 @@ Main notes:
   the residual elliptic endpoint closure; it records that this branch is
   closed, while full Legendre still requires closing the earlier coprime
   A-block pair-cover obstruction or replacing it by a stronger descent.
+- `legendre_complete_proof_equation_gate.md`: exact equation-level gate for
+  a complete proof in the current route: a counterexample must assign to
+  every complete coprime A-block two distinct small certificate primes
+  satisfying the A0/A1 conic congruences.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

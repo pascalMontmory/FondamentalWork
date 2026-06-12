@@ -5797,6 +5797,41 @@ Each ordered pair contributes at most four classes modulo \(p_0p_1\), but a
 global non-cover theorem, or a stronger descent replacing it, is still needed
 for a complete Legendre proof.
 
+Added the equation-level complete-proof gate
+\[
+  \texttt{Math/conjecture/legendre/legendre\_complete\_proof\_equation\_gate.md}.
+\]
+It records the remaining contradiction without simulation: a counterexample
+must assign, for every complete coprime A-block \(q\), two distinct primes
+\[
+  p_0(q),p_1(q)\le3m
+\]
+with
+\[
+  p_0(q)\equiv1\pmod4,\qquad p_0(q)\nmid3m,
+\]
+\[
+  p_1(q)\ge5,\qquad p_1(q)\ne p_0(q),
+\]
+satisfying
+\[
+  t_0(q)^2\equiv-9m^2\pmod{p_0(q)},
+  \qquad
+  t_1(q)^2\equiv-9m^2-1\pmod{p_1(q)}.
+\]
+Equivalently, for every such \(q\), one must have simultaneous
+factorizations
+\[
+  9m^2+t_0(q)^2=\alpha_q\beta_q,\qquad
+  9m^2+t_1(q)^2+1=\gamma_q\delta_q,
+\]
+with small certificate prime divisors in the two lower factors and
+\[
+  \gcd(9m^2+t_0(q)^2,\ 9m^2+t_1(q)^2+1)=1.
+\]
+The complete proof now requires proving that this oriented conic-product
+cover cannot exist for any \(m\).
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
