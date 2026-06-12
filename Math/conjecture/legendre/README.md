@@ -5,6 +5,10 @@ This directory contains the Legendre-conjecture thread.
 Main notes:
 
 - `PROGRESS.md`: chronological progress log.
+- `legendre_route_audit_no_repeat.md`: audit of all major Legendre routes
+  already explored.  It marks which paths should not be repeated and states
+  the current non-repetitive pivot: compressed certificate non-realization,
+  with shared-\(5\) as pilot.
 - `legendre_residue_gaussian_note.md`: residue-cover and Gaussian-integer
   route.
 - `legendre_exact_circle_cover_attack.md`: exact finite-field circle-cover

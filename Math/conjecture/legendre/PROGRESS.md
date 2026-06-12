@@ -7308,3 +7308,40 @@ In particular the top quotient rank forces
 So a large shared-\(5\) obstruction must realize one fixed \(5\)-atom plus
 five distinct variable labels and five distinct quotient ranks.  This is a
 genuine certificate-rank obstruction, not a numerical probe.
+
+## Route audit: what not to repeat
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_route\_audit\_no\_repeat.md}.
+\]
+
+This audits the Legendre workbench to avoid repeating already explored
+routes.
+
+The conclusions are:
+
+- the pure Gaussian square-norm route is false as a universal lemma;
+- the \(3\mid n\) split must include the \(3\nmid t,\ r=1\) unit-lift;
+- initial-block escalation gives finite gates but no global closure;
+- quotient-rank barriers are useful language but not a contradiction;
+- raw Mobius positivity still faces the parity problem;
+- high-label least-root decomposition is useful but does not close full
+  A-block covers;
+- \(u=1\) fibers and shared-\(5\) reductions are now certificate material,
+  not a proof mechanism by themselves.
+
+The current non-repetitive pivot is:
+
+> compressed certificate non-realization.
+
+The pilot target is the shared-\(5\) system
+\[
+  \mathcal C=\{5,17,25,49,65\},
+\]
+where five labels are distinct and, for \(A\ge3488\), five quotients are
+distinct.  The next acceptable work should be an elimination system,
+a modular certificate for quotient-rank permutations, or a genuine descent
+\[
+  A\mapsto A'<A.
+\]
