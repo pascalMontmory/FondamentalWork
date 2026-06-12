@@ -180,6 +180,36 @@ def high_root_sets(m: int, primes: list[int]) -> tuple[set[int], set[int], int, 
     return r0, r1, p0_count, p1_count
 
 
+def high_root_maps(m: int, primes: list[int]) -> tuple[dict[int, list[int]], dict[int, list[int]]]:
+    a_center = 3 * m
+    t_bound = isqrt(6 * m)
+    c_cutoff = 2 * t_bound
+    r0: dict[int, list[int]] = {}
+    r1: dict[int, list[int]] = {}
+
+    for p in primes:
+        if p <= c_cutoff:
+            continue
+        if p > a_center:
+            break
+
+        if p % 4 == 1 and a_center % p != 0:
+            root_i = sqrt_mod_prime(-1, p)
+            if root_i is not None:
+                t = least_abs_residue(a_center * root_i, p)
+                if 1 <= t <= t_bound:
+                    r0.setdefault(t, []).append(p)
+
+        if (a_center * a_center + 1) % p != 0:
+            root_s = sqrt_mod_prime(-(a_center * a_center + 1), p)
+            if root_s is not None:
+                t = least_abs_residue(root_s, p)
+                if 1 <= t <= t_bound:
+                    r1.setdefault(t, []).append(p)
+
+    return r0, r1
+
+
 def low_middle_zones(m: int, t: int, layer: int, primes: list[int]) -> set[str]:
     a_center = 3 * m
     t_bound = isqrt(6 * m)
@@ -202,6 +232,30 @@ def low_middle_zones(m: int, t: int, layer: int, primes: list[int]) -> set[str]:
         if value % p == 0:
             zones.add("L" if p <= b_cutoff else "M")
     return zones
+
+
+def low_middle_labels(m: int, t: int, layer: int, primes: list[int]) -> dict[str, list[int]]:
+    a_center = 3 * m
+    t_bound = isqrt(6 * m)
+    b_cutoff = 6 * q_star(m) + 4
+    c_cutoff = 2 * t_bound
+    value = a_center * a_center + t * t + (1 if layer == 1 else 0)
+    labels: dict[str, list[int]] = {"L": [], "M": []}
+
+    for p in primes:
+        if p < 5:
+            continue
+        if p > c_cutoff:
+            break
+        if layer == 0:
+            if p % 4 != 1 or a_center % p == 0:
+                continue
+        else:
+            if (a_center * a_center + 1) % p == 0:
+                continue
+        if value % p == 0:
+            labels["L" if p <= b_cutoff else "M"].append(p)
+    return labels
 
 
 def priority(zones: ZoneSet) -> str:
@@ -314,6 +368,51 @@ def print_stats(stats: MStats, verbose: bool) -> None:
         print(f"  all_cells      {fmt_counter(stats.all_cells)}")
 
 
+def coverage_key(stats: MStats) -> tuple[float, int]:
+    if stats.complete_cop_blocks == 0:
+        return (0.0, 0)
+    return (
+        stats.both_layers_covered / stats.complete_cop_blocks,
+        stats.both_layers_covered,
+    )
+
+
+def defect(stats: MStats) -> int:
+    return stats.complete_cop_blocks - stats.both_layers_covered
+
+
+def print_record(label: str, stats: MStats | None) -> None:
+    if stats is None:
+        return
+    ratio = (
+        stats.both_layers_covered / stats.complete_cop_blocks
+        if stats.complete_cop_blocks
+        else 0.0
+    )
+    print(
+        f"  {label}: m={stats.m} cop={stats.complete_cop_blocks} "
+        f"covered={stats.both_layers_covered} ratio={ratio:.4f} "
+        f"defect={defect(stats)} lowlow={stats.low_low_possible} "
+        f"mixed={stats.mixed_high_low_or_mid} hihi={stats.high_high} "
+        f"a0_open={stats.a0_uncovered} a1_open={stats.a1_uncovered}"
+    )
+
+
+def print_blocks(m: int, primes: list[int]) -> None:
+    r0_hi, r1_hi = high_root_maps(m, primes)
+    print(f"blocks for m={m}:")
+    for q, t0, t1 in complete_coprime_blocks(m):
+        z0_labels = low_middle_labels(m, t0, 0, primes)
+        z1_labels = low_middle_labels(m, t1, 1, primes)
+        if t0 in r0_hi:
+            z0_labels["H"] = r0_hi[t0]
+        if t1 in r1_hi:
+            z1_labels["H"] = r1_hi[t1]
+        z0 = {z: ps for z, ps in z0_labels.items() if ps}
+        z1 = {z: ps for z, ps in z1_labels.items() if ps}
+        print(f"  q={q:3d} t0={t0:3d} t1={t1:3d} A0={z0 or '-'} A1={z1 or '-'}")
+
+
 def run(args: argparse.Namespace) -> int:
     todo: list[int] = []
     if args.m:
@@ -327,27 +426,48 @@ def run(args: argparse.Namespace) -> int:
 
     worst_high_high: MStats | None = None
     worst_open: MStats | None = None
+    best_coverage: MStats | None = None
+    smallest_defect: MStats | None = None
+    max_low_low: MStats | None = None
+    max_mixed: MStats | None = None
+    full_covers: list[MStats] = []
     for m in todo:
         stats = analyze_m(m, primes)
-        print_stats(stats, args.verbose)
+        if not args.summary_only:
+            print_stats(stats, args.verbose)
+            if args.show_blocks:
+                print_blocks(m, primes)
         if worst_high_high is None or stats.high_high > worst_high_high.high_high:
             worst_high_high = stats
         open_layers = stats.a0_uncovered + stats.a1_uncovered
         if worst_open is None or open_layers > worst_open.a0_uncovered + worst_open.a1_uncovered:
             worst_open = stats
+        if best_coverage is None or coverage_key(stats) > coverage_key(best_coverage):
+            best_coverage = stats
+        if smallest_defect is None or defect(stats) < defect(smallest_defect):
+            smallest_defect = stats
+        if max_low_low is None or stats.low_low_possible > max_low_low.low_low_possible:
+            max_low_low = stats
+        if max_mixed is None or stats.mixed_high_low_or_mid > max_mixed.mixed_high_low_or_mid:
+            max_mixed = stats
+        if stats.complete_cop_blocks and stats.both_layers_covered == stats.complete_cop_blocks:
+            full_covers.append(stats)
 
     if len(todo) > 1:
         print("summary:")
-        if worst_high_high is not None:
-            print(
-                f"  max_high_high m={worst_high_high.m} "
-                f"hihi={worst_high_high.high_high}"
-            )
+        print_record("best_coverage", best_coverage)
+        print_record("smallest_defect", smallest_defect)
+        print_record("max_high_high", worst_high_high)
+        print_record("max_mixed", max_mixed)
+        print_record("max_low_low", max_low_low)
         if worst_open is not None:
             print(
-                f"  max_layer_open m={worst_open.m} "
+                f"  max_layer_open: m={worst_open.m} "
                 f"a0_open={worst_open.a0_uncovered} a1_open={worst_open.a1_uncovered}"
             )
+        print(f"  full_covers={len(full_covers)}")
+        for stats in full_covers[: args.show_full_covers]:
+            print_record("full_cover", stats)
     return 0
 
 
@@ -358,6 +478,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--end", type=int, help="Range end for m.")
     parser.add_argument("--step", type=int, default=1)
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument("--summary-only", action="store_true")
+    parser.add_argument("--show-full-covers", type=int, default=20)
+    parser.add_argument("--show-blocks", action="store_true")
     return parser.parse_args()
 
 

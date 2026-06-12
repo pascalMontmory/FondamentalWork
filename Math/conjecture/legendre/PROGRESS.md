@@ -6617,6 +6617,57 @@ exact non-cover theorem in
   \texttt{legendre\_current\_boundary\_of\_attack.md}.
 \]
 
+## First full A-block cover: \(m=391\)
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m391\_full\_Ablock\_cover.md}.
+\]
+
+The least-root zone probe was extended with summary and block-detail modes.
+Scanning
+\[
+  1\le m\le10000
+\]
+shows a first full cover at
+\[
+  m=391.
+\]
+For this value,
+\[
+  Q_m^\ast=15,\qquad T_m=48,\qquad B_m=94,\qquad C_m=96,
+\]
+and the \(13\) coprime complete A-blocks are all covered in both layers:
+\[
+  \text{covered}=13,\qquad A0\text{-open}=0,\qquad A1\text{-open}=0.
+\]
+The priority matrix is
+\[
+  LL:9,\qquad LH:2,\qquad HL:2.
+\]
+
+This disproves the naive closure lemma
+\[
+  \text{there is always an open coprime A-block layer.}
+\]
+
+It does not disprove Legendre.  For
+\[
+  n=3m=1173,
+\]
+the full four-offset channel is repaired by the nonprimitive witness
+\[
+  t=3,\qquad r=-1,
+\]
+giving
+\[
+  1173^2+3^2-1=1375937.
+\]
+
+Therefore the next serious theorem must couple full A-block covers to either
+a nonprimitive repair, a bridge repair, or a descent.  A proof by coprime
+A-block openness alone is impossible.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

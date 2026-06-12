@@ -113,6 +113,10 @@ Main notes:
   `tools/least_root_zone_probe.py` script and records first profiles of the
   low/middle/high cover matrix.  These measurements guide proof search but
   are not used as proof.
+- `legendre_m391_full_Ablock_cover.md`: records the first full coprime
+  A-block cover found by the least-root zone probe.  The case \(m=391\)
+  disproves the naive open-A-block closure lemma and is repaired only by the
+  nonprimitive \(t=3u\) channel.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

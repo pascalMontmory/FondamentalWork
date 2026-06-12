@@ -51,9 +51,19 @@ Range:
 \texttt{python3 Math/conjecture/legendre/tools/least\_root\_zone\_probe.py --start 1 --end 200}
 \]
 
+Range summary:
+\[
+\texttt{python3 Math/conjecture/legendre/tools/least\_root\_zone\_probe.py --start 1 --end 10000 --summary-only}
+\]
+
 Multiple values:
 \[
 \texttt{python3 Math/conjecture/legendre/tools/least\_root\_zone\_probe.py --m 100 --m 1000 --m 10000 --verbose}
+\]
+
+Detailed block certificates:
+\[
+\texttt{python3 Math/conjecture/legendre/tools/least\_root\_zone\_probe.py --m 391 --show-blocks}
 \]
 
 ## 3. First profiles
@@ -129,3 +139,38 @@ The useful mathematical lesson is therefore:
 
 This is only guidance for proof search.  The exact closure target remains
 the non-cover theorem in `legendre_current_boundary_of_attack.md`.
+
+## 5. First full A-block cover
+
+Scanning
+\[
+  1\le m\le10000
+\]
+with
+\[
+\texttt{--summary-only}
+\]
+finds exactly one full cover in the current model:
+\[
+  m=391.
+\]
+
+The summary line is
+\[
+\texttt{full\_cover: m=391 cop=13 covered=13 ratio=1.0000 defect=0}
+\]
+with
+\[
+  \texttt{lowlow}=9,\qquad
+  \texttt{mixed}=9,\qquad
+  \texttt{hihi}=2.
+\]
+
+This is now recorded separately in
+\[
+  \texttt{legendre\_m391\_full\_Ablock\_cover.md}.
+\]
+
+It disproves the naive closure lemma that an open coprime A-block layer must
+always exist.  The full Legendre interval is nevertheless repaired by the
+nonprimitive \(t=3u\) channel.
