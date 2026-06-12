@@ -5909,6 +5909,38 @@ repetitions against \(q=0\) live on the explicit linear forms
   r,\quad 3r\pm1,\quad 3r+2,\quad 3r+4,\quad r+1.
 \]
 
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_Ablock\_anchor\_pair\_nonrepetition.md}.
+\]
+This proves that the ordered pair covering \(q=0\) cannot cover any of
+\[
+  q=1,\quad q=2,\quad q=3.
+\]
+For odd \(m\), the collision divisibility candidates are
+\[
+\begin{array}{c|c|c}
+ r & p_0 & p_1\\
+ \hline
+ 1 & 2,\ 6 & 4,\ 6\\
+ 2 & 6,\ 10 & 6,\ 8\\
+ 3 & 8,\ 12 & 10,\ 12,
+\end{array}
+\]
+and for even \(m\),
+\[
+\begin{array}{c|c|c}
+ r & p_0 & p_1\\
+ \hline
+ 1 & 4,\ 6 & 2,\ 6\\
+ 2 & 6,\ 8 & 6,\ 10\\
+ 3 & 10,\ 12 & 8,\ 12.
+\end{array}
+\]
+Since \(p_0,p_1\ge5\), the only possible prime candidate in these small
+divisor lists is \(5\), and no row contains \(5\) in both layers.  Therefore
+the anchor pair is necessarily one-shot relative to the next three blocks.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

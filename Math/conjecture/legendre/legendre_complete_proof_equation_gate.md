@@ -213,3 +213,17 @@ linear forms
 \[
   r,\quad 3r\pm1,\quad 3r+2,\quad 3r+4,\quad r+1.
 \]
+
+The note
+\[
+  \texttt{legendre\_Ablock\_anchor\_pair\_nonrepetition.md}
+\]
+uses these specialized equations to prove that the ordered pair covering
+\(q=0\) cannot also cover any of
+\[
+  q=1,\quad q=2,\quad q=3.
+\]
+Indeed, the collision divisibility tables for \(r=1,2,3\) only offer the
+prime \(5\) as a possible divisor \(\ge5\), and never in both layers of the
+same row.  Therefore the anchor pair is forced to be one-shot among the
+first four blocks.
