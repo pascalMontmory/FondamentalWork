@@ -109,6 +109,10 @@ Main notes:
   boundary of the route: a non-cover theorem for low cofactor boxes,
   bounded middle labels, high-high least-root adjacencies, and mixed
   neighbor sets would close the current A-block gate.
+- `legendre_least_root_zone_probe_notes.md`: documents the exploratory
+  `tools/least_root_zone_probe.py` script and records first profiles of the
+  low/middle/high cover matrix.  These measurements guide proof search but
+  are not used as proof.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
@@ -123,6 +127,9 @@ Main notes:
 - `tools/m3mod4_residual_mw_sieve.py`: exact finite Mordell-Weil sieve; the
   option `--expect-prefix8-terminal-pair` asserts that both residual terminal
   fibers reduce to the two opposite coefficient classes modulo \(1320\).
+- `tools/least_root_zone_probe.py`: exploratory measurement tool for the
+  least-root cover boundary.  It classifies complete coprime A-blocks by
+  low, middle, and high labels in the A0/A1 layers.
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a

@@ -6574,6 +6574,49 @@ ingredient: either a least-root correlation bound, a finite low-box cofactor
 non-cover theorem, or a descent from a full cover at \(m\) to a smaller full
 cover.
 
+## Least-root zone probe
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/least\_root\_zone\_probe.py}
+\]
+and
+\[
+  \texttt{Math/conjecture/legendre/legendre\_least\_root\_zone\_probe\_notes.md}.
+\]
+
+The script is exploratory, not a proof.  It measures the exact cells in the
+current cover matrix:
+
+- low labels \(p\le B_m\);
+- middle labels \(B_m<p\le C_m\);
+- high labels \(C_m<p\le3m\), represented by least-root images;
+- high-high shift adjacencies;
+- mixed high/low-or-middle neighbor cells.
+
+Example outputs:
+
+\[
+\begin{array}{c|c|c|c|c|c|c|c}
+m&\mathcal Q_{\rm cop}&\text{covered}&A0\text{-open}&A1\text{-open}
+&\text{low-low}&\text{mixed}&\text{high-high}\\
+\hline
+1000&26&15&10&3&9&12&1\\
+10000&81&60&14&8&42&43&11\\
+100000&256&180&46&33&119&135&49
+\end{array}
+\]
+
+The probe suggests that high-high least-root adjacencies exist but do not
+dominate the observed cover.  The mixed cells and low-low cofactor box are
+large and should be attacked alongside any high-root correlation theorem.
+
+Again, this is only a guide for proof search.  The proof target remains the
+exact non-cover theorem in
+\[
+  \texttt{legendre\_current\_boundary\_of\_attack.md}.
+\]
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
