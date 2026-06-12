@@ -6910,3 +6910,61 @@ The failure of the first nonprimitive repair layer now has an exact rank
 cost.  The next closure target is to combine this rank cost with the
 quadratic-residue colors of the labels and the full A-block cover
 constraints.
+
+## Colored distances for the \(u=1\) cluster
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_cluster\_colored\_distance\_gate.md}.
+\]
+
+This adds the quadratic-residue colors missing from the \(u=1\) quotient-rank
+gate.
+
+If
+\[
+  p_c=A-r_c\mid A^2+c
+\]
+and \(p_c\nmid c\), then
+\[
+  \left(\frac{-c}{p_c}\right)=1.
+\]
+Thus the forced distances \(r_c\) lie in explicit congruence classes.
+
+In the odd branch:
+\[
+  r_2,r_8\equiv A-1,\ A-3\pmod8,
+\]
+\[
+  r_4\equiv A-1\pmod4,
+\]
+and either
+\[
+  p_{10}=5,\quad5\mid A,
+\]
+or
+\[
+  r_{10}\equiv
+  A-s\pmod {40},
+  \quad
+  s\in\{1,7,9,11,13,19,23,37\}.
+\]
+
+In the even branch:
+\[
+  r_1\equiv A-1\pmod4,
+\]
+and the labels at \(5\) and \(11\) are either ramified
+\[
+  p_5=5,\ 5\mid A,
+  \qquad
+  p_{11}=11,\ 11\mid A,
+\]
+or satisfy the nonramified color classes modulo \(20\) and \(44\).
+
+So the no-\(u=1\)-repair obstruction is now a ranked colored distance
+assignment.  The only color escapes are explicit small-prime divisibility
+gates on
+\[
+  A=3m.
+\]

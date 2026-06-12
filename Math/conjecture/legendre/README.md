@@ -129,6 +129,10 @@ Main notes:
   cluster gate.  In the odd branch, \(m\ge19\) forces four distinct quotient
   ranks; in the even branch, \(m\ge28\) forces three distinct ranks outside
   the shared-\(5\) gate \(A\equiv\pm2\pmod5\).
+- `legendre_u1_cluster_colored_distance_gate.md`: adds quadratic-residue
+  colors to the forced \(u=1\) labels.  Distances are constrained modulo
+  \(8,20,40,44\), except for explicit ramified gates \(5\mid A\) or
+  \(11\mid A\) and the even shared-\(5\) gate.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
