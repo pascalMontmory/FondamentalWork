@@ -7092,3 +7092,60 @@ Thus the shared-\(5\) fiber collapses to one remaining colored divisor
 equation for \(A^2+5\), plus the global A-block cover constraints beyond
 the anchor.  The offsets \(1\) and \(11\) no longer provide independent
 resources.
+
+## Odd \(5\mid A\) fiber and the \(u=2\) lift
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_odd5\_u2\_lift\_gate.md}.
+\]
+
+This advances the odd ramified fiber
+\[
+  5\mid A.
+\]
+
+In this fiber, the \(u=1\) cluster contains the deterministic top atom
+\[
+  c=10,\qquad p_{10}=5,
+\]
+with
+\[
+  r_{10}=A-5,\qquad
+  e_{10}=\frac{A^2}{5}-2A+7.
+\]
+
+The next nonprimitive value is \(u=2\).  Since \(m\) is odd and \(u=2\) is
+even, the only possible prime candidate is
+\[
+  9(m^2+2^2)+2=A^2+38.
+\]
+For \(A\ge19\), it is admissible and lies between \(A^2\) and \((A+1)^2\).
+So if \(u=2\) also fails, it forces
+\[
+  p_{38}=A-r_{38}\le A,
+  \qquad
+  A-r_{38}\mid r_{38}^2+38.
+\]
+
+The label \(5\) cannot occur at \(c=38\).  The only ramified odd label is
+\[
+  p_{38}=19,\qquad19\mid A.
+\]
+Outside that gate,
+\[
+  \left(\frac{-38}{p_{38}}\right)=1,
+\]
+with character modulus \(152\).
+
+Moreover,
+\[
+  e_{38}<e_{10}
+\]
+for \(A\ge19\).  Thus the \(c=10,p=5\) atom remains top-ranked after adding
+the \(u=2\) obstruction.
+
+The lifted odd \(5\mid A\) target is now:
+
+> no \(u=1\) and no \(u=2\) repair forces the colored cluster
+> \(\{2,4,8,38\}\) below the fixed top atom \(c=10,p=5\).

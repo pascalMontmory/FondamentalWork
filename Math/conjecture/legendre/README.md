@@ -141,6 +141,10 @@ Main notes:
   fiber \(A\equiv\pm2\pmod5\).  The offsets \(1\) and \(11\) are fixed by
   label \(5\) with \(e_{11}=e_1+2\), and the only variable anchor offset is
   the colored divisor equation for \(A^2+5\).
+- `legendre_u1_odd5_u2_lift_gate.md`: advances the odd \(5\mid A\)
+  ramified fiber.  If \(u=2\) also fails, the new forced offset is
+  \(A^2+38\), with color \((-38/p)=1\) modulo \(152\) or the ramified gate
+  \(19\mid A\); the fixed \(c=10,p=5\) atom remains top-ranked.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
