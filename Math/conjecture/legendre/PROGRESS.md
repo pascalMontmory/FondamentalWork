@@ -5663,9 +5663,9 @@ conditions.  It is narrower than the previous quartic and elliptic
 IntegralPoints scripts because it uses the terminal Mordell-Weil pair
 certificate directly.
 
-This local Mordell-Weil layer still does not close the residual fibers by
-itself.  A height bound plus a full Mordell-Weil sieve, or an external
-integral-points computation, is still required.
+At this stage, the local Mordell-Weil layer alone did not close the residual
+fibers.  It left one exact opposite pair of cosets, later closed by the
+\(3\)-adic argument recorded below.
 
 Added the dedicated final-target note
 \[
@@ -5691,6 +5691,89 @@ boundary point before calling `IntegralPoints(E)`.  This makes the remaining
 gate explicitly global: success requires a complete integral-point
 computation or a Mordell-Weil sieve with a height bound, not another
 standalone residue search.
+
+## Residual 3-adic coset closure
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_residual\_3adic\_coset\_closure.md}.
+\]
+
+This closes the final residual Mordell-Weil coset pair without running
+`IntegralPoints`.
+
+At \(3\),
+\[
+  E:\quad y^2=x^3-128x^2-215865x=x(x-533)(x+405)
+\]
+has
+\[
+  \Delta=16(533\cdot405\cdot938)^2,\qquad v_3(\Delta)=8,
+\]
+and \(c_4\) is a \(3\)-adic unit.  Modulo \(3\),
+\[
+  y^2\equiv x^2(x+1),
+\]
+whose node has tangent cone
+\[
+  y^2-x^2=(y-x)(y+x).
+\]
+Thus \(E\) has split multiplicative reduction of type \(I_8\) at \(3\).
+By the Tate uniformization, the quotient
+\[
+  E(\mathbf Q_3)/E_1(\mathbf Q_3)
+\]
+has exponent dividing
+\[
+  \operatorname{lcm}(8,\#\mathbf F_3^\times)=8.
+\]
+Since \(8\mid1320\),
+\[
+  1320E(\mathbf Q)\subset E_1(\mathbf Q_3).
+\]
+
+The residual coset representative satisfies
+\[
+  P_0=\left(\frac{10045}{9},-\frac{849520}{27}\right),
+\]
+so
+\[
+  v_3(x(P_0))=-2,\qquad v_3(y(P_0))=-3.
+\]
+Equivalently, the formal parameter
+\[
+  t(P_0)=-\frac{x(P_0)}{y(P_0)}
+        =\frac{6027}{169904}
+        \in3\mathbf Z_3,
+\]
+hence \(P_0\in E_1(\mathbf Q_3)\), and also \(-P_0\in E_1(\mathbf Q_3)\).
+Therefore every point in
+\[
+  \pm P_0+1320E(\mathbf Q)
+\]
+lies in \(E_1(\mathbf Q_3)\).
+
+But every nonzero affine point in \(E_1(\mathbf Q_3)\) has negative
+\(3\)-adic \(x\)-valuation, while
+\[
+  x=1845s^2,\qquad s\in\mathbf Z,
+\]
+has \(v_3(x)\ge2\) for \(s\ne0\), and \(s=0\) gives the finite point
+\((0,0)\), not the identity component \(E_1\).
+
+Hence
+\[
+  \left(\pm P_0+1320E(\mathbf Q)\right)
+  \cap
+  \{P:x(P)=1845s^2,\ s\in\mathbf Z\}
+  =
+  \varnothing.
+\]
+
+The two residual terminal systems \(R4\) and \(R5\) had both already been
+reduced to this opposite coset pair.  Therefore the residual \(R4/R5\)
+endpoint fibers are closed before the separated terminal square filters are
+needed.
 
 ## Residual IntegralPoints certificate target
 

@@ -3,6 +3,15 @@
 This note records the exact final obstruction left in the hard
 \(m\equiv3\pmod4\) Legendre branch.
 
+Update: this `IntegralPoints` target has been superseded for the residual
+coset pair by the \(3\)-adic closure in
+\[
+  \texttt{legendre\_m3mod4\_residual\_3adic\_coset\_closure.md}.
+\]
+The cosets \(\pm P_0+1320E(\mathbf Q)\) are already disjoint from
+\(x=1845s^2\) over \(\mathbf Z\), so the \(R4/R5\) terminal filters are never
+reached.
+
 ## Certified Reduction
 
 The remaining residual prefix-\(8\) systems have been reduced to the elliptic

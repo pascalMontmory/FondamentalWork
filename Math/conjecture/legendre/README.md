@@ -29,6 +29,11 @@ Main notes:
   prefix-\(8\) reduction to the rank-\(3\) elliptic curve
   \(Y^2=X^3-128X^2-215865X\), including certified Mordell-Weil basis and the
   final IntegralPoints/Mordell-Weil sieve target.
+- `legendre_m3mod4_residual_3adic_coset_closure.md`: exact \(3\)-adic
+  closure of the final residual coset pair.  Since the curve has split
+  multiplicative type \(I_8\) at \(3\), \(1320E(\mathbf Q)\subset
+  E_1(\mathbf Q_3)\), and the cosets \(\pm P_0+1320E(\mathbf Q)\) are
+  disjoint from \(x=1845s^2\) for \(s\in\mathbf Z\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

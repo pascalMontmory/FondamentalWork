@@ -205,10 +205,9 @@ in addition to
 \]
 and the separated \(R4\) or \(R5\) square equations.
 
-This is an exact finite-group certificate, not an interval computation.  It
-does not close the residual fibers, because a global rational point may still
-lie in one of these two congruence classes.  It does however reduce the final
-obstruction to one pair of rank-\(3\) Mordell-Weil residue classes.
+This is an exact finite-group certificate, not an interval computation.  By
+itself it reduces the obstruction to one pair of rank-\(3\) Mordell-Weil
+residue classes.  The later \(3\)-adic coset argument below closes that pair.
 
 The coset-specific Magma target is recorded in
 \[
@@ -222,7 +221,25 @@ certificate is
   \texttt{R5 candidates}=\varnothing.
 \]
 
-The final proof still needs either:
+This final proof target is now closed by the \(3\)-adic coset argument in
+\[
+  \texttt{legendre\_m3mod4\_residual\_3adic\_coset\_closure.md}.
+\]
 
-1. a height bound plus a full Mordell-Weil sieve, or
-2. an external integral-points computation on the rank-\(3\) curve.
+At \(3\), the curve has split multiplicative reduction of type \(I_8\), so
+the quotient \(E(\mathbf Q_3)/E_1(\mathbf Q_3)\) has exponent dividing \(8\).
+Since \(8\mid1320\), every \(1320Q\) lies in the formal subgroup
+\(E_1(\mathbf Q_3)\).  The representative
+\[
+  P_0=\left(\frac{10045}{9},-\frac{849520}{27}\right)
+\]
+also lies in \(E_1(\mathbf Q_3)\), while every point with
+\[
+  x=1845s^2,\qquad s\in\mathbf Z,
+\]
+has nonnegative, in fact positive for \(s\ne0\), \(3\)-adic \(x\)-valuation
+and therefore cannot be a nonzero affine point of \(E_1(\mathbf Q_3)\).
+
+Thus the two residual Mordell-Weil cosets are disjoint from the quartic image
+\(x=1845s^2\), and the residual \(R4/R5\) fibers close before the terminal
+square filters are needed.
