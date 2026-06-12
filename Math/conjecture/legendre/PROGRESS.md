@@ -7247,3 +7247,64 @@ The colors are:
 Thus the shared-\(5\) fiber is now a five-equation colored divisor system:
 the remaining anchor equation \(c=5\), plus the four fresh coprime-block
 equations \(c=17,25,49,65\), with \(B_3\) fixed as a bridge by \(5\).
+
+## Variable label rank gate in the shared-\(5\) fiber
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_variable\_label\_rank\_gate.md}.
+\]
+
+This gives a stronger capacity result for the shared-\(5\) fiber.
+
+For the five variable offsets
+\[
+  \mathcal C=\{5,17,25,49,65\},
+\]
+any repeated prime label \(p\) would have to divide a difference \(d-c\).
+All differences exclude primes \(p\ge7\) immediately, except the pair
+\[
+  (5,49)
+\]
+where \(p=11\) could divide the difference \(44\).  But that would force
+\[
+  A^2\equiv-5\equiv6\pmod {11},
+\]
+and \(6\) is not a square modulo \(11\).  Hence the five variable labels are
+pairwise distinct.
+
+The equal-quotient obstruction then shows that if two of their quotient
+parameters were equal, then
+\[
+  A\le3487.
+\]
+Therefore for
+\[
+  A\ge3488
+  \qquad(m\ge1163),
+\]
+the five quotients are also pairwise distinct.  Ordered by rank,
+\[
+  e_{(k)}\ge k,\qquad1\le k\le5,
+\]
+and
+\[
+  r_{(k)}
+  \ge
+  \left\lceil
+    \frac{-k+\sqrt{k^2+4(kA-65)}}{2}
+  \right\rceil.
+\]
+
+In particular the top quotient rank forces
+\[
+  r_{(5)}
+  \ge
+  \left\lceil
+    \frac{-5+\sqrt{20A-235}}{2}
+  \right\rceil.
+\]
+
+So a large shared-\(5\) obstruction must realize one fixed \(5\)-atom plus
+five distinct variable labels and five distinct quotient ranks.  This is a
+genuine certificate-rank obstruction, not a numerical probe.

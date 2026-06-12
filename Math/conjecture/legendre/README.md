@@ -155,6 +155,10 @@ Main notes:
   ramified gates \(17\mid A\), \(7\mid A\), and \(13\mid A\).  The shared
   fiber becomes a five-equation colored divisor system plus the fixed
   \(B_3\) bridge atom.
+- `legendre_shared5_variable_label_rank_gate.md`: proves that the five
+  variable offsets \(\{5,17,25,49,65\}\) in the shared-\(5\) fiber require
+  pairwise distinct prime labels.  For \(A\ge3488\), their quotients are
+  also pairwise distinct, giving five rank barriers.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
