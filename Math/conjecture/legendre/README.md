@@ -329,6 +329,10 @@ Main notes:
   basis \((-363,3696),(-195,5460),(-117,4680)\).
 - `tools/m3mod4_residual_elliptic_mwrank.sh`: reproduces the `mwrank`
   certificate when eclib is available.
+- `tools/m3mod4_residual_mw_sieve.py`: first Mordell-Weil sieve scaffold for
+  the residual rank-\(3\) curve.  It reduces the certified Mordell-Weil basis
+  modulo good primes and supports the common core and the two terminal
+  residual fibers \(R4,R5\).
 - `literature/`: reading pack with an arXiv manifest, BibTeX file, and
   proof-use notes for short-interval primes, almost-primes between squares,
   prime gaps, Maier matrix methods, and computational verification.

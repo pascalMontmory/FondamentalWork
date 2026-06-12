@@ -5583,6 +5583,37 @@ show that the only points in the rank-\(3\) lattice with
 come from \(P\) and \(-P\), then observe that the two terminal residual pairs
 fail at \(s=1\).
 
+## Residual Mordell-Weil sieve scaffold
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_mw\_sieve.py}.
+\]
+
+This script reduces the certified Mordell-Weil basis modulo good primes and
+filters the coefficient lattice by:
+
+\[
+  X\in1845\mathbf Z^2
+\]
+and, in modes \(\texttt{r4}\), \(\texttt{r5}\), the corresponding terminal
+residual square conditions.
+
+Current exact sieve status:
+\[
+\begin{array}{c|c|c}
+\text{primes} & R4 & R5\\
+\hline
+23,43,47 & 16\pmod{24} & 32\pmod{24}\\
+23,43,47,31 & 800\pmod{120} & 1600\pmod{120}\\
+23,43,47,31,19,37 & 145200\pmod{1320} & 96800\pmod{1320}.
+\end{array}
+\]
+
+Therefore the implemented local sieve layer does not close the residual
+fibers by itself.  A height bound plus a full Mordell-Weil sieve, or an
+external integral-points computation, is still required.
+
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[
 \boxed{

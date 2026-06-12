@@ -102,3 +102,66 @@ for the second.
 So the remaining proof is a Mordell-Weil sieve/integral-point computation on
 the explicit rank-\(3\) curve above.  No further CRT descent or prefix growth
 is mathematically appropriate.
+
+## Implemented sieve scaffold
+
+The script
+\[
+  \texttt{tools/m3mod4\_residual\_mw\_sieve.py}
+\]
+implements the first Mordell-Weil sieve layer using the certified basis
+\[
+  G_1,G_2,G_3
+\]
+and reductions modulo good primes.  It supports three modes:
+
+\[
+  \texttt{common},\qquad \texttt{r4},\qquad \texttt{r5}.
+\]
+
+The modes \(\texttt{r4}\) and \(\texttt{r5}\) impose not only
+\[
+  X\in1845\mathbf Z^2,
+\]
+but also the separated square conditions for the corresponding terminal
+residual pair.
+
+With primes
+\[
+  23,43,47
+\]
+the residual classes modulo \(24\) reduce to:
+\[
+\begin{array}{c|c}
+\text{fiber} & \text{surviving coefficient classes}\\
+\hline
+R4 & 16\\
+R5 & 32.
+\end{array}
+\]
+
+Adding \(31\) gives modulus \(120\):
+\[
+\begin{array}{c|c}
+\text{fiber} & \text{surviving coefficient classes}\\
+\hline
+R4 & 800\\
+R5 & 1600.
+\end{array}
+\]
+
+Adding \(19\) before lifting by \(37\) gives:
+\[
+\begin{array}{c|c}
+\text{fiber} & \text{classes modulo }1320\\
+\hline
+R4 & 145200\\
+R5 & 96800.
+\end{array}
+\]
+
+Thus these local Mordell-Weil reductions do not close the residual fibers.
+The final proof still needs either:
+
+1. a height bound plus a full Mordell-Weil sieve, or
+2. an external integral-points computation on the rank-\(3\) curve.
