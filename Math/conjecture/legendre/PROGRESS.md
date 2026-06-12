@@ -7762,3 +7762,100 @@ compressed obstruction now satisfies
 \[
   \mathcal E_A(\{5,17,25,49,65\})\ge82.
 \]
+
+## Cofactor-center descent pivot
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_cofactor\_center\_descent\_pivot.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_cofactor\_descent\_identities.py}.
+\]
+
+This is the first non-layered closure pivot after the topological
+certificates.
+
+For every shared-\(5\) vertex, write
+\[
+  e_c=2u_c,\qquad p_c=A-r_c.
+\]
+Then
+\[
+  r_c^2+c=2u_cp_c.
+\]
+Define the cofactor-center
+\[
+  W_c=r_c+u_c.
+\]
+The exact identity is
+\[
+  W_c^2+c=u_c(2A+u_c),
+\]
+and
+\[
+  A-W_c=p_c-u_c.
+\]
+
+Therefore every vertex is either descending:
+\[
+  u_c<p_c\quad\Longrightarrow\quad W_c<A,
+\]
+or terminal:
+\[
+  u_c\ge p_c.
+\]
+
+In the terminal case,
+\[
+  (A-p_c)^2+c\ge2p_c^2,
+\]
+so
+\[
+  p_c\le -A+\sqrt{2A^2+c}
+  \le -A+\sqrt{2A^2+65}
+  =
+  (\sqrt2-1)A+O(A^{-1}).
+\]
+
+Thus a shared-\(5\) top cell either has a genuine smaller-center
+divisibility event, or all five of its labels lie in the low-label cone
+\[
+  p_c\lesssim0.4143A.
+\]
+
+This replaces the infinite energy ladder by two exact closure targets:
+
+1. prove a discrete-Morse descent lemma for cells containing a descending
+   vertex;
+2. prove non-realization of the all-terminal low-label cone.
+
+The terminal cone was further refined by Euclidean division
+\[
+  A=kp+s,\qquad 0\le s<p.
+\]
+Since \(p\mid A^2+c\), one also has
+\[
+  p\mid s^2+c.
+\]
+Writing
+\[
+  s^2+c=vp,
+\]
+if \(1<v<s\), then a prime \(\ell\mid v\) gives a smaller-center
+divisibility event
+\[
+  \ell\mid s^2+c,\qquad \ell<s.
+\]
+
+Thus terminal labels also descend except for prime-value atoms
+\[
+  p=s^2+c
+\]
+and finite small divisor exceptions.  The refined closure target is now:
+
+1. construct an acyclic matching for cofactor descent and terminal Euclidean
+   descent;
+2. prove that a full shared-\(5\) top cell cannot be made only of terminal
+   prime atoms.

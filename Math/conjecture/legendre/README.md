@@ -197,6 +197,10 @@ Main notes:
 - `legendre_boundary78_killed_mod19.md`: kills that unique energy-\(78\)
   lifted-root family modulo \(19\), raising the large shared-\(5\) energy
   barrier to \(\mathcal E\ge82\).
+- `legendre_cofactor_center_descent_pivot.md`: introduces the exact
+  cofactor-center identity \(W_c^2+c=u_c(2A+u_c)\), separating every
+  shared-\(5\) vertex into a descending case \(u_c<p_c\) or a terminal cone
+  \(p_c\le -A+\sqrt{2A^2+c}\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
@@ -235,6 +239,8 @@ Main notes:
 - `tools/shared5_boundary78_mod19_kill.py`: verifies that the unique
   energy-\(78\) boundary pattern has no lift modulo \(19\), by checking that
   the five allowed \(A\bmod19\) sets have empty intersection.
+- `tools/shared5_cofactor_descent_identities.py`: sanity verifier for the
+  cofactor-center descent identities and terminal label bounds.
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a
