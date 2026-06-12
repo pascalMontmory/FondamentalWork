@@ -71,6 +71,16 @@ Main notes:
   increasing the number of initial blocks.  It defines exact Mobius
   detectors for the two small-prime kernels and reduces the remaining
   A-channel closure to the global positivity target \(Z(m)>0\).
+- `legendre_mobius_root_count_formula.md`: expands \(Z(m)\) into exact CRT
+  root counts over the complete block interval, with explicit bridge
+  removal and a sharp remainder bound.  It shows why the full untruncated
+  Mobius expansion still needs a parity-breaking weighted certificate.
+- `legendre_cofactor_augmented_mobius_gate.md`: adds the missing cofactor
+  rigidity to the Mobius gate.  A failed coprime block must satisfy the
+  short bilinear equation \(p_1X_1-p_0X_0=\pm2t_1(q)\), or equivalently one
+  of two explicit quartic bilinear equations after eliminating \(q\).  The
+  same note derives the two-block cofactor descent for repeated ordered
+  pairs.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

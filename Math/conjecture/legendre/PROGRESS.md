@@ -6050,12 +6050,12 @@ This is the pivot away from increasing the number of initial blocks.
 For fixed \(m\), define the eligible small-prime kernels
 \[
   K_0(m)=
-  \prod_{\substack{p\le3m\\p\equiv1\pmod4\\p\nmid3m}}p
+  \prod_{\substack{5\le p\le3m\\p\equiv1\pmod4\\p\nmid3m}}p
 \]
 and
 \[
   K_1(m)=
-  \prod_{\substack{p\le3m\\p\nmid 9m^2+1\\
+  \prod_{\substack{5\le p\le3m\\p\nmid 9m^2+1\\
   \left(\frac{-9m^2-1}{p}\right)=1}}p.
 \]
 For complete coprime A-blocks, define exact Mobius detectors
@@ -6100,6 +6100,143 @@ Expanding by divisors gives the global finite identity
 The root counts are CRT counts for quadratic congruences.  This is now the
 preferred non-local closure target: prove positivity of one global Mobius
 quantity, rather than extending the local initial-block table indefinitely.
+
+## Mobius root-count formula
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_mobius\_root\_count\_formula.md}.
+\]
+
+The complete block interval is now explicit after splitting by
+\(q\)-parity.  If \(q\equiv m\pmod2\), then \(t_1(q)=3q+2\), and
+\[
+  0\le q\le
+  \left\lfloor\frac{\sqrt{6m-1}-2}{3}\right\rfloor,
+\]
+while if \(q\not\equiv m\pmod2\), then \(t_1(q)=3q+1\), and
+\[
+  0\le q\le
+  \left\lfloor\frac{\sqrt{6m}-2}{3}\right\rfloor.
+\]
+Bridge removal is also written exactly as
+\[
+  {\bf 1}_{\gcd(t_1(q),9m^2+1)=1}
+  =
+  \sum_{\substack{h\mid \operatorname{rad}(9m^2+1)\\h\mid t_1(q)}}\mu(h).
+\]
+
+For squarefree divisors \(d\mid K_0(m)\), \(e\mid K_1(m)\), and
+\(h\mid\operatorname{rad}(9m^2+1)\), define
+\[
+  N(d,e,h;m)=
+  \#\{q\in I_m:
+  d\mid G_q,\ e\mid U_q,\ h\mid t_1(q)\}.
+\]
+With
+\[
+  L=\operatorname{lcm}(2,d,e,h),
+\]
+the CRT root count gives the exact formula
+\[
+  N_\nu(d,e,h;m)=
+  \rho_\nu(d,e,h;m)
+  \left\lfloor\frac{Q_{m,\nu}+1}{L}\right\rfloor
+  +R_\nu(d,e,h;m),
+\]
+where
+\[
+  |R_\nu(d,e,h;m)|\le\rho_\nu(d,e,h;m).
+\]
+Thus
+\[
+  Z(m)=\sum_{\nu=0}^1(Q_{m,\nu}+1)\mathfrak S_\nu(m)+\mathfrak R(m)
+\]
+with \(\mathfrak S_\nu(m)\) explicit singular coefficients and
+\(\mathfrak R(m)\) an explicit boundary sum.
+
+This exposes the obstruction: the block interval has length
+\[
+  Q_m+1\asymp\sqrt m,
+\]
+but the kernels contain primes up to \(3m\).  For divisors
+\[
+  \operatorname{lcm}(d,e,h)>Q_m+1,
+\]
+the CRT main term is too small to dominate the deterministic remainder.
+Therefore the full Mobius expansion is exact but not itself a proof.
+
+The next exact target is now sharper:
+
+Find a finitely supported weighted divisor certificate whose CRT lower bound
+is positive and whose positivity implies \(Z(m)>0\).  This is the required
+parity-breaking step.
+
+## Cofactor-augmented Mobius gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_cofactor\_augmented\_mobius\_gate.md}.
+\]
+
+The pure divisor form sees only
+\[
+  p_0\mid G_q,\qquad p_1\mid U_q.
+\]
+The new note records the stronger exact statement: if the A-channel fails on
+a coprime block, then
+\[
+  G_q=p_0X_0,\qquad U_q=p_1X_1
+\]
+with
+\[
+  p_0,p_1\le3m<X_0,X_1
+\]
+and
+\[
+  p_1X_1-p_0X_0=\eta_q\,2t_1(q),
+\]
+where \(\eta_q=+1\) for \(q\equiv m\pmod2\) and \(\eta_q=-1\) otherwise.
+
+After eliminating \(q\), the even branch must satisfy
+\[
+  (p_1X_1-p_0X_0-2)^2
+  =
+  4(p_0X_0-9m^2),
+\]
+while the odd branch must satisfy
+\[
+  (p_0X_0-p_1X_1)^2
+  =
+  4(p_1X_1-9m^2-1).
+\]
+
+This is a stronger global gate than the residue cover: a counterexample must
+cover the complete coprime interval by integral points on these quartic
+bilinear surfaces.  The next target is a cofactor non-cover lemma, not a
+larger initial-block table.
+
+The same note also derives the cofactor descent for repeated ordered pairs.
+If the same pair covers two blocks \(q\ne r\) in the same parity branch, then
+\[
+  p_1\bigl(X_1(q)-X_1(r)\bigr)
+  -
+  p_0\bigl(X_0(q)-X_0(r)\bigr)
+  =
+  6\eta(q-r),
+\]
+with the individual divisibilities forcing
+\[
+  p_i\mid3(q-r)(3(q+r)+2)
+  \quad\text{or}\quad
+  p_i\mid3(q-r)(3(q+r)+4),
+\]
+depending on the layer.  Opposite parity repetitions force the hyperplanes
+\[
+  3(q-r)\pm1,\qquad q+r+1.
+\]
+This recovers the known collision hyperplanes but attaches the missing large
+cofactor differences, which is the new descent data.
 
 ## Residual IntegralPoints certificate target, now superseded
 

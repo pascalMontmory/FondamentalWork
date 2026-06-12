@@ -29,12 +29,12 @@ On \(\mathcal Q_{\rm cop}(m)\),
 The eligible A0 small-prime kernel is
 \[
   K_0(m)=
-  \prod_{\substack{p\le3m\\p\equiv1\pmod4\\p\nmid3m}}p.
+  \prod_{\substack{5\le p\le3m\\p\equiv1\pmod4\\p\nmid3m}}p.
 \]
 The eligible A1 small-prime kernel is
 \[
   K_1(m)=
-  \prod_{\substack{p\le3m\\p\nmid 9m^2+1\\
+  \prod_{\substack{5\le p\le3m\\p\nmid 9m^2+1\\
   \left(\frac{-9m^2-1}{p}\right)=1}}p.
 \]
 
