@@ -25,6 +25,14 @@ Main notes:
   false because it misses the \(3\nmid t,\ r=1\) unit-lift channel.
 - `legendre_m3star_certificate.md`: exact small-prime certificate for failure
   of the corrected \(M_3^\ast\) target.
+- `legendre_m3mod4_residual_elliptic_mwrank_certificate.md`: residual
+  prefix-\(8\) reduction to the rank-\(3\) elliptic curve
+  \(Y^2=X^3-128X^2-215865X\), including certified Mordell-Weil basis and the
+  final IntegralPoints/Mordell-Weil sieve target.
+- `tools/m3mod4_residual_integral_points.sage`: Sage certificate script for
+  the final residual R4/R5 fibers; it filters integral points on the
+  certified elliptic curve by \(X=1845s^2\) and the separated square
+  equations.
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a

@@ -5614,6 +5614,48 @@ Therefore the implemented local sieve layer does not close the residual
 fibers by itself.  A height bound plus a full Mordell-Weil sieve, or an
 external integral-points computation, is still required.
 
+## Residual IntegralPoints certificate target
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_integral\_points.sage}.
+\]
+
+This is the direct exact closure script for the two remaining residual
+prefix-\(8\) fibers.  It works on the certified elliptic curve
+\[
+  E:\quad Y^2=X^3-128X^2-215865X
+\]
+with the mwrank basis
+\[
+  (-363,3696),\quad(-195,5460),\quad(-117,4680),
+\]
+asks Sage for all integral points on \(E\), and filters them by
+\[
+  X=1845s^2
+\]
+and by the separated common/R4/R5 square equations.
+
+The exact certificate expected from Sage is:
+\[
+  \texttt{R4 candidates}=\varnothing,
+  \qquad
+  \texttt{R5 candidates}=\varnothing
+\]
+after the saturated boundary \(s=\pm1\).  If Sage returns this assertion,
+then the two residual algebraic fibers are closed.
+
+I also checked the tempting shortcut: direct \(p\)-adic lifting in \(s\)
+with the full separated terminal equations does not kill either fiber for
+the small primes tested.  Both R4 and R5 survive modulo
+\[
+  3^8,5^6,7^6,11^6,13^5,17^5,19^5,23^5,
+  29^4,31^4,37^4,41^4,43^4,47^4.
+\]
+So the next proof step is not another finite congruence in \(s\), but a
+global Mordell-Weil sieve/IntegralPoints computation on the rank-\(3\)
+curve.
+
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[
 \boxed{

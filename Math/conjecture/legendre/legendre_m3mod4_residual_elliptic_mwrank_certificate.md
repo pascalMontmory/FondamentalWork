@@ -103,6 +103,46 @@ So the remaining proof is a Mordell-Weil sieve/integral-point computation on
 the explicit rank-\(3\) curve above.  No further CRT descent or prefix growth
 is mathematically appropriate.
 
+## Sage integral-points target
+
+The direct global certificate is now recorded in
+\[
+  \texttt{tools/m3mod4\_residual\_integral\_points.sage}.
+\]
+
+It asks Sage for the integral points on
+\[
+  E:\quad Y^2=X^3-128X^2-215865X
+\]
+using the certified Mordell-Weil basis
+\[
+  G_1=(-363,3696),\quad
+  G_2=(-195,5460),\quad
+  G_3=(-117,4680).
+\]
+
+It then applies the exact filters
+\[
+  X=1845s^2
+\]
+and the separated square equations for the common core and for the two
+terminal fibers \(R4,R5\).
+
+The certificate condition is:
+\[
+  \texttt{R4 candidates}=\varnothing,\qquad
+  \texttt{R5 candidates}=\varnothing,
+\]
+after the already saturated boundary \(s=\pm1\).  This is the correct
+rank-\(3\) IntegralPoints closure target.
+
+Sage/Magma is not optional at this point: elementary finite local tests on
+\(s\) do not kill the fibers.  Direct \(p\)-adic lifting of the full separated
+R4/R5 square systems survives for the small primes tested, e.g. both fibers
+survive through \(3^8,5^6,7^6,11^6,13^5,17^5,19^5,23^5\) and through
+\(29^4,31^4,37^4,41^4,43^4,47^4\).  This negative result is not a proof of
+existence; it only rules out the easy local-congruence closure.
+
 ## Implemented sieve scaffold
 
 The script
