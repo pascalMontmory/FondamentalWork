@@ -6017,22 +6017,89 @@ the common block pairs in the two repetition graphs are
 \[
   (B_1,B_5),\quad (B_2,B_4),\quad (B_3,B_5),\quad (B_4,B_5).
 \]
-After imposing the A0 condition \(p_0\equiv1\pmod4\) and the coprime-block
-condition \(p_0\ne p_1\), only three ordered repetition gates survive:
+After imposing the A0 condition \(p_0\equiv1\pmod4\), the coprime-block
+condition \(p_0\ne p_1\), and the value congruences, only two ordered
+repetition gates survive:
 \[
 \begin{array}{c|c|c|c}
   \text{parity of }m & \text{block pair} & (p_0,p_1) & \text{conditions}\\
   \hline
   \text{even} & (B_2,B_4) & (5,11) &
   m^2\equiv4\pmod5,\ m^2\equiv5\pmod{11}\\
-  \text{odd} & (B_1,B_5) & (5,11) &
-  m^2\equiv1\pmod5,\ m^2\equiv2\pmod{11}\\
   \text{odd} & (B_3,B_5) & (13,7) &
   m^2\equiv-1\pmod{13},\ m^2\equiv2\pmod7.
 \end{array}
 \]
+The removed odd \((B_1,B_5):(5,11)\) candidate would force
+\[
+  m^2\equiv2\pmod{11},
+\]
+but \(2\) is not a square modulo \(11\).
+
 Outside these gates, the first six coprime complete blocks require six
 distinct ordered pairs.
+
+## Global Mobius-dual gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_global\_mobius\_dual\_gate.md}.
+\]
+
+This is the pivot away from increasing the number of initial blocks.
+For fixed \(m\), define the eligible small-prime kernels
+\[
+  K_0(m)=
+  \prod_{\substack{p\le3m\\p\equiv1\pmod4\\p\nmid3m}}p
+\]
+and
+\[
+  K_1(m)=
+  \prod_{\substack{p\le3m\\p\nmid 9m^2+1\\
+  \left(\frac{-9m^2-1}{p}\right)=1}}p.
+\]
+For complete coprime A-blocks, define exact Mobius detectors
+\[
+  \Delta_0(q)=
+  \sum_{\substack{d\mid K_0(m)\\d\mid G_q}}\mu(d),
+  \qquad
+  \Delta_1(q)=
+  \sum_{\substack{e\mid K_1(m)\\e\mid U_q}}\mu(e).
+\]
+Then \(\Delta_0(q)=1\) means \(G_q\) has no eligible small divisor, and
+\(\Delta_1(q)=1\) means \(U_q\) has no eligible small divisor.  Since both
+values lie between \(9m^2\) and \((3m+1)^2\), this is exactly primality in
+the corresponding A-channel.
+
+Thus the remaining A-channel closure is equivalent to proving
+\[
+  Z(m)>0\qquad(m\ge1),
+\]
+where
+\[
+  Z(m)=
+  \sum_{q\in\mathcal Q_{\rm cop}(m)}
+  \bigl(\Delta_0(q)+\Delta_1(q)-\Delta_0(q)\Delta_1(q)\bigr).
+\]
+Equivalently, a counterexample forces the exact identity \(Z(m)=0\).
+
+Expanding by divisors gives the global finite identity
+\[
+\begin{aligned}
+  Z(m)
+  &=
+  \sum_{d\mid K_0(m)}\mu(d)N_G(d;m)
+  +
+  \sum_{e\mid K_1(m)}\mu(e)N_U(e;m)\\
+  &\quad
+  -
+  \sum_{\substack{d\mid K_0(m)\\e\mid K_1(m)}}
+  \mu(d)\mu(e)N_{G,U}(d,e;m).
+\end{aligned}
+\]
+The root counts are CRT counts for quadratic congruences.  This is now the
+preferred non-local closure target: prove positivity of one global Mobius
+quantity, rather than extending the local initial-block table indefinitely.
 
 ## Residual IntegralPoints certificate target, now superseded
 

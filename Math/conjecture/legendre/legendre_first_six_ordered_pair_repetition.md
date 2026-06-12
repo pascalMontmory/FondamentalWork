@@ -7,8 +7,9 @@ A-blocks
 \]
 
 The result is still finite and exact: among the first six coprime complete
-blocks, ordered-pair repetitions can occur only in three explicitly listed
-ways.
+blocks, ordered-pair repetitions can occur only in two explicitly listed
+ways.  A previously tempting odd \((B_1,B_5)\) gate dies because it would
+force a nonsquare class modulo \(11\).
 
 ## Coordinate Sequences
 
@@ -108,7 +109,7 @@ On the common pairs:
   \[
     (p_0,p_1)=(5,11),
   \]
-  and remains possible.
+  but it is impossible after imposing the value congruences below.
 - \((B_2,B_4)\) would use \(p_0=11\) in A0, impossible since
   \(11\not\equiv1\pmod4\).
 - \((B_3,B_5)\) uses
@@ -122,17 +123,13 @@ On the common pairs:
   \]
   impossible because \(p_0\ne p_1\).
 
-Therefore for odd \(m\), the only possible ordered-pair repetitions among
-the first six coprime blocks are
-\[
-  (B_1,B_5)\quad\text{by}\quad(p_0,p_1)=(5,11),
-\]
-and
+Therefore for odd \(m\), the only possible ordered-pair repetition among
+the first six coprime blocks is
 \[
   (B_3,B_5)\quad\text{by}\quad(p_0,p_1)=(13,7).
 \]
 
-The first requires
+Indeed, the tempting \((B_1,B_5)\) gate would require
 \[
   9m^2+4^2\equiv0\pmod5,
   \qquad
@@ -144,8 +141,14 @@ hence
   \qquad
   m^2\equiv2\pmod{11}.
 \]
+But the square classes modulo \(11\) are
+\[
+  0,1,3,4,5,9,
+\]
+so \(2\) is not a square modulo \(11\).  Hence this gate has no integer
+solution \(m\).
 
-The second requires
+The surviving \((B_3,B_5)\) gate requires
 \[
   9m^2+10^2\equiv0\pmod{13},
   \qquad
@@ -168,8 +171,6 @@ confined to the following explicit gates:
   \hline
   \text{even} & (B_2,B_4) & (5,11) &
   m^2\equiv4\pmod5,\ m^2\equiv5\pmod{11}\\
-  \text{odd} & (B_1,B_5) & (5,11) &
-  m^2\equiv1\pmod5,\ m^2\equiv2\pmod{11}\\
   \text{odd} & (B_3,B_5) & (13,7) &
   m^2\equiv-1\pmod{13},\ m^2\equiv2\pmod7.
 \end{array}

@@ -299,16 +299,32 @@ the common repetition block pairs reduce to four candidates:
 \[
   (B_1,B_5),\quad (B_2,B_4),\quad (B_3,B_5),\quad (B_4,B_5).
 \]
-After imposing \(p_0\equiv1\pmod4\) and \(p_0\ne p_1\), only three ordered
-repetition gates remain:
+After imposing \(p_0\equiv1\pmod4\), \(p_0\ne p_1\), and the value
+congruences, only two ordered repetition gates remain:
 \[
 \begin{array}{c|c|c}
   \text{parity} & \text{block pair} & (p_0,p_1)\\
   \hline
   \text{even} & (B_2,B_4) & (5,11)\\
-  \text{odd} & (B_1,B_5) & (5,11)\\
   \text{odd} & (B_3,B_5) & (13,7).
 \end{array}
 \]
-Each gate has explicit congruence conditions on \(m\).  Outside these gates,
-the first six coprime complete blocks require six distinct ordered pairs.
+The discarded odd \((B_1,B_5):(5,11)\) candidate would force
+\[
+  m^2\equiv2\pmod{11},
+\]
+which is impossible.  Each surviving gate has explicit congruence conditions
+on \(m\).  Outside these gates, the first six coprime complete blocks
+require six distinct ordered pairs.
+
+The local-block escalation is not the final closure mechanism.  The note
+\[
+  \texttt{legendre\_global\_mobius\_dual\_gate.md}
+\]
+replaces it by a global exact target: define Mobius detectors for the two
+eligible small-prime kernels and prove the positivity
+\[
+  Z(m)>0\qquad(m\ge1).
+\]
+This is equivalent to finding at least one complete coprime A-block where
+one of \(G_q\) or \(U_q\) has no eligible small divisor, hence is prime.

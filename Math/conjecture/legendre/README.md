@@ -63,9 +63,14 @@ Main notes:
   \(m\) even, \(m^2\equiv4\pmod5\), and \(m^2\equiv5\pmod{11}\).
 - `legendre_first_six_ordered_pair_repetition.md`: extends the ordered-pair
   classification to \(B_0,\dots,B_5\).  Repetitions are possible only in
-  three explicit gates: even \((B_2,B_4):(5,11)\), odd
-  \((B_1,B_5):(5,11)\), or odd \((B_3,B_5):(13,7)\), each with stated
-  congruence conditions on \(m\).
+  two explicit gates: even \((B_2,B_4):(5,11)\), or odd
+  \((B_3,B_5):(13,7)\), each with stated congruence conditions on \(m\).
+  The tempting odd \((B_1,B_5):(5,11)\) gate dies because it would force
+  \(m^2\equiv2\pmod{11}\), a nonsquare class.
+- `legendre_global_mobius_dual_gate.md`: records the pivot away from
+  increasing the number of initial blocks.  It defines exact Mobius
+  detectors for the two small-prime kernels and reduces the remaining
+  A-channel closure to the global positivity target \(Z(m)>0\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
