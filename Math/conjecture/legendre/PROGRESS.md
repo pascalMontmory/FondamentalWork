@@ -5667,6 +5667,31 @@ This local Mordell-Weil layer still does not close the residual fibers by
 itself.  A height bound plus a full Mordell-Weil sieve, or an external
 integral-points computation, is still required.
 
+Added the dedicated final-target note
+\[
+  \texttt{Math/conjecture/legendre/legendre\_m3mod4\_residual\_global\_integral\_points\_target.md}.
+\]
+It records the exact theorem now needed:
+\[
+  P\in\pm P_0+1320E(\mathbf Q),\qquad x(P)=1845s^2,
+\]
+with the common square constraints and either the \(R4\) or \(R5\) terminal
+pair, has no solution.  The visible boundary point
+\[
+  P=(1845,73800)=G_3+(0,0)
+\]
+comes from \(s=1\), but the terminal equations fail there because
+\[
+  1701-908=793,\qquad 1701-1004=697
+\]
+are nonsquares.
+
+The Magma target now verifies the rank, torsion, coset representative, and
+boundary point before calling `IntegralPoints(E)`.  This makes the remaining
+gate explicitly global: success requires a complete integral-point
+computation or a Mordell-Weil sieve with a height bound, not another
+standalone residue search.
+
 ## Residual IntegralPoints certificate target
 
 Added

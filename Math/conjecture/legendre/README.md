@@ -29,6 +29,10 @@ Main notes:
   prefix-\(8\) reduction to the rank-\(3\) elliptic curve
   \(Y^2=X^3-128X^2-215865X\), including certified Mordell-Weil basis and the
   final IntegralPoints/Mordell-Weil sieve target.
+- `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
+  target after the local Mordell-Weil sieve: prove that the two cosets
+  \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
+  \(x=1845s^2\), \(R4\), or \(R5\) square filters.
 - `tools/m3mod4_residual_integral_points.sage`: Sage certificate script for
   the final residual R4/R5 fibers; it filters integral points on the
   certified elliptic curve by \(X=1845s^2\) and the separated square

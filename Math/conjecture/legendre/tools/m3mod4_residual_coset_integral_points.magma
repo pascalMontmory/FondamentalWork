@@ -1,4 +1,5 @@
-// Coset-specific IntegralPoints target for the final residual Legendre fibers.
+// Coset-specific IntegralPoints certificate for the final residual Legendre
+// fibers.
 //
 // This is the smallest exact target left after the finite Mordell-Weil sieve:
 //
@@ -7,6 +8,9 @@
 //   x(P) = 1845*s^2,
 //
 // together with the separated R4 or R5 square equations.
+//
+// This is not a bounded search in s.  The decisive call is IntegralPoints(E),
+// which must prove the complete integral-point set on the rank-3 curve.
 //
 // Run with:
 //   magma Math/conjecture/legendre/tools/m3mod4_residual_coset_integral_points.magma
@@ -18,9 +22,22 @@ G1 := E![-363, 3696];
 G2 := E![-195, 5460];
 G3 := E![-117, 4680];
 T0 := E![0, 0];
+T533 := E![533, 0];
+Tm405 := E![-405, 0];
 P0 := 2*G2 + G3 + T0;
 
 assert P0 eq E![ Q!10045/9, -Q!849520/27 ];
+assert Rank(E) eq 3;
+assert 2*T0 eq E!0 and T0 ne E!0;
+assert 2*T533 eq E!0 and T533 ne E!0;
+assert 2*Tm405 eq E!0 and Tm405 ne E!0;
+assert T0 + T533 + Tm405 eq E!0;
+
+// Boundary point: it is the visible integral point coming from s=1.  It is
+// killed by the separated terminal equations below, so any surviving point
+// must be a genuinely global point in the residual coset.
+Pboundary := E![1845, 73800];
+assert Pboundary eq G3 + T0;
 
 function IsSquareInteger(n)
     if n lt 0 then
@@ -80,6 +97,7 @@ end function;
 // A and a map phi: A -> E(Q).  The inverse @@ phi lets us test the exact coset
 // modulo 1320E(Q).
 A, phi := MordellWeilGroup(E);
+assert Ngens(A) ge 3;
 preP0 := P0 @@ phi;
 MW1320 := sub< A | [ 1320*A.i : i in [1..Ngens(A)] ] >;
 
