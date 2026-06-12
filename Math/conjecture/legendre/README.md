@@ -178,6 +178,14 @@ Main notes:
   \(2\pmod4\); for \(A\ge3488\), distinctness gives
   \(e_{(k)}\ge4k-2\), energy at least \(50\), and the top distance barrier
   \(r_{(5)}\ge\lceil-9+\sqrt{18A+16}\rceil\).
+- `legendre_shared5_minimal_energy_layer_closed.md`: closes the first
+  shared-\(5\) energy stratum.  The minimal quotient multiset
+  \(\{2,6,10,14,18\}\) has no realization modulo \(210\), so any large
+  shared-\(5\) obstruction has energy at least \(54\).
+- `legendre_shared5_low_energy_layers_closed.md`: strengthens the same
+  compressed certificate.  All shared-\(5\) energy layers \(\le74\) have no
+  realization modulo \(2310\), so any large shared-\(5\) obstruction has
+  energy at least \(78\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
@@ -198,6 +206,12 @@ Main notes:
 - `tools/full_ablock_repair_probe.py`: exploratory coupling tool that finds
   full coprime A-block covers and checks the exact nonprimitive \(t=3u\)
   repair channel.
+- `tools/shared5_minimal_energy_certificate.py`: finite modular certificate
+  for the compressed shared-\(5\) route; verifies that the minimal energy
+  layer \(\{2,6,10,14,18\}\) has no realization modulo \(210\).
+- `tools/shared5_low_energy_certificate.py`: finite CRT certificate for the
+  29 low-energy shared-\(5\) quotient sets; verifies that no assignment with
+  total energy \(\le74\) exists modulo \(2310\).
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a

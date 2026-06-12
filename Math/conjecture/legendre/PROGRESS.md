@@ -7502,3 +7502,98 @@ any future incidence/Nullstellensatz system should include the congruences
   e_c\equiv2\pmod4
 \]
 and the rank progression \(2,6,10,14,18,\dots\).
+
+## Shared-\(5\) minimal energy layer closed
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_minimal\_energy\_layer\_closed.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_minimal\_energy\_certificate.py}.
+\]
+
+This closes the first energy stratum of the compressed shared-\(5\)
+certificate.
+
+For
+\[
+  \mathcal C=\{5,17,25,49,65\},
+\]
+the mod-\(4\) gate gives
+\[
+  e_c\equiv2\pmod4.
+\]
+For \(A\ge3488\), quotient distinctness makes the minimal possible quotient
+multiset
+\[
+  \{2,6,10,14,18\}.
+\]
+
+An integer solution would reduce modulo
+\[
+  210=2\cdot3\cdot5\cdot7
+\]
+to a solution of
+\[
+  r_c^2+e_cr_c+c-e_cA\equiv0\pmod {210}
+\]
+for all \(c\), with
+\[
+  A\equiv12\text{ or }18\pmod {30}.
+\]
+
+The exact residue table shows that no admissible residue \(A\bmod210\)
+supports a bijection between offsets and the five quotients
+\[
+  2,6,10,14,18.
+\]
+All rows have an empty allowed set, except \(A\equiv42\pmod{210}\), where
+the quotient \(14\) appears nowhere.
+
+Therefore the minimal energy layer is impossible:
+\[
+  \mathcal E_A(\mathcal C)\ne50.
+\]
+Since all quotients are \(2\pmod4\), every large shared-\(5\) obstruction
+must satisfy
+\[
+  \mathcal E_A(\mathcal C)\ge54.
+\]
+
+This is the first genuine non-realization result in the compressed
+certificate strategy.
+
+## Shared-\(5\) low-energy layers closed
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_low\_energy\_layers\_closed.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_low\_energy\_certificate.py}.
+\]
+
+The minimal-layer result has been strengthened.  In the shared-\(5\) fiber,
+for \(A\ge3488\), the five variable quotients are distinct and all
+\(2\bmod4\).  Hence any obstruction with energy \(\le74\) must use one of
+29 explicit quotient sets.
+
+The CRT certificate modulo
+\[
+  2310=2\cdot3\cdot5\cdot7\cdot11
+\]
+checks every admissible residue \(A\equiv12,18\pmod {30}\), every one of the
+29 quotient sets, and every bijection from the five offsets
+\(\{5,17,25,49,65\}\) to that quotient set.  At least one centered quadratic
+congruence has no root modulo \(2310\) in every case.
+
+Therefore every large shared-\(5\) compressed obstruction satisfies
+\[
+  \mathcal E_A(\{5,17,25,49,65\})\ge78.
+\]
+
+The next exact boundary is the energy layer \(78\), where local survivors
+first appear modulo \(2310\).
