@@ -6349,6 +6349,98 @@ This still does not prove Legendre, but it removes hidden high-multiplicity
 coverage by large labels and gives the right finite box for a weighted
 cofactor/Mobius certificate.
 
+## High-label least-root gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_high\_label\_least\_root\_gate.md}.
+\]
+
+Let
+\[
+  A=3m,\qquad T_m=\lfloor\sqrt{6m}\rfloor,\qquad C_m=2T_m.
+\]
+For a certificate prime
+\[
+  p>C_m,
+\]
+every admissible coordinate satisfies
+\[
+  0<t<p/2.
+\]
+Therefore a high A0 certificate
+\[
+  p\mid A^2+t^2
+\]
+is equivalent to
+\[
+  t=\|Ai_p\|_p,
+  \qquad i_p^2\equiv-1\pmod p,
+\]
+with
+\[
+  \|Ai_p\|_p\le T_m.
+\]
+Similarly, a high A1 certificate
+\[
+  p\mid A^2+t^2+1
+\]
+is equivalent to
+\[
+  t=\|s_p\|_p,
+  \qquad s_p^2\equiv-A^2-1\pmod p,
+\]
+with
+\[
+  \|s_p\|_p\le T_m.
+\]
+
+Thus high labels are no longer arbitrary one-shot labels.  They are exactly
+small least-root events for the moving parameter \(A=3m\).
+
+## Capacity dichotomy after high-label reduction
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_capacity\_dichotomy.md}.
+\]
+
+The remaining cover now splits into three exact zones:
+
+1. low labels:
+   \[
+     p\le B_m=6Q^\ast_m+4;
+   \]
+2. middle endpoint labels:
+   \[
+     B_m<p\le C_m=2\lfloor\sqrt{6m}\rfloor;
+   \]
+3. high labels:
+   \[
+     C_m<p\le3m.
+   \]
+
+The middle zone has exact bounded width
+\[
+  0\le C_m-B_m\le4.
+\]
+The low zone contains all possible repeated ordered pairs.  The high zone is
+entirely encoded by
+least-root maps
+\[
+  p\mapsto \|Ai_p\|_p,
+  \qquad
+  p\mapsto \|s_p\|_p.
+\]
+
+Therefore any remaining counterexample must be a union of:
+
+- low-box cofactor coverage;
+- finitely many endpoint middle labels;
+- high least-root images.
+
+This is the current strongest global decomposition of the A-block gate.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

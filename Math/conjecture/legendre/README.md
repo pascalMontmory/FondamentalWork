@@ -89,6 +89,13 @@ Main notes:
   cutoff.  If \(Q^\ast_m=\lfloor(\sqrt{6m}-2)/3\rfloor\), then any ordered
   pair with \(\max(p_0,p_1)>6Q^\ast_m+4\) can cover at most one complete
   block.  Repeated ordered pairs are confined to the low-label box.
+- `legendre_high_label_least_root_gate.md`: strengthens the high-label
+  branch.  For \(p>2\lfloor\sqrt{6m}\rfloor\), a high certificate is exactly
+  a least-root event \(t=\|3m\,i_p\|_p\) in A0 or
+  \(t=\|s_p\|_p,\ s_p^2\equiv-(3m)^2-1\pmod p\) in A1.
+- `legendre_capacity_dichotomy.md`: combines low labels, bounded middle
+  labels, and high least-root labels into an exact three-zone decomposition
+  for any remaining counterexample.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
