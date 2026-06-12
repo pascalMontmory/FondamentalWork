@@ -7597,3 +7597,113 @@ Therefore every large shared-\(5\) compressed obstruction satisfies
 
 The next exact boundary is the energy layer \(78\), where local survivors
 first appear modulo \(2310\).
+
+## Topological matching-complex pivot
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_topological\_matching\_complex\_pivot.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_matching\_complex\_certificate.py}.
+\]
+
+The compressed shared-\(5\) obstruction has been recast as a topological
+cell-existence problem.  For a quotient set \(Q\) and residue \(A\bmod2310\),
+define the incidence tensor
+\[
+  T_{A,Q}(c,e)=1
+  \Longleftrightarrow
+  \exists r\pmod {2310}:\ r^2+er+c-eA\equiv0\pmod {2310}.
+\]
+
+Then a full compressed obstruction in that layer is equivalent to
+\[
+  \operatorname{per}(T_{A,Q})>0,
+\]
+or equivalently to a \(4\)-simplex in the matching complex
+\[
+  \mathfrak M(A,Q).
+\]
+
+The verifier checks all \(29\cdot154\) low-energy complexes.  In every case
+the permanent is zero and a Hall-defect subset
+\[
+  S\subseteq\{5,17,25,49,65\},\qquad |N(S)|<|S|
+\]
+exists.  This gives a finite topological collapse certificate for the
+missing top cell.
+
+The exact maximal-matching distribution is
+\[
+\begin{array}{c|ccccc}
+\max |M|&0&1&2&3&4\\
+\hline
+\#\text{ complexes}&663&1745&1428&558&72.
+\end{array}
+\]
+Thus the low-energy obstruction is genuinely top-dimensional: some
+complexes reach dimension \(3\), but none contain the forbidden
+\(4\)-simplex.
+
+This does not close Legendre, but it gives a cleaner proof skeleton:
+\[
+  \text{bad certificate}
+  \Rightarrow
+  \text{top cell in an arithmetic matching complex}.
+\]
+The intended closure route is now a discrete-Morse/Hall-defect descent on
+these complexes, beginning with the boundary layer \(\mathcal E=78\).
+
+## Boundary \(78\) lifted root complex
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_boundary78\_lifted\_root\_complex.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_boundary78\_lifted\_root\_complex.py}.
+\]
+
+At the first surviving energy boundary, the graph matching complex was
+refined to a lifted root complex with vertices
+\[
+  (c,e,r)
+  \quad\text{where}\quad
+  r^2+er+c-eA\equiv0\pmod {2310}
+\]
+and the prime-label unit condition
+\[
+  A-r\in(\mathbb Z/2310\mathbb Z)^\times.
+\]
+
+The exact certificate checks all \(13\) quotient sets of energy \(78\), all
+\(154\) admissible residues \(A\bmod2310\), and all quotient assignments.
+Only one projected top-cell pattern remains:
+\[
+  A\equiv882\pmod {2310},
+\]
+\[
+  \{e_5,e_{17},e_{25},e_{49},e_{65}\}
+  =
+  \{42,18,10,2,6\}
+\]
+with the ordered assignment
+\[
+  (e_5,e_{17},e_{25},e_{49},e_{65})
+  =
+  (42,18,10,2,6).
+\]
+
+The lifted root multiplicities are
+\[
+  (8,8,2,2,4),
+\]
+so all \(1024\) lifted top cells modulo \(2310\) lie above this one
+projected residue family.
+
+This gives a sharper topological boundary target: kill the single lifted
+family, either by adding one more modulus or by proving a compatibility
+obstruction among the five labels \(p_c=A-r_c\).

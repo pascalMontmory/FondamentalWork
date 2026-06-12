@@ -186,6 +186,14 @@ Main notes:
   compressed certificate.  All shared-\(5\) energy layers \(\le74\) have no
   realization modulo \(2310\), so any large shared-\(5\) obstruction has
   energy at least \(78\).
+- `legendre_topological_matching_complex_pivot.md`: recasts compressed
+  shared-\(5\) obstructions as top-dimensional cells in arithmetic matching
+  complexes; the low-energy CRT certificate becomes vanishing of a
+  \(5\times5\) incidence tensor permanent and a Hall-defect collapse.
+- `legendre_boundary78_lifted_root_complex.md`: refines the first boundary
+  layer \(\mathcal E=78\) by lifting matching vertices to triples
+  \((c,e,r)\) with \(A-r\) a unit modulo \(2310\); all projected top cells
+  vanish except one explicit residue family.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
@@ -212,6 +220,15 @@ Main notes:
 - `tools/shared5_low_energy_certificate.py`: finite CRT certificate for the
   29 low-energy shared-\(5\) quotient sets; verifies that no assignment with
   total energy \(\le74\) exists modulo \(2310\).
+- `tools/shared5_matching_complex_certificate.py`: topological companion to
+  the low-energy certificate; builds the matching complexes
+  \(\mathfrak M(A,Q)\), verifies that their top cells vanish, and records
+  Hall-defect collapse witnesses.
+- `tools/shared5_boundary78_lifted_root_complex.py`: exact lifted-root
+  certificate for the first surviving energy layer; verifies that the only
+  projected top pattern modulo \(2310\) is
+  \(A\equiv882\), \(Q=\{2,6,10,18,42\}\), with quotient assignment
+  \(5\mapsto42,17\mapsto18,25\mapsto10,49\mapsto2,65\mapsto6\).
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a
