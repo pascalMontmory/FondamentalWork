@@ -96,6 +96,19 @@ Main notes:
 - `legendre_capacity_dichotomy.md`: combines low labels, bounded middle
   labels, and high least-root labels into an exact three-zone decomposition
   for any remaining counterexample.
+- `legendre_high_high_adjacency_gate.md`: shows that blocks using high
+  labels in both layers are exactly adjacencies between the A0 and A1
+  least-root image sets.
+- `legendre_layer_zone_cover_matrix.md`: refines the dichotomy into a
+  \(3\times3\) layer matrix separating low-box cofactor cells, bounded
+  middle corrections, mixed cells, and high-high least-root adjacencies.
+- `legendre_mixed_high_low_neighbor_gate.md`: handles mixed high/low cells.
+  A high coordinate forces its adjacent block neighbor, which must then lie
+  in the opposite low-or-middle layer.
+- `legendre_current_boundary_of_attack.md`: records the present exact
+  boundary of the route: a non-cover theorem for low cofactor boxes,
+  bounded middle labels, high-high least-root adjacencies, and mixed
+  neighbor sets would close the current A-block gate.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

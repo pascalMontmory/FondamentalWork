@@ -6441,6 +6441,139 @@ Therefore any remaining counterexample must be a union of:
 
 This is the current strongest global decomposition of the A-block gate.
 
+## High-high adjacency gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_high\_high\_adjacency\_gate.md}.
+\]
+
+Define high least-root coordinate images
+\[
+  R_0^{\rm hi}(m)
+\]
+for A0 and
+\[
+  R_1^{\rm hi}(m)
+\]
+for A1.  A high-high covered block is no longer arbitrary.  If
+\[
+  q\equiv m\pmod2,
+\]
+then it must satisfy
+\[
+  3q+1\in R_0^{\rm hi}(m),
+  \qquad
+  3q+2\in R_1^{\rm hi}(m).
+\]
+If
+\[
+  q\not\equiv m\pmod2,
+\]
+then it must satisfy
+\[
+  3q+2\in R_0^{\rm hi}(m),
+  \qquad
+  3q+1\in R_1^{\rm hi}(m).
+\]
+
+Thus the high-high branch is controlled by the two shift intersections
+\[
+  R_0^{\rm hi}\cap(R_1^{\rm hi}-1),
+  \qquad
+  R_1^{\rm hi}\cap(R_0^{\rm hi}-1).
+\]
+
+This turns the high-high part of the cover into a correlation problem
+between two least-root maps.
+
+## Layer-zone cover matrix
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_layer\_zone\_cover\_matrix.md}.
+\]
+
+Every failed coprime block now lies in one of the nine cells
+\[
+  (L_0,L_1),\ (L_0,M_1),\ (L_0,H_1),
+\]
+\[
+  (M_0,L_1),\ (M_0,M_1),\ (M_0,H_1),
+\]
+\[
+  (H_0,L_1),\ (H_0,M_1),\ (H_0,H_1),
+\]
+where \(L\) means \(p\le B_m\), \(M\) means \(B_m<p\le C_m\), and \(H\)
+means \(p>C_m\).
+
+Only \((L_0,L_1)\) can contain repeated ordered pairs.  The \(M\)-cells are
+bounded endpoint corrections.  The \((H_0,H_1)\) cell is the least-root
+adjacency gate.  Mixed cells combine one low-box cofactor condition with one
+least-root image.
+
+This matrix is now the exact roadmap for any attempted closure of the
+A-block gate.
+
+## Mixed high-low neighbor gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_mixed\_high\_low\_neighbor\_gate.md}.
+\]
+
+If one layer uses a high label, its coordinate is forced to be a least-root
+image.  The opposite layer is then not arbitrary: it is the adjacent
+coordinate in the same A-block.
+
+Define
+\[
+  \operatorname{nb}(t)=
+  \begin{cases}
+  t+1,&t\equiv1\pmod3,\\
+  t-1,&t\equiv2\pmod3.
+  \end{cases}
+\]
+Then mixed cells are exactly constrained by
+\[
+  R_0^{\rm hi}\xrightarrow{\operatorname{nb}}S_1^{\le C},
+  \qquad
+  R_1^{\rm hi}\xrightarrow{\operatorname{nb}}S_0^{\le C}.
+\]
+Thus the mixed branch is also an adjacency problem, not a free product of a
+high event and a low event.
+
+## Current boundary of attack
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_current\_boundary\_of\_attack.md}.
+\]
+
+The exact remaining non-cover theorem is now:
+
+The complete coprime A-block set cannot be covered by the union of:
+
+1. the low-low centered cofactor box \(p_0,p_1\le B_m\);
+2. bounded middle endpoint corrections \(B_m<p\le C_m\);
+3. high-high shift intersections
+   \[
+     R_0^{\rm hi}\cap(R_1^{\rm hi}-1),
+     \qquad
+     R_1^{\rm hi}\cap(R_0^{\rm hi}-1);
+   \]
+4. mixed neighbor sets
+   \[
+     \operatorname{nb}(R_0^{\rm hi})\cap S_1^{\le C},
+     \qquad
+     \operatorname{nb}(R_1^{\rm hi})\cap S_0^{\le C}.
+   \]
+
+This is the limit of the current exact reduction.  A proof now needs a new
+ingredient: either a least-root correlation bound, a finite low-box cofactor
+non-cover theorem, or a descent from a full cover at \(m\) to a smaller full
+cover.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
