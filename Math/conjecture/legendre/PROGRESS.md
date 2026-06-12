@@ -7707,3 +7707,58 @@ projected residue family.
 This gives a sharper topological boundary target: kill the single lifted
 family, either by adding one more modulus or by proving a compatibility
 obstruction among the five labels \(p_c=A-r_c\).
+
+## Boundary \(78\) killed modulo \(19\)
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_boundary78\_killed\_mod19.md}
+\]
+and the verifier
+\[
+  \texttt{Math/conjecture/legendre/tools/shared5\_boundary78\_mod19\_kill.py}.
+\]
+
+The unique energy-\(78\) family left by the lifted-root complex is
+\[
+  A\equiv882\pmod {2310},
+\]
+\[
+  (e_5,e_{17},e_{25},e_{49},e_{65})
+  =
+  (42,18,10,2,6).
+\]
+
+Modulo \(19\), each pair \((c,e_c)\) defines an allowed set
+\[
+  S_{c,e_c}
+  =
+  \{\alpha=A\bmod19:
+  \exists r,\ r^2+e_cr+c-e_c\alpha=0,\ \alpha-r\ne0\}.
+\]
+
+The five allowed sets are:
+\[
+\begin{array}{c|c|l}
+c&e&S_{c,e}\\
+\hline
+5&42&\{2,3,5,6,9,10,11,12,14,16\}\\
+17&18&\{0,1,2,3,6,7,9,10,15,17\}\\
+25&10&\{0,2,3,8,10,12,13,14,15,18\}\\
+49&2&\{0,1,4,5,7,8,13,15,17,18\}\\
+65&6&\{0,1,3,4,7,8,9,10,12,14\}.
+\end{array}
+\]
+
+Their intersection is empty.  Therefore the unique modulo-\(2310\) boundary
+family has no lift modulo \(19\), hence no lift modulo \(43890\).
+
+Consequently the energy-\(78\) boundary is closed:
+\[
+  \mathcal E_A(\{5,17,25,49,65\})\ne78.
+\]
+Combined with the previous low-energy closure, every large shared-\(5\)
+compressed obstruction now satisfies
+\[
+  \mathcal E_A(\{5,17,25,49,65\})\ge82.
+\]

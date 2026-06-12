@@ -138,3 +138,7 @@ The next topological closure target is therefore sharply localized:
 This is much closer to a proof skeleton than the raw CRT filtration: the
 boundary layer has been compressed to one explicit topological residue
 family.
+
+This target has now been closed modulo \(19\): the five lifted root
+conditions for the displayed pattern have no common residue \(A\bmod19\).
+See `legendre_boundary78_killed_mod19.md`.
