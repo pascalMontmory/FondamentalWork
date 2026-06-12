@@ -117,6 +117,9 @@ Main notes:
   A-block cover found by the least-root zone probe.  The case \(m=391\)
   disproves the naive open-A-block closure lemma and is repaired only by the
   nonprimitive \(t=3u\) channel.
+- `legendre_full_ablock_repair_probe_notes.md`: documents the exploratory
+  `tools/full_ablock_repair_probe.py` script.  In scans up to \(m=20000\),
+  the only full A-block cover found is \(m=391\), repaired by \(u=1,r=-1\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
@@ -134,6 +137,9 @@ Main notes:
 - `tools/least_root_zone_probe.py`: exploratory measurement tool for the
   least-root cover boundary.  It classifies complete coprime A-blocks by
   low, middle, and high labels in the A0/A1 layers.
+- `tools/full_ablock_repair_probe.py`: exploratory coupling tool that finds
+  full coprime A-block covers and checks the exact nonprimitive \(t=3u\)
+  repair channel.
 - `legendre_combined_A_cover.md`: exact rigidity of the combined \(3\nmid t\)
   channel, including the adjacent-block bridge-prime obstruction.
 - `legendre_A_block_gcd.md`: exact gcd formula for both candidates in a

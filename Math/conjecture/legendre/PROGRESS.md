@@ -6668,6 +6668,55 @@ Therefore the next serious theorem must couple full A-block covers to either
 a nonprimitive repair, a bridge repair, or a descent.  A proof by coprime
 A-block openness alone is impossible.
 
+## Full A-block repair probe
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/tools/full\_ablock\_repair\_probe.py}
+\]
+and
+\[
+  \texttt{Math/conjecture/legendre/legendre\_full\_ablock\_repair\_probe\_notes.md}.
+\]
+
+The tool combines:
+
+1. the low/middle/high least-root A-block cover matrix;
+2. the exact nonprimitive \(t=3u\) repair channel.
+
+It searches for full coprime A-block covers and then checks whether each is
+repaired by the nonprimitive channel.
+
+The scan
+\[
+  1\le m\le10000
+\]
+finds exactly one full cover:
+\[
+  m=391,
+\]
+repaired by
+\[
+  u=1,\qquad t=3,\qquad r=-1.
+\]
+
+The scan
+\[
+  10001\le m\le20000
+\]
+finds no full covers.
+
+Thus, up to \(m=20000\), the only full A-block cover found is the known
+\(m=391\) case, and it is repaired by the nonprimitive channel.
+
+This suggests the next candidate closure theorem:
+
+> If the coprime A-block gate has a full low/middle/high cover at \(m\), then
+> the nonprimitive \(t=3u\) channel has a prime witness.
+
+This is not proved, but it is now the sharpest empirically guided target
+after the \(m=391\) obstruction.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
