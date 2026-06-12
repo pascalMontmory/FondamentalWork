@@ -7433,3 +7433,72 @@ certificate.
 
 This is the first genuinely geometric non-repetition target: prove the
 compressed certificate variety is empty.
+
+## Mod-\(4\) energy gate in shared-\(5\)
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_mod4\_energy\_gate.md}.
+\]
+
+This is the first compressed-certificate strengthening after the route
+audit.
+
+In the shared-\(5\) fiber, the variable offsets are
+\[
+  \mathcal C=\{5,17,25,49,65\}.
+\]
+Here \(A\) is even, every variable label \(p_c=A-r_c\) is an odd prime, and
+every offset satisfies
+\[
+  c\equiv1\pmod4.
+\]
+Therefore
+\[
+  r_c\ \text{is odd},
+  \qquad
+  r_c^2+c\equiv2\pmod4.
+\]
+Since
+\[
+  r_c^2+c=p_ce_c
+\]
+with \(p_c\) odd, this forces
+\[
+  e_c\equiv2\pmod4
+  \qquad(c\in\mathcal C).
+\]
+
+For \(A\ge3488\), the five quotients are already known to be distinct.  So
+their rank lower bounds improve from
+\[
+  e_{(k)}\ge k
+\]
+to
+\[
+  e_{(k)}\ge4k-2.
+\]
+In particular,
+\[
+  e_{(1)},\dots,e_{(5)}
+  \ge
+  2,6,10,14,18,
+\]
+and the certificate energy obeys
+\[
+  \mathcal E_A(\mathcal C)\ge50.
+\]
+
+The improved top distance barrier is
+\[
+  r_{(5)}
+  \ge
+  \left\lceil -9+\sqrt{18A+16}\right\rceil.
+\]
+
+This is a real strengthening of the shared-\(5\) compressed certificate:
+any future incidence/Nullstellensatz system should include the congruences
+\[
+  e_c\equiv2\pmod4
+\]
+and the rank progression \(2,6,10,14,18,\dots\).

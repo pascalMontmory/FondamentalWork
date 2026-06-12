@@ -173,6 +173,11 @@ Main notes:
   variable offsets \(\{5,17,25,49,65\}\) in the shared-\(5\) fiber require
   pairwise distinct prime labels.  For \(A\ge3488\), their quotients are
   also pairwise distinct, giving five rank barriers.
+- `legendre_shared5_mod4_energy_gate.md`: strengthens the compressed
+  shared-\(5\) certificate.  All five variable quotients are
+  \(2\pmod4\); for \(A\ge3488\), distinctness gives
+  \(e_{(k)}\ge4k-2\), energy at least \(50\), and the top distance barrier
+  \(r_{(5)}\ge\lceil-9+\sqrt{18A+16}\rceil\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
