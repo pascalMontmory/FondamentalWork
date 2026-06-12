@@ -120,6 +120,11 @@ Main notes:
 - `legendre_full_ablock_repair_probe_notes.md`: documents the exploratory
   `tools/full_ablock_repair_probe.py` script.  In scans up to \(m=20000\),
   the only full A-block cover found is \(m=391\), repaired by \(u=1,r=-1\).
+- `legendre_u1_repair_cluster_gate.md`: exact coupling between the fixed
+  A-block anchor and the first nonprimitive repair layer.  A full A-block
+  cover with no \(u=1\) repair forces the odd cluster
+  \(A^2+\{2,4,8,10\}\) or the even cluster \(A^2+\{1,5,11\}\), with centered
+  divisor equations for all forced labels.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

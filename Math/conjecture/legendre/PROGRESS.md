@@ -6773,3 +6773,67 @@ The next prefix is qualitatively different: prefix \(8\) has new local
 survivors beyond the two \(m=-1\) ghost fibers, including fibers passing
 through the small positive class \(m=3\).  Those are boundary exceptions to
 analyze algebraically, not evidence for closure.
+
+## \(u=1\) repair cluster gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_repair\_cluster\_gate.md}.
+\]
+
+This is the next exact target after the full A-block repair probe.  It
+couples the unavoidable anchor block \(q=0\) with the first nonprimitive
+repair layer \(u=1\).
+
+For \(m\ge2\), if \(m\) is odd, the \(u=1\) candidates are
+\[
+  A^2+8,\qquad A^2+10,\qquad A=3m.
+\]
+The anchor already forces
+\[
+  A^2+4,\qquad A^2+2
+\]
+in any full A-block cover.  Hence a full cover with no \(u=1\) repair forces
+the four pairwise coprime composites
+\[
+  A^2+2,\quad A^2+4,\quad A^2+8,\quad A^2+10,
+\]
+each with a prime divisor at most \(A\).
+
+If \(m\) is even, the analogous forced cluster is
+\[
+  A^2+1,\quad A^2+5,\quad A^2+11.
+\]
+The only possible shared prime inside this cluster is the explicit
+exceptional gate
+\[
+  \gcd(A^2+1,A^2+11)=5,
+  \qquad A\equiv\pm2\pmod5.
+\]
+
+All forced labels now have centered divisor equations
+\[
+  A-r_c\mid r_c^2+c,\qquad
+  A=r_c+\frac{r_c^2+c}{e_c},
+\]
+and any two offsets \(c,d\) sharing the same center satisfy
+\[
+  e_c e_d(r_c-r_d)
+  +e_d(r_c^2+c)
+  -e_c(r_d^2+d)
+  =
+  0.
+\]
+
+Thus the next closure target is no longer the vague statement "full cover
+implies nonprimitive repair".  It is the sharper obstruction:
+
+> full A-block cover plus no \(u=1\) repair forces the finite cluster
+> \(A^2+\{2,4,8,10\}\) or \(A^2+\{1,5,11\}\) with simultaneous centered
+> divisor equations.
+
+The calibration case \(m=391\) escapes this obstruction exactly because
+\[
+  1173^2+8
+\]
+is prime.
