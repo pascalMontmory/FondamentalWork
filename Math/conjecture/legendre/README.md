@@ -125,6 +125,10 @@ Main notes:
   cover with no \(u=1\) repair forces the odd cluster
   \(A^2+\{2,4,8,10\}\) or the even cluster \(A^2+\{1,5,11\}\), with centered
   divisor equations for all forced labels.
+- `legendre_u1_cluster_quotient_rank_gate.md`: strengthens the \(u=1\)
+  cluster gate.  In the odd branch, \(m\ge19\) forces four distinct quotient
+  ranks; in the even branch, \(m\ge28\) forces three distinct ranks outside
+  the shared-\(5\) gate \(A\equiv\pm2\pmod5\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

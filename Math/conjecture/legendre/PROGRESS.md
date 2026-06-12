@@ -6837,3 +6837,76 @@ The calibration case \(m=391\) escapes this obstruction exactly because
   1173^2+8
 \]
 is prime.
+
+## Quotient ranks inside the \(u=1\) cluster
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_cluster\_quotient\_rank\_gate.md}.
+\]
+
+This strengthens the previous \(u=1\) cluster gate.
+
+If two forced offsets \(c,d\) have equal quotient
+\[
+  e_c=e_d=e
+\]
+but distinct labels, then the exact compatibility equation collapses to
+\[
+  c-d=(r_d-r_c)(r_c+r_d+e).
+\]
+Therefore equal quotients force a finite bound on the center distance.
+
+For the odd no-\(u=1\)-repair cluster
+\[
+  \{2,4,8,10\},
+\]
+this gives
+\[
+  A\le52
+\]
+if two quotients are equal.  Hence for odd
+\[
+  m\ge19
+\]
+the four quotients are distinct.  Ordered by rank,
+\[
+  e_{(k)}\ge k,\qquad 1\le k\le4,
+\]
+and therefore
+\[
+  r_{(k)}\ge
+  \left\lceil
+    \frac{-k+\sqrt{k^2+4(kA-10)}}{2}
+  \right\rceil.
+\]
+In particular,
+\[
+  r_{(4)}\ge
+  \left\lceil -2+2\sqrt{A-9}\right\rceil.
+\]
+
+For the even cluster
+\[
+  \{1,5,11\},
+\]
+outside the shared-\(5\) gate
+\[
+  A\equiv\pm2\pmod5,
+\]
+the three quotients are distinct for even
+\[
+  m\ge28.
+\]
+The top rank gives
+\[
+  r_{(3)}\ge
+  \left\lceil
+    \frac{-3+\sqrt{12A-123}}{2}
+  \right\rceil.
+\]
+
+The failure of the first nonprimitive repair layer now has an exact rank
+cost.  The next closure target is to combine this rank cost with the
+quadratic-residue colors of the labels and the full A-block cover
+constraints.
