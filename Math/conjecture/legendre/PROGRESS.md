@@ -5972,6 +5972,37 @@ cover two distinct coprime blocks among
 Thus, when these four blocks are complete and coprime, any counterexample
 must use four distinct ordered prime pairs on them.
 
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_first\_five\_ordered\_pair\_repetition.md}.
+\]
+For the first five coordinate sequences
+\[
+  E_5=(2,4,8,10,14),
+  \qquad
+  O_5=(1,5,7,11,13),
+\]
+the same-layer repetitions are:
+\[
+\begin{array}{c|c}
+E_5 & (B_0,B_2):5,\ (B_1,B_3):7,\ (B_1,B_4):5,\ (B_2,B_4):11\\
+O_5 & (B_0,B_3):5,\ (B_0,B_4):7,\ (B_2,B_4):5.
+\end{array}
+\]
+The only common block pair is \((B_2,B_4)\).  If \(m\) is odd, this would
+put \(p_0=11\) in A0, impossible because A0 primes must be \(1\bmod4\).
+If \(m\) is even, the only possible ordered-pair repetition is
+\[
+  (B_2,B_4)\quad\text{by}\quad(p_0,p_1)=(5,11),
+\]
+and it requires
+\[
+  m^2\equiv4\pmod5,\qquad m^2\equiv5\pmod{11}.
+\]
+Therefore the first five coprime blocks require either five distinct ordered
+pairs, or four distinct ordered pairs plus this single explicit \((5,11)\)
+collision.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

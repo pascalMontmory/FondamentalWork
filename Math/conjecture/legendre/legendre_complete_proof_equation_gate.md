@@ -247,3 +247,42 @@ Inside \(O\), same-layer repetition can occur only on
 Since A0 and A1 use opposite sequences according to the parity of \(m\), no
 block pair admits repetition in both layers.  Thus no ordered pair
 \((p_0,p_1)\) can cover two distinct coprime blocks among \(B_0,\dots,B_3\).
+
+The next local capacity layer is recorded in
+\[
+  \texttt{legendre\_first\_five\_ordered\_pair\_repetition.md}.
+\]
+For the first five blocks the coordinate sequences are
+\[
+  E_5=(2,4,8,10,14),\qquad O_5=(1,5,7,11,13).
+\]
+The possible repetition pairs in \(E_5\) are
+\[
+  (B_0,B_2)\text{ by }5,\quad
+  (B_1,B_3)\text{ by }7,\quad
+  (B_1,B_4)\text{ by }5,\quad
+  (B_2,B_4)\text{ by }11,
+\]
+while in \(O_5\) they are
+\[
+  (B_0,B_3)\text{ by }5,\quad
+  (B_0,B_4)\text{ by }7,\quad
+  (B_2,B_4)\text{ by }5.
+\]
+The only common block pair is \((B_2,B_4)\).  If \(m\) is odd, this would
+force the A0 prime \(p_0=11\), impossible because \(11\not\equiv1\pmod4\).
+If \(m\) is even, the only possible ordered-pair repetition is
+\[
+  (B_2,B_4)
+  \quad\text{by}\quad
+  (p_0,p_1)=(5,11),
+\]
+and it requires
+\[
+  m^2\equiv4\pmod5,
+  \qquad
+  m^2\equiv5\pmod{11}.
+\]
+Thus the first five coprime blocks force either five distinct ordered pairs,
+or four distinct ordered pairs plus this single explicit exceptional
+\((5,11)\) collision.

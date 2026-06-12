@@ -57,6 +57,10 @@ Main notes:
   pair \((p_0,p_1)\) can cover two distinct coprime blocks among
   \(B_0,\dots,B_3\).  The possible same-layer repetitions in \(E=(2,4,8,10)\)
   and \(O=(1,5,7,11)\) occur on disjoint block pairs.
+- `legendre_first_five_ordered_pair_repetition.md`: extends the local
+  capacity theorem to \(B_0,\dots,B_4\).  The only possible ordered-pair
+  repetition is \((B_2,B_4)\) by \((p_0,p_1)=(5,11)\), with
+  \(m\) even, \(m^2\equiv4\pmod5\), and \(m^2\equiv5\pmod{11}\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
