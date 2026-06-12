@@ -5775,15 +5775,38 @@ reduced to this opposite coset pair.  Therefore the residual \(R4/R5\)
 endpoint fibers are closed before the separated terminal square filters are
 needed.
 
-## Residual IntegralPoints certificate target
+Added the proof-status ledger
+\[
+  \texttt{Math/conjecture/legendre/legendre\_status\_after\_residual\_closure.md}.
+\]
+It records the precise consequence: the residual elliptic endpoint is closed,
+but this is not yet a proof of Legendre.  Full closure still requires
+eliminating the earlier primitive/multiple-of-three covering obstruction,
+currently expressed as the coprime A-block pair-cover condition
+\[
+  \mathcal Q_{\rm cop}(m)\subseteq
+  \bigcup_{(p_0,p_1)}C_{p_0,p_1}(m),
+\]
+with
+\[
+  t_0(q)^2\equiv-9m^2\pmod{p_0},
+  \qquad
+  t_1(q)^2\equiv-9m^2-1\pmod{p_1}.
+\]
+Each ordered pair contributes at most four classes modulo \(p_0p_1\), but a
+global non-cover theorem, or a stronger descent replacing it, is still needed
+for a complete Legendre proof.
+
+## Residual IntegralPoints certificate target, now superseded
 
 Added
 \[
   \texttt{Math/conjecture/legendre/tools/m3mod4\_residual\_integral\_points.sage}.
 \]
 
-This is the direct exact closure script for the two remaining residual
-prefix-\(8\) fibers.  It works on the certified elliptic curve
+This was the direct exact closure script for the two remaining residual
+prefix-\(8\) fibers before the \(3\)-adic coset closure was found.  It works
+on the certified elliptic curve
 \[
   E:\quad Y^2=X^3-128X^2-215865X
 \]
@@ -5797,14 +5820,16 @@ asks Sage for all integral points on \(E\), and filters them by
 \]
 and by the separated common/R4/R5 square equations.
 
-The exact certificate expected from Sage is:
+The exact certificate expected from Sage would be:
 \[
   \texttt{R4 candidates}=\varnothing,
   \qquad
   \texttt{R5 candidates}=\varnothing
 \]
-after the saturated boundary \(s=\pm1\).  If Sage returns this assertion,
-then the two residual algebraic fibers are closed.
+after the saturated boundary \(s=\pm1\).  This external computation is no
+longer needed for the residual \(R4/R5\) closure, because the two surviving
+Mordell-Weil cosets are already disjoint from \(x=1845s^2\) over
+\(\mathbf Z_3\).
 
 I also checked the tempting shortcut: direct \(p\)-adic lifting in \(s\)
 with the full separated terminal equations does not kill either fiber for
@@ -5813,9 +5838,9 @@ the small primes tested.  Both R4 and R5 survive modulo
   3^8,5^6,7^6,11^6,13^5,17^5,19^5,23^5,
   29^4,31^4,37^4,41^4,43^4,47^4.
 \]
-So the next proof step is not another finite congruence in \(s\), but a
-global Mordell-Weil sieve/IntegralPoints computation on the rank-\(3\)
-curve.
+This failed shortcut explains why the successful closure had to use the
+Mordell-Weil coset position itself, not only the separated equations in the
+parameter \(s\).
 
 So neither survivor gives a positive hard-branch point.  Therefore:
 \[

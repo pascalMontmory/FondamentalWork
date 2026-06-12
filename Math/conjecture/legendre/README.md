@@ -34,6 +34,10 @@ Main notes:
   multiplicative type \(I_8\) at \(3\), \(1320E(\mathbf Q)\subset
   E_1(\mathbf Q_3)\), and the cosets \(\pm P_0+1320E(\mathbf Q)\) are
   disjoint from \(x=1845s^2\) for \(s\in\mathbf Z\).
+- `legendre_status_after_residual_closure.md`: current proof ledger after
+  the residual elliptic endpoint closure; it records that this branch is
+  closed, while full Legendre still requires closing the earlier coprime
+  A-block pair-cover obstruction or replacing it by a stronger descent.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
