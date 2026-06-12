@@ -5868,6 +5868,47 @@ The exact remaining theorem is now a capacity statement: one-shot pairs plus
 these collision hyperplanes cannot cover all of
 \(\mathcal Q_{\rm cop}(m)\).
 
+Added the fixed A-block anchor
+\[
+  \texttt{Math/conjecture/legendre/legendre\_Ablock\_anchor\_q0.md}.
+\]
+It proves that
+\[
+  q=0\in\mathcal Q_{\rm cop}(m)
+  \qquad\text{for every }m\ge1.
+\]
+Indeed, if \(m\) is odd then
+\[
+  t_1(0)=1,\qquad t_0(0)=2,
+\]
+and if \(m\) is even then
+\[
+  t_1(0)=2,\qquad t_0(0)=1.
+\]
+The completeness inequalities are immediate, and the coprime condition is
+\[
+  \gcd(t_1(0),9m^2+1)=1.
+\]
+
+Therefore any counterexample must already cover the first block.  The
+boundary systems are:
+\[
+  m\text{ odd}:\quad
+  9m^2+4,\ 9m^2+2
+  \text{ both have eligible small prime certificates},
+\]
+and
+\[
+  m\text{ even}:\quad
+  9m^2+1,\ 9m^2+5
+  \text{ both have eligible small prime certificates}.
+\]
+Combining this anchor with the two-block collision equations makes all
+repetitions against \(q=0\) live on the explicit linear forms
+\[
+  r,\quad 3r\pm1,\quad 3r+2,\quad 3r+4,\quad r+1.
+\]
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

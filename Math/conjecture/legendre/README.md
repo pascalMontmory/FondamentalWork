@@ -46,6 +46,9 @@ Main notes:
   for repeated ordered pairs \((p_0,p_1)\).  A repeated pair must place
   \(p_0,p_1\) on explicit divisor hyperplanes in \(q-r\), \(q+r\), or
   \(q+r+1\).
+- `legendre_Ablock_anchor_q0.md`: proves that \(q=0\) is always a complete
+  coprime A-block and records the explicit odd/even boundary systems
+  \(9m^2+4,9m^2+2\) or \(9m^2+1,9m^2+5\) that any counterexample must cover.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

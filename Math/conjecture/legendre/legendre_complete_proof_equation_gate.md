@@ -181,3 +181,35 @@ Therefore a complete proof may now be phrased as a capacity theorem:
   \quad
   \mathcal Q_{\rm cop}(m).
 \]
+
+## Fixed Anchor Block
+
+The set \(\mathcal Q_{\rm cop}(m)\) is never empty.  The note
+\[
+  \texttt{legendre\_Ablock\_anchor\_q0.md}
+\]
+proves that
+\[
+  q=0\in\mathcal Q_{\rm cop}(m)
+  \qquad\text{for every }m\ge1.
+\]
+
+Thus a counterexample must first cover the fixed block \(\{1,2\}\).  This
+gives an explicit boundary system:
+
+- if \(m\) is odd, the two values are
+  \[
+    G_0=9m^2+4,\qquad U_0=9m^2+2;
+  \]
+- if \(m\) is even, the two values are
+  \[
+    G_0=9m^2+1,\qquad U_0=9m^2+5.
+  \]
+
+In particular, failure of the A-channel already forces eligible small prime
+certificates for one of these two pairs.  The collision equations with
+\(q=0\) and a second block \(r\) specialize to divisibility by the explicit
+linear forms
+\[
+  r,\quad 3r\pm1,\quad 3r+2,\quad 3r+4,\quad r+1.
+\]
