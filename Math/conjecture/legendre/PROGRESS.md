@@ -7035,3 +7035,60 @@ So the exceptional color fibers are no longer amorphous.  They are four
 explicit algebraic fiber types.  The next descent target is to show that
 each deterministic atom either forces a higher-\(u\) nonprimitive repair or
 reduces the remaining cluster to a smaller colored-rank obstruction.
+
+## Shared-\(5\) collapse in the \(u=1\) cluster
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_shared5\_collapse\_gate.md}.
+\]
+
+This attacks the cleanest exceptional fiber:
+\[
+  A\equiv\pm2\pmod5
+\]
+in the even no-\(u=1\)-repair cluster \(\{1,5,11\}\).
+
+In this fiber,
+\[
+  5\mid A^2+1,
+  \qquad
+  5\mid A^2+11,
+\]
+so the offsets \(1\) and \(11\) form a fixed shared atom
+\[
+  p_1=p_{11}=5,
+  \qquad
+  r_1=r_{11}=A-5,
+\]
+with
+\[
+  e_{11}=e_1+2.
+\]
+
+The remaining offset \(c=5\) cannot use the label \(5\), because
+\[
+  A^2+5\equiv4\pmod5.
+\]
+Therefore it has a label \(p=A-r\ge7\) satisfying the single colored divisor
+equation
+\[
+  A-r\mid r^2+5,
+  \qquad
+  p\equiv1,3,7,9\pmod {20}.
+\]
+
+The quotient order in this fiber is forced:
+\[
+  e_5<e_1<e_{11}.
+\]
+Indeed,
+\[
+  e_1-e_5\ge\frac{2A^2-88}{35}>0
+\]
+for \(A\ge7\).
+
+Thus the shared-\(5\) fiber collapses to one remaining colored divisor
+equation for \(A^2+5\), plus the global A-block cover constraints beyond
+the anchor.  The offsets \(1\) and \(11\) no longer provide independent
+resources.

@@ -137,6 +137,10 @@ Main notes:
   \(u=1\) color fibers.  The odd \(5\mid A\), even \(5\mid A\), even
   \(11\mid A\), and even shared-\(5\) gates become deterministic quotient
   atoms, with \(p=5\) or \(p=11\) and explicit distances.
+- `legendre_u1_shared5_collapse_gate.md`: collapses the even shared-\(5\)
+  fiber \(A\equiv\pm2\pmod5\).  The offsets \(1\) and \(11\) are fixed by
+  label \(5\) with \(e_{11}=e_1+2\), and the only variable anchor offset is
+  the colored divisor equation for \(A^2+5\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
