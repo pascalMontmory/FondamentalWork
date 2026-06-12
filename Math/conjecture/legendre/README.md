@@ -145,6 +145,11 @@ Main notes:
   ramified fiber.  If \(u=2\) also fails, the new forced offset is
   \(A^2+38\), with color \((-38/p)=1\) modulo \(152\) or the ramified gate
   \(19\mid A\); the fixed \(c=10,p=5\) atom remains top-ranked.
+- `legendre_shared5_bridge_coupling_gate.md`: proves that the even
+  shared-\(5\) fiber \(A\equiv\pm2\pmod5\) is exactly the \(B_3\) bridge
+  class.  The bridge prime \(5\) kills \(A^2+101\) and \(A^2+121\), so the
+  first usable coprime pressure comes from \(B_1,B_2\), with fresh offsets
+  \(\{17,25,49,65\}\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

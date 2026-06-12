@@ -7149,3 +7149,64 @@ The lifted odd \(5\mid A\) target is now:
 
 > no \(u=1\) and no \(u=2\) repair forces the colored cluster
 > \(\{2,4,8,38\}\) below the fixed top atom \(c=10,p=5\).
+
+## Shared-\(5\) equals the \(B_3\) bridge gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_bridge\_coupling\_gate.md}.
+\]
+
+This gives a concrete coupling between the shared-\(5\) \(u=1\)-fiber and
+the first A-blocks.
+
+Since \(A=3m\) and \(3^{-1}\equiv2\pmod5\),
+\[
+  A\equiv\pm2\pmod5
+  \quad\Longleftrightarrow\quad
+  m\equiv\pm1\pmod5.
+\]
+With \(m\) even, this is exactly the even \(B_3\) bridge class.
+
+Indeed \(B_3=\{10,11\}\) has candidates
+\[
+  A^2+101,\qquad A^2+121,
+\]
+and in the shared-\(5\) fiber,
+\[
+  A^2\equiv-1\pmod5,
+\]
+so
+\[
+  5\mid A^2+101,\qquad5\mid A^2+121.
+\]
+
+Thus the shared-\(5\) fiber is not an ordinary coprime-block fiber.  It is
+precisely a bridge fiber at \(B_3\).
+
+Consequently the first usable coprime pressure beyond the anchor is not
+\(B_3\), but \(B_1,B_2\).  Their even-\(m\) offsets are
+\[
+  B_1:\quad 25,\ 17,
+  \qquad
+  B_2:\quad 49,\ 65.
+\]
+Modulo \(5\), these candidates are
+\[
+  4,\quad1,\quad3,\quad4,
+\]
+so the bridge label \(5\) cannot certify any of them.
+
+Therefore a full cover in the shared-\(5\) fiber must add four non-\(5\)
+labels for
+\[
+  \{17,25,49,65\},
+\]
+with centered equations
+\[
+  A-r_c\mid r_c^2+c.
+\]
+
+This is the concrete next-block result: the shared-\(5\) fiber collapses the
+anchor, makes \(B_3\) a bridge, and pushes the first coprime obstruction to
+the fresh four-offset system \(\{17,25,49,65\}\).
