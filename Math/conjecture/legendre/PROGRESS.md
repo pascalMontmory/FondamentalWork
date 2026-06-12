@@ -6968,3 +6968,70 @@ gates on
 \[
   A=3m.
 \]
+
+## Ramified fibers of the \(u=1\) cluster
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_u1\_ramified\_fiber\_descent\_gate.md}.
+\]
+
+This separates the exceptional color gates from the \(u=1\)-cluster
+obstruction.
+
+In the odd branch, the ramified gate is
+\[
+  p_{10}=5,\qquad5\mid A.
+\]
+It forces
+\[
+  r_{10}=A-5,\qquad
+  e_{10}=\frac{A^2}{5}-2A+7.
+\]
+For \(A>28\), the remaining quotients
+\[
+  e_2,e_4,e_8
+\]
+are distinct and smaller than \(e_{10}\).  Thus \(c=10\) becomes a
+deterministic top-rank atom.
+
+In the even branch, the ramified gate
+\[
+  p_5=5,\qquad5\mid A
+\]
+forces
+\[
+  r_5=A-5,\qquad
+  e_5=\frac{A^2}{5}-2A+6,
+\]
+and \(e_5\) is the top quotient rank.
+
+The other even ramified gate
+\[
+  p_{11}=11,\qquad11\mid A
+\]
+forces
+\[
+  r_{11}=A-11,\qquad
+  e_{11}=\frac{A^2}{11}-2A+12,
+\]
+but is not automatically top-ranked.  If either \(5\mid A\) or the shared
+\(5\) gate \(A\equiv\pm2\pmod5\) is present, a \(p=5\) atom gives a larger
+quotient; otherwise the \(11\)-ramified atom remains deterministic but can
+still be outranked by a remaining label \(p=7\).
+
+Finally, the even shared-\(5\) gate
+\[
+  A\equiv\pm2\pmod5
+\]
+is a rigid two-offset atom:
+\[
+  p_1=p_{11}=5,\qquad
+  r_1=r_{11}=A-5,\qquad
+  e_{11}=e_1+2.
+\]
+
+So the exceptional color fibers are no longer amorphous.  They are four
+explicit algebraic fiber types.  The next descent target is to show that
+each deterministic atom either forces a higher-\(u\) nonprimitive repair or
+reduces the remaining cluster to a smaller colored-rank obstruction.

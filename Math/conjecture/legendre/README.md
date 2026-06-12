@@ -133,6 +133,10 @@ Main notes:
   colors to the forced \(u=1\) labels.  Distances are constrained modulo
   \(8,20,40,44\), except for explicit ramified gates \(5\mid A\) or
   \(11\mid A\) and the even shared-\(5\) gate.
+- `legendre_u1_ramified_fiber_descent_gate.md`: separates the exceptional
+  \(u=1\) color fibers.  The odd \(5\mid A\), even \(5\mid A\), even
+  \(11\mid A\), and even shared-\(5\) gates become deterministic quotient
+  atoms, with \(p=5\) or \(p=11\) and explicit distances.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the
