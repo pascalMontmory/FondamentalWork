@@ -81,6 +81,14 @@ Main notes:
   of two explicit quartic bilinear equations after eliminating \(q\).  The
   same note derives the two-block cofactor descent for repeated ordered
   pairs.
+- `legendre_centered_cofactor_pair_gate.md`: rewrites the cofactor gate with
+  centered variables \(p_i=3m-r_i\).  Each failed block becomes two divisor
+  equations \((A-r_i)e_i=r_i^2+c_i(q)\) plus one short same-block coupling
+  equation, giving the next exact non-cover target.
+- `legendre_global_high_label_oneshot.md`: proves a global repetition
+  cutoff.  If \(Q^\ast_m=\lfloor(\sqrt{6m}-2)/3\rfloor\), then any ordered
+  pair with \(\max(p_0,p_1)>6Q^\ast_m+4\) can cover at most one complete
+  block.  Repeated ordered pairs are confined to the low-label box.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

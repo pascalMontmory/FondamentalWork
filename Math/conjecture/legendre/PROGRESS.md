@@ -6238,6 +6238,117 @@ depending on the layer.  Opposite parity repetitions force the hyperplanes
 This recovers the known collision hyperplanes but attaches the missing large
 cofactor differences, which is the new descent data.
 
+## Centered cofactor pair gate
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_centered\_cofactor\_pair\_gate.md}.
+\]
+
+This rewrites the cofactor gate around the moving center
+\[
+  A=3m.
+\]
+For any value
+\[
+  A^2+c
+\]
+between consecutive squares, a small prime certificate
+\[
+  p=A-r\le A
+\]
+is exactly
+\[
+  A-r\mid r^2+c.
+\]
+Writing
+\[
+  e=\frac{r^2+c}{A-r},
+\]
+the factorization is
+\[
+  A^2+c=(A-r)(A+r+e).
+\]
+
+For a failed coprime A-block, with
+\[
+  c_0(q)=t_0(q)^2,\qquad c_1(q)=t_1(q)^2+1,
+\]
+there must exist two distances \(r_0,r_1\) and quotients \(e_0,e_1\) such
+that
+\[
+  (A-r_i)e_i=r_i^2+c_i(q)\qquad(i=0,1),
+\]
+and the two layers satisfy the same-block coupling
+\[
+  A(e_1-e_0)-r_1^2+r_0^2-r_1e_1+r_0e_0
+  =
+  \eta_q\,2t_1(q).
+\]
+
+This is stronger than two independent divisor equations.  It couples the
+quotients inside each block by a right side of size \(O(\sqrt A)\).  The new
+target is the centered pair non-cover lemma: not every coprime complete
+block can admit such a synchronized pair of centered divisors.
+
+## Global high-label one-shot theorem
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_global\_high\_label\_oneshot.md}.
+\]
+
+Let
+\[
+  Q^\ast_m=
+  \left\lfloor\frac{\sqrt{6m}-2}{3}\right\rfloor
+\]
+and
+\[
+  B_m=6Q^\ast_m+4.
+\]
+Every complete A-block satisfies \(0\le q\le Q^\ast_m\).
+
+If a prime \(p\ge5\) repeats in one layer at two distinct blocks \(q\ne r\),
+then the collision equations force
+\[
+  p\mid q-r,
+  \qquad\text{or}\qquad
+  p\mid3(q+r)+2,
+  \qquad\text{or}\qquad
+  p\mid3(q+r)+4.
+\]
+All these nonzero factors have absolute value at most \(B_m\).  Therefore
+\[
+  p>B_m
+  \quad\Longrightarrow\quad
+  p\text{ is one-shot in that layer.}
+\]
+
+Consequently, if an ordered pair \((p_0,p_1)\) covers two distinct coprime
+complete blocks, then
+\[
+  p_0,p_1\le B_m.
+\]
+Equivalently,
+\[
+  \max(p_0,p_1)>B_m
+  \quad\Longrightarrow\quad
+  (p_0,p_1)\text{ covers at most one complete block.}
+\]
+
+This gives a global non-local split of any remaining cover:
+
+- high-label ordered pairs are one-shot;
+- all repeated coverage must come from the low-label box
+  \[
+    p_0,p_1\le6Q^\ast_m+4=O(\sqrt m).
+  \]
+
+This still does not prove Legendre, but it removes hidden high-multiplicity
+coverage by large labels and gives the right finite box for a weighted
+cofactor/Mobius certificate.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
