@@ -150,6 +150,11 @@ Main notes:
   class.  The bridge prime \(5\) kills \(A^2+101\) and \(A^2+121\), so the
   first usable coprime pressure comes from \(B_1,B_2\), with fresh offsets
   \(\{17,25,49,65\}\).
+- `legendre_shared5_fresh_block_color_gate.md`: adds the quadratic-residue
+  colors for the shared-\(5\) fresh offsets \(\{17,25,49,65\}\), with
+  ramified gates \(17\mid A\), \(7\mid A\), and \(13\mid A\).  The shared
+  fiber becomes a five-equation colored divisor system plus the fixed
+  \(B_3\) bridge atom.
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

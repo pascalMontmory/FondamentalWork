@@ -7210,3 +7210,40 @@ with centered equations
 This is the concrete next-block result: the shared-\(5\) fiber collapses the
 anchor, makes \(B_3\) a bridge, and pushes the first coprime obstruction to
 the fresh four-offset system \(\{17,25,49,65\}\).
+
+## Fresh-block colors in the shared-\(5\) fiber
+
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_shared5\_fresh\_block\_color\_gate.md}.
+\]
+
+This sharpens the shared-\(5\) bridge coupling by adding the exact
+quadratic-residue colors for the first usable coprime offsets
+\[
+  \{17,25,49,65\}.
+\]
+
+In the shared-\(5\) fiber, \(A^2\equiv-1\pmod5\), so the bridge prime \(5\)
+cannot certify any of these offsets.
+
+The colors are:
+\[
+  c=17:\quad \left(\frac{-17}{p}\right)=1
+  \quad\text{or}\quad p=17,\ 17\mid A;
+\]
+\[
+  c=25:\quad p\equiv1\pmod4;
+\]
+\[
+  c=49:\quad p\equiv1\pmod4
+  \quad\text{or}\quad p=7,\ 7\mid A;
+\]
+\[
+  c=65:\quad \left(\frac{-65}{p}\right)=1
+  \quad\text{or}\quad p=13,\ 13\mid A.
+\]
+
+Thus the shared-\(5\) fiber is now a five-equation colored divisor system:
+the remaining anchor equation \(c=5\), plus the four fresh coprime-block
+equations \(c=17,25,49,65\), with \(B_3\) fixed as a bridge by \(5\).
