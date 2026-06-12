@@ -42,6 +42,10 @@ Main notes:
   a complete proof in the current route: a counterexample must assign to
   every complete coprime A-block two distinct small certificate primes
   satisfying the A0/A1 conic congruences.
+- `legendre_pair_collision_equations.md`: exact two-block collision lemma
+  for repeated ordered pairs \((p_0,p_1)\).  A repeated pair must place
+  \(p_0,p_1\) on explicit divisor hyperplanes in \(q-r\), \(q+r\), or
+  \(q+r+1\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

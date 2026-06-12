@@ -5832,6 +5832,42 @@ with small certificate prime divisors in the two lower factors and
 The complete proof now requires proving that this oriented conic-product
 cover cannot exist for any \(m\).
 
+Added the exact repeated-pair collision lemma
+\[
+  \texttt{Math/conjecture/legendre/legendre\_pair\_collision\_equations.md}.
+\]
+If one ordered pair \((p_0,p_1)\) covers two distinct complete coprime
+blocks \(q\ne r\), then, writing
+\[
+  t_0(s)=3s+\alpha_s,\qquad t_1(s)=3s+\beta_s,
+\]
+one must have
+\[
+  p_0\mid
+  \bigl(3(q-r)+\alpha_q-\alpha_r\bigr)
+  \bigl(3(q+r)+\alpha_q+\alpha_r\bigr),
+\]
+and
+\[
+  p_1\mid
+  \bigl(3(q-r)+\beta_q-\beta_r\bigr)
+  \bigl(3(q+r)+\beta_q+\beta_r\bigr).
+\]
+The proof is just subtraction and factorization of the two conic congruences.
+After splitting by parity:
+
+- if \(q\equiv r\pmod2\), each layer prime divides \(q-r\), or one of the
+  mirror sums \(3(q+r)+2\), \(3(q+r)+4\);
+- if \(q\not\equiv r\pmod2\), each layer prime divides
+  \(3(q-r)+1\), \(3(q-r)-1\), or \(q+r+1\).
+
+So repeated pair labels live only on explicit divisor hyperplanes.  This is
+a genuine equation-level obstruction.  It still does not finish the proof by
+itself, because a hypothetical cover might use many one-shot ordered pairs.
+The exact remaining theorem is now a capacity statement: one-shot pairs plus
+these collision hyperplanes cannot cover all of
+\(\mathcal Q_{\rm cop}(m)\).
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added

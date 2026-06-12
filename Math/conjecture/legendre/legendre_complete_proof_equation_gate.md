@@ -141,3 +141,43 @@ for every complete coprime block \(q\).
 
 The residual elliptic endpoint is already closed.  The equations above are
 the remaining complete-proof gate.
+
+## Two-Block Collision Subgate
+
+The first exact multi-block consequence is recorded in
+\[
+  \texttt{legendre\_pair\_collision\_equations.md}.
+\]
+
+If the same ordered pair \((p_0,p_1)\) covers two distinct complete coprime
+blocks \(q\ne r\), then
+\[
+  p_0\mid
+  \bigl(3(q-r)+\alpha_q-\alpha_r\bigr)
+  \bigl(3(q+r)+\alpha_q+\alpha_r\bigr),
+\]
+and
+\[
+  p_1\mid
+  \bigl(3(q-r)+\beta_q-\beta_r\bigr)
+  \bigl(3(q+r)+\beta_q+\beta_r\bigr),
+\]
+where
+\[
+  t_0(s)=3s+\alpha_s,\qquad t_1(s)=3s+\beta_s.
+\]
+
+Thus repeated pair labels are not arbitrary.  They can only occur on explicit
+divisor hyperplanes:
+
+- for \(q\equiv r\pmod2\), the primes divide \(q-r\) or layer-specific
+  mirror sums \(3(q+r)+2\), \(3(q+r)+4\);
+- for \(q\not\equiv r\pmod2\), the primes divide
+  \(3(q-r)+1\), \(3(q-r)-1\), or the common mirror sum \(q+r+1\).
+
+Therefore a complete proof may now be phrased as a capacity theorem:
+\[
+  \text{one-shot ordered pairs plus these collision hyperplanes cannot cover}
+  \quad
+  \mathcal Q_{\rm cop}(m).
+\]
