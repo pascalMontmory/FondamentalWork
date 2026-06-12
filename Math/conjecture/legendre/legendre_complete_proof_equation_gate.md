@@ -286,3 +286,29 @@ and it requires
 Thus the first five coprime blocks force either five distinct ordered pairs,
 or four distinct ordered pairs plus this single explicit exceptional
 \((5,11)\) collision.
+
+The six-block layer is recorded in
+\[
+  \texttt{legendre\_first\_six\_ordered\_pair\_repetition.md}.
+\]
+For
+\[
+  E_6=(2,4,8,10,14,16),\qquad O_6=(1,5,7,11,13,17),
+\]
+the common repetition block pairs reduce to four candidates:
+\[
+  (B_1,B_5),\quad (B_2,B_4),\quad (B_3,B_5),\quad (B_4,B_5).
+\]
+After imposing \(p_0\equiv1\pmod4\) and \(p_0\ne p_1\), only three ordered
+repetition gates remain:
+\[
+\begin{array}{c|c|c}
+  \text{parity} & \text{block pair} & (p_0,p_1)\\
+  \hline
+  \text{even} & (B_2,B_4) & (5,11)\\
+  \text{odd} & (B_1,B_5) & (5,11)\\
+  \text{odd} & (B_3,B_5) & (13,7).
+\end{array}
+\]
+Each gate has explicit congruence conditions on \(m\).  Outside these gates,
+the first six coprime complete blocks require six distinct ordered pairs.

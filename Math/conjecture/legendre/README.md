@@ -61,6 +61,11 @@ Main notes:
   capacity theorem to \(B_0,\dots,B_4\).  The only possible ordered-pair
   repetition is \((B_2,B_4)\) by \((p_0,p_1)=(5,11)\), with
   \(m\) even, \(m^2\equiv4\pmod5\), and \(m^2\equiv5\pmod{11}\).
+- `legendre_first_six_ordered_pair_repetition.md`: extends the ordered-pair
+  classification to \(B_0,\dots,B_5\).  Repetitions are possible only in
+  three explicit gates: even \((B_2,B_4):(5,11)\), odd
+  \((B_1,B_5):(5,11)\), or odd \((B_3,B_5):(13,7)\), each with stated
+  congruence conditions on \(m\).
 - `legendre_m3mod4_residual_global_integral_points_target.md`: exact final
   target after the local Mordell-Weil sieve: prove that the two cosets
   \(P\in\pm P_0+1320E(\mathbf Q)\) contain no integral point passing the

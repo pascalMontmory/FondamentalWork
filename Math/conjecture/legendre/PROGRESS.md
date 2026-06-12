@@ -6003,6 +6003,37 @@ Therefore the first five coprime blocks require either five distinct ordered
 pairs, or four distinct ordered pairs plus this single explicit \((5,11)\)
 collision.
 
+Added
+\[
+  \texttt{Math/conjecture/legendre/legendre\_first\_six\_ordered\_pair\_repetition.md}.
+\]
+For
+\[
+  E_6=(2,4,8,10,14,16),
+  \qquad
+  O_6=(1,5,7,11,13,17),
+\]
+the common block pairs in the two repetition graphs are
+\[
+  (B_1,B_5),\quad (B_2,B_4),\quad (B_3,B_5),\quad (B_4,B_5).
+\]
+After imposing the A0 condition \(p_0\equiv1\pmod4\) and the coprime-block
+condition \(p_0\ne p_1\), only three ordered repetition gates survive:
+\[
+\begin{array}{c|c|c|c}
+  \text{parity of }m & \text{block pair} & (p_0,p_1) & \text{conditions}\\
+  \hline
+  \text{even} & (B_2,B_4) & (5,11) &
+  m^2\equiv4\pmod5,\ m^2\equiv5\pmod{11}\\
+  \text{odd} & (B_1,B_5) & (5,11) &
+  m^2\equiv1\pmod5,\ m^2\equiv2\pmod{11}\\
+  \text{odd} & (B_3,B_5) & (13,7) &
+  m^2\equiv-1\pmod{13},\ m^2\equiv2\pmod7.
+\end{array}
+\]
+Outside these gates, the first six coprime complete blocks require six
+distinct ordered pairs.
+
 ## Residual IntegralPoints certificate target, now superseded
 
 Added
